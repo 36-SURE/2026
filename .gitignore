@@ -47,3 +47,27 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+.positai
+
+# Derivative files
+**/*.pdf
+**/*.log
+**/*.tex
+**/*.aux
+**/*.out
+**/*.html
+
+/.quarto/
+/_site/
+
+/.quarto/
+.Rproj.user
+
+/*.Rproj
+**/.DS_Store
+
+**/*.quarto_ipynb
+
+# Hiding unpublished lecture files
+lectures-unpublished/
+

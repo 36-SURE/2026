@@ -1,0 +1,126 @@
+---
+title: "Git and GitHub Setup"
+---
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Step 1: Create a GitHub account
+
+Register for a [GitHub](https://github.com/) account at [https://github.com](https://github.com/) if you do not have one. It is completely free to use. You may use any username you prefer; we will later ask for your username so we can keep track.
+
+## Step 2: Install Git
+
+(Windows) 
+
+*   Go to [`https://git-scm.com/download/win`](https://git-scm.com/download/win)
+*   Navigate to "Click here to download" on the first line and click on it
+*   Follow the installation instructions
+
+(macOS)
+
+*   Open the Terminal app on your computer (Finder $\rightarrow$ Applications $\rightarrow$ Terminal)
+*   Go to [`https://brew.sh`](https://brew.sh) and copy/paste the chunk under "Install Homebrew" to the Terminal
+*   Once Homebrew is installed, type this into the Terminal:  `brew install git`
+
+## Step 3: Configure Git
+
+* After installation, you need to configure Git. This can be done directly in `R`:
+
+```{r git-config, eval = FALSE}
+# uncomment and run the following line to install the usethis package
+# install.packages("usethis")
+usethis::use_git_config(user.name = "Your Name", 
+                        user.email = "your-github@email.address")
+```
+
+* Use your full name for the `user.name` field and the same email as your GitHub account for `user.email`
+
+* You then need to create a *personal access token* for authentication as follows:
+
+```{r git-pat, eval = FALSE}
+usethis::create_github_token()
+```
+
+* This will direct you to the GitHub site on your browser (you may have to log in). On this site:
+
+  *   Under "Note", type in some description for this token (e.g., "Summer 2025 GitHub token")
+  *   For "Expiration", set an expiration date for this token (e.g., 90 days) or make it permanent (i.e. choose "No expiration" if you don't want to deal with this again in the future)
+  *   Under "Select scopes", recommended scopes will be pre-selected. Stick with these for now.
+
+* Next, click on "Generate token"
+
+* Copy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)
+
+* In RStudio, run the following to get a prompt where you can paste your token:
+
+```{r git-set, eval = FALSE}
+# uncomment and run the following line to install the gitcreds package
+# install.packages("gitcreds")
+gitcreds::gitcreds_set()
+```
+
+You should then be ready to use **GitHub**!
+
+## Step 4: Create a GitHub repository 
+
+We will follow the paradigm of "**GitHub** first". What this means is that when we create a repository, we will create it on **GitHub** first, then link a local repository to it from inside RStudio.
+
+After you've logged in, to create a **GitHub** repository
+
+-   Go to <https://github.com/new>
+
+-   Name the repository (give it a meaningful name)
+
+-   Give the repository a description (don't leave this blank although this is optional)
+
+-   Decide whether to keep the repository public or private (for now, let's just keep it public)
+
+-   Click on "Initialize this repository with a README". For now, there's no need to "Add .gitignore" or "Choose a license"
+
+-   Click on "Create Repository"
+
+## Step 5: Connect RStudio to the GitHub repository
+
+*   Go to the browser page for your GitHub repository
+
+*   Click on Code (in the same line as "Go to file"). Under HTTPS, copy the URL   
+
+*   In RStudio, click on `File > New Project....` Next, click on "Version Control" and then on "Git". Paste the URL you just copied into "Repository URL"
+
+*   Type the name for the folder on your computer associated with this repository into Project directory name 
+
+    *   You can choose whatever name you want, but it is recommended to give a name similar to the repository name on GitHub
+    
+*   Make sure "Create project as subdirectory of:" points to where you want to locate this new folder
+
+*   Click on "Create Project"
+
+*   At this point, you should find that the "Files" pane (in the bottom right of RStudio) is listing the files in your local repository.
+
+## Step 6: Modify the repository
+
+To add a new file from your local repository to **GitHub**:
+
+*   In RStudio, open a new file (could be anything - e.g. R Script, Quarto document, etc.). 
+
+*   Fill the file with some code/comments/etc. (This is just for illustration purpose, to show how you can add a file to GitHub from your computer)
+
+*   Save the file. At this point, this file should show up in the "Git" pane (in the top right of RStudio)
+
+*   Check the box under "Staged" in the Git pane to stage the file for a commit
+
+*   Click on "Commit" in the Git pane
+
+*   In the new window that opens, add a "Commit message", then click on the "Commit" button
+
+*   Click on "Push" to push your changes from your local repository to the remote repository on GitHub
+
+If you encountered no errors then you’re done! While working on a single project you will repeatedly perform the tasks in Step 6: make changes to files, commit changes, then push changes
+
+Every time you want to create a new repository, you can just start with Step 4, use GitHub, copy the repository into RStudio, then repeatedly update, commit, and push.
+
+**Ask us for help if you have any questions.**

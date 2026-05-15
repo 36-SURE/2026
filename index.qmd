@@ -1,0 +1,7 @@
+---
+title: "CMSACamp 2026"
+---
+
+Welcome to the Carnegie Mellon Sports Analytics Camp (CMSACamp), hosted by Department of Statistics & Data Science at Carnegie Mellon University. This program focuses on statistics and data science methodology with applications in sports analytics.
+
+On this site, the [Lectures](lectures.qmd) tab contains all lecture slides, and the [Sports](sports.qmd) tab contains materials for all labs and projects.
