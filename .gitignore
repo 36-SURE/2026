@@ -68,6 +68,3 @@ rsconnect/
 
 **/*.quarto_ipynb
 
-# Hiding unpublished lecture files
-lectures-unpublished/
-

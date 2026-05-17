@@ -2,9 +2,11 @@
 title: "Sports"
 ---
 
+<!--
 ## Capstone project
 
 [Guidelines](https://36-sure.github.io/2025/sports/project/description.html)
+-->
 
 ## Labs
 
@@ -12,8 +14,8 @@ Note: To download a `.qmd` file, right click and choose "Save Link As...".
 
 | Date   | Title                                  | Materials                                                                                                                                          |
 |--------|----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| June 2 | Getting started with `R`               | [`.html`](sports/labs/01-intro.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/01-intro.qmd)                 |
-| June 3 | Data wrangling                         | [`.html`](sports/labs/02-wrangling.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/02-wrangling.qmd)         |
+| June 1 | Getting started with `R`               | [`.html`](sports/labs/01-intro.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/01-intro.qmd)                 |
+<!--| June 3 | Data wrangling                         | [`.html`](sports/labs/02-wrangling.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/02-wrangling.qmd)         |
 | June 4 | Data visualization                     | [`.html`](sports/labs/03-visualization.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/03-visualization.qmd) |
 | June 5 | Using GitHub for project collaboration | [`.html`](sports/labs/04-github.qmd)                                                                                                               |
 | June 23 | Data wrangling with data.table | [`.html`](sports/labs/05-datatable.qmd)&nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/05-datatable.qmd)   |
@@ -24,7 +26,8 @@ Note: To download a `.qmd` file, right click and choose "Save Link As...".
 |-----------|------------------|--------------------------------------------|
 | Project 1 | NFL passing      | [description](sports/eda/nfl_passing.qmd)  |
 | Project 2 | UFA throwing     | [description](sports/eda/ufa_throwing.qmd) |
-| Project 3 | NHL shooting     | [description](sports/eda/nhl_shooting.qmd) |
+| Project 3 | TBD              | [description](sports/eda/nhl_shooting.qmd) |
 | Project 4 | FIFAWWC shooting | [description](sports/eda/wwc_shooting.qmd) |
 | Project 5 | FIFAWWC passing  | [description](sports/eda/wwc_passing.qmd)  |
-| Project 6 | MLB batting      | [description](sports/eda/mlb_batting.qmd)  |
+| Project 6 | TBD              | [description](sports/eda/mlb_batting.qmd)  |
+-->
