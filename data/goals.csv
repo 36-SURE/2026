@@ -1,0 +1,3505 @@
+n_goals,xG,off_team,def_team,league,match_id,is_home
+1,2.4,Manchester Utd,Fulham,ENG,1,1
+0,0.5,Ipswich Town,Liverpool,ENG,2,1
+1,0.3,Newcastle Utd,Southampton,ENG,3,1
+0,0.5,Everton,Brighton,ENG,4,1
+1,1.3,Nott'ham Forest,Bournemouth,ENG,5,1
+2,1.2,Arsenal,Wolves,ENG,6,1
+1,2.3,West Ham,Aston Villa,ENG,7,1
+2,1.6,Brentford,Crystal Palace,ENG,8,1
+0,1,Chelsea,Manchester City,ENG,9,1
+1,1,Leicester City,Tottenham,ENG,10,1
+1,0.5,Newcastle Utd,Arsenal,ENG,11,1
+2,1.6,Liverpool,Brighton,ENG,12,1
+1,0.7,Southampton,Everton,ENG,13,1
+3,2.2,Nott'ham Forest,West Ham,ENG,14,1
+1,1,Ipswich Town,Leicester City,ENG,15,1
+2,2,Bournemouth,Manchester City,ENG,16,1
+2,1.5,Wolves,Crystal Palace,ENG,17,1
+4,2.4,Tottenham,Aston Villa,ENG,18,1
+1,2,Manchester Utd,Chelsea,ENG,19,1
+2,1.3,Fulham,Brentford,ENG,20,1
+0,0.8,West Ham,Everton,ENG,21,1
+0,1.5,Crystal Palace,Fulham,ENG,22,1
+2,1.3,Wolves,Southampton,ENG,23,1
+3,1.5,Brentford,Bournemouth,ENG,24,1
+2,2.3,Brighton,Manchester City,ENG,25,1
+2,2,Liverpool,Aston Villa,ENG,26,1
+1,1.5,Tottenham,Ipswich Town,ENG,27,1
+1,0.6,Nott'ham Forest,Newcastle Utd,ENG,28,1
+3,0.8,Manchester Utd,Leicester City,ENG,29,1
+1,1.5,Chelsea,Arsenal,ENG,30,1
+1,1.1,Leicester City,Chelsea,ENG,31,1
+2,3,Aston Villa,Crystal Palace,ENG,32,1
+1,1,Fulham,Wolves,ENG,33,1
+1,1.6,Bournemouth,Brighton,ENG,34,1
+3,1.2,Arsenal,Nott'ham Forest,ENG,35,1
+0,1.2,Everton,Brentford,ENG,36,1
+0,2.1,Manchester City,Tottenham,ENG,37,1
+2,1.3,Southampton,Liverpool,ENG,38,1
+1,1.6,Ipswich Town,Manchester Utd,ENG,39,1
+0,1.6,Newcastle Utd,West Ham,ENG,40,1
+1,1.7,Brighton,Southampton,ENG,41,1
+2,0.5,Wolves,Bournemouth,ENG,42,1
+1,1.6,Nott'ham Forest,Ipswich Town,ENG,43,1
+4,2.4,Brentford,Leicester City,ENG,44,1
+1,1.7,Crystal Palace,Newcastle Utd,ENG,45,1
+2,1.5,West Ham,Arsenal,ENG,46,1
+4,1.1,Manchester Utd,Everton,ENG,47,1
+1,0.8,Tottenham,Fulham,ENG,48,1
+3,1.6,Chelsea,Aston Villa,ENG,49,1
+2,3.4,Liverpool,Manchester City,ENG,50,1
+0,0.5,Ipswich Town,Crystal Palace,ENG,51,1
+3,1.7,Leicester City,West Ham,ENG,52,1
+3,2.1,Newcastle Utd,Liverpool,ENG,53,1
+4,1,Everton,Wolves,ENG,54,1
+3,2.4,Manchester City,Nott'ham Forest,ENG,55,1
+1,1.6,Southampton,Chelsea,ENG,56,1
+2,2.1,Arsenal,Manchester Utd,ENG,57,1
+3,2.4,Aston Villa,Brentford,ENG,58,1
+3,1.1,Fulham,Brighton,ENG,59,1
+1,3.5,Bournemouth,Tottenham,ENG,60,1
+1,2.3,Aston Villa,Southampton,ENG,61,1
+2,1.3,Crystal Palace,Manchester City,ENG,62,1
+4,1.2,Brentford,Newcastle Utd,ENG,63,1
+2,1.6,Manchester Utd,Nott'ham Forest,ENG,64,1
+2,1.3,Leicester City,Brighton,ENG,65,1
+1,1.3,Ipswich Town,Bournemouth,ENG,66,1
+1,0.2,Fulham,Arsenal,ENG,67,1
+3,2.8,Tottenham,Chelsea,ENG,68,1
+2,1,West Ham,Wolves,ENG,69,1
+2,1,Everton,Liverpool,ENG,70,1
+2,2.1,Liverpool,Fulham,ENG,71,1
+1,1.3,Wolves,Ipswich Town,ENG,72,1
+4,3.8,Newcastle Utd,Leicester City,ENG,73,1
+0,1.2,Arsenal,Everton,ENG,74,1
+2,1.7,Nott'ham Forest,Aston Villa,ENG,75,1
+1,1,Brighton,Crystal Palace,ENG,76,1
+1,0.9,Manchester City,Manchester Utd,ENG,77,1
+0,0.8,Southampton,Tottenham,ENG,78,1
+2,2.2,Chelsea,Brentford,ENG,79,1
+1,1.9,Bournemouth,West Ham,ENG,80,1
+2,1.6,Aston Villa,Manchester City,ENG,81,1
+0,0.7,Ipswich Town,Newcastle Utd,ENG,82,1
+0,0.7,Brentford,Nott'ham Forest,ENG,83,1
+1,1.2,West Ham,Brighton,ENG,84,1
+1,1.6,Crystal Palace,Arsenal,ENG,85,1
+0,2.2,Manchester Utd,Bournemouth,ENG,86,1
+0,0.8,Leicester City,Wolves,ENG,87,1
+0,1,Everton,Chelsea,ENG,88,1
+0,0.9,Fulham,Southampton,ENG,89,1
+3,1.3,Tottenham,Liverpool,ENG,90,1
+1,2.1,Manchester City,Everton,ENG,91,1
+0,1.4,Southampton,West Ham,ENG,92,1
+3,2.7,Newcastle Utd,Aston Villa,ENG,93,1
+1,1.1,Nott'ham Forest,Tottenham,ENG,94,1
+0,1.4,Bournemouth,Crystal Palace,ENG,95,1
+1,1.1,Chelsea,Fulham,ENG,96,1
+2,0.9,Wolves,Manchester Utd,ENG,97,1
+3,2,Liverpool,Leicester City,ENG,98,1
+0,1.3,Brighton,Brentford,ENG,99,1
+1,1.8,Arsenal,Ipswich Town,ENG,100,1
+0,1.3,Leicester City,Manchester City,ENG,101,1
+0,0.9,Everton,Nott'ham Forest,ENG,102,1
+2,2.2,Tottenham,Wolves,ENG,103,1
+2,1.1,Fulham,Bournemouth,ENG,104,1
+2,2,Crystal Palace,Southampton,ENG,105,1
+0,0.4,West Ham,Liverpool,ENG,106,1
+2,1.8,Aston Villa,Brighton,ENG,107,1
+2,1.6,Ipswich Town,Chelsea,ENG,108,1
+0,0.8,Manchester Utd,Newcastle Utd,ENG,109,1
+1,0.3,Brentford,Arsenal,ENG,110,1
+2,2.1,Brighton,Manchester Utd,ENG,111,1
+4,3.3,Manchester City,Ipswich Town,ENG,112,1
+0,0.1,Southampton,Nott'ham Forest,ENG,113,1
+4,2.4,Tottenham,Everton,ENG,114,1
+2,1.8,Fulham,Leicester City,ENG,115,1
+0,1.3,Crystal Palace,West Ham,ENG,116,1
+0,1.2,Aston Villa,Arsenal,ENG,117,1
+2,1.9,Wolves,Chelsea,ENG,118,1
+1,2.2,Bournemouth,Newcastle Utd,ENG,119,1
+2,2.5,Liverpool,Brentford,ENG,120,1
+1,0.9,Tottenham,Newcastle Utd,ENG,121,1
+2,1.4,Aston Villa,Leicester City,ENG,122,1
+1,1.8,Bournemouth,Everton,ENG,123,1
+1,1.1,Crystal Palace,Chelsea,ENG,124,1
+0,0.3,Southampton,Brentford,ENG,125,1
+4,1.9,Manchester City,West Ham,ENG,126,1
+1,1.5,Brighton,Arsenal,ENG,127,1
+2,2.2,Fulham,Ipswich Town,ENG,128,1
+2,2.7,Liverpool,Manchester Utd,ENG,129,1
+0,1.5,Wolves,Nott'ham Forest,ENG,130,1
+3,1,West Ham,Fulham,ENG,131,1
+2,2.5,Chelsea,Bournemouth,ENG,132,1
+2,2.5,Brentford,Manchester City,ENG,133,1
+1,0.3,Nott'ham Forest,Liverpool,ENG,134,1
+0,1.7,Leicester City,Crystal Palace,ENG,135,1
+0,1.1,Everton,Aston Villa,ENG,136,1
+3,2.1,Newcastle Utd,Wolves,ENG,137,1
+2,1.4,Arsenal,Tottenham,ENG,138,1
+0,0.3,Ipswich Town,Brighton,ENG,139,1
+3,3.4,Manchester Utd,Southampton,ENG,140,1
+1,0.8,Newcastle Utd,Bournemouth,ENG,141,1
+0,0.6,Leicester City,Fulham,ENG,142,1
+0,0.3,West Ham,Crystal Palace,ENG,143,1
+0,0.7,Brentford,Liverpool,ENG,144,1
+2,1.3,Arsenal,Aston Villa,ENG,145,1
+3,1.8,Everton,Tottenham,ENG,146,1
+1,1.5,Manchester Utd,Brighton,ENG,147,1
+3,1.8,Nott'ham Forest,Southampton,ENG,148,1
+0,0.5,Ipswich Town,Manchester City,ENG,149,1
+3,3.1,Chelsea,Wolves,ENG,150,1
+1,0.8,Southampton,Newcastle Utd,ENG,151,1
+0,0.7,Brighton,Everton,ENG,152,1
+4,2,Liverpool,Ipswich Town,ENG,153,1
+5,1.7,Bournemouth,Nott'ham Forest,ENG,154,1
+0,0.7,Wolves,Arsenal,ENG,155,1
+3,2.2,Manchester City,Chelsea,ENG,156,1
+1,1.1,Crystal Palace,Brentford,ENG,157,1
+1,1,Tottenham,Leicester City,ENG,158,1
+1,0.9,Aston Villa,West Ham,ENG,159,1
+0,0.7,Fulham,Manchester Utd,ENG,160,1
+7,3.3,Nott'ham Forest,Brighton,ENG,161,1
+4,2.5,Everton,Leicester City,ENG,162,1
+1,0.8,Newcastle Utd,Fulham,ENG,163,1
+0,1.6,Bournemouth,Liverpool,ENG,164,1
+1,1.8,Ipswich Town,Southampton,ENG,165,1
+2,1.6,Wolves,Aston Villa,ENG,166,1
+0,1.1,Manchester Utd,Crystal Palace,ENG,167,1
+0,2.1,Brentford,Tottenham,ENG,168,1
+5,1,Arsenal,Manchester City,ENG,169,1
+2,1.6,Chelsea,West Ham,ENG,170,1
+3,1.4,Brighton,Chelsea,ENG,171,1
+0,0.2,Leicester City,Arsenal,ENG,172,1
+2,2.1,Fulham,Nott'ham Forest,ENG,173,1
+4,1.9,Manchester City,Newcastle Utd,ENG,174,1
+1,0.8,Southampton,Bournemouth,ENG,175,1
+1,2.4,Aston Villa,Ipswich Town,ENG,176,1
+0,0.8,West Ham,Brentford,ENG,177,1
+1,1.6,Crystal Palace,Everton,ENG,178,1
+2,1.7,Liverpool,Wolves,ENG,179,1
+1,2.2,Tottenham,Manchester Utd,ENG,180,1
+0,0.5,Leicester City,Brentford,ENG,181,1
+2,1.6,Everton,Manchester Utd,ENG,182,1
+0,0.2,Fulham,Crystal Palace,ENG,183,1
+0,0.9,Bournemouth,Wolves,ENG,184,1
+1,1.1,Ipswich Town,Tottenham,ENG,185,1
+0,1.2,Arsenal,West Ham,ENG,186,1
+0,0.1,Southampton,Brighton,ENG,187,1
+2,2.3,Aston Villa,Chelsea,ENG,188,1
+4,2.9,Newcastle Utd,Nott'ham Forest,ENG,189,1
+0,0.6,Manchester City,Liverpool,ENG,190,1
+2,2.4,Brighton,Bournemouth,ENG,191,1
+4,4.3,Crystal Palace,Aston Villa,ENG,192,1
+1,1.3,Wolves,Fulham,ENG,193,1
+4,2.4,Chelsea,Southampton,ENG,194,1
+0,1.3,Tottenham,Manchester City,ENG,195,1
+0,0.4,Nott'ham Forest,Arsenal,ENG,196,1
+3,0.7,Manchester Utd,Ipswich Town,ENG,197,1
+1,1.4,Brentford,Everton,ENG,198,1
+2,1.7,Liverpool,Newcastle Utd,ENG,199,1
+2,1.3,West Ham,Leicester City,ENG,200,1
+1,0.7,Nott'ham Forest,Manchester City,ENG,201,1
+3,3.9,Liverpool,Southampton,ENG,202,1
+2,1.5,Brighton,Fulham,ENG,203,1
+1,3.2,Crystal Palace,Ipswich Town,ENG,204,1
+0,0.8,Brentford,Aston Villa,ENG,205,1
+1,0.8,Wolves,Everton,ENG,206,1
+1,1.7,Chelsea,Leicester City,ENG,207,1
+2,1.5,Tottenham,Bournemouth,ENG,208,1
+1,1.5,Manchester Utd,Arsenal,ENG,209,1
+0,0.7,West Ham,Newcastle Utd,ENG,210,1
+2,0.6,Aston Villa,Liverpool,ENG,211,1
+1,1,Everton,West Ham,ENG,212,1
+1,1.3,Southampton,Wolves,ENG,213,1
+2,0.4,Ipswich Town,Nott'ham Forest,ENG,214,1
+2,1.7,Manchester City,Brighton,ENG,215,1
+1,1.6,Bournemouth,Brentford,ENG,216,1
+1,0.7,Arsenal,Chelsea,ENG,217,1
+2,1,Fulham,Tottenham,ENG,218,1
+0,1,Leicester City,Manchester Utd,ENG,219,1
+5,1.5,Newcastle Utd,Crystal Palace,ENG,220,1
+1,2.1,Arsenal,Brighton,ENG,221,1
+1,0.4,Ipswich Town,Fulham,ENG,222,1
+1,1,Nott'ham Forest,Wolves,ENG,223,1
+3,2.8,Brentford,Southampton,ENG,224,1
+1,0.4,Leicester City,Aston Villa,ENG,225,1
+2,1.8,Everton,Bournemouth,ENG,226,1
+1,0.7,West Ham,Manchester City,ENG,227,1
+2,1.8,Newcastle Utd,Tottenham,ENG,228,1
+1,2.4,Chelsea,Crystal Palace,ENG,229,1
+0,1.4,Manchester Utd,Liverpool,ENG,230,1
+2,2.2,Arsenal,Fulham,ENG,231,1
+1,1.2,Wolves,West Ham,ENG,232,1
+1,0.5,Nott'ham Forest,Manchester Utd,ENG,233,1
+2,1.3,Newcastle Utd,Brentford,ENG,234,1
+2,2.2,Manchester City,Leicester City,ENG,235,1
+1,0.7,Southampton,Crystal Palace,ENG,236,1
+1,1.8,Bournemouth,Ipswich Town,ENG,237,1
+0,0.9,Brighton,Aston Villa,ENG,238,1
+1,1.5,Liverpool,Everton,ENG,239,1
+1,1,Chelsea,Tottenham,ENG,240,1
+1,1.1,Everton,Arsenal,ENG,241,1
+2,0.6,Crystal Palace,Brighton,ENG,242,1
+1,0.8,Ipswich Town,Wolves,ENG,243,1
+2,0.7,West Ham,Bournemouth,ENG,244,1
+2,3,Aston Villa,Nott'ham Forest,ENG,245,1
+3,0.7,Fulham,Liverpool,ENG,246,1
+0,1.1,Brentford,Chelsea,ENG,247,1
+3,2.1,Tottenham,Southampton,ENG,248,1
+0,0.9,Manchester Utd,Manchester City,ENG,249,1
+0,0.5,Leicester City,Newcastle Utd,ENG,250,1
+5,3.7,Manchester City,Crystal Palace,ENG,251,1
+2,3.8,Brighton,Leicester City,ENG,252,1
+0,0.3,Southampton,Aston Villa,ENG,253,1
+0,0.5,Nott'ham Forest,Everton,ENG,254,1
+1,1,Arsenal,Brentford,ENG,255,1
+2,1.8,Liverpool,West Ham,ENG,256,1
+2,2.2,Chelsea,Ipswich Town,ENG,257,1
+4,2.4,Wolves,Tottenham,ENG,258,1
+4,2.2,Newcastle Utd,Manchester Utd,ENG,259,1
+1,1.4,Bournemouth,Fulham,ENG,260,1
+0,0.9,Everton,Manchester City,ENG,261,1
+1,0.9,West Ham,Southampton,ENG,262,1
+0,0.4,Crystal Palace,Bournemouth,ENG,263,1
+4,2.1,Brentford,Brighton,ENG,264,1
+4,2.2,Aston Villa,Newcastle Utd,ENG,265,1
+1,0.3,Fulham,Chelsea,ENG,266,1
+0,0.2,Ipswich Town,Arsenal,ENG,267,1
+0,1.3,Manchester Utd,Wolves,ENG,268,1
+0,0.3,Leicester City,Liverpool,ENG,269,1
+1,2.1,Tottenham,Nott'ham Forest,ENG,270,1
+2,1.3,Manchester City,Aston Villa,ENG,271,1
+2,1.2,Arsenal,Crystal Palace,ENG,272,1
+1,0.8,Chelsea,Everton,ENG,273,1
+3,1.3,Brighton,West Ham,ENG,274,1
+3,2,Wolves,Leicester City,ENG,275,1
+1,0.6,Southampton,Fulham,ENG,276,1
+3,2.4,Newcastle Utd,Ipswich Town,ENG,277,1
+1,0.5,Bournemouth,Manchester Utd,ENG,278,1
+5,2.2,Liverpool,Tottenham,ENG,279,1
+0,0.9,Nott'ham Forest,Brentford,ENG,280,1
+1,0.7,Manchester City,Wolves,ENG,281,1
+1,1,Aston Villa,Fulham,ENG,282,1
+2,1.4,Leicester City,Southampton,ENG,283,1
+2,0.6,Everton,Ipswich Town,ENG,284,1
+1,1.4,Arsenal,Bournemouth,ENG,285,1
+1,0.7,Brighton,Newcastle Utd,ENG,286,1
+1,0.8,West Ham,Tottenham,ENG,287,1
+4,2.8,Brentford,Manchester Utd,ENG,288,1
+3,3.1,Chelsea,Liverpool,ENG,289,1
+1,2.3,Crystal Palace,Nott'ham Forest,ENG,290,1
+0,0.9,Ipswich Town,Brentford,ENG,291,1
+1,0.8,Fulham,Everton,ENG,292,1
+0,0.9,Wolves,Brighton,ENG,293,1
+0,0.1,Southampton,Manchester City,ENG,294,1
+0,0.8,Bournemouth,Aston Villa,ENG,295,1
+2,1.6,Newcastle Utd,Chelsea,ENG,296,1
+2,1.3,Nott'ham Forest,Leicester City,ENG,297,1
+0,0.7,Tottenham,Crystal Palace,ENG,298,1
+0,2.1,Manchester Utd,West Ham,ENG,299,1
+2,2.4,Liverpool,Arsenal,ENG,300,1
+2,1.4,Aston Villa,Tottenham,ENG,301,1
+1,0.8,Chelsea,Manchester Utd,ENG,302,1
+2,2.7,Everton,Southampton,ENG,303,1
+1,1.1,West Ham,Nott'ham Forest,ENG,304,1
+2,2.5,Brentford,Fulham,ENG,305,1
+2,0.8,Leicester City,Ipswich Town,ENG,306,1
+1,0.6,Arsenal,Newcastle Utd,ENG,307,1
+3,2.2,Brighton,Liverpool,ENG,308,1
+3,1.5,Manchester City,Bournemouth,ENG,309,1
+4,1.7,Crystal Palace,Wolves,ENG,310,1
+2,2.9,Manchester Utd,Aston Villa,ENG,311,1
+1,0.7,Ipswich Town,West Ham,ENG,312,1
+1,1,Wolves,Brentford,ENG,313,1
+1,0.6,Southampton,Arsenal,ENG,314,1
+1,2.1,Liverpool,Crystal Palace,ENG,315,1
+0,1.2,Nott'ham Forest,Chelsea,ENG,316,1
+0,1.3,Fulham,Manchester City,ENG,317,1
+0,1.2,Newcastle Utd,Everton,ENG,318,1
+2,1.6,Bournemouth,Leicester City,ENG,319,1
+1,2,Tottenham,Brighton,ENG,320,1
+0,1.1,Southampton,Manchester Utd,ENG,321,1
+2,2.1,Manchester City,Brentford,ENG,322,1
+0,0.9,Liverpool,Nott'ham Forest,ENG,323,1
+2,2.5,Crystal Palace,Leicester City,ENG,324,1
+1,1.5,Fulham,West Ham,ENG,325,1
+0,1.6,Brighton,Ipswich Town,ENG,326,1
+3,2.1,Aston Villa,Everton,ENG,327,1
+0,1.7,Bournemouth,Chelsea,ENG,328,1
+0,0.7,Tottenham,Arsenal,ENG,329,1
+1,1.2,Wolves,Newcastle Utd,ENG,330,1
+0,0.9,West Ham,Chelsea,ENG,331,1
+3,3.5,Tottenham,Brentford,ENG,332,1
+3,1.7,Aston Villa,Wolves,ENG,333,1
+3,2.2,Fulham,Newcastle Utd,ENG,334,1
+1,2.4,Southampton,Ipswich Town,ENG,335,1
+1,0.7,Leicester City,Everton,ENG,336,1
+3,2,Liverpool,Bournemouth,ENG,337,1
+0,1,Crystal Palace,Manchester Utd,ENG,338,1
+2,1,Brighton,Nott'ham Forest,ENG,339,1
+2,2.1,Manchester City,Arsenal,ENG,340,1
+1,1.6,Newcastle Utd,Manchester City,ENG,341,1
+1,0.4,Brentford,West Ham,ENG,342,1
+2,0.9,Everton,Crystal Palace,ENG,343,1
+4,4.4,Arsenal,Leicester City,ENG,344,1
+4,4.2,Chelsea,Brighton,ENG,345,1
+0,0.8,Nott'ham Forest,Fulham,ENG,346,1
+1,0.6,Wolves,Liverpool,ENG,347,1
+2,1.2,Ipswich Town,Aston Villa,ENG,348,1
+0,1,Manchester Utd,Tottenham,ENG,349,1
+3,1.3,Bournemouth,Southampton,ENG,350,1
+0,0.6,Crystal Palace,Liverpool,ENG,351,1
+5,4.2,Brentford,Wolves,ENG,352,1
+1,0.8,Leicester City,Bournemouth,ENG,353,1
+3,1.6,Manchester City,Fulham,ENG,354,1
+4,3.6,West Ham,Ipswich Town,ENG,355,1
+3,2.8,Arsenal,Southampton,ENG,356,1
+0,0.7,Everton,Newcastle Utd,ENG,357,1
+0,0.5,Aston Villa,Manchester Utd,ENG,358,1
+1,2.3,Chelsea,Nott'ham Forest,ENG,359,1
+3,1.8,Brighton,Tottenham,ENG,360,1
+4,1.9,Tottenham,West Ham,ENG,361,1
+1,1.8,Fulham,Aston Villa,ENG,362,1
+0,1.3,Ipswich Town,Everton,ENG,363,1
+2,2.1,Southampton,Leicester City,ENG,364,1
+2,1.3,Manchester Utd,Brentford,ENG,365,1
+0,2,Newcastle Utd,Brighton,ENG,366,1
+2,1.8,Bournemouth,Arsenal,ENG,367,1
+1,0.8,Wolves,Manchester City,ENG,368,1
+2,1.9,Liverpool,Chelsea,ENG,369,1
+1,1.7,Nott'ham Forest,Crystal Palace,ENG,370,1
+1,0.8,Leicester City,Nott'ham Forest,ENG,371,1
+2,1.3,Brighton,Wolves,ENG,372,1
+1,2.9,Manchester City,Southampton,ENG,373,1
+4,4,Brentford,Ipswich Town,ENG,374,1
+1,1.8,Aston Villa,Bournemouth,ENG,375,1
+1,0.8,Everton,Fulham,ENG,376,1
+2,2.8,West Ham,Manchester Utd,ENG,377,1
+2,1.6,Chelsea,Newcastle Utd,ENG,378,1
+1,0.8,Crystal Palace,Tottenham,ENG,379,1
+2,0.9,Arsenal,Liverpool,ENG,380,1
+1,0.3,Athletic Club,Getafe,ESP,381,1
+1,1.4,Betis,Girona,ESP,382,1
+2,0.8,Celta Vigo,Alavés,ESP,383,1
+2,1.4,Las Palmas,Sevilla,ESP,384,1
+1,1.7,Osasuna,Leganés,ESP,385,1
+1,1,Valencia,Barcelona,ESP,386,1
+1,1.1,Real Sociedad,Rayo Vallecano,ESP,387,1
+1,1,Mallorca,Real Madrid,ESP,388,1
+1,0.8,Valladolid,Espanyol,ESP,389,1
+2,0.8,Villarreal,Atlético Madrid,ESP,390,1
+2,0.5,Alavés,Valladolid,ESP,391,1
+4,1.3,Athletic Club,Espanyol,ESP,392,1
+1,2,Osasuna,Betis,ESP,393,1
+0,0.4,Girona,Real Sociedad,ESP,394,1
+1,1.8,Celta Vigo,Real Madrid,ESP,395,1
+1,2,Mallorca,Rayo Vallecano,ESP,396,1
+3,4.4,Atlético Madrid,Leganés,ESP,397,1
+1,0.9,Villarreal,Getafe,ESP,398,1
+5,3.8,Barcelona,Sevilla,ESP,399,1
+2,1.6,Valencia,Las Palmas,ESP,400,1
+0,1.2,Espanyol,Sevilla,ESP,401,1
+1,0.9,Valladolid,Villarreal,ESP,402,1
+1,1.9,Rayo Vallecano,Alavés,ESP,403,1
+1,0.9,Las Palmas,Girona,ESP,404,1
+0,1.5,Real Madrid,Barcelona,ESP,405,1
+3,1.6,Leganés,Celta Vigo,ESP,406,1
+1,2.2,Getafe,Valencia,ESP,407,1
+1,1.9,Betis,Atlético Madrid,ESP,408,1
+0,1.6,Real Sociedad,Osasuna,ESP,409,1
+0,0.5,Mallorca,Athletic Club,ESP,410,1
+1,1.1,Alavés,Mallorca,ESP,411,1
+1,2.2,Osasuna,Valladolid,ESP,412,1
+4,2,Girona,Leganés,ESP,413,1
+2,1.6,Atlético Madrid,Las Palmas,ESP,414,1
+3,1.8,Barcelona,Espanyol,ESP,415,1
+0,1.1,Sevilla,Real Sociedad,ESP,416,1
+1,4,Athletic Club,Betis,ESP,417,1
+1,1.9,Celta Vigo,Getafe,ESP,418,1
+1,1.4,Villarreal,Rayo Vallecano,ESP,419,1
+1,1.3,Valencia,Real Madrid,ESP,420,1
+1,2.4,Rayo Vallecano,Las Palmas,ESP,421,1
+4,3.1,Real Madrid,Osasuna,ESP,422,1
+3,1.5,Villarreal,Alavés,ESP,423,1
+1,1.1,Leganés,Sevilla,ESP,424,1
+2,1.6,Betis,Celta Vigo,ESP,425,1
+0,0.6,Mallorca,Atlético Madrid,ESP,426,1
+1,0.6,Valladolid,Athletic Club,ESP,427,1
+0,0.6,Getafe,Girona,ESP,428,1
+1,2,Real Sociedad,Barcelona,ESP,429,1
+1,2.1,Espanyol,Valencia,ESP,430,1
+2,0.6,Getafe,Valladolid,ESP,431,1
+4,1.5,Valencia,Betis,ESP,432,1
+2,1.6,Atlético Madrid,Alavés,ESP,433,1
+2,1.2,Las Palmas,Mallorca,ESP,434,1
+4,3.5,Girona,Espanyol,ESP,435,1
+2,2.5,Celta Vigo,Barcelona,ESP,436,1
+2,1,Osasuna,Villarreal,ESP,437,1
+1,1.1,Sevilla,Rayo Vallecano,ESP,438,1
+0,0.1,Leganés,Real Madrid,ESP,439,1
+1,1.3,Athletic Club,Real Sociedad,ESP,440,1
+2,0.8,Mallorca,Valencia,ESP,441,1
+1,2.3,Barcelona,Las Palmas,ESP,442,1
+1,1.1,Alavés,Leganés,ESP,443,1
+3,0.9,Espanyol,Celta Vigo,ESP,444,1
+0,0.6,Valladolid,Atlético Madrid,ESP,445,1
+2,2,Villarreal,Girona,ESP,446,1
+2,3.2,Real Madrid,Getafe,ESP,447,1
+1,0.2,Rayo Vallecano,Athletic Club,ESP,448,1
+2,0.8,Real Sociedad,Betis,ESP,449,1
+1,1.3,Sevilla,Osasuna,ESP,450,1
+2,0.9,Celta Vigo,Mallorca,ESP,451,1
+2,1.1,Las Palmas,Valladolid,ESP,452,1
+2,3.1,Betis,Barcelona,ESP,453,1
+0,1.3,Valencia,Rayo Vallecano,ESP,454,1
+0,0.4,Girona,Real Madrid,ESP,455,1
+0,0.7,Leganés,Real Sociedad,ESP,456,1
+2,1.2,Athletic Club,Villarreal,ESP,457,1
+2,1.8,Osasuna,Alavés,ESP,458,1
+4,2,Atlético Madrid,Sevilla,ESP,459,1
+1,0.4,Getafe,Espanyol,ESP,460,1
+1,0.6,Valladolid,Valencia,ESP,461,1
+0,0.3,Espanyol,Osasuna,ESP,462,1
+2,1.2,Mallorca,Girona,ESP,463,1
+1,0.7,Sevilla,Celta Vigo,ESP,464,1
+3,1.6,Rayo Vallecano,Real Madrid,ESP,465,1
+1,1.7,Atlético Madrid,Getafe,ESP,466,1
+1,0.9,Alavés,Athletic Club,ESP,467,1
+0,1.1,Real Sociedad,Las Palmas,ESP,468,1
+1,1.9,Villarreal,Betis,ESP,469,1
+0,2.6,Barcelona,Leganés,ESP,470,1
+3,2.5,Girona,Valladolid,ESP,471,1
+0,0.8,Getafe,Mallorca,ESP,472,1
+2,1.3,Celta Vigo,Real Sociedad,ESP,473,1
+1,0.6,Osasuna,Athletic Club,ESP,474,1
+1,2.7,Barcelona,Atlético Madrid,ESP,475,1
+2,1.5,Valencia,Alavés,ESP,476,1
+4,2,Real Madrid,Sevilla,ESP,477,1
+1,0.9,Las Palmas,Espanyol,ESP,478,1
+2,1.2,Leganés,Villarreal,ESP,479,1
+1,2.1,Betis,Rayo Vallecano,ESP,480,1
+1,0.9,Mallorca,Barcelona,ESP,481,1
+2,1.8,Athletic Club,Real Madrid,ESP,482,1
+2,0.7,Rayo Vallecano,Celta Vigo,ESP,483,1
+0,1.3,Alavés,Girona,ESP,484,1
+1,1.2,Valladolid,Betis,ESP,485,1
+1,0.7,Espanyol,Leganés,ESP,486,1
+1,0.5,Sevilla,Valencia,ESP,487,1
+1,1.3,Las Palmas,Getafe,ESP,488,1
+1,2.5,Atlético Madrid,Osasuna,ESP,489,1
+1,0.8,Real Sociedad,Villarreal,ESP,490,1
+3,1.3,Celta Vigo,Valencia,ESP,491,1
+1,1,Sevilla,Villarreal,ESP,492,1
+1,0.6,Osasuna,Mallorca,ESP,493,1
+2,1.8,Barcelona,Athletic Club,ESP,494,1
+0,0.5,Getafe,Rayo Vallecano,ESP,495,1
+0,1.6,Espanyol,Real Sociedad,ESP,496,1
+3,2.1,Real Madrid,Valladolid,ESP,497,1
+2,1.5,Leganés,Las Palmas,ESP,498,1
+0,0.2,Alavés,Betis,ESP,499,1
+3,1.2,Atlético Madrid,Girona,ESP,500,1
+2,1,Espanyol,Valladolid,ESP,501,1
+1,1,Girona,Sevilla,ESP,502,1
+1,0.5,Leganés,Atlético Madrid,ESP,503,1
+1,0.5,Betis,Alavés,ESP,504,1
+1,1.3,Getafe,Barcelona,ESP,505,1
+1,0.6,Celta Vigo,Athletic Club,ESP,506,1
+4,5.9,Real Madrid,Las Palmas,ESP,507,1
+1,0.8,Osasuna,Rayo Vallecano,ESP,508,1
+1,1.6,Valencia,Real Sociedad,ESP,509,1
+4,2.4,Villarreal,Mallorca,ESP,510,1
+1,0.8,Las Palmas,Osasuna,ESP,511,1
+0,1,Mallorca,Betis,ESP,512,1
+1,1.7,Atlético Madrid,Villarreal,ESP,513,1
+1,1.2,Sevilla,Espanyol,ESP,514,1
+0,0.2,Valladolid,Real Madrid,ESP,515,1
+2,2.4,Rayo Vallecano,Girona,ESP,516,1
+0,0.9,Real Sociedad,Getafe,ESP,517,1
+0,2.1,Athletic Club,Leganés,ESP,518,1
+7,4.4,Barcelona,Valencia,ESP,519,1
+1,0.9,Alavés,Celta Vigo,ESP,520,1
+0,0.9,Leganés,Rayo Vallecano,ESP,521,1
+0,1,Getafe,Sevilla,ESP,522,1
+5,3.5,Villarreal,Valladolid,ESP,523,1
+2,1.3,Atlético Madrid,Mallorca,ESP,524,1
+1,0.3,Espanyol,Real Madrid,ESP,525,1
+1,1,Barcelona,Alavés,ESP,526,1
+2,1.6,Valencia,Celta Vigo,ESP,527,1
+2,0.7,Osasuna,Real Sociedad,ESP,528,1
+2,1.1,Betis,Athletic Club,ESP,529,1
+2,2,Girona,Las Palmas,ESP,530,1
+1,2.3,Rayo Vallecano,Valladolid,ESP,531,1
+3,2.2,Celta Vigo,Betis,ESP,532,1
+3,3.6,Athletic Club,Girona,ESP,533,1
+1,1.4,Las Palmas,Villarreal,ESP,534,1
+1,1.6,Real Madrid,Atlético Madrid,ESP,535,1
+0,1.4,Alavés,Getafe,ESP,536,1
+2,1.9,Valencia,Leganés,ESP,537,1
+2,1.7,Real Sociedad,Espanyol,ESP,538,1
+1,0.7,Sevilla,Barcelona,ESP,539,1
+1,1.3,Mallorca,Osasuna,ESP,540,1
+1,0.9,Girona,Getafe,ESP,541,1
+3,1.8,Leganés,Alavés,ESP,542,1
+1,1.4,Osasuna,Real Madrid,ESP,543,1
+1,0.6,Atlético Madrid,Celta Vigo,ESP,544,1
+1,1.3,Villarreal,Valencia,ESP,545,1
+1,0.8,Espanyol,Athletic Club,ESP,546,1
+0,0.5,Valladolid,Sevilla,ESP,547,1
+3,1.7,Mallorca,Las Palmas,ESP,548,1
+3,2.3,Betis,Real Sociedad,ESP,549,1
+1,2.3,Barcelona,Rayo Vallecano,ESP,550,1
+1,1.8,Celta Vigo,Osasuna,ESP,551,1
+0,1.8,Alavés,Espanyol,ESP,552,1
+0,0.6,Rayo Vallecano,Villarreal,ESP,553,1
+0,0.8,Valencia,Atlético Madrid,ESP,554,1
+0,0.4,Las Palmas,Barcelona,ESP,555,1
+7,3.8,Athletic Club,Valladolid,ESP,556,1
+2,2.2,Real Madrid,Girona,ESP,557,1
+1,1.2,Getafe,Betis,ESP,558,1
+3,0.7,Real Sociedad,Leganés,ESP,559,1
+1,1.3,Sevilla,Mallorca,ESP,560,1
+1,1.8,Valladolid,Las Palmas,ESP,561,1
+2,0.7,Girona,Celta Vigo,ESP,562,1
+1,2.8,Rayo Vallecano,Sevilla,ESP,563,1
+2,2.4,Betis,Real Madrid,ESP,564,1
+1,2.2,Atlético Madrid,Athletic Club,ESP,565,1
+1,1,Leganés,Getafe,ESP,566,1
+4,2.8,Barcelona,Real Sociedad,ESP,567,1
+1,1.1,Mallorca,Alavés,ESP,568,1
+3,1.5,Osasuna,Valencia,ESP,569,1
+1,1.4,Villarreal,Espanyol,ESP,570,1
+2,0.9,Celta Vigo,Leganés,ESP,571,1
+1,1,Alavés,Villarreal,ESP,572,1
+2,1.9,Valencia,Valladolid,ESP,573,1
+2,1.2,Getafe,Atlético Madrid,ESP,574,1
+2,1.5,Real Madrid,Rayo Vallecano,ESP,575,1
+1,2.3,Betis,Las Palmas,ESP,576,1
+1,0.7,Athletic Club,Mallorca,ESP,577,1
+0,0.7,Real Sociedad,Sevilla,ESP,578,1
+1,0.2,Espanyol,Girona,ESP,579,1
+3,3.7,Barcelona,Osasuna,ESP,580,1
+2,1.8,Las Palmas,Alavés,ESP,581,1
+0,0.7,Valladolid,Celta Vigo,ESP,582,1
+2,2.7,Mallorca,Espanyol,ESP,583,1
+1,1.6,Villarreal,Real Madrid,ESP,584,1
+1,0.9,Girona,Valencia,ESP,585,1
+2,1.3,Leganés,Betis,ESP,586,1
+0,0.5,Sevilla,Athletic Club,ESP,587,1
+1,1.9,Osasuna,Getafe,ESP,588,1
+2,0.6,Rayo Vallecano,Real Sociedad,ESP,589,1
+2,1.4,Atlético Madrid,Barcelona,ESP,590,1
+2,0.7,Real Sociedad,Valladolid,ESP,591,1
+1,1,Espanyol,Atlético Madrid,ESP,592,1
+0,1.5,Alavés,Rayo Vallecano,ESP,593,1
+3,2.9,Real Madrid,Leganés,ESP,594,1
+1,1,Getafe,Villarreal,ESP,595,1
+4,2.3,Barcelona,Girona,ESP,596,1
+1,0.7,Valencia,Mallorca,ESP,597,1
+0,0.7,Athletic Club,Osasuna,ESP,598,1
+2,1.1,Betis,Sevilla,ESP,599,1
+1,1,Celta Vigo,Las Palmas,ESP,600,1
+4,3.6,Villarreal,Celta Vigo,ESP,601,1
+0,0.9,Mallorca,Sevilla,ESP,602,1
+1,0.4,Rayo Vallecano,Barcelona,ESP,603,1
+1,1.4,Athletic Club,Valencia,ESP,604,1
+0,1.1,Valladolid,Leganés,ESP,605,1
+0,2.3,Atlético Madrid,Espanyol,ESP,606,1
+1,1,Real Sociedad,Alavés,ESP,607,1
+4,2.4,Girona,Osasuna,ESP,608,1
+1,0.8,Las Palmas,Real Madrid,ESP,609,1
+2,2.6,Betis,Getafe,ESP,610,1
+0,0.7,Rayo Vallecano,Espanyol,ESP,611,1
+0,1.4,Girona,Alavés,ESP,612,1
+1,3.4,Real Madrid,Valencia,ESP,613,1
+1,0.5,Mallorca,Celta Vigo,ESP,614,1
+1,1.4,Barcelona,Betis,ESP,615,1
+1,2,Las Palmas,Real Sociedad,ESP,616,1
+1,0.9,Sevilla,Atlético Madrid,ESP,617,1
+0,0.6,Valladolid,Getafe,ESP,618,1
+0,2.1,Villarreal,Athletic Club,ESP,619,1
+1,1.7,Leganés,Osasuna,ESP,620,1
+1,1.3,Valencia,Sevilla,ESP,621,1
+0,0.7,Real Sociedad,Mallorca,ESP,622,1
+1,1.4,Getafe,Las Palmas,ESP,623,1
+0,0.9,Celta Vigo,Espanyol,ESP,624,1
+0,0.7,Leganés,Barcelona,ESP,625,1
+2,1.7,Osasuna,Girona,ESP,626,1
+0,0.6,Alavés,Real Madrid,ESP,627,1
+1,1.4,Betis,Villarreal,ESP,628,1
+3,1.6,Athletic Club,Rayo Vallecano,ESP,629,1
+4,3.4,Atlético Madrid,Valladolid,ESP,630,1
+1,0.4,Espanyol,Getafe,ESP,631,1
+1,0.5,Rayo Vallecano,Valencia,ESP,632,1
+4,2.9,Barcelona,Celta Vigo,ESP,633,1
+0,0.9,Mallorca,Leganés,ESP,634,1
+1,0.6,Las Palmas,Atlético Madrid,ESP,635,1
+2,1.9,Valladolid,Osasuna,ESP,636,1
+2,1.9,Villarreal,Real Sociedad,ESP,637,1
+1,1.6,Sevilla,Alavés,ESP,638,1
+1,1.5,Real Madrid,Athletic Club,ESP,639,1
+1,1.1,Girona,Betis,ESP,640,1
+1,0.9,Valencia,Espanyol,ESP,641,1
+1,3.3,Barcelona,Mallorca,ESP,642,1
+3,2.7,Celta Vigo,Villarreal,ESP,643,1
+1,2.1,Athletic Club,Las Palmas,ESP,644,1
+1,0.6,Alavés,Real Sociedad,ESP,645,1
+0,2.3,Getafe,Real Madrid,ESP,646,1
+1,0.3,Osasuna,Sevilla,ESP,647,1
+1,0.3,Leganés,Girona,ESP,648,1
+3,2.3,Atlético Madrid,Rayo Vallecano,ESP,649,1
+5,1.9,Betis,Valladolid,ESP,650,1
+1,1.2,Rayo Vallecano,Getafe,ESP,651,1
+0,0.5,Alavés,Atlético Madrid,ESP,652,1
+4,2.2,Villarreal,Osasuna,ESP,653,1
+2,1.7,Las Palmas,Valencia,ESP,654,1
+1,0.6,Valladolid,Barcelona,ESP,655,1
+3,2.2,Real Madrid,Celta Vigo,ESP,656,1
+2,2.7,Sevilla,Leganés,ESP,657,1
+1,1.2,Espanyol,Betis,ESP,658,1
+0,0.9,Real Sociedad,Athletic Club,ESP,659,1
+1,1.3,Girona,Mallorca,ESP,660,1
+0,0.7,Las Palmas,Rayo Vallecano,ESP,661,1
+3,2.7,Valencia,Getafe,ESP,662,1
+3,0.9,Celta Vigo,Sevilla,ESP,663,1
+2,1,Mallorca,Valladolid,ESP,664,1
+0,0.2,Girona,Villarreal,ESP,665,1
+4,1.4,Atlético Madrid,Real Sociedad,ESP,666,1
+3,1.5,Leganés,Espanyol,ESP,667,1
+4,4.2,Barcelona,Real Madrid,ESP,668,1
+1,1.3,Athletic Club,Alavés,ESP,669,1
+1,0.4,Betis,Osasuna,ESP,670,1
+0,0.9,Valladolid,Girona,ESP,671,1
+0,1.7,Real Sociedad,Celta Vigo,ESP,672,1
+1,1.3,Sevilla,Las Palmas,ESP,673,1
+1,1.8,Alavés,Valencia,ESP,674,1
+3,1.6,Villarreal,Leganés,ESP,675,1
+2,2.6,Real Madrid,Mallorca,ESP,676,1
+2,1.2,Rayo Vallecano,Betis,ESP,677,1
+2,0.6,Osasuna,Atlético Madrid,ESP,678,1
+0,0.4,Getafe,Athletic Club,ESP,679,1
+0,1.4,Espanyol,Barcelona,ESP,680,1
+0,0.6,Las Palmas,Leganés,ESP,681,1
+1,0.4,Mallorca,Getafe,ESP,682,1
+0,0.4,Valencia,Athletic Club,ESP,683,1
+4,4.8,Atlético Madrid,Betis,ESP,684,1
+2,1.2,Osasuna,Espanyol,ESP,685,1
+2,1.4,Barcelona,Villarreal,ESP,686,1
+0,1.6,Valladolid,Alavés,ESP,687,1
+3,2,Real Sociedad,Girona,ESP,688,1
+0,0.5,Sevilla,Real Madrid,ESP,689,1
+1,2.4,Celta Vigo,Rayo Vallecano,ESP,690,1
+1,0.9,Betis,Valencia,ESP,691,1
+2,2.6,Real Madrid,Real Sociedad,ESP,692,1
+3,2.1,Leganés,Valladolid,ESP,693,1
+2,2,Espanyol,Las Palmas,ESP,694,1
+0,2.2,Rayo Vallecano,Mallorca,ESP,695,1
+1,2,Alavés,Osasuna,ESP,696,1
+1,0.4,Getafe,Celta Vigo,ESP,697,1
+0,0,Girona,Atlético Madrid,ESP,698,1
+4,1.1,Villarreal,Sevilla,ESP,699,1
+0,1.2,Athletic Club,Barcelona,ESP,700,1
+7,4.7,Barcelona,Valladolid,ESP,701,1
+0,0.3,Athletic Club,Atlético Madrid,ESP,702,1
+2,1.6,Espanyol,Rayo Vallecano,ESP,703,1
+1,1.1,Valencia,Villarreal,ESP,704,1
+0,0.3,Leganés,Mallorca,ESP,705,1
+2,2,Alavés,Las Palmas,ESP,706,1
+3,0.9,Osasuna,Celta Vigo,ESP,707,1
+0,0.9,Sevilla,Girona,ESP,708,1
+0,0.6,Getafe,Real Sociedad,ESP,709,1
+2,2.4,Real Madrid,Betis,ESP,710,1
+2,2.1,Betis,Leganés,ESP,711,1
+1,0.3,Mallorca,Villarreal,ESP,712,1
+3,1.6,Espanyol,Alavés,ESP,713,1
+1,1.4,Sevilla,Getafe,ESP,714,1
+0,1.1,Real Sociedad,Real Madrid,ESP,715,1
+3,1.8,Celta Vigo,Valladolid,ESP,716,1
+1,1.3,Girona,Barcelona,ESP,717,1
+2,1.4,Las Palmas,Athletic Club,ESP,718,1
+3,3.1,Atlético Madrid,Valencia,ESP,719,1
+3,1.6,Rayo Vallecano,Osasuna,ESP,720,1
+2,1.1,Alavés,Sevilla,ESP,721,1
+0,1,Valladolid,Real Sociedad,ESP,722,1
+2,1.9,Osasuna,Las Palmas,ESP,723,1
+2,0.4,Valencia,Girona,ESP,724,1
+4,4.4,Real Madrid,Espanyol,ESP,725,1
+1,1.5,Getafe,Leganés,ESP,726,1
+3,0.7,Athletic Club,Celta Vigo,ESP,727,1
+1,2.2,Villarreal,Barcelona,ESP,728,1
+1,1.7,Rayo Vallecano,Atlético Madrid,ESP,729,1
+1,1,Betis,Mallorca,ESP,730,1
+1,1.2,Mallorca,Real Sociedad,ESP,731,1
+0,0.9,Leganés,Athletic Club,ESP,732,1
+2,2.1,Sevilla,Valladolid,ESP,733,1
+0,0.7,Valencia,Osasuna,ESP,734,1
+3,1.3,Real Madrid,Alavés,ESP,735,1
+0,2,Girona,Rayo Vallecano,ESP,736,1
+1,1.9,Barcelona,Getafe,ESP,737,1
+1,1,Las Palmas,Betis,ESP,738,1
+1,0.4,Espanyol,Villarreal,ESP,739,1
+0,1.5,Celta Vigo,Atlético Madrid,ESP,740,1
+1,1.2,Valladolid,Mallorca,ESP,741,1
+2,2.1,Getafe,Alavés,ESP,742,1
+1,0.9,Rayo Vallecano,Leganés,ESP,743,1
+3,3.4,Real Sociedad,Valencia,ESP,744,1
+4,2.2,Osasuna,Barcelona,ESP,745,1
+1,0.5,Celta Vigo,Girona,ESP,746,1
+1,2,Athletic Club,Sevilla,ESP,747,1
+1,2.1,Betis,Espanyol,ESP,748,1
+1,1.3,Atlético Madrid,Real Madrid,ESP,749,1
+3,2.8,Villarreal,Las Palmas,ESP,750,1
+0,0.8,Leganés,Valencia,ESP,751,1
+2,0.9,Espanyol,Mallorca,ESP,752,1
+1,0.8,Getafe,Osasuna,ESP,753,1
+0,1.3,Las Palmas,Celta Vigo,ESP,754,1
+1,2,Valladolid,Rayo Vallecano,ESP,755,1
+2,0.5,Real Madrid,Villarreal,ESP,756,1
+2,1.9,Girona,Athletic Club,ESP,757,1
+0,0.7,Alavés,Barcelona,ESP,758,1
+1,1.4,Sevilla,Betis,ESP,759,1
+1,1,Real Sociedad,Atlético Madrid,ESP,760,1
+1,0.2,Le Havre,Paris S-G,FRA,761,1
+1,1.3,Brest,Marseille,FRA,762,1
+0,0.1,Reims,Lille,FRA,763,1
+1,2,Monaco,Saint-Étienne,FRA,764,1
+2,1.8,Auxerre,Nice,FRA,765,1
+0,0.4,Angers,Lens,FRA,766,1
+0,1.7,Toulouse,Nantes,FRA,767,1
+1,1.3,Montpellier,Strasbourg,FRA,768,1
+3,2,Rennes,Lyon,FRA,769,1
+0,1.4,Monaco,Angers,FRA,770,1
+1,1.7,Lille,Lyon,FRA,771,1
+1,2.9,Paris S-G,Lens,FRA,772,1
+0,1,Brest,Nice,FRA,773,1
+2,2.8,Saint-Étienne,Strasbourg,FRA,774,1
+1,0.9,Toulouse,Reims,FRA,775,1
+1,2.2,Le Havre,Montpellier,FRA,776,1
+4,2.8,Auxerre,Rennes,FRA,777,1
+1,1.4,Nantes,Marseille,FRA,778,1
+1,2.5,Marseille,Auxerre,FRA,779,1
+1,0.6,Strasbourg,Monaco,FRA,780,1
+3,2.9,Lens,Nantes,FRA,781,1
+2,1.1,Angers,Paris S-G,FRA,782,1
+2,2.1,Nice,Lille,FRA,783,1
+0,0.6,Rennes,Toulouse,FRA,784,1
+0,1.4,Le Havre,Reims,FRA,785,1
+3,2.5,Montpellier,Brest,FRA,786,1
+1,1.1,Lyon,Saint-Étienne,FRA,787,1
+3,2.6,Monaco,Brest,FRA,788,1
+3,1.1,Paris S-G,Toulouse,FRA,789,1
+1,2.5,Lens,Marseille,FRA,790,1
+1,1.5,Saint-Étienne,Montpellier,FRA,791,1
+1,1,Reims,Lyon,FRA,792,1
+1,0.4,Lille,Rennes,FRA,793,1
+1,0.6,Auxerre,Angers,FRA,794,1
+0,0.9,Nantes,Le Havre,FRA,795,1
+2,2.1,Nice,Strasbourg,FRA,796,1
+0,0.8,Reims,Lens,FRA,797,1
+5,3.2,Rennes,Saint-Étienne,FRA,798,1
+3,2.5,Brest,Strasbourg,FRA,799,1
+1,2.6,Paris S-G,Nantes,FRA,800,1
+2,1.4,Montpellier,Lille,FRA,801,1
+4,2.7,Lyon,Nice,FRA,802,1
+2,2.3,Toulouse,Auxerre,FRA,803,1
+0,0.3,Le Havre,Angers,FRA,804,1
+2,1.9,Marseille,Monaco,FRA,805,1
+3,2.5,Lille,Brest,FRA,806,1
+0,0.3,Auxerre,Paris S-G,FRA,807,1
+2,3.2,Monaco,Toulouse,FRA,808,1
+2,2,Nice,Le Havre,FRA,809,1
+0,0.6,Angers,Lyon,FRA,810,1
+2,1.3,Lens,Montpellier,FRA,811,1
+1,1.2,Nantes,Rennes,FRA,812,1
+0,0.8,Strasbourg,Reims,FRA,813,1
+0,0.1,Saint-Étienne,Marseille,FRA,814,1
+2,1.4,Toulouse,Saint-Étienne,FRA,815,1
+1,1.2,Marseille,Lille,FRA,816,1
+2,0.6,Auxerre,Lens,FRA,817,1
+0,1.5,Reims,Monaco,FRA,818,1
+2,2,Montpellier,Nice,FRA,819,1
+2,0.6,Rennes,Angers,FRA,820,1
+0,0.9,Le Havre,Strasbourg,FRA,821,1
+4,2,Brest,Nantes,FRA,822,1
+3,2.9,Paris S-G,Lyon,FRA,823,1
+2,2.4,Monaco,Paris S-G,FRA,824,1
+3,1.5,Nice,Rennes,FRA,825,1
+3,2.2,Saint-Étienne,Reims,FRA,826,1
+1,1.2,Lille,Nantes,FRA,827,1
+1,1.4,Lyon,Montpellier,FRA,828,1
+3,2.9,Strasbourg,Auxerre,FRA,829,1
+2,1.8,Angers,Brest,FRA,830,1
+0,1.4,Lens,Toulouse,FRA,831,1
+5,3.2,Marseille,Le Havre,FRA,832,1
+2,0.8,Nantes,Monaco,FRA,833,1
+0,0.8,Auxerre,Lille,FRA,834,1
+2,1.1,Brest,Lyon,FRA,835,1
+2,0.8,Reims,Nice,FRA,836,1
+1,1.2,Rennes,Marseille,FRA,837,1
+1,1.5,Le Havre,Lens,FRA,838,1
+1,1.2,Toulouse,Strasbourg,FRA,839,1
+1,1.2,Montpellier,Angers,FRA,840,1
+2,4.1,Paris S-G,Saint-Étienne,FRA,841,1
+2,2.4,Montpellier,Monaco,FRA,842,1
+2,1.1,Lille,Nice,FRA,843,1
+1,0.7,Lens,Paris S-G,FRA,844,1
+1,1.5,Rennes,Brest,FRA,845,1
+0,0.7,Lyon,Toulouse,FRA,846,1
+1,0.8,Saint-Étienne,Nantes,FRA,847,1
+2,0.9,Angers,Auxerre,FRA,848,1
+1,0.8,Reims,Le Havre,FRA,849,1
+1,2.8,Marseille,Strasbourg,FRA,850,1
+1,0.8,Auxerre,Saint-Étienne,FRA,851,1
+3,3.5,Monaco,Rennes,FRA,852,1
+2,1.1,Strasbourg,Lille,FRA,853,1
+1,1.2,Paris S-G,Reims,FRA,854,1
+0,1,Le Havre,Brest,FRA,855,1
+1,1,Toulouse,Montpellier,FRA,856,1
+1,1.2,Nantes,Lyon,FRA,857,1
+1,1.9,Lens,Angers,FRA,858,1
+2,1.2,Nice,Marseille,FRA,859,1
+6,3.8,Paris S-G,Montpellier,FRA,860,1
+0,0,Lyon,Monaco,FRA,861,1
+2,0.9,Lille,Angers,FRA,862,1
+0,1.1,Saint-Étienne,Le Havre,FRA,863,1
+2,2.9,Lens,Brest,FRA,864,1
+2,1.4,Nantes,Auxerre,FRA,865,1
+1,1.3,Nice,Toulouse,FRA,866,1
+3,0.7,Strasbourg,Rennes,FRA,867,1
+2,3,Marseille,Reims,FRA,868,1
+0,0.8,Montpellier,Lens,FRA,869,1
+2,0.9,Brest,Paris S-G,FRA,870,1
+4,2.6,Monaco,Auxerre,FRA,871,1
+4,3.4,Lille,Saint-Étienne,FRA,872,1
+1,1.4,Toulouse,Nice,FRA,873,1
+1,1,Reims,Nantes,FRA,874,1
+1,0.9,Rennes,Strasbourg,FRA,875,1
+1,1.3,Angers,Le Havre,FRA,876,1
+3,3.2,Marseille,Lyon,FRA,877,1
+0,1.1,Nantes,Brest,FRA,878,1
+4,3.1,Paris S-G,Monaco,FRA,879,1
+2,2.2,Nice,Lens,FRA,880,1
+1,1.6,Lille,Le Havre,FRA,881,1
+0,0.5,Saint-Étienne,Rennes,FRA,882,1
+4,3.3,Lyon,Reims,FRA,883,1
+2,2.7,Strasbourg,Montpellier,FRA,884,1
+2,0.9,Auxerre,Toulouse,FRA,885,1
+0,0.5,Angers,Marseille,FRA,886,1
+2,2.2,Brest,Auxerre,FRA,887,1
+5,6.1,Marseille,Saint-Étienne,FRA,888,1
+7,4.4,Monaco,Nantes,FRA,889,1
+0,0.9,Toulouse,Paris S-G,FRA,890,1
+1,1.4,Montpellier,Lyon,FRA,891,1
+0,0.4,Lens,Strasbourg,FRA,892,1
+0,1.7,Reims,Angers,FRA,893,1
+1,0.7,Le Havre,Nice,FRA,894,1
+0,0.4,Rennes,Lille,FRA,895,1
+1,2.3,Rennes,Reims,FRA,896,1
+2,1.1,Lille,Monaco,FRA,897,1
+3,1.5,Saint-Étienne,Angers,FRA,898,1
+3,2,Auxerre,Marseille,FRA,899,1
+3,3.9,Nantes,Lens,FRA,900,1
+2,1.8,Nice,Montpellier,FRA,901,1
+1,0.8,Le Havre,Toulouse,FRA,902,1
+0,0.6,Strasbourg,Brest,FRA,903,1
+2,1.8,Lyon,Paris S-G,FRA,904,1
+3,3.8,Monaco,Reims,FRA,905,1
+1,0.9,Saint-Étienne,Nice,FRA,906,1
+3,1.9,Lens,Le Havre,FRA,907,1
+4,3.4,Paris S-G,Lille,FRA,908,1
+2,1.3,Lyon,Brest,FRA,909,1
+0,1.6,Montpellier,Rennes,FRA,910,1
+0,2.2,Auxerre,Strasbourg,FRA,911,1
+0,0.4,Angers,Toulouse,FRA,912,1
+2,2.1,Marseille,Nantes,FRA,913,1
+1,0.6,Toulouse,Monaco,FRA,914,1
+1,1.6,Rennes,Paris S-G,FRA,915,1
+1,1.5,Lille,Montpellier,FRA,916,1
+0,1,Marseille,Lens,FRA,917,1
+2,3.5,Brest,Angers,FRA,918,1
+0,1.4,Reims,Auxerre,FRA,919,1
+1,2,Le Havre,Saint-Étienne,FRA,920,1
+0,0.8,Nantes,Strasbourg,FRA,921,1
+0,1.4,Nice,Lyon,FRA,922,1
+1,2,Nice,Auxerre,FRA,923,1
+1,1.2,Nantes,Lille,FRA,924,1
+0,0.5,Angers,Monaco,FRA,925,1
+1,0.7,Lens,Rennes,FRA,926,1
+4,3.9,Lyon,Le Havre,FRA,927,1
+2,1.7,Strasbourg,Toulouse,FRA,928,1
+0,NA,Montpellier,Saint-Étienne,FRA,929,1
+0,0.3,Brest,Reims,FRA,930,1
+3,2.6,Paris S-G,Marseille,FRA,931,1
+4,1.1,Strasbourg,Lyon,FRA,932,1
+3,1,Reims,Marseille,FRA,933,1
+1,1.1,Saint-Étienne,Paris S-G,FRA,934,1
+2,2.4,Monaco,Nice,FRA,935,1
+2,2,Toulouse,Brest,FRA,936,1
+3,4,Le Havre,Nantes,FRA,937,1
+1,2.1,Auxerre,Montpellier,FRA,938,1
+0,1,Angers,Rennes,FRA,939,1
+1,1.9,Lille,Lens,FRA,940,1
+1,1.9,Nice,Nantes,FRA,941,1
+1,1.9,Paris S-G,Angers,FRA,942,1
+2,1,Brest,Monaco,FRA,943,1
+2,1.8,Lyon,Lille,FRA,944,1
+1,2.1,Lens,Saint-Étienne,FRA,945,1
+0,1.2,Rennes,Auxerre,FRA,946,1
+0,1.3,Reims,Strasbourg,FRA,947,1
+0,1,Montpellier,Le Havre,FRA,948,1
+3,1,Marseille,Toulouse,FRA,949,1
+0,2.9,Lens,Reims,FRA,950,1
+3,2.6,Monaco,Marseille,FRA,951,1
+1,0.9,Toulouse,Lille,FRA,952,1
+2,0.7,Strasbourg,Nice,FRA,953,1
+3,0.7,Saint-Étienne,Brest,FRA,954,1
+2,1.4,Angers,Montpellier,FRA,955,1
+1,0.6,Le Havre,Rennes,FRA,956,1
+1,0.7,Auxerre,Lyon,FRA,957,1
+1,0.5,Nantes,Paris S-G,FRA,958,1
+4,2.9,Lyon,Strasbourg,FRA,959,1
+4,3.1,Brest,Saint-Étienne,FRA,960,1
+1,0.9,Montpellier,Nantes,FRA,961,1
+1,1,Toulouse,Marseille,FRA,962,1
+1,1,Monaco,Lens,FRA,963,1
+2,1.4,Reims,Rennes,FRA,964,1
+3,2.8,Le Havre,Auxerre,FRA,965,1
+1,1.4,Angers,Nice,FRA,966,1
+1,1.4,Lille,Paris S-G,FRA,967,1
+2,2.7,Rennes,Nantes,FRA,968,1
+2,3,Paris S-G,Le Havre,FRA,969,1
+0,0.9,Monaco,Strasbourg,FRA,970,1
+5,3.7,Marseille,Montpellier,FRA,971,1
+3,2,Lille,Auxerre,FRA,972,1
+1,1,Brest,Lens,FRA,973,1
+2,2.8,Nice,Angers,FRA,974,1
+1,0.7,Reims,Toulouse,FRA,975,1
+2,1.6,Saint-Étienne,Lyon,FRA,976,1
+1,3,Paris S-G,Nice,FRA,977,1
+3,2.7,Strasbourg,Saint-Étienne,FRA,978,1
+1,0.5,Le Havre,Monaco,FRA,979,1
+4,1.8,Lyon,Rennes,FRA,980,1
+0,0.7,Angers,Lille,FRA,981,1
+0,1.1,Nantes,Toulouse,FRA,982,1
+0,1.4,Lens,Auxerre,FRA,983,1
+0,0.6,Montpellier,Reims,FRA,984,1
+4,0.9,Marseille,Brest,FRA,985,1
+1,1.5,Nice,Reims,FRA,986,1
+2,0.8,Strasbourg,Paris S-G,FRA,987,1
+2,0.7,Toulouse,Rennes,FRA,988,1
+1,0.6,Saint-Étienne,Monaco,FRA,989,1
+0,0.5,Nantes,Angers,FRA,990,1
+1,1.1,Brest,Montpellier,FRA,991,1
+1,1,Lyon,Lens,FRA,992,1
+1,0.2,Auxerre,Le Havre,FRA,993,1
+1,0.5,Lille,Marseille,FRA,994,1
+0,1.9,Reims,Saint-Étienne,FRA,995,1
+2,1.7,Rennes,Nice,FRA,996,1
+2,0.7,Angers,Strasbourg,FRA,997,1
+1,0.9,Le Havre,Marseille,FRA,998,1
+1,0.4,Auxerre,Nantes,FRA,999,1
+2,1.2,Monaco,Lyon,FRA,1000,1
+1,1.1,Toulouse,Lens,FRA,1001,1
+1,0.6,Montpellier,Paris S-G,FRA,1002,1
+2,1.2,Brest,Lille,FRA,1003,1
+2,2,Lille,Reims,FRA,1004,1
+4,1.7,Lens,Monaco,FRA,1005,1
+3,2.5,Nantes,Montpellier,FRA,1006,1
+3,3.1,Paris S-G,Auxerre,FRA,1007,1
+2,1.6,Strasbourg,Le Havre,FRA,1008,1
+2,3.9,Lyon,Angers,FRA,1009,1
+6,4.9,Nice,Brest,FRA,1010,1
+4,3.9,Marseille,Rennes,FRA,1011,1
+2,1.3,Saint-Étienne,Toulouse,FRA,1012,1
+1,1.2,Saint-Étienne,Lille,FRA,1013,1
+2,0.7,Marseille,Nice,FRA,1014,1
+0,0.6,Auxerre,Monaco,FRA,1015,1
+3,2.8,Paris S-G,Brest,FRA,1016,1
+3,1.3,Rennes,Montpellier,FRA,1017,1
+1,1.5,Nantes,Reims,FRA,1018,1
+1,2.3,Strasbourg,Angers,FRA,1019,1
+2,1.3,Toulouse,Le Havre,FRA,1020,1
+0,1,Lens,Lyon,FRA,1021,1
+8,4.7,Nice,Saint-Étienne,FRA,1022,1
+3,2.6,Lille,Strasbourg,FRA,1023,1
+1,1.4,Rennes,Lens,FRA,1024,1
+1,0.3,Reims,Paris S-G,FRA,1025,1
+3,1.9,Monaco,Le Havre,FRA,1026,1
+2,0.5,Brest,Toulouse,FRA,1027,1
+1,0.9,Angers,Nantes,FRA,1028,1
+3,2,Montpellier,Auxerre,FRA,1029,1
+2,3,Lyon,Marseille,FRA,1030,1
+3,2.5,Auxerre,Brest,FRA,1031,1
+3,3,Paris S-G,Rennes,FRA,1032,1
+0,1.9,Lens,Nice,FRA,1033,1
+0,0.4,Le Havre,Lille,FRA,1034,1
+2,3.2,Monaco,Montpellier,FRA,1035,1
+1,0.9,Toulouse,Lyon,FRA,1036,1
+2,1.8,Nantes,Saint-Étienne,FRA,1037,1
+1,1.1,Angers,Reims,FRA,1038,1
+1,1.3,Strasbourg,Marseille,FRA,1039,1
+1,0.9,Marseille,Angers,FRA,1040,1
+3,2.7,Saint-Étienne,Auxerre,FRA,1041,1
+2,1.6,Lille,Toulouse,FRA,1042,1
+1,0.7,Rennes,Monaco,FRA,1043,1
+2,3.2,Lyon,Nantes,FRA,1044,1
+2,0.7,Brest,Le Havre,FRA,1045,1
+2,1.2,Strasbourg,Lens,FRA,1046,1
+4,3,Reims,Montpellier,FRA,1047,1
+1,0.5,Nice,Paris S-G,FRA,1048,1
+0,1.2,Monaco,Lille,FRA,1049,1
+1,1.5,Brest,Rennes,FRA,1050,1
+0,0.8,Saint-Étienne,Lens,FRA,1051,1
+4,3.5,Paris S-G,Strasbourg,FRA,1052,1
+0,0.4,Le Havre,Lyon,FRA,1053,1
+1,2,Toulouse,Angers,FRA,1054,1
+2,2.8,Auxerre,Reims,FRA,1055,1
+1,0.5,Nantes,Nice,FRA,1056,1
+0,1.3,Montpellier,Marseille,FRA,1057,1
+1,1.5,Rennes,Le Havre,FRA,1058,1
+4,2.9,Angers,Saint-Étienne,FRA,1059,1
+1,0.7,Reims,Brest,FRA,1060,1
+0,1,Lens,Lille,FRA,1061,1
+2,2,Lyon,Auxerre,FRA,1062,1
+0,0.2,Montpellier,Toulouse,FRA,1063,1
+2,1.6,Nice,Monaco,FRA,1064,1
+3,1.7,Strasbourg,Nantes,FRA,1065,1
+0,0.2,Marseille,Paris S-G,FRA,1066,1
+2,1.6,Gladbach,Leverkusen,GER,1069,1
+3,3.5,Hoffenheim,Holstein Kiel,GER,1070,1
+1,1.2,Mainz 05,Union Berlin,GER,1071,1
+2,1,Augsburg,Werder Bremen,GER,1072,1
+3,2.1,Freiburg,Stuttgart,GER,1073,1
+1,1.3,RB Leipzig,Bochum,GER,1074,1
+2,1.7,Dortmund,Eint Frankfurt,GER,1075,1
+2,1.9,Wolfsburg,Bayern Munich,GER,1076,1
+0,1.2,St. Pauli,Heidenheim,GER,1077,1
+0,0.7,Union Berlin,Freiburg,GER,1078,1
+1,0.7,Bochum,Leverkusen,GER,1079,1
+2,1.7,Werder Bremen,Holstein Kiel,GER,1080,1
+3,2,Mainz 05,Dortmund,GER,1081,1
+0,0.1,St. Pauli,Bayern Munich,GER,1082,1
+0,1,RB Leipzig,Gladbach,GER,1083,1
+0,0.9,Augsburg,Hoffenheim,GER,1084,1
+2,2.5,Stuttgart,Eint Frankfurt,GER,1085,1
+1,2.4,Heidenheim,Wolfsburg,GER,1086,1
+3,3.7,Bayern Munich,Augsburg,GER,1087,1
+1,0.6,Wolfsburg,Union Berlin,GER,1088,1
+5,2.2,Leverkusen,Heidenheim,GER,1089,1
+4,2,Hoffenheim,RB Leipzig,GER,1090,1
+2,1.7,Stuttgart,Bochum,GER,1091,1
+4,1.3,Dortmund,Freiburg,GER,1092,1
+1,1.1,Eint Frankfurt,Werder Bremen,GER,1093,1
+0,0.4,Holstein Kiel,Mainz 05,GER,1094,1
+2,2.3,Gladbach,St. Pauli,GER,1095,1
+3,1.3,St. Pauli,Holstein Kiel,GER,1096,1
+1,1,RB Leipzig,Wolfsburg,GER,1097,1
+3,1.6,Freiburg,Gladbach,GER,1098,1
+1,0.7,Union Berlin,Leverkusen,GER,1099,1
+2,1.6,Werder Bremen,Stuttgart,GER,1100,1
+1,1.9,Augsburg,Bochum,GER,1101,1
+1,0.6,Dortmund,Bayern Munich,GER,1102,1
+2,2.2,Mainz 05,Hoffenheim,GER,1103,1
+0,0.7,Heidenheim,Eint Frankfurt,GER,1104,1
+3,2.1,Stuttgart,Union Berlin,GER,1105,1
+0,1.2,Bochum,Werder Bremen,GER,1106,1
+0,1.2,Holstein Kiel,RB Leipzig,GER,1107,1
+2,0.9,Leverkusen,St. Pauli,GER,1108,1
+2,1.7,Eint Frankfurt,Augsburg,GER,1109,1
+4,2.4,Bayern Munich,Heidenheim,GER,1110,1
+1,1.1,Gladbach,Dortmund,GER,1111,1
+4,1.2,Wolfsburg,Mainz 05,GER,1112,1
+1,1.4,Hoffenheim,Freiburg,GER,1113,1
+3,2.1,Freiburg,Wolfsburg,GER,1114,1
+0,0.6,Augsburg,Leverkusen,GER,1115,1
+2,1,Mainz 05,Bayern Munich,GER,1116,1
+0,2.5,Union Berlin,Bochum,GER,1117,1
+4,2.4,Gladbach,Holstein Kiel,GER,1118,1
+0,0.6,St. Pauli,Werder Bremen,GER,1119,1
+1,1,Heidenheim,Stuttgart,GER,1120,1
+1,0.5,Dortmund,Hoffenheim,GER,1121,1
+2,1.9,RB Leipzig,Eint Frankfurt,GER,1122,1
+5,3.3,Bayern Munich,RB Leipzig,GER,1123,1
+4,2.3,Werder Bremen,Union Berlin,GER,1124,1
+1,2.4,Eint Frankfurt,Mainz 05,GER,1125,1
+0,2.1,Stuttgart,St. Pauli,GER,1126,1
+1,3.5,Hoffenheim,Gladbach,GER,1127,1
+5,1.7,Holstein Kiel,Augsburg,GER,1128,1
+5,2.8,Leverkusen,Freiburg,GER,1129,1
+2,1.6,Bochum,Heidenheim,GER,1130,1
+1,1.5,Wolfsburg,Dortmund,GER,1131,1
+2,1.3,Dortmund,Leverkusen,GER,1132,1
+2,1.9,Mainz 05,Bochum,GER,1133,1
+0,2.2,St. Pauli,Eint Frankfurt,GER,1134,1
+2,1.4,Heidenheim,Union Berlin,GER,1135,1
+3,0.7,Freiburg,Holstein Kiel,GER,1136,1
+0,0.9,Hoffenheim,Wolfsburg,GER,1137,1
+0,0.4,Gladbach,Bayern Munich,GER,1138,1
+4,2.1,RB Leipzig,Werder Bremen,GER,1139,1
+0,0.3,Augsburg,Stuttgart,GER,1140,1
+4,1.6,Holstein Kiel,Dortmund,GER,1141,1
+5,3.9,Wolfsburg,Gladbach,GER,1142,1
+1,1.8,Leverkusen,Mainz 05,GER,1143,1
+4,2.4,Eint Frankfurt,Freiburg,GER,1144,1
+1,1.4,Bochum,St. Pauli,GER,1145,1
+0,0.8,Union Berlin,Augsburg,GER,1146,1
+2,2.5,Stuttgart,RB Leipzig,GER,1147,1
+3,1.5,Werder Bremen,Heidenheim,GER,1148,1
+5,3.4,Bayern Munich,Hoffenheim,GER,1149,1
+2,1.7,Eint Frankfurt,Dortmund,GER,1150,1
+1,1,Holstein Kiel,Hoffenheim,GER,1151,1
+0,0.7,Heidenheim,St. Pauli,GER,1152,1
+3,2.7,Bochum,RB Leipzig,GER,1153,1
+4,1.9,Stuttgart,Freiburg,GER,1154,1
+3,3,Bayern Munich,Wolfsburg,GER,1155,1
+3,2.1,Leverkusen,Gladbach,GER,1156,1
+2,2.1,Union Berlin,Mainz 05,GER,1157,1
+0,1.3,Werder Bremen,Augsburg,GER,1158,1
+2,2,Wolfsburg,Holstein Kiel,GER,1159,1
+1,0.3,Freiburg,Bayern Munich,GER,1160,1
+2,0.7,RB Leipzig,Leverkusen,GER,1161,1
+2,1,Dortmund,Werder Bremen,GER,1162,1
+2,1.1,Augsburg,Heidenheim,GER,1163,1
+2,1.9,Mainz 05,Stuttgart,GER,1164,1
+3,2.3,Gladbach,Bochum,GER,1165,1
+2,2.4,Hoffenheim,Eint Frankfurt,GER,1166,1
+3,1.2,St. Pauli,Union Berlin,GER,1167,1
+1,1.1,Union Berlin,St. Pauli,GER,1168,1
+0,0.3,Werder Bremen,Dortmund,GER,1169,1
+3,2.4,Eint Frankfurt,Hoffenheim,GER,1170,1
+0,0.7,Bochum,Gladbach,GER,1171,1
+0,1.1,Holstein Kiel,Wolfsburg,GER,1172,1
+3,3.8,Stuttgart,Mainz 05,GER,1173,1
+2,2.2,Leverkusen,RB Leipzig,GER,1174,1
+4,3.1,Heidenheim,Augsburg,GER,1175,1
+2,1.5,Bayern Munich,Freiburg,GER,1176,1
+1,2.5,Werder Bremen,Mainz 05,GER,1177,1
+1,0.6,Heidenheim,Dortmund,GER,1178,1
+1,0.8,St. Pauli,Augsburg,GER,1179,1
+4,3.4,Bayern Munich,Holstein Kiel,GER,1180,1
+0,1,Bochum,Freiburg,GER,1181,1
+1,1.2,Stuttgart,Gladbach,GER,1182,1
+0,1.3,Union Berlin,RB Leipzig,GER,1183,1
+1,1.2,Eint Frankfurt,Wolfsburg,GER,1184,1
+3,1.4,Leverkusen,Hoffenheim,GER,1185,1
+3,4.1,Bayern Munich,Werder Bremen,GER,1186,1
+1,1,Freiburg,Heidenheim,GER,1187,1
+1,1.4,Dortmund,Stuttgart,GER,1188,1
+0,0.7,Wolfsburg,Leverkusen,GER,1189,1
+0,1.1,Hoffenheim,Union Berlin,GER,1190,1
+0,1.3,Mainz 05,Augsburg,GER,1191,1
+1,0.4,Gladbach,Eint Frankfurt,GER,1192,1
+2,1.9,Holstein Kiel,Bochum,GER,1193,1
+2,1.5,RB Leipzig,St. Pauli,GER,1194,1
+0,1,Augsburg,RB Leipzig,GER,1195,1
+1,0.8,Stuttgart,Wolfsburg,GER,1196,1
+1,2,Union Berlin,Gladbach,GER,1197,1
+0,0.2,St. Pauli,Freiburg,GER,1198,1
+2,2.7,Bochum,Dortmund,GER,1199,1
+0,2,Leverkusen,Bayern Munich,GER,1200,1
+1,1.1,Werder Bremen,Hoffenheim,GER,1201,1
+3,2.5,Eint Frankfurt,Holstein Kiel,GER,1202,1
+0,0.6,Heidenheim,Mainz 05,GER,1203,1
+5,1.8,Freiburg,Werder Bremen,GER,1204,1
+2,1.2,Mainz 05,St. Pauli,GER,1205,1
+1,1.6,Wolfsburg,Bochum,GER,1206,1
+0,1,Gladbach,Augsburg,GER,1207,1
+0,0.3,Holstein Kiel,Leverkusen,GER,1208,1
+6,4.8,Dortmund,Union Berlin,GER,1209,1
+2,1.9,RB Leipzig,Heidenheim,GER,1210,1
+4,3.8,Bayern Munich,Eint Frankfurt,GER,1211,1
+1,1,Hoffenheim,Stuttgart,GER,1212,1
+1,0.9,Stuttgart,Bayern Munich,GER,1213,1
+1,1.9,Werder Bremen,Wolfsburg,GER,1214,1
+1,1.4,RB Leipzig,Mainz 05,GER,1215,1
+0,1.6,Heidenheim,Gladbach,GER,1216,1
+0,0.9,Bochum,Hoffenheim,GER,1217,1
+0,0.4,St. Pauli,Dortmund,GER,1218,1
+1,1.1,Eint Frankfurt,Leverkusen,GER,1219,1
+0,1.2,Union Berlin,Holstein Kiel,GER,1220,1
+0,1.5,Augsburg,Freiburg,GER,1221,1
+1,1.4,Gladbach,Mainz 05,GER,1222,1
+0,1.6,Leverkusen,Werder Bremen,GER,1223,1
+2,2.4,Bayern Munich,Bochum,GER,1224,1
+2,1.4,Holstein Kiel,Stuttgart,GER,1225,1
+1,2,Wolfsburg,St. Pauli,GER,1226,1
+0,1.2,Dortmund,Augsburg,GER,1227,1
+0,0.5,Freiburg,RB Leipzig,GER,1228,1
+1,1.8,Eint Frankfurt,Union Berlin,GER,1229,1
+1,1.3,Hoffenheim,Heidenheim,GER,1230,1
+1,2,St. Pauli,Hoffenheim,GER,1231,1
+1,0.7,Union Berlin,Bayern Munich,GER,1232,1
+2,2.5,Werder Bremen,Gladbach,GER,1233,1
+2,1.3,Mainz 05,Freiburg,GER,1234,1
+1,0.7,Augsburg,Wolfsburg,GER,1235,1
+2,1.8,RB Leipzig,Dortmund,GER,1236,1
+1,1.4,Bochum,Eint Frankfurt,GER,1237,1
+3,1.5,Heidenheim,Holstein Kiel,GER,1238,1
+3,2.3,Stuttgart,Leverkusen,GER,1239,1
+3,2,Leverkusen,Bochum,GER,1240,1
+1,1.4,Hoffenheim,Augsburg,GER,1241,1
+0,0.5,Holstein Kiel,Werder Bremen,GER,1242,1
+1,1.8,Gladbach,RB Leipzig,GER,1243,1
+3,3.5,Bayern Munich,St. Pauli,GER,1244,1
+0,1.3,Wolfsburg,Heidenheim,GER,1245,1
+1,3.7,Eint Frankfurt,Stuttgart,GER,1246,1
+1,1.4,Freiburg,Union Berlin,GER,1247,1
+3,2.8,Dortmund,Mainz 05,GER,1248,1
+1,0.4,Augsburg,Bayern Munich,GER,1249,1
+1,1.8,Mainz 05,Holstein Kiel,GER,1250,1
+3,1.6,RB Leipzig,Hoffenheim,GER,1251,1
+1,1.8,Freiburg,Dortmund,GER,1252,1
+0,0.8,Bochum,Stuttgart,GER,1253,1
+0,1,Heidenheim,Leverkusen,GER,1254,1
+2,1,Werder Bremen,Eint Frankfurt,GER,1255,1
+1,1.9,St. Pauli,Gladbach,GER,1256,1
+1,1.2,Union Berlin,Wolfsburg,GER,1257,1
+2,1.6,Wolfsburg,RB Leipzig,GER,1258,1
+2,1.7,Hoffenheim,Mainz 05,GER,1259,1
+1,0.7,Gladbach,Freiburg,GER,1260,1
+1,2.8,Bochum,Augsburg,GER,1261,1
+0,0.8,Leverkusen,Union Berlin,GER,1262,1
+1,0.5,Holstein Kiel,St. Pauli,GER,1263,1
+2,2.3,Bayern Munich,Dortmund,GER,1264,1
+1,1.7,Stuttgart,Werder Bremen,GER,1265,1
+3,3.7,Eint Frankfurt,Heidenheim,GER,1266,1
+4,2.6,Dortmund,Heidenheim,GER,1267,1
+0,1.3,RB Leipzig,Union Berlin,GER,1268,1
+1,1.6,Gladbach,Stuttgart,GER,1269,1
+2,3.7,Freiburg,Bochum,GER,1270,1
+1,1.5,Wolfsburg,Eint Frankfurt,GER,1271,1
+1,0.9,Hoffenheim,Leverkusen,GER,1272,1
+1,0.3,Holstein Kiel,Bayern Munich,GER,1273,1
+3,2.7,Augsburg,St. Pauli,GER,1274,1
+1,1.1,Mainz 05,Werder Bremen,GER,1275,1
+1,1.9,RB Leipzig,Holstein Kiel,GER,1276,1
+3,1.3,Freiburg,Hoffenheim,GER,1277,1
+1,1.8,Werder Bremen,Bochum,GER,1278,1
+0,0.6,Heidenheim,Bayern Munich,GER,1279,1
+2,2.7,Mainz 05,Wolfsburg,GER,1280,1
+4,1.3,Union Berlin,Stuttgart,GER,1281,1
+0,0.9,Augsburg,Eint Frankfurt,GER,1282,1
+3,1.4,Dortmund,Gladbach,GER,1283,1
+1,1.1,St. Pauli,Leverkusen,GER,1284,1
+0,1.8,Stuttgart,Heidenheim,GER,1285,1
+2,1.1,Hoffenheim,Dortmund,GER,1286,1
+3,1.1,Bayern Munich,Mainz 05,GER,1287,1
+2,0.9,Leverkusen,Augsburg,GER,1288,1
+4,3.5,Holstein Kiel,Gladbach,GER,1289,1
+0,0.3,Wolfsburg,Freiburg,GER,1290,1
+4,2.1,Eint Frankfurt,RB Leipzig,GER,1291,1
+1,1.5,Bochum,Union Berlin,GER,1292,1
+0,1.1,Werder Bremen,St. Pauli,GER,1293,1
+0,0.7,Heidenheim,Bochum,GER,1294,1
+0,0.4,St. Pauli,Stuttgart,GER,1295,1
+4,1.4,Gladbach,Hoffenheim,GER,1296,1
+3,1.2,RB Leipzig,Bayern Munich,GER,1297,1
+2,1.5,Union Berlin,Werder Bremen,GER,1298,1
+4,2.4,Dortmund,Wolfsburg,GER,1299,1
+1,3.2,Augsburg,Holstein Kiel,GER,1300,1
+2,0.9,Freiburg,Leverkusen,GER,1301,1
+1,1.4,Mainz 05,Eint Frankfurt,GER,1302,1
+2,1,Wolfsburg,Hoffenheim,GER,1303,1
+1,0.9,Bochum,Mainz 05,GER,1304,1
+0,2,Werder Bremen,RB Leipzig,GER,1305,1
+1,1,Holstein Kiel,Freiburg,GER,1306,1
+0,0.5,Union Berlin,Heidenheim,GER,1307,1
+2,2.5,Bayern Munich,Gladbach,GER,1308,1
+2,2.2,Leverkusen,Dortmund,GER,1309,1
+2,1.7,Eint Frankfurt,St. Pauli,GER,1310,1
+4,3.9,Stuttgart,Augsburg,GER,1311,1
+2,1.1,RB Leipzig,Stuttgart,GER,1312,1
+0,1,Gladbach,Wolfsburg,GER,1313,1
+1,1.6,Heidenheim,Werder Bremen,GER,1314,1
+0,0.8,St. Pauli,Bochum,GER,1315,1
+1,0.7,Freiburg,Eint Frankfurt,GER,1316,1
+1,1.7,Augsburg,Union Berlin,GER,1317,1
+2,3.1,Mainz 05,Leverkusen,GER,1318,1
+3,2.4,Dortmund,Holstein Kiel,GER,1319,1
+0,0.4,Hoffenheim,Bayern Munich,GER,1320,1
+2,2.4,Augsburg,Mainz 05,GER,1321,1
+2,1.2,Union Berlin,Hoffenheim,GER,1322,1
+2,0.8,Bochum,Holstein Kiel,GER,1323,1
+0,0.7,Heidenheim,Freiburg,GER,1324,1
+0,0,Werder Bremen,Bayern Munich,GER,1325,1
+2,2.7,Eint Frankfurt,Gladbach,GER,1326,1
+4,1.9,Leverkusen,Wolfsburg,GER,1327,1
+5,3.4,Stuttgart,Dortmund,GER,1328,1
+0,1.4,St. Pauli,RB Leipzig,GER,1329,1
+4,3.2,Dortmund,Bochum,GER,1330,1
+0,0.6,Mainz 05,Heidenheim,GER,1331,1
+0,1.2,Freiburg,St. Pauli,GER,1332,1
+4,3,RB Leipzig,Augsburg,GER,1333,1
+1,0.9,Gladbach,Union Berlin,GER,1334,1
+2,1.1,Wolfsburg,Stuttgart,GER,1335,1
+1,1.4,Bayern Munich,Leverkusen,GER,1336,1
+2,1.1,Holstein Kiel,Eint Frankfurt,GER,1337,1
+3,1.2,Hoffenheim,Werder Bremen,GER,1338,1
+2,1.3,Augsburg,Gladbach,GER,1339,1
+1,1.7,Bochum,Wolfsburg,GER,1340,1
+2,1.5,Union Berlin,Dortmund,GER,1341,1
+0,1,Werder Bremen,Freiburg,GER,1342,1
+2,2.1,Leverkusen,Holstein Kiel,GER,1343,1
+0,1,St. Pauli,Mainz 05,GER,1344,1
+0,1,Heidenheim,RB Leipzig,GER,1345,1
+3,1.2,Eint Frankfurt,Bayern Munich,GER,1346,1
+1,1.9,Stuttgart,Hoffenheim,GER,1347,1
+2,2.6,Dortmund,St. Pauli,GER,1348,1
+2,3.8,Leverkusen,Eint Frankfurt,GER,1349,1
+0,0.6,Mainz 05,RB Leipzig,GER,1350,1
+3,0.8,Freiburg,Augsburg,GER,1351,1
+3,2.5,Hoffenheim,Bochum,GER,1352,1
+3,3.6,Gladbach,Heidenheim,GER,1353,1
+4,3.2,Bayern Munich,Stuttgart,GER,1354,1
+0,1.3,Holstein Kiel,Union Berlin,GER,1355,1
+2,1.8,Wolfsburg,Werder Bremen,GER,1356,1
+1,1.7,Mainz 05,Gladbach,GER,1357,1
+0,0.8,St. Pauli,Wolfsburg,GER,1358,1
+2,1.6,Stuttgart,Holstein Kiel,GER,1359,1
+2,0.6,Augsburg,Dortmund,GER,1360,1
+3,1.8,RB Leipzig,Freiburg,GER,1361,1
+2,1.6,Werder Bremen,Leverkusen,GER,1362,1
+0,0.6,Bochum,Bayern Munich,GER,1363,1
+1,1.4,Union Berlin,Eint Frankfurt,GER,1364,1
+0,1.5,Heidenheim,Hoffenheim,GER,1365,1
+0,2.2,Leverkusen,Stuttgart,GER,1366,1
+1,1.2,Wolfsburg,Augsburg,GER,1367,1
+3,2.5,Bayern Munich,Union Berlin,GER,1368,1
+7,3.5,Eint Frankfurt,Bochum,GER,1369,1
+1,1.1,Holstein Kiel,Heidenheim,GER,1370,1
+0,0.7,Hoffenheim,St. Pauli,GER,1371,1
+2,2,Dortmund,RB Leipzig,GER,1372,1
+0,0.8,Freiburg,Mainz 05,GER,1373,1
+4,2.5,Gladbach,Werder Bremen,GER,1374,1
+2,2.1,Genoa,Inter,ITA,1377,1
+1,1.7,Parma,Fiorentina,ITA,1378,1
+0,0.5,Empoli,Monza,ITA,1379,1
+2,2.1,Milan,Torino,ITA,1380,1
+1,3.2,Bologna,Udinese,ITA,1381,1
+3,1.7,Hellas Verona,Napoli,ITA,1382,1
+0,1,Cagliari,Roma,ITA,1383,1
+3,2.4,Lazio,Venezia,ITA,1384,1
+0,1.5,Lecce,Atalanta,ITA,1385,1
+3,1.2,Juventus,Como,ITA,1386,1
+1,1.7,Lecce,Hellas Verona,ITA,1387,1
+0,0.8,Cagliari,Bologna,ITA,1388,1
+0,0.7,Milan,Napoli,ITA,1389,1
+3,2.3,Venezia,Udinese,ITA,1390,1
+0,0.3,Empoli,Inter,ITA,1391,1
+2,1.2,Atalanta,Monza,ITA,1392,1
+2,2.4,Juventus,Parma,ITA,1393,1
+0,0.9,Genoa,Fiorentina,ITA,1394,1
+1,0.6,Roma,Torino,ITA,1395,1
+1,1.1,Como,Lazio,ITA,1396,1
+1,1.4,Bologna,Lecce,ITA,1397,1
+0,0.6,Udinese,Juventus,ITA,1398,1
+0,1.2,Monza,Milan,ITA,1399,1
+0,0.8,Napoli,Atalanta,ITA,1400,1
+0,0.6,Torino,Fiorentina,ITA,1401,1
+3,1.1,Hellas Verona,Roma,ITA,1402,1
+1,2.4,Inter,Venezia,ITA,1403,1
+1,0.6,Empoli,Como,ITA,1404,1
+0,1.1,Parma,Genoa,ITA,1405,1
+2,2.9,Lazio,Cagliari,ITA,1406,1
+1,0.9,Genoa,Como,ITA,1407,1
+1,1.6,Lecce,Empoli,ITA,1408,1
+1,0.8,Venezia,Parma,ITA,1409,1
+3,1.7,Cagliari,Milan,ITA,1410,1
+2,1.7,Juventus,Torino,ITA,1411,1
+2,0.9,Atalanta,Udinese,ITA,1412,1
+3,1.9,Fiorentina,Hellas Verona,ITA,1413,1
+2,1.3,Roma,Bologna,ITA,1414,1
+0,1,Monza,Lazio,ITA,1415,1
+1,1.5,Inter,Napoli,ITA,1416,1
+0,0.5,Hellas Verona,Inter,ITA,1417,1
+0,0.3,Milan,Juventus,ITA,1418,1
+1,0.7,Parma,Atalanta,ITA,1419,1
+2,1.7,Genoa,Cagliari,ITA,1420,1
+0,1.1,Como,Fiorentina,ITA,1421,1
+1,1,Torino,Monza,ITA,1422,1
+1,1.4,Napoli,Roma,ITA,1423,1
+3,2,Lazio,Bologna,ITA,1424,1
+1,0.1,Empoli,Udinese,ITA,1425,1
+0,2.5,Venezia,Lecce,ITA,1426,1
+1,1.8,Cagliari,Hellas Verona,ITA,1427,1
+1,1.3,Como,Monza,ITA,1428,1
+3,2.3,Milan,Empoli,ITA,1429,1
+3,3.2,Bologna,Venezia,ITA,1430,1
+0,0.2,Udinese,Genoa,ITA,1431,1
+0,0.3,Torino,Napoli,ITA,1432,1
+3,1.5,Parma,Lazio,ITA,1433,1
+1,1.5,Lecce,Juventus,ITA,1434,1
+0,0.4,Roma,Atalanta,ITA,1435,1
+3,1,Fiorentina,Inter,ITA,1436,1
+3,1.8,Inter,Parma,ITA,1437,1
+2,2.1,Atalanta,Milan,ITA,1438,1
+0,0.5,Genoa,Torino,ITA,1439,1
+2,1,Juventus,Bologna,ITA,1440,1
+4,1.8,Roma,Lecce,ITA,1441,1
+1,0.3,Fiorentina,Cagliari,ITA,1442,1
+1,0.9,Hellas Verona,Empoli,ITA,1443,1
+2,0.3,Venezia,Como,ITA,1444,1
+0,0.5,Napoli,Lazio,ITA,1445,1
+1,1.3,Monza,Udinese,ITA,1446,1
+0,0.6,Empoli,Torino,ITA,1447,1
+0,1.4,Cagliari,Atalanta,ITA,1448,1
+1,1.4,Udinese,Napoli,ITA,1449,1
+2,2.1,Juventus,Venezia,ITA,1450,1
+2,1.5,Lecce,Monza,ITA,1451,1
+2,1.9,Parma,Hellas Verona,ITA,1452,1
+1,1.2,Bologna,Fiorentina,ITA,1453,1
+2,1.2,Como,Roma,ITA,1454,1
+0,1.1,Milan,Genoa,ITA,1455,1
+0,0.4,Lazio,Inter,ITA,1456,1
+0,0.7,Hellas Verona,Milan,ITA,1457,1
+0,0.3,Torino,Bologna,ITA,1458,1
+1,1,Genoa,Napoli,ITA,1459,1
+1,0.7,Lecce,Lazio,ITA,1460,1
+5,5.4,Roma,Parma,ITA,1461,1
+2,1.5,Venezia,Cagliari,ITA,1462,1
+3,1.3,Atalanta,Empoli,ITA,1463,1
+1,1.3,Monza,Juventus,ITA,1464,1
+1,2.1,Fiorentina,Udinese,ITA,1465,1
+2,1.6,Inter,Como,ITA,1466,1
+1,1.3,Empoli,Genoa,ITA,1467,1
+2,1.4,Parma,Monza,ITA,1468,1
+0,0.3,Cagliari,Inter,ITA,1469,1
+1,0.6,Lazio,Atalanta,ITA,1470,1
+2,0.7,Udinese,Torino,ITA,1471,1
+1,1.9,Napoli,Venezia,ITA,1472,1
+2,1.5,Juventus,Fiorentina,ITA,1473,1
+1,1.9,Milan,Roma,ITA,1474,1
+2,2,Como,Lecce,ITA,1475,1
+2,2.2,Bologna,Hellas Verona,ITA,1476,1
+1,0.8,Venezia,Empoli,ITA,1477,1
+0,1,Fiorentina,Napoli,ITA,1478,1
+0,1,Hellas Verona,Udinese,ITA,1479,1
+1,1.4,Monza,Cagliari,ITA,1480,1
+0,0.6,Lecce,Genoa,ITA,1481,1
+0,1.1,Torino,Parma,ITA,1482,1
+2,1.1,Roma,Lazio,ITA,1483,1
+1,1.4,Como,Milan,ITA,1484,1
+1,1.4,Atalanta,Juventus,ITA,1485,1
+2,1.7,Inter,Bologna,ITA,1486,1
+2,0.8,Udinese,Lazio,ITA,1487,1
+2,1.7,Parma,Milan,ITA,1488,1
+0,0.4,Monza,Genoa,ITA,1489,1
+2,2.4,Inter,Lecce,ITA,1490,1
+2,2.4,Torino,Atalanta,ITA,1491,1
+0,0.9,Fiorentina,Venezia,ITA,1492,1
+3,2.5,Napoli,Bologna,ITA,1493,1
+1,2.1,Roma,Empoli,ITA,1494,1
+1,0.8,Cagliari,Como,ITA,1495,1
+0,0.5,Hellas Verona,Juventus,ITA,1496,1
+1,0.5,Lazio,Como,ITA,1497,1
+1,1.4,Empoli,Lecce,ITA,1498,1
+0,1.5,Udinese,Atalanta,ITA,1499,1
+1,0.6,Torino,Juventus,ITA,1500,1
+1,2.7,Milan,Cagliari,ITA,1501,1
+1,1.2,Genoa,Parma,ITA,1502,1
+0,0.4,Venezia,Inter,ITA,1503,1
+2,2,Bologna,Roma,ITA,1504,1
+2,1.1,Napoli,Hellas Verona,ITA,1505,1
+2,0.7,Monza,Fiorentina,ITA,1506,1
+3,1.6,Roma,Genoa,ITA,1507,1
+3,1.8,Bologna,Monza,ITA,1508,1
+2,1.1,Juventus,Milan,ITA,1509,1
+2,0.7,Atalanta,Napoli,ITA,1510,1
+1,1.5,Fiorentina,Torino,ITA,1511,1
+1,1.6,Parma,Venezia,ITA,1512,1
+4,2.6,Cagliari,Lecce,ITA,1513,1
+0,1.3,Hellas Verona,Lazio,ITA,1514,1
+3,2.1,Inter,Empoli,ITA,1515,1
+4,1.4,Como,Udinese,ITA,1516,1
+2,1.5,Torino,Cagliari,ITA,1517,1
+1,0.8,Como,Atalanta,ITA,1518,1
+2,2.3,Napoli,Juventus,ITA,1519,1
+1,0.6,Empoli,Bologna,ITA,1520,1
+3,2.2,Milan,Parma,ITA,1521,1
+1,0.8,Udinese,Roma,ITA,1522,1
+0,0.9,Lecce,Inter,ITA,1523,1
+1,1.4,Lazio,Fiorentina,ITA,1524,1
+1,0.6,Venezia,Hellas Verona,ITA,1525,1
+2,2.6,Genoa,Monza,ITA,1526,1
+1,1.9,Parma,Lecce,ITA,1527,1
+0,0.4,Monza,Hellas Verona,ITA,1528,1
+3,0.6,Udinese,Venezia,ITA,1529,1
+1,2.9,Atalanta,Torino,ITA,1530,1
+2,1.5,Bologna,Como,ITA,1531,1
+4,1.8,Juventus,Empoli,ITA,1532,1
+2,0.7,Fiorentina,Genoa,ITA,1533,1
+1,0.6,Milan,Inter,ITA,1534,1
+1,0.5,Roma,Napoli,ITA,1535,1
+1,1.6,Cagliari,Lazio,ITA,1536,1
+1,0.9,Como,Juventus,ITA,1537,1
+0,1.6,Hellas Verona,Atalanta,ITA,1538,1
+0,0.7,Empoli,Milan,ITA,1539,1
+1,0.7,Torino,Genoa,ITA,1540,1
+0,0.7,Venezia,Roma,ITA,1541,1
+2,1.2,Cagliari,Parma,ITA,1542,1
+5,3.2,Lazio,Monza,ITA,1543,1
+0,0.4,Lecce,Bologna,ITA,1544,1
+1,1.1,Napoli,Udinese,ITA,1545,1
+2,2.2,Inter,Fiorentina,ITA,1546,1
+3,2.3,Bologna,Torino,ITA,1547,1
+0,0.4,Atalanta,Cagliari,ITA,1548,1
+2,0.7,Lazio,Napoli,ITA,1549,1
+1,2.1,Milan,Hellas Verona,ITA,1550,1
+0,0.3,Fiorentina,Como,ITA,1551,1
+0,0.2,Monza,Lecce,ITA,1552,1
+3,2.3,Udinese,Empoli,ITA,1553,1
+0,0.2,Parma,Roma,ITA,1554,1
+1,1.3,Juventus,Inter,ITA,1555,1
+2,1.5,Genoa,Venezia,ITA,1556,1
+0,0.4,Lecce,Udinese,ITA,1557,1
+0,0.8,Venezia,Lazio,ITA,1558,1
+2,1.1,Parma,Bologna,ITA,1559,1
+2,0.3,Torino,Milan,ITA,1560,1
+1,1.5,Inter,Genoa,ITA,1561,1
+2,0.7,Como,Napoli,ITA,1562,1
+1,1.2,Hellas Verona,Fiorentina,ITA,1563,1
+0,0.9,Empoli,Atalanta,ITA,1564,1
+0,0.3,Cagliari,Juventus,ITA,1565,1
+4,1.5,Roma,Monza,ITA,1566,1
+1,1.6,Fiorentina,Lecce,ITA,1567,1
+0,1.9,Atalanta,Venezia,ITA,1568,1
+1,1.8,Napoli,Inter,ITA,1569,1
+1,2.3,Udinese,Parma,ITA,1570,1
+0,1,Monza,Torino,ITA,1571,1
+1,0.3,Genoa,Empoli,ITA,1572,1
+2,2.1,Bologna,Cagliari,ITA,1573,1
+2,1.6,Roma,Como,ITA,1574,1
+1,1.4,Milan,Lazio,ITA,1575,1
+2,2,Juventus,Hellas Verona,ITA,1576,1
+1,0.7,Cagliari,Genoa,ITA,1577,1
+2,1.6,Parma,Torino,ITA,1578,1
+1,1.3,Como,Venezia,ITA,1579,1
+2,1,Lecce,Milan,ITA,1580,1
+3,2.6,Inter,Monza,ITA,1581,1
+1,1.2,Hellas Verona,Bologna,ITA,1582,1
+2,2.8,Napoli,Fiorentina,ITA,1583,1
+0,0.1,Empoli,Roma,ITA,1584,1
+0,0.9,Juventus,Atalanta,ITA,1585,1
+1,1.2,Lazio,Udinese,ITA,1586,1
+2,1,Genoa,Lecce,ITA,1587,1
+0,0.5,Udinese,Hellas Verona,ITA,1588,1
+1,0.7,Monza,Parma,ITA,1589,1
+2,1.3,Milan,Como,ITA,1590,1
+1,0.6,Torino,Empoli,ITA,1591,1
+0,0.7,Venezia,Napoli,ITA,1592,1
+5,2.2,Bologna,Lazio,ITA,1593,1
+1,1.3,Roma,Cagliari,ITA,1594,1
+3,0.4,Fiorentina,Juventus,ITA,1595,1
+0,0.6,Atalanta,Inter,ITA,1596,1
+0,0.8,Venezia,Torino,ITA,1597,1
+4,1.3,Inter,Atalanta,ITA,1598,1
+1,1.7,Lecce,Cagliari,ITA,1599,1
+1,1.3,Bologna,Empoli,ITA,1600,1
+2,2.1,Lazio,Milan,ITA,1601,1
+2,2.2,Napoli,Parma,ITA,1602,1
+0,1.5,Genoa,Hellas Verona,ITA,1603,1
+2,2,Fiorentina,Monza,ITA,1604,1
+1,1,Udinese,Como,ITA,1605,1
+0,0.5,Juventus,Roma,ITA,1606,1
+1,1.9,Como,Empoli,ITA,1607,1
+0,0.8,Venezia,Bologna,ITA,1608,1
+1,0.9,Juventus,Genoa,ITA,1609,1
+0,0.7,Lecce,Roma,ITA,1610,1
+3,1.7,Cagliari,Monza,ITA,1611,1
+1,1.6,Fiorentina,Atalanta,ITA,1612,1
+2,1.7,Inter,Udinese,ITA,1613,1
+2,1,Napoli,Milan,ITA,1614,1
+0,0.4,Hellas Verona,Parma,ITA,1615,1
+1,1.2,Lazio,Torino,ITA,1616,1
+1,1.3,Genoa,Udinese,ITA,1617,1
+1,0.8,Monza,Como,ITA,1618,1
+2,1.4,Parma,Inter,ITA,1619,1
+2,2.6,Milan,Fiorentina,ITA,1620,1
+1,1.2,Lecce,Venezia,ITA,1621,1
+0,0.3,Empoli,Cagliari,ITA,1622,1
+1,1.1,Torino,Hellas Verona,ITA,1623,1
+0,0.5,Atalanta,Lazio,ITA,1624,1
+1,1.1,Roma,Juventus,ITA,1625,1
+1,0.8,Bologna,Napoli,ITA,1626,1
+0,0.8,Udinese,Milan,ITA,1627,1
+1,1.3,Venezia,Monza,ITA,1628,1
+3,1.8,Inter,Cagliari,ITA,1629,1
+2,1.5,Juventus,Lecce,ITA,1630,1
+2,1,Atalanta,Bologna,ITA,1631,1
+0,1.2,Hellas Verona,Genoa,ITA,1632,1
+0,0.8,Fiorentina,Parma,ITA,1633,1
+1,1.3,Como,Torino,ITA,1634,1
+1,1.2,Lazio,Roma,ITA,1635,1
+3,2,Napoli,Empoli,ITA,1636,1
+0,0.7,Lecce,Como,ITA,1637,1
+0,0.9,Monza,Napoli,ITA,1638,1
+1,1.2,Roma,Hellas Verona,ITA,1639,1
+2,1.2,Empoli,Venezia,ITA,1640,1
+1,0.8,Bologna,Inter,ITA,1641,1
+0,0.6,Milan,Atalanta,ITA,1642,1
+1,0.3,Cagliari,Fiorentina,ITA,1643,1
+1,0.6,Parma,Juventus,ITA,1644,1
+2,0.9,Torino,Udinese,ITA,1645,1
+0,0.6,Genoa,Lazio,ITA,1646,1
+1,1.3,Como,Genoa,ITA,1647,1
+0,1.2,Venezia,Milan,ITA,1648,1
+0,1.1,Inter,Roma,ITA,1649,1
+2,0.8,Fiorentina,Empoli,ITA,1650,1
+2,1.4,Juventus,Monza,ITA,1651,1
+2,1.1,Napoli,Torino,ITA,1652,1
+1,2.3,Atalanta,Lecce,ITA,1653,1
+0,0.5,Udinese,Bologna,ITA,1654,1
+2,1.4,Lazio,Parma,ITA,1655,1
+0,0.3,Hellas Verona,Cagliari,ITA,1656,1
+1,2.1,Torino,Venezia,ITA,1657,1
+0,1.8,Parma,Como,ITA,1658,1
+1,1,Cagliari,Udinese,ITA,1659,1
+0,0.3,Lecce,Napoli,ITA,1660,1
+1,1.3,Inter,Hellas Verona,ITA,1661,1
+0,0.2,Empoli,Lazio,ITA,1662,1
+0,0.8,Monza,Atalanta,ITA,1663,1
+1,0.6,Roma,Fiorentina,ITA,1664,1
+1,0.4,Bologna,Juventus,ITA,1665,1
+1,0.6,Genoa,Milan,ITA,1666,1
+3,1.6,Milan,Bologna,ITA,1667,1
+3,2,Como,Cagliari,ITA,1668,1
+1,1.7,Lazio,Juventus,ITA,1669,1
+2,0.6,Empoli,Parma,ITA,1670,1
+1,1.6,Udinese,Monza,ITA,1671,1
+1,0.3,Hellas Verona,Lecce,ITA,1672,1
+0,1.5,Torino,Inter,ITA,1673,1
+2,1.7,Napoli,Genoa,ITA,1674,1
+2,2,Venezia,Fiorentina,ITA,1675,1
+2,2.3,Atalanta,Roma,ITA,1676,1
+2,1.2,Genoa,Atalanta,ITA,1677,1
+0,0.4,Parma,Napoli,ITA,1678,1
+3,1.8,Fiorentina,Bologna,ITA,1679,1
+3,1.6,Cagliari,Venezia,ITA,1680,1
+3,1,Roma,Milan,ITA,1681,1
+1,1.5,Hellas Verona,Como,ITA,1682,1
+1,1.1,Monza,Empoli,ITA,1683,1
+2,1.8,Juventus,Udinese,ITA,1684,1
+1,0.8,Lecce,Torino,ITA,1685,1
+2,1.1,Inter,Lazio,ITA,1686,1
+2,2.4,Napoli,Cagliari,ITA,1687,1
+0,1.2,Como,Inter,ITA,1688,1
+1,0.7,Bologna,Genoa,ITA,1689,1
+2,1.5,Milan,Monza,ITA,1690,1
+2,1.4,Udinese,Fiorentina,ITA,1691,1
+0,1.8,Lazio,Lecce,ITA,1692,1
+0,0.5,Torino,Roma,ITA,1693,1
+2,0.9,Venezia,Juventus,ITA,1694,1
+2,1.2,Atalanta,Parma,ITA,1695,1
+1,0.9,Empoli,Hellas Verona,ITA,1696,1
+2,1.2,Como,Bologna,ITA,1697,1
+0,0.5,Empoli,Juventus,ITA,1698,1
+4,2.2,Milan,Venezia,ITA,1699,1
+1,1.2,Genoa,Roma,ITA,1700,1
+3,1.7,Atalanta,Fiorentina,ITA,1701,1
+0,0.4,Torino,Lecce,ITA,1702,1
+0,1,Cagliari,Napoli,ITA,1703,1
+1,0.2,Monza,Inter,ITA,1704,1
+2,0.8,Parma,Udinese,ITA,1705,1
+2,1.2,Lazio,Hellas Verona,ITA,1706,1
+0,2.2,Cagliari,Empoli,ITA,1707,1
+2,0.5,Hellas Verona,Torino,ITA,1708,1
+2,1.7,Venezia,Genoa,ITA,1709,1
+0,0.3,Juventus,Napoli,ITA,1710,1
+2,1.5,Lecce,Parma,ITA,1711,1
+2,2.7,Fiorentina,Lazio,ITA,1712,1
+1,0.6,Monza,Bologna,ITA,1713,1
+3,1.9,Roma,Udinese,ITA,1714,1
+1,0.7,Inter,Milan,ITA,1715,1
+2,1.6,Atalanta,Como,ITA,1716,1
+3,1.6,Milan,Lecce,ITA,1717,1
+2,0.8,Udinese,Inter,ITA,1718,1
+0,0.4,Genoa,Juventus,ITA,1719,1
+1,0.1,Bologna,Atalanta,ITA,1720,1
+2,0.7,Torino,Lazio,ITA,1721,1
+3,2.2,Como,Hellas Verona,ITA,1722,1
+2,1.7,Roma,Venezia,ITA,1723,1
+0,0.4,Empoli,Fiorentina,ITA,1724,1
+2,1.1,Napoli,Monza,ITA,1725,1
+2,2.4,Parma,Cagliari,ITA,1726,1
+3,1.9,Napoli,Como,ITA,1727,1
+2,2.3,Hellas Verona,Venezia,ITA,1728,1
+1,0.9,Udinese,Lecce,ITA,1729,1
+5,3.6,Atalanta,Genoa,ITA,1730,1
+3,2.4,Inter,Torino,ITA,1731,1
+1,2.4,Juventus,Cagliari,ITA,1732,1
+2,2.1,Lazio,Empoli,ITA,1733,1
+0,0.8,Bologna,Parma,ITA,1734,1
+1,1.1,Monza,Roma,ITA,1735,1
+2,1.5,Fiorentina,Milan,ITA,1736,1
+2,0.4,Genoa,Bologna,ITA,1737,1
+1,1.3,Como,Parma,ITA,1738,1
+1,1.2,Milan,Udinese,ITA,1739,1
+1,1.3,Juventus,Lazio,ITA,1740,1
+0,0.7,Empoli,Napoli,ITA,1741,1
+0,0.8,Venezia,Atalanta,ITA,1742,1
+0,0.2,Lecce,Fiorentina,ITA,1743,1
+3,1.6,Cagliari,Torino,ITA,1744,1
+0,1,Roma,Inter,ITA,1745,1
+0,0.9,Hellas Verona,Monza,ITA,1746,1
+2,1,Udinese,Cagliari,ITA,1747,1
+1,1.3,Torino,Como,ITA,1748,1
+1,2.7,Napoli,Lecce,ITA,1749,1
+6,2.4,Atalanta,Hellas Verona,ITA,1750,1
+1,1.7,Parma,Empoli,ITA,1751,1
+3,2.1,Lazio,Genoa,ITA,1752,1
+2,1.1,Monza,Venezia,ITA,1753,1
+4,3,Inter,Juventus,ITA,1754,1
+5,3.7,Fiorentina,Roma,ITA,1755,1
+2,2,Bologna,Milan,ITA,1756,1
+0,0.4,Fulham,Manchester Utd,ENG,1,0
+2,2.6,Liverpool,Ipswich Town,ENG,2,0
+0,1.8,Southampton,Newcastle Utd,ENG,3,0
+3,1.4,Brighton,Everton,ENG,4,0
+1,1.2,Bournemouth,Nott'ham Forest,ENG,5,0
+0,0.5,Wolves,Arsenal,ENG,6,0
+2,2,Aston Villa,West Ham,ENG,7,0
+1,1.2,Crystal Palace,Brentford,ENG,8,0
+2,0.8,Manchester City,Chelsea,ENG,9,0
+1,1.2,Tottenham,Leicester City,ENG,10,0
+0,1.1,Arsenal,Newcastle Utd,ENG,11,0
+1,1,Brighton,Liverpool,ENG,12,0
+0,1.6,Everton,Southampton,ENG,13,0
+0,0.1,West Ham,Nott'ham Forest,ENG,14,0
+1,1.5,Leicester City,Ipswich Town,ENG,15,0
+1,1.6,Manchester City,Bournemouth,ENG,16,0
+2,2.4,Crystal Palace,Wolves,ENG,17,0
+1,1.8,Aston Villa,Tottenham,ENG,18,0
+1,1.1,Chelsea,Manchester Utd,ENG,19,0
+1,0.6,Brentford,Fulham,ENG,20,0
+0,1.1,Everton,West Ham,ENG,21,0
+2,1.8,Fulham,Crystal Palace,ENG,22,0
+0,0.6,Southampton,Wolves,ENG,23,0
+2,2.6,Bournemouth,Brentford,ENG,24,0
+1,2.1,Manchester City,Brighton,ENG,25,0
+0,1.2,Aston Villa,Liverpool,ENG,26,0
+2,1.6,Ipswich Town,Tottenham,ENG,27,0
+3,1.6,Newcastle Utd,Nott'ham Forest,ENG,28,0
+0,0.6,Leicester City,Manchester Utd,ENG,29,0
+1,1.5,Arsenal,Chelsea,ENG,30,0
+2,2.7,Chelsea,Leicester City,ENG,31,0
+2,1.3,Crystal Palace,Aston Villa,ENG,32,0
+4,1.3,Wolves,Fulham,ENG,33,0
+2,0.9,Brighton,Bournemouth,ENG,34,0
+0,0.3,Nott'ham Forest,Arsenal,ENG,35,0
+0,1.1,Brentford,Everton,ENG,36,0
+4,2.5,Tottenham,Manchester City,ENG,37,0
+3,3.1,Liverpool,Southampton,ENG,38,0
+1,0.8,Manchester Utd,Ipswich Town,ENG,39,0
+2,0.9,West Ham,Newcastle Utd,ENG,40,0
+1,1,Southampton,Brighton,ENG,41,0
+4,3.3,Bournemouth,Wolves,ENG,42,0
+0,0.6,Ipswich Town,Nott'ham Forest,ENG,43,0
+1,1.1,Leicester City,Brentford,ENG,44,0
+1,0,Newcastle Utd,Crystal Palace,ENG,45,0
+5,3.5,Arsenal,West Ham,ENG,46,0
+0,0.6,Everton,Manchester Utd,ENG,47,0
+1,1.5,Fulham,Tottenham,ENG,48,0
+0,1.2,Aston Villa,Chelsea,ENG,49,0
+0,0.8,Manchester City,Liverpool,ENG,50,0
+1,1.6,Crystal Palace,Ipswich Town,ENG,51,0
+1,3,West Ham,Leicester City,ENG,52,0
+3,1.9,Liverpool,Newcastle Utd,ENG,53,0
+0,0.8,Wolves,Everton,ENG,54,0
+0,1,Nott'ham Forest,Manchester City,ENG,55,0
+5,5.2,Chelsea,Southampton,ENG,56,0
+0,0.2,Manchester Utd,Arsenal,ENG,57,0
+1,0.9,Brentford,Aston Villa,ENG,58,0
+1,1.4,Brighton,Fulham,ENG,59,0
+0,0.9,Tottenham,Bournemouth,ENG,60,0
+0,0.3,Southampton,Aston Villa,ENG,61,0
+2,1.4,Manchester City,Crystal Palace,ENG,62,0
+2,1.5,Newcastle Utd,Brentford,ENG,63,0
+3,0.8,Nott'ham Forest,Manchester Utd,ENG,64,0
+2,1.5,Brighton,Leicester City,ENG,65,0
+2,3.2,Bournemouth,Ipswich Town,ENG,66,0
+1,1.8,Arsenal,Fulham,ENG,67,0
+4,2.8,Chelsea,Tottenham,ENG,68,0
+1,1.4,Wolves,West Ham,ENG,69,0
+2,0.6,Liverpool,Everton,ENG,70,0
+2,1.2,Fulham,Liverpool,ENG,71,0
+2,1.1,Ipswich Town,Wolves,ENG,72,0
+0,0.2,Leicester City,Newcastle Utd,ENG,73,0
+0,0.1,Everton,Arsenal,ENG,74,0
+1,0.4,Aston Villa,Nott'ham Forest,ENG,75,0
+3,2.2,Crystal Palace,Brighton,ENG,76,0
+2,2.1,Manchester Utd,Manchester City,ENG,77,0
+5,2.3,Tottenham,Southampton,ENG,78,0
+1,1.6,Brentford,Chelsea,ENG,79,0
+1,2.1,West Ham,Bournemouth,ENG,80,0
+1,1,Manchester City,Aston Villa,ENG,81,0
+4,2.3,Newcastle Utd,Ipswich Town,ENG,82,0
+2,0.9,Nott'ham Forest,Brentford,ENG,83,0
+1,0.9,Brighton,West Ham,ENG,84,0
+5,2.5,Arsenal,Crystal Palace,ENG,85,0
+3,1.6,Bournemouth,Manchester Utd,ENG,86,0
+3,1.1,Wolves,Leicester City,ENG,87,0
+0,1.2,Chelsea,Everton,ENG,88,0
+0,0.3,Southampton,Fulham,ENG,89,0
+6,5.6,Liverpool,Tottenham,ENG,90,0
+1,0.7,Everton,Manchester City,ENG,91,0
+1,1.7,West Ham,Southampton,ENG,92,0
+0,0.3,Aston Villa,Newcastle Utd,ENG,93,0
+0,0.9,Tottenham,Nott'ham Forest,ENG,94,0
+0,0.4,Crystal Palace,Bournemouth,ENG,95,0
+2,1.8,Fulham,Chelsea,ENG,96,0
+0,0.4,Manchester Utd,Wolves,ENG,97,0
+1,0.3,Leicester City,Liverpool,ENG,98,0
+0,1.1,Brentford,Brighton,ENG,99,0
+0,0.2,Ipswich Town,Arsenal,ENG,100,0
+2,1.3,Manchester City,Leicester City,ENG,101,0
+2,1.5,Nott'ham Forest,Everton,ENG,102,0
+2,0.7,Wolves,Tottenham,ENG,103,0
+2,2,Bournemouth,Fulham,ENG,104,0
+1,0.9,Southampton,Crystal Palace,ENG,105,0
+5,3.1,Liverpool,West Ham,ENG,106,0
+2,1.1,Brighton,Aston Villa,ENG,107,0
+0,2,Chelsea,Ipswich Town,ENG,108,0
+2,1.9,Newcastle Utd,Manchester Utd,ENG,109,0
+3,1.9,Arsenal,Brentford,ENG,110,0
+1,1.4,Manchester Utd,Brighton,ENG,111,0
+1,0.3,Ipswich Town,Manchester City,ENG,112,0
+1,2.2,Nott'ham Forest,Southampton,ENG,113,0
+0,1,Everton,Tottenham,ENG,114,0
+1,0.6,Leicester City,Fulham,ENG,115,0
+2,1.4,West Ham,Crystal Palace,ENG,116,0
+2,0.9,Arsenal,Aston Villa,ENG,117,0
+6,1.6,Chelsea,Wolves,ENG,118,0
+1,1.6,Newcastle Utd,Bournemouth,ENG,119,0
+0,0.5,Brentford,Liverpool,ENG,120,0
+2,2.5,Newcastle Utd,Tottenham,ENG,121,0
+1,0.4,Leicester City,Aston Villa,ENG,122,0
+0,0.7,Everton,Bournemouth,ENG,123,0
+1,1.2,Chelsea,Crystal Palace,ENG,124,0
+5,4.4,Brentford,Southampton,ENG,125,0
+1,1.4,West Ham,Manchester City,ENG,126,0
+1,0.9,Arsenal,Brighton,ENG,127,0
+2,1.5,Ipswich Town,Fulham,ENG,128,0
+2,1,Manchester Utd,Liverpool,ENG,129,0
+3,2.1,Nott'ham Forest,Wolves,ENG,130,0
+2,1.7,Fulham,West Ham,ENG,131,0
+2,1.2,Bournemouth,Chelsea,ENG,132,0
+2,2.2,Manchester City,Brentford,ENG,133,0
+1,2,Liverpool,Nott'ham Forest,ENG,134,0
+2,1.8,Crystal Palace,Leicester City,ENG,135,0
+1,1.2,Aston Villa,Everton,ENG,136,0
+0,1.6,Wolves,Newcastle Utd,ENG,137,0
+1,0.8,Tottenham,Arsenal,ENG,138,0
+2,1,Brighton,Ipswich Town,ENG,139,0
+1,1.4,Southampton,Manchester Utd,ENG,140,0
+4,2,Bournemouth,Newcastle Utd,ENG,141,0
+2,2,Fulham,Leicester City,ENG,142,0
+2,1.3,Crystal Palace,West Ham,ENG,143,0
+2,3.4,Liverpool,Brentford,ENG,144,0
+2,1,Aston Villa,Arsenal,ENG,145,0
+2,1.1,Tottenham,Everton,ENG,146,0
+3,1.9,Brighton,Manchester Utd,ENG,147,0
+2,0.9,Southampton,Nott'ham Forest,ENG,148,0
+6,3,Manchester City,Ipswich Town,ENG,149,0
+1,0.8,Wolves,Chelsea,ENG,150,0
+3,2.9,Newcastle Utd,Southampton,ENG,151,0
+1,0.8,Everton,Brighton,ENG,152,0
+1,0.5,Ipswich Town,Liverpool,ENG,153,0
+0,1,Nott'ham Forest,Bournemouth,ENG,154,0
+1,1,Arsenal,Wolves,ENG,155,0
+1,1.8,Chelsea,Manchester City,ENG,156,0
+2,1.3,Brentford,Crystal Palace,ENG,157,0
+2,1.6,Leicester City,Tottenham,ENG,158,0
+1,1.3,West Ham,Aston Villa,ENG,159,0
+1,0.3,Manchester Utd,Fulham,ENG,160,0
+0,0.9,Brighton,Nott'ham Forest,ENG,161,0
+0,0.3,Leicester City,Everton,ENG,162,0
+2,1.6,Fulham,Newcastle Utd,ENG,163,0
+2,2.5,Liverpool,Bournemouth,ENG,164,0
+2,0.9,Southampton,Ipswich Town,ENG,165,0
+0,0.4,Aston Villa,Wolves,ENG,166,0
+2,2.6,Crystal Palace,Manchester Utd,ENG,167,0
+2,0.8,Tottenham,Brentford,ENG,168,0
+1,0.8,Manchester City,Arsenal,ENG,169,0
+1,1.2,West Ham,Chelsea,ENG,170,0
+0,0.5,Chelsea,Brighton,ENG,171,0
+2,1.4,Arsenal,Leicester City,ENG,172,0
+1,0.4,Nott'ham Forest,Fulham,ENG,173,0
+0,0.5,Newcastle Utd,Manchester City,ENG,174,0
+3,1.2,Bournemouth,Southampton,ENG,175,0
+1,0.4,Ipswich Town,Aston Villa,ENG,176,0
+1,1.6,Brentford,West Ham,ENG,177,0
+2,0.9,Everton,Crystal Palace,ENG,178,0
+1,1.5,Wolves,Liverpool,ENG,179,0
+0,1.5,Manchester Utd,Tottenham,ENG,180,0
+4,1.5,Brentford,Leicester City,ENG,181,0
+2,0.4,Manchester Utd,Everton,ENG,182,0
+2,1.3,Crystal Palace,Fulham,ENG,183,0
+1,2,Wolves,Bournemouth,ENG,184,0
+4,1.7,Tottenham,Ipswich Town,ENG,185,0
+1,1.1,West Ham,Arsenal,ENG,186,0
+4,3.9,Brighton,Southampton,ENG,187,0
+1,2.3,Chelsea,Aston Villa,ENG,188,0
+3,1.7,Nott'ham Forest,Newcastle Utd,ENG,189,0
+2,0.7,Liverpool,Manchester City,ENG,190,0
+1,1.5,Bournemouth,Brighton,ENG,191,0
+1,0.4,Aston Villa,Crystal Palace,ENG,192,0
+2,1.7,Fulham,Wolves,ENG,193,0
+0,0.7,Southampton,Chelsea,ENG,194,0
+1,2.1,Manchester City,Tottenham,ENG,195,0
+0,1,Arsenal,Nott'ham Forest,ENG,196,0
+2,1.4,Ipswich Town,Manchester Utd,ENG,197,0
+1,1.5,Everton,Brentford,ENG,198,0
+0,0.2,Newcastle Utd,Liverpool,ENG,199,0
+0,0.4,Leicester City,West Ham,ENG,200,0
+0,0.9,Manchester City,Nott'ham Forest,ENG,201,0
+1,0.4,Southampton,Liverpool,ENG,202,0
+1,0.9,Fulham,Brighton,ENG,203,0
+0,1.5,Ipswich Town,Crystal Palace,ENG,204,0
+1,1.3,Aston Villa,Brentford,ENG,205,0
+1,1.2,Everton,Wolves,ENG,206,0
+0,0.1,Leicester City,Chelsea,ENG,207,0
+2,2.2,Bournemouth,Tottenham,ENG,208,0
+1,1.6,Arsenal,Manchester Utd,ENG,209,0
+1,1.4,Newcastle Utd,West Ham,ENG,210,0
+2,2.5,Liverpool,Aston Villa,ENG,211,0
+1,0.8,West Ham,Everton,ENG,212,0
+2,0.4,Wolves,Southampton,ENG,213,0
+4,1.5,Nott'ham Forest,Ipswich Town,ENG,214,0
+2,2,Brighton,Manchester City,ENG,215,0
+2,0.8,Brentford,Bournemouth,ENG,216,0
+0,0.4,Chelsea,Arsenal,ENG,217,0
+0,0.9,Tottenham,Fulham,ENG,218,0
+3,0.9,Manchester Utd,Leicester City,ENG,219,0
+0,2,Crystal Palace,Newcastle Utd,ENG,220,0
+1,1.7,Brighton,Arsenal,ENG,221,0
+1,0.9,Fulham,Ipswich Town,ENG,222,0
+1,0.7,Wolves,Nott'ham Forest,ENG,223,0
+1,1.5,Southampton,Brentford,ENG,224,0
+2,1.4,Aston Villa,Leicester City,ENG,225,0
+3,2.4,Bournemouth,Everton,ENG,226,0
+3,3,Manchester City,West Ham,ENG,227,0
+1,1.2,Tottenham,Newcastle Utd,ENG,228,0
+1,0.5,Crystal Palace,Chelsea,ENG,229,0
+3,1.8,Liverpool,Manchester Utd,ENG,230,0
+1,1,Fulham,Arsenal,ENG,231,0
+0,1.3,West Ham,Wolves,ENG,232,0
+0,1.6,Manchester Utd,Nott'ham Forest,ENG,233,0
+1,1.5,Brentford,Newcastle Utd,ENG,234,0
+0,0.1,Leicester City,Manchester City,ENG,235,0
+1,0.7,Crystal Palace,Southampton,ENG,236,0
+2,1.2,Ipswich Town,Bournemouth,ENG,237,0
+3,1.2,Aston Villa,Brighton,ENG,238,0
+0,0.9,Everton,Liverpool,ENG,239,0
+0,0.9,Tottenham,Chelsea,ENG,240,0
+1,1.8,Arsenal,Everton,ENG,241,0
+1,1,Brighton,Crystal Palace,ENG,242,0
+2,2.6,Wolves,Ipswich Town,ENG,243,0
+2,2.1,Bournemouth,West Ham,ENG,244,0
+1,1.5,Nott'ham Forest,Aston Villa,ENG,245,0
+2,1.5,Liverpool,Fulham,ENG,246,0
+0,1.2,Chelsea,Brentford,ENG,247,0
+1,1,Southampton,Tottenham,ENG,248,0
+0,0.5,Manchester City,Manchester Utd,ENG,249,0
+3,3.2,Newcastle Utd,Leicester City,ENG,250,0
+2,1.8,Crystal Palace,Manchester City,ENG,251,0
+2,1.5,Leicester City,Brighton,ENG,252,0
+3,3,Aston Villa,Southampton,ENG,253,0
+1,1.4,Everton,Nott'ham Forest,ENG,254,0
+1,0.2,Brentford,Arsenal,ENG,255,0
+1,1.4,West Ham,Liverpool,ENG,256,0
+2,1.1,Ipswich Town,Chelsea,ENG,257,0
+2,2,Tottenham,Wolves,ENG,258,0
+1,0.7,Manchester Utd,Newcastle Utd,ENG,259,0
+0,1,Fulham,Bournemouth,ENG,260,0
+2,2,Manchester City,Everton,ENG,261,0
+1,0.6,Southampton,West Ham,ENG,262,0
+0,0.7,Bournemouth,Crystal Palace,ENG,263,0
+2,1.4,Brighton,Brentford,ENG,264,0
+1,1,Newcastle Utd,Aston Villa,ENG,265,0
+2,0.9,Chelsea,Fulham,ENG,266,0
+4,2.4,Arsenal,Ipswich Town,ENG,267,0
+1,0.2,Wolves,Manchester Utd,ENG,268,0
+1,2.5,Liverpool,Leicester City,ENG,269,0
+2,0.5,Nott'ham Forest,Tottenham,ENG,270,0
+1,1.8,Aston Villa,Manchester City,ENG,271,0
+2,1.7,Crystal Palace,Arsenal,ENG,272,0
+0,0.4,Everton,Chelsea,ENG,273,0
+2,1.3,West Ham,Brighton,ENG,274,0
+0,1.1,Leicester City,Wolves,ENG,275,0
+2,2.4,Fulham,Southampton,ENG,276,0
+0,0.1,Ipswich Town,Newcastle Utd,ENG,277,0
+1,2.3,Manchester Utd,Bournemouth,ENG,278,0
+1,0.5,Tottenham,Liverpool,ENG,279,0
+2,1.3,Brentford,Nott'ham Forest,ENG,280,0
+0,0.4,Wolves,Manchester City,ENG,281,0
+0,0.9,Fulham,Aston Villa,ENG,282,0
+0,0.5,Southampton,Leicester City,ENG,283,0
+2,0.8,Ipswich Town,Everton,ENG,284,0
+2,0.9,Bournemouth,Arsenal,ENG,285,0
+1,1.7,Newcastle Utd,Brighton,ENG,286,0
+1,0.8,Tottenham,West Ham,ENG,287,0
+3,1.5,Manchester Utd,Brentford,ENG,288,0
+1,1,Liverpool,Chelsea,ENG,289,0
+1,0.7,Nott'ham Forest,Crystal Palace,ENG,290,0
+1,1.4,Brentford,Ipswich Town,ENG,291,0
+3,1.1,Everton,Fulham,ENG,292,0
+2,1.6,Brighton,Wolves,ENG,293,0
+0,1.7,Manchester City,Southampton,ENG,294,0
+1,1,Aston Villa,Bournemouth,ENG,295,0
+0,0.7,Chelsea,Newcastle Utd,ENG,296,0
+2,1.1,Leicester City,Nott'ham Forest,ENG,297,0
+2,3.4,Crystal Palace,Tottenham,ENG,298,0
+2,1.7,West Ham,Manchester Utd,ENG,299,0
+2,2.6,Arsenal,Liverpool,ENG,300,0
+0,0.5,Tottenham,Aston Villa,ENG,301,0
+0,0.3,Manchester Utd,Chelsea,ENG,302,0
+0,1.2,Southampton,Everton,ENG,303,0
+2,1.9,Nott'ham Forest,West Ham,ENG,304,0
+3,1,Fulham,Brentford,ENG,305,0
+0,1.4,Ipswich Town,Leicester City,ENG,306,0
+0,1.5,Newcastle Utd,Arsenal,ENG,307,0
+2,2.2,Liverpool,Brighton,ENG,308,0
+1,1.1,Bournemouth,Manchester City,ENG,309,0
+2,1.4,Wolves,Crystal Palace,ENG,310,0
+0,0.4,Aston Villa,Manchester Utd,ENG,311,0
+3,1.1,West Ham,Ipswich Town,ENG,312,0
+1,1.4,Brentford,Wolves,ENG,313,0
+2,2.3,Arsenal,Southampton,ENG,314,0
+1,1.8,Crystal Palace,Liverpool,ENG,315,0
+1,1.1,Chelsea,Nott'ham Forest,ENG,316,0
+2,3,Manchester City,Fulham,ENG,317,0
+1,1.2,Everton,Newcastle Utd,ENG,318,0
+0,0.3,Leicester City,Bournemouth,ENG,319,0
+4,2.2,Brighton,Tottenham,ENG,320,0
+3,2.6,Manchester Utd,Southampton,ENG,321,0
+1,1,Brentford,Manchester City,ENG,322,0
+1,0.4,Nott'ham Forest,Liverpool,ENG,323,0
+2,1.2,Leicester City,Crystal Palace,ENG,324,0
+1,0.8,West Ham,Fulham,ENG,325,0
+0,0.3,Ipswich Town,Brighton,ENG,326,0
+2,0.9,Everton,Aston Villa,ENG,327,0
+1,0.8,Chelsea,Bournemouth,ENG,328,0
+1,0.7,Arsenal,Tottenham,ENG,329,0
+2,1.5,Newcastle Utd,Wolves,ENG,330,0
+3,2.2,Chelsea,West Ham,ENG,331,0
+1,0.8,Brentford,Tottenham,ENG,332,0
+1,0.5,Wolves,Aston Villa,ENG,333,0
+1,1.5,Newcastle Utd,Fulham,ENG,334,0
+1,1.6,Ipswich Town,Southampton,ENG,335,0
+1,1.1,Everton,Leicester City,ENG,336,0
+0,1.1,Bournemouth,Liverpool,ENG,337,0
+0,1.6,Manchester Utd,Crystal Palace,ENG,338,0
+2,1.4,Nott'ham Forest,Brighton,ENG,339,0
+2,0.7,Arsenal,Manchester City,ENG,340,0
+1,0.9,Manchester City,Newcastle Utd,ENG,341,0
+1,1,West Ham,Brentford,ENG,342,0
+1,0.9,Crystal Palace,Everton,ENG,343,0
+2,0.3,Leicester City,Arsenal,ENG,344,0
+2,1.1,Brighton,Chelsea,ENG,345,0
+1,1.3,Fulham,Nott'ham Forest,ENG,346,0
+2,2.5,Liverpool,Wolves,ENG,347,0
+2,0.8,Aston Villa,Ipswich Town,ENG,348,0
+3,4.4,Tottenham,Manchester Utd,ENG,349,0
+1,0.6,Southampton,Bournemouth,ENG,350,0
+1,1.4,Liverpool,Crystal Palace,ENG,351,0
+3,1,Wolves,Brentford,ENG,352,0
+0,2.1,Bournemouth,Leicester City,ENG,353,0
+2,2.6,Fulham,Manchester City,ENG,354,0
+1,0.6,Ipswich Town,West Ham,ENG,355,0
+1,0.6,Southampton,Arsenal,ENG,356,0
+0,2.1,Newcastle Utd,Everton,ENG,357,0
+0,0.6,Manchester Utd,Aston Villa,ENG,358,0
+1,0.9,Nott'ham Forest,Chelsea,ENG,359,0
+2,1.3,Tottenham,Brighton,ENG,360,0
+1,0.8,West Ham,Tottenham,ENG,361,0
+3,1.6,Aston Villa,Fulham,ENG,362,0
+2,1.7,Everton,Ipswich Town,ENG,363,0
+3,3.1,Leicester City,Southampton,ENG,364,0
+1,0.9,Brentford,Manchester Utd,ENG,365,0
+1,1.1,Brighton,Newcastle Utd,ENG,366,0
+0,0.7,Arsenal,Bournemouth,ENG,367,0
+2,1.6,Manchester City,Wolves,ENG,368,0
+1,1,Chelsea,Liverpool,ENG,369,0
+0,1,Crystal Palace,Nott'ham Forest,ENG,370,0
+3,1.7,Nott'ham Forest,Leicester City,ENG,371,0
+2,1.3,Wolves,Brighton,ENG,372,0
+0,0.2,Southampton,Manchester City,ENG,373,0
+3,1.3,Ipswich Town,Brentford,ENG,374,0
+1,0.3,Bournemouth,Aston Villa,ENG,375,0
+1,1.2,Fulham,Everton,ENG,376,0
+1,2.3,Manchester Utd,West Ham,ENG,377,0
+1,1.8,Newcastle Utd,Chelsea,ENG,378,0
+0,0.7,Tottenham,Crystal Palace,ENG,379,0
+2,0.8,Liverpool,Arsenal,ENG,380,0
+1,0.8,Getafe,Athletic Club,ESP,381,0
+1,1.6,Girona,Betis,ESP,382,0
+1,1.6,Alavés,Celta Vigo,ESP,383,0
+2,1.8,Sevilla,Las Palmas,ESP,384,0
+1,1,Leganés,Osasuna,ESP,385,0
+2,3.2,Barcelona,Valencia,ESP,386,0
+2,1.1,Rayo Vallecano,Real Sociedad,ESP,387,0
+1,0.6,Real Madrid,Mallorca,ESP,388,0
+0,0.7,Espanyol,Valladolid,ESP,389,0
+2,1.1,Atlético Madrid,Villarreal,ESP,390,0
+3,2.4,Valladolid,Alavés,ESP,391,0
+1,0.2,Espanyol,Athletic Club,ESP,392,0
+2,2.1,Betis,Osasuna,ESP,393,0
+1,1.7,Real Sociedad,Girona,ESP,394,0
+2,0.7,Real Madrid,Celta Vigo,ESP,395,0
+0,0.6,Rayo Vallecano,Mallorca,ESP,396,0
+1,0.3,Leganés,Atlético Madrid,ESP,397,0
+1,1.9,Getafe,Villarreal,ESP,398,0
+1,1,Sevilla,Barcelona,ESP,399,0
+3,1.2,Las Palmas,Valencia,ESP,400,0
+2,0.8,Sevilla,Espanyol,ESP,401,0
+2,2,Villarreal,Valladolid,ESP,402,0
+0,0.9,Alavés,Rayo Vallecano,ESP,403,0
+0,0.6,Girona,Las Palmas,ESP,404,0
+4,2.6,Barcelona,Real Madrid,ESP,405,0
+0,0.9,Celta Vigo,Leganés,ESP,406,0
+1,0.7,Valencia,Getafe,ESP,407,0
+0,0.5,Atlético Madrid,Betis,ESP,408,0
+2,1,Osasuna,Real Sociedad,ESP,409,0
+0,0.6,Athletic Club,Mallorca,ESP,410,0
+0,0.5,Mallorca,Alavés,ESP,411,0
+0,0.2,Valladolid,Osasuna,ESP,412,0
+3,0.4,Leganés,Girona,ESP,413,0
+0,0,Las Palmas,Atlético Madrid,ESP,414,0
+1,0.9,Espanyol,Barcelona,ESP,415,0
+2,1.4,Real Sociedad,Sevilla,ESP,416,0
+1,0.9,Betis,Athletic Club,ESP,417,0
+0,0.5,Getafe,Celta Vigo,ESP,418,0
+1,1.5,Rayo Vallecano,Villarreal,ESP,419,0
+2,2.7,Real Madrid,Valencia,ESP,420,0
+3,1.1,Las Palmas,Rayo Vallecano,ESP,421,0
+0,0.1,Osasuna,Real Madrid,ESP,422,0
+0,0.5,Alavés,Villarreal,ESP,423,0
+0,0.6,Sevilla,Leganés,ESP,424,0
+2,1.2,Celta Vigo,Betis,ESP,425,0
+1,0.6,Atlético Madrid,Mallorca,ESP,426,0
+1,1.2,Athletic Club,Valladolid,ESP,427,0
+1,0.2,Girona,Getafe,ESP,428,0
+0,0.7,Barcelona,Real Sociedad,ESP,429,0
+1,2,Valencia,Espanyol,ESP,430,0
+0,1.1,Valladolid,Getafe,ESP,431,0
+2,1.3,Betis,Valencia,ESP,432,0
+1,0.9,Alavés,Atlético Madrid,ESP,433,0
+3,1.7,Mallorca,Las Palmas,ESP,434,0
+1,0.5,Espanyol,Girona,ESP,435,0
+2,1.8,Barcelona,Celta Vigo,ESP,436,0
+2,2.5,Villarreal,Osasuna,ESP,437,0
+0,0.8,Rayo Vallecano,Sevilla,ESP,438,0
+3,1.8,Real Madrid,Leganés,ESP,439,0
+0,0.5,Real Sociedad,Athletic Club,ESP,440,0
+1,1.3,Valencia,Mallorca,ESP,441,0
+2,0.5,Las Palmas,Barcelona,ESP,442,0
+1,0.9,Leganés,Alavés,ESP,443,0
+1,1.6,Celta Vigo,Espanyol,ESP,444,0
+5,4,Atlético Madrid,Valladolid,ESP,445,0
+2,0.5,Girona,Villarreal,ESP,446,0
+0,0.5,Getafe,Real Madrid,ESP,447,0
+2,0.7,Athletic Club,Rayo Vallecano,ESP,448,0
+0,0.4,Betis,Real Sociedad,ESP,449,0
+1,0.7,Osasuna,Sevilla,ESP,450,0
+0,0.8,Mallorca,Celta Vigo,ESP,451,0
+1,1.3,Valladolid,Las Palmas,ESP,452,0
+2,1.9,Barcelona,Betis,ESP,453,0
+1,0.9,Rayo Vallecano,Valencia,ESP,454,0
+3,0.9,Real Madrid,Girona,ESP,455,0
+3,1.8,Real Sociedad,Leganés,ESP,456,0
+0,0.8,Villarreal,Athletic Club,ESP,457,0
+2,1.3,Alavés,Osasuna,ESP,458,0
+3,0.4,Sevilla,Atlético Madrid,ESP,459,0
+0,0.7,Espanyol,Getafe,ESP,460,0
+0,0.8,Valencia,Valladolid,ESP,461,0
+0,0.3,Osasuna,Espanyol,ESP,462,0
+1,0.8,Girona,Mallorca,ESP,463,0
+0,1.2,Celta Vigo,Sevilla,ESP,464,0
+3,0.7,Real Madrid,Rayo Vallecano,ESP,465,0
+0,0.2,Getafe,Atlético Madrid,ESP,466,0
+1,0.7,Athletic Club,Alavés,ESP,467,0
+0,1,Las Palmas,Real Sociedad,ESP,468,0
+2,0.8,Betis,Villarreal,ESP,469,0
+1,0.4,Leganés,Barcelona,ESP,470,0
+0,0,Valladolid,Girona,ESP,471,0
+1,2.3,Mallorca,Getafe,ESP,472,0
+0,0.3,Real Sociedad,Celta Vigo,ESP,473,0
+2,1.2,Athletic Club,Osasuna,ESP,474,0
+2,0.7,Atlético Madrid,Barcelona,ESP,475,0
+2,1.6,Alavés,Valencia,ESP,476,0
+2,1.3,Sevilla,Real Madrid,ESP,477,0
+0,0.7,Espanyol,Las Palmas,ESP,478,0
+5,3.3,Villarreal,Leganés,ESP,479,0
+1,0.9,Rayo Vallecano,Betis,ESP,480,0
+5,5,Barcelona,Mallorca,ESP,481,0
+1,1.7,Real Madrid,Athletic Club,ESP,482,0
+1,2.1,Celta Vigo,Rayo Vallecano,ESP,483,0
+1,0.5,Girona,Alavés,ESP,484,0
+0,0.7,Betis,Valladolid,ESP,485,0
+1,2,Leganés,Espanyol,ESP,486,0
+1,0.7,Valencia,Sevilla,ESP,487,0
+2,1.1,Getafe,Las Palmas,ESP,488,0
+0,0.3,Osasuna,Atlético Madrid,ESP,489,0
+0,1.2,Villarreal,Real Sociedad,ESP,490,0
+1,0.9,Valencia,Celta Vigo,ESP,491,0
+2,0.9,Villarreal,Sevilla,ESP,492,0
+0,0.6,Mallorca,Osasuna,ESP,493,0
+1,1,Athletic Club,Barcelona,ESP,494,0
+0,0.2,Rayo Vallecano,Getafe,ESP,495,0
+1,0.7,Real Sociedad,Espanyol,ESP,496,0
+0,0.4,Valladolid,Real Madrid,ESP,497,0
+1,0.9,Las Palmas,Leganés,ESP,498,0
+0,1.5,Betis,Alavés,ESP,499,0
+0,0.7,Girona,Atlético Madrid,ESP,500,0
+1,1.2,Valladolid,Espanyol,ESP,501,0
+2,2.6,Sevilla,Girona,ESP,502,0
+0,2.4,Atlético Madrid,Leganés,ESP,503,0
+3,1.5,Alavés,Betis,ESP,504,0
+1,2.3,Barcelona,Getafe,ESP,505,0
+2,1.8,Athletic Club,Celta Vigo,ESP,506,0
+1,1.1,Las Palmas,Real Madrid,ESP,507,0
+1,0.8,Rayo Vallecano,Osasuna,ESP,508,0
+0,0.8,Real Sociedad,Valencia,ESP,509,0
+0,0.5,Mallorca,Villarreal,ESP,510,0
+1,2.6,Osasuna,Las Palmas,ESP,511,0
+1,0.4,Betis,Mallorca,ESP,512,0
+1,2.2,Villarreal,Atlético Madrid,ESP,513,0
+1,0.7,Espanyol,Sevilla,ESP,514,0
+3,2,Real Madrid,Valladolid,ESP,515,0
+1,1,Girona,Rayo Vallecano,ESP,516,0
+3,1.4,Getafe,Real Sociedad,ESP,517,0
+0,1,Leganés,Athletic Club,ESP,518,0
+1,1.5,Valencia,Barcelona,ESP,519,0
+1,0.1,Celta Vigo,Alavés,ESP,520,0
+1,2.2,Rayo Vallecano,Leganés,ESP,521,0
+0,0.9,Sevilla,Getafe,ESP,522,0
+1,0.5,Valladolid,Villarreal,ESP,523,0
+0,0.5,Mallorca,Atlético Madrid,ESP,524,0
+0,1.3,Real Madrid,Espanyol,ESP,525,0
+0,0.1,Alavés,Barcelona,ESP,526,0
+1,0.4,Celta Vigo,Valencia,ESP,527,0
+1,2,Real Sociedad,Osasuna,ESP,528,0
+2,1.4,Athletic Club,Betis,ESP,529,0
+1,1.5,Las Palmas,Girona,ESP,530,0
+0,0.4,Valladolid,Rayo Vallecano,ESP,531,0
+2,1.3,Betis,Celta Vigo,ESP,532,0
+0,0.1,Girona,Athletic Club,ESP,533,0
+2,0.9,Villarreal,Las Palmas,ESP,534,0
+1,1.5,Atlético Madrid,Real Madrid,ESP,535,0
+1,0.9,Getafe,Alavés,ESP,536,0
+0,0.5,Leganés,Valencia,ESP,537,0
+1,0.9,Espanyol,Real Sociedad,ESP,538,0
+4,1.9,Barcelona,Sevilla,ESP,539,0
+1,1.4,Osasuna,Mallorca,ESP,540,0
+2,0.6,Getafe,Girona,ESP,541,0
+3,1.7,Alavés,Leganés,ESP,542,0
+1,1.4,Real Madrid,Osasuna,ESP,543,0
+1,1.7,Celta Vigo,Atlético Madrid,ESP,544,0
+1,1.1,Valencia,Villarreal,ESP,545,0
+1,1,Athletic Club,Espanyol,ESP,546,0
+4,1.1,Sevilla,Valladolid,ESP,547,0
+1,0.8,Las Palmas,Mallorca,ESP,548,0
+0,0.3,Real Sociedad,Betis,ESP,549,0
+0,1,Rayo Vallecano,Barcelona,ESP,550,0
+0,1.2,Osasuna,Celta Vigo,ESP,551,0
+1,0.4,Espanyol,Alavés,ESP,552,0
+1,0.6,Villarreal,Rayo Vallecano,ESP,553,0
+3,1.3,Atlético Madrid,Valencia,ESP,554,0
+2,1.4,Barcelona,Las Palmas,ESP,555,0
+1,0.5,Valladolid,Athletic Club,ESP,556,0
+0,0.4,Girona,Real Madrid,ESP,557,0
+2,2,Betis,Getafe,ESP,558,0
+0,0.3,Leganés,Real Sociedad,ESP,559,0
+1,2.3,Mallorca,Sevilla,ESP,560,0
+1,0.2,Las Palmas,Valladolid,ESP,561,0
+2,1.8,Celta Vigo,Girona,ESP,562,0
+1,0.6,Sevilla,Rayo Vallecano,ESP,563,0
+1,0.9,Real Madrid,Betis,ESP,564,0
+0,1.1,Athletic Club,Atlético Madrid,ESP,565,0
+0,0.3,Getafe,Leganés,ESP,566,0
+0,0,Real Sociedad,Barcelona,ESP,567,0
+1,1.6,Alavés,Mallorca,ESP,568,0
+3,1.7,Valencia,Osasuna,ESP,569,0
+0,1,Espanyol,Villarreal,ESP,570,0
+1,1,Leganés,Celta Vigo,ESP,571,0
+0,2.8,Villarreal,Alavés,ESP,572,0
+1,0.9,Valladolid,Valencia,ESP,573,0
+1,0.9,Atlético Madrid,Getafe,ESP,574,0
+1,1,Rayo Vallecano,Real Madrid,ESP,575,0
+0,0.6,Las Palmas,Betis,ESP,576,0
+1,0.5,Mallorca,Athletic Club,ESP,577,0
+1,0.6,Sevilla,Real Sociedad,ESP,578,0
+1,1.6,Girona,Espanyol,ESP,579,0
+0,0.4,Osasuna,Barcelona,ESP,580,0
+2,1.7,Alavés,Las Palmas,ESP,581,0
+1,1.5,Celta Vigo,Valladolid,ESP,582,0
+1,0.2,Espanyol,Mallorca,ESP,583,0
+2,1.1,Real Madrid,Villarreal,ESP,584,0
+1,1,Valencia,Girona,ESP,585,0
+3,2.7,Betis,Leganés,ESP,586,0
+1,1.3,Athletic Club,Sevilla,ESP,587,0
+2,0.5,Getafe,Osasuna,ESP,588,0
+2,0.6,Real Sociedad,Rayo Vallecano,ESP,589,0
+4,1.3,Barcelona,Atlético Madrid,ESP,590,0
+1,0.7,Valladolid,Real Sociedad,ESP,591,0
+1,0.8,Atlético Madrid,Espanyol,ESP,592,0
+2,0.6,Rayo Vallecano,Alavés,ESP,593,0
+2,2.4,Leganés,Real Madrid,ESP,594,0
+2,1.2,Villarreal,Getafe,ESP,595,0
+1,0.5,Girona,Barcelona,ESP,596,0
+0,0.6,Mallorca,Valencia,ESP,597,0
+0,0.4,Osasuna,Athletic Club,ESP,598,0
+1,0.7,Sevilla,Betis,ESP,599,0
+1,0.3,Las Palmas,Celta Vigo,ESP,600,0
+3,2.7,Celta Vigo,Villarreal,ESP,601,0
+0,0.7,Sevilla,Mallorca,ESP,602,0
+2,1.4,Barcelona,Rayo Vallecano,ESP,603,0
+0,0.1,Valencia,Athletic Club,ESP,604,0
+0,0.2,Leganés,Valladolid,ESP,605,0
+0,0.6,Espanyol,Atlético Madrid,ESP,606,0
+2,1.6,Alavés,Real Sociedad,ESP,607,0
+0,0,Osasuna,Girona,ESP,608,0
+1,2.5,Real Madrid,Las Palmas,ESP,609,0
+1,0.6,Getafe,Betis,ESP,610,0
+4,3.4,Espanyol,Rayo Vallecano,ESP,611,0
+1,0.8,Alavés,Girona,ESP,612,0
+2,0.8,Valencia,Real Madrid,ESP,613,0
+2,0.8,Celta Vigo,Mallorca,ESP,614,0
+1,0.3,Betis,Barcelona,ESP,615,0
+3,2.4,Real Sociedad,Las Palmas,ESP,616,0
+2,1.3,Atlético Madrid,Sevilla,ESP,617,0
+4,1.9,Getafe,Valladolid,ESP,618,0
+0,0.8,Athletic Club,Villarreal,ESP,619,0
+1,2.2,Osasuna,Leganés,ESP,620,0
+0,0.8,Sevilla,Valencia,ESP,621,0
+2,0.7,Mallorca,Real Sociedad,ESP,622,0
+3,1.3,Las Palmas,Getafe,ESP,623,0
+2,1.2,Espanyol,Celta Vigo,ESP,624,0
+1,1.4,Barcelona,Leganés,ESP,625,0
+1,0.9,Girona,Osasuna,ESP,626,0
+1,0.9,Real Madrid,Alavés,ESP,627,0
+2,1.3,Villarreal,Betis,ESP,628,0
+1,1.6,Rayo Vallecano,Athletic Club,ESP,629,0
+2,1.2,Valladolid,Atlético Madrid,ESP,630,0
+0,0.4,Getafe,Espanyol,ESP,631,0
+1,2,Valencia,Rayo Vallecano,ESP,632,0
+3,2.1,Celta Vigo,Barcelona,ESP,633,0
+0,0.9,Leganés,Mallorca,ESP,634,0
+0,0.8,Atlético Madrid,Las Palmas,ESP,635,0
+3,2.3,Osasuna,Valladolid,ESP,636,0
+2,1.7,Real Sociedad,Villarreal,ESP,637,0
+1,1,Alavés,Sevilla,ESP,638,0
+0,0.2,Athletic Club,Real Madrid,ESP,639,0
+3,1.7,Betis,Girona,ESP,640,0
+1,0.3,Espanyol,Valencia,ESP,641,0
+0,0.3,Mallorca,Barcelona,ESP,642,0
+0,0.4,Villarreal,Celta Vigo,ESP,643,0
+0,1,Las Palmas,Athletic Club,ESP,644,0
+0,0.8,Real Sociedad,Alavés,ESP,645,0
+1,1.5,Real Madrid,Getafe,ESP,646,0
+0,1.1,Sevilla,Osasuna,ESP,647,0
+1,0.5,Girona,Leganés,ESP,648,0
+0,0.7,Rayo Vallecano,Atlético Madrid,ESP,649,0
+1,0.9,Valladolid,Betis,ESP,650,0
+0,0.9,Getafe,Rayo Vallecano,ESP,651,0
+0,0.5,Atlético Madrid,Alavés,ESP,652,0
+2,1.2,Osasuna,Villarreal,ESP,653,0
+3,1.4,Valencia,Las Palmas,ESP,654,0
+2,1.9,Barcelona,Valladolid,ESP,655,0
+2,1.8,Celta Vigo,Real Madrid,ESP,656,0
+2,0.6,Leganés,Sevilla,ESP,657,0
+2,1.1,Betis,Espanyol,ESP,658,0
+0,0.2,Athletic Club,Real Sociedad,ESP,659,0
+0,0.5,Mallorca,Girona,ESP,660,0
+1,1.2,Rayo Vallecano,Las Palmas,ESP,661,0
+0,0.5,Getafe,Valencia,ESP,662,0
+2,2.3,Sevilla,Celta Vigo,ESP,663,0
+1,1.8,Valladolid,Mallorca,ESP,664,0
+1,2,Villarreal,Girona,ESP,665,0
+0,0.6,Real Sociedad,Atlético Madrid,ESP,666,0
+2,1.2,Espanyol,Leganés,ESP,667,0
+3,2.7,Real Madrid,Barcelona,ESP,668,0
+0,0.4,Alavés,Athletic Club,ESP,669,0
+1,2,Osasuna,Betis,ESP,670,0
+1,1.4,Girona,Valladolid,ESP,671,0
+1,1.1,Celta Vigo,Real Sociedad,ESP,672,0
+0,0.5,Las Palmas,Sevilla,ESP,673,0
+0,0.8,Valencia,Alavés,ESP,674,0
+0,1.1,Leganés,Villarreal,ESP,675,0
+1,0.5,Mallorca,Real Madrid,ESP,676,0
+2,1.2,Betis,Rayo Vallecano,ESP,677,0
+0,1.4,Atlético Madrid,Osasuna,ESP,678,0
+2,1.2,Athletic Club,Getafe,ESP,679,0
+2,0.6,Barcelona,Espanyol,ESP,680,0
+1,1.5,Leganés,Las Palmas,ESP,681,0
+2,1.6,Getafe,Mallorca,ESP,682,0
+1,1.1,Athletic Club,Valencia,ESP,683,0
+1,0.9,Betis,Atlético Madrid,ESP,684,0
+0,0.7,Espanyol,Osasuna,ESP,685,0
+3,1.8,Villarreal,Barcelona,ESP,686,0
+1,1.4,Alavés,Valladolid,ESP,687,0
+2,2.3,Girona,Real Sociedad,ESP,688,0
+2,2,Real Madrid,Sevilla,ESP,689,0
+2,1.2,Rayo Vallecano,Celta Vigo,ESP,690,0
+1,0.7,Valencia,Betis,ESP,691,0
+0,0.8,Real Sociedad,Real Madrid,ESP,692,0
+0,0.4,Valladolid,Leganés,ESP,693,0
+0,0.5,Las Palmas,Espanyol,ESP,694,0
+0,0.6,Mallorca,Rayo Vallecano,ESP,695,0
+1,1.6,Osasuna,Alavés,ESP,696,0
+2,1.5,Celta Vigo,Getafe,ESP,697,0
+4,2.7,Atlético Madrid,Girona,ESP,698,0
+2,1.5,Sevilla,Villarreal,ESP,699,0
+3,3.5,Barcelona,Athletic Club,ESP,700,0
+0,0.5,Valladolid,Barcelona,ESP,701,0
+1,1.7,Atlético Madrid,Athletic Club,ESP,702,0
+1,1.3,Rayo Vallecano,Espanyol,ESP,703,0
+1,0.5,Villarreal,Valencia,ESP,704,0
+1,1,Mallorca,Leganés,ESP,705,0
+0,0.7,Las Palmas,Alavés,ESP,706,0
+2,1.7,Celta Vigo,Osasuna,ESP,707,0
+2,1.9,Girona,Sevilla,ESP,708,0
+0,0,Real Sociedad,Getafe,ESP,709,0
+0,0.6,Betis,Real Madrid,ESP,710,0
+0,0.1,Leganés,Betis,ESP,711,0
+2,1.8,Villarreal,Mallorca,ESP,712,0
+2,1.9,Alavés,Espanyol,ESP,713,0
+0,1,Getafe,Sevilla,ESP,714,0
+2,2.3,Real Madrid,Real Sociedad,ESP,715,0
+1,0.5,Valladolid,Celta Vigo,ESP,716,0
+4,1.9,Barcelona,Girona,ESP,717,0
+3,1.7,Athletic Club,Las Palmas,ESP,718,0
+0,0.1,Valencia,Atlético Madrid,ESP,719,0
+1,0.3,Osasuna,Rayo Vallecano,ESP,720,0
+1,0.5,Sevilla,Alavés,ESP,721,0
+0,1.4,Real Sociedad,Valladolid,ESP,722,0
+1,0.8,Las Palmas,Osasuna,ESP,723,0
+0,0.4,Girona,Valencia,ESP,724,0
+1,0.3,Espanyol,Real Madrid,ESP,725,0
+1,0.6,Leganés,Getafe,ESP,726,0
+1,1.3,Celta Vigo,Athletic Club,ESP,727,0
+5,3.9,Barcelona,Villarreal,ESP,728,0
+1,0.5,Atlético Madrid,Rayo Vallecano,ESP,729,0
+2,1,Mallorca,Betis,ESP,730,0
+0,0.6,Real Sociedad,Mallorca,ESP,731,0
+2,1.3,Athletic Club,Leganés,ESP,732,0
+1,0.7,Valladolid,Sevilla,ESP,733,0
+0,0.5,Osasuna,Valencia,ESP,734,0
+2,0.9,Alavés,Real Madrid,ESP,735,0
+0,0.5,Rayo Vallecano,Girona,ESP,736,0
+0,0.7,Getafe,Barcelona,ESP,737,0
+1,1.9,Betis,Las Palmas,ESP,738,0
+2,1.6,Villarreal,Espanyol,ESP,739,0
+1,0.6,Atlético Madrid,Celta Vigo,ESP,740,0
+2,2.2,Mallorca,Valladolid,ESP,741,0
+0,0.5,Alavés,Getafe,ESP,742,0
+1,0.9,Leganés,Rayo Vallecano,ESP,743,0
+0,0.8,Valencia,Real Sociedad,ESP,744,0
+2,0.8,Barcelona,Osasuna,ESP,745,0
+1,0.8,Girona,Celta Vigo,ESP,746,0
+1,1.1,Sevilla,Athletic Club,ESP,747,0
+0,0.5,Espanyol,Betis,ESP,748,0
+1,0.8,Real Madrid,Atlético Madrid,ESP,749,0
+1,0.9,Las Palmas,Villarreal,ESP,750,0
+0,0.5,Valencia,Leganés,ESP,751,0
+1,1.6,Mallorca,Espanyol,ESP,752,0
+1,0.3,Osasuna,Getafe,ESP,753,0
+1,0.8,Celta Vigo,Las Palmas,ESP,754,0
+2,1.5,Rayo Vallecano,Valladolid,ESP,755,0
+0,1.1,Villarreal,Real Madrid,ESP,756,0
+1,3.1,Athletic Club,Girona,ESP,757,0
+3,2.7,Barcelona,Alavés,ESP,758,0
+0,0.6,Betis,Sevilla,ESP,759,0
+1,0.5,Atlético Madrid,Real Sociedad,ESP,760,0
+4,2.9,Paris S-G,Le Havre,FRA,761,0
+5,2.4,Marseille,Brest,FRA,762,0
+2,2.1,Lille,Reims,FRA,763,0
+0,0.4,Saint-Étienne,Monaco,FRA,764,0
+1,0.7,Nice,Auxerre,FRA,765,0
+1,1.2,Lens,Angers,FRA,766,0
+0,0.5,Nantes,Toulouse,FRA,767,0
+1,0.9,Strasbourg,Montpellier,FRA,768,0
+0,2.1,Lyon,Rennes,FRA,769,0
+1,0.5,Angers,Monaco,FRA,770,0
+1,1.2,Lyon,Lille,FRA,771,0
+0,0.7,Lens,Paris S-G,FRA,772,0
+1,1.4,Nice,Brest,FRA,773,0
+0,0.5,Strasbourg,Saint-Étienne,FRA,774,0
+0,1.1,Reims,Toulouse,FRA,775,0
+0,1,Montpellier,Le Havre,FRA,776,0
+0,0.9,Rennes,Auxerre,FRA,777,0
+2,1.2,Marseille,Nantes,FRA,778,0
+3,1.9,Auxerre,Marseille,FRA,779,0
+3,3.8,Monaco,Strasbourg,FRA,780,0
+2,1.4,Nantes,Lens,FRA,781,0
+4,3.4,Paris S-G,Angers,FRA,782,0
+2,1.7,Lille,Nice,FRA,783,0
+2,1.4,Toulouse,Rennes,FRA,784,0
+3,2.6,Reims,Le Havre,FRA,785,0
+1,0.9,Brest,Montpellier,FRA,786,0
+0,0.6,Saint-Étienne,Lyon,FRA,787,0
+2,1,Brest,Monaco,FRA,788,0
+0,1.4,Toulouse,Paris S-G,FRA,789,0
+3,1.2,Marseille,Lens,FRA,790,0
+0,0.9,Montpellier,Saint-Étienne,FRA,791,0
+1,1.7,Lyon,Reims,FRA,792,0
+0,0.2,Rennes,Lille,FRA,793,0
+0,0.9,Angers,Auxerre,FRA,794,0
+2,0.9,Le Havre,Nantes,FRA,795,0
+1,0.4,Strasbourg,Nice,FRA,796,0
+2,1.8,Lens,Reims,FRA,797,0
+0,0.1,Saint-Étienne,Rennes,FRA,798,0
+1,1,Strasbourg,Brest,FRA,799,0
+1,0.8,Nantes,Paris S-G,FRA,800,0
+2,2.2,Lille,Montpellier,FRA,801,0
+1,2.1,Nice,Lyon,FRA,802,0
+0,0.2,Auxerre,Toulouse,FRA,803,0
+1,2.1,Angers,Le Havre,FRA,804,0
+1,1,Monaco,Marseille,FRA,805,0
+1,0.7,Brest,Lille,FRA,806,0
+0,2.5,Paris S-G,Auxerre,FRA,807,0
+0,0.5,Toulouse,Monaco,FRA,808,0
+1,1.1,Le Havre,Nice,FRA,809,0
+3,2,Lyon,Angers,FRA,810,0
+0,1,Montpellier,Lens,FRA,811,0
+0,0.4,Rennes,Nantes,FRA,812,0
+0,1.1,Reims,Strasbourg,FRA,813,0
+2,2.5,Marseille,Saint-Étienne,FRA,814,0
+1,0.5,Saint-Étienne,Toulouse,FRA,815,0
+1,1.4,Lille,Marseille,FRA,816,0
+2,1.6,Lens,Auxerre,FRA,817,0
+0,1.3,Monaco,Reims,FRA,818,0
+2,1.4,Nice,Montpellier,FRA,819,0
+0,0.4,Angers,Rennes,FRA,820,0
+3,0.9,Strasbourg,Le Havre,FRA,821,0
+1,1.1,Nantes,Brest,FRA,822,0
+1,1.5,Lyon,Paris S-G,FRA,823,0
+4,1.8,Paris S-G,Monaco,FRA,824,0
+2,1.7,Rennes,Nice,FRA,825,0
+1,1.1,Reims,Saint-Étienne,FRA,826,0
+1,1.3,Nantes,Lille,FRA,827,0
+0,1.2,Montpellier,Lyon,FRA,828,0
+1,1.4,Auxerre,Strasbourg,FRA,829,0
+0,1,Brest,Angers,FRA,830,0
+1,2,Toulouse,Lens,FRA,831,0
+1,0.4,Le Havre,Marseille,FRA,832,0
+2,3.4,Monaco,Nantes,FRA,833,0
+0,1.5,Lille,Auxerre,FRA,834,0
+1,1.4,Lyon,Brest,FRA,835,0
+4,2.5,Nice,Reims,FRA,836,0
+2,1.7,Marseille,Rennes,FRA,837,0
+2,2.7,Lens,Le Havre,FRA,838,0
+2,2.3,Strasbourg,Toulouse,FRA,839,0
+3,3.8,Angers,Montpellier,FRA,840,0
+1,0.4,Saint-Étienne,Paris S-G,FRA,841,0
+1,1.8,Monaco,Montpellier,FRA,842,0
+1,2.8,Nice,Lille,FRA,843,0
+2,1.2,Paris S-G,Lens,FRA,844,0
+2,1,Brest,Rennes,FRA,845,0
+0,1.1,Toulouse,Lyon,FRA,846,0
+1,1.3,Nantes,Saint-Étienne,FRA,847,0
+0,0.7,Auxerre,Angers,FRA,848,0
+1,0.8,Le Havre,Reims,FRA,849,0
+1,0.9,Strasbourg,Marseille,FRA,850,0
+1,1.2,Saint-Étienne,Auxerre,FRA,851,0
+2,1.8,Rennes,Monaco,FRA,852,0
+1,1.8,Lille,Strasbourg,FRA,853,0
+1,0.9,Reims,Paris S-G,FRA,854,0
+1,2,Brest,Le Havre,FRA,855,0
+2,0.5,Montpellier,Toulouse,FRA,856,0
+1,1.1,Lyon,Nantes,FRA,857,0
+0,0.2,Angers,Lens,FRA,858,0
+0,0.8,Marseille,Nice,FRA,859,0
+0,0.6,Montpellier,Paris S-G,FRA,860,0
+2,2.2,Monaco,Lyon,FRA,861,0
+0,0.6,Angers,Lille,FRA,862,0
+2,2.4,Le Havre,Saint-Étienne,FRA,863,0
+0,0.9,Brest,Lens,FRA,864,0
+0,1.1,Auxerre,Nantes,FRA,865,0
+1,1,Toulouse,Nice,FRA,866,0
+1,1.1,Rennes,Strasbourg,FRA,867,0
+2,0.9,Reims,Marseille,FRA,868,0
+2,2,Lens,Montpellier,FRA,869,0
+5,3.6,Paris S-G,Brest,FRA,870,0
+2,1.2,Auxerre,Monaco,FRA,871,0
+1,2,Saint-Étienne,Lille,FRA,872,0
+1,1.7,Nice,Toulouse,FRA,873,0
+2,2,Nantes,Reims,FRA,874,0
+0,1.2,Strasbourg,Rennes,FRA,875,0
+1,2.2,Le Havre,Angers,FRA,876,0
+2,1.7,Lyon,Marseille,FRA,877,0
+2,2.5,Brest,Nantes,FRA,878,0
+1,0.9,Monaco,Paris S-G,FRA,879,0
+0,1.2,Lens,Nice,FRA,880,0
+2,1.8,Le Havre,Lille,FRA,881,0
+2,3.6,Rennes,Saint-Étienne,FRA,882,0
+0,0.4,Reims,Lyon,FRA,883,0
+0,1.8,Montpellier,Strasbourg,FRA,884,0
+2,0.9,Toulouse,Auxerre,FRA,885,0
+2,2.4,Marseille,Angers,FRA,886,0
+2,1.2,Auxerre,Brest,FRA,887,0
+1,1,Saint-Étienne,Marseille,FRA,888,0
+1,1.4,Nantes,Monaco,FRA,889,0
+1,2.4,Paris S-G,Toulouse,FRA,890,0
+4,1,Lyon,Montpellier,FRA,891,0
+2,2.4,Strasbourg,Lens,FRA,892,0
+1,1.5,Angers,Reims,FRA,893,0
+3,1.4,Nice,Le Havre,FRA,894,0
+2,3,Lille,Rennes,FRA,895,0
+0,0.1,Reims,Rennes,FRA,896,0
+1,2.3,Monaco,Lille,FRA,897,0
+3,2.9,Angers,Saint-Étienne,FRA,898,0
+0,0.7,Marseille,Auxerre,FRA,899,0
+1,1.6,Lens,Nantes,FRA,900,0
+0,0.6,Montpellier,Nice,FRA,901,0
+4,2.4,Toulouse,Le Havre,FRA,902,0
+0,0.6,Brest,Strasbourg,FRA,903,0
+3,2.3,Paris S-G,Lyon,FRA,904,0
+0,0.6,Reims,Monaco,FRA,905,0
+3,1.8,Nice,Saint-Étienne,FRA,906,0
+4,1.5,Le Havre,Lens,FRA,907,0
+1,1.1,Lille,Paris S-G,FRA,908,0
+1,2,Brest,Lyon,FRA,909,0
+4,2.4,Rennes,Montpellier,FRA,910,0
+1,1.4,Strasbourg,Auxerre,FRA,911,0
+4,3.5,Toulouse,Angers,FRA,912,0
+0,0.8,Nantes,Marseille,FRA,913,0
+1,2.4,Monaco,Toulouse,FRA,914,0
+4,3.8,Paris S-G,Rennes,FRA,915,0
+0,0.3,Montpellier,Lille,FRA,916,0
+1,0.9,Lens,Marseille,FRA,917,0
+0,0.4,Angers,Brest,FRA,918,0
+2,2.1,Auxerre,Reims,FRA,919,0
+1,1.5,Saint-Étienne,Le Havre,FRA,920,0
+1,1,Strasbourg,Nantes,FRA,921,0
+2,1.1,Lyon,Nice,FRA,922,0
+1,0.7,Auxerre,Nice,FRA,923,0
+0,1.6,Lille,Nantes,FRA,924,0
+2,2,Monaco,Angers,FRA,925,0
+0,0.6,Rennes,Lens,FRA,926,0
+2,1.7,Le Havre,Lyon,FRA,927,0
+1,1.7,Toulouse,Strasbourg,FRA,928,0
+2,NA,Saint-Étienne,Montpellier,FRA,929,0
+0,1.3,Reims,Brest,FRA,930,0
+1,1.2,Marseille,Paris S-G,FRA,931,0
+2,2,Lyon,Strasbourg,FRA,932,0
+1,1.1,Marseille,Reims,FRA,933,0
+6,3.3,Paris S-G,Saint-Étienne,FRA,934,0
+1,0.5,Nice,Monaco,FRA,935,0
+4,1.3,Brest,Toulouse,FRA,936,0
+2,0.8,Nantes,Le Havre,FRA,937,0
+0,0.5,Montpellier,Auxerre,FRA,938,0
+3,1.5,Rennes,Angers,FRA,939,0
+0,0.4,Lens,Lille,FRA,940,0
+2,0.5,Nantes,Nice,FRA,941,0
+0,0.2,Angers,Paris S-G,FRA,942,0
+1,1.5,Monaco,Brest,FRA,943,0
+1,0.9,Lille,Lyon,FRA,944,0
+0,1.4,Saint-Étienne,Lens,FRA,945,0
+1,0.8,Auxerre,Rennes,FRA,946,0
+1,2.5,Strasbourg,Reims,FRA,947,0
+2,1.4,Le Havre,Montpellier,FRA,948,0
+2,1.3,Toulouse,Marseille,FRA,949,0
+2,1.4,Reims,Lens,FRA,950,0
+0,1.1,Marseille,Monaco,FRA,951,0
+2,0.5,Lille,Toulouse,FRA,952,0
+2,1.7,Nice,Strasbourg,FRA,953,0
+3,1.5,Brest,Saint-Étienne,FRA,954,0
+0,0.5,Montpellier,Angers,FRA,955,0
+5,2.7,Rennes,Le Havre,FRA,956,0
+3,2.9,Lyon,Auxerre,FRA,957,0
+1,1.6,Paris S-G,Nantes,FRA,958,0
+3,2.7,Strasbourg,Lyon,FRA,959,0
+0,0.2,Saint-Étienne,Brest,FRA,960,0
+3,1.5,Nantes,Montpellier,FRA,961,0
+3,0.8,Marseille,Toulouse,FRA,962,0
+1,2.2,Lens,Monaco,FRA,963,0
+1,0.8,Rennes,Reims,FRA,964,0
+1,0.6,Auxerre,Le Havre,FRA,965,0
+4,2.2,Nice,Angers,FRA,966,0
+3,2.6,Paris S-G,Lille,FRA,967,0
+1,0.7,Nantes,Rennes,FRA,968,0
+1,0.5,Le Havre,Paris S-G,FRA,969,0
+0,0.4,Strasbourg,Monaco,FRA,970,0
+1,0.3,Montpellier,Marseille,FRA,971,0
+1,0.3,Auxerre,Lille,FRA,972,0
+3,2.2,Lens,Brest,FRA,973,0
+1,0.4,Angers,Nice,FRA,974,0
+0,1.3,Toulouse,Reims,FRA,975,0
+1,0.8,Lyon,Saint-Étienne,FRA,976,0
+3,1,Nice,Paris S-G,FRA,977,0
+1,2.1,Saint-Étienne,Strasbourg,FRA,978,0
+1,2.9,Monaco,Le Havre,FRA,979,0
+1,0.8,Rennes,Lyon,FRA,980,0
+2,1.4,Lille,Angers,FRA,981,0
+0,0.4,Toulouse,Nantes,FRA,982,0
+4,2.6,Auxerre,Lens,FRA,983,0
+0,0.7,Reims,Montpellier,FRA,984,0
+1,1.2,Brest,Marseille,FRA,985,0
+0,1.3,Reims,Nice,FRA,986,0
+1,1.7,Paris S-G,Strasbourg,FRA,987,0
+1,1.4,Rennes,Toulouse,FRA,988,0
+3,2,Monaco,Saint-Étienne,FRA,989,0
+1,1.1,Angers,Nantes,FRA,990,0
+0,0.5,Montpellier,Brest,FRA,991,0
+2,0.7,Lens,Lyon,FRA,992,0
+2,1.5,Le Havre,Auxerre,FRA,993,0
+1,1.3,Marseille,Lille,FRA,994,0
+2,0.7,Saint-Étienne,Reims,FRA,995,0
+0,1.1,Nice,Rennes,FRA,996,0
+1,1,Strasbourg,Angers,FRA,997,0
+3,2.5,Marseille,Le Havre,FRA,998,0
+1,0.7,Nantes,Auxerre,FRA,999,0
+0,0.4,Lyon,Monaco,FRA,1000,0
+1,0.7,Lens,Toulouse,FRA,1001,0
+4,1.7,Paris S-G,Montpellier,FRA,1002,0
+0,1.9,Lille,Brest,FRA,1003,0
+1,0.1,Reims,Lille,FRA,1004,0
+0,0.5,Monaco,Lens,FRA,1005,0
+0,0.8,Montpellier,Nantes,FRA,1006,0
+1,0.6,Auxerre,Paris S-G,FRA,1007,0
+3,2.5,Le Havre,Strasbourg,FRA,1008,0
+0,0.5,Angers,Lyon,FRA,1009,0
+0,0.9,Brest,Nice,FRA,1010,0
+2,1.3,Rennes,Marseille,FRA,1011,0
+3,3.2,Toulouse,Saint-Étienne,FRA,1012,0
+0,1.2,Lille,Saint-Étienne,FRA,1013,0
+0,1.9,Nice,Marseille,FRA,1014,0
+3,3.4,Monaco,Auxerre,FRA,1015,0
+1,1,Brest,Paris S-G,FRA,1016,0
+0,0.3,Montpellier,Rennes,FRA,1017,0
+2,0.5,Reims,Nantes,FRA,1018,0
+1,0.9,Angers,Strasbourg,FRA,1019,0
+0,0.2,Le Havre,Toulouse,FRA,1020,0
+0,0.6,Lyon,Lens,FRA,1021,0
+0,0.3,Saint-Étienne,Nice,FRA,1022,0
+3,3.2,Strasbourg,Lille,FRA,1023,0
+1,0.6,Lens,Rennes,FRA,1024,0
+1,1.6,Paris S-G,Reims,FRA,1025,0
+1,0.6,Le Havre,Monaco,FRA,1026,0
+0,2.7,Toulouse,Brest,FRA,1027,0
+1,0.6,Nantes,Angers,FRA,1028,0
+2,1.2,Auxerre,Montpellier,FRA,1029,0
+3,0.8,Marseille,Lyon,FRA,1030,0
+0,0.8,Brest,Auxerre,FRA,1031,0
+1,1.4,Rennes,Paris S-G,FRA,1032,0
+0,1.1,Nice,Lens,FRA,1033,0
+3,3.1,Lille,Le Havre,FRA,1034,0
+1,0.9,Montpellier,Monaco,FRA,1035,0
+2,0.4,Lyon,Toulouse,FRA,1036,0
+2,1,Saint-Étienne,Nantes,FRA,1037,0
+3,2.9,Reims,Angers,FRA,1038,0
+0,0.5,Marseille,Strasbourg,FRA,1039,0
+1,0.8,Angers,Marseille,FRA,1040,0
+1,0.8,Auxerre,Saint-Étienne,FRA,1041,0
+1,1.1,Toulouse,Lille,FRA,1042,0
+2,0.6,Monaco,Rennes,FRA,1043,0
+0,0.9,Nantes,Lyon,FRA,1044,0
+0,1,Le Havre,Brest,FRA,1045,0
+2,1,Lens,Strasbourg,FRA,1046,0
+2,0.5,Montpellier,Reims,FRA,1047,0
+1,1.3,Paris S-G,Nice,FRA,1048,0
+0,0.2,Lille,Monaco,FRA,1049,0
+1,1.2,Rennes,Brest,FRA,1050,0
+2,1.2,Lens,Saint-Étienne,FRA,1051,0
+2,1.9,Strasbourg,Paris S-G,FRA,1052,0
+4,2.7,Lyon,Le Havre,FRA,1053,0
+1,1.4,Angers,Toulouse,FRA,1054,0
+1,1.1,Reims,Auxerre,FRA,1055,0
+1,0.8,Nice,Nantes,FRA,1056,0
+5,3.2,Marseille,Montpellier,FRA,1057,0
+0,0.4,Le Havre,Rennes,FRA,1058,0
+2,1.5,Saint-Étienne,Angers,FRA,1059,0
+2,1.5,Brest,Reims,FRA,1060,0
+2,1.8,Lille,Lens,FRA,1061,0
+2,1.5,Auxerre,Lyon,FRA,1062,0
+3,1.9,Toulouse,Montpellier,FRA,1063,0
+1,0.5,Monaco,Nice,FRA,1064,0
+1,0.7,Nantes,Strasbourg,FRA,1065,0
+3,3.1,Paris S-G,Marseille,FRA,1066,0
+3,2.7,Leverkusen,Gladbach,GER,1069,0
+2,1.7,Holstein Kiel,Hoffenheim,GER,1070,0
+1,0.6,Union Berlin,Mainz 05,GER,1071,0
+2,1.4,Werder Bremen,Augsburg,GER,1072,0
+1,0.4,Stuttgart,Freiburg,GER,1073,0
+0,1,Bochum,RB Leipzig,GER,1074,0
+0,1.4,Eint Frankfurt,Dortmund,GER,1075,0
+3,2.4,Bayern Munich,Wolfsburg,GER,1076,0
+2,1.1,Heidenheim,St. Pauli,GER,1077,0
+0,1.7,Freiburg,Union Berlin,GER,1078,0
+1,1.2,Leverkusen,Bochum,GER,1079,0
+1,0.7,Holstein Kiel,Werder Bremen,GER,1080,0
+1,0.9,Dortmund,Mainz 05,GER,1081,0
+1,0.8,Bayern Munich,St. Pauli,GER,1082,0
+0,0.9,Gladbach,RB Leipzig,GER,1083,0
+0,0.5,Hoffenheim,Augsburg,GER,1084,0
+3,1.3,Eint Frankfurt,Stuttgart,GER,1085,0
+3,1.5,Wolfsburg,Heidenheim,GER,1086,0
+0,0.1,Augsburg,Bayern Munich,GER,1087,0
+0,0.5,Union Berlin,Wolfsburg,GER,1088,0
+2,1.1,Heidenheim,Leverkusen,GER,1089,0
+3,1.6,RB Leipzig,Hoffenheim,GER,1090,0
+0,0.7,Bochum,Stuttgart,GER,1091,0
+0,0.8,Freiburg,Dortmund,GER,1092,0
+0,0.4,Werder Bremen,Eint Frankfurt,GER,1093,0
+3,2.2,Mainz 05,Holstein Kiel,GER,1094,0
+0,1.1,St. Pauli,Gladbach,GER,1095,0
+1,1.2,Holstein Kiel,St. Pauli,GER,1096,0
+5,2.2,Wolfsburg,RB Leipzig,GER,1097,0
+1,1.5,Gladbach,Freiburg,GER,1098,0
+2,0.9,Leverkusen,Union Berlin,GER,1099,0
+2,1.8,Stuttgart,Werder Bremen,GER,1100,0
+0,0.3,Bochum,Augsburg,GER,1101,0
+1,1.5,Bayern Munich,Dortmund,GER,1102,0
+0,0.4,Hoffenheim,Mainz 05,GER,1103,0
+4,2.6,Eint Frankfurt,Heidenheim,GER,1104,0
+2,1.4,Union Berlin,Stuttgart,GER,1105,0
+1,0.8,Werder Bremen,Bochum,GER,1106,0
+2,1.6,RB Leipzig,Holstein Kiel,GER,1107,0
+1,1.8,St. Pauli,Leverkusen,GER,1108,0
+2,0.6,Augsburg,Eint Frankfurt,GER,1109,0
+2,1.3,Heidenheim,Bayern Munich,GER,1110,0
+1,1.5,Dortmund,Gladbach,GER,1111,0
+3,2.6,Mainz 05,Wolfsburg,GER,1112,0
+1,1,Freiburg,Hoffenheim,GER,1113,0
+2,1.8,Wolfsburg,Freiburg,GER,1114,0
+2,0.8,Leverkusen,Augsburg,GER,1115,0
+1,1.4,Bayern Munich,Mainz 05,GER,1116,0
+2,1,Bochum,Union Berlin,GER,1117,0
+1,0.6,Holstein Kiel,Gladbach,GER,1118,0
+2,1,Werder Bremen,St. Pauli,GER,1119,0
+3,2.3,Stuttgart,Heidenheim,GER,1120,0
+1,1,Hoffenheim,Dortmund,GER,1121,0
+1,0.9,Eint Frankfurt,RB Leipzig,GER,1122,0
+1,0.4,RB Leipzig,Bayern Munich,GER,1123,0
+1,1.3,Union Berlin,Werder Bremen,GER,1124,0
+3,0.6,Mainz 05,Eint Frankfurt,GER,1125,0
+1,2.2,St. Pauli,Stuttgart,GER,1126,0
+2,0.7,Gladbach,Hoffenheim,GER,1127,0
+1,1.5,Augsburg,Holstein Kiel,GER,1128,0
+1,0.7,Freiburg,Leverkusen,GER,1129,0
+0,0.6,Heidenheim,Bochum,GER,1130,0
+3,2.7,Dortmund,Wolfsburg,GER,1131,0
+3,1.6,Leverkusen,Dortmund,GER,1132,0
+0,0.6,Bochum,Mainz 05,GER,1133,0
+1,1.5,Eint Frankfurt,St. Pauli,GER,1134,0
+0,1.1,Union Berlin,Heidenheim,GER,1135,0
+2,1.8,Holstein Kiel,Freiburg,GER,1136,0
+1,0.7,Wolfsburg,Hoffenheim,GER,1137,0
+1,4.3,Bayern Munich,Gladbach,GER,1138,0
+2,1.5,Werder Bremen,RB Leipzig,GER,1139,0
+1,2.4,Stuttgart,Augsburg,GER,1140,0
+2,1,Dortmund,Holstein Kiel,GER,1141,0
+1,1.1,Gladbach,Wolfsburg,GER,1142,0
+0,0.7,Mainz 05,Leverkusen,GER,1143,0
+1,0.5,Freiburg,Eint Frankfurt,GER,1144,0
+0,0.7,St. Pauli,Bochum,GER,1145,0
+2,1.2,Augsburg,Union Berlin,GER,1146,0
+1,1,RB Leipzig,Stuttgart,GER,1147,0
+3,1.4,Heidenheim,Werder Bremen,GER,1148,0
+0,0.2,Hoffenheim,Bayern Munich,GER,1149,0
+0,0.8,Dortmund,Eint Frankfurt,GER,1150,0
+3,0.8,Hoffenheim,Holstein Kiel,GER,1151,0
+2,1.9,St. Pauli,Heidenheim,GER,1152,0
+3,2.2,RB Leipzig,Bochum,GER,1153,0
+0,0.2,Freiburg,Stuttgart,GER,1154,0
+2,0.5,Wolfsburg,Bayern Munich,GER,1155,0
+1,0.6,Gladbach,Leverkusen,GER,1156,0
+1,1.7,Mainz 05,Union Berlin,GER,1157,0
+2,1.2,Augsburg,Werder Bremen,GER,1158,0
+2,0.2,Holstein Kiel,Wolfsburg,GER,1159,0
+2,1,Bayern Munich,Freiburg,GER,1160,0
+2,2.4,Leverkusen,RB Leipzig,GER,1161,0
+2,1.3,Werder Bremen,Dortmund,GER,1162,0
+1,1.2,Heidenheim,Augsburg,GER,1163,0
+0,1.1,Stuttgart,Mainz 05,GER,1164,0
+0,0.5,Bochum,Gladbach,GER,1165,0
+2,2.4,Eint Frankfurt,Hoffenheim,GER,1166,0
+0,1.1,Union Berlin,St. Pauli,GER,1167,0
+0,0.5,St. Pauli,Union Berlin,GER,1168,0
+0,0.6,Dortmund,Werder Bremen,GER,1169,0
+1,1,Hoffenheim,Eint Frankfurt,GER,1170,0
+2,2.9,Gladbach,Bochum,GER,1171,0
+2,1.3,Wolfsburg,Holstein Kiel,GER,1172,0
+3,2.3,Mainz 05,Stuttgart,GER,1173,0
+3,1.1,RB Leipzig,Leverkusen,GER,1174,0
+0,0.7,Augsburg,Heidenheim,GER,1175,0
+0,1,Freiburg,Bayern Munich,GER,1176,0
+0,1.2,Mainz 05,Werder Bremen,GER,1177,0
+2,2.2,Dortmund,Heidenheim,GER,1178,0
+1,0.3,Augsburg,St. Pauli,GER,1179,0
+3,1.8,Holstein Kiel,Bayern Munich,GER,1180,0
+1,1.7,Freiburg,Bochum,GER,1181,0
+2,2.1,Gladbach,Stuttgart,GER,1182,0
+0,0.3,RB Leipzig,Union Berlin,GER,1183,0
+1,1.2,Wolfsburg,Eint Frankfurt,GER,1184,0
+1,1.9,Hoffenheim,Leverkusen,GER,1185,0
+0,0.1,Werder Bremen,Bayern Munich,GER,1186,0
+0,0.5,Heidenheim,Freiburg,GER,1187,0
+2,0.3,Stuttgart,Dortmund,GER,1188,0
+0,1.4,Leverkusen,Wolfsburg,GER,1189,0
+4,2.8,Union Berlin,Hoffenheim,GER,1190,0
+0,0.3,Augsburg,Mainz 05,GER,1191,0
+1,2.2,Eint Frankfurt,Gladbach,GER,1192,0
+2,2.3,Bochum,Holstein Kiel,GER,1193,0
+0,0.6,St. Pauli,RB Leipzig,GER,1194,0
+0,1.2,RB Leipzig,Augsburg,GER,1195,0
+2,1.6,Wolfsburg,Stuttgart,GER,1196,0
+2,2.1,Gladbach,Union Berlin,GER,1197,0
+1,1.3,Freiburg,St. Pauli,GER,1198,0
+0,2.6,Dortmund,Bochum,GER,1199,0
+0,0,Bayern Munich,Leverkusen,GER,1200,0
+3,1.4,Hoffenheim,Werder Bremen,GER,1201,0
+1,1.4,Holstein Kiel,Eint Frankfurt,GER,1202,0
+2,2,Mainz 05,Heidenheim,GER,1203,0
+0,1.2,Werder Bremen,Freiburg,GER,1204,0
+0,0.8,St. Pauli,Mainz 05,GER,1205,0
+1,0.8,Bochum,Wolfsburg,GER,1206,0
+3,1.5,Augsburg,Gladbach,GER,1207,0
+2,1.8,Leverkusen,Holstein Kiel,GER,1208,0
+0,0.3,Union Berlin,Dortmund,GER,1209,0
+2,0.8,Heidenheim,RB Leipzig,GER,1210,0
+0,0.5,Eint Frankfurt,Bayern Munich,GER,1211,0
+1,2.1,Stuttgart,Hoffenheim,GER,1212,0
+3,2.2,Bayern Munich,Stuttgart,GER,1213,0
+2,0.9,Wolfsburg,Werder Bremen,GER,1214,0
+2,1.5,Mainz 05,RB Leipzig,GER,1215,0
+3,1.8,Gladbach,Heidenheim,GER,1216,0
+1,0.6,Hoffenheim,Bochum,GER,1217,0
+2,1.5,Dortmund,St. Pauli,GER,1218,0
+4,2,Leverkusen,Eint Frankfurt,GER,1219,0
+1,1,Holstein Kiel,Union Berlin,GER,1220,0
+0,0.8,Freiburg,Augsburg,GER,1221,0
+3,1.5,Mainz 05,Gladbach,GER,1222,0
+2,1.1,Werder Bremen,Leverkusen,GER,1223,0
+3,1.1,Bochum,Bayern Munich,GER,1224,0
+2,0.8,Stuttgart,Holstein Kiel,GER,1225,0
+1,1.5,St. Pauli,Wolfsburg,GER,1226,0
+1,0.2,Augsburg,Dortmund,GER,1227,0
+0,1.5,RB Leipzig,Freiburg,GER,1228,0
+2,0.9,Union Berlin,Eint Frankfurt,GER,1229,0
+1,1.2,Heidenheim,Hoffenheim,GER,1230,0
+0,0.2,Hoffenheim,St. Pauli,GER,1231,0
+1,1.6,Bayern Munich,Union Berlin,GER,1232,0
+4,2.4,Gladbach,Werder Bremen,GER,1233,0
+2,3.1,Freiburg,Mainz 05,GER,1234,0
+0,0.8,Wolfsburg,Augsburg,GER,1235,0
+0,3,Dortmund,RB Leipzig,GER,1236,0
+3,2.5,Eint Frankfurt,Bochum,GER,1237,0
+1,1.5,Holstein Kiel,Heidenheim,GER,1238,0
+4,1.7,Leverkusen,Stuttgart,GER,1239,0
+1,0.5,Bochum,Leverkusen,GER,1240,0
+1,0.6,Augsburg,Hoffenheim,GER,1241,0
+3,1.8,Werder Bremen,Holstein Kiel,GER,1242,0
+0,1.3,RB Leipzig,Gladbach,GER,1243,0
+2,1,St. Pauli,Bayern Munich,GER,1244,0
+1,1.3,Heidenheim,Wolfsburg,GER,1245,0
+0,1.2,Stuttgart,Eint Frankfurt,GER,1246,0
+2,1,Union Berlin,Freiburg,GER,1247,0
+1,0.8,Mainz 05,Dortmund,GER,1248,0
+3,2.4,Bayern Munich,Augsburg,GER,1249,0
+1,0.9,Holstein Kiel,Mainz 05,GER,1250,0
+1,0.9,Hoffenheim,RB Leipzig,GER,1251,0
+4,3.3,Dortmund,Freiburg,GER,1252,0
+4,2.8,Stuttgart,Bochum,GER,1253,0
+1,0.4,Leverkusen,Heidenheim,GER,1254,0
+0,0.5,Eint Frankfurt,Werder Bremen,GER,1255,0
+1,0.6,Gladbach,St. Pauli,GER,1256,0
+0,1.9,Wolfsburg,Union Berlin,GER,1257,0
+3,1.3,RB Leipzig,Wolfsburg,GER,1258,0
+0,1.2,Mainz 05,Hoffenheim,GER,1259,0
+2,1.6,Freiburg,Gladbach,GER,1260,0
+2,1.1,Augsburg,Bochum,GER,1261,0
+0,0.5,Union Berlin,Leverkusen,GER,1262,0
+2,1.2,St. Pauli,Holstein Kiel,GER,1263,0
+2,1.6,Dortmund,Bayern Munich,GER,1264,0
+2,1.5,Werder Bremen,Stuttgart,GER,1265,0
+0,1.7,Heidenheim,Eint Frankfurt,GER,1266,0
+2,1.8,Heidenheim,Dortmund,GER,1267,0
+0,0.6,Union Berlin,RB Leipzig,GER,1268,0
+3,2.2,Stuttgart,Gladbach,GER,1269,0
+1,0.9,Bochum,Freiburg,GER,1270,0
+2,2.5,Eint Frankfurt,Wolfsburg,GER,1271,0
+4,3.5,Leverkusen,Hoffenheim,GER,1272,0
+6,3.2,Bayern Munich,Holstein Kiel,GER,1273,0
+1,0.5,St. Pauli,Augsburg,GER,1274,0
+2,1.6,Werder Bremen,Mainz 05,GER,1275,0
+1,0.8,Holstein Kiel,RB Leipzig,GER,1276,0
+2,1.5,Hoffenheim,Freiburg,GER,1277,0
+0,0.7,Bochum,Werder Bremen,GER,1278,0
+4,3.2,Bayern Munich,Heidenheim,GER,1279,0
+2,1.6,Wolfsburg,Mainz 05,GER,1280,0
+4,0.9,Stuttgart,Union Berlin,GER,1281,0
+0,1.1,Eint Frankfurt,Augsburg,GER,1282,0
+2,1.4,Gladbach,Dortmund,GER,1283,0
+1,0.8,Leverkusen,St. Pauli,GER,1284,0
+1,0.3,Heidenheim,Stuttgart,GER,1285,0
+3,2.6,Dortmund,Hoffenheim,GER,1286,0
+0,0.7,Mainz 05,Bayern Munich,GER,1287,0
+0,0.7,Augsburg,Leverkusen,GER,1288,0
+3,1.6,Gladbach,Holstein Kiel,GER,1289,0
+1,1.6,Freiburg,Wolfsburg,GER,1290,0
+0,0.4,RB Leipzig,Eint Frankfurt,GER,1291,0
+1,0.3,Union Berlin,Bochum,GER,1292,0
+0,0.6,St. Pauli,Werder Bremen,GER,1293,0
+0,1.3,Bochum,Heidenheim,GER,1294,0
+1,2.7,Stuttgart,St. Pauli,GER,1295,0
+4,1.8,Hoffenheim,Gladbach,GER,1296,0
+3,1.6,Bayern Munich,RB Leipzig,GER,1297,0
+2,1.6,Werder Bremen,Union Berlin,GER,1298,0
+0,0.7,Wolfsburg,Dortmund,GER,1299,0
+3,1.7,Holstein Kiel,Augsburg,GER,1300,0
+2,0.3,Leverkusen,Freiburg,GER,1301,0
+1,1.3,Eint Frankfurt,Mainz 05,GER,1302,0
+2,1.4,Hoffenheim,Wolfsburg,GER,1303,0
+4,1.5,Mainz 05,Bochum,GER,1304,0
+0,1.7,RB Leipzig,Werder Bremen,GER,1305,0
+2,1.4,Freiburg,Holstein Kiel,GER,1306,0
+3,1.1,Heidenheim,Union Berlin,GER,1307,0
+0,1.6,Gladbach,Bayern Munich,GER,1308,0
+4,1.2,Dortmund,Leverkusen,GER,1309,0
+2,0.8,St. Pauli,Eint Frankfurt,GER,1310,0
+0,0.5,Augsburg,Stuttgart,GER,1311,0
+3,2.6,Stuttgart,RB Leipzig,GER,1312,0
+1,1.7,Wolfsburg,Gladbach,GER,1313,0
+4,2.2,Werder Bremen,Heidenheim,GER,1314,0
+2,1.3,Bochum,St. Pauli,GER,1315,0
+3,2,Eint Frankfurt,Freiburg,GER,1316,0
+2,0.8,Union Berlin,Augsburg,GER,1317,0
+2,1.2,Leverkusen,Mainz 05,GER,1318,0
+0,0.8,Holstein Kiel,Dortmund,GER,1319,0
+4,1.4,Bayern Munich,Hoffenheim,GER,1320,0
+3,1,Mainz 05,Augsburg,GER,1321,0
+1,0.4,Hoffenheim,Union Berlin,GER,1322,0
+2,1.9,Holstein Kiel,Bochum,GER,1323,0
+3,1.4,Freiburg,Heidenheim,GER,1324,0
+5,3,Bayern Munich,Werder Bremen,GER,1325,0
+0,1.7,Gladbach,Eint Frankfurt,GER,1326,0
+3,0.7,Wolfsburg,Leverkusen,GER,1327,0
+1,0.7,Dortmund,Stuttgart,GER,1328,0
+0,0.7,RB Leipzig,St. Pauli,GER,1329,0
+2,1.3,Bochum,Dortmund,GER,1330,0
+2,1.2,Heidenheim,Mainz 05,GER,1331,0
+3,1.1,St. Pauli,Freiburg,GER,1332,0
+0,1.1,Augsburg,RB Leipzig,GER,1333,0
+0,0.7,Union Berlin,Gladbach,GER,1334,0
+2,1.8,Stuttgart,Wolfsburg,GER,1335,0
+1,0.1,Leverkusen,Bayern Munich,GER,1336,0
+4,2.1,Eint Frankfurt,Holstein Kiel,GER,1337,0
+4,2.9,Werder Bremen,Hoffenheim,GER,1338,0
+1,0.5,Gladbach,Augsburg,GER,1339,0
+3,2.4,Wolfsburg,Bochum,GER,1340,0
+1,0.7,Dortmund,Union Berlin,GER,1341,0
+1,1,Freiburg,Werder Bremen,GER,1342,0
+2,1.6,Holstein Kiel,Leverkusen,GER,1343,0
+3,1.1,Mainz 05,St. Pauli,GER,1344,0
+1,1.4,RB Leipzig,Heidenheim,GER,1345,0
+3,2.2,Bayern Munich,Eint Frankfurt,GER,1346,0
+1,0.9,Hoffenheim,Stuttgart,GER,1347,0
+1,0.6,St. Pauli,Dortmund,GER,1348,0
+1,1.9,Eint Frankfurt,Leverkusen,GER,1349,0
+2,1.9,RB Leipzig,Mainz 05,GER,1350,0
+1,0.6,Augsburg,Freiburg,GER,1351,0
+1,2.7,Bochum,Hoffenheim,GER,1352,0
+2,2,Heidenheim,Gladbach,GER,1353,0
+0,0.5,Stuttgart,Bayern Munich,GER,1354,0
+2,1.1,Union Berlin,Holstein Kiel,GER,1355,0
+4,2,Werder Bremen,Wolfsburg,GER,1356,0
+1,0.7,Gladbach,Mainz 05,GER,1357,0
+0,1.1,Wolfsburg,St. Pauli,GER,1358,0
+1,0.5,Holstein Kiel,Stuttgart,GER,1359,0
+1,1,Dortmund,Augsburg,GER,1360,0
+1,1.7,Freiburg,RB Leipzig,GER,1361,0
+2,1.3,Leverkusen,Werder Bremen,GER,1362,0
+5,2.2,Bayern Munich,Bochum,GER,1363,0
+1,1.5,Eint Frankfurt,Union Berlin,GER,1364,0
+0,0.7,Hoffenheim,Heidenheim,GER,1365,0
+0,0.3,Stuttgart,Leverkusen,GER,1366,0
+1,0.5,Augsburg,Wolfsburg,GER,1367,0
+0,0.5,Union Berlin,Bayern Munich,GER,1368,0
+2,1.8,Bochum,Eint Frankfurt,GER,1369,0
+0,1.2,Heidenheim,Holstein Kiel,GER,1370,0
+2,0.9,St. Pauli,Hoffenheim,GER,1371,0
+1,0.5,RB Leipzig,Dortmund,GER,1372,0
+0,0.5,Mainz 05,Freiburg,GER,1373,0
+1,1.4,Werder Bremen,Gladbach,GER,1374,0
+2,1.9,Inter,Genoa,ITA,1377,0
+1,0.7,Fiorentina,Parma,ITA,1378,0
+0,0.3,Monza,Empoli,ITA,1379,0
+2,1,Torino,Milan,ITA,1380,0
+1,0.9,Udinese,Bologna,ITA,1381,0
+0,1,Napoli,Hellas Verona,ITA,1382,0
+0,0.9,Roma,Cagliari,ITA,1383,0
+1,0.6,Venezia,Lazio,ITA,1384,0
+4,1.7,Atalanta,Lecce,ITA,1385,0
+0,0.2,Como,Juventus,ITA,1386,0
+0,0.3,Hellas Verona,Lecce,ITA,1387,0
+2,0.9,Bologna,Cagliari,ITA,1388,0
+2,1.1,Napoli,Milan,ITA,1389,0
+2,0.9,Udinese,Venezia,ITA,1390,0
+3,1.1,Inter,Empoli,ITA,1391,0
+0,0.1,Monza,Atalanta,ITA,1392,0
+2,1.2,Parma,Juventus,ITA,1393,0
+1,0.5,Fiorentina,Genoa,ITA,1394,0
+0,0.2,Torino,Roma,ITA,1395,0
+5,2.9,Lazio,Como,ITA,1396,0
+0,0.7,Lecce,Bologna,ITA,1397,0
+2,1.3,Juventus,Udinese,ITA,1398,0
+1,2.5,Milan,Monza,ITA,1399,0
+3,1.2,Atalanta,Napoli,ITA,1400,0
+1,0.6,Fiorentina,Torino,ITA,1401,0
+2,1.7,Roma,Hellas Verona,ITA,1402,0
+0,1,Venezia,Inter,ITA,1403,0
+0,0.4,Como,Empoli,ITA,1404,0
+1,1.4,Genoa,Parma,ITA,1405,0
+1,0.3,Cagliari,Lazio,ITA,1406,0
+1,1.4,Como,Genoa,ITA,1407,0
+1,0.6,Empoli,Lecce,ITA,1408,0
+2,1,Parma,Venezia,ITA,1409,0
+3,3.3,Milan,Cagliari,ITA,1410,0
+0,0.4,Torino,Juventus,ITA,1411,0
+1,0.8,Udinese,Atalanta,ITA,1412,0
+1,0.4,Hellas Verona,Fiorentina,ITA,1413,0
+3,1.7,Bologna,Roma,ITA,1414,0
+1,1.6,Lazio,Monza,ITA,1415,0
+1,0.7,Napoli,Inter,ITA,1416,0
+5,3.2,Inter,Hellas Verona,ITA,1417,0
+0,0.4,Juventus,Milan,ITA,1418,0
+3,2.7,Atalanta,Parma,ITA,1419,0
+2,3,Cagliari,Genoa,ITA,1420,0
+2,0.8,Fiorentina,Como,ITA,1421,0
+1,0.9,Monza,Torino,ITA,1422,0
+0,0.6,Roma,Napoli,ITA,1423,0
+0,0.1,Bologna,Lazio,ITA,1424,0
+1,0.8,Udinese,Empoli,ITA,1425,0
+1,0.7,Lecce,Venezia,ITA,1426,0
+0,0.7,Hellas Verona,Cagliari,ITA,1427,0
+1,1.3,Monza,Como,ITA,1428,0
+0,0.5,Empoli,Milan,ITA,1429,0
+0,0.4,Venezia,Bologna,ITA,1430,0
+2,1.6,Genoa,Udinese,ITA,1431,0
+1,1.4,Napoli,Torino,ITA,1432,0
+1,2.5,Lazio,Parma,ITA,1433,0
+1,1.3,Juventus,Lecce,ITA,1434,0
+2,1.3,Atalanta,Roma,ITA,1435,0
+0,0.4,Inter,Fiorentina,ITA,1436,0
+1,0.4,Parma,Inter,ITA,1437,0
+1,0.7,Milan,Atalanta,ITA,1438,0
+0,0.6,Torino,Genoa,ITA,1439,0
+2,0.9,Bologna,Juventus,ITA,1440,0
+1,0.9,Lecce,Roma,ITA,1441,0
+0,0.8,Cagliari,Fiorentina,ITA,1442,0
+4,1.3,Empoli,Hellas Verona,ITA,1443,0
+2,1,Como,Venezia,ITA,1444,0
+1,0.3,Lazio,Napoli,ITA,1445,0
+2,1.2,Udinese,Monza,ITA,1446,0
+1,1,Torino,Empoli,ITA,1447,0
+1,1.5,Atalanta,Cagliari,ITA,1448,0
+3,2.2,Napoli,Udinese,ITA,1449,0
+2,0.4,Venezia,Juventus,ITA,1450,0
+1,0.6,Monza,Lecce,ITA,1451,0
+3,2.6,Hellas Verona,Parma,ITA,1452,0
+0,1,Fiorentina,Bologna,ITA,1453,0
+0,0.3,Roma,Como,ITA,1454,0
+0,0.3,Genoa,Milan,ITA,1455,0
+6,2,Inter,Lazio,ITA,1456,0
+1,0.8,Milan,Hellas Verona,ITA,1457,0
+2,1.7,Bologna,Torino,ITA,1458,0
+2,1.2,Napoli,Genoa,ITA,1459,0
+2,1.6,Lazio,Lecce,ITA,1460,0
+0,0.4,Parma,Roma,ITA,1461,0
+1,2.1,Cagliari,Venezia,ITA,1462,0
+2,1.3,Empoli,Atalanta,ITA,1463,0
+2,1.8,Juventus,Monza,ITA,1464,0
+2,0.9,Udinese,Fiorentina,ITA,1465,0
+0,0.3,Como,Inter,ITA,1466,0
+2,1.8,Genoa,Empoli,ITA,1467,0
+1,2.2,Monza,Parma,ITA,1468,0
+3,3.2,Inter,Cagliari,ITA,1469,0
+1,2.7,Atalanta,Lazio,ITA,1470,0
+2,0.6,Torino,Udinese,ITA,1471,0
+0,0.2,Venezia,Napoli,ITA,1472,0
+2,1,Fiorentina,Juventus,ITA,1473,0
+1,1.3,Roma,Milan,ITA,1474,0
+0,0.4,Lecce,Como,ITA,1475,0
+3,0.8,Hellas Verona,Bologna,ITA,1476,0
+1,1.8,Empoli,Venezia,ITA,1477,0
+3,1.6,Napoli,Fiorentina,ITA,1478,0
+0,0.8,Udinese,Hellas Verona,ITA,1479,0
+2,0.8,Cagliari,Monza,ITA,1480,0
+0,1.1,Genoa,Lecce,ITA,1481,0
+0,0.4,Parma,Torino,ITA,1482,0
+0,0.9,Lazio,Roma,ITA,1483,0
+2,1.3,Milan,Como,ITA,1484,0
+1,1.5,Juventus,Atalanta,ITA,1485,0
+2,0.6,Bologna,Inter,ITA,1486,0
+1,1.3,Lazio,Udinese,ITA,1487,0
+1,1.9,Milan,Parma,ITA,1488,0
+1,0.7,Genoa,Monza,ITA,1489,0
+0,0.3,Lecce,Inter,ITA,1490,0
+1,3,Atalanta,Torino,ITA,1491,0
+0,0.6,Venezia,Fiorentina,ITA,1492,0
+0,0.6,Bologna,Napoli,ITA,1493,0
+2,2.7,Empoli,Roma,ITA,1494,0
+1,1.5,Como,Cagliari,ITA,1495,0
+3,1.2,Juventus,Hellas Verona,ITA,1496,0
+1,2,Como,Lazio,ITA,1497,0
+3,1.5,Lecce,Empoli,ITA,1498,0
+0,0.2,Atalanta,Udinese,ITA,1499,0
+1,0.9,Juventus,Torino,ITA,1500,0
+1,0.4,Cagliari,Milan,ITA,1501,0
+0,0.4,Parma,Genoa,ITA,1502,0
+1,1.9,Inter,Venezia,ITA,1503,0
+2,1.4,Roma,Bologna,ITA,1504,0
+0,0.3,Hellas Verona,Napoli,ITA,1505,0
+1,1.4,Fiorentina,Monza,ITA,1506,0
+1,0.5,Genoa,Roma,ITA,1507,0
+1,0.5,Monza,Bologna,ITA,1508,0
+0,0.9,Milan,Juventus,ITA,1509,0
+3,0.8,Napoli,Atalanta,ITA,1510,0
+1,0.4,Torino,Fiorentina,ITA,1511,0
+1,1.1,Venezia,Parma,ITA,1512,0
+1,0.4,Lecce,Cagliari,ITA,1513,0
+3,1.5,Lazio,Hellas Verona,ITA,1514,0
+1,0.4,Empoli,Inter,ITA,1515,0
+1,0.6,Udinese,Como,ITA,1516,0
+0,0.3,Cagliari,Torino,ITA,1517,0
+2,1,Atalanta,Como,ITA,1518,0
+1,0.8,Juventus,Napoli,ITA,1519,0
+1,0.7,Bologna,Empoli,ITA,1520,0
+2,1.6,Parma,Milan,ITA,1521,0
+2,2.7,Roma,Udinese,ITA,1522,0
+4,2.1,Inter,Lecce,ITA,1523,0
+2,0.7,Fiorentina,Lazio,ITA,1524,0
+1,1.6,Hellas Verona,Venezia,ITA,1525,0
+0,0.4,Monza,Genoa,ITA,1526,0
+3,0.7,Lecce,Parma,ITA,1527,0
+1,0.9,Hellas Verona,Monza,ITA,1528,0
+2,1.2,Venezia,Udinese,ITA,1529,0
+1,0.6,Torino,Atalanta,ITA,1530,0
+0,0.5,Como,Bologna,ITA,1531,0
+1,0.8,Empoli,Juventus,ITA,1532,0
+1,1.6,Genoa,Fiorentina,ITA,1533,0
+1,1.3,Inter,Milan,ITA,1534,0
+1,0.4,Napoli,Roma,ITA,1535,0
+2,1.5,Lazio,Cagliari,ITA,1536,0
+2,1.1,Juventus,Como,ITA,1537,0
+5,2.2,Atalanta,Hellas Verona,ITA,1538,0
+2,1.3,Milan,Empoli,ITA,1539,0
+1,0.3,Genoa,Torino,ITA,1540,0
+1,1.6,Roma,Venezia,ITA,1541,0
+1,0.8,Parma,Cagliari,ITA,1542,0
+1,0.9,Monza,Lazio,ITA,1543,0
+0,0.8,Bologna,Lecce,ITA,1544,0
+1,0.8,Udinese,Napoli,ITA,1545,0
+1,0.9,Fiorentina,Inter,ITA,1546,0
+2,1,Torino,Bologna,ITA,1547,0
+0,0.2,Cagliari,Atalanta,ITA,1548,0
+2,0.3,Napoli,Lazio,ITA,1549,0
+0,0.4,Hellas Verona,Milan,ITA,1550,0
+2,0.8,Como,Fiorentina,ITA,1551,0
+0,0.9,Lecce,Monza,ITA,1552,0
+0,2.1,Empoli,Udinese,ITA,1553,0
+1,1.1,Roma,Parma,ITA,1554,0
+0,1.8,Inter,Juventus,ITA,1555,0
+0,0.5,Venezia,Genoa,ITA,1556,0
+1,1.6,Udinese,Lecce,ITA,1557,0
+0,1.1,Lazio,Venezia,ITA,1558,0
+0,0.7,Bologna,Parma,ITA,1559,0
+1,2.4,Milan,Torino,ITA,1560,0
+0,1.3,Genoa,Inter,ITA,1561,0
+1,1.2,Napoli,Como,ITA,1562,0
+0,1.4,Fiorentina,Hellas Verona,ITA,1563,0
+5,2.1,Atalanta,Empoli,ITA,1564,0
+1,2.1,Juventus,Cagliari,ITA,1565,0
+0,0.3,Monza,Roma,ITA,1566,0
+0,0.9,Lecce,Fiorentina,ITA,1567,0
+0,0.8,Venezia,Atalanta,ITA,1568,0
+1,0.3,Inter,Napoli,ITA,1569,0
+0,0.8,Parma,Udinese,ITA,1570,0
+2,1.2,Torino,Monza,ITA,1571,0
+1,0.9,Empoli,Genoa,ITA,1572,0
+1,0.5,Cagliari,Bologna,ITA,1573,0
+1,1.2,Como,Roma,ITA,1574,0
+2,3,Lazio,Milan,ITA,1575,0
+0,0.2,Hellas Verona,Juventus,ITA,1576,0
+1,0.9,Genoa,Cagliari,ITA,1577,0
+2,0.7,Torino,Parma,ITA,1578,0
+1,1.3,Venezia,Como,ITA,1579,0
+3,3.5,Milan,Lecce,ITA,1580,0
+2,0.6,Monza,Inter,ITA,1581,0
+2,1.3,Bologna,Hellas Verona,ITA,1582,0
+1,0.7,Fiorentina,Napoli,ITA,1583,0
+1,2,Roma,Empoli,ITA,1584,0
+4,3.2,Atalanta,Juventus,ITA,1585,0
+1,1.2,Udinese,Lazio,ITA,1586,0
+1,1.2,Lecce,Genoa,ITA,1587,0
+1,0.4,Hellas Verona,Udinese,ITA,1588,0
+1,0.7,Parma,Monza,ITA,1589,0
+1,1,Como,Milan,ITA,1590,0
+0,0.9,Empoli,Torino,ITA,1591,0
+0,1.7,Napoli,Venezia,ITA,1592,0
+0,0.5,Lazio,Bologna,ITA,1593,0
+0,0.8,Cagliari,Roma,ITA,1594,0
+0,0.8,Juventus,Fiorentina,ITA,1595,0
+2,2.2,Inter,Atalanta,ITA,1596,0
+1,1,Torino,Venezia,ITA,1597,0
+0,1.4,Atalanta,Inter,ITA,1598,0
+0,1.8,Cagliari,Lecce,ITA,1599,0
+1,1,Empoli,Bologna,ITA,1600,0
+2,1.3,Milan,Lazio,ITA,1601,0
+1,1.7,Parma,Napoli,ITA,1602,0
+2,1.5,Hellas Verona,Genoa,ITA,1603,0
+2,0.3,Monza,Fiorentina,ITA,1604,0
+0,1.6,Como,Udinese,ITA,1605,0
+0,0.3,Roma,Juventus,ITA,1606,0
+1,2,Empoli,Como,ITA,1607,0
+1,1,Bologna,Venezia,ITA,1608,0
+0,0.4,Genoa,Juventus,ITA,1609,0
+1,2.4,Roma,Lecce,ITA,1610,0
+0,0.4,Monza,Cagliari,ITA,1611,0
+0,1.1,Atalanta,Fiorentina,ITA,1612,0
+1,0.7,Udinese,Inter,ITA,1613,0
+1,2.6,Milan,Napoli,ITA,1614,0
+0,0.5,Parma,Hellas Verona,ITA,1615,0
+1,0.4,Torino,Lazio,ITA,1616,0
+0,1.1,Udinese,Genoa,ITA,1617,0
+3,2.2,Como,Monza,ITA,1618,0
+2,2,Inter,Parma,ITA,1619,0
+2,2.3,Fiorentina,Milan,ITA,1620,0
+1,0.6,Venezia,Lecce,ITA,1621,0
+0,0.3,Cagliari,Empoli,ITA,1622,0
+1,0.9,Hellas Verona,Torino,ITA,1623,0
+1,0.5,Lazio,Atalanta,ITA,1624,0
+1,0.8,Juventus,Roma,ITA,1625,0
+1,1.2,Napoli,Bologna,ITA,1626,0
+4,2.1,Milan,Udinese,ITA,1627,0
+0,0.5,Monza,Venezia,ITA,1628,0
+1,1.1,Cagliari,Inter,ITA,1629,0
+1,1.1,Lecce,Juventus,ITA,1630,0
+0,0.6,Bologna,Atalanta,ITA,1631,0
+0,0.2,Genoa,Hellas Verona,ITA,1632,0
+0,0.6,Parma,Fiorentina,ITA,1633,0
+0,1.2,Torino,Como,ITA,1634,0
+1,0.2,Roma,Lazio,ITA,1635,0
+0,1.2,Empoli,Napoli,ITA,1636,0
+3,1.3,Como,Lecce,ITA,1637,0
+1,1.5,Napoli,Monza,ITA,1638,0
+0,0.5,Hellas Verona,Roma,ITA,1639,0
+2,1.8,Venezia,Empoli,ITA,1640,0
+0,0.5,Inter,Bologna,ITA,1641,0
+1,1.9,Atalanta,Milan,ITA,1642,0
+2,0.7,Fiorentina,Cagliari,ITA,1643,0
+0,0.8,Juventus,Parma,ITA,1644,0
+0,1.1,Udinese,Torino,ITA,1645,0
+2,1.1,Lazio,Genoa,ITA,1646,0
+0,1.3,Genoa,Como,ITA,1647,0
+2,1.6,Milan,Venezia,ITA,1648,0
+1,1.9,Roma,Inter,ITA,1649,0
+1,0.4,Empoli,Fiorentina,ITA,1650,0
+0,0.7,Monza,Juventus,ITA,1651,0
+0,0.8,Torino,Napoli,ITA,1652,0
+1,1.4,Lecce,Atalanta,ITA,1653,0
+0,1.6,Bologna,Udinese,ITA,1654,0
+2,0.9,Parma,Lazio,ITA,1655,0
+2,1.9,Cagliari,Hellas Verona,ITA,1656,0
+1,0.6,Venezia,Torino,ITA,1657,0
+1,0.8,Como,Parma,ITA,1658,0
+2,1.4,Udinese,Cagliari,ITA,1659,0
+1,0.6,Napoli,Lecce,ITA,1660,0
+0,0.2,Hellas Verona,Inter,ITA,1661,0
+1,1.8,Lazio,Empoli,ITA,1662,0
+4,2.4,Atalanta,Monza,ITA,1663,0
+0,1,Fiorentina,Roma,ITA,1664,0
+1,0.8,Juventus,Bologna,ITA,1665,0
+2,1,Milan,Genoa,ITA,1666,0
+1,0.6,Bologna,Milan,ITA,1667,0
+1,0.9,Cagliari,Como,ITA,1668,0
+1,0.8,Juventus,Lazio,ITA,1669,0
+1,0.3,Parma,Empoli,ITA,1670,0
+2,1.5,Monza,Udinese,ITA,1671,0
+1,1.1,Lecce,Hellas Verona,ITA,1672,0
+2,2.5,Inter,Torino,ITA,1673,0
+2,0.6,Genoa,Napoli,ITA,1674,0
+1,1.1,Fiorentina,Venezia,ITA,1675,0
+1,0.8,Roma,Atalanta,ITA,1676,0
+3,2,Atalanta,Genoa,ITA,1677,0
+0,0.4,Napoli,Parma,ITA,1678,0
+2,2.4,Bologna,Fiorentina,ITA,1679,0
+0,0.5,Venezia,Cagliari,ITA,1680,0
+1,1.4,Milan,Roma,ITA,1681,0
+1,0.8,Como,Hellas Verona,ITA,1682,0
+3,1.3,Empoli,Monza,ITA,1683,0
+0,0.3,Udinese,Juventus,ITA,1684,0
+0,0.5,Torino,Lecce,ITA,1685,0
+2,2.1,Lazio,Inter,ITA,1686,0
+0,0.1,Cagliari,Napoli,ITA,1687,0
+2,1.4,Inter,Como,ITA,1688,0
+3,0.9,Genoa,Bologna,ITA,1689,0
+0,0.3,Monza,Milan,ITA,1690,0
+3,2.7,Fiorentina,Udinese,ITA,1691,0
+1,0.4,Lecce,Lazio,ITA,1692,0
+2,1.9,Roma,Torino,ITA,1693,0
+3,1.9,Juventus,Venezia,ITA,1694,0
+3,2.5,Parma,Atalanta,ITA,1695,0
+2,0.8,Hellas Verona,Empoli,ITA,1696,0
+2,1.2,Bologna,Como,ITA,1697,0
+0,0.9,Juventus,Empoli,ITA,1698,0
+0,0.3,Venezia,Milan,ITA,1699,0
+1,2.2,Roma,Genoa,ITA,1700,0
+2,1.7,Fiorentina,Atalanta,ITA,1701,0
+0,1.6,Lecce,Torino,ITA,1702,0
+4,1.9,Napoli,Cagliari,ITA,1703,0
+1,1.7,Inter,Monza,ITA,1704,0
+3,2.5,Udinese,Parma,ITA,1705,0
+1,0.8,Hellas Verona,Lazio,ITA,1706,0
+2,0.8,Empoli,Cagliari,ITA,1707,0
+3,2.2,Torino,Hellas Verona,ITA,1708,0
+0,0.5,Genoa,Venezia,ITA,1709,0
+0,0.3,Napoli,Juventus,ITA,1710,0
+2,2,Parma,Lecce,ITA,1711,0
+1,1,Lazio,Fiorentina,ITA,1712,0
+2,0.8,Bologna,Monza,ITA,1713,0
+0,0.7,Udinese,Roma,ITA,1714,0
+2,1.7,Milan,Inter,ITA,1715,0
+3,1.1,Como,Atalanta,ITA,1716,0
+0,0.5,Lecce,Milan,ITA,1717,0
+3,2.2,Inter,Udinese,ITA,1718,0
+3,2.6,Juventus,Genoa,ITA,1719,0
+1,2,Atalanta,Bologna,ITA,1720,0
+3,2,Lazio,Torino,ITA,1721,0
+2,1.1,Hellas Verona,Como,ITA,1722,0
+1,1.7,Venezia,Roma,ITA,1723,0
+0,0.7,Fiorentina,Empoli,ITA,1724,0
+0,0.3,Monza,Napoli,ITA,1725,0
+3,2.4,Cagliari,Parma,ITA,1726,0
+1,0.4,Como,Napoli,ITA,1727,0
+1,0.9,Venezia,Hellas Verona,ITA,1728,0
+0,0.5,Lecce,Udinese,ITA,1729,0
+1,0.7,Genoa,Atalanta,ITA,1730,0
+2,1.6,Torino,Inter,ITA,1731,0
+1,1.1,Cagliari,Juventus,ITA,1732,0
+1,0.5,Empoli,Lazio,ITA,1733,0
+0,0.8,Parma,Bologna,ITA,1734,0
+1,1.1,Roma,Monza,ITA,1735,0
+1,2.6,Milan,Fiorentina,ITA,1736,0
+2,0.7,Bologna,Genoa,ITA,1737,0
+1,0.5,Parma,Como,ITA,1738,0
+0,0.4,Udinese,Milan,ITA,1739,0
+0,0.1,Lazio,Juventus,ITA,1740,0
+1,1.3,Napoli,Empoli,ITA,1741,0
+2,1.4,Atalanta,Venezia,ITA,1742,0
+6,2.2,Fiorentina,Lecce,ITA,1743,0
+2,1.4,Torino,Cagliari,ITA,1744,0
+1,1,Inter,Roma,ITA,1745,0
+3,1.4,Monza,Hellas Verona,ITA,1746,0
+0,0.4,Cagliari,Udinese,ITA,1747,0
+0,1.4,Como,Torino,ITA,1748,0
+0,0.7,Lecce,Napoli,ITA,1749,0
+1,0.2,Hellas Verona,Atalanta,ITA,1750,0
+1,0.2,Empoli,Parma,ITA,1751,0
+0,0.3,Genoa,Lazio,ITA,1752,0
+2,0.4,Venezia,Monza,ITA,1753,0
+4,2.1,Juventus,Inter,ITA,1754,0
+1,0.8,Roma,Fiorentina,ITA,1755,0
+1,0.8,Milan,Bologna,ITA,1756,0
