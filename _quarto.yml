@@ -9,7 +9,8 @@ website:
       - href: index.qmd
         text: Home
       - lectures.qmd
-      - sports.qmd
+      - labs.qmd
+      - projects.qmd
     right:
       - r-setup.qmd
       - git-setup.qmd
