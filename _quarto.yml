@@ -12,6 +12,8 @@ website:
       - lectures.qmd
       - labs.qmd
       - projects.qmd
+      - href: bios.qmd
+        text: Bios
     right:
       - r-setup.qmd
       - git-setup.qmd
