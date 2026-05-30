@@ -2,7 +2,7 @@
 title: "Lectures"
 ---
 
-These will be updated daily before lecture.
+Updated daily before lecture.
 
 <!--
 ## Contents

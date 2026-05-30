@@ -1,7 +1,30 @@
 ---
 title: "CMSACamp 2026"
+toc: true
+toc-location: left
 ---
+
+# Overview
 
 Welcome to the Carnegie Mellon Sports Analytics Camp (CMSACamp), hosted by Department of Statistics & Data Science at Carnegie Mellon University. This program focuses on statistics and data science methodology with applications in sports analytics.
 
 On this site, the [Lectures](lectures.qmd) tab contains all lecture slides, the [Labs](labs.qmd) tab contains materials for the labs, and the [Projects](labs.qmd) tab contains materials for the EDA and capstone projects.
+
+# Instructor/TA Bios
+
+* **Erin Franke** is a rising third-year Ph.D. student in Statistics at CMU. She graduated from Macalester College in 2023, and before that was a CMSACamp student in 2021. She previously interned with the Minnesota Twins and worked with the CLL team at Mayo Clinic. At CMU, she has worked on projects analyzing statistical methods for psychology, AI's impact on student writing, and the impact of super shoes of professional marathon times. This past semester, she started research on statistical methods for wastewater-based epidemiology.
+
+* **Sara Colando** is a rising third-year Ph.D. student in Statistics at CMU. She currently works on projects related to networks, text analysis, and statistics education. She has previously been involved in biostatistics and sports analytics research, participating in CMSACamp during Summer 2023. Before CMU, she graduated from Pomona College in 2024 with a double major in mathematics and philosophy.  
+
+* **Princess Allotey** is a rising fourth-year joint Ph.D. student in Statistics and Public Policy at CMU, where she is a CMU Presidential Fellow and a Heinz Dean's PhD Fellow for Social Good. Her doctoral research focuses on developing statistical methods to handle missing network data — a fundamental challenge in network analysis. She is grateful to be advised by Professor Nynke Niezink and Professor David Choi. She holds an MSc in Statistics from CMU and a BSc in Mathematics & Data Science (minor in Education) from Centre College of Kentucky, where she was a Lincoln Scholar and a John C. Young Scholar.
+
+* **Yuchen Chen** is a rising fifth-year PhD student in statistics and data science at CMU, advised by Jing Lei and Yandi Shen. His research focuses on high-dimensional statistics and distribution-free inference.
+
+* **JungHo Lee** is a rising fourth-year Ph.D. student in Statistics at CMU. He is primarily interested in developing rigorous statistical methods for solving problems in public and health services. Before CMU, he obtained an MS in Statistics at the University of Chicago, and a BA in Mathematics and Economics at Boston College.
+
+# Pittsburgh Guides
+
+* [Pittsburgh-based Resources](pittsburgh-resources.qmd)
+
+* [Fun activities to do in Pittsburgh](pittsburgh-activities.qmd)
+

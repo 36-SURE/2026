@@ -3,6 +3,7 @@ project:
 
 website:
   title: "CMSACamp 2026"
+  favicon: icon.png
   navbar:
     background: "#C41230"
     left:

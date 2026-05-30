@@ -2,7 +2,7 @@
 title: "Labs"
 ---
 
-These will be updated daily before lab.
+Updated daily before lab.
 
 <!--
 ## Capstone project
