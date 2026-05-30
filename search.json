@@ -378,11 +378,11 @@
     "text": "Step 6: Modify the repository\nTo add a new file from your local repository to GitHub:\n\nIn RStudio, open a new file (could be anything - e.g. R Script, Quarto document, etc.).\nFill the file with some code/comments/etc. (This is just for illustration purpose, to show how you can add a file to GitHub from your computer)\nSave the file. At this point, this file should show up in the “Git” pane (in the top right of RStudio)\nCheck the box under “Staged” in the Git pane to stage the file for a commit\nClick on “Commit” in the Git pane\nIn the new window that opens, add a “Commit message”, then click on the “Commit” button\nClick on “Push” to push your changes from your local repository to the remote repository on GitHub\n\nIf you encountered no errors then you’re done! While working on a single project you will repeatedly perform the tasks in Step 6: make changes to files, commit changes, then push changes\nEvery time you want to create a new repository, you can just start with Step 4, use GitHub, copy the repository into RStudio, then repeatedly update, commit, and push.\nAsk us for help if you have any questions."
   },
   {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CMSACamp 2026",
     "section": "",
-    "text": "To be released soon."
+    "text": "Welcome to the Carnegie Mellon Sports Analytics Camp (CMSACamp), hosted by Department of Statistics & Data Science at Carnegie Mellon University. This program focuses on statistics and data science methodology with applications in sports analytics.\nOn this site, the Lectures tab contains all lecture slides, the Labs tab contains materials for the labs, and the Projects tab contains materials for the EDA and capstone projects.\n\nPittsburgh Guides\n\nPittsburgh-based Resources\nFun activities to do in Pittsburgh"
   },
   {
     "objectID": "labs.html",
@@ -392,11 +392,18 @@
     "text": "Updated daily before lab."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CMSACamp 2026",
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
     "section": "",
-    "text": "Overview\nWelcome to the Carnegie Mellon Sports Analytics Camp (CMSACamp), hosted by Department of Statistics & Data Science at Carnegie Mellon University. This program focuses on statistics and data science methodology with applications in sports analytics.\nOn this site, the Lectures tab contains all lecture slides, the Labs tab contains materials for the labs, and the Projects tab contains materials for the EDA and capstone projects.\n\n\nInstructor/TA Bios\n\nErin Franke is a rising third-year Ph.D. student in Statistics at CMU. She graduated from Macalester College in 2023, and before that was a CMSACamp student in 2021. She previously interned with the Minnesota Twins and worked with the CLL team at Mayo Clinic. At CMU, she has worked on projects analyzing statistical methods for psychology, AI’s impact on student writing, and the impact of super shoes of professional marathon times. This past semester, she started research on statistical methods for wastewater-based epidemiology.\nSara Colando is a rising third-year Ph.D. student in Statistics at CMU. She currently works on projects related to networks, text analysis, and statistics education. She has previously been involved in biostatistics and sports analytics research, participating in CMSACamp during Summer 2023. Before CMU, she graduated from Pomona College in 2024 with a double major in mathematics and philosophy.\nPrincess Allotey is a rising fourth-year joint Ph.D. student in Statistics and Public Policy at CMU, where she is a CMU Presidential Fellow and a Heinz Dean’s PhD Fellow for Social Good. Her doctoral research focuses on developing statistical methods to handle missing network data — a fundamental challenge in network analysis. She is grateful to be advised by Professor Nynke Niezink and Professor David Choi. She holds an MSc in Statistics from CMU and a BSc in Mathematics & Data Science (minor in Education) from Centre College of Kentucky, where she was a Lincoln Scholar and a John C. Young Scholar.\nYuchen Chen is a rising fifth-year PhD student in statistics and data science at CMU, advised by Jing Lei and Yandi Shen. His research focuses on high-dimensional statistics and distribution-free inference.\nJungHo Lee is a rising fourth-year Ph.D. student in Statistics at CMU. He is primarily interested in developing rigorous statistical methods for solving problems in public and health services. Before CMU, he obtained an MS in Statistics at the University of Chicago, and a BA in Mathematics and Economics at Boston College.\n\n\n\nPittsburgh Guides\n\nPittsburgh-based Resources\nFun activities to do in Pittsburgh"
+    "text": "To be released soon."
+  },
+  {
+    "objectID": "bios.html",
+    "href": "bios.html",
+    "title": "Instructor/TA Bios",
+    "section": "",
+    "text": "Erin Franke is a rising third-year Ph.D. student in Statistics at CMU. She graduated from Macalester College in 2023, and before that was a CMSACamp student in 2021. She previously interned with the Minnesota Twins and worked with the CLL team at Mayo Clinic. At CMU, she has worked on projects analyzing statistical methods for psychology, AI’s impact on student writing, and the impact of super shoes of professional marathon times. This past semester, she started research on statistical methods for wastewater-based epidemiology.\nSara Colando is a rising third-year Ph.D. student in Statistics at CMU. She currently works on projects related to networks, text analysis, and statistics education. She has previously been involved in biostatistics and sports analytics research, participating in CMSACamp during Summer 2023. Before CMU, she graduated from Pomona College in 2024 with a double major in mathematics and philosophy.\nPrincess Allotey is a rising fourth-year joint Ph.D. student in Statistics and Public Policy at CMU, where she is a CMU Presidential Fellow and a Heinz Dean’s PhD Fellow for Social Good. Her doctoral research focuses on developing statistical methods to handle missing network data — a fundamental challenge in network analysis. She is grateful to be advised by Professor Nynke Niezink and Professor David Choi. She holds an MSc in Statistics from CMU and a BSc in Mathematics & Data Science (minor in Education) from Centre College of Kentucky, where she was a Lincoln Scholar and a John C. Young Scholar.\nYuchen Chen is a rising fifth-year PhD student in statistics and data science at CMU, advised by Jing Lei and Yandi Shen. His research focuses on high-dimensional statistics and distribution-free inference.\nJungHo Lee is a rising fourth-year Ph.D. student in Statistics at CMU. He is primarily interested in developing rigorous statistical methods for solving problems in public and health services. Before CMU, he obtained an MS in Statistics at the University of Chicago, and a BA in Mathematics and Economics at Boston College."
   },
   {
     "objectID": "lectures.html",
@@ -424,7 +431,7 @@
     "href": "lectures/00-welcome.html#who-are-we-1",
     "title": "Welcome to CMSACamp 2026",
     "section": "Who are we?",
-    "text": "Who are we?\nSara Colando (preferred form of address: Sara)\n\nCMSACamp ’23\nPomona College ’24: Math and Philosophy double major"
+    "text": "Who are we?\nSara Colando (preferred form of address: Sara)\n\nCMSACamp ’23\nPomona College ’24: Math and Philosophy double major\nUndergrad research: biostatistics (genomics)\nResearch at CMU: statistical network analysis, statistics and data science education, and measurement error in text analysis"
   },
   {
     "objectID": "lectures/00-welcome.html#who-are-we-2",
@@ -438,7 +445,7 @@
     "href": "lectures/00-welcome.html#meet-the-students",
     "title": "Welcome to CMSACamp 2026",
     "section": "Meet the students!",
-    "text": "Meet the students!\nLet’s first go around and share\n\nName\nWhere you call home\nCollege + year in school\nMajor\nFavorite sport\nWhat you are most excited for about CMSACamp"
+    "text": "Meet the students!\nLet’s first go around and share\n\nName\nWhere you call home\nCollege, year in school\nMajor(s)/minor(s)\nFavorite sport\nWhat you are most excited for about CMSACamp"
   },
   {
     "objectID": "lectures/00-welcome.html#goals",
