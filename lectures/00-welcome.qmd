@@ -9,7 +9,7 @@ format:
     smaller: true
     slide-number: c/t
     code-line-numbers: false
-    linestretch: 1.25
+    linestretch: 1.5
     html-math-method:
       method: mathjax
       url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
@@ -59,6 +59,8 @@ Sara Colando (preferred form of address: Sara)
 
 * CMSACamp '23
 * Pomona College '24: Math and Philosophy double major
+* Undergrad research: biostatistics (genomics)
+* Research at CMU: statistical network analysis, statistics and data science education, and measurement error in text analysis  
 
 ## Who are we? 
 
@@ -73,18 +75,20 @@ Sara Colando (preferred form of address: Sara)
 
 ## Meet the students! 
 
-Let's first go around and share
+Let's first go around and share:
 
 * Name 
 * Where you call home
-* College + year in school
-* Major
+* College, year in school
+* Major(s)/minor(s)
 * Favorite sport
 * What you are most excited for about CMSACamp
 
 # About CMSACamp
 
 ## Goals
+
+:::{.incremental}
 
 * Develop fundamentals research skills: data wrangling, visualization, modeling, communication
 
@@ -98,7 +102,9 @@ Let's first go around and share
 
 * Help navigate your next steps---industry vs. graduate school
 
-* Optionally, present at CMSAConference in October!
+* Optionally, present at [CMSAConference](https://www.cmsaconference.com) in October!
+
+:::
 
 ## Project advisors this year include
 
@@ -126,7 +132,7 @@ Let's first go around and share
 
 ::::
 
-...and some more pending
+*...and some more pending!*
   
 ## Resources to save
 
@@ -145,21 +151,21 @@ Check these frequently!
 ## A typical day 
 
 
-* Lectures 
-
-* Speaker/webinar sessions
+* Lectures
 
 * Labs
 
-Optional
+* Speaker/webinar sessions
+
+**Optional:**
 
 * *Lunch: ~1x week, will be updated on calendar as we have more information.*
 
-* Office Hours
+* Office Hours:
   
-  * Erin: 11-12, Tuesdays
-  * Glenn: 12-1, Tuesdays
-  * Sara: 11-12, Thursdays
+  * Erin: 11-12pm, Tuesdays
+  * Glenn: 12-1pm, Tuesdays
+  * Sara: 11-12pm, Thursdays
 
 
 ## Lectures
@@ -168,7 +174,7 @@ Optional
 
 . . .
 
-* First ~2 weeks: EDA, basic data science tasks
+* First ~2 weeks: EDA, clustering, basic data science tasks
 
 . . .
   
@@ -182,7 +188,7 @@ Optional
 
 . . .
 
-A few scheduling notes:
+*A few scheduling notes:*
 
 * Holidays: Juneteenth (Friday June 19) and Independence Day break (July 2--3 + weekend)
 
@@ -192,11 +198,13 @@ A few scheduling notes:
 
 ## Labs
 
-**Mon--Fri, 1:30--3pm**
+**Mon--Fri, 1:30--3pm, Scaife 236**
 
-**Scaife 236**
+. . .
   
-* Demo labs (Mon-Wednesday this week) + 1-2 later on
+* Demo labs (Mon--Wed this week) + 1--2 later on
+
+. . .
 
 * Project labs
 
@@ -206,32 +214,46 @@ A few scheduling notes:
 
 ## Speaker/webinar sessions
 
-**Check calendar! Either mid-day (in between lecture and lab) or after lab**
+* **Check calendar!** Either mid-day (in between lecture and lab) or after lab
 
-**Scaife 236 / Zoom, depending on speaker**
+. . .
 
-Lots of project pitches this week and next week, then guest lectures as summer goes on
+* **Scaife 236 / Zoom** depending on speaker
+
+. . .
+
+* Lots of project pitches this week and next week, then guest lectures as summer goes on
 
 
 ## EDA project
 
 * Practice understanding the structure of a dataset and perform basic EDA tasks (e.g., data wrangling, data visualization) in `R`, and using GitHub for collaboration
 
+. . .
+
 * Work in groups of 2--3
+
+. . .
 
 * Timeline
 
-  *   Release date: Thursday, June 4
+  *    Thursday, June 4: Release date
   
-  *   6-minute presentation (no notes/scripts) on Tuesday, June 16 during lab 
+  *   Tuesday, June 16: 6-minute presentation (no notes/scripts) during lab 
 
 ## Capstone project
 
-* Work with a external advisor to analyze a dataset and answer a research question that is relevant in the respective sport.
+* Work with a external advisor to analyze a dataset and answer a research question that is relevant in the respective sport
+
+. . .
 
 * Work in groups of 2--3
 
-* Presentation checkpoint(s) (no notes/scripts)
+. . .
+
+* Presentation checkpoint(s) (dates TBD, no notes/scripts)
+
+. . .
 
 * Deliverables (more details will be provided later on)
 
@@ -243,7 +265,11 @@ Lots of project pitches this week and next week, then guest lectures as summer g
 
 * Fill out the survey forms (Communication and Data Science Background)
 
+. . .
+
 * Reset CMU wifi password (for non-CMU students)
+
+. . .
 
 * Check Calendar, Slack, email often
 
@@ -269,13 +295,23 @@ Lots of project pitches this week and next week, then guest lectures as summer g
   
   * This is part of the Code of Conduct
   
+. . .
+  
 * Participate and ask questions
+
+. . .
 
 * Work together. Help and support each other.
 
-* Enjoy, learn and grow
+. . .
+
+* Enjoy, learn and grow!
+
+. . .
 
 ## Exploring Pittsburgh
 
+* [Pittsburgh-based resources](../pittsburgh-resources.qmd) 
 
+* [Fun activities to do in Pittsburgh](../pittsburgh-activities.qmd) (non-exhaustive)
 
