@@ -413,6 +413,13 @@
     "text": "Updated daily before lecture."
   },
   {
+    "objectID": "lectures.html#contents",
+    "href": "lectures.html#contents",
+    "title": "Lectures",
+    "section": "Contents",
+    "text": "Contents\n\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 1\nWelcome to CMSACamp 2026\nslides"
+  },
+  {
     "objectID": "lectures/00-welcome.html#plan-for-today",
     "href": "lectures/00-welcome.html#plan-for-today",
     "title": "Welcome to CMSACamp 2026",
@@ -445,7 +452,7 @@
     "href": "lectures/00-welcome.html#meet-the-students",
     "title": "Welcome to CMSACamp 2026",
     "section": "Meet the students!",
-    "text": "Meet the students!\nLet’s first go around and share\n\nName\nWhere you call home\nCollege, year in school\nMajor(s)/minor(s)\nFavorite sport\nWhat you are most excited for about CMSACamp"
+    "text": "Meet the students!\nLet’s first go around and share:\n\nName\nWhere you call home\nCollege, year in school\nMajor(s)/minor(s)\nFavorite sport\nWhat you are most excited for about CMSACamp"
   },
   {
     "objectID": "lectures/00-welcome.html#goals",
@@ -459,7 +466,7 @@
     "href": "lectures/00-welcome.html#project-advisors-this-year-include",
     "title": "Welcome to CMSACamp 2026",
     "section": "Project advisors this year include",
-    "text": "Project advisors this year include\n\n\n\n\n\n\n\n\n\n\n\n\n…and some more pending"
+    "text": "Project advisors this year include\n\n\n\n\n\n\n\n\n\n\n\n\n…and some more pending!"
   },
   {
     "objectID": "lectures/00-welcome.html#resources-to-save",
@@ -473,49 +480,49 @@
     "href": "lectures/00-welcome.html#a-typical-day",
     "title": "Welcome to CMSACamp 2026",
     "section": "A typical day",
-    "text": "A typical day\n\nLectures\nSpeaker/webinar sessions\nLabs\n\nOptional\n\nLunch: ~1x week, will be updated on calendar as we have more information.\nOffice Hours\n\nErin: 11-12, Tuesdays\nGlenn: 12-1, Tuesdays\nSara: 11-12, Thursdays"
+    "text": "A typical day\n\nLectures\nLabs\nSpeaker/webinar sessions\n\n\nOptional:\n\nLunch: ~1x week, will be updated on calendar as we have more information.\nOffice Hours:\n\nErin: 11-12pm, Tuesdays\nGlenn: 12-1pm, Tuesdays\nSara: 11-12pm, Thursdays"
   },
   {
     "objectID": "lectures/00-welcome.html#lectures",
     "href": "lectures/00-welcome.html#lectures",
     "title": "Welcome to CMSACamp 2026",
     "section": "Lectures",
-    "text": "Lectures\nMon–Fri, 9:30–11:00am, Scaife 236\n\n\nFirst ~2 weeks: EDA, basic data science tasks\n\n\n\n\nNext ~4 weeks: statistical modeling, machine learning\n\n\n\n\nAfter that: special topics, guest lectures\n\n\n\n\nA few scheduling notes:\n\nHolidays: Juneteenth (Friday June 19) and Independence Day break (July 2–3 + weekend)\n\n\n\n\nThursday July 9: Pirates vs. Braves game at PNC Park"
+    "text": "Lectures\nMon–Fri, 9:30–11:00am, Scaife 236\n\n\nFirst ~2 weeks: EDA, clustering, basic data science tasks\n\n\n\n\nNext ~4 weeks: statistical modeling, machine learning\n\n\n\n\nAfter that: special topics, guest lectures\n\n\n\n\nA few scheduling notes:\n\nHolidays: Juneteenth (Friday June 19) and Independence Day break (July 2–3 + weekend)\n\n\n\n\nThursday July 9: Pirates vs. Braves game at PNC Park"
   },
   {
     "objectID": "lectures/00-welcome.html#labs",
     "href": "lectures/00-welcome.html#labs",
     "title": "Welcome to CMSACamp 2026",
     "section": "Labs",
-    "text": "Labs\nMon–Fri, 1:30–3pm\nScaife 236\n\nDemo labs (Mon-Wednesday this week) + 1-2 later on\nProject labs\n\nwill begin with a mini EDA project\nthen shift to focus on main capstone project"
+    "text": "Labs\nMon–Fri, 1:30–3pm, Scaife 236\n\n\nDemo labs (Mon–Wed this week) + 1–2 later on\n\n\n\n\nProject labs\n\nwill begin with a mini EDA project\nthen shift to focus on main capstone project"
   },
   {
     "objectID": "lectures/00-welcome.html#speakerwebinar-sessions",
     "href": "lectures/00-welcome.html#speakerwebinar-sessions",
     "title": "Welcome to CMSACamp 2026",
     "section": "Speaker/webinar sessions",
-    "text": "Speaker/webinar sessions\nCheck calendar! Either mid-day (in between lecture and lab) or after lab\nScaife 236 / Zoom, depending on speaker\nLots of project pitches this week and next week, then guest lectures as summer goes on"
+    "text": "Speaker/webinar sessions\n\nCheck calendar! Either mid-day (in between lecture and lab) or after lab\n\n\n\nScaife 236 / Zoom depending on speaker\n\n\n\n\nLots of project pitches this week and next week, then guest lectures as summer goes on"
   },
   {
     "objectID": "lectures/00-welcome.html#eda-project",
     "href": "lectures/00-welcome.html#eda-project",
     "title": "Welcome to CMSACamp 2026",
     "section": "EDA project",
-    "text": "EDA project\n\nPractice understanding the structure of a dataset and perform basic EDA tasks (e.g., data wrangling, data visualization) in R, and using GitHub for collaboration\nWork in groups of 2–3\nTimeline\n\nRelease date: Thursday, June 4\n6-minute presentation (no notes/scripts) on Tuesday, June 16 during lab"
+    "text": "EDA project\n\nPractice understanding the structure of a dataset and perform basic EDA tasks (e.g., data wrangling, data visualization) in R, and using GitHub for collaboration\n\n\n\nWork in groups of 2–3\n\n\n\n\nTimeline\n\nThursday, June 4: Release date\nTuesday, June 16: 6-minute presentation (no notes/scripts) during lab"
   },
   {
     "objectID": "lectures/00-welcome.html#capstone-project",
     "href": "lectures/00-welcome.html#capstone-project",
     "title": "Welcome to CMSACamp 2026",
     "section": "Capstone project",
-    "text": "Capstone project\n\nWork with a external advisor to analyze a dataset and answer a research question that is relevant in the respective sport.\nWork in groups of 2–3\nPresentation checkpoint(s) (no notes/scripts)\nDeliverables (more details will be provided later on)\n\nReport\nPoster\nPresentation"
+    "text": "Capstone project\n\nWork with a external advisor to analyze a dataset and answer a research question that is relevant in the respective sport\n\n\n\nWork in groups of 2–3\n\n\n\n\nPresentation checkpoint(s) (dates TBD, no notes/scripts)\n\n\n\n\nDeliverables (more details will be provided later on)\n\nReport\nPoster\nPresentation"
   },
   {
     "objectID": "lectures/00-welcome.html#reminders",
     "href": "lectures/00-welcome.html#reminders",
     "title": "Welcome to CMSACamp 2026",
     "section": "Reminders",
-    "text": "Reminders\n\nFill out the survey forms (Communication and Data Science Background)\nReset CMU wifi password (for non-CMU students)\nCheck Calendar, Slack, email often"
+    "text": "Reminders\n\nFill out the survey forms (Communication and Data Science Background)\n\n\n\nReset CMU wifi password (for non-CMU students)\n\n\n\n\nCheck Calendar, Slack, email often"
   },
   {
     "objectID": "lectures/00-welcome.html#tips",
@@ -529,14 +536,14 @@
     "href": "lectures/00-welcome.html#expectations",
     "title": "Welcome to CMSACamp 2026",
     "section": "Expectations",
-    "text": "Expectations\n\nIn-person attendance\n\nBe on time. PLEASE.\nThis applies to lectures, labs, other sessions (e.g., webinars, guest speakers, other activities)\nThis is part of the Code of Conduct\n\nParticipate and ask questions\nWork together. Help and support each other.\nEnjoy, learn and grow"
+    "text": "Expectations\n\nIn-person attendance\n\nBe on time. PLEASE.\nThis applies to lectures, labs, other sessions (e.g., webinars, guest speakers, other activities)\nThis is part of the Code of Conduct\n\n\n\n\nParticipate and ask questions\n\n\n\n\nWork together. Help and support each other.\n\n\n\n\nEnjoy, learn and grow!"
   },
   {
     "objectID": "lectures/00-welcome.html#exploring-pittsburgh",
     "href": "lectures/00-welcome.html#exploring-pittsburgh",
     "title": "Welcome to CMSACamp 2026",
     "section": "Exploring Pittsburgh",
-    "text": "Exploring Pittsburgh"
+    "text": "Exploring Pittsburgh\n\nPittsburgh-based resources\nFun activities to do in Pittsburgh (non-exhaustive)"
   },
   {
     "objectID": "r-setup.html#r-and-rstudio",
