@@ -4,13 +4,14 @@ title: "Lectures"
 
 Updated daily before lecture.
 
-<!--
+
 ## Contents
  
 
 |            | Date    | Title                                                     | Materials                                |
 |------------|---------|-----------------------------------------------------------|------------------------------------------|
 | Lecture 0  | June 1  | Welcome to CMSACamp 2026                                      | [slides](lectures/00-welcome.qmd)        |
+<!--
 | Lecture 1  | June 3  | Exploring data: into the `tidyverse`                      | [slides](lectures/01-explore.qmd)        |
 | Lecture 2  | June 4  | Data visualization: the grammar of graphics and `ggplot2` | [slides](lectures/02-graphics.qmd)       |
 | Lecture 3  | June 5  | Data visualization: categorical data                      | [slides](lectures/03-categorical.qmd)    |
