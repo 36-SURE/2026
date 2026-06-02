@@ -335,7 +335,7 @@ We use `arrange()` to sort the observations (rows) by variables (columns)
 ::: nonincremental
 - Low to high for numeric columns
 
-- Alphabetical order for character columns)
+- Alphabetical order for character columns
 :::
 
 . . .
