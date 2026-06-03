@@ -151,6 +151,7 @@ Finished early? We encourage you to review how to join dataframes in R by readin
 Load the following dataset ([link to the codebook](https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-08-03/readme.md)). Create a dataframe with the number of athletes that have medaled in swimming since 2000 for each county. Create a second dataframe with the total number of medals that each country has won in swimming since 2000. Then, join the two dataframes. Arrange the joined dataframe from greatest number of medals to least number of medals. 
 
 Check your work: Is the number of medals always greater than or equal to the number of athletes? 
+
 ```{r}
 athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-03/athletes.csv')
 ```
@@ -159,13 +160,13 @@ athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/t
 # INSERT CODE HERE
 ```
 
+
 ### Bonus exercise 2 (Ultra running)
 
 Load the following datasets that explore trends in ultra running ([link to the data dictionary](https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-10-26/readme.md)). Your task is to identify female runners who ran at least 10 ultra races between age 30-50. Create a dataset of their race results from this time in their life. The dataset should have additional columns: 
 
 - the distance of the race (in miles)
-- the age of the runner at the time of the race (assume `age` represents the runner's age in 2021) 
-- the average minutes per mile that runner completed the race in
+- the average minutes per mile that runner the completed the race in
 
 *There is a lot going on in this one, so don't feel discouraged if you get stuck!*
 
@@ -177,6 +178,5 @@ race <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidyt
 ```{r}
 # INSERT CODE HERE
 ```
-
 
 
