@@ -84,305 +84,242 @@
     "text": "Finding a Faith Community\nIf you are part of a religious community and want to find a local community during your time here, please use the following resource to find a faith community:\n\nCMU Council of Religious Advisors"
   },
   {
-    "objectID": "lectures/00-welcome.html#plan-for-today",
-    "href": "lectures/00-welcome.html#plan-for-today",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Plan for today",
-    "text": "Plan for today\n\n\nOpening remarks + program overview\n\n\nVisit from Jess Paschke\n\n\nAcademic advisor presentation (Glenn)\n\n\nLunch (Baker Hall 129Q)\n\n\nLab"
+    "objectID": "lectures/03-categorical.html#data",
+    "href": "lectures/03-categorical.html#data",
+    "title": "Data visualization: categorical data",
+    "section": "Data",
+    "text": "Data\n\nOur dataset is Wimbledon women’s tennis shot-level data\nThe original data is publicly available on the SCORE Sports Data Repository\n\nWe will look at a random sample of 10,000 shots\nThe data was pre-processed slightly for this lecture:\n\n\n\n# set seed for reproducibility\nset.seed(4747)\n# import data from current working directory\ntennis_w_shots_wim &lt;- read_csv(\"tennis-w-shots-wim.csv.gz\") |&gt;\n  # tidy names\n  janitor::clean_names() |&gt;\n  # replace \"_\" with \" \" in all character variables \n  mutate(across(where(is.character), ~ str_replace_all(., \"_\", \" \"))) |&gt;\n  # convert date into ymd format\n  mutate(date = ymd(date)) |&gt;\n  slice_sample(n = 10000)\n\nwrite_csv(tennis_w_shots_wim, \"tennis_w_shots_wim.csv\")"
   },
   {
-    "objectID": "lectures/00-welcome.html#who-are-we",
-    "href": "lectures/00-welcome.html#who-are-we",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Who are we?",
-    "text": "Who are we?\nErin Franke (preferred form of address: Erin)\n\nCMSACamp ’21\nIntern for Minnesota Twins in Summer ’22\nMacalester College ’23: Statistics major, CS & Econ minors\nStatistical Programmer @ Mayo Clinic\nResearch at CMU: applications in wastewater-based epidemiology, education, psychology, sports analytics (marathon)"
+    "objectID": "lectures/03-categorical.html#data-1",
+    "href": "lectures/03-categorical.html#data-1",
+    "title": "Data visualization: categorical data",
+    "section": "Data",
+    "text": "Data\nLet’s begin by importing the data:\n\nlibrary(tidyverse)\ntheme_set(theme_light()) # setting the ggplot theme\n\ntennis_shots &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/tennis_w_shots_wim.csv\")\ntennis_shots &lt;- read_csv(\"tennis_w_shots_wim.csv\") |&gt;\n  # remove serves\n  filter(shot_type != \"serve\") |&gt;\n  mutate(outcome_type = if_else(is.na(outcome_type),\n                                \"returned\", outcome_type)) |&gt;\n  # filter out NAs for shot_type and outcome_type\n  filter(!is.na(shot_type), !is.na(outcome_type)) |&gt;\n  # convert characters into factors\n  mutate(across(where(is.character), as.factor)) \n\n\nWhat does each row represent here?\n\nnames(tennis_shots)\n\n [1] \"date\"            \"tournament\"      \"round\"           \"player1\"        \n [5] \"player2\"         \"point\"           \"shot\"            \"serve\"          \n [9] \"serving_player\"  \"winning_player\"  \"shot_hand\"       \"shot_type\"      \n[13] \"shot_direction\"  \"serve_direction\" \"shot_depth\"      \"outcome_type\"   \n[17] \"error_type\""
   },
   {
-    "objectID": "lectures/00-welcome.html#who-are-we-1",
-    "href": "lectures/00-welcome.html#who-are-we-1",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Who are we?",
-    "text": "Who are we?\nSara Colando (preferred form of address: Sara)\n\nCMSACamp ’23\nPomona College ’24: Math and Philosophy double major\nUndergrad research: biostatistics (genomics)\nResearch at CMU: statistical network analysis, statistics and data science education, and measurement error in text analysis"
+    "objectID": "lectures/03-categorical.html#categorical-data",
+    "href": "lectures/03-categorical.html#categorical-data",
+    "title": "Data visualization: categorical data",
+    "section": "Categorical data",
+    "text": "Categorical data\nTwo different versions of categorical data:\nNominal: categorical variables having unordered scales\n\nExamples: race, gender, species, etc.\n\nOrdinal: ordered categories; levels with a meaningful order\n\nExamples: education level, grades, ranks, etc."
   },
   {
-    "objectID": "lectures/00-welcome.html#who-are-we-2",
-    "href": "lectures/00-welcome.html#who-are-we-2",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Who are we?",
-    "text": "Who are we?\n\nTAs: Princess Allotey, Yuchen Chen, JungHo Lee\nCMSACamp Director: Ron Yurko\nCMSACamp Advisor: Glenn Clune\nCMSACamp Coordinator: Jess Paschke"
+    "objectID": "lectures/03-categorical.html#factors-in-r",
+    "href": "lectures/03-categorical.html#factors-in-r",
+    "title": "Data visualization: categorical data",
+    "section": "Factors in R",
+    "text": "Factors in R\n\nIn R, factors are used to work with categorical variables\nR treats factors as ordinal - defaults to alphabetical\n\nMay need to manually define the factor levels (e.g., the reference level)\n\nSee the forcats package (automatically loaded with tidyverse)\n\n\nclass(tennis_shots$shot_type)\n\n[1] \"factor\"\n\nlevels(tennis_shots$shot_type)\n\n[1] \"drop shot\"       \"groundstroke\"    \"half volley\"     \"lob\"            \n[5] \"overhead\"        \"slice\"           \"swinging volley\" \"volley\""
   },
   {
-    "objectID": "lectures/00-welcome.html#meet-the-students",
-    "href": "lectures/00-welcome.html#meet-the-students",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Meet the students!",
-    "text": "Meet the students!\nLet’s first go around and share:\n\nName\nWhere you call home\nCollege, year in school\nMajor(s)/minor(s)\nFavorite sport\nWhat you are most excited for about CMSACamp"
+    "objectID": "lectures/03-categorical.html#summarizing-1d-categorical-data",
+    "href": "lectures/03-categorical.html#summarizing-1d-categorical-data",
+    "title": "Data visualization: categorical data",
+    "section": "Summarizing 1D categorical data",
+    "text": "Summarizing 1D categorical data\nHow often is each shot type used during women’s singles at the Wimbledon Championships?\nFrequency tables (counts)\n\ntable(tennis_shots$shot_type)\n\n\n      drop shot    groundstroke     half volley             lob        overhead \n             97            5704              22             124              59 \n          slice swinging volley          volley \n           1020              42             187 \n\n\n\n#tennis_shots |&gt; \n#  group_by(shot_type) |&gt;\n#  summarize(n = n(), .groups = \"drop\")\n\ntennis_shots |&gt; \n  count(shot_type)\n\n# A tibble: 8 × 2\n  shot_type           n\n  &lt;fct&gt;           &lt;int&gt;\n1 drop shot          97\n2 groundstroke     5704\n3 half volley        22\n4 lob               124\n5 overhead           59\n6 slice            1020\n7 swinging volley    42\n8 volley            187"
   },
   {
-    "objectID": "lectures/00-welcome.html#goals",
-    "href": "lectures/00-welcome.html#goals",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Goals",
-    "text": "Goals\n\nDevelop fundamentals research skills: data wrangling, visualization, modeling, communication\nBecome familiar with R, tidyverse, Quarto (Markdown syntax), Git/GitHub\nBecome familiar with cutting-edge statistical machine learning techniques\nCreate a portfolio of projects and practice reproducible research\nNetwork with academic researchers and industry professionals\nHelp navigate your next steps—industry vs. graduate school\nOptionally, present at CMSAConference in October!"
+    "objectID": "lectures/03-categorical.html#summarizing-1d-categorical-data-1",
+    "href": "lectures/03-categorical.html#summarizing-1d-categorical-data-1",
+    "title": "Data visualization: categorical data",
+    "section": "Summarizing 1D categorical data",
+    "text": "Summarizing 1D categorical data\nProportion table\n\nprop.table(table(tennis_shots$shot_type))\n\n\n      drop shot    groundstroke     half volley             lob        overhead \n    0.013370090     0.786216402     0.003032391     0.017091661     0.008132323 \n          slice swinging volley          volley \n    0.140592695     0.005789111     0.025775327 \n\ntennis_shots |&gt; \n  count(shot_type) |&gt; \n  mutate(prop = n / sum(n))\n\n# A tibble: 8 × 3\n  shot_type           n    prop\n  &lt;fct&gt;           &lt;int&gt;   &lt;dbl&gt;\n1 drop shot          97 0.0134 \n2 groundstroke     5704 0.786  \n3 half volley        22 0.00303\n4 lob               124 0.0171 \n5 overhead           59 0.00813\n6 slice            1020 0.141  \n7 swinging volley    42 0.00579\n8 volley            187 0.0258"
   },
   {
-    "objectID": "lectures/00-welcome.html#project-advisors-this-year-include",
-    "href": "lectures/00-welcome.html#project-advisors-this-year-include",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Project advisors this year include",
-    "text": "Project advisors this year include\n\n\n\n\n\n\n\n\n\n\n\n\n…and some more pending!"
+    "objectID": "lectures/03-categorical.html#visualizing-1d-categorical-data",
+    "href": "lectures/03-categorical.html#visualizing-1d-categorical-data",
+    "title": "Data visualization: categorical data",
+    "section": "Visualizing 1D categorical data",
+    "text": "Visualizing 1D categorical data\n\n\nCreate a bar chart with geom_bar()\n\nMap shot_type to the x-axis\nCounts of each category are displayed on the y-axis\n\n\ntennis_shots |&gt; \n  ggplot(aes(x = shot_type)) +\n  geom_bar() +\n  # angling axis text for readability\n  theme(axis.text.x = element_text(angle = 45,\n                                   vjust = 1, hjust = 1))"
   },
   {
-    "objectID": "lectures/00-welcome.html#resources-to-save",
-    "href": "lectures/00-welcome.html#resources-to-save",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Resources to save",
-    "text": "Resources to save\n\nWebsite\nGoogle Calendar\nSlack\nEmail\n\nCheck these frequently!"
+    "objectID": "lectures/03-categorical.html#behind-the-scenes-of-geom_bar",
+    "href": "lectures/03-categorical.html#behind-the-scenes-of-geom_bar",
+    "title": "Data visualization: categorical data",
+    "section": "Behind the scenes of geom_bar()",
+    "text": "Behind the scenes of geom_bar()\n\nStart with the data\nAggregate and count the number of observations in each bar\nMap to plot aesthetics\n\n\nR for data science (2e)"
   },
   {
-    "objectID": "lectures/00-welcome.html#a-typical-day",
-    "href": "lectures/00-welcome.html#a-typical-day",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "A typical day",
-    "text": "A typical day\n\nLectures\nLabs\nSpeaker/webinar sessions\n\nOptional:\n\nLunch: ~1x week, will be updated on calendar as we have more information.\nOffice Hours:\n\nErin: 11-12pm, Tuesdays\nGlenn: 12-1pm, Tuesdays\nSara: 11-12pm, Thursdays"
+    "objectID": "lectures/03-categorical.html#visualizing-1d-categorical-data-1",
+    "href": "lectures/03-categorical.html#visualizing-1d-categorical-data-1",
+    "title": "Data visualization: categorical data",
+    "section": "Visualizing 1D categorical data",
+    "text": "Visualizing 1D categorical data\n\n\nInstead of using geom_bar(), you can do these steps “by hand”\n\nAggregate and obtain the counts first with count() (or group_by and summarize())\nThen use geom_col()\n\n\ntennis_shots |&gt;\n  count(shot_type, name = \"count\") |&gt; \n  ggplot(aes(x = shot_type, y = count)) +\n  geom_col() +\n  theme(axis.text.x = element_text(angle = 45,\n                                   vjust = 1, hjust = 1))"
   },
   {
-    "objectID": "lectures/00-welcome.html#lectures",
-    "href": "lectures/00-welcome.html#lectures",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Lectures",
-    "text": "Lectures\nMon–Fri, 9:30–11:00am, Scaife 236\n\n\nFirst ~2 weeks: EDA, clustering, basic data science tasks\n\n\n\n\nNext ~4 weeks: statistical modeling, machine learning\n\n\n\n\nAfter that: special topics, guest lectures\n\n\n\n\nA few scheduling notes:\n\nHolidays: Juneteenth (Friday June 19) and Independence Day break (July 2–3 + weekend)\n\n\n\n\nThursday July 9: Pirates vs. Braves game at PNC Park"
+    "objectID": "lectures/03-categorical.html#visualizing-1d-categorical-data-2",
+    "href": "lectures/03-categorical.html#visualizing-1d-categorical-data-2",
+    "title": "Data visualization: categorical data",
+    "section": "Visualizing 1D categorical data",
+    "text": "Visualizing 1D categorical data\n\n\nFlip your bar chart axes!\nSimply replace x with y:\n\ntennis_shots |&gt; \n  ggplot(aes(y = shot_type)) +\n  geom_bar() \n\nOr use coord_flip():\n\ntennis_shots |&gt; \n  ggplot(aes(x = shot_type)) +\n  geom_bar() +\n  coord_flip()"
   },
   {
-    "objectID": "lectures/00-welcome.html#labs",
-    "href": "lectures/00-welcome.html#labs",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Labs",
-    "text": "Labs\nMon–Fri, 1:30–3pm, Scaife 236\n\n\nDemo labs (Mon–Wed this week) + 1–2 later on\n\n\n\n\nProject labs\n\nwill begin with a mini EDA project\nthen shift to focus on main capstone project"
+    "objectID": "lectures/03-categorical.html#what-does-a-bar-chart-show",
+    "href": "lectures/03-categorical.html#what-does-a-bar-chart-show",
+    "title": "Data visualization: categorical data",
+    "section": "What does a bar chart show?",
+    "text": "What does a bar chart show?\n\n\nMarginal distribution: probability that a categorical variable \\(X\\) (e.g., shot_type) takes each particular category value \\(x\\) (groundstroke, lob, …, slice)\n\nFrequency bar charts (earlier version) give info about sample size, but this could be labeled in the chart (use geom_text() or geom_label())\nNow, we create a proportion/percent bar chart to display the individual probabilities\nThis shows the probability mass function (PMF) for discrete variables\n\nFor example: \\(P(\\) shot_type \\(=\\) slice\\()\\)\n\n\n\n\n\ntennis_shots |&gt; \n  count(shot_type) |&gt; \n  mutate(prop = n / sum(n)) |&gt; \n  ggplot(aes(x = prop, y = shot_type)) +\n  geom_col() # + geom_label(aes(label = n), hjust = 1)"
   },
   {
-    "objectID": "lectures/00-welcome.html#speakerwebinar-sessions",
-    "href": "lectures/00-welcome.html#speakerwebinar-sessions",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Speaker/webinar sessions",
-    "text": "Speaker/webinar sessions\n\nCheck calendar! Either mid-day (in between lecture and lab) or after lab\n\n\n\nScaife 236 / Zoom depending on speaker\n\n\n\n\nLots of project pitches this week and next week, then guest lectures as summer goes on"
+    "objectID": "lectures/03-categorical.html#population-vs-sample",
+    "href": "lectures/03-categorical.html#population-vs-sample",
+    "title": "Data visualization: categorical data",
+    "section": "Population vs sample",
+    "text": "Population vs sample\nPopulation: The collection of all subjects of interest\nSample: A representative subset of the population of interest\n\nThe random sample of women’s Wimbledon shots is just a subset of all women’s Wimbledon shots\n\n\n\nEmpirical distribution: estimates the true marginal distribution with observed (sample) data\n\n\n\nEstimate \\(P(\\) shot_type = \\(C_j\\)) with \\(\\hat p_j\\) for each category \\(C_j\\) (e.g., \\(\\hat p_\\texttt{dropshot}\\), …, \\(\\hat p_\\texttt{volley}\\))\nStandard error for each \\(\\hat p_j\\): \\(\\quad \\displaystyle \\text{SE}(\\hat{p}_j) = \\sqrt{\\frac{\\hat{p}_j (1 - \\hat{p}_j)}{n}}\\)"
   },
   {
-    "objectID": "lectures/00-welcome.html#eda-project",
-    "href": "lectures/00-welcome.html#eda-project",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "EDA project",
-    "text": "EDA project\n\nPractice understanding the structure of a dataset and perform basic EDA tasks (e.g., data wrangling, data visualization) in R, and using GitHub for collaboration\n\n\n\nWork in groups of 2–3\n\n\n\n\nTimeline\n\nThursday, June 4: Release date\nTuesday, June 16: 6-minute presentation (no notes/scripts) during lab"
+    "objectID": "lectures/03-categorical.html#adding-confidence-intervals-to-bar-chart",
+    "href": "lectures/03-categorical.html#adding-confidence-intervals-to-bar-chart",
+    "title": "Data visualization: categorical data",
+    "section": "Adding confidence intervals to bar chart",
+    "text": "Adding confidence intervals to bar chart\n\n\nWe can add confidence intervals by calculating the standard error estimate for each category\n\ntennis_shots |&gt; \n  count(shot_type) |&gt; \n  mutate(prop = n / sum(n),\n         se = sqrt(prop * (1 - prop) / sum(n)),\n         lower = prop - 2 * se,\n         upper = prop + 2 * se) |&gt; \n  ggplot(aes(x = prop, y = shot_type)) +\n  geom_col() +\n  geom_errorbar(aes(xmin = lower, xmax = upper), \n                color = \"blue\", \n                width = 0.2, \n                linewidth = 1)"
   },
   {
-    "objectID": "lectures/00-welcome.html#capstone-project",
-    "href": "lectures/00-welcome.html#capstone-project",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Capstone project",
-    "text": "Capstone project\n\nWork with a external advisor to analyze a dataset and answer a research question that is relevant in the respective sport\n\n\n\nWork in groups of 2–3\n\n\n\n\nPresentation checkpoint(s) (dates TBD, no notes/scripts)\n\n\n\n\nDeliverables (more details will be provided later on)\n\nReport\nPoster\nPresentation"
+    "objectID": "lectures/03-categorical.html#ordering-factors-in-a-bar-chart",
+    "href": "lectures/03-categorical.html#ordering-factors-in-a-bar-chart",
+    "title": "Data visualization: categorical data",
+    "section": "Ordering factors in a bar chart",
+    "text": "Ordering factors in a bar chart\n\n\nLet’s order the bars by proportion (and also flip the axes)\n\ntennis_shots |&gt; \n  count(shot_type) |&gt; \n  mutate(prop = n / sum(n),\n         se = sqrt(prop * (1 - prop) / sum(n)),\n         lower = prop - 2 * se,\n         upper = prop + 2 * se,\n         shot_type = fct_reorder(shot_type, prop)) |&gt; \n  ggplot(aes(x = prop, y = shot_type)) +\n  geom_col() +\n  geom_errorbar(aes(xmin = lower, xmax = upper), \n                color = \"blue\", width = 0.2, linewidth = 1)"
   },
   {
-    "objectID": "lectures/00-welcome.html#reminders",
-    "href": "lectures/00-welcome.html#reminders",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Reminders",
-    "text": "Reminders\n\nFill out the survey forms (Communication and Data Science Background)\n\n\n\nReset CMU wifi password (for non-CMU students)\n\n\n\n\nCheck Calendar, Slack, email often"
+    "objectID": "lectures/03-categorical.html#pie-charts-dont-make-them",
+    "href": "lectures/03-categorical.html#pie-charts-dont-make-them",
+    "title": "Data visualization: categorical data",
+    "section": "Pie charts… don’t make them",
+    "text": "Pie charts… don’t make them\nWhy?\n\nhttps://www.data-to-viz.com/caveat/pie.html\nhttps://github.com/cxli233/FriendsDontLetFriends\n\n3D pie charts?… even worse"
   },
   {
-    "objectID": "lectures/00-welcome.html#tips",
-    "href": "lectures/00-welcome.html#tips",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Tips",
-    "text": "Tips\n\nThis is a research program. Feel free to go above and beyond & explore things that aren’t taught in lectures\n\n\n\nFocus on principles, tools are incidental (i.e. it’s more important to get how things work first over just how to do things)\n\n\n\n\nDon’t expect to get all the concepts in one go (instead, repetition… do more & read more)"
+    "objectID": "lectures/03-categorical.html#inference-for-1d-categorical-data",
+    "href": "lectures/03-categorical.html#inference-for-1d-categorical-data",
+    "title": "Data visualization: categorical data",
+    "section": "Inference for 1D categorical data",
+    "text": "Inference for 1D categorical data\nChi-square test for 1D categorical data\n\nNull hypothesis: \\(H_0\\): \\(p_1 = p_2 = \\cdots = p_K\\)\nAlternative hypothesis: \\(H_1\\): At least one category has a different proportion\n\n\nTest statistic:\n\\[\\displaystyle \\chi^2 = \\sum_{j=1}^K \\frac{(O_j - E_j)^2}{E_j},\\]\nwhere\n\n\\(O_j\\): observed counts in category \\(j\\)\n\\(E_j\\) : expected counts under the null (i.e., \\(n/K\\) or each category is equally likely to occur)\n\n\n\nWe can perform this test in R:\n\nchisq.test(table(tennis_shots$shot_type))"
   },
   {
-    "objectID": "lectures/00-welcome.html#expectations",
-    "href": "lectures/00-welcome.html#expectations",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Expectations",
-    "text": "Expectations\n\nIn-person attendance\n\nBe on time. PLEASE.\nThis applies to lectures, labs, other sessions (e.g., webinars, guest speakers, other activities)\nThis is part of the Code of Conduct\n\n\n\n\nParticipate and ask questions\n\n\n\n\nWork together. Help and support each other.\n\n\n\n\nEnjoy, learn and grow!"
+    "objectID": "lectures/03-categorical.html#hypothesis-testing-in-general",
+    "href": "lectures/03-categorical.html#hypothesis-testing-in-general",
+    "title": "Data visualization: categorical data",
+    "section": "Hypothesis testing in general",
+    "text": "Hypothesis testing in general\nComputing \\(p\\)-values works like this:\n\nChoose a test statistic\nCompute the test statistic using the observed data\nIs test statistic “unusual” compared to what we would expect under the null hypothesis (\\(H_0\\))?\nCompare \\(p\\)-value to the target Type I error rate (“significance level”) \\(\\alpha\\)\n\nTypically choose \\(\\alpha = 0.05\\) (the origins of 0.05)\n\n\n\n\n\n\n\n\n\nDecision\n\\(H_0\\) true\n\\(H_1\\) true\n\n\n\n\nFail to reject \\(H_0\\)\nCorrect decision\nType II error (\\(\\beta\\))\n\n\nReject \\(H_0\\)\nType I error (\\(\\alpha\\))\nCorrect decision"
   },
   {
-    "objectID": "lectures/00-welcome.html#exploring-pittsburgh",
-    "href": "lectures/00-welcome.html#exploring-pittsburgh",
-    "title": "Welcome to CMSACamp 2026",
-    "section": "Exploring Pittsburgh",
-    "text": "Exploring Pittsburgh\n\nPittsburgh-based resources\nFun activities to do in Pittsburgh (non-exhaustive)"
+    "objectID": "lectures/03-categorical.html#summarizing-2d-categorical-data",
+    "href": "lectures/03-categorical.html#summarizing-2d-categorical-data",
+    "title": "Data visualization: categorical data",
+    "section": "Summarizing 2D categorical data",
+    "text": "Summarizing 2D categorical data\nContinuing with the women’s Wimbledon tennis shot data, let’s look at two attributes:\n\nshot_type (What was the shot type?)\noutcome_type (What was the shot’s outcome?)\n\n\nHow many levels does each variable have?\n\ntable(tennis_shots$shot_type)\n\n\n      drop shot    groundstroke     half volley             lob        overhead \n             97            5704              22             124              59 \n          slice swinging volley          volley \n           1020              42             187 \n\ntable(tennis_shots$outcome_type)\n\n\n  forced error       returned unforced error         winner \n           695           5363            661            536"
   },
   {
-    "objectID": "lectures.html",
-    "href": "lectures.html",
-    "title": "Lectures",
-    "section": "",
-    "text": "Updated daily before lecture."
+    "objectID": "lectures/03-categorical.html#summarizing-2d-categorical-data-1",
+    "href": "lectures/03-categorical.html#summarizing-2d-categorical-data-1",
+    "title": "Data visualization: categorical data",
+    "section": "Summarizing 2D categorical data",
+    "text": "Summarizing 2D categorical data\nTwo-way table (or contingency table, cross tabulation, crosstab)\n\ntable(\"Shot type\" = tennis_shots$shot_type, \n      \"Outcome type\" = tennis_shots$outcome_type)\n\n                 Outcome type\nShot type         forced error returned unforced error winner\n  drop shot                  3       58             18     18\n  groundstroke             475     4286            576    367\n  half volley               10        8              0      4\n  lob                       28       90              0      6\n  overhead                   4       13              5     37\n  slice                    150      815             44     11\n  swinging volley            0       20              5     17\n  volley                    25       73             13     76\n\nxtabs(~ shot_type + outcome_type, data = tennis_shots)\n\n                 outcome_type\nshot_type         forced error returned unforced error winner\n  drop shot                  3       58             18     18\n  groundstroke             475     4286            576    367\n  half volley               10        8              0      4\n  lob                       28       90              0      6\n  overhead                   4       13              5     37\n  slice                    150      815             44     11\n  swinging volley            0       20              5     17\n  volley                    25       73             13     76"
   },
   {
-    "objectID": "lectures.html#contents",
-    "href": "lectures.html#contents",
-    "title": "Lectures",
-    "section": "Contents",
-    "text": "Contents\n\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 1\nWelcome to CMSACamp 2026\nslides\n\n\nLecture 1\nJune 2\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 3\nData visualization: the grammar of graphics and ggplot2\nslides"
+    "objectID": "lectures/03-categorical.html#visualizing-2d-categorical-data",
+    "href": "lectures/03-categorical.html#visualizing-2d-categorical-data",
+    "title": "Data visualization: categorical data",
+    "section": "Visualizing 2D categorical data",
+    "text": "Visualizing 2D categorical data\n\n\nStacked bar chart: a bar chart of spine charts\nEmphasizes the marginal distribution of each category of the X variable\n\ne.g., \\(P(\\) outcome_type \\(=\\) winner \\()\\)\n\nSimilar to 1D bar charts:\n\nStart with counting every combination of 2 variables (using count() or group_by() and summarize()),\nPlot with geom_col()\n\n\n\ntennis_shots |&gt;\n  count(shot_type, outcome_type) |&gt;\n  ggplot(aes(x = shot_type, y = n, fill = outcome_type)) +\n  geom_col() +\n  theme(axis.text.x = element_text(angle = 45,\n                                   vjust = 1, hjust = 1))"
   },
   {
-    "objectID": "bios.html",
-    "href": "bios.html",
-    "title": "Instructor/TA Bios",
-    "section": "",
-    "text": "Erin Franke is a rising third-year Ph.D. student in Statistics at CMU. She graduated from Macalester College in 2023, and before that was a CMSACamp student in 2021. She previously interned with the Minnesota Twins and worked with the CLL team at Mayo Clinic. At CMU, she has worked on projects analyzing statistical methods for psychology, AI’s impact on student writing, and the impact of super shoes of professional marathon times. This past semester, she started research on statistical methods for wastewater-based epidemiology.\nSara Colando is a rising third-year Ph.D. student in Statistics at CMU. She currently works on projects related to networks, text analysis, and statistics education. She has previously been involved in biostatistics and sports analytics research, participating in CMSACamp during Summer 2023. Before CMU, she graduated from Pomona College in 2024 with a double major in mathematics and philosophy.\nPrincess Allotey is a rising fourth-year joint Ph.D. student in Statistics and Public Policy at CMU, where she is a CMU Presidential Fellow and a Heinz Dean’s PhD Fellow for Social Good. Her doctoral research focuses on developing statistical methods to handle missing network data — a fundamental challenge in network analysis. She is grateful to be advised by Professor Nynke Niezink and Professor David Choi. She holds an MSc in Statistics from CMU and a BSc in Mathematics & Data Science (minor in Education) from Centre College of Kentucky, where she was a Lincoln Scholar and a John C. Young Scholar.\nYuchen Chen is a rising fifth-year PhD student in statistics and data science at CMU, advised by Jing Lei and Yandi Shen. His research focuses on high-dimensional statistics and distribution-free inference.\nJungHo Lee is a rising fourth-year Ph.D. student in Statistics at CMU. He is primarily interested in developing rigorous statistical methods for solving problems in public and health services. Before CMU, he obtained an MS in Statistics at the University of Chicago, and a BA in Mathematics and Economics at Boston College."
+    "objectID": "lectures/03-categorical.html#visualizing-2d-categorical-data-1",
+    "href": "lectures/03-categorical.html#visualizing-2d-categorical-data-1",
+    "title": "Data visualization: categorical data",
+    "section": "Visualizing 2D categorical data",
+    "text": "Visualizing 2D categorical data\n\n\nStacked bar chart (proportion version)\n\ntennis_shots |&gt;\n  count(shot_type, outcome_type) |&gt;\n  ggplot(aes(x = shot_type, y = n,\n             fill = outcome_type)) +\n  geom_col(position = \"fill\") +\n  theme(axis.text.x = element_text(angle = 45,\n                                   vjust = 1, hjust = 1))"
   },
   {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "To be released soon."
+    "objectID": "lectures/03-categorical.html#visualizing-2d-categorical-data-2",
+    "href": "lectures/03-categorical.html#visualizing-2d-categorical-data-2",
+    "title": "Data visualization: categorical data",
+    "section": "Visualizing 2D categorical data",
+    "text": "Visualizing 2D categorical data\n\n\nSide-by-side (grouped, dodged) bar chart: a bar chart of bar charts\nShows the conditional distribution of fill variable given x variable\n\ne.g., \\(P(\\) do_you_recline \\(=\\) always \\(\\mid\\) rude_to_recline \\(=\\) somewhat \\()\\)\n\n\ntennis_shots |&gt;\n  count(shot_type, outcome_type) |&gt;\n  ggplot(aes(x = shot_type, y = n,\n             fill = outcome_type)) +\n  geom_col(position = \"dodge\") +\n  theme(axis.text.x = element_text(angle = 45,\n                                   vjust = 1, hjust = 1))"
   },
   {
-    "objectID": "labs/01-intro.html",
-    "href": "labs/01-intro.html",
-    "title": "Lab: getting started with R",
-    "section": "",
-    "text": "NOTE: To preview this file, click the “Render” button in RStudio. (The Shortcut for rendering/knitting in RStudio is Command + Shift + K for macOS users, or Ctrl + Shift + K for Windows users.)"
+    "objectID": "lectures/03-categorical.html#joint-marginal-and-conditional-probabilities",
+    "href": "lectures/03-categorical.html#joint-marginal-and-conditional-probabilities",
+    "title": "Data visualization: categorical data",
+    "section": "Joint, marginal, and conditional probabilities",
+    "text": "Joint, marginal, and conditional probabilities\nLet \\(X\\) = shot_type and \\(Y\\) = outcome_type\n\nJoint distribution: frequency of the intersection\n\ne.g., \\(P(X =\\) overhead \\(, Y =\\) winner \\()\\)\n\nMarginal distribution: row sums or column sums\n\ne.g., \\(P(X =\\) overhead \\()\\), \\(P(Y =\\) winner \\()\\)\n\nConditional distribution: probability event \\(X\\) given event \\(Y\\)\n\ne.g., \\(P(X =\\) overhead \\(\\mid Y =\\) winner \\()\\) \\(\\displaystyle \\qquad \\quad = \\frac{P(X = \\texttt{overhead}, Y = \\texttt{winner})}{P(Y = \\texttt{winner})}\\)"
   },
   {
-    "objectID": "labs/01-intro.html#typical-workflow",
-    "href": "labs/01-intro.html#typical-workflow",
-    "title": "Lab: getting started with R",
-    "section": "Typical workflow",
-    "text": "Typical workflow\n\nWriting R scripts\nYou can type R commands directly into the Console (lower left pane), but this can become quite tedious and annoying when your work becomes more complex. Instead, you can code in R Scripts. An R Script is a file type which R recognizes as storing R commands and is saved as a .R file. R Scripts are useful as we can edit our code before sending it to be run in the console.\nIn RStudio, to open a new R Script: File &gt; New File &gt; R Script.\n\n\nUsing Quarto\nAn Quarto file is a dynamic document for writing reproducible reports and communicating results. It contains the reproducible source code along with the narration that a reader needs to understand your work.\nThere are three important elements to a Quarto file:\n\nA YAML header at the top (surrounded by ---)\nChunks of R code surrounded by ```\nText mixed with simple text formatting like ## Heading and italics\n\n(Note that this file itself is a Quarto document.)\nIf you are familiar with the LaTeX syntax, math mode works like a charm in almost the same way:\n\\[\nf (x) = \\frac{1}{\\sqrt{2\\pi}} \\exp \\left( - \\frac{x^2}{2} \\right)\n\\]\nA chunk of embedded R code is the following:\n\n# R code here\nprint(\"Hello World\")\n\n[1] \"Hello World\"\n\n\nAll the lab documents will be Quarto files so you need to know how to render and convert them into a reader-friendly documents. We recommend to render as html file but if you have LaTeX installed, you can change the format to pdf.\nFor more details on Quarto, see the comprehensive manual online and the Quarto chapter of R for Data Science (2e). See also the guide on Markdown Basics for more on Markdown syntax. For code chunk options, see this guide."
+    "objectID": "lectures/03-categorical.html#joint-marginal-and-conditional-probabilities-1",
+    "href": "lectures/03-categorical.html#joint-marginal-and-conditional-probabilities-1",
+    "title": "Data visualization: categorical data",
+    "section": "Joint, marginal, and conditional probabilities",
+    "text": "Joint, marginal, and conditional probabilities\nThe base R way to get the two-way proportion table\n\ntennis_shots |&gt; \n  select(shot_type, outcome_type) |&gt; \n  table() |&gt; \n  prop.table()\n\nTwo-way proportion table (the tidyverse way) with pivot_wider\n\ntennis_shots |&gt;\n  group_by(shot_type, outcome_type) |&gt;\n  summarize(joint = n() / nrow(tennis_shots)) |&gt;\n  pivot_wider(names_from = outcome_type, values_from = joint, values_fill = 0)\n\n# A tibble: 8 × 5\n# Groups:   shot_type [8]\n  shot_type       `forced error` returned `unforced error`   winner\n  &lt;fct&gt;                    &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;    &lt;dbl&gt;\n1 drop shot             0.000414  0.00799         0.00248  0.00248 \n2 groundstroke          0.0655    0.591           0.0794   0.0506  \n3 half volley           0.00138   0.00110         0        0.000551\n4 lob                   0.00386   0.0124          0        0.000827\n5 overhead              0.000551  0.00179         0.000689 0.00510 \n6 slice                 0.0207    0.112           0.00606  0.00152 \n7 swinging volley       0         0.00276         0.000689 0.00234 \n8 volley                0.00345   0.0101          0.00179  0.0105"
   },
   {
-    "objectID": "labs/01-intro.html#installing-r-packages",
-    "href": "labs/01-intro.html#installing-r-packages",
-    "title": "Lab: getting started with R",
-    "section": "Installing R packages",
-    "text": "Installing R packages\nR performs a wide variety of functions, such as data manipulation, modeling, and visualization. The extensive code base beyond the built-in functions are managed by packages created from numerous statisticians and developers. The Comprehensive R Archive Network (CRAN) manages the open-source distribution and the quality control of the R packages.\nTo install an R package, using the function install.packages and put the package name in the parentheses and the quote. While this is preferred, for those using RStudio, you can also go to “Tools” then “Install Packages” and then input the package name.\n\ninstall.packages(\"tidyverse\")\n\nImportant: NEVER install new packages in a code block in a .qmd file. That is, the install.packages() function should NEVER be in your code chunks (unless they are commented out using #). The library() function, however, will be used throughout your code: The library() function loads packages only after they are installed.\nIf in any time you get a message says: “Do you want to install from sources the package which needs compilation?” Choose “No” will tend to bring less troubles. (Note: This happens when the bleeding-edge version package is available, but not yet compiled for each OS distribution. In many case, you can just proceed without the source compilation.)\nEach package only needs to be installed once. Whenever you want to use functions defined in the package, you need to load the package with the command:\n\nlibrary(tidyverse)\n\nHere is a list of packages that we may need (but not limited to) in the following lectures and/or labs. Make sure you can install all of them. If you fail to install any package, please update R and RStudio first and check the error message for any other packages that need to install first.\n\nlibrary(tidyverse)\nlibrary(devtools)\nlibrary(ranger)\nlibrary(glmnet)"
+    "objectID": "lectures/03-categorical.html#categorical-heatmaps",
+    "href": "lectures/03-categorical.html#categorical-heatmaps",
+    "title": "Data visualization: categorical data",
+    "section": "Categorical heatmaps",
+    "text": "Categorical heatmaps\n\n\n\nUse geom_tile to display joint distribution of two categorical variables\nAnnotate tiles with labels of percentages using geom_text() and the scales package (a very neat package)\n\n\ntennis_shots |&gt;\n  group_by(shot_type, outcome_type) |&gt;\n  summarize(\n    freq = n(), \n    joint = n() / nrow(tennis_shots)\n  ) |&gt; \n  ggplot(aes(x = shot_type, y = outcome_type)) +\n  geom_tile(aes(fill = freq), color = \"white\") +\n  geom_text(aes(label = scales::percent(joint, accuracy = 0.01))) +\n  scale_fill_gradient2() +\n  coord_equal() +\n  theme_classic()"
   },
   {
-    "objectID": "labs/01-intro.html#basic-data-type-and-operators",
-    "href": "labs/01-intro.html#basic-data-type-and-operators",
-    "title": "Lab: getting started with R",
-    "section": "Basic data type and operators",
-    "text": "Basic data type and operators\n\nData type: vector\nThe basic unit of R is a vector. A vector is a collection of values of the same type and the type could be:\n\nnumeric (double/integer number): digits with optional decimal point\n\n\nv1 &lt;- c(1, 5, 8.3, 0.02, 99999)\ntypeof(v1)\n\n[1] \"double\"\n\n\n\ncharacter: a string (or word) in double or single quotes, “…” or ’…’.\n\n\nv2 &lt;- c(\"apple\", \"banana\", \"3 chairs\", \"dimension1\", \"&gt;-&lt;\")\ntypeof(v2)\n\n[1] \"character\"\n\n\n\nlogical: TRUE and FALSE\n\n\nv3 &lt;- c(TRUE, FALSE, FALSE)\ntypeof(v3)\n\n[1] \"logical\"\n\n\nNote: Oftentimes, factor is used to encode a character vector into unique numeric vector.\n\nplayer_type &lt;- c(\"Batter\", \"Batter\", \"Hitter\", \"Batter\", \"Hitter\")\nplayer_type &lt;- factor(player_type)\nstr(player_type)\n\n Factor w/ 2 levels \"Batter\",\"Hitter\": 1 1 2 1 2\n\ntypeof(player_type)\n\n[1] \"integer\"\n\n\n\n\nData type: lists\nVector can store only single data type:\n\ntypeof(c(1, TRUE, \"apple\"))\n\n[1] \"character\"\n\n\nList is a vector of vectors which can store different data types of vectors:\n\nroster &lt;- list(\n  name = c(\"Sara\", \"Erin\", \"Princess\", \"Yuchen\", \"JungHo\"),\n  role = c(\"Instructor\", \"Instructor\", \"TA\", \"TA\", \"TA\"),\n  is_TA = c(FALSE, FALSE, TRUE, TRUE, TRUE)\n)\nstr(roster)\n\nList of 3\n $ name : chr [1:5] \"Sara\" \"Erin\" \"Princess\" \"Yuchen\" ...\n $ role : chr [1:5] \"Instructor\" \"Instructor\" \"TA\" \"TA\" ...\n $ is_TA: logi [1:5] FALSE FALSE TRUE TRUE TRUE\n\n\nR uses a specific type of list, data frame, containing the same number of rows with unique row names.\n\nstr(iris)\n\n'data.frame':   150 obs. of  5 variables:\n $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...\n $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...\n $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...\n $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...\n $ Species     : Factor w/ 3 levels \"setosa\",\"versicolor\",..: 1 1 1 1 1 1 1 1 1 1 ...\n\ntypeof(iris)\n\n[1] \"list\"\n\n\n\n\nOperators\nWe can perform element-wise actions on vectors through the operators:\n\narithmetic: +, -, *, /, ^ (for integer division, %/% is quotient, %% is remainder)\n\n\nv1 &lt;- c(1,2,3)\nv2 &lt;- c(4,5,6)\n\nv1 + v2\n\n[1] 5 7 9\n\nv1 * v2\n\n[1]  4 10 18\n\nv2 %% v1\n\n[1] 0 1 0\n\n\n\nrelation: &gt;, &gt;=, &lt; ,&lt;=, ==, !=\n\n\n5 &gt; 4\n\n[1] TRUE\n\n5 &lt;= 4\n\n[1] FALSE\n\n33 == 22\n\n[1] FALSE\n\n33 != 22\n\n[1] TRUE\n\n\n\nlogic: ! (not), & (and), | (or)\n\n\n(5 &gt; 6) | (2 &lt; 3)\n\n[1] TRUE\n\n(5 &gt; 6) & (2 &lt; 3)\n\n[1] FALSE\n\n!(5 &gt; 6) & (2 &lt; 3)\n\n[1] TRUE\n\n\n\nsequence: i:j (: operator, i and j are any two arbitrary numbers)\n\n\n1:5\n\n[1] 1 2 3 4 5\n\n5:1\n\n[1] 5 4 3 2 1\n\n-1:-5\n\n[1] -1 -2 -3 -4 -5\n\n-1:5\n\n[1] -1  0  1  2  3  4  5"
+    "objectID": "lectures/03-categorical.html#visualizing-independence",
+    "href": "lectures/03-categorical.html#visualizing-independence",
+    "title": "Data visualization: categorical data",
+    "section": "Visualizing independence",
+    "text": "Visualizing independence\n\n\nMosaic plot\n\nspine chart of spine charts\nwidth: marginal distribution of outcome_type\nheight: conditional distribution of outcome_type | shot_type\narea: joint distribution\n\nUsing a mosaic plot to visually check for independence:\n\ncheck whether all proportions are the same (the boxes line up in a grid)\n\n\n\ntennis_shots |&gt; \n  select(shot_type, outcome_type) |&gt; \n  table() |&gt; \n  mosaicplot(main = \"Relationship between shot type and outcome type\", las=2)"
   },
   {
-    "objectID": "labs/01-intro.html#loading-.csv-files",
-    "href": "labs/01-intro.html#loading-.csv-files",
-    "title": "Lab: getting started with R",
-    "section": "Loading .csv files",
-    "text": "Loading .csv files\nMost of the data provided to you are in .csv format. In the code chunk below, we use the read_csv() function (from the readr package, part of the tidyverse) to load a dataset that is saved in a folder located in the SURE GitHub repository. In quotations, insert the file path where the dataset is located, which in this case is online. However, typically you’ll save .csv files locally first and put them in an organized folder to access later.\n\nlibrary(tidyverse)\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2025/main/data/nba_stats.csv\")\nhead(nba_stats)"
+    "objectID": "lectures/03-categorical.html#visualizing-independence-1",
+    "href": "lectures/03-categorical.html#visualizing-independence-1",
+    "title": "Data visualization: categorical data",
+    "section": "Visualizing independence",
+    "text": "Visualizing independence\nMosaic plot with ggmosaic package\n\nflying_etiquette |&gt; \n  ggplot() +\n  geom_mosaic(aes(x = product(do_you_recline, rude_to_recline), fill = do_you_recline))"
   },
   {
-    "objectID": "labs/01-intro.html#looking-for-help",
-    "href": "labs/01-intro.html#looking-for-help",
-    "title": "Lab: getting started with R",
-    "section": "Looking for help",
-    "text": "Looking for help\nIf you have any R problem, the best step is to use the help() function (or equivalently the ?). For example,\n\nhelp(str)\nhelp(lm)\n\nOr you can use the command ?…\n\n?str\n?lm\n\nDouble question marks can lead to a more general search.\n\n??predict\n\nYou should ALWAYS consult the R help documentation first before attempting to google around (or ask ChatGPT) for a solution."
+    "objectID": "lectures/03-categorical.html#inference-for-2d-categorical-data",
+    "href": "lectures/03-categorical.html#inference-for-2d-categorical-data",
+    "title": "Data visualization: categorical data",
+    "section": "Inference for 2D categorical data",
+    "text": "Inference for 2D categorical data\nChi-square test for 2D categorical data\n\nNull hypothesis: \\(H_0\\): two categorical variables are independent of each other\n\ne.g., no association between shot_type and outcome_type\n\nAlternative hypothesis: \\(H_1\\): the two categorical variables are dependent\n\nTest statistic:\n\\[\\displaystyle \\chi^2 = \\sum_i^{k_1} \\sum_j^{k_2} \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}\\]\n\n# chisq.test(table(tennis_shots$outcome_type, tennis_shots$shot_type))\ntennis_shots |&gt; \n  select(outcome_type, shot_type) |&gt; \n  table() |&gt; \n  chisq.test()\n\n\n    Pearson's Chi-squared test\n\ndata:  table(select(tennis_shots, outcome_type, shot_type))\nX-squared = 894.95, df = 21, p-value &lt; 2.2e-16"
   },
   {
-    "objectID": "labs/01-intro.html#exercises",
-    "href": "labs/01-intro.html#exercises",
-    "title": "Lab: getting started with R",
-    "section": "Exercises",
-    "text": "Exercises\n\nCreate four vectors, v1 and v2 are numeric vectors, v3 is a character vector and v4 is a logic vector. Make sure the length of v1 and v2 are the same. (Hint: a way to check the length is to use the function length())\n\n\n# R code here\n\n\nPreform add, minus, product and division on v1 and v2.\n\n\n# R code here\n\n\nCreate four statements with both relation and logic operators, that 2 of them return TRUE and 2 of them return FALSE.\n\n\n# R code here\n\n\nCreate 2 sequences with length 20, one in an increasing order and the other in a decreasing order.\n\n\n# R code here"
+    "objectID": "lectures/03-categorical.html#residuals",
+    "href": "lectures/03-categorical.html#residuals",
+    "title": "Data visualization: categorical data",
+    "section": "Residuals",
+    "text": "Residuals\nRecall the test statistic:\n\\[\\displaystyle \\chi^2 = \\sum_i^{k_1} \\sum_j^{k_2} \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}\\]\nDefine the Pearson residuals:\n\\[\\displaystyle r_{ij} = \\frac{O_{ij} - E_{ij}}{\\sqrt{E_{ij}}}\\]\nSome rules of thumb:\n\n\\(r_{ij} \\approx 0\\): observed counts are close to expected counts\n\\(|r_{ij}| &gt; 2\\): significant at \\(\\alpha = 0.05\\)\nvery positive \\(r_{ij}\\): higher than expected\nvery negative \\(r_{ij}\\): lower than expected"
   },
   {
-    "objectID": "labs/01-intro.html#text-formatting-in-quarto",
-    "href": "labs/01-intro.html#text-formatting-in-quarto",
-    "title": "Lab: getting started with R",
-    "section": "Text formatting in Quarto",
-    "text": "Text formatting in Quarto\nThere are a lot of ways to format text in a Quarto document, e.g., italics and bold (just scan through this .qmd file to see how this was done). See this guide for more tips/tricks. In particular, check out the Markdown Basics and other guides under Authoring. See also this guide on R code chunk options.\nAs you’ll see throughout this summer (and especially with your project), well-formatted .html files can be a great way to showcase data science results to the public online."
+    "objectID": "lectures/03-categorical.html#residuals-1",
+    "href": "lectures/03-categorical.html#residuals-1",
+    "title": "Data visualization: categorical data",
+    "section": "Residuals",
+    "text": "Residuals\nWe can make mosaic plots with the cells color-coded by Pearson residuals\nTells us which combinations of 2 categorical variables (cells) are much higher/lower than expected\n\ntennis_shots |&gt; \n  select(outcome_type, shot_type) |&gt; \n  table() |&gt; \n  mosaicplot(main = \"Relationship between outcome type and shot type\",\n             las = 2, shade = TRUE)"
   },
   {
-    "objectID": "labs/01-intro.html#customizing-rstudio",
-    "href": "labs/01-intro.html#customizing-rstudio",
-    "title": "Lab: getting started with R",
-    "section": "Customizing RStudio",
-    "text": "Customizing RStudio\nRStudio theme\nRStudio can be customized with different themes. To explore built-in themes,\n\nNavigate to the menu bar at the top of your screen\nChoose Tools &gt; Global Options &gt; Appearance\nChange your RStudio theme under Editor theme\n\n(FYI, Erin uses the Tomorrow theme and Sara uses the Clouds theme!)\nNote that within the Appearance tab, there are also options for changing your Editor font, Editor font size, etc.\nRStudio panes\nWithin RStudio, there are several panes (e.g., Console, Help, Environment, History, Plots, etc.). To customize, go to Tools &gt; Global Options &gt; Pane Layout, and arrange the panes as you see fit.\nFeel free to explore other options within the Tools &gt; Global Option menu."
+    "objectID": "lectures/03-categorical.html#beyond-2d-facets",
+    "href": "lectures/03-categorical.html#beyond-2d-facets",
+    "title": "Data visualization: categorical data",
+    "section": "Beyond 2D: facets!",
+    "text": "Beyond 2D: facets!\n\ntennis_shots |&gt;\n  filter(!(round %in% c(\"Q1\", \"Q2\", \"Q3\"))) |&gt;\n  mutate(round_grouped = case_when(\n    round == \"F\" ~ \"Finals\",\n    round == \"SF\" ~ \"Semi-finals\",\n    round == \"QF\" ~ \"Quarter-finals\",\n    TRUE ~ \"Early rounds\")) |&gt;\n  mutate(round_grouped = fct_relevel(round_grouped, \"Early rounds\", \"Quarter-finals\", \"Semi-finals\", \"Finals\")) |&gt;\n  ggplot(aes(x = shot_type, fill = outcome_type)) + \n  geom_bar(position = \"fill\") +\n  labs(x = \"Shot type\", y = \"Proportion\", fill = \"Outcome Type\") +\n  facet_wrap(~ round_grouped, ncol = 4) +\n  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))"
   },
   {
-    "objectID": "labs/02-wrangling.html",
-    "href": "labs/02-wrangling.html",
-    "title": "Lab: data wrangling",
-    "section": "",
-    "text": "Our data are usually stored as a .csv file and after loading a .csv file into RStudio, we will have a “data frame”. A data frame can be considered a special case of matrix where each column represents a measurement or variable of interest for each observation which correspond to the rows of the dataset. After loading the tidyverse suite of packages, we use the read_csv() function to load the 2025 NBA regular season stats dataset from yesterday:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_stats.csv\")\n\nRows: 654 Columns: 23\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): player, team, position\ndbl (20): age, games, games_started, minutes_played, field_goals, field_goal...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nBy default, read_csv() reads in the dataset as a tbl (aka tibble) object instead of a data.frame object. There are some differences, which you can read about if you are interested, but it’s not that meaningful for our purposes.\nWe can use the functions slice_head() and slice_tail() to view a sample of the data. Use the slice_head() function to view the first 6 rows, then use the slice_tail() function to view the last 3 rows:\n\n# INSERT CODE HERE\n\nView the dimensions of the data with dim():\n\n# INSERT CODE HERE\n\nQuickly view summary statistics for all variables with the summary() function:\n\n# Uncomment the following code by deleting the # at the front\n# summary(nba_stats)\n\nView the data structure types with str():\n\n# str(nba_stats)\n\nWhat’s the difference between the output from the two functions?"
+    "objectID": "lectures/03-categorical.html#the-janitor-package",
+    "href": "lectures/03-categorical.html#the-janitor-package",
+    "title": "Data visualization: categorical data",
+    "section": "The janitor package",
+    "text": "The janitor package\nThe most popular janitor function is clean_names()… for cleaning column names\n\n# before\niris |&gt; \n  head()\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa\n\n# after\nlibrary(janitor)\niris |&gt; \n  clean_names() |&gt; \n  head()\n\n  sepal_length sepal_width petal_length petal_width species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa"
   },
   {
-    "objectID": "labs/02-wrangling.html#reading-and-previewing-data",
-    "href": "labs/02-wrangling.html#reading-and-previewing-data",
-    "title": "Lab: data wrangling",
-    "section": "",
-    "text": "Our data are usually stored as a .csv file and after loading a .csv file into RStudio, we will have a “data frame”. A data frame can be considered a special case of matrix where each column represents a measurement or variable of interest for each observation which correspond to the rows of the dataset. After loading the tidyverse suite of packages, we use the read_csv() function to load the 2025 NBA regular season stats dataset from yesterday:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_stats.csv\")\n\nRows: 654 Columns: 23\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): player, team, position\ndbl (20): age, games, games_started, minutes_played, field_goals, field_goal...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nBy default, read_csv() reads in the dataset as a tbl (aka tibble) object instead of a data.frame object. There are some differences, which you can read about if you are interested, but it’s not that meaningful for our purposes.\nWe can use the functions slice_head() and slice_tail() to view a sample of the data. Use the slice_head() function to view the first 6 rows, then use the slice_tail() function to view the last 3 rows:\n\n# INSERT CODE HERE\n\nView the dimensions of the data with dim():\n\n# INSERT CODE HERE\n\nQuickly view summary statistics for all variables with the summary() function:\n\n# Uncomment the following code by deleting the # at the front\n# summary(nba_stats)\n\nView the data structure types with str():\n\n# str(nba_stats)\n\nWhat’s the difference between the output from the two functions?"
+    "objectID": "lectures/03-categorical.html#tabulation-with-the-janitor-package",
+    "href": "lectures/03-categorical.html#tabulation-with-the-janitor-package",
+    "title": "Data visualization: categorical data",
+    "section": "Tabulation with the janitor package",
+    "text": "Tabulation with the janitor package\nThe lesser-known stars of janitor: functions for tabulation of categorical data\nThe tabyl() function:\n\nlibrary(gt)\n\ntennis_shots |&gt; \n  tabyl(shot_type) |&gt;\n  gt()\n\n\n\n\n\n\n\nshot_type\nn\npercent\n\n\n\n\ndrop shot\n97\n0.013370090\n\n\ngroundstroke\n5704\n0.786216402\n\n\nhalf volley\n22\n0.003032391\n\n\nlob\n124\n0.017091661\n\n\noverhead\n59\n0.008132323\n\n\nslice\n1020\n0.140592695\n\n\nswinging volley\n42\n0.005789111\n\n\nvolley\n187\n0.025775327\n\n\n\n\n\n\n\nFor more, see this overview and this tutorial"
   },
   {
-    "objectID": "labs/02-wrangling.html#data-manipulation-with-dplyr",
-    "href": "labs/02-wrangling.html#data-manipulation-with-dplyr",
-    "title": "Lab: data wrangling",
-    "section": "Data manipulation with dplyr",
-    "text": "Data manipulation with dplyr\nAn easier way to manipulate the data frame is through the dplyr package, which is in the tidyverse suite of packages. The operations we can do include: selecting specific columns, filtering for rows, re-ordering rows, adding new columns and summarizing data. The “split-apply-combine” concept can be achieved by dplyr.\n\nSelecting columns with select()\nThe function select() can be use to select certain column with the column names. First create a new table called nba_stats_pg that only contains the player and games columns:\n\n# INSERT CODE HERE\n\nTo select all columns except a specific column, use the - (subtraction) operator. For example, view the output from uncommenting the following line of code:\n\n# select(nba_stats, -player)\n\nTo select a range of columns by name (that are in consecutive order), use the : (colon) operator. For example, view the output from uncommenting the following line of code:\n\n# select(nba_stats, player:games)\n\nTo select all columns that start with certain character strings, use the function starts_with(). Other matching options are:\n\nends_with(): select columns that end with a character string\ncontains(): select columns that contain a character string\nmatches(): select columns that match a regular expression\none_of(): select columns names that are from a group of names\n\n\n# Uncomment the following lines of code\n# select(nba_stats, starts_with(\"three\"))\n# select(nba_stats, contains(\"throw\"))\n\n\n\nExtracting rows using filter()\nWe can also extract the rows/observations that satisfy certain criteria. Try extracting the rows with more than 500 assists:\n\n# INSERT CODE HERE\n\nWe can also filter on multiple criteria. Subset the rows with age above 30 and the team is either “HOU” or “GSW”:\n\n# INSERT CODE HERE\n\n\n\nArranging rows using arrange()\nTo arrange the data frame by a specific order we need to use the function arrange(). The default is by increasing order and the desc() function will provide the decreasing order. First arrange the nba_stats table by personal_fouls in ascending order:\n\n# INSERT CODE HERE\n\nNext by descending order:\n\n# INSERT CODE HERE\n\nTry combining a pipeline of select(), filter(), and arrange() steps together with the |&gt; operator by:\n\nSelecting the player, team, age, and games columns,\nFilter to select only rows with games above 50,\nSort by age in descending order\n\n\n# INSERT CODE HERE\n\n\n\nCreating new columns using mutate()\nSometimes the data does not include the variable that we are interested in and we need to manipulate the current variables to add new variables into the data frame. Create a new column fouls_per_game by taking the personal_fouls and dividing by games (reassign this output to the nba_stats table following the commented code chunk so this column is added to the table):\n\n# nba_stats &lt;- nba_stats |&gt;\n#   mutate(INSERT CODE HERE)\n\n\n\nCreating summaries with summarize()\nTo create summary statistics for a given column in the data frame, we can use summarize() function. Compute the mean, min, and max number of assists:\n\n# INSERT CODE HERE\n\nThe advantage of summarize() is more obvious if we combine it with group_by(), the group operators. Since players at the different position tend to have very different statistics, first group_by() position and then compute the same summary statistics for assists:\n\n# INSERT CODE HERE"
-  },
-  {
-    "objectID": "labs/02-wrangling.html#challenge-exercises",
-    "href": "labs/02-wrangling.html#challenge-exercises",
-    "title": "Lab: data wrangling",
-    "section": "Challenge exercises",
-    "text": "Challenge exercises\nFinished early? We encourage you to review how to join dataframes in R by reading sections 19.3-19.5 of R for Data Science by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund. Then, try the following exercises. We challenge you to not use AI—ask the TAs if you get stuck!\n\nBonus exercise 1 (Paralympic Swimming)\nLoad the following dataset (link to the codebook). Create a dataframe with the number of athletes that have medaled in swimming since 2000 for each county. Create a second dataframe with the total number of medals that each country has won in swimming since 2000. Then, join the two dataframes. Arrange the joined dataframe from greatest number of medals to least number of medals.\nCheck your work: Is the number of medals always greater than or equal to the number of athletes?\n\nathletes &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-03/athletes.csv')\n\nRows: 19547 Columns: 10\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (8): gender, event, medal, athlete, abb, country, type, guide\ndbl (2): grp_id, year\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n# INSERT CODE HERE\n\n\n\nBonus exercise 2 (Ultra running)\nLoad the following datasets that explore trends in ultra running (link to the data dictionary). Your task is to identify female runners who ran at least 10 ultra races between age 30-50. Create a dataset of their race results from this time in their life. The dataset should have additional columns:\n\nthe distance of the race (in miles)\nthe age of the runner at the time of the race (assume age represents the runner’s age in 2021)\nthe average minutes per mile that runner completed the race in\n\nThere is a lot going on in this one, so don’t feel discouraged if you get stuck!\n\nultra_rankings &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/ultra_rankings.csv')\n\nRows: 137803 Columns: 8\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): runner, time, gender, nationality\ndbl (4): race_year_id, rank, age, time_in_seconds\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nrace &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/race.csv')\n\nRows: 1207 Columns: 13\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (5): event, race, city, country, participation\ndbl  (6): race_year_id, distance, elevation_gain, elevation_loss, aid_statio...\ndate (1): date\ntime (1): start_time\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n# INSERT CODE HERE"
-  },
-  {
-    "objectID": "labs.html",
-    "href": "labs.html",
-    "title": "Labs",
-    "section": "",
-    "text": "Updated daily before lab.\n\nNote: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 1\nGetting started with R\n.html   .qmd\n\n\nJune 2\nData wrangling\n.html   .qmd"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CMSACamp 2026",
-    "section": "",
-    "text": "Welcome to the Carnegie Mellon Sports Analytics Camp (CMSACamp), hosted by Department of Statistics & Data Science at Carnegie Mellon University. This program focuses on statistics and data science methodology with applications in sports analytics.\nOn this site, the Lectures tab contains all lecture slides, the Labs tab contains materials for the labs, and the Projects tab contains materials for the EDA and capstone projects.\n\nPittsburgh Guides\n\nPittsburgh-based Resources\nFun activities to do in Pittsburgh"
-  },
-  {
-    "objectID": "git-setup.html#step-1-create-a-github-account",
-    "href": "git-setup.html#step-1-create-a-github-account",
-    "title": "Git and GitHub Setup",
-    "section": "Step 1: Create a GitHub account",
-    "text": "Step 1: Create a GitHub account\nRegister for a GitHub account at https://github.com if you do not have one. It is completely free to use. You may use any username you prefer; we will later ask for your username so we can keep track."
-  },
-  {
-    "objectID": "git-setup.html#step-2-install-git",
-    "href": "git-setup.html#step-2-install-git",
-    "title": "Git and GitHub Setup",
-    "section": "Step 2: Install Git",
-    "text": "Step 2: Install Git\n(Windows)\n\nGo to https://git-scm.com/download/win\nNavigate to “Click here to download” on the first line and click on it\nFollow the installation instructions\n\n(macOS)\n\nOpen the Terminal app on your computer (Finder \\(\\rightarrow\\) Applications \\(\\rightarrow\\) Terminal)\nGo to https://brew.sh and copy/paste the chunk under “Install Homebrew” to the Terminal\nOnce Homebrew is installed, type this into the Terminal: brew install git"
-  },
-  {
-    "objectID": "git-setup.html#step-3-configure-git",
-    "href": "git-setup.html#step-3-configure-git",
-    "title": "Git and GitHub Setup",
-    "section": "Step 3: Configure Git",
-    "text": "Step 3: Configure Git\n\nAfter installation, you need to configure Git. This can be done directly in R:\n\n\n# uncomment and run the following line to install the usethis package\n# install.packages(\"usethis\")\nusethis::use_git_config(user.name = \"Your Name\", \n                        user.email = \"your-github@email.address\")\n\n\nUse your full name for the user.name field and the same email as your GitHub account for user.email\nYou then need to create a personal access token for authentication as follows:\n\n\nusethis::create_github_token()\n\n\nThis will direct you to the GitHub site on your browser (you may have to log in). On this site:\n\nUnder “Note”, type in some description for this token (e.g., “Summer 2025 GitHub token”)\nFor “Expiration”, set an expiration date for this token (e.g., 90 days) or make it permanent (i.e. choose “No expiration” if you don’t want to deal with this again in the future)\nUnder “Select scopes”, recommended scopes will be pre-selected. Stick with these for now.\n\nNext, click on “Generate token”\nCopy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)\nIn RStudio, run the following to get a prompt where you can paste your token:\n\n\n# uncomment and run the following line to install the gitcreds package\n# install.packages(\"gitcreds\")\ngitcreds::gitcreds_set()\n\nYou should then be ready to use GitHub!"
-  },
-  {
-    "objectID": "git-setup.html#step-4-create-a-github-repository",
-    "href": "git-setup.html#step-4-create-a-github-repository",
-    "title": "Git and GitHub Setup",
-    "section": "Step 4: Create a GitHub repository",
-    "text": "Step 4: Create a GitHub repository\nWe will follow the paradigm of “GitHub first”. What this means is that when we create a repository, we will create it on GitHub first, then link a local repository to it from inside RStudio.\nAfter you’ve logged in, to create a GitHub repository\n\nGo to https://github.com/new\nName the repository (give it a meaningful name)\nGive the repository a description (don’t leave this blank although this is optional)\nDecide whether to keep the repository public or private (for now, let’s just keep it public)\nClick on “Initialize this repository with a README”. For now, there’s no need to “Add .gitignore” or “Choose a license”\nClick on “Create Repository”"
-  },
-  {
-    "objectID": "git-setup.html#step-5-connect-rstudio-to-the-github-repository",
-    "href": "git-setup.html#step-5-connect-rstudio-to-the-github-repository",
-    "title": "Git and GitHub Setup",
-    "section": "Step 5: Connect RStudio to the GitHub repository",
-    "text": "Step 5: Connect RStudio to the GitHub repository\n\nGo to the browser page for your GitHub repository\nClick on Code (in the same line as “Go to file”). Under HTTPS, copy the URL\nIn RStudio, click on File &gt; New Project.... Next, click on “Version Control” and then on “Git”. Paste the URL you just copied into “Repository URL”\nType the name for the folder on your computer associated with this repository into Project directory name\n\nYou can choose whatever name you want, but it is recommended to give a name similar to the repository name on GitHub\n\nMake sure “Create project as subdirectory of:” points to where you want to locate this new folder\nClick on “Create Project”\nAt this point, you should find that the “Files” pane (in the bottom right of RStudio) is listing the files in your local repository."
-  },
-  {
-    "objectID": "git-setup.html#step-6-modify-the-repository",
-    "href": "git-setup.html#step-6-modify-the-repository",
-    "title": "Git and GitHub Setup",
-    "section": "Step 6: Modify the repository",
-    "text": "Step 6: Modify the repository\nTo add a new file from your local repository to GitHub:\n\nIn RStudio, open a new file (could be anything - e.g. R Script, Quarto document, etc.).\nFill the file with some code/comments/etc. (This is just for illustration purpose, to show how you can add a file to GitHub from your computer)\nSave the file. At this point, this file should show up in the “Git” pane (in the top right of RStudio)\nCheck the box under “Staged” in the Git pane to stage the file for a commit\nClick on “Commit” in the Git pane\nIn the new window that opens, add a “Commit message”, then click on the “Commit” button\nClick on “Push” to push your changes from your local repository to the remote repository on GitHub\n\nIf you encountered no errors then you’re done! While working on a single project you will repeatedly perform the tasks in Step 6: make changes to files, commit changes, then push changes\nEvery time you want to create a new repository, you can just start with Step 4, use GitHub, copy the repository into RStudio, then repeatedly update, commit, and push.\nAsk us for help if you have any questions."
+    "objectID": "lectures/03-categorical.html#tabulation-with-the-janitor-package-1",
+    "href": "lectures/03-categorical.html#tabulation-with-the-janitor-package-1",
+    "title": "Data visualization: categorical data",
+    "section": "Tabulation with the janitor package",
+    "text": "Tabulation with the janitor package\nThe adorn_*() functions\n\ntennis_shots |&gt; \n  tabyl(shot_type, outcome_type) |&gt; \n  adorn_percentages(\"row\") |&gt; \n  adorn_pct_formatting(digits = 2) |&gt; \n  adorn_ns() |&gt;\n  gt()\n\n\n\n\n\n\n\nshot_type\nforced error\nreturned\nunforced error\nwinner\n\n\n\n\ndrop shot\n3.09% (3)\n59.79% (58)\n18.56% (18)\n18.56% (18)\n\n\ngroundstroke\n8.33% (475)\n75.14% (4,286)\n10.10% (576)\n6.43% (367)\n\n\nhalf volley\n45.45% (10)\n36.36% (8)\n0.00% (0)\n18.18% (4)\n\n\nlob\n22.58% (28)\n72.58% (90)\n0.00% (0)\n4.84% (6)\n\n\noverhead\n6.78% (4)\n22.03% (13)\n8.47% (5)\n62.71% (37)\n\n\nslice\n14.71% (150)\n79.90% (815)\n4.31% (44)\n1.08% (11)\n\n\nswinging volley\n0.00% (0)\n47.62% (20)\n11.90% (5)\n40.48% (17)\n\n\nvolley\n13.37% (25)\n39.04% (73)\n6.95% (13)\n40.64% (76)"
   },
   {
     "objectID": "lectures/01-explore.html#workflow-diagram",
@@ -635,6 +572,370 @@
     "title": "Exploring data: into the tidyverse",
     "section": "See you later, partner",
     "text": "See you later, partner\n\n\n\nA “data wrangler” illustration of the dplyr package, courtesy of Allison Horst"
+  },
+  {
+    "objectID": "git-setup.html#step-1-create-a-github-account",
+    "href": "git-setup.html#step-1-create-a-github-account",
+    "title": "Git and GitHub Setup",
+    "section": "Step 1: Create a GitHub account",
+    "text": "Step 1: Create a GitHub account\nRegister for a GitHub account at https://github.com if you do not have one. It is completely free to use. You may use any username you prefer; we will later ask for your username so we can keep track."
+  },
+  {
+    "objectID": "git-setup.html#step-2-install-git",
+    "href": "git-setup.html#step-2-install-git",
+    "title": "Git and GitHub Setup",
+    "section": "Step 2: Install Git",
+    "text": "Step 2: Install Git\n(Windows)\n\nGo to https://git-scm.com/download/win\nNavigate to “Click here to download” on the first line and click on it\nFollow the installation instructions\n\n(macOS)\n\nOpen the Terminal app on your computer (Finder \\(\\rightarrow\\) Applications \\(\\rightarrow\\) Terminal)\nGo to https://brew.sh and copy/paste the chunk under “Install Homebrew” to the Terminal\nOnce Homebrew is installed, type this into the Terminal: brew install git"
+  },
+  {
+    "objectID": "git-setup.html#step-3-configure-git",
+    "href": "git-setup.html#step-3-configure-git",
+    "title": "Git and GitHub Setup",
+    "section": "Step 3: Configure Git",
+    "text": "Step 3: Configure Git\n\nAfter installation, you need to configure Git. This can be done directly in R:\n\n\n# uncomment and run the following line to install the usethis package\n# install.packages(\"usethis\")\nusethis::use_git_config(user.name = \"Your Name\", \n                        user.email = \"your-github@email.address\")\n\n\nUse your full name for the user.name field and the same email as your GitHub account for user.email\nYou then need to create a personal access token for authentication as follows:\n\n\nusethis::create_github_token()\n\n\nThis will direct you to the GitHub site on your browser (you may have to log in). On this site:\n\nUnder “Note”, type in some description for this token (e.g., “Summer 2025 GitHub token”)\nFor “Expiration”, set an expiration date for this token (e.g., 90 days) or make it permanent (i.e. choose “No expiration” if you don’t want to deal with this again in the future)\nUnder “Select scopes”, recommended scopes will be pre-selected. Stick with these for now.\n\nNext, click on “Generate token”\nCopy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)\nIn RStudio, run the following to get a prompt where you can paste your token:\n\n\n# uncomment and run the following line to install the gitcreds package\n# install.packages(\"gitcreds\")\ngitcreds::gitcreds_set()\n\nYou should then be ready to use GitHub!"
+  },
+  {
+    "objectID": "git-setup.html#step-4-create-a-github-repository",
+    "href": "git-setup.html#step-4-create-a-github-repository",
+    "title": "Git and GitHub Setup",
+    "section": "Step 4: Create a GitHub repository",
+    "text": "Step 4: Create a GitHub repository\nWe will follow the paradigm of “GitHub first”. What this means is that when we create a repository, we will create it on GitHub first, then link a local repository to it from inside RStudio.\nAfter you’ve logged in, to create a GitHub repository\n\nGo to https://github.com/new\nName the repository (give it a meaningful name)\nGive the repository a description (don’t leave this blank although this is optional)\nDecide whether to keep the repository public or private (for now, let’s just keep it public)\nClick on “Initialize this repository with a README”. For now, there’s no need to “Add .gitignore” or “Choose a license”\nClick on “Create Repository”"
+  },
+  {
+    "objectID": "git-setup.html#step-5-connect-rstudio-to-the-github-repository",
+    "href": "git-setup.html#step-5-connect-rstudio-to-the-github-repository",
+    "title": "Git and GitHub Setup",
+    "section": "Step 5: Connect RStudio to the GitHub repository",
+    "text": "Step 5: Connect RStudio to the GitHub repository\n\nGo to the browser page for your GitHub repository\nClick on Code (in the same line as “Go to file”). Under HTTPS, copy the URL\nIn RStudio, click on File &gt; New Project.... Next, click on “Version Control” and then on “Git”. Paste the URL you just copied into “Repository URL”\nType the name for the folder on your computer associated with this repository into Project directory name\n\nYou can choose whatever name you want, but it is recommended to give a name similar to the repository name on GitHub\n\nMake sure “Create project as subdirectory of:” points to where you want to locate this new folder\nClick on “Create Project”\nAt this point, you should find that the “Files” pane (in the bottom right of RStudio) is listing the files in your local repository."
+  },
+  {
+    "objectID": "git-setup.html#step-6-modify-the-repository",
+    "href": "git-setup.html#step-6-modify-the-repository",
+    "title": "Git and GitHub Setup",
+    "section": "Step 6: Modify the repository",
+    "text": "Step 6: Modify the repository\nTo add a new file from your local repository to GitHub:\n\nIn RStudio, open a new file (could be anything - e.g. R Script, Quarto document, etc.).\nFill the file with some code/comments/etc. (This is just for illustration purpose, to show how you can add a file to GitHub from your computer)\nSave the file. At this point, this file should show up in the “Git” pane (in the top right of RStudio)\nCheck the box under “Staged” in the Git pane to stage the file for a commit\nClick on “Commit” in the Git pane\nIn the new window that opens, add a “Commit message”, then click on the “Commit” button\nClick on “Push” to push your changes from your local repository to the remote repository on GitHub\n\nIf you encountered no errors then you’re done! While working on a single project you will repeatedly perform the tasks in Step 6: make changes to files, commit changes, then push changes\nEvery time you want to create a new repository, you can just start with Step 4, use GitHub, copy the repository into RStudio, then repeatedly update, commit, and push.\nAsk us for help if you have any questions."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CMSACamp 2026",
+    "section": "",
+    "text": "Welcome to the Carnegie Mellon Sports Analytics Camp (CMSACamp), hosted by Department of Statistics & Data Science at Carnegie Mellon University. This program focuses on statistics and data science methodology with applications in sports analytics.\nOn this site, the Lectures tab contains all lecture slides, the Labs tab contains materials for the labs, and the Projects tab contains materials for the EDA and capstone projects.\n\nPittsburgh Guides\n\nPittsburgh-based Resources\nFun activities to do in Pittsburgh"
+  },
+  {
+    "objectID": "labs.html",
+    "href": "labs.html",
+    "title": "Labs",
+    "section": "",
+    "text": "Updated daily before lab.\n\nNote: To download a .qmd file, right click and choose “Save Link As…”.\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nJune 1\nGetting started with R\n.html   .qmd\n\n\nJune 2\nData wrangling\n.html   .qmd\n\n\nJune 3\nData visualization\n.html   .qmd"
+  },
+  {
+    "objectID": "labs/03-visualization.html",
+    "href": "labs/03-visualization.html",
+    "title": "Lab: data visualization",
+    "section": "",
+    "text": "Let’s start again by reading in the data from yesterday using the read_csv() function after loading the tidyverse:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_stats.csv\")\n\nRows: 654 Columns: 23\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): player, team, position\ndbl (20): age, games, games_started, minutes_played, field_goals, field_goal...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+  },
+  {
+    "objectID": "labs/03-visualization.html#reading-in-data",
+    "href": "labs/03-visualization.html#reading-in-data",
+    "title": "Lab: data visualization",
+    "section": "",
+    "text": "Let’s start again by reading in the data from yesterday using the read_csv() function after loading the tidyverse:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_stats.csv\")\n\nRows: 654 Columns: 23\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): player, team, position\ndbl (20): age, games, games_started, minutes_played, field_goals, field_goal...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+  },
+  {
+    "objectID": "labs/03-visualization.html#previewing-the-data",
+    "href": "labs/03-visualization.html#previewing-the-data",
+    "title": "Lab: data visualization",
+    "section": "Previewing the data",
+    "text": "Previewing the data\nWrite code that displays the column names of nba_stats. Also, look at the first six rows of your dataset to get an idea of what these variables look like. Which variables are quantitative, and which are categorical?\n\n# INSERT CODE HERE"
+  },
+  {
+    "objectID": "labs/03-visualization.html#always-make-a-bar-chart",
+    "href": "labs/03-visualization.html#always-make-a-bar-chart",
+    "title": "Lab: data visualization",
+    "section": "Always make a bar chart…",
+    "text": "Always make a bar chart…\nNow we’ll use the ggplot() function to create a bar chart of the position variable. To make things easier, we provide the code for you to do this below; just uncomment the code and run it to create the bar graph. In what follows, you must answer some questions about the code and plot.\n\n# Create the bar graph of position:\n# nba_stats |&gt;\n#   ggplot(aes(x = position)) +\n#   geom_bar(fill = \"darkblue\") +\n#   labs(title = \"Number of NBA players by position\",\n#        x = \"Position\",\n#        y = \"Number of players\",\n#        caption = \"Source: Basketball-Reference.com\")\n\nAnswer the following questions about the code and plot:\n\nIn general, ggplot() code takes the following format: ggplot(blank1, aes(x = blank2)). Looking at the above code, what kind of R object should blank1 be, and what should blank2 be?\nWhat do you think the line geom_bar(fill = \"darkblue\") does?\nWhat do you think the remaining lines of code do (contained in labs())?"
+  },
+  {
+    "objectID": "labs/03-visualization.html#more-area-plots-but-bar-charts-are-better",
+    "href": "labs/03-visualization.html#more-area-plots-but-bar-charts-are-better",
+    "title": "Lab: data visualization",
+    "section": "More area plots (but bar charts are better!)",
+    "text": "More area plots (but bar charts are better!)\nNow we’ll make a few other area plots:\n\nspine chart\npie chart\nrose diagram\n\nYour goal for this part is to create each of these plots. These plots can be created by copy-and-pasting the bar chart code from above and modifying it slightly. Follow these directions to create each of these plots:\n\nspine chart: First, copy-and-paste the bar chart code from above. Then, delete the fill = \"darkblue\" within geom_bar(). Finally, within ggplot(), replace aes(x = position) with aes(x = \"\", fill = position). Also, change the labels in labs() if necessary.\n\n\n# PUT YOUR SPINE CHART CODE HERE\n\n\npie chart: First, copy-and-paste the spine chart code you just made. Then, after geom_bar(), “add” coord_polar(\"y\"). Be sure to put plus signs before and after coord_polar(\"y\"). Also, change the labels in labs() if necessary.\n\n\n# PUT YOUR PIE CHART CODE HERE\n\n\nrose diagram: First, copy-and-paste your original bar chart code. Then, after geom_bar(fill = \"darkblue\"), “add” coord_polar() + scale_y_sqrt(). Be sure to put plus signs before and after coord_polar() + scale_y_sqrt(). Also, change the labels in labs() if necessary. After you make the rose diagram: In 1-2 sentences, what do you think scale_y_sqrt() does, and what is a benefit to including scale_y_sqrt() when making the rose diagram?\n\n\n# PUT YOUR ROSE DIAGRAM CODE HERE"
+  },
+  {
+    "objectID": "labs/03-visualization.html#notes-on-colors-in-plots",
+    "href": "labs/03-visualization.html#notes-on-colors-in-plots",
+    "title": "Lab: data visualization",
+    "section": "Notes on colors in plots",
+    "text": "Notes on colors in plots\nThree types of color scales to work with:\n\nQualitative: distinguishing discrete items that don’t have an order (nominal categorical). Colors should be distinct and equal with none standing out unless otherwise desired for emphasis.\n\n\nDo NOT use a discrete scale on a continuous variable\n\n\nSequential: when data values are mapped to one shade, e.g., for an ordered categorical variable or low to high continuous variable\n\n\nDo NOT use a sequential scale on an unordered variable\n\n\nDivergent: think of it as two sequential scales with a natural midpoint midpoint could represent 0 (assuming +/- values) or 50% if your data spans the full scale\n\n\nDo NOT use a divergent scale on data without natural midpoint\n\n\nOptions for ggplot2 colors\nThe default color scheme is pretty bad to put it bluntly, but ggplot2 has ColorBrewer built in which makes it easy to customize your color scales. For instance, we can make a scatterplot with three_pointers on the y-axis and offensive_rebounds on the x-axis and using the geom_point() layer with each point colored by position:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = position)) +\n  geom_point(alpha = 0.5) +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Position\") +\n  theme_light()\n\n\n\n\n\n\n\n\nWhat does alpha change? We can change the color plot for this plot using scale_color_brewer() function:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers,\n             color = position)) +\n  geom_point(alpha = 0.5) +\n  scale_color_brewer(palette = \"Set2\") +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Position\") +\n  theme_light()\n\n\n\n\n\n\n\n\nWhich do you prefer, the default palette or this new one? You can check out more color palettes here.\nSomething you should keep in mind is to pick a color-blind friendly palette. One simple way to do this is by using the ggthemes package (you need to install it first before running this code!) which has color-blind friendly palettes included:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = position)) +\n  geom_point(alpha = 0.5) +\n  # call the function directly from the package using `::` instead of library(ggthemes)\n  ggthemes::scale_color_colorblind() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Position\") +\n  theme_light()\n\n\n\n\n\n\n\n\nIn terms of displaying color from low to high, the viridis scales are excellent choices (and are also color-blind friendly!). For instance, we can map another continuous variable (minutes_played) to the color:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_light()\n\n\n\n\n\n\n\n\nWhat does this reveal about the plot? What happens if you delete scale_color_viridis_c() + from above? Which do you prefer?"
+  },
+  {
+    "objectID": "labs/03-visualization.html#notes-on-themes",
+    "href": "labs/03-visualization.html#notes-on-themes",
+    "title": "Lab: data visualization",
+    "section": "Notes on themes",
+    "text": "Notes on themes\nYou might have noticed above have various changes to the theme of plots for customization. You will constantly be changing the theme of your plots to optimize the display. Fortunately, there are a number of built-in themes you can use to start with rather than the default theme_gray():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_gray()\n\n\n\n\n\n\n\n\nFor instance, one of Sara’s favorite themes is theme_light():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_light()\n\n\n\n\n\n\n\n\nand one of Erin’s go-to themes is theme_bw():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_bw()\n\n\n\n\n\n\n\n\nThere are options such as theme_minimal():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\nor theme_classic():\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_classic()\n\n\n\n\n\n\n\n\nThere are also packages with popular, such as the ggthemes package which includes, for example, theme_economist():\n\nlibrary(ggthemes)\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_economist()\n\n\n\n\n\n\n\n\nand theme_fivethirtyeight(), to name a couple:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       color = \"Minutes played\") +\n  theme_fivethirtyeight()\n\n\n\n\n\n\n\n\nWith any theme you have picked, you can then modify specific components directly using the theme() layer. There are many aspects of the plot’s theme to modify, such as my decision to move the legend to the bottom of the figure, drop the legend title, and increase the font size for the y-axis:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       title = \"Joint distribution of three-pointers and offensive rebounds\",\n       subtitle = \"NBA statistics from 2024-25 regular season\",\n       color = \"Minutes played\") +\n  theme_light() +\n  theme(legend.position = \"bottom\",\n        legend.title = element_blank(),\n        axis.text.y = element_text(size = 14),\n        axis.text.x = element_text(size = 6))\n\n\n\n\n\n\n\n\nIf you’re tired of explicitly customizing every plot in the same way all the time, then you should make a custom theme. It’s quite easy to make a custom theme for ggplot2 and of course there are an incredible number of ways to customize your theme. Below, we modify theme_bw() using the %+replace% argument to a new customized theme named theme_cus() - which is stored as a function:\n\ntheme_cus &lt;- function() {\n  # start with the base font size\n  theme_bw(base_size = 10) %+replace%\n    theme(\n      panel.background  = element_blank(),\n      plot.background = element_rect(fill = \"transparent\", color = NA), \n      legend.position = \"bottom\",\n      legend.background = element_rect(fill = \"transparent\", color = NA),\n      legend.key = element_rect(fill = \"transparent\", color = NA),\n      axis.ticks = element_blank(),\n      panel.grid.major = element_line(color = \"grey90\", linewidth = 0.3), \n      panel.grid.minor = element_blank(),\n      plot.title = element_text(size = 15, hjust = 0, vjust = 0.5, face = \"bold\", \n                                margin = margin(b = 0.2, unit = \"cm\")),\n      plot.subtitle = element_text(size = 12, hjust = 0, vjust = 0.5, \n                                   margin = margin(b = 0.2, unit = \"cm\")),\n      plot.caption = element_text(size = 7, hjust = 1, face = \"italic\", \n                                  margin = margin(t = 0.1, unit = \"cm\")),\n      axis.text.x = element_text(size = 13),\n      axis.text.y = element_text(size = 13)\n    )\n}\n\nCreate the plot from before with this theme:\n\nnba_stats |&gt;\n  ggplot(aes(x = offensive_rebounds, y = three_pointers, color = minutes_played)) +\n  geom_point(alpha = 0.5) +\n  scale_color_viridis_c() +\n  labs(x = \"Offensive rebounds\", \n       y = \"Three-pointers\",\n       title = \"Joint distribution of three-pointers and offensive rebounds\",\n       subtitle = \"NBA statistics from 2024-25 regular season\",\n       color = \"Minutes played\") +\n  theme_cus()"
+  },
+  {
+    "objectID": "labs/03-visualization.html#challenge-exercise",
+    "href": "labs/03-visualization.html#challenge-exercise",
+    "title": "Lab: data visualization",
+    "section": "Challenge exercise",
+    "text": "Challenge exercise\nFinished early? We encourage you to work on a TidyTuesday visualization. TidyTuesday is a weekly social data project, organized by the Data Science Learning Community. Every week a new dataset is posted along with some questions that could be interesting to explore.\nFeel free to use any dataset from the TidyTuesday GitHub that interests you (it doesn’t have to be this week’s data). For inspiration, you can check out BlueSky’s TidyTuesday posts. Another option would be to try to recreate someone else’s visualization without looking at their source code.\nSome TidyTuesday compilations:1\n\nSteven Ponce’s Data Visualizations\nNicola Rennie’s TidyTuesday\nCarl Börstell’s TidyTuesday\nRajo’s TidyTuesday\n\nNote: Erin and Sara both did TidyTuesdays as undergraduates (see the bulleted links below). It was a great way to improve data visualization skills.\n\nErin’s TidyTuesdays\nSara’s TidyTuesdays\n\n\n# example of how to load TidyTuesday data\n# check out https://github.com/rfordatascience/tidytuesday for other datasets\ngame_films &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-06-09/game_films.csv')"
+  },
+  {
+    "objectID": "labs/03-visualization.html#footnotes",
+    "href": "labs/03-visualization.html#footnotes",
+    "title": "Lab: data visualization",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThank you to Jo Hardin for compiling this list.↩︎"
+  },
+  {
+    "objectID": "labs/02-wrangling.html",
+    "href": "labs/02-wrangling.html",
+    "title": "Lab: data wrangling",
+    "section": "",
+    "text": "Our data are usually stored as a .csv file and after loading a .csv file into RStudio, we will have a “data frame”. A data frame can be considered a special case of matrix where each column represents a measurement or variable of interest for each observation which correspond to the rows of the dataset. After loading the tidyverse suite of packages, we use the read_csv() function to load the 2025 NBA regular season stats dataset from yesterday:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_stats.csv\")\n\nRows: 654 Columns: 23\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): player, team, position\ndbl (20): age, games, games_started, minutes_played, field_goals, field_goal...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nBy default, read_csv() reads in the dataset as a tbl (aka tibble) object instead of a data.frame object. There are some differences, which you can read about if you are interested, but it’s not that meaningful for our purposes.\nWe can use the functions slice_head() and slice_tail() to view a sample of the data. Use the slice_head() function to view the first 6 rows, then use the slice_tail() function to view the last 3 rows:\n\n# INSERT CODE HERE\n\nView the dimensions of the data with dim():\n\n# INSERT CODE HERE\n\nQuickly view summary statistics for all variables with the summary() function:\n\n# Uncomment the following code by deleting the # at the front\n# summary(nba_stats)\n\nView the data structure types with str():\n\n# str(nba_stats)\n\nWhat’s the difference between the output from the two functions?"
+  },
+  {
+    "objectID": "labs/02-wrangling.html#reading-and-previewing-data",
+    "href": "labs/02-wrangling.html#reading-and-previewing-data",
+    "title": "Lab: data wrangling",
+    "section": "",
+    "text": "Our data are usually stored as a .csv file and after loading a .csv file into RStudio, we will have a “data frame”. A data frame can be considered a special case of matrix where each column represents a measurement or variable of interest for each observation which correspond to the rows of the dataset. After loading the tidyverse suite of packages, we use the read_csv() function to load the 2025 NBA regular season stats dataset from yesterday:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_stats.csv\")\n\nRows: 654 Columns: 23\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): player, team, position\ndbl (20): age, games, games_started, minutes_played, field_goals, field_goal...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nBy default, read_csv() reads in the dataset as a tbl (aka tibble) object instead of a data.frame object. There are some differences, which you can read about if you are interested, but it’s not that meaningful for our purposes.\nWe can use the functions slice_head() and slice_tail() to view a sample of the data. Use the slice_head() function to view the first 6 rows, then use the slice_tail() function to view the last 3 rows:\n\n# INSERT CODE HERE\n\nView the dimensions of the data with dim():\n\n# INSERT CODE HERE\n\nQuickly view summary statistics for all variables with the summary() function:\n\n# Uncomment the following code by deleting the # at the front\n# summary(nba_stats)\n\nView the data structure types with str():\n\n# str(nba_stats)\n\nWhat’s the difference between the output from the two functions?"
+  },
+  {
+    "objectID": "labs/02-wrangling.html#data-manipulation-with-dplyr",
+    "href": "labs/02-wrangling.html#data-manipulation-with-dplyr",
+    "title": "Lab: data wrangling",
+    "section": "Data manipulation with dplyr",
+    "text": "Data manipulation with dplyr\nAn easier way to manipulate the data frame is through the dplyr package, which is in the tidyverse suite of packages. The operations we can do include: selecting specific columns, filtering for rows, re-ordering rows, adding new columns and summarizing data. The “split-apply-combine” concept can be achieved by dplyr.\n\nSelecting columns with select()\nThe function select() can be use to select certain column with the column names. First create a new table called nba_stats_pg that only contains the player and games columns:\n\n# INSERT CODE HERE\n\nTo select all columns except a specific column, use the - (subtraction) operator. For example, view the output from uncommenting the following line of code:\n\n# select(nba_stats, -player)\n\nTo select a range of columns by name (that are in consecutive order), use the : (colon) operator. For example, view the output from uncommenting the following line of code:\n\n# select(nba_stats, player:games)\n\nTo select all columns that start with certain character strings, use the function starts_with(). Other matching options are:\n\nends_with(): select columns that end with a character string\ncontains(): select columns that contain a character string\nmatches(): select columns that match a regular expression\none_of(): select columns names that are from a group of names\n\n\n# Uncomment the following lines of code\n# select(nba_stats, starts_with(\"three\"))\n# select(nba_stats, contains(\"throw\"))\n\n\n\nExtracting rows using filter()\nWe can also extract the rows/observations that satisfy certain criteria. Try extracting the rows with more than 500 assists:\n\n# INSERT CODE HERE\n\nWe can also filter on multiple criteria. Subset the rows with age above 30 and the team is either “HOU” or “GSW”:\n\n# INSERT CODE HERE\n\n\n\nArranging rows using arrange()\nTo arrange the data frame by a specific order we need to use the function arrange(). The default is by increasing order and the desc() function will provide the decreasing order. First arrange the nba_stats table by personal_fouls in ascending order:\n\n# INSERT CODE HERE\n\nNext by descending order:\n\n# INSERT CODE HERE\n\nTry combining a pipeline of select(), filter(), and arrange() steps together with the |&gt; operator by:\n\nSelecting the player, team, age, and games columns,\nFilter to select only rows with games above 50,\nSort by age in descending order\n\n\n# INSERT CODE HERE\n\n\n\nCreating new columns using mutate()\nSometimes the data does not include the variable that we are interested in and we need to manipulate the current variables to add new variables into the data frame. Create a new column fouls_per_game by taking the personal_fouls and dividing by games (reassign this output to the nba_stats table following the commented code chunk so this column is added to the table):\n\n# nba_stats &lt;- nba_stats |&gt;\n#   mutate(INSERT CODE HERE)\n\n\n\nCreating summaries with summarize()\nTo create summary statistics for a given column in the data frame, we can use summarize() function. Compute the mean, min, and max number of assists:\n\n# INSERT CODE HERE\n\nThe advantage of summarize() is more obvious if we combine it with group_by(), the group operators. Since players at the different position tend to have very different statistics, first group_by() position and then compute the same summary statistics for assists:\n\n# INSERT CODE HERE"
+  },
+  {
+    "objectID": "labs/02-wrangling.html#challenge-exercises",
+    "href": "labs/02-wrangling.html#challenge-exercises",
+    "title": "Lab: data wrangling",
+    "section": "Challenge exercises",
+    "text": "Challenge exercises\nFinished early? We encourage you to review how to join dataframes in R by reading sections 19.3-19.5 of R for Data Science by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund. Then, try the following exercises. We challenge you to not use AI—ask the TAs if you get stuck!\n\nBonus exercise 1 (Paralympic Swimming)\nLoad the following dataset (link to the codebook). Create a dataframe with the number of athletes that have medaled in swimming since 2000 for each county. Create a second dataframe with the total number of medals that each country has won in swimming since 2000. Then, join the two dataframes. Arrange the joined dataframe from greatest number of medals to least number of medals.\nCheck your work: Is the number of medals always greater than or equal to the number of athletes?\n\nathletes &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-03/athletes.csv')\n\nRows: 19547 Columns: 10\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (8): gender, event, medal, athlete, abb, country, type, guide\ndbl (2): grp_id, year\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n# INSERT CODE HERE\n\n\n\nBonus exercise 2 (Ultra running)\nLoad the following datasets that explore trends in ultra running (link to the data dictionary). Your task is to identify female runners who ran at least 10 ultra races between age 30-50. Create a dataset of their race results from this time in their life. The dataset should have additional columns:\n\nthe distance of the race (in miles)\nthe age of the runner at the time of the race (assume age represents the runner’s age in 2021)\nthe average minutes per mile that runner completed the race in\n\nThere is a lot going on in this one, so don’t feel discouraged if you get stuck!\n\nultra_rankings &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/ultra_rankings.csv')\n\nRows: 137803 Columns: 8\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): runner, time, gender, nationality\ndbl (4): race_year_id, rank, age, time_in_seconds\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nrace &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/race.csv')\n\nRows: 1207 Columns: 13\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (5): event, race, city, country, participation\ndbl  (6): race_year_id, distance, elevation_gain, elevation_loss, aid_statio...\ndate (1): date\ntime (1): start_time\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n# INSERT CODE HERE"
+  },
+  {
+    "objectID": "labs/01-intro.html",
+    "href": "labs/01-intro.html",
+    "title": "Lab: getting started with R",
+    "section": "",
+    "text": "NOTE: To preview this file, click the “Render” button in RStudio. (The Shortcut for rendering/knitting in RStudio is Command + Shift + K for macOS users, or Ctrl + Shift + K for Windows users.)"
+  },
+  {
+    "objectID": "labs/01-intro.html#typical-workflow",
+    "href": "labs/01-intro.html#typical-workflow",
+    "title": "Lab: getting started with R",
+    "section": "Typical workflow",
+    "text": "Typical workflow\n\nWriting R scripts\nYou can type R commands directly into the Console (lower left pane), but this can become quite tedious and annoying when your work becomes more complex. Instead, you can code in R Scripts. An R Script is a file type which R recognizes as storing R commands and is saved as a .R file. R Scripts are useful as we can edit our code before sending it to be run in the console.\nIn RStudio, to open a new R Script: File &gt; New File &gt; R Script.\n\n\nUsing Quarto\nAn Quarto file is a dynamic document for writing reproducible reports and communicating results. It contains the reproducible source code along with the narration that a reader needs to understand your work.\nThere are three important elements to a Quarto file:\n\nA YAML header at the top (surrounded by ---)\nChunks of R code surrounded by ```\nText mixed with simple text formatting like ## Heading and italics\n\n(Note that this file itself is a Quarto document.)\nIf you are familiar with the LaTeX syntax, math mode works like a charm in almost the same way:\n\\[\nf (x) = \\frac{1}{\\sqrt{2\\pi}} \\exp \\left( - \\frac{x^2}{2} \\right)\n\\]\nA chunk of embedded R code is the following:\n\n# R code here\nprint(\"Hello World\")\n\n[1] \"Hello World\"\n\n\nAll the lab documents will be Quarto files so you need to know how to render and convert them into a reader-friendly documents. We recommend to render as html file but if you have LaTeX installed, you can change the format to pdf.\nFor more details on Quarto, see the comprehensive manual online and the Quarto chapter of R for Data Science (2e). See also the guide on Markdown Basics for more on Markdown syntax. For code chunk options, see this guide."
+  },
+  {
+    "objectID": "labs/01-intro.html#installing-r-packages",
+    "href": "labs/01-intro.html#installing-r-packages",
+    "title": "Lab: getting started with R",
+    "section": "Installing R packages",
+    "text": "Installing R packages\nR performs a wide variety of functions, such as data manipulation, modeling, and visualization. The extensive code base beyond the built-in functions are managed by packages created from numerous statisticians and developers. The Comprehensive R Archive Network (CRAN) manages the open-source distribution and the quality control of the R packages.\nTo install an R package, using the function install.packages and put the package name in the parentheses and the quote. While this is preferred, for those using RStudio, you can also go to “Tools” then “Install Packages” and then input the package name.\n\ninstall.packages(\"tidyverse\")\n\nImportant: NEVER install new packages in a code block in a .qmd file. That is, the install.packages() function should NEVER be in your code chunks (unless they are commented out using #). The library() function, however, will be used throughout your code: The library() function loads packages only after they are installed.\nIf in any time you get a message says: “Do you want to install from sources the package which needs compilation?” Choose “No” will tend to bring less troubles. (Note: This happens when the bleeding-edge version package is available, but not yet compiled for each OS distribution. In many case, you can just proceed without the source compilation.)\nEach package only needs to be installed once. Whenever you want to use functions defined in the package, you need to load the package with the command:\n\nlibrary(tidyverse)\n\nHere is a list of packages that we may need (but not limited to) in the following lectures and/or labs. Make sure you can install all of them. If you fail to install any package, please update R and RStudio first and check the error message for any other packages that need to install first.\n\nlibrary(tidyverse)\nlibrary(devtools)\nlibrary(ranger)\nlibrary(glmnet)"
+  },
+  {
+    "objectID": "labs/01-intro.html#basic-data-type-and-operators",
+    "href": "labs/01-intro.html#basic-data-type-and-operators",
+    "title": "Lab: getting started with R",
+    "section": "Basic data type and operators",
+    "text": "Basic data type and operators\n\nData type: vector\nThe basic unit of R is a vector. A vector is a collection of values of the same type and the type could be:\n\nnumeric (double/integer number): digits with optional decimal point\n\n\nv1 &lt;- c(1, 5, 8.3, 0.02, 99999)\ntypeof(v1)\n\n[1] \"double\"\n\n\n\ncharacter: a string (or word) in double or single quotes, “…” or ’…’.\n\n\nv2 &lt;- c(\"apple\", \"banana\", \"3 chairs\", \"dimension1\", \"&gt;-&lt;\")\ntypeof(v2)\n\n[1] \"character\"\n\n\n\nlogical: TRUE and FALSE\n\n\nv3 &lt;- c(TRUE, FALSE, FALSE)\ntypeof(v3)\n\n[1] \"logical\"\n\n\nNote: Oftentimes, factor is used to encode a character vector into unique numeric vector.\n\nplayer_type &lt;- c(\"Batter\", \"Batter\", \"Hitter\", \"Batter\", \"Hitter\")\nplayer_type &lt;- factor(player_type)\nstr(player_type)\n\n Factor w/ 2 levels \"Batter\",\"Hitter\": 1 1 2 1 2\n\ntypeof(player_type)\n\n[1] \"integer\"\n\n\n\n\nData type: lists\nVector can store only single data type:\n\ntypeof(c(1, TRUE, \"apple\"))\n\n[1] \"character\"\n\n\nList is a vector of vectors which can store different data types of vectors:\n\nroster &lt;- list(\n  name = c(\"Sara\", \"Erin\", \"Princess\", \"Yuchen\", \"JungHo\"),\n  role = c(\"Instructor\", \"Instructor\", \"TA\", \"TA\", \"TA\"),\n  is_TA = c(FALSE, FALSE, TRUE, TRUE, TRUE)\n)\nstr(roster)\n\nList of 3\n $ name : chr [1:5] \"Sara\" \"Erin\" \"Princess\" \"Yuchen\" ...\n $ role : chr [1:5] \"Instructor\" \"Instructor\" \"TA\" \"TA\" ...\n $ is_TA: logi [1:5] FALSE FALSE TRUE TRUE TRUE\n\n\nR uses a specific type of list, data frame, containing the same number of rows with unique row names.\n\nstr(iris)\n\n'data.frame':   150 obs. of  5 variables:\n $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...\n $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...\n $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...\n $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...\n $ Species     : Factor w/ 3 levels \"setosa\",\"versicolor\",..: 1 1 1 1 1 1 1 1 1 1 ...\n\ntypeof(iris)\n\n[1] \"list\"\n\n\n\n\nOperators\nWe can perform element-wise actions on vectors through the operators:\n\narithmetic: +, -, *, /, ^ (for integer division, %/% is quotient, %% is remainder)\n\n\nv1 &lt;- c(1,2,3)\nv2 &lt;- c(4,5,6)\n\nv1 + v2\n\n[1] 5 7 9\n\nv1 * v2\n\n[1]  4 10 18\n\nv2 %% v1\n\n[1] 0 1 0\n\n\n\nrelation: &gt;, &gt;=, &lt; ,&lt;=, ==, !=\n\n\n5 &gt; 4\n\n[1] TRUE\n\n5 &lt;= 4\n\n[1] FALSE\n\n33 == 22\n\n[1] FALSE\n\n33 != 22\n\n[1] TRUE\n\n\n\nlogic: ! (not), & (and), | (or)\n\n\n(5 &gt; 6) | (2 &lt; 3)\n\n[1] TRUE\n\n(5 &gt; 6) & (2 &lt; 3)\n\n[1] FALSE\n\n!(5 &gt; 6) & (2 &lt; 3)\n\n[1] TRUE\n\n\n\nsequence: i:j (: operator, i and j are any two arbitrary numbers)\n\n\n1:5\n\n[1] 1 2 3 4 5\n\n5:1\n\n[1] 5 4 3 2 1\n\n-1:-5\n\n[1] -1 -2 -3 -4 -5\n\n-1:5\n\n[1] -1  0  1  2  3  4  5"
+  },
+  {
+    "objectID": "labs/01-intro.html#loading-.csv-files",
+    "href": "labs/01-intro.html#loading-.csv-files",
+    "title": "Lab: getting started with R",
+    "section": "Loading .csv files",
+    "text": "Loading .csv files\nMost of the data provided to you are in .csv format. In the code chunk below, we use the read_csv() function (from the readr package, part of the tidyverse) to load a dataset that is saved in a folder located in the SURE GitHub repository. In quotations, insert the file path where the dataset is located, which in this case is online. However, typically you’ll save .csv files locally first and put them in an organized folder to access later.\n\nlibrary(tidyverse)\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2025/main/data/nba_stats.csv\")\nhead(nba_stats)"
+  },
+  {
+    "objectID": "labs/01-intro.html#looking-for-help",
+    "href": "labs/01-intro.html#looking-for-help",
+    "title": "Lab: getting started with R",
+    "section": "Looking for help",
+    "text": "Looking for help\nIf you have any R problem, the best step is to use the help() function (or equivalently the ?). For example,\n\nhelp(str)\nhelp(lm)\n\nOr you can use the command ?…\n\n?str\n?lm\n\nDouble question marks can lead to a more general search.\n\n??predict\n\nYou should ALWAYS consult the R help documentation first before attempting to google around (or ask ChatGPT) for a solution."
+  },
+  {
+    "objectID": "labs/01-intro.html#exercises",
+    "href": "labs/01-intro.html#exercises",
+    "title": "Lab: getting started with R",
+    "section": "Exercises",
+    "text": "Exercises\n\nCreate four vectors, v1 and v2 are numeric vectors, v3 is a character vector and v4 is a logic vector. Make sure the length of v1 and v2 are the same. (Hint: a way to check the length is to use the function length())\n\n\n# R code here\n\n\nPreform add, minus, product and division on v1 and v2.\n\n\n# R code here\n\n\nCreate four statements with both relation and logic operators, that 2 of them return TRUE and 2 of them return FALSE.\n\n\n# R code here\n\n\nCreate 2 sequences with length 20, one in an increasing order and the other in a decreasing order.\n\n\n# R code here"
+  },
+  {
+    "objectID": "labs/01-intro.html#text-formatting-in-quarto",
+    "href": "labs/01-intro.html#text-formatting-in-quarto",
+    "title": "Lab: getting started with R",
+    "section": "Text formatting in Quarto",
+    "text": "Text formatting in Quarto\nThere are a lot of ways to format text in a Quarto document, e.g., italics and bold (just scan through this .qmd file to see how this was done). See this guide for more tips/tricks. In particular, check out the Markdown Basics and other guides under Authoring. See also this guide on R code chunk options.\nAs you’ll see throughout this summer (and especially with your project), well-formatted .html files can be a great way to showcase data science results to the public online."
+  },
+  {
+    "objectID": "labs/01-intro.html#customizing-rstudio",
+    "href": "labs/01-intro.html#customizing-rstudio",
+    "title": "Lab: getting started with R",
+    "section": "Customizing RStudio",
+    "text": "Customizing RStudio\nRStudio theme\nRStudio can be customized with different themes. To explore built-in themes,\n\nNavigate to the menu bar at the top of your screen\nChoose Tools &gt; Global Options &gt; Appearance\nChange your RStudio theme under Editor theme\n\n(FYI, Erin uses the Tomorrow theme and Sara uses the Clouds theme!)\nNote that within the Appearance tab, there are also options for changing your Editor font, Editor font size, etc.\nRStudio panes\nWithin RStudio, there are several panes (e.g., Console, Help, Environment, History, Plots, etc.). To customize, go to Tools &gt; Global Options &gt; Pane Layout, and arrange the panes as you see fit.\nFeel free to explore other options within the Tools &gt; Global Option menu."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "To be released soon."
+  },
+  {
+    "objectID": "bios.html",
+    "href": "bios.html",
+    "title": "Instructor/TA Bios",
+    "section": "",
+    "text": "Erin Franke is a rising third-year Ph.D. student in Statistics at CMU. She graduated from Macalester College in 2023, and before that was a CMSACamp student in 2021. She previously interned with the Minnesota Twins and worked with the CLL team at Mayo Clinic. At CMU, she has worked on projects analyzing statistical methods for psychology, AI’s impact on student writing, and the impact of super shoes of professional marathon times. This past semester, she started research on statistical methods for wastewater-based epidemiology.\nSara Colando is a rising third-year Ph.D. student in Statistics at CMU. She currently works on projects related to networks, text analysis, and statistics education. She has previously been involved in biostatistics and sports analytics research, participating in CMSACamp during Summer 2023. Before CMU, she graduated from Pomona College in 2024 with a double major in mathematics and philosophy.\nPrincess Allotey is a rising fourth-year joint Ph.D. student in Statistics and Public Policy at CMU, where she is a CMU Presidential Fellow and a Heinz Dean’s PhD Fellow for Social Good. Her doctoral research focuses on developing statistical methods to handle missing network data — a fundamental challenge in network analysis. She is grateful to be advised by Professor Nynke Niezink and Professor David Choi. She holds an MSc in Statistics from CMU and a BSc in Mathematics & Data Science (minor in Education) from Centre College of Kentucky, where she was a Lincoln Scholar and a John C. Young Scholar.\nYuchen Chen is a rising fifth-year PhD student in statistics and data science at CMU, advised by Jing Lei and Yandi Shen. His research focuses on high-dimensional statistics and distribution-free inference.\nJungHo Lee is a rising fourth-year Ph.D. student in Statistics at CMU. He is primarily interested in developing rigorous statistical methods for solving problems in public and health services. Before CMU, he obtained an MS in Statistics at the University of Chicago, and a BA in Mathematics and Economics at Boston College."
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "Updated daily before lecture."
+  },
+  {
+    "objectID": "lectures.html#contents",
+    "href": "lectures.html#contents",
+    "title": "Lectures",
+    "section": "Contents",
+    "text": "Contents\n\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 1\nWelcome to CMSACamp 2026\nslides\n\n\nLecture 1\nJune 2\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 3\nData visualization: the grammar of graphics and ggplot2\nslides"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#plan-for-today",
+    "href": "lectures/00-welcome.html#plan-for-today",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Plan for today",
+    "text": "Plan for today\n\n\nOpening remarks + program overview\n\n\nVisit from Jess Paschke\n\n\nAcademic advisor presentation (Glenn)\n\n\nLunch (Baker Hall 129Q)\n\n\nLab"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#who-are-we",
+    "href": "lectures/00-welcome.html#who-are-we",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Who are we?",
+    "text": "Who are we?\nErin Franke (preferred form of address: Erin)\n\nCMSACamp ’21\nIntern for Minnesota Twins in Summer ’22\nMacalester College ’23: Statistics major, CS & Econ minors\nStatistical Programmer @ Mayo Clinic\nResearch at CMU: applications in wastewater-based epidemiology, education, psychology, sports analytics (marathon)"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#who-are-we-1",
+    "href": "lectures/00-welcome.html#who-are-we-1",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Who are we?",
+    "text": "Who are we?\nSara Colando (preferred form of address: Sara)\n\nCMSACamp ’23\nPomona College ’24: Math and Philosophy double major\nUndergrad research: biostatistics (genomics)\nResearch at CMU: statistical network analysis, statistics and data science education, and measurement error in text analysis"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#who-are-we-2",
+    "href": "lectures/00-welcome.html#who-are-we-2",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Who are we?",
+    "text": "Who are we?\n\nTAs: Princess Allotey, Yuchen Chen, JungHo Lee\nCMSACamp Director: Ron Yurko\nCMSACamp Advisor: Glenn Clune\nCMSACamp Coordinator: Jess Paschke"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#meet-the-students",
+    "href": "lectures/00-welcome.html#meet-the-students",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Meet the students!",
+    "text": "Meet the students!\nLet’s first go around and share:\n\nName\nWhere you call home\nCollege, year in school\nMajor(s)/minor(s)\nFavorite sport\nWhat you are most excited for about CMSACamp"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#goals",
+    "href": "lectures/00-welcome.html#goals",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Goals",
+    "text": "Goals\n\nDevelop fundamentals research skills: data wrangling, visualization, modeling, communication\nBecome familiar with R, tidyverse, Quarto (Markdown syntax), Git/GitHub\nBecome familiar with cutting-edge statistical machine learning techniques\nCreate a portfolio of projects and practice reproducible research\nNetwork with academic researchers and industry professionals\nHelp navigate your next steps—industry vs. graduate school\nOptionally, present at CMSAConference in October!"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#project-advisors-this-year-include",
+    "href": "lectures/00-welcome.html#project-advisors-this-year-include",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Project advisors this year include",
+    "text": "Project advisors this year include\n\n\n\n\n\n\n\n\n\n\n\n\n…and some more pending!"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#resources-to-save",
+    "href": "lectures/00-welcome.html#resources-to-save",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Resources to save",
+    "text": "Resources to save\n\nWebsite\nGoogle Calendar\nSlack\nEmail\n\nCheck these frequently!"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#a-typical-day",
+    "href": "lectures/00-welcome.html#a-typical-day",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "A typical day",
+    "text": "A typical day\n\nLectures\nLabs\nSpeaker/webinar sessions\n\n\nOptional:\n\nLunch: ~1x week, will be updated on calendar as we have more information.\nOffice Hours:\n\nErin: 11-12pm, Tuesdays\nGlenn: 12-1pm, Tuesdays\nSara: 11-12pm, Thursdays"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#lectures",
+    "href": "lectures/00-welcome.html#lectures",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Lectures",
+    "text": "Lectures\nMon–Fri, 9:30–11:00am, Scaife 236\n\n\nFirst ~2 weeks: EDA, clustering, basic data science tasks\n\n\n\n\nNext ~4 weeks: statistical modeling, machine learning\n\n\n\n\nAfter that: special topics, guest lectures\n\n\n\n\nA few scheduling notes:\n\nHolidays: Juneteenth (Friday June 19) and Independence Day break (July 2–3 + weekend)\n\n\n\n\nThursday July 9: Pirates vs. Braves game at PNC Park"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#labs",
+    "href": "lectures/00-welcome.html#labs",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Labs",
+    "text": "Labs\nMon–Fri, 1:30–3pm, Scaife 236\n\n\nDemo labs (Mon–Wed this week) + 1–2 later on\n\n\n\n\nProject labs\n\nwill begin with a mini EDA project\nthen shift to focus on main capstone project"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#speakerwebinar-sessions",
+    "href": "lectures/00-welcome.html#speakerwebinar-sessions",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Speaker/webinar sessions",
+    "text": "Speaker/webinar sessions\n\nCheck calendar! Either mid-day (in between lecture and lab) or after lab\n\n\n\nScaife 236 / Zoom depending on speaker\n\n\n\n\nLots of project pitches this week and next week, then guest lectures as summer goes on"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#eda-project",
+    "href": "lectures/00-welcome.html#eda-project",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "EDA project",
+    "text": "EDA project\n\nPractice understanding the structure of a dataset and perform basic EDA tasks (e.g., data wrangling, data visualization) in R, and using GitHub for collaboration\n\n\n\nWork in groups of 2–3\n\n\n\n\nTimeline\n\nThursday, June 4: Release date\nTuesday, June 16: 6-minute presentation (no notes/scripts) during lab"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#capstone-project",
+    "href": "lectures/00-welcome.html#capstone-project",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Capstone project",
+    "text": "Capstone project\n\nWork with a external advisor to analyze a dataset and answer a research question that is relevant in the respective sport\n\n\n\nWork in groups of 2–3\n\n\n\n\nPresentation checkpoint(s) (dates TBD, no notes/scripts)\n\n\n\n\nDeliverables (more details will be provided later on)\n\nReport\nPoster\nPresentation"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#reminders",
+    "href": "lectures/00-welcome.html#reminders",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Reminders",
+    "text": "Reminders\n\nFill out the survey forms (Communication and Data Science Background)\n\n\n\nReset CMU wifi password (for non-CMU students)\n\n\n\n\nCheck Calendar, Slack, email often"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#tips",
+    "href": "lectures/00-welcome.html#tips",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Tips",
+    "text": "Tips\n\nThis is a research program. Feel free to go above and beyond & explore things that aren’t taught in lectures\n\n\n\nFocus on principles, tools are incidental (i.e. it’s more important to get how things work first over just how to do things)\n\n\n\n\nDon’t expect to get all the concepts in one go (instead, repetition… do more & read more)"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#expectations",
+    "href": "lectures/00-welcome.html#expectations",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Expectations",
+    "text": "Expectations\n\nIn-person attendance\n\nBe on time. PLEASE.\nThis applies to lectures, labs, other sessions (e.g., webinars, guest speakers, other activities)\nThis is part of the Code of Conduct\n\n\n\n\nParticipate and ask questions\n\n\n\n\nWork together. Help and support each other.\n\n\n\n\nEnjoy, learn and grow!"
+  },
+  {
+    "objectID": "lectures/00-welcome.html#exploring-pittsburgh",
+    "href": "lectures/00-welcome.html#exploring-pittsburgh",
+    "title": "Welcome to CMSACamp 2026",
+    "section": "Exploring Pittsburgh",
+    "text": "Exploring Pittsburgh\n\nPittsburgh-based resources\nFun activities to do in Pittsburgh (non-exhaustive)"
   },
   {
     "objectID": "lectures/02-graphics.html#goals-of-data-visualization",
