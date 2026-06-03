@@ -309,7 +309,7 @@ nba_stats |>
 
 Finished early? We encourage you to work on a [TidyTuesday](https://github.com/rfordatascience/tidytuesday) visualization. TidyTuesday is a weekly social data project, organized by the [Data Science Learning Community](https://dslc.io). Every week a new dataset is posted along with some questions that could be interesting to explore. 
 
-Feel free to use any dataset from the TidyTuesday GitHub that interests you (it doesn't have to be this week's data). For inspiration, you can check out [BlueSky's TidyTuesday posts](https://bsky.app/profile/did:plc:777eanw7giyjd76dwatpch3d/feed/aaajcyvxadl56). Another option would be to try to recreate someone else's visualization *without* looking at their source code. 
+Feel free to use any dataset from the [TidyTuesday GitHub](https://github.com/rfordatascience/tidytuesday) that interests you (it doesn't have to be this week's data). For inspiration, you can check out [BlueSky's TidyTuesday posts](https://bsky.app/profile/did:plc:777eanw7giyjd76dwatpch3d/feed/aaajcyvxadl56). Another option would be to try to recreate someone else's visualization *without* looking at their source code. 
 
 Some TidyTuesday compilations:[^1] 
 
