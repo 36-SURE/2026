@@ -738,7 +738,7 @@ tennis_shots |>
     freq = n(), 
     joint = n() / nrow(tennis_shots)
   ) |> 
-  ggplot(aes(x = shot_type, y = outcome_type)) +
+  ggplot(aes(x = outcome_type, y = shot_type)) +
   geom_tile(aes(fill = freq), color = "white") +
   geom_text(aes(label = scales::percent(joint, accuracy = 0.01))) +
   scale_fill_gradient2() +
@@ -759,7 +759,7 @@ tennis_shots |>
     freq = n(), 
     joint = n() / nrow(tennis_shots)
   ) |> 
-  ggplot(aes(y = shot_type, x = outcome_type)) +
+  ggplot(aes(x = outcome_type, y = shot_type)) +
   geom_tile(aes(fill = freq), color = "white") +
   geom_text(aes(label = scales::percent(joint, accuracy = 0.01))) +
   scale_fill_gradient2() +
