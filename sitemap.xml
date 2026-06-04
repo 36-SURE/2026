@@ -2,90 +2,94 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://36-SURE.github.io/2026/pittsburgh-activities.html</loc>
-    <lastmod>2026-05-30T20:48:20.611Z</lastmod>
+    <lastmod>2026-05-31T01:07:28.666Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/pittsburgh-resources.html</loc>
-    <lastmod>2026-05-29T15:54:34.433Z</lastmod>
+    <lastmod>2026-05-31T01:07:28.667Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/lectures/03-categorical.html</loc>
-    <lastmod>2026-06-04T15:49:43.470Z</lastmod>
+    <lastmod>2026-06-04T17:29:44.431Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/lectures/01-explore.html</loc>
-    <lastmod>2026-06-02T15:05:08.711Z</lastmod>
+    <lastmod>2026-06-02T16:21:29.749Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/git-setup.html</loc>
-    <lastmod>2026-05-20T21:20:04.138Z</lastmod>
+    <lastmod>2026-05-15T20:22:51.275Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/index.html</loc>
-    <lastmod>2026-05-30T21:17:48.793Z</lastmod>
+    <lastmod>2026-05-31T01:07:28.664Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/labs.html</loc>
-    <lastmod>2026-06-04T12:34:59.429Z</lastmod>
+    <lastmod>2026-06-04T17:31:32.565Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/eda/wta_shots.html</loc>
-    <lastmod>2026-06-04T12:38:23.591Z</lastmod>
+    <lastmod>2026-06-04T17:29:44.429Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/eda/wwc_passing.html</loc>
-    <lastmod>2026-06-04T12:38:31.558Z</lastmod>
+    <lastmod>2026-06-04T17:29:44.429Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/eda/ufa_throwing.html</loc>
-    <lastmod>2026-06-04T12:37:58.562Z</lastmod>
-  </url>
-  <url>
-    <loc>https://36-SURE.github.io/2026/labs/03-visualization.html</loc>
-    <lastmod>2026-06-03T16:38:08.649Z</lastmod>
-  </url>
-  <url>
-    <loc>https://36-SURE.github.io/2026/labs/02-wrangling.html</loc>
-    <lastmod>2026-06-03T18:38:09.608Z</lastmod>
+    <lastmod>2026-06-04T17:29:44.428Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/labs/01-intro.html</loc>
-    <lastmod>2026-06-01T17:21:24.182Z</lastmod>
+    <lastmod>2026-05-27T02:01:52.062Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/labs/02-wrangling.html</loc>
+    <lastmod>2026-06-03T18:31:44.956Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/labs/03-visualization.html</loc>
+    <lastmod>2026-06-03T18:32:12.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/labs/04-github.html</loc>
+    <lastmod>2026-06-04T17:30:53.082Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/eda/nfl_passing.html</loc>
-    <lastmod>2026-06-04T12:38:00.610Z</lastmod>
+    <lastmod>2026-06-04T17:29:44.427Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/eda/decathlon_performances.html</loc>
-    <lastmod>2026-06-04T12:48:01.401Z</lastmod>
+    <lastmod>2026-06-04T17:29:44.421Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/eda/wwc_shooting.html</loc>
-    <lastmod>2026-06-04T12:38:44.241Z</lastmod>
+    <lastmod>2026-06-04T17:29:44.429Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/projects.html</loc>
-    <lastmod>2026-06-04T12:35:57.492Z</lastmod>
+    <lastmod>2026-06-04T17:29:44.432Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/bios.html</loc>
-    <lastmod>2026-05-30T21:14:37.544Z</lastmod>
+    <lastmod>2026-05-31T01:07:28.660Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/lectures.html</loc>
-    <lastmod>2026-06-04T12:50:23.384Z</lastmod>
+    <lastmod>2026-06-04T17:29:44.431Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/lectures/00-welcome.html</loc>
-    <lastmod>2026-06-03T18:37:59.812Z</lastmod>
+    <lastmod>2026-05-31T19:15:54.010Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/lectures/02-graphics.html</loc>
-    <lastmod>2026-06-03T16:30:46.708Z</lastmod>
+    <lastmod>2026-06-03T10:17:29.384Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/r-setup.html</loc>
-    <lastmod>2026-05-20T21:20:04.140Z</lastmod>
+    <lastmod>2026-05-24T14:45:31.590Z</lastmod>
   </url>
 </urlset>
