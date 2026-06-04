@@ -8,7 +8,7 @@ On this site, the [Lectures](lectures.qmd) tab contains all lecture slides, the 
 
 # Pittsburgh Guides
 
-* [Pittsburgh-based Resources](pittsburgh-resources.qmd)
+* [Pittsburgh-based resources](pittsburgh-resources.qmd)
 
 * [Fun activities to do in Pittsburgh](pittsburgh-activities.qmd)
 
