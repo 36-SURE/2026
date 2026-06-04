@@ -17,8 +17,7 @@ Note: To download a `.qmd` file, right click and choose "Save Link As...".
 | June 1 | Getting started with `R`               | [`.html`](labs/01-intro.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2026/main/labs/01-intro.qmd)                 |
 | June 2 | Data wrangling                         | [`.html`](labs/02-wrangling.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2026/main/labs/02-wrangling.qmd)         |
 | June 3 | Data visualization                     | [`.html`](labs/03-visualization.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2026/main/labs/03-visualization.qmd) |
-
-| June 4 | Using GitHub for project collaboration | [`.html`](sports/labs/04-github.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2026/main/labs/04-github.qmd) |
+| June 4 | Using GitHub for project collaboration | [`.html`](labs/04-github.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2026/main/labs/04-github.qmd) |
 <!--
 | June 23 | Data wrangling with data.table | [`.html`](sports/labs/05-datatable.qmd)&nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/05-datatable.qmd)   |
 -->
