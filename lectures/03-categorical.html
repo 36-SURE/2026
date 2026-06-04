@@ -900,7 +900,7 @@ shot_type         unforced error forced error returned winner
 <span id="cb40-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">freq =</span> <span class="fu">n</span>(), </span>
 <span id="cb40-7"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">joint =</span> <span class="fu">n</span>() <span class="sc">/</span> <span class="fu">nrow</span>(tennis_shots)</span>
 <span id="cb40-8"><a aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb40-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> shot_type, <span class="at">y =</span> outcome_type)) <span class="sc">+</span></span>
+<span id="cb40-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> outcome_type, <span class="at">y =</span> shot_type)) <span class="sc">+</span></span>
 <span id="cb40-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> freq), <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
 <span id="cb40-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(joint, <span class="at">accuracy =</span> <span class="fl">0.01</span>))) <span class="sc">+</span></span>
 <span id="cb40-12"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>() <span class="sc">+</span></span>
@@ -1131,23 +1131,23 @@ shot_type         unforced error forced error returned winner
 <span id="cb50-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(shot_type) <span class="sc">|&gt;</span></span>
 <span id="cb50-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="oluijvgide" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oluijvgide table {
+<div id="nboikihucc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nboikihucc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#oluijvgide thead, #oluijvgide tbody, #oluijvgide tfoot, #oluijvgide tr, #oluijvgide td, #oluijvgide th {
+#nboikihucc thead, #nboikihucc tbody, #nboikihucc tfoot, #nboikihucc tr, #nboikihucc td, #nboikihucc th {
   border-style: none;
 }
 
-#oluijvgide p {
+#nboikihucc p {
   margin: 0;
   padding: 0;
 }
 
-#oluijvgide .gt_table {
+#nboikihucc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1173,12 +1173,12 @@ shot_type         unforced error forced error returned winner
   border-left-color: #D3D3D3;
 }
 
-#oluijvgide .gt_caption {
+#nboikihucc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oluijvgide .gt_title {
+#nboikihucc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1190,7 +1190,7 @@ shot_type         unforced error forced error returned winner
   border-bottom-width: 0;
 }
 
-#oluijvgide .gt_subtitle {
+#nboikihucc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1202,7 +1202,7 @@ shot_type         unforced error forced error returned winner
   border-top-width: 0;
 }
 
-#oluijvgide .gt_heading {
+#nboikihucc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1214,13 +1214,13 @@ shot_type         unforced error forced error returned winner
   border-right-color: #D3D3D3;
 }
 
-#oluijvgide .gt_bottom_border {
+#nboikihucc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oluijvgide .gt_col_headings {
+#nboikihucc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1235,7 +1235,7 @@ shot_type         unforced error forced error returned winner
   border-right-color: #D3D3D3;
 }
 
-#oluijvgide .gt_col_heading {
+#nboikihucc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1255,7 +1255,7 @@ shot_type         unforced error forced error returned winner
   overflow-x: hidden;
 }
 
-#oluijvgide .gt_column_spanner_outer {
+#nboikihucc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1267,15 +1267,15 @@ shot_type         unforced error forced error returned winner
   padding-right: 4px;
 }
 
-#oluijvgide .gt_column_spanner_outer:first-child {
+#nboikihucc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oluijvgide .gt_column_spanner_outer:last-child {
+#nboikihucc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oluijvgide .gt_column_spanner {
+#nboikihucc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1287,11 +1287,11 @@ shot_type         unforced error forced error returned winner
   width: 100%;
 }
 
-#oluijvgide .gt_spanner_row {
+#nboikihucc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#oluijvgide .gt_group_heading {
+#nboikihucc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1317,7 +1317,7 @@ shot_type         unforced error forced error returned winner
   text-align: left;
 }
 
-#oluijvgide .gt_empty_group_heading {
+#nboikihucc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1332,15 +1332,15 @@ shot_type         unforced error forced error returned winner
   vertical-align: middle;
 }
 
-#oluijvgide .gt_from_md > :first-child {
+#nboikihucc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oluijvgide .gt_from_md > :last-child {
+#nboikihucc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oluijvgide .gt_row {
+#nboikihucc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1359,7 +1359,7 @@ shot_type         unforced error forced error returned winner
   overflow-x: hidden;
 }
 
-#oluijvgide .gt_stub {
+#nboikihucc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1372,7 +1372,7 @@ shot_type         unforced error forced error returned winner
   padding-right: 5px;
 }
 
-#oluijvgide .gt_stub_row_group {
+#nboikihucc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1386,15 +1386,15 @@ shot_type         unforced error forced error returned winner
   vertical-align: top;
 }
 
-#oluijvgide .gt_row_group_first td {
+#nboikihucc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oluijvgide .gt_row_group_first th {
+#nboikihucc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#oluijvgide .gt_summary_row {
+#nboikihucc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1404,16 +1404,16 @@ shot_type         unforced error forced error returned winner
   padding-right: 5px;
 }
 
-#oluijvgide .gt_first_summary_row {
+#nboikihucc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oluijvgide .gt_first_summary_row.thick {
+#nboikihucc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oluijvgide .gt_last_summary_row {
+#nboikihucc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1423,7 +1423,7 @@ shot_type         unforced error forced error returned winner
   border-bottom-color: #D3D3D3;
 }
 
-#oluijvgide .gt_grand_summary_row {
+#nboikihucc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1433,7 +1433,7 @@ shot_type         unforced error forced error returned winner
   padding-right: 5px;
 }
 
-#oluijvgide .gt_first_grand_summary_row {
+#nboikihucc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1443,7 +1443,7 @@ shot_type         unforced error forced error returned winner
   border-top-color: #D3D3D3;
 }
 
-#oluijvgide .gt_last_grand_summary_row_top {
+#nboikihucc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1453,11 +1453,11 @@ shot_type         unforced error forced error returned winner
   border-bottom-color: #D3D3D3;
 }
 
-#oluijvgide .gt_striped {
+#nboikihucc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oluijvgide .gt_table_body {
+#nboikihucc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1466,7 +1466,7 @@ shot_type         unforced error forced error returned winner
   border-bottom-color: #D3D3D3;
 }
 
-#oluijvgide .gt_footnotes {
+#nboikihucc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1480,7 +1480,7 @@ shot_type         unforced error forced error returned winner
   border-right-color: #D3D3D3;
 }
 
-#oluijvgide .gt_footnote {
+#nboikihucc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1489,7 +1489,7 @@ shot_type         unforced error forced error returned winner
   padding-right: 5px;
 }
 
-#oluijvgide .gt_sourcenotes {
+#nboikihucc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1503,7 +1503,7 @@ shot_type         unforced error forced error returned winner
   border-right-color: #D3D3D3;
 }
 
-#oluijvgide .gt_sourcenote {
+#nboikihucc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1511,72 +1511,72 @@ shot_type         unforced error forced error returned winner
   padding-right: 5px;
 }
 
-#oluijvgide .gt_left {
+#nboikihucc .gt_left {
   text-align: left;
 }
 
-#oluijvgide .gt_center {
+#nboikihucc .gt_center {
   text-align: center;
 }
 
-#oluijvgide .gt_right {
+#nboikihucc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oluijvgide .gt_font_normal {
+#nboikihucc .gt_font_normal {
   font-weight: normal;
 }
 
-#oluijvgide .gt_font_bold {
+#nboikihucc .gt_font_bold {
   font-weight: bold;
 }
 
-#oluijvgide .gt_font_italic {
+#nboikihucc .gt_font_italic {
   font-style: italic;
 }
 
-#oluijvgide .gt_super {
+#nboikihucc .gt_super {
   font-size: 65%;
 }
 
-#oluijvgide .gt_footnote_marks {
+#nboikihucc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#oluijvgide .gt_asterisk {
+#nboikihucc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oluijvgide .gt_indent_1 {
+#nboikihucc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oluijvgide .gt_indent_2 {
+#nboikihucc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oluijvgide .gt_indent_3 {
+#nboikihucc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oluijvgide .gt_indent_4 {
+#nboikihucc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oluijvgide .gt_indent_5 {
+#nboikihucc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#oluijvgide .katex-display {
+#nboikihucc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#oluijvgide div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nboikihucc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1651,23 +1651,23 @@ shot_type         unforced error forced error returned winner
 <span id="cb51-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_ns</span>() <span class="sc">|&gt;</span></span>
 <span id="cb51-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="utgnxgkviv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#utgnxgkviv table {
+<div id="twqzvjfwuv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#twqzvjfwuv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#utgnxgkviv thead, #utgnxgkviv tbody, #utgnxgkviv tfoot, #utgnxgkviv tr, #utgnxgkviv td, #utgnxgkviv th {
+#twqzvjfwuv thead, #twqzvjfwuv tbody, #twqzvjfwuv tfoot, #twqzvjfwuv tr, #twqzvjfwuv td, #twqzvjfwuv th {
   border-style: none;
 }
 
-#utgnxgkviv p {
+#twqzvjfwuv p {
   margin: 0;
   padding: 0;
 }
 
-#utgnxgkviv .gt_table {
+#twqzvjfwuv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1693,12 +1693,12 @@ shot_type         unforced error forced error returned winner
   border-left-color: #D3D3D3;
 }
 
-#utgnxgkviv .gt_caption {
+#twqzvjfwuv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#utgnxgkviv .gt_title {
+#twqzvjfwuv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1710,7 +1710,7 @@ shot_type         unforced error forced error returned winner
   border-bottom-width: 0;
 }
 
-#utgnxgkviv .gt_subtitle {
+#twqzvjfwuv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1722,7 +1722,7 @@ shot_type         unforced error forced error returned winner
   border-top-width: 0;
 }
 
-#utgnxgkviv .gt_heading {
+#twqzvjfwuv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1734,13 +1734,13 @@ shot_type         unforced error forced error returned winner
   border-right-color: #D3D3D3;
 }
 
-#utgnxgkviv .gt_bottom_border {
+#twqzvjfwuv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#utgnxgkviv .gt_col_headings {
+#twqzvjfwuv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1755,7 +1755,7 @@ shot_type         unforced error forced error returned winner
   border-right-color: #D3D3D3;
 }
 
-#utgnxgkviv .gt_col_heading {
+#twqzvjfwuv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1775,7 +1775,7 @@ shot_type         unforced error forced error returned winner
   overflow-x: hidden;
 }
 
-#utgnxgkviv .gt_column_spanner_outer {
+#twqzvjfwuv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1787,15 +1787,15 @@ shot_type         unforced error forced error returned winner
   padding-right: 4px;
 }
 
-#utgnxgkviv .gt_column_spanner_outer:first-child {
+#twqzvjfwuv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#utgnxgkviv .gt_column_spanner_outer:last-child {
+#twqzvjfwuv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#utgnxgkviv .gt_column_spanner {
+#twqzvjfwuv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1807,11 +1807,11 @@ shot_type         unforced error forced error returned winner
   width: 100%;
 }
 
-#utgnxgkviv .gt_spanner_row {
+#twqzvjfwuv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#utgnxgkviv .gt_group_heading {
+#twqzvjfwuv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1837,7 +1837,7 @@ shot_type         unforced error forced error returned winner
   text-align: left;
 }
 
-#utgnxgkviv .gt_empty_group_heading {
+#twqzvjfwuv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1852,15 +1852,15 @@ shot_type         unforced error forced error returned winner
   vertical-align: middle;
 }
 
-#utgnxgkviv .gt_from_md > :first-child {
+#twqzvjfwuv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#utgnxgkviv .gt_from_md > :last-child {
+#twqzvjfwuv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#utgnxgkviv .gt_row {
+#twqzvjfwuv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1879,7 +1879,7 @@ shot_type         unforced error forced error returned winner
   overflow-x: hidden;
 }
 
-#utgnxgkviv .gt_stub {
+#twqzvjfwuv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1892,7 +1892,7 @@ shot_type         unforced error forced error returned winner
   padding-right: 5px;
 }
 
-#utgnxgkviv .gt_stub_row_group {
+#twqzvjfwuv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1906,15 +1906,15 @@ shot_type         unforced error forced error returned winner
   vertical-align: top;
 }
 
-#utgnxgkviv .gt_row_group_first td {
+#twqzvjfwuv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#utgnxgkviv .gt_row_group_first th {
+#twqzvjfwuv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#utgnxgkviv .gt_summary_row {
+#twqzvjfwuv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1924,16 +1924,16 @@ shot_type         unforced error forced error returned winner
   padding-right: 5px;
 }
 
-#utgnxgkviv .gt_first_summary_row {
+#twqzvjfwuv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#utgnxgkviv .gt_first_summary_row.thick {
+#twqzvjfwuv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#utgnxgkviv .gt_last_summary_row {
+#twqzvjfwuv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1943,7 +1943,7 @@ shot_type         unforced error forced error returned winner
   border-bottom-color: #D3D3D3;
 }
 
-#utgnxgkviv .gt_grand_summary_row {
+#twqzvjfwuv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1953,7 +1953,7 @@ shot_type         unforced error forced error returned winner
   padding-right: 5px;
 }
 
-#utgnxgkviv .gt_first_grand_summary_row {
+#twqzvjfwuv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1963,7 +1963,7 @@ shot_type         unforced error forced error returned winner
   border-top-color: #D3D3D3;
 }
 
-#utgnxgkviv .gt_last_grand_summary_row_top {
+#twqzvjfwuv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1973,11 +1973,11 @@ shot_type         unforced error forced error returned winner
   border-bottom-color: #D3D3D3;
 }
 
-#utgnxgkviv .gt_striped {
+#twqzvjfwuv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#utgnxgkviv .gt_table_body {
+#twqzvjfwuv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1986,7 +1986,7 @@ shot_type         unforced error forced error returned winner
   border-bottom-color: #D3D3D3;
 }
 
-#utgnxgkviv .gt_footnotes {
+#twqzvjfwuv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2000,7 +2000,7 @@ shot_type         unforced error forced error returned winner
   border-right-color: #D3D3D3;
 }
 
-#utgnxgkviv .gt_footnote {
+#twqzvjfwuv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2009,7 +2009,7 @@ shot_type         unforced error forced error returned winner
   padding-right: 5px;
 }
 
-#utgnxgkviv .gt_sourcenotes {
+#twqzvjfwuv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2023,7 +2023,7 @@ shot_type         unforced error forced error returned winner
   border-right-color: #D3D3D3;
 }
 
-#utgnxgkviv .gt_sourcenote {
+#twqzvjfwuv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2031,72 +2031,72 @@ shot_type         unforced error forced error returned winner
   padding-right: 5px;
 }
 
-#utgnxgkviv .gt_left {
+#twqzvjfwuv .gt_left {
   text-align: left;
 }
 
-#utgnxgkviv .gt_center {
+#twqzvjfwuv .gt_center {
   text-align: center;
 }
 
-#utgnxgkviv .gt_right {
+#twqzvjfwuv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#utgnxgkviv .gt_font_normal {
+#twqzvjfwuv .gt_font_normal {
   font-weight: normal;
 }
 
-#utgnxgkviv .gt_font_bold {
+#twqzvjfwuv .gt_font_bold {
   font-weight: bold;
 }
 
-#utgnxgkviv .gt_font_italic {
+#twqzvjfwuv .gt_font_italic {
   font-style: italic;
 }
 
-#utgnxgkviv .gt_super {
+#twqzvjfwuv .gt_super {
   font-size: 65%;
 }
 
-#utgnxgkviv .gt_footnote_marks {
+#twqzvjfwuv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#utgnxgkviv .gt_asterisk {
+#twqzvjfwuv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#utgnxgkviv .gt_indent_1 {
+#twqzvjfwuv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#utgnxgkviv .gt_indent_2 {
+#twqzvjfwuv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#utgnxgkviv .gt_indent_3 {
+#twqzvjfwuv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#utgnxgkviv .gt_indent_4 {
+#twqzvjfwuv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#utgnxgkviv .gt_indent_5 {
+#twqzvjfwuv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#utgnxgkviv .katex-display {
+#twqzvjfwuv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#utgnxgkviv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#twqzvjfwuv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

@@ -256,7 +256,7 @@
     "href": "lectures/03-categorical.html#categorical-heatmaps",
     "title": "Data visualization: categorical data",
     "section": "Categorical heatmaps",
-    "text": "Categorical heatmaps\n\n\n\nUse geom_tile() to display joint distribution of two categorical variables\nAnnotate tiles with labels of percentages using geom_text() and the scales package (a very neat package)\n\n\n#install.packages(\"scales\")\n\ntennis_shots |&gt;\n  group_by(shot_type, outcome_type) |&gt;\n  summarize(\n    freq = n(), \n    joint = n() / nrow(tennis_shots)\n  ) |&gt; \n  ggplot(aes(x = shot_type, y = outcome_type)) +\n  geom_tile(aes(fill = freq), color = \"white\") +\n  geom_text(aes(label = scales::percent(joint, accuracy = 0.01))) +\n  scale_fill_gradient2() +\n  coord_equal() +\n  theme_classic() +\n  theme(axis.text.x = element_text(angle = 45,\n                                   vjust = 1, hjust = 1))"
+    "text": "Categorical heatmaps\n\n\n\nUse geom_tile() to display joint distribution of two categorical variables\nAnnotate tiles with labels of percentages using geom_text() and the scales package (a very neat package)\n\n\n#install.packages(\"scales\")\n\ntennis_shots |&gt;\n  group_by(shot_type, outcome_type) |&gt;\n  summarize(\n    freq = n(), \n    joint = n() / nrow(tennis_shots)\n  ) |&gt; \n  ggplot(aes(x = outcome_type, y = shot_type)) +\n  geom_tile(aes(fill = freq), color = \"white\") +\n  geom_text(aes(label = scales::percent(joint, accuracy = 0.01))) +\n  scale_fill_gradient2() +\n  coord_equal() +\n  theme_classic() +\n  theme(axis.text.x = element_text(angle = 45,\n                                   vjust = 1, hjust = 1))"
   },
   {
     "objectID": "lectures/03-categorical.html#visualizing-independence",
