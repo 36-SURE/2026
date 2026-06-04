@@ -20,15 +20,4 @@ Note: To download a `.qmd` file, right click and choose "Save Link As...".
 <!--
 | June 5 | Using GitHub for project collaboration | [`.html`](sports/labs/04-github.qmd)                                                                                                               |
 | June 23 | Data wrangling with data.table | [`.html`](sports/labs/05-datatable.qmd)&nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/05-datatable.qmd)   |
-
-## EDA projects
-
-|           |                  |                                            |
-|-----------|------------------|--------------------------------------------|
-| Project 1 | NFL passing      | [description](sports/eda/nfl_passing.qmd)  |
-| Project 2 | UFA throwing     | [description](sports/eda/ufa_throwing.qmd) |
-| Project 3 | TBD              | [description](sports/eda/nhl_shooting.qmd) |
-| Project 4 | FIFAWWC shooting | [description](sports/eda/wwc_shooting.qmd) |
-| Project 5 | FIFAWWC passing  | [description](sports/eda/wwc_passing.qmd)  |
-| Project 6 | TBD              | [description](sports/eda/mlb_batting.qmd)  |
 -->

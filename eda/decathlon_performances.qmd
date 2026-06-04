@@ -1,0 +1,120 @@
+---
+title: "EDA project: Decathlon Performances"
+bibliography: bibliography/decathlon_performances.bib
+---
+
+---
+
+## Overview
+
+This project will be released on Thursday, June 4 and **conclude with a 6-minute presentation on Tuesday, June 16 during lab**.
+
+Students will be randomly placed into groups of 2--3 and each group will be randomly assigned a dataset.
+
+The goal of this project is to practice understanding the structure of a dataset, and to practice generating and evaluating hypotheses using fundamental EDA and data visualization techniques.
+
+## Deliverables
+
+Each group is expected to make slides to accompany the 6-minute presentation. All group members must be present for the presentation and participate. **No notes/scripts are allowed during the presentation.**
+
+The presentation should feature the following:
+
+* Overview of the structure of your dataset
+
+* **Two questions/hypotheses** you are interested in exploring
+
+* **Two data visualizations** exploring the questions---both must be multivariate (i.e., involving 2+ variables) and in different formats
+
+* **One clustering analysis**
+
+* Conclusions for the hypotheses based on your EDA and data visualizations
+
+## Timeline
+
+There will be two submission deadlines:
+
+**Thursday, June 11 at 5pm ET** - Each student will push their individual code for the project thus far to GitHub for review.
+
+**Tuesday, June 16 at 1pm ET** - Slides and full code must be completed and ready for presentation. Send your slides to Erin ([`efranke@andrew.cmu.edu`](mailto:efranke@andrew.cmu.edu)) and Sara ([`scolando@andrew.cmu.edu`](mailto:scolando@andrew.cmu.edu)). All code must be written in `R`; but the slides may be created in any software. Take advantage of examples from lectures, but also feel free to explore online resources that may be relevant. (But be sure to always consult the `R` help documentation first before attempting to Google around or asking an LLM).
+
+## Data
+
+This dataset contains performances for high-level men's decathlon from 2001–2022, courtesy of @Battles2025.[^1] The data was originally extracted from the World Athletics (a publicly available database). Only performances that corresponded to overall scores >6,400 were kept in the dataset [@Battles2025]. As a result, the final sample consists of "competitive" or "elite" men's decathlon performances.
+
+Each row in the dataset corresponds to an elite men's decathlon performance, and the columns are:
+
+* `rank`: competitor's World Athletics ranking, based on the average of their two best eligible performances in the ranking period.[^2]
+* `competitor`: competitor's name.
+* `dob`: competitor's date of birth (MM/DD/YYYY).
+* `nat`: nation represented by the competitor. 
+* `sec`: competitor's section. 
+* `pos_sec`: competitor's final standing relative to other athletes in the same section.
+* `pos_full`: full version of the version of competitor's final standing relative to other athletes in the same section. The number before the "f" gives the competitor's final standing in their section (`pos_sec`). The number after the "f" indicates the competitor's section, when applicable (`sec`). For example, "7f2" indicates a 7th place in section 2.
+* `venue`: venue where the performance occurred.
+* `date`: date of performance (MM/DD/YYYY).
+* `world_athletics_event_ranking_score`: World Athletics ranking score for the performance, based on the athlete's result score and placing score.[^3]
+* `men_100`: 100 meter dash time (seconds).
+* `men_100_wind`: wind reading during 100 meter dash performance (meters/second).
+* `men_100_score`: points earned for 100 meter dash performance.
+* `men_lj`: long jump performance (meters).
+* `men_lj_wind`: wind reading during long jump performance (meters/second).
+* `men_lj_score`: points earned for long jump performance.
+* `men_sp`: shot put performance (meters). 
+* `men_sp_score`: points earned for shot put performance.
+* `men_hj`: high jump performance (meters).
+* `men_hj_score`: points earned for high jump performance.
+* `men_400`: 400 meter time (seconds).
+* `men_400_score`: points earned for 400 meter performance.
+* `men_110h`: 110 meter hurdles time (seconds).
+* `men_110h_wind`: wind reading during 110 meter hurdles performance (meters/second).
+* `men_110h_score`: points earned for 110 meter hurdles performance.
+* `men_dt`: discuss throw performance (meters).
+* `men_dt_score`: points earned for discuss performance.
+* `men_pv`: pole vault performance (meters). 
+* `men_pv_score`: points earned for pole vault performance.
+* `men_jt`: javelin throw performance (meters). 
+* `men_jt_score`: points earned for javelin throw performance.
+* `men_1500`: 1500 meter run time (MM:SS:MS).
+* `men_1500_score`: points earned for 1500 meter run performance.
+* `overall_score`: overall decathlon score, found by summing the points earned across all ten events (rounding the number down to the nearest integer).
+* `average_wind`: average of all wind readings across applicable events (meters/second).
+
+[^1]: The decathlon is a two-day track and field competition that consists of 10 events. Competitors earn points for each of their event performances, and the competitor with the highest overall score wins. Additional information on the decathlon can be found on the [World Athletic's Decathlon page](https://worldathletics.org/disciplines/combined-events/decathlon) and in this [Youtube video](https://www.youtube.com/watch?v=XoCHK6gKDBc).
+
+[^2]: For additional details, see the [USATF's World Athletics Rankings: Explained](https://www.usatf.org/campus/articles/2025/world-athletics-rankings-explained).
+
+[^3]: For additional details, see the [World Athletics' Combined Events Ranking Criteria](https://worldathletics.org/world-ranking-rules/combined-events-2024).
+
+## Starter code
+
+```{r}
+#| eval: false
+library(tidyverse)
+
+dec_performances <- read_csv("https://raw.githubusercontent.com/36-SURE/2026/main/data/dec_performances.csv")
+```
+
+In case you're curious, the code to build this dataset can be found below.
+
+```{r}
+#| eval: false
+#| warning: false
+library(tidyverse)
+library(janitor)
+
+dec_performances <- read_csv("https://raw.githubusercontent.com//Battles186/DecathlonCareerBest/master/DecData.csv") |>
+  # standardizing the column names (e.g. all lowercase, no spaces)
+  janitor::clean_names() |> 
+  mutate(competitor = str_to_title(competitor), 
+         # computing average wind reading across events
+         # relevant to whether or not the performance is "wind-legal"
+         average_wind = rowMeans(across(ends_with("wind"))),
+         # parsing section information into new column.
+         # if there is no number after "f", we assume there is just one section
+         sec = as.numeric(if_else(grepl("f\\d+$", pos), str_split_i(pos, pattern = "f", 2), "1")),
+         # creating new column that encodes section overall position
+         pos_sec =  as.numeric(str_split_i(pos, pattern = "f", 1))) |>
+  # rearranging columns so they are a better order and renaming pos to pos_full
+  select(rank, competitor, dob, nat, sec, pos_sec, pos_full = pos, everything())
+```
+

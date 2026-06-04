@@ -1,0 +1,126 @@
+---
+title: "EDA project: Women's World Cup shooting"
+---
+
+---
+
+## Overview
+
+This project will be released on Thursday, June 4 and **conclude with a 6-minute presentation on Tuesday, June 16 during lab**.
+
+Students will be randomly placed into groups of 2--3 and each group will be randomly assigned a dataset.
+
+The goal of this project is to practice understanding the structure of a dataset, and to practice generating and evaluating hypotheses using fundamental EDA and data visualization techniques.
+
+## Deliverables
+
+Each group is expected to make slides to accompany the 6-minute presentation. All group members must be present for the presentation and participate. **No notes/scripts are allowed during the presentation.**
+
+The presentation should feature the following:
+
+* Overview of the structure of your dataset
+
+* **Two questions/hypotheses** you are interested in exploring
+
+* **Two data visualizations** exploring the questions---both must be multivariate (i.e., involving 2+ variables) and in different formats
+
+* **One clustering analysis**
+
+* Conclusions for the hypotheses based on your EDA and data visualizations
+
+## Timeline
+
+There will be two submission deadlines:
+
+**Thursday, June 11 at 5pm ET** - Each student will push their individual code for the project thus far to GitHub for review.
+
+**Tuesday, June 16 at 1pm ET** - Slides and full code must be completed and ready for presentation. Send your slides to Erin ([`efranke@andrew.cmu.edu`](mailto:efranke@andrew.cmu.edu)) and Sara ([`scolando@andrew.cmu.edu`](mailto:scolando@andrew.cmu.edu)). All code must be written in `R`; but the slides may be created in any software. Take advantage of examples from lectures, but also feel free to explore online resources that may be relevant. (But be sure to always consult the `R` help documentation first before attempting to google around or ask ChatGPT.)
+
+## Data
+
+This dataset contains all (open-play) shot attempts from the 2023 FIFA Women's World Cup, courtesy of [StatsBomb](https://statsbomb.com/news/statsbomb-release-free-2023-womens-world-cup-data/) and accessed via the [`StatsBombR`](https://github.com/statsbomb/StatsBombR) package.
+
+Each row in the dataset corresponds to a shot attempt and the columns are:
+
+* `period`: period of the game (`1`: first half, `2`: second half, `3`: first extra time period, `4`: second extra time period)          
+* `minute` & `second`: minute & second of the game
+* `duration`: duration of the shot (seconds)            
+* `under_pressure`: whether the shot is under pressure
+* `play_pattern.name`: play pattern name (leading up to the shot)
+* `possession_team.name`: possession team name
+* `player.name`: player taking the shot
+* `position.name`: player position
+* `shot.technique.name`: technique of the shot
+* `shot.body_part.name`: body part used to take the shot
+* `shot.outcome.name`: outcome of the shot
+* `shot.{aerial_won, one_on_one, deflected, open_goal, saved_to_post, saved_off_target, redirect}`: different shot binary indicators (should be self-explanatory, `NA` means `FALSE`)
+* `location.{x, y}`: (`x`, `y`) location when shot takes place. (Note: all locations have been standardized so that the possession team is going from left to right. Higher `x` values means closer to the opposing team's goal, and higher `y` values means more toward the left wing)
+* `shot.end_location.{x, y, z}`:  (`x`, `y`, `z`) coordinates of shot ending location
+* `player.name.GK`: goalkeeper name
+* `location.{x, y}.GK`: (`x`, `y`) location of goalkeeper when shot takes place
+* `DistToGoal`: distance between shot location and center of goal           
+* `DistToKeeper`: distance between keeper and center goal (NOT between keeper location and shot location)
+* `AngleToGoal`: angle between shot location and center of goal     
+* `AngleToKeeper`: angle between keeper and center of goal (NOT between keeper location and shot location)
+* `AngleDeviation`: absolute difference between `AngleToGoal` and `AngleToKeeper`
+* `avevelocity`: (average) shot velocity (over the duration of shot)      
+* `DistSGK`: distance between shot location and keeper location
+* `density`: aggregated inverse distance for each defender behind the ball
+* `density.incone`: density for only defenders who are in the cone defined by the shooter and each goal post
+* `AttackersBehindBall`: number of attackers behind the ball
+* `DefendersBehindBall`: number of defenders behind the ball
+* `DefendersInCone`: number of defenders in the cone defined by the shooter and each goal post  
+* `InCone.GK`: whether the goalkeeper is in the cone defined by the shooter and each goal post    
+* `DefArea`: area of the smallest square that covers all opposing defenders           
+* `distance.ToD1.360`: distance between shooter and closest defender  
+* `distance.ToD2.360`: distance between shooter and second-closest defender      
+* `TimeInPoss`: time elapsed since the start of possession         
+* `TimeToPossEnd`: time remaining until end of possession
+
+## Starter code
+
+```{r}
+#| eval: false
+library(tidyverse)
+
+wwc_shots <- read_csv("https://raw.githubusercontent.com/36-SURE/2026/main/data/wwc_shots.csv")
+```
+
+In case you're curious, the code to build this dataset can be found below.
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(StatsBombR)
+
+wwc <- FreeCompetitions() |> 
+  filter(competition_id == "72" & season_id == "107") |> 
+  FreeMatches() |> 
+  free_allevents() |> 
+  allclean()
+
+wwc_shots <- wwc |>
+  filter(type.name == "Shot", 
+         shot.type.name == "Open Play", 
+         team.name == possession_team.name) |> 
+  janitor::remove_empty() |> 
+  select(period, minute, second, duration, under_pressure, 
+         play_pattern.name, possession_team.name, player.name, position.name, 
+         shot.technique.name, shot.body_part.name, shot.outcome.name, 
+         shot.aerial_won, shot.one_on_one,shot.deflected, shot.open_goal, 
+         shot.saved_to_post, shot.saved_off_target, shot.redirect, 
+         location.x, location.y, shot.end_location.x, 
+         shot.end_location.y, shot.end_location.z, 
+         player.name.GK, location.x.GK, location.y.GK, 
+         DistToGoal, DistToKeeper, AngleToGoal,AngleToKeeper, AngleDeviation, 
+         avevelocity, DistSGK, density, density.incone, 
+         AttackersBehindBall:distance.ToD2.360, TimeInPoss, TimeToPossEnd) |> 
+  mutate(InCone.GK = ifelse(InCone.GK > 0, 1, InCone.GK))
+```
+
+<!-- # density/cone -->
+<!-- # https://github.com/statsbomb/open-data/issues/3 -->
+
+<!-- # freeze frames -->
+<!-- # cone visual -->
+<!-- # https://statsbomb.com/news/statsbomb-data-case-studies-freeze-frames-and-defender-locations/ -->

@@ -1,0 +1,90 @@
+---
+title: "EDA project: NFL passing"
+---
+
+---
+
+## Overview
+
+This project will be released on Thursday, June 4 and **conclude with a 6-minute presentation on Tuesday, June 16 during lab**.
+
+Students will be randomly placed into groups of 2--3 and each group will be randomly assigned a dataset.
+
+The goal of this project is to practice understanding the structure of a dataset, and to practice generating and evaluating hypotheses using fundamental EDA and data visualization techniques.
+
+## Deliverables
+
+Each group is expected to make slides to accompany the 6-minute presentation. All group members must be present for the presentation and participate. **No notes/scripts are allowed during the presentation.**
+
+The presentation should feature the following:
+
+* Overview of the structure of your dataset
+
+* **Two questions/hypotheses** you are interested in exploring
+
+* **Two data visualizations** exploring the questions---both must be multivariate (i.e., involving 2+ variables) and in different formats
+
+* **One clustering analysis**
+
+* Conclusions for the hypotheses based on your EDA and data visualizations
+
+## Timeline
+
+There will be two submission deadlines:
+
+**Thursday, June 11 at 5pm ET** - Each student will push their individual code for the project thus far to GitHub for review.
+
+**Tuesday, June 16 at 1pm ET** - Slides and full code must be completed and ready for presentation. Send your slides to Erin ([`efranke@andrew.cmu.edu`](mailto:efranke@andrew.cmu.edu)) and Sara ([`scolando@andrew.cmu.edu`](mailto:scolando@andrew.cmu.edu)). All code must be written in `R`; but the slides may be created in any software. Take advantage of examples from lectures, but also feel free to explore online resources that may be relevant. (But be sure to always consult the `R` help documentation first before attempting to google around or ask ChatGPT.)
+
+## Data
+
+This dataset contains pass attempts from weeks 1--9 of the 2022 NFL regular season, courtesy of the [`nflreadr`](https://nflreadr.nflverse.com/) package (part of the [`nflverse`](https://nflverse.nflverse.com/)) and the [2025 NFL Big Data Bowl](https://www.kaggle.com/competitions/nfl-big-data-bowl-2025/data).
+
+Each row in the dataset corresponds to a pass attempt and the columns are:
+
+* `game_id`: unique identifier for a game                
+* `play_id`: unique identifier for a play (within a game)
+* `passer_player_name`: name of the player that attempted the pass
+* `passer_player_id`: unique identifier for the player that attempted the pass
+* `posteam`: abbreviation for the team with possession
+* `complete_pass`: indicator denoting whether or not the pass was completed
+* `interception`: indicator denoting whether or not the pass was intercepted by the defense
+* `yards_gained`: yards gained (or lost) by the possessing team, excluding yards gained via fumble recoveries and laterals
+* `touchdown`: indicator denoting if the play resulted in a touchdown
+* `pass_location`: categorical location of pass
+* `pass_length`: categorical length of pass
+* `air_yards`: distance in yards perpendicular to the line of scrimmage at where the targeted receiver either caught or didn't catch the ball
+* `yards_after_catch`: distance in yards perpendicular to the yard line where the receiver made the reception to where the play ended
+* `shotgun`: indicator for whether or not the play was in shotgun formation
+* `no_huddle`: indicator for whether or not the play was in no_huddle formation
+* `defteam`: abbreviation for the team on defense
+* `posteam_type`: indicating whether the posteam team is home or away
+* `yardline_100`: distance in the number of yards from the opponent's endzone for the posteam
+* `side_of_field`: abbreviation for which team's side of the field the team with possession is currently on
+* `down`: down for the given play
+* `qtr`: quarter of the game (5 is overtime)
+* `half_seconds_remaining`: seconds remaining in the half
+* `game_half`: indicating which half the play is in
+* `home_team`: abbreviation for the home team
+* `away_team`: abbreviation for the away team
+* `home_score`: total points scored by the home team
+* `away_score`: total points scored by the away team
+* `target_player_id`: unique identifier for the intended receiver  
+* `target_player_name`: name of the intended receiver  
+* `had_pass_reception`: whether the pass was caught by the intended receiver 
+* `motion_since_lineset`:  whether the intended receiver went in motion after they were initially set at the line of scrimmage
+* `route_ran`: route ran by the intended receiver             
+* `offense_formation`: formation used by the offense
+* `target_x`: x coordinate (along the end zone direction) of targeted receiver when the pass arrived (Note: all locations have been standardized so that the possession team is going from left to right. Higher x values means closer to the target end zone)    
+* `target_y`: y coordinate (along the sideline direction) of targeted receiver when the pass arrived              
+* `time_to_throw`: time (in seconds) elapsed between snap and pass
+
+
+## Starter code
+
+```{r}
+#| eval: false
+library(tidyverse)
+
+nfl_passes <- read_csv("https://raw.githubusercontent.com/36-SURE/2026/main/data/nfl_passes.csv")
+```
