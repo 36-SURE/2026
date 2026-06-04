@@ -1,0 +1,1049 @@
+---
+title: "Data visualization: categorical data"
+author: "<br>CMSACamp 2026<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+footer:  "[36-SURE.github.io/2026](https://36-sure.github.io/2026)"
+format:
+  revealjs:
+    theme: theme.scss
+    chalkboard: true
+    smaller: true
+    slide-number: c/t
+    code-line-numbers: false
+    linestretch: 1.5
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r}
+#| eval: true
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+# ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
+```
+
+# Background
+
+## Data
+
+- Our dataset is **Wimbledon women's tennis shot-level data**
+
+- The original data is publicly available on the [SCORE Sports Data Repository](https://data.scorenetwork.org/tennis/tennis-shot-level-data.html)
+
+   - We will look at a *random sample of 10,000 (non-serve) shots*
+   
+   - The data was pre-processed slightly for this lecture:
+
+```{r}
+#| eval: false
+# set seed for reproducibility
+set.seed(4747)
+
+# import data from current working directory
+tennis_shots <- read_csv("tennis-w-shots-wim.csv.gz") |>
+  # tidy names
+  janitor::clean_names() |>
+  # remove serves
+  filter(shot_type != "serve") |>
+  # NA = shot did not produce an outcome (i.e., returned)
+  mutate(outcome_type = if_else(is.na(outcome_type),"returned", outcome_type)) |>
+  # replace "_" with " " in all character variables 
+  mutate(across(where(is.character), ~ str_replace_all(., "_", " "))) |>
+  # convert date into ymd format
+  mutate(date = ymd(date)) |>
+  # random sample of sample 10,000 observations
+  dplyr::slice_sample(n = 10000)
+```
+
+## Data
+
+Let's begin by importing the data:
+
+```{r}
+library(tidyverse)
+theme_set(theme_light()) # setting the ggplot theme
+
+tennis_shots <- read_csv("https://raw.githubusercontent.com/36-SURE/2026/main/data/tennis_w_shots_wim.csv") |>
+  # filter out NAs for shot_type and outcome_type
+  filter(!is.na(shot_type), !is.na(outcome_type)) |>
+  # convert characters into factors
+  mutate(across(where(is.character), as.factor)) 
+```
+
+. . .
+
+<br>
+
+*What does each row represent here?*
+
+
+```{r}
+names(tennis_shots)
+```
+
+```{r}
+#| echo: false
+ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
+```
+
+## Categorical data
+
+Two different versions of categorical data:
+
+**Nominal**: categorical variables having unordered scales
+
+-   Examples: race, gender, species, etc.
+
+**Ordinal**: ordered categories; levels with a meaningful order
+
+-   Examples: education level, grades, ranks, etc.
+
+## Factors in `R`
+
+-   In `R`, factors are used to work with categorical variables
+
+-   `R` treats factors as ordinal - defaults to alphabetical
+
+    -   May need to manually define the factor levels (e.g., the reference level)
+
+-   See the [`forcats`](https://forcats.tidyverse.org/) package (automatically loaded with `tidyverse`)
+
+
+```{r}
+class(tennis_shots$shot_type)
+levels(tennis_shots$shot_type)
+```
+
+# 1D categorical data
+
+## Summarizing 1D categorical data
+
+*How often is each shot type used during women's singles at the Wimbledon Championships?*
+
+**Frequency tables** (counts)
+
+
+```{r}
+table(tennis_shots$shot_type)
+```
+
+
+```{r}
+#tennis_shots |> 
+#  group_by(shot_type) |>
+#  summarize(n = n(), .groups = "drop")
+
+tennis_shots |> 
+  count(shot_type)
+```
+
+## Summarizing 1D categorical data
+
+**Proportion table**
+
+```{r}
+prop.table(table(tennis_shots$shot_type))
+
+tennis_shots |> 
+  count(shot_type) |> 
+  mutate(prop = n / sum(n))
+```
+
+## Visualizing 1D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Create a bar chart with `geom_bar()`
+
+-   Map `shot_type` to the x-axis
+
+-   Counts of each category are displayed on the y-axis
+
+```{r}
+#| eval: false
+tennis_shots |> 
+  ggplot(aes(x = shot_type)) +
+  geom_bar() +
+  # angling axis text for readability
+  theme(axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+::: {.column width="50%" style="text-align: left;"}
+
+```{r}
+#| echo: false
+#| fig-height: 10
+tennis_shots |> 
+  ggplot(aes(x = shot_type)) +
+  geom_bar() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+:::
+
+## Behind the scenes of `geom_bar()`
+
+-   Start with the data
+-   Aggregate and count the number of observations in each bar
+-   Map to plot aesthetics
+
+![[R for data science (2e)](https://r4ds.hadley.nz/layers.html#the-layered-grammar-of-graphics)](https://r4ds.hadley.nz/images/visualization-grammar.png)
+
+## Visualizing 1D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+Instead of using `geom_bar()`, you can do these steps "by hand"
+
+-   Aggregate and obtain the counts first with `count()` (or `group_by` and `summarize()`)
+
+-   Then use `geom_col()`
+
+```{r}
+#| eval: false
+tennis_shots |>
+  count(shot_type, name = "count") |> 
+  ggplot(aes(x = shot_type, y = count)) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+tennis_shots |>
+  count(shot_type, name = "count") |> 
+  ggplot(aes(x = shot_type, y = count)) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+:::
+
+## Visualizing 1D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Flip your bar chart axes!
+
+Simply replace `x` with `y`:
+
+```{r}
+#| eval: false
+tennis_shots |> 
+  ggplot(aes(y = shot_type)) +
+  geom_bar() 
+```
+
+Or use `coord_flip()`:
+
+```{r}
+#| eval: false
+tennis_shots |> 
+  ggplot(aes(x = shot_type)) +
+  geom_bar() +
+  coord_flip() 
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig.height: 10
+tennis_shots |> 
+  ggplot(aes(x = shot_type)) +
+  geom_bar() +
+  coord_flip() 
+```
+:::
+:::
+
+## What does a bar chart show?
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+**Marginal distribution**: probability that a categorical variable $X$ (e.g., `shot_type`) takes each particular category value $x$ (`groundstroke`, `lob`, ..., `slice`)
+
+::: {.incremental}
+
+-   Frequency bar charts (earlier version) give info about sample size, but this could be labeled in the chart (use `geom_text()` or `geom_label()`)
+
+-   Now, we create a proportion/percent bar chart to display the individual probabilities
+
+-   This shows the probability mass function (PMF) for discrete variables
+
+    -   For example: $P($ `shot_type` $=$ `slice`$)$
+:::
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+:::{.fragment}
+```{r}
+#| fig-height: 9
+tennis_shots |> 
+  count(shot_type) |> 
+  mutate(prop = n / sum(n)) |> 
+  ggplot(aes(x = prop, y = shot_type)) +
+  geom_col() # + geom_label(aes(label = n), hjust = 1)
+```
+
+:::
+:::
+:::
+
+
+## Population vs sample
+
+**Population:** The collection of all subjects of interest
+
+**Sample:** A representative subset of the population of interest
+
+. . .
+
+<br>
+
+*For us*: Our random sample of women's Wimbledon (non-serve) shots is a subset of all women's Wimbledon (non-serve) shots
+
+. . .
+
+<br>
+
+**Empirical distribution**: estimates the true marginal distribution with observed (sample) data
+
+. . .
+
+
+:::{.incremental}
+-   Estimate $P($ `shot_type` = $C_j$) with $\hat p_j$ for each category $C_j$ (e.g., $\hat p_\texttt{dropshot}$, ..., $\hat p_\texttt{volley}$)
+
+ -   Standard error for each $\hat p_j$: $\quad \displaystyle \text{SE}(\hat{p}_j) = \sqrt{\frac{\hat{p}_j (1 - \hat{p}_j)}{n}}$
+ 
+:::
+
+## Adding confidence intervals to bar chart
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+We can add confidence intervals by calculating the standard error estimate for each category
+
+```{r}
+#| echo: true
+#| eval: false
+tennis_shots |> 
+  count(shot_type) |> 
+  mutate(prop = n / sum(n),
+         se = sqrt(prop * (1 - prop) / sum(n)),
+         lower = prop - 2 * se,
+         upper = prop + 2 * se) |> 
+  ggplot(aes(x = prop, y = shot_type)) +
+  geom_col() +
+  geom_errorbar(aes(xmin = lower, xmax = upper), 
+                color = "blue", 
+                width = 0.2, 
+                linewidth = 1)
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+tennis_shots |> 
+  count(shot_type) |> 
+  mutate(prop = n / sum(n),
+         se = sqrt(prop * (1 - prop) / sum(n)),
+         lower = prop - 2 * se,
+         upper = prop + 2 * se) |> 
+  ggplot(aes(x = prop, y = shot_type)) +
+  geom_col() +
+  geom_errorbar(aes(xmin = lower, xmax = upper), 
+                color = "blue", 
+                width = 0.2, 
+                linewidth = 1)
+```
+:::
+:::
+
+## Ordering factors in a bar chart
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+Let's order the bars by proportion
+
+```{r}
+#| eval: false
+tennis_shots |> 
+  count(shot_type) |> 
+  mutate(prop = n / sum(n),
+         se = sqrt(prop * (1 - prop) / sum(n)),
+         lower = prop - 2 * se,
+         upper = prop + 2 * se,
+         shot_type = fct_reorder(shot_type, prop)) |> 
+  ggplot(aes(x = prop, y = shot_type)) +
+  geom_col() +
+  geom_errorbar(aes(xmin = lower, xmax = upper), 
+                color = "blue", width = 0.2, linewidth = 1)
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+tennis_shots |> 
+  count(shot_type) |> 
+  mutate(prop = n / sum(n),
+         se = sqrt(prop * (1 - prop) / sum(n)),
+         lower = prop - 2 * se,
+         upper = prop + 2 * se,
+         shot_type = fct_reorder(shot_type, prop)) |> 
+  ggplot(aes(x = prop, y = shot_type)) +
+  geom_col() +
+  geom_errorbar(aes(xmin = lower, xmax = upper), 
+                color = "blue", width = 0.2, linewidth = 1)
+```
+:::
+:::
+
+## Pie charts... don't make them
+
+Why?
+
+-   <https://www.data-to-viz.com/caveat/pie.html>
+
+-   <https://github.com/cxli233/FriendsDontLetFriends>
+
+. . .
+
+*A particularly painful pie chart from Fox News on 2012 GOP candidates:*
+
+::: {fig-align="center"}
+![Courtesy of [dataviz.ca](https://www.datavis.ca/gallery/evil-pies.php)](https://www.datavis.ca/gallery/images/pies/FoxNews-GOP.png){width="40%"}
+:::
+
+. . . 
+
+3D pie charts?... even worse
+
+## Inference for 1D categorical data
+
+**Chi-square test for 1D categorical data**
+
+-   Null hypothesis: $H_0$: $p_1 = p_2 = \cdots = p_K$
+
+-   Alternative hypothesis: $H_1$: At least one category has a different proportion
+
+. . .
+
+*Test statistic:*
+
+$$\displaystyle \chi^2 = \sum_{j=1}^K \frac{(O_j - E_j)^2}{E_j},$$
+
+where
+
+  -   $O_j$: observed counts in category $j$
+
+   -   $E_j$ : expected counts under the null (i.e., $n/K$ or each category is equally likely to occur)
+
+. . .
+
+*We can perform this test in `R`*:
+
+```{r}
+#| eval: false
+chisq.test(table(tennis_shots$shot_type))
+```
+
+## Hypothesis testing in general
+
+Computing $p$-values works like this:
+
+:::{.incremental}
+
+-   Choose a test statistic
+
+-   Compute the test statistic using the observed data
+
+-   Is test statistic "unusual" compared to what we would expect under the null hypothesis ($H_0$)?
+
+-   Compare $p$-value to the pre-specified target Type I error rate ("significance level") $\alpha$
+
+    -   Typically choose $\alpha = 0.05$ ([the origins of 0.05](https://www2.psych.ubc.ca/~schaller/528Readings/CowlesDavis1982.pdf))
+
+:::{.fragment}
+
+<br>
+
+  
+```{r}
+#| echo: false
+library(gt)
+library(katex)
+library(knitr)
+library(kableExtra)
+
+tribble(
+  ~Decision, ~`H0 true`, ~`H1 true`,
+  "Fail to reject \\(H_0\\)", "Correct decision", "Type II error (\\(\\beta\\))",
+  "Reject \\(H_0\\)", "Type I error (\\(\\alpha\\))", "Correct decision") |>
+  kable(
+    format = "html",
+    escape = FALSE,
+    col.names = c("Decision", "\\(H_0\\) true", "\\(H_1\\) true")
+  )
+```
+:::
+:::
+
+# 2D categorical data
+
+## Summarizing 2D categorical data
+
+
+Continuing with our women's Wimbledon tennis sample, let's look at two attributes:
+
+-   `shot_type` (What was the shot type?)
+
+-   `outcome_type` (What was the shot's outcome?)
+
+
+. . .
+
+*How many levels does each variable have?*
+
+```{r}
+table(tennis_shots$shot_type)
+table(tennis_shots$outcome_type)
+```
+
+. . .
+
+Let's put the two error categories in `outcome_type` together...
+
+```{r}
+tennis_shots <- mutate(tennis_shots, outcome_type = fct_relevel(outcome_type, "unforced error"))
+```
+
+
+## Summarizing 2D categorical data
+
+**Two-way table** (or contingency table, cross tabulation, crosstab)
+
+```{r}
+table("Shot type" = tennis_shots$shot_type, 
+      "Outcome type" = tennis_shots$outcome_type)
+
+xtabs(~ shot_type + outcome_type, data = tennis_shots)
+```
+
+## Visualizing 2D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+**Stacked bar chart:** a bar chart of spine charts
+
+Emphasizes the marginal distribution of each category of the `X` variable
+
+-   e.g., $P($ `outcome_type` $=$ `winner` $)$
+
+:::{.fragment}
+
+*Similar to 1D bar charts:* 
+
+1. Start with counting every combination of 2 variables (using `count()` or `group_by()` and `summarize()`),
+
+2. Plot with `geom_col()`
+
+```{r}
+#| eval: false
+#| echo: false
+tennis_shots |>
+  count(shot_type, outcome_type) |>
+  ggplot(aes(x = shot_type, y = n, 
+             # filled by the other categorical variable
+             fill = outcome_type)) + 
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+:::{.fragment}
+```{r}
+#| echo: true
+#| eval: true
+#| fig-height: 9
+tennis_shots |>
+  count(shot_type, outcome_type) |>
+  ggplot(aes(x = shot_type, y = n, fill = outcome_type)) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+:::
+:::
+
+## Visualizing 2D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+**Stacked bar chart** (proportion version)
+
+```{r}
+#| eval: false
+tennis_shots |>
+  count(shot_type, outcome_type) |>
+  ggplot(aes(x = shot_type, y = n,
+             fill = outcome_type)) +
+  geom_col(position = "fill") +
+  labs(y = "prop") +
+  theme(axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+
+*Just make sure to change the y-axis title (at least)!*
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+tennis_shots |>
+  count(shot_type, outcome_type) |>
+  ggplot(aes(x = shot_type, y = n,
+             fill = outcome_type)) +
+  geom_col(position = "fill") +
+  labs(y = "prop") +
+  theme(axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+:::
+
+## Visualizing 2D categorical data
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+Side-by-side (grouped, dodged) bar chart: a bar chart of bar charts
+
+Shows the conditional distribution of `fill` variable given `X` variable
+
+*For example:* $P($ `outcome_type` $=$ `winner` $\mid$ `shot_type` $=$ `groundstroke` $)$
+
+```{r}
+#| eval: false
+tennis_shots |>
+  count(shot_type, outcome_type) |>
+  ggplot(aes(x = shot_type, y = n,
+             fill = outcome_type)) +
+  geom_col(position = "dodge") +
+  theme(axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+tennis_shots |>
+  count(shot_type, outcome_type) |>
+  ggplot(aes(x = shot_type, y = n,
+             fill = outcome_type)) +
+  geom_col(position = "dodge") +
+  theme(axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+:::
+
+## Joint, marginal, and conditional probabilities
+
+Let $X$ = `shot_type` and $Y$ = `outcome_type`
+
+:::{.incremental}
+
+-   **Joint distribution:** frequency of the intersection
+
+    -   e.g., $P(X =$ `overhead` $, Y =$ `winner` $)$
+
+-   **Marginal distribution:** row sums or column sums
+
+    -   e.g., $P(X =$ `overhead` $)$, $P(Y =$ `winner` $)$
+
+-   **Conditional distribution:** probability event $X$ given event $Y$
+
+    -   e.g., $P(X =$ `overhead` $\mid Y =$ `winner` $)$ <br><br>$\displaystyle \qquad \quad = \frac{P(X = \texttt{overhead}, Y = \texttt{winner})}{P(Y = \texttt{winner})}$
+:::
+
+
+
+## Joint, marginal, and conditional probabilities
+
+**Two-way proportion table** (the `tidyverse` way) with `pivot_wider`
+
+```{r}
+tennis_shots |>
+  group_by(shot_type, outcome_type) |>
+  summarize(joint = n() / nrow(tennis_shots)) |>
+  pivot_wider(names_from = outcome_type, values_from = joint, values_fill = 0)
+```
+
+<br>
+
+```{r}
+#| eval: false
+# The base `R` way to get a two-way proportion table
+tennis_shots |> 
+  select(shot_type, outcome_type) |> 
+  table() |> 
+  prop.table()
+```
+
+## Categorical heatmaps
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+-   Use `geom_tile()` to display joint distribution of two categorical variables
+
+-   Annotate tiles with labels of percentages using `geom_text()` and the `scales` package (a very neat package)
+
+```{r}
+#| eval: false
+
+#install.packages("scales")
+
+tennis_shots |>
+  group_by(shot_type, outcome_type) |>
+  summarize(
+    freq = n(), 
+    joint = n() / nrow(tennis_shots)
+  ) |> 
+  ggplot(aes(x = shot_type, y = outcome_type)) +
+  geom_tile(aes(fill = freq), color = "white") +
+  geom_text(aes(label = scales::percent(joint, accuracy = 0.01))) +
+  scale_fill_gradient2() +
+  coord_equal() +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 11
+tennis_shots |>
+  group_by(shot_type, outcome_type) |>
+  summarize(
+    freq = n(), 
+    joint = n() / nrow(tennis_shots)
+  ) |> 
+  ggplot(aes(y = shot_type, x = outcome_type)) +
+  geom_tile(aes(fill = freq), color = "white") +
+  geom_text(aes(label = scales::percent(joint, accuracy = 0.01))) +
+  scale_fill_gradient2() +
+  coord_equal() +
+  theme_classic() +
+  theme(text = element_text(size = 20),
+        axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+:::
+
+## Visualizing independence
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+**Mosaic plot**
+
+-   A spine chart of spine charts
+
+-   *Width:* marginal distribution of `shot_type`
+
+-   *Height:* conditional distribution of `outcome_type` \| `shot_type`
+
+-   *Area:* joint distribution
+
+:::{.fragment}
+
+Using a mosaic plot to visually check for independence:
+
+-   Check whether all proportions are the same (i.e., the boxes line up in a grid)
+:::
+:::{.fragment}
+
+```{r}
+#| fig-height: 10
+#| echo: true
+#| eval: false
+tennis_shots |> 
+  select(shot_type, outcome_type) |> 
+  table() |> 
+  mosaicplot(main = "Relationship between shot type and outcome type",
+             las=2, cex.axis = 1.2, cex.lab = 1.5, cex.main = 2)
+```
+:::
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+:::{.fragment}
+```{r}
+#| fig-height: 12
+#| echo: false
+tennis_shots |> 
+  select(shot_type, outcome_type) |> 
+  table() |> 
+  mosaicplot(main = "Relationship between shot type and outcome type",
+             las=2, cex.axis = 1.5, cex.lab = 2, cex.main = 2)
+```
+:::
+:::
+:::
+
+## Visualizing independence
+
+
+
+
+Mosaic plot with `ggmosaic` package
+
+
+:::{.columns}
+
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: true
+#| eval: false
+# devtools::install_github("haleyjeppson/ggmosaic")
+library(ggmosaic)
+tennis_shots |> 
+  ggplot() +
+  geom_mosaic(aes(x = product(outcome_type, shot_type),
+                  fill = outcome_type)) +
+  theme_classic() +
+  theme(legend.position = "top",
+        axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| echo: false
+#| fig-height: 10
+#| fig-align: center
+# devtools::install_github("haleyjeppson/ggmosaic")
+library(ggmosaic)
+tennis_shots |> 
+  ggplot() +
+  geom_mosaic(aes(x = product(outcome_type, shot_type),
+                  fill = outcome_type)) +
+  theme_classic() +
+  theme(text = element_text(size = 20),
+        legend.position = "top",
+        axis.text.x = element_text(angle = 45,
+                                   vjust = 1, hjust = 1))
+```
+:::
+
+:::
+::: aside
+*See also:* [Quang Nguyen's blog on making mosaic plots from scratch with `ggplot2`](https://qntkhvn.netlify.app/posts/2026-05-17-mosaic-ggplot2/).
+:::
+
+## Inference for 2D categorical data
+
+**Chi-square test for 2D categorical data**
+
+-   Null hypothesis: $H_0$: two categorical variables are independent of each other
+
+    -   e.g., no association between `shot_type` and `outcome_type`
+
+- Alternative hypothesis: $H_1$: two categorical variables are dependent
+
+. . .
+
+*Test statistic:*
+
+$$\displaystyle \chi^2 = \sum_i^{k_1} \sum_j^{k_2} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$$
+
+. . .
+
+*We can alslo perform this test in `R`*:
+
+```{r}
+#| eval: false
+# chisq.test(table(tennis_shots$outcome_type, tennis_shots$shot_type))
+
+tennis_shots |> 
+  select(outcome_type, shot_type) |> 
+  table() |> 
+  chisq.test()
+```
+
+## Residuals
+
+Recall the test statistic:
+
+$$\displaystyle \chi^2 = \sum_i^{k_1} \sum_j^{k_2} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$$
+
+Define the Pearson residuals:
+
+$$\displaystyle r_{ij} = \frac{O_{ij} - E_{ij}}{\sqrt{E_{ij}}}$$
+
+. . .
+
+Some rules of thumb:
+
+-   $r_{ij} \approx 0$: observed counts are close to expected counts
+
+-   $|r_{ij}| > 2$: significant at $\alpha = 0.05$
+
+-   very positive $r_{ij}$: higher than expected
+
+-   very negative $r_{ij}$: lower than expected
+
+## Residuals
+
+:::{.columns}
+::: {.column width="50%" style="text-align: left;"}
+
+- We can make mosaic plots with the cells color-coded by Pearson residuals
+
+- Tells us which combinations of 2 categorical variables (cells) are much higher/lower than expected
+
+```{r}
+#| eval: false
+tennis_shots |> 
+  select(shot_type, outcome_type) |> 
+  table() |> 
+  mosaicplot(main = "Relationship between outcome type and shot type",
+             shade = TRUE, las = 2,
+             cex.axis = 1.2, cex.lab = 2, cex.main = 2)
+```
+:::
+::: {.column width="50%" style="text-align: left;"}
+```{r}
+#| fig-height: 12
+#| fig-align: center
+#| echo: false
+tennis_shots |> 
+  select(shot_type, outcome_type) |> 
+  table() |> 
+  mosaicplot(main = "Relationship between outcome type and shot type",
+             shade = TRUE, las = 2,
+             cex.axis = 1.2, cex.lab = 2, cex.main = 2)
+```
+:::
+
+:::
+
+## Beyond 2D: facets!
+
+*Using some* `dplyr` *data wrangling and* `ggplot2` *material...*
+
+```{r}
+#| fig-align: "center"
+#| fig-width: 20
+tennis_shots |>
+  filter(!(round %in% c("Q1", "Q2", "Q3"))) |>
+  mutate(round_grouped = case_when(
+    round == "F" ~ "Finals",
+    round == "SF" ~ "Semi-finals",
+    round == "QF" ~ "Quarter-finals",
+    TRUE ~ "Early rounds")) |>
+  mutate(round_grouped = fct_relevel(round_grouped, "Early rounds", "Quarter-finals", "Semi-finals", "Finals")) |>
+  ggplot(aes(x = shot_type, fill = outcome_type)) + 
+  geom_bar(position = "fill") + # could remove position = "fill" to get raw counts
+  labs(x = "Shot type", y = "Proportion", fill = "Outcome Type") +
+  facet_wrap(~ round_grouped, ncol = 4) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+```
+
+# Appendix
+
+## The `janitor` package
+
+The most popular `janitor` function is `clean_names()`... for cleaning column names
+
+```{r}
+# before
+iris |> 
+  head()
+
+# after
+library(janitor)
+iris |> 
+  clean_names() |> 
+  head()
+```
+
+## Tabulation with the `janitor` package
+
+The lesser-known stars of `janitor`: functions for tabulation of categorical data
+
+
+The `tabyl()` function:
+
+```{r}
+library(gt) # for nicely outputted tables
+
+tennis_shots |> 
+  tabyl(shot_type) |>
+  gt()
+```
+
+:::{.aside}
+For more, see [this overview](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html) and [this tutorial](https://cran.r-project.org/web/packages/janitor/vignettes/tabyls.html).
+:::
+
+## Tabulation with the `janitor` package
+
+The `adorn_*()` functions
+
+```{r}
+tennis_shots |> 
+  tabyl(shot_type, outcome_type) |> 
+  adorn_percentages("row") |> 
+  adorn_pct_formatting(digits = 2) |> 
+  adorn_ns() |>
+  gt()
+```
+
+<!-- ::: columns -->
+
+<!-- ::: {.column width="50%" style="text-align: left;"} -->
+
+<!-- c1 -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="50%" style="text-align: left;"} -->
+
+<!-- c2 -->
+
+<!-- ::: -->
+
+<!-- ::: -->
