@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sports – CMSACamp 2026</title>
+<title>EDA project: Decathlon Performances – CMSACamp 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,83 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cf27875dd1ae9327fe69e76602a4a4de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../icon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-cf27875dd1ae9327fe69e76602a4a4de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -80,9 +136,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">CMSACamp 2026</span>
     </a>
   </div>
@@ -93,25 +147,33 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./lectures.html"> 
+    <a class="nav-link" href="../lectures.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./sports.html" aria-current="page"> 
-<span class="menu-text">Sports</span></a>
+    <a class="nav-link" href="../labs.html"> 
+<span class="menu-text">Labs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../bios.html"> 
+<span class="menu-text">Bios</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./r-setup.html"> 
+    <a class="nav-link" href="../r-setup.html"> 
 <span class="menu-text">R and RStudio Setup</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./git-setup.html"> 
+    <a class="nav-link" href="../git-setup.html"> 
 <span class="menu-text">Git and GitHub Setup</span></a>
   </li>  
 </ul>
@@ -131,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sports</h1>
+<h1 class="title">EDA project: Decathlon Performances</h1>
 </div>
 
 
@@ -148,51 +210,118 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!--
-## Capstone project
+<hr>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This project will be released on Thursday, June 4 and <strong>conclude with a 6-minute presentation on Tuesday, June 16 during lab</strong>.</p>
+<p>Students will be randomly placed into groups of 2–3 and each group will be randomly assigned a dataset.</p>
+<p>The goal of this project is to practice understanding the structure of a dataset, and to practice generating and evaluating hypotheses using fundamental EDA and data visualization techniques.</p>
+</section>
+<section id="deliverables" class="level2">
+<h2 class="anchored" data-anchor-id="deliverables">Deliverables</h2>
+<p>Each group is expected to make slides to accompany the 6-minute presentation. All group members must be present for the presentation and participate. <strong>No notes/scripts are allowed during the presentation.</strong></p>
+<p>The presentation should feature the following:</p>
+<ul>
+<li><p>Overview of the structure of your dataset</p></li>
+<li><p><strong>Two questions/hypotheses</strong> you are interested in exploring</p></li>
+<li><p><strong>Two data visualizations</strong> exploring the questions—both must be multivariate (i.e., involving 2+ variables) and in different formats</p></li>
+<li><p><strong>One clustering analysis</strong></p></li>
+<li><p>Conclusions for the hypotheses based on your EDA and data visualizations</p></li>
+</ul>
+</section>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<p>There will be two submission deadlines:</p>
+<p><strong>Thursday, June 11 at 5pm ET</strong> - Each student will push their individual code for the project thus far to GitHub for review.</p>
+<p><strong>Tuesday, June 16 at 1pm ET</strong> - Slides and full code must be completed and ready for presentation. Send your slides to Erin (<a href="mailto:efranke@andrew.cmu.edu"><code>efranke@andrew.cmu.edu</code></a>) and Sara (<a href="mailto:scolando@andrew.cmu.edu"><code>scolando@andrew.cmu.edu</code></a>). All code must be written in <code>R</code>; but the slides may be created in any software. Take advantage of examples from lectures, but also feel free to explore online resources that may be relevant. (But be sure to always consult the <code>R</code> help documentation first before attempting to Google around or asking an LLM).</p>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>This dataset contains performances for high-level men’s decathlon from 2001–2022, courtesy of <span class="citation" data-cites="Battles2025">Battles, Noble, and Chapman (<a href="#ref-Battles2025" role="doc-biblioref">2025</a>)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The data was originally extracted from the World Athletics (a publicly available database). Only performances that corresponded to overall scores &gt;6,400 were kept in the dataset <span class="citation" data-cites="Battles2025">(<a href="#ref-Battles2025" role="doc-biblioref">Battles, Noble, and Chapman 2025</a>)</span>. As a result, the final sample consists of “competitive” or “elite” men’s decathlon performances.</p>
+<p>Each row in the dataset corresponds to an elite men’s decathlon performance, and the columns are:</p>
+<ul>
+<li><code>rank</code>: competitor’s World Athletics ranking, based on the average of their two best eligible performances in the ranking period.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
+<li><code>competitor</code>: competitor’s name.</li>
+<li><code>dob</code>: competitor’s date of birth (MM/DD/YYYY).</li>
+<li><code>nat</code>: nation represented by the competitor.</li>
+<li><code>sec</code>: competitor’s section.</li>
+<li><code>pos_sec</code>: competitor’s final standing relative to other athletes in the same section.</li>
+<li><code>pos_full</code>: full version of the version of competitor’s final standing relative to other athletes in the same section. The number before the “f” gives the competitor’s final standing in their section (<code>pos_sec</code>). The number after the “f” indicates the competitor’s section, when applicable (<code>sec</code>). For example, “7f2” indicates a 7th place in section 2.</li>
+<li><code>venue</code>: venue where the performance occurred.</li>
+<li><code>date</code>: date of performance (MM/DD/YYYY).</li>
+<li><code>world_athletics_event_ranking_score</code>: World Athletics ranking score for the performance, based on the athlete’s result score and placing score.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+<li><code>men_100</code>: 100 meter dash time (seconds).</li>
+<li><code>men_100_wind</code>: wind reading during 100 meter dash performance (meters/second).</li>
+<li><code>men_100_score</code>: points earned for 100 meter dash performance.</li>
+<li><code>men_lj</code>: long jump performance (meters).</li>
+<li><code>men_lj_wind</code>: wind reading during long jump performance (meters/second).</li>
+<li><code>men_lj_score</code>: points earned for long jump performance.</li>
+<li><code>men_sp</code>: shot put performance (meters).</li>
+<li><code>men_sp_score</code>: points earned for shot put performance.</li>
+<li><code>men_hj</code>: high jump performance (meters).</li>
+<li><code>men_hj_score</code>: points earned for high jump performance.</li>
+<li><code>men_400</code>: 400 meter time (seconds).</li>
+<li><code>men_400_score</code>: points earned for 400 meter performance.</li>
+<li><code>men_110h</code>: 110 meter hurdles time (seconds).</li>
+<li><code>men_110h_wind</code>: wind reading during 110 meter hurdles performance (meters/second).</li>
+<li><code>men_110h_score</code>: points earned for 110 meter hurdles performance.</li>
+<li><code>men_dt</code>: discuss throw performance (meters).</li>
+<li><code>men_dt_score</code>: points earned for discuss performance.</li>
+<li><code>men_pv</code>: pole vault performance (meters).</li>
+<li><code>men_pv_score</code>: points earned for pole vault performance.</li>
+<li><code>men_jt</code>: javelin throw performance (meters).</li>
+<li><code>men_jt_score</code>: points earned for javelin throw performance.</li>
+<li><code>men_1500</code>: 1500 meter run time (MM:SS:MS).</li>
+<li><code>men_1500_score</code>: points earned for 1500 meter run performance.</li>
+<li><code>overall_score</code>: overall decathlon score, found by summing the points earned across all ten events (rounding the number down to the nearest integer).</li>
+<li><code>average_wind</code>: average of all wind readings across applicable events (meters/second).</li>
+</ul>
+</section>
+<section id="starter-code" class="level2">
+<h2 class="anchored" data-anchor-id="starter-code">Starter code</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dec_performances <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/2026/main/data/dec_performances.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In case you’re curious, the code to build this dataset can be found below.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dec_performances <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com//Battles186/DecathlonCareerBest/master/DecData.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># standardizing the column names (e.g. all lowercase, no spaces)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">competitor =</span> <span class="fu">str_to_title</span>(competitor), </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>         <span class="co"># computing average wind reading across events</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>         <span class="co"># relevant to whether or not the performance is "wind-legal"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">average_wind =</span> <span class="fu">rowMeans</span>(<span class="fu">across</span>(<span class="fu">ends_with</span>(<span class="st">"wind"</span>))),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>         <span class="co"># parsing section information into new column.</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>         <span class="co"># if there is no number after "f", we assume there is just one section</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">sec =</span> <span class="fu">as.numeric</span>(<span class="fu">if_else</span>(<span class="fu">grepl</span>(<span class="st">"f</span><span class="sc">\\</span><span class="st">d+$"</span>, pos), <span class="fu">str_split_i</span>(pos, <span class="at">pattern =</span> <span class="st">"f"</span>, <span class="dv">2</span>), <span class="st">"1"</span>)),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>         <span class="co"># creating new column that encodes section overall position</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">pos_sec =</span>  <span class="fu">as.numeric</span>(<span class="fu">str_split_i</span>(pos, <span class="at">pattern =</span> <span class="st">"f"</span>, <span class="dv">1</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># rearranging columns so they are a better order and renaming pos to pos_full</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(rank, competitor, dob, nat, sec, pos_sec, <span class="at">pos_full =</span> pos, <span class="fu">everything</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
-[Guidelines](https://36-sure.github.io/2025/sports/project/description.html)
--->
-<section id="labs" class="level2">
-<h2 class="anchored" data-anchor-id="labs">Labs</h2>
-<p>Note: To download a <code>.qmd</code> file, right click and choose “Save Link As…”.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Date</th>
-<th>Title</th>
-<th>Materials</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>June 1</td>
-<td>Getting started with <code>R</code></td>
-<td><a href="sports/labs/01-intro.html"><code>.html</code></a> &nbsp; <a href="https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/01-intro.qmd"><code>.qmd</code></a></td>
-</tr>
-</tbody>
-</table>
-<!--| June 3 | Data wrangling                         | [`.html`](sports/labs/02-wrangling.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/02-wrangling.qmd)         |
-| June 4 | Data visualization                     | [`.html`](sports/labs/03-visualization.html) &nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/03-visualization.qmd) |
-| June 5 | Using GitHub for project collaboration | [`.html`](sports/labs/04-github.qmd)                                                                                                               |
-| June 23 | Data wrangling with data.table | [`.html`](sports/labs/05-datatable.qmd)&nbsp; [`.qmd`](https://raw.githubusercontent.com/36-SURE/2025/main/sports/labs/05-datatable.qmd)   |
-
-## EDA projects
-
-|           |                  |                                            |
-|-----------|------------------|--------------------------------------------|
-| Project 1 | NFL passing      | [description](sports/eda/nfl_passing.qmd)  |
-| Project 2 | UFA throwing     | [description](sports/eda/ufa_throwing.qmd) |
-| Project 3 | TBD              | [description](sports/eda/nhl_shooting.qmd) |
-| Project 4 | FIFAWWC shooting | [description](sports/eda/wwc_shooting.qmd) |
-| Project 5 | FIFAWWC passing  | [description](sports/eda/wwc_passing.qmd)  |
-| Project 6 | TBD              | [description](sports/eda/mlb_batting.qmd)  |
--->
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Battles2025" class="csl-entry" role="listitem">
+Battles, Perry, Tyler J. Noble, and Robert F. Chapman. 2025. <span>“Predicting High‐performance Decathlon Career Best.”</span> <em>Experimental Physiology</em> 110 (11): 1672–81. <a href="https://doi.org/10.1113/ep091921">https://doi.org/10.1113/ep091921</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>The decathlon is a two-day track and field competition that consists of 10 events. Competitors earn points for each of their event performances, and the competitor with the highest overall score wins. Additional information on the decathlon can be found on the <a href="https://worldathletics.org/disciplines/combined-events/decathlon">World Athletic’s Decathlon page</a> and in this <a href="https://www.youtube.com/watch?v=XoCHK6gKDBc">Youtube video</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>For additional details, see the <a href="https://www.usatf.org/campus/articles/2025/world-athletics-rankings-explained">USATF’s World Athletics Rankings: Explained</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>For additional details, see the <a href="https://worldathletics.org/world-ranking-rules/combined-events-2024">World Athletics’ Combined Events Ranking Criteria</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -266,7 +395,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/36-SURE\.github\.io\/2026\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
