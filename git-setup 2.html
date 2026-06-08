@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lectures – CMSACamp 2026</title>
+<title>Git and GitHub Setup – CMSACamp 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -72,6 +107,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -98,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./lectures.html" aria-current="page"> 
+    <a class="nav-link" href="./lectures.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
@@ -120,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">R and RStudio Setup</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./git-setup.html"> 
+    <a class="nav-link active" href="./git-setup.html" aria-current="page"> 
 <span class="menu-text">Git and GitHub Setup</span></a>
   </li>  
 </ul>
@@ -140,7 +204,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lectures</h1>
+<h1 class="title">Git and GitHub Setup</h1>
 </div>
 
 
@@ -157,62 +221,105 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Updated daily before lecture.</p>
-<section id="contents" class="level2">
-<h2 class="anchored" data-anchor-id="contents">Contents</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Date</th>
-<th>Title</th>
-<th>Materials</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Lecture 0</td>
-<td>June 1</td>
-<td>Welcome to CMSACamp 2026</td>
-<td><a href="./lectures/00-welcome.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 1</td>
-<td>June 2</td>
-<td>Exploring data: into the <code>tidyverse</code></td>
-<td><a href="./lectures/01-explore.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 2</td>
-<td>June 3</td>
-<td>Data visualization: the grammar of graphics and <code>ggplot2</code></td>
-<td><a href="./lectures/02-graphics.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 3</td>
-<td>June 4</td>
-<td>Data visualization: categorical data</td>
-<td><a href="./lectures/03-categorical.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 4</td>
-<td>June 5</td>
-<td>Data visualization: quantitative data</td>
-<td><a href="./lectures/04-quantitative.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 5</td>
-<td>June 8</td>
-<td>Data visualization: density estimation</td>
-<td><a href="./lectures/05-density.html">slides</a></td>
-</tr>
-</tbody>
-</table>
-<!--
-
-| Lecture 21 | XXXXXXX | Supervised learning: multinomial classification           | [slides](lectures/21-multinomial.qmd)    |
-
--->
+<hr>
+<section id="step-1-create-a-github-account" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-create-a-github-account">Step 1: Create a GitHub account</h2>
+<p>Register for a <a href="https://github.com/">GitHub</a> account at <a href="https://github.com/">https://github.com</a> if you do not have one. It is completely free to use. You may use any username you prefer; we will later ask for your username so we can keep track.</p>
+</section>
+<section id="step-2-install-git" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-install-git">Step 2: Install Git</h2>
+<p>(Windows)</p>
+<ul>
+<li>Go to <a href="https://git-scm.com/download/win"><code>https://git-scm.com/download/win</code></a></li>
+<li>Navigate to “Click here to download” on the first line and click on it</li>
+<li>Follow the installation instructions</li>
+</ul>
+<p>(macOS)</p>
+<ul>
+<li>Open the Terminal app on your computer (Finder <span class="math inline">\(\rightarrow\)</span> Applications <span class="math inline">\(\rightarrow\)</span> Terminal)</li>
+<li>Go to <a href="https://brew.sh"><code>https://brew.sh</code></a> and copy/paste the chunk under “Install Homebrew” to the Terminal</li>
+<li>Once Homebrew is installed, type this into the Terminal: <code>brew install git</code></li>
+</ul>
+</section>
+<section id="step-3-configure-git" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-configure-git">Step 3: Configure Git</h2>
+<ul>
+<li>After installation, you need to configure Git. This can be done directly in <code>R</code>:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment and run the following line to install the usethis package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("usethis")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">"Your Name"</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">user.email =</span> <span class="st">"your-github@email.address"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li><p>Use your full name for the <code>user.name</code> field and the same email as your GitHub account for <code>user.email</code></p></li>
+<li><p>You then need to create a <em>personal access token</em> for authentication as follows:</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li><p>This will direct you to the GitHub site on your browser (you may have to log in). On this site:</p>
+<ul>
+<li>Under “Note”, type in some description for this token (e.g., “Summer 2025 GitHub token”)</li>
+<li>For “Expiration”, set an expiration date for this token (e.g., 90 days) or make it permanent (i.e.&nbsp;choose “No expiration” if you don’t want to deal with this again in the future)</li>
+<li>Under “Select scopes”, recommended scopes will be pre-selected. Stick with these for now.</li>
+</ul></li>
+<li><p>Next, click on “Generate token”</p></li>
+<li><p>Copy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)</p></li>
+<li><p>In RStudio, run the following to get a prompt where you can paste your token:</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment and run the following line to install the gitcreds package</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("gitcreds")</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>You should then be ready to use <strong>GitHub</strong>!</p>
+</section>
+<section id="step-4-create-a-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-create-a-github-repository">Step 4: Create a GitHub repository</h2>
+<p>We will follow the paradigm of “<strong>GitHub</strong> first”. What this means is that when we create a repository, we will create it on <strong>GitHub</strong> first, then link a local repository to it from inside RStudio.</p>
+<p>After you’ve logged in, to create a <strong>GitHub</strong> repository</p>
+<ul>
+<li><p>Go to <a href="https://github.com/new" class="uri">https://github.com/new</a></p></li>
+<li><p>Name the repository (give it a meaningful name)</p></li>
+<li><p>Give the repository a description (don’t leave this blank although this is optional)</p></li>
+<li><p>Decide whether to keep the repository public or private (for now, let’s just keep it public)</p></li>
+<li><p>Click on “Initialize this repository with a README”. For now, there’s no need to “Add .gitignore” or “Choose a license”</p></li>
+<li><p>Click on “Create Repository”</p></li>
+</ul>
+</section>
+<section id="step-5-connect-rstudio-to-the-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-connect-rstudio-to-the-github-repository">Step 5: Connect RStudio to the GitHub repository</h2>
+<ul>
+<li><p>Go to the browser page for your GitHub repository</p></li>
+<li><p>Click on Code (in the same line as “Go to file”). Under HTTPS, copy the URL</p></li>
+<li><p>In RStudio, click on <code>File &gt; New Project....</code> Next, click on “Version Control” and then on “Git”. Paste the URL you just copied into “Repository URL”</p></li>
+<li><p>Type the name for the folder on your computer associated with this repository into Project directory name</p>
+<ul>
+<li>You can choose whatever name you want, but it is recommended to give a name similar to the repository name on GitHub</li>
+</ul></li>
+<li><p>Make sure “Create project as subdirectory of:” points to where you want to locate this new folder</p></li>
+<li><p>Click on “Create Project”</p></li>
+<li><p>At this point, you should find that the “Files” pane (in the bottom right of RStudio) is listing the files in your local repository.</p></li>
+</ul>
+</section>
+<section id="step-6-modify-the-repository" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-modify-the-repository">Step 6: Modify the repository</h2>
+<p>To add a new file from your local repository to <strong>GitHub</strong>:</p>
+<ul>
+<li><p>In RStudio, open a new file (could be anything - e.g.&nbsp;R Script, Quarto document, etc.).</p></li>
+<li><p>Fill the file with some code/comments/etc. (This is just for illustration purpose, to show how you can add a file to GitHub from your computer)</p></li>
+<li><p>Save the file. At this point, this file should show up in the “Git” pane (in the top right of RStudio)</p></li>
+<li><p>Check the box under “Staged” in the Git pane to stage the file for a commit</p></li>
+<li><p>Click on “Commit” in the Git pane</p></li>
+<li><p>In the new window that opens, add a “Commit message”, then click on the “Commit” button</p></li>
+<li><p>Click on “Push” to push your changes from your local repository to the remote repository on GitHub</p></li>
+</ul>
+<p>If you encountered no errors then you’re done! While working on a single project you will repeatedly perform the tasks in Step 6: make changes to files, commit changes, then push changes</p>
+<p>Every time you want to create a new repository, you can just start with Step 4, use GitHub, copy the repository into RStudio, then repeatedly update, commit, and push.</p>
+<p><strong>Ask us for help if you have any questions.</strong></p>
 
 
 </section>

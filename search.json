@@ -322,256 +322,410 @@
     "text": "Tabulation with the janitor package\nThe adorn_*() functions\n\ntennis_shots |&gt; \n  tabyl(shot_type, outcome_type) |&gt; \n  adorn_percentages(\"row\") |&gt; \n  adorn_pct_formatting(digits = 2) |&gt; \n  adorn_ns() |&gt;\n  gt()\n\n\n\n\n\n\n\nshot_type\nunforced error\nforced error\nreturned\nwinner\n\n\n\n\ndrop shot\n15.27% (20)\n0.76% (1)\n64.12% (84)\n19.85% (26)\n\n\ngroundstroke\n9.93% (786)\n7.82% (619)\n75.63% (5,989)\n6.63% (525)\n\n\nhalf volley\n0.00% (0)\n36.36% (12)\n51.52% (17)\n12.12% (4)\n\n\nlob\n2.17% (4)\n23.91% (44)\n67.93% (125)\n5.98% (11)\n\n\noverhead\n6.25% (4)\n3.12% (2)\n34.38% (22)\n56.25% (36)\n\n\nslice\n4.62% (63)\n16.65% (227)\n77.48% (1,056)\n1.25% (17)\n\n\nswinging volley\n14.29% (7)\n0.00% (0)\n36.73% (18)\n48.98% (24)\n\n\nvolley\n9.34% (24)\n11.28% (29)\n38.52% (99)\n40.86% (105)"
   },
   {
-    "objectID": "lectures/01-explore.html#workflow-diagram",
-    "href": "lectures/01-explore.html#workflow-diagram",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Workflow diagram",
-    "text": "Workflow diagram\n\n\n\nSource: R for Data Science (2e)\n\n\n\nFirst few lectures: data wrangling and data visualization\nAspects of data wrangling:\n\nImport: load in data (e.g., read_csv())\nTidy: each row is an observation, each column is a variable (i.e. tabular data)\nTransform: filter observations, create new variables, etc."
+    "objectID": "lectures/05-density.html#data-aja-wilsons-shots",
+    "href": "lectures/05-density.html#data-aja-wilsons-shots",
+    "title": "Data visualization: density estimation",
+    "section": "Data: A’ja Wilson’s shots",
+    "text": "Data: A’ja Wilson’s shots\nShot attempts by the A’ja Wilson in the 2025 WNBA season using wehoop\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nwilson_shots &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/wilson_shots.csv\")\nglimpse(wilson_shots)\n\nRows: 1,030\nColumns: 7\n$ ...1          &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…\n$ scoring_play  &lt;lgl&gt; TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, FALS…\n$ score_value   &lt;dbl&gt; 2, 0, 2, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2,…\n$ shot_x        &lt;dbl&gt; 0, 19, -4, 0, -4, -6, -3, -4, -12, -1, -4, -4, -5, -4, -…\n$ shot_y        &lt;dbl&gt; 10, 17, 2, 17, 2, 5, 3, 2, 25, 9, 7, 2, 24, 2, 2, 3, 1, …\n$ shot_distance &lt;dbl&gt; 10.000000, 25.495098, 4.472136, 17.000000, 4.472136, 7.8…\n$ shot_type     &lt;chr&gt; \"Pullup Jump Shot\", \"Jump Shot\", \"Driving Layup Shot\", \"…\n\n\n\n\nEach row is a shot attempt by A’ja Wilson in the 2025 WNBA season\nCategorical/qualitative variables: scoring_play, shot_type\nContinuous/quantitative variables: shot_x, shot_y, shot_distance, score_value"
   },
   {
-    "objectID": "lectures/01-explore.html#exploratory-data-analysis",
-    "href": "lectures/01-explore.html#exploratory-data-analysis",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\n\nGoal of EDA: perform initial investigations on the data to better understand the data, discover trends/patterns, spot anomalies, etc.\n\n\n\n“EDA is an iterative cycle”\n\nGenerate questions about data\nAnswer via data wrangling and visualization\n\n\n\n\n\n“EDA is a state of mind”\n\n\n\n\nThe term EDA was coined by statistician John Tukey in the 1970s."
+    "objectID": "lectures/05-density.html#revisiting-histograms",
+    "href": "lectures/05-density.html#revisiting-histograms",
+    "title": "Data visualization: density estimation",
+    "section": "Revisiting histograms",
+    "text": "Revisiting histograms\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_distance)) +\n  geom_histogram()\n\n\n\n\nSplit observed data into bins\nCount number of observations in each bin\n\nNeed to choose the number of bins, adjust with:\n\nbins: number of bins (default is 30)\nbinwidth: width of bins (overrides bins), various rules of thumb\nbreaks: vector of bin boundaries (overrides both bins and binwidth)"
   },
   {
-    "objectID": "lectures/01-explore.html#exploratory-data-analysis-1",
-    "href": "lectures/01-explore.html#exploratory-data-analysis-1",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\n\nData can be explored numerically (tables, descriptive statistics, etc.) or visually (graphs)\nExamples of questions:\n\nWhat type of variation do the variables display?\nWhat type of relationships exist between variables?\n\n\n\n\nEDA is NOT a replacement for statistical inference and learning\n\n\n\n\nEDA is an important and necessary step to build intuition"
+    "objectID": "lectures/05-density.html#adjusting-the-binwidth",
+    "href": "lectures/05-density.html#adjusting-the-binwidth",
+    "title": "Data visualization: density estimation",
+    "section": "Adjusting the binwidth",
+    "text": "Adjusting the binwidth\n\n\nSmall binwidth \\(\\rightarrow\\) undersmooth/spiky\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_distance)) +\n  geom_histogram(binwidth = 0.5)\n\n\n\n\n\n\n\n\n\nLarge binwidth \\(\\rightarrow\\) oversmooth/flat\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_distance)) +\n  geom_histogram(binwidth = 5)"
   },
   {
-    "objectID": "lectures/01-explore.html#first-example-mlb-batting-statistics",
-    "href": "lectures/01-explore.html#first-example-mlb-batting-statistics",
-    "title": "Exploring data: into the tidyverse",
-    "section": "First example: MLB batting statistics",
-    "text": "First example: MLB batting statistics\nImport Batting table of historical MLB batting statistics from the Lahman package.\n\nlibrary(tidyverse) # load the tidyverse\nlibrary(Lahman) # load the Lahman package to access its datasets\nBatting &lt;- as_tibble(Batting) # initialize the Batting dataset\n\n\nBasic info about the Batting dataset:\n\n# number of rows and columns\n# can also do nrow(Batting) and ncol(Batting)\ndim(Batting) \n\n[1] 128598     22\n\n\n\nclass(Batting)\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\n\n\n\n\ntbl (pronounced “tibble”) is the tidyverse way of storing tabular data, like a spreadsheet or data.frame"
+    "objectID": "lectures/05-density.html#adjusting-the-binwidth-1",
+    "href": "lectures/05-density.html#adjusting-the-binwidth-1",
+    "title": "Data visualization: density estimation",
+    "section": "Adjusting the binwidth",
+    "text": "Adjusting the binwidth\n\nA binwidth that is too narrow shows too much detail\n\ntoo many bins: low bias, high variance\n\n\n\n\nA binwidth that is too wide hides detail\n\ntoo few bins: high bias, low variance\n\n\n\n\n\nAlways pick a value that is “just right” (The Goldilocks principle)\n\nTry several values, the ggplot2 default is NOT guaranteed to be an optimal choice"
   },
   {
-    "objectID": "lectures/01-explore.html#first-example-mlb-batting-statistics-1",
-    "href": "lectures/01-explore.html#first-example-mlb-batting-statistics-1",
-    "title": "Exploring data: into the tidyverse",
-    "section": "First example: MLB batting statistics",
-    "text": "First example: MLB batting statistics\nAlways look at your data: view the first 6 (by default) rows with head()\n\n# try just typing Batting into your console, what happens? Also try glimpse(Batting)\nhead(Batting) \n\n# A tibble: 6 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 aardsda01   2004     1 SFN    NL       11     0     0     0     0     0     0\n2 aardsda01   2006     1 CHN    NL       45     2     0     0     0     0     0\n3 aardsda01   2007     1 CHA    AL       25     0     0     0     0     0     0\n4 aardsda01   2008     1 BOS    AL       47     1     0     0     0     0     0\n5 aardsda01   2009     1 SEA    AL       73     0     0     0     0     0     0\n6 aardsda01   2010     1 SEA    AL       53     0     0     0     0     0     0\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;\n\n\n\nIs the Batting dataset tidy?\n\nEach row = a player’s season stint with a team (i.e. players can play for multiple teams in year)\nEach column = different measurement or recording about the player-team-season observation (get all column names with colnames(Batting) or names(Batting))"
+    "objectID": "lectures/05-density.html#a-subtle-point-about-the-histogram-code",
+    "href": "lectures/05-density.html#a-subtle-point-about-the-histogram-code",
+    "title": "Data visualization: density estimation",
+    "section": "A subtle point about the histogram code…",
+    "text": "A subtle point about the histogram code…\n\n\nBy default the bins are centered on the integers\n\nleft-closed, right-open intervals\nstarting at -0.5 to 0.5, 0.5 to 1.5, …\n\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_distance)) +\n  geom_histogram(binwidth = 1)\n\n\n\n\n\n\n\n\n\nSpecify center of one bin (e.g. 0.5)\n\nUse closed = \"left\"\n\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_distance)) +\n  geom_histogram(binwidth = 1, center = 0.5,\n                 closed = \"left\")"
   },
   {
-    "objectID": "lectures/01-explore.html#descriptive-statistics",
-    "href": "lectures/01-explore.html#descriptive-statistics",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Descriptive statistics",
-    "text": "Descriptive statistics\nWe summarize quantitative (e.g. yearID, AB) and categorical (e.g. teamID, lgID) variables in different ways\n\n\nCompute summary statistics for quantitative variables with the summary() function:\n\n\n\n\nsummary(Batting$G)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    1.0    11.0    31.0    47.3    71.0   165.0 \n\n\n\n\n\nCompute counts of categorical variables with the table() function:\n\n\n\n\n# be careful it ignores NA values!\n# can do table(Batting$lgID, useNA = \"always\")\ntable(Batting$lgID)\n\n\n   AA    AL   ANL   EAS   ECL   EWL    FL   IND   INT    NA   NAC   NAL    NL \n 1893 54277   154  1035   917   191   472   827    44   737   105  2114 59279 \n  NN2   NNL   NSL    PL    UA   WES \n 2731  2275   237   149   334   827"
+    "objectID": "lectures/05-density.html#how-do-histograms-relate-to-the-pdf-cdf",
+    "href": "lectures/05-density.html#how-do-histograms-relate-to-the-pdf-cdf",
+    "title": "Data visualization: density estimation",
+    "section": "How do histograms relate to the PDF & CDF?",
+    "text": "How do histograms relate to the PDF & CDF?\n\nRemember: we use the probability density function (PDF) to provide a relative likelihood\nPDF is the derivative of the cumulative distribution function (CDF)\nHistograms approximate the PDF with bins, and points are equally likely within a bin"
   },
   {
-    "objectID": "lectures/01-explore.html#the-dplyr-package",
-    "href": "lectures/01-explore.html#the-dplyr-package",
-    "title": "Exploring data: into the tidyverse",
-    "section": "The dplyr package",
-    "text": "The dplyr package\ndplyr is a package within the tidyverse with functions for data wrangling\n\n\n“Grammar of data manipulation”:\n\ndplyr functions are verbs\ndatasets are nouns\nfunction arguments are adverbs\n\n\nThe six main dplyr verbs for data wrangling:\n\nfilter()\nselect()\narrange()\nmutate()\ngroup_by()\nsummarize()"
+    "objectID": "lectures/05-density.html#kernel-density-estimation-intuition",
+    "href": "lectures/05-density.html#kernel-density-estimation-intuition",
+    "title": "Data visualization: density estimation",
+    "section": "Kernel density estimation: intuition",
+    "text": "Kernel density estimation: intuition\n\nsmooth each data point into a small density bumps\nsum all these small bumps together to obtain the final density estimate\n\nCheck out this great interactive tutorial"
   },
   {
-    "objectID": "lectures/01-explore.html#filter",
-    "href": "lectures/01-explore.html#filter",
-    "title": "Exploring data: into the tidyverse",
-    "section": "filter()",
-    "text": "filter()\nWe can use filter() to extract rows (i.e. observations) that meet certain conditions\nNote: These conditions must be logical conditions (aka boolean expressions)"
+    "objectID": "lectures/05-density.html#kernel-density-estimation-kde",
+    "href": "lectures/05-density.html#kernel-density-estimation-kde",
+    "title": "Data visualization: density estimation",
+    "section": "Kernel density estimation (KDE)",
+    "text": "Kernel density estimation (KDE)\nOverarching Goal: estimate the PDF \\(f(x)\\) for all possible values (assuming it is smooth)\n\nThe kernel density estimator (KDE) is \\(\\displaystyle \\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K_h(x - x_i) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K \\left(\\frac{x-x_i}{h}\\right)\\)\n\n\n\n\\(n\\): sample size\n\\(h\\): bandwidth, analogous to histogram binwidth, ensures \\(\\hat{f}(x)\\) integrates to 1\n\\(x\\): location where we want to estimate the density \\(f(x)\\): does not have to be in dataset!\n\nExample: \\(x=3\\): how much evidence do the observed data points provide for probability density around 3?\n\n\\(x_i\\): \\(i\\)th observation in the dataset"
   },
   {
-    "objectID": "lectures/01-explore.html#filter-1",
-    "href": "lectures/01-explore.html#filter-1",
-    "title": "Exploring data: into the tidyverse",
-    "section": "filter()",
-    "text": "filter()\nExample 1: Extract batting stats for the American League (AL) and National League (NL)\n\nmlb_batting &lt;- filter(Batting, lgID %in% c(\"AL\", \"NL\")) # or filter(Batting, lgID == \"AL\" | lgID == \"NL\")\nnrow(Batting) - nrow(mlb_batting) # difference in row counts\n\n[1] 15042\n\n\n\n\nExample 2: Extract batting stats for Pirates players in 2022\n\n# multiple conditions\npirates_batting &lt;- filter(Batting, yearID == 2022 & teamID == \"PIT\")\nhead(pirates_batting, n = 3) # difference in row counts\n\n# A tibble: 3 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 alforan01   2022     1 PIT    NL        2     4     0     1     0     0     0\n2 alldrca01   2022     1 PIT    NL        1     0     0     0     0     0     0\n3 allengr01   2022     1 PIT    NL       46   118    17    22     4     0     2\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+    "objectID": "lectures/05-density.html#kernel-density-estimation-kde-1",
+    "href": "lectures/05-density.html#kernel-density-estimation-kde-1",
+    "title": "Data visualization: density estimation",
+    "section": "Kernel density estimation (KDE)",
+    "text": "Kernel density estimation (KDE)\nOverarching Goal: estimate the PDF \\(f(x)\\) for all possible values (assuming it is smooth)\nThe kernel density estimator (KDE) is \\(\\displaystyle \\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K \\left(\\frac{x-x_i}{h}\\right)\\)\n\n\\(|x - x_i|\\): how far evaluation point \\(x\\) is from observation \\(x_i\\)\n\\(\\frac{x - x_i}{h}\\): expresses distance in units of bandwidth\n\nIf \\(h=2\\), then being 1 unit away is considered “closer” than in each \\(h = 0.5\\)\n\n\\(K\\left(\\frac{x - x_i}{h}\\right)\\): kernel function, creates a weight from the scaled distance\n\nweight is large when \\(x_i\\) is close to \\(x\\)\nAs \\(h\\) becomes large, the weight of one data point \\(x_i\\) becomes indistinguishable from the influence of any other data point\n\nThe \\(\\frac{1}{h}\\) outside of the kernel function rescales kernel so that it remains a valid density integrating to 1, regardless of bandwidth."
   },
   {
-    "objectID": "lectures/01-explore.html#logical-conditions",
-    "href": "lectures/01-explore.html#logical-conditions",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Logical conditions",
-    "text": "Logical conditions\n\n\n\nx &lt; y: less than\nx &lt;= y: less than or equal to\nx == y: equal to\nx != y: not equal to\nx &gt; y: greater than\nx &gt;= y: greater than or equal to\n\n\n\nx %in% y: whether the value is present in a given vector\nis.na(x): is missing\nx & y: and\nx | y: or\n!x: not\n\n\n\n\n… and basically anything that returns a TRUE/FALSE value"
+    "objectID": "lectures/05-density.html#choice-of-kernel",
+    "href": "lectures/05-density.html#choice-of-kernel",
+    "title": "Data visualization: density estimation",
+    "section": "Choice of kernel",
+    "text": "Choice of kernel\nThe Gaussian (normal) kernel is typically used, but there are many other choices"
   },
   {
-    "objectID": "lectures/01-explore.html#common-mistakes",
-    "href": "lectures/01-explore.html#common-mistakes",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Common mistakes",
-    "text": "Common mistakes\n\n\nUsing = instead of ==\nnay\n\nfilter(Batting, team = \"PIT\")\n\nyay\n\nfilter(Batting, team == \"PIT\")\n\n\nForgetting quotes (for string/character)\nnay\n\nfilter(Batting, team == PIT)\n\nyay\n\nfilter(Batting, team == \"PIT\")"
+    "objectID": "lectures/05-density.html#visualizing-kde",
+    "href": "lectures/05-density.html#visualizing-kde",
+    "title": "Data visualization: density estimation",
+    "section": "Visualizing KDE",
+    "text": "Visualizing KDE\n\n\n\nWe make kernel density estimates with geom_density()\n\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_distance)) + \n  geom_density() +\n  geom_rug(alpha = 0.3)\n\n\nPros:\n\nDisplays full shape of distribution\nCan easily layer\nAdd categorical variable with color\n\nCons:\n\nNeed to pick bandwidth and kernel…"
   },
   {
-    "objectID": "lectures/01-explore.html#select",
-    "href": "lectures/01-explore.html#select",
-    "title": "Exploring data: into the tidyverse",
-    "section": "select()",
-    "text": "select()\nWe can use select() to extract columns (variables) of interest\nWe simply specify the column names:\n\nselect(Batting, playerID, yearID, G, AB, R, H, HR, BB)\n\n# A tibble: 128,598 × 8\n   playerID  yearID     G    AB     R     H    HR    BB\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 aardsda01   2004    11     0     0     0     0     0\n 2 aardsda01   2006    45     2     0     0     0     0\n 3 aardsda01   2007    25     0     0     0     0     0\n 4 aardsda01   2008    47     1     0     0     0     0\n 5 aardsda01   2009    73     0     0     0     0     0\n 6 aardsda01   2010    53     0     0     0     0     0\n 7 aardsda01   2012     1     0     0     0     0     0\n 8 aardsda01   2013    43     0     0     0     0     0\n 9 aardsda01   2015    33     1     0     0     0     0\n10 aaronha01   1954   122   468    58   131    13    28\n# ℹ 128,588 more rows"
+    "objectID": "lectures/05-density.html#what-about-the-bandwidth",
+    "href": "lectures/05-density.html#what-about-the-bandwidth",
+    "title": "Data visualization: density estimation",
+    "section": "What about the bandwidth?",
+    "text": "What about the bandwidth?\nSee ?geom_density for the default bandwidth\nModify the bandwidth using the adjust argument (value to multiply default bandwidth by)\n\n\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_distance)) + \n  geom_density(adjust = 0.5) +\n  geom_rug(alpha = 0.3)\n\n\n\n\n\n\n\n\n\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_distance)) + \n  geom_density(adjust = 2) +\n  geom_rug(alpha = 0.3)"
   },
   {
-    "objectID": "lectures/01-explore.html#mutate",
-    "href": "lectures/01-explore.html#mutate",
-    "title": "Exploring data: into the tidyverse",
-    "section": "mutate()",
-    "text": "mutate()\nWe use mutate() to create new variables\n\nNew variables created via mutate() are usually based on existing variables\nMake sure to give your new variable a name\nNaming the new variable the same as the existing variable will overwrite the original column\n\n\nExample: Get the batting average and strikeout-to-walk ratio for every player\n\nnew_batting &lt;- mutate(Batting, batting_avg = H / AB, so_bb_ratio = SO / BB)\nhead(new_batting, n = 1)\n\n# A tibble: 1 × 24\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 aardsda01   2004     1 SFN    NL       11     0     0     0     0     0     0\n# ℹ 12 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;, batting_avg &lt;dbl&gt;,\n#   so_bb_ratio &lt;dbl&gt;"
+    "objectID": "lectures/05-density.html#notes-on-density-estimation",
+    "href": "lectures/05-density.html#notes-on-density-estimation",
+    "title": "Data visualization: density estimation",
+    "section": "Notes on density estimation",
+    "text": "Notes on density estimation\nFor the same data, multiple factors affect the shape of the density curve!\n\n\nIf the bandwidth is too small, the density estimate can become overly peaky and the main trends in the data may be obscured\n\n\n\n\nIf the bandwidth is too large, then smaller features in the distribution of the data may disappear\n\n\n\n\nThe choice of the kernel can affect the shape of the density curve.\n\nA Gaussian kernel typically gives density estimates that look bell-shaped (ish)\nA rectangular kernel can generate the appearance of steps in the density curve\nKernel choice matters less with more data points\n\n\n\n\nDensity plots are often reliable and informative for large datasets but can be misleading for smaller ones."
   },
   {
-    "objectID": "lectures/01-explore.html#arrange",
-    "href": "lectures/01-explore.html#arrange",
-    "title": "Exploring data: into the tidyverse",
-    "section": "arrange()",
-    "text": "arrange()\nWe use arrange() to sort the observations (rows) by variables (columns)\n\nDefault is ascending order:\n\nLow to high for numeric columns\nAlphabetical order for character columns\n\n\n\nExample 1: Who holds the single-season home run record?\n\nhr_batting &lt;- arrange(Batting, desc(HR)) # desc() for descending order\nhead(hr_batting, n = 3)\n\n# A tibble: 3 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 bondsba01   2001     1 SFN    NL      153   476   129   156    32     2    73\n2 mcgwima01   1998     1 SLN    NL      155   509   130   152    21     0    70\n3 sosasa01    1998     1 CHN    NL      159   643   134   198    20     0    66\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+    "objectID": "lectures/05-density.html#use-density-curves-and-ecdfs-together",
+    "href": "lectures/05-density.html#use-density-curves-and-ecdfs-together",
+    "title": "Data visualization: density estimation",
+    "section": "Use density curves and ECDFs together",
+    "text": "Use density curves and ECDFs together"
   },
   {
-    "objectID": "lectures/01-explore.html#arrange-1",
-    "href": "lectures/01-explore.html#arrange-1",
-    "title": "Exploring data: into the tidyverse",
-    "section": "arrange()",
-    "text": "arrange()\nExample 2: we can arrange by multiple columns at once:\n\nAt bats from high to low\nHome runs from low to high\n\n\nVariable order matters!\n\n\n\n\nab_hr_batting &lt;- arrange(Batting, desc(AB), HR)\nhead(ab_hr_batting, n = 3)\n\n# A tibble: 3 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 rolliji01   2007     1 PHI    NL      162   716   139   212    38    20    30\n2 wilsowi02   1980     1 KCA    AL      161   705   133   230    28    15     3\n3 suzukic01   2004     1 SEA    AL      161   704   101   262    24     5     8\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+    "objectID": "lectures/05-density.html#code-interlude-arranging-multiple-figures",
+    "href": "lectures/05-density.html#code-interlude-arranging-multiple-figures",
+    "title": "Data visualization: density estimation",
+    "section": "Code interlude: arranging multiple figures",
+    "text": "Code interlude: arranging multiple figures\nUse the cowplot package to easily arrange your plots (see also patchwork)\n\nlibrary(cowplot)\n\nwilson_shot_dens &lt;- wilson_shots |&gt;\n  ggplot(aes(x = shot_distance)) + \n  geom_density() +\n  geom_rug(alpha = 0.3) +\n  theme_bw() +\n  labs(x = \"Shot distance (in feet)\",\n       y = \"Number of shot attempts\")\n\nwilson_shot_ecdf &lt;- wilson_shots |&gt;\n  ggplot(aes(x = shot_distance)) + \n  stat_ecdf() +\n  geom_rug(alpha = 0.3) +\n  theme_bw() +\n  labs(x = \"Shot distance (in feet)\",\n       y = \"Proportion of shot attempts\")\n\n# library(patchwork)\n# wilson_shot_dens + wilson_shot_ecdf\nplot_grid(wilson_shot_dens, wilson_shot_ecdf)"
   },
   {
-    "objectID": "lectures/01-explore.html#performing-multiple-operations",
-    "href": "lectures/01-explore.html#performing-multiple-operations",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Performing multiple operations",
-    "text": "Performing multiple operations\nWhat if we want to perform several tasks using multiple dplyr verbs?\n\n\nExample: Which Pirates players had the highest batting average in 2022, among those with at least 50 at bats?\n\nselect(arrange(mutate(filter(Batting, yearID == 2022, teamID == \"PIT\", AB &gt;= 50), batting_avg = H / AB), desc(batting_avg)), playerID, AB, batting_avg)\n\n# A tibble: 23 × 3\n   playerID     AB batting_avg\n   &lt;chr&gt;     &lt;int&gt;       &lt;dbl&gt;\n 1 newmake01   288       0.274\n 2 reynobr01   542       0.262\n 3 hayeske01   505       0.244\n 4 marisja01    77       0.234\n 5 perezro02    60       0.233\n 6 castrro01   253       0.233\n 7 cruzon01    331       0.233\n 8 gamelbe01   371       0.232\n 9 chavimi01   401       0.229\n10 vogelda01   237       0.228\n# ℹ 13 more rows\n\n\n\n\nThat’s awfully annoying to write, and also difficult to read…"
+    "objectID": "lectures/05-density.html#use-density-curves-and-ecdfs-together-1",
+    "href": "lectures/05-density.html#use-density-curves-and-ecdfs-together-1",
+    "title": "Data visualization: density estimation",
+    "section": "Use density curves and ECDFs together",
+    "text": "Use density curves and ECDFs together"
   },
   {
-    "objectID": "lectures/01-explore.html#the-pipe-operator",
-    "href": "lectures/01-explore.html#the-pipe-operator",
-    "title": "Exploring data: into the tidyverse",
-    "section": "The pipe operator",
-    "text": "The pipe operator\nIntroducing the pipe operator |&gt;\n\n\nNote: You might have seen the magrittr pipe %&gt;%…\n\nThis is from the maggritr package, automatically loaded when loading tidyverse\nRecently, many people (including Hadley Wickham) have switched to |&gt;, the built-in “native” pipe to base R\nWhile identical in many ways, there are some differences\n\n\n\n\nShortcut for the pipe operator in RStudio: Command (or Ctrl) + Shift + M"
+    "objectID": "lectures/05-density.html#another-code-interlude-collect-the-legends-with-patchwork",
+    "href": "lectures/05-density.html#another-code-interlude-collect-the-legends-with-patchwork",
+    "title": "Data visualization: density estimation",
+    "section": "Another code interlude: collect the legends with patchwork",
+    "text": "Another code interlude: collect the legends with patchwork\n\nwilson_shot_dens_made &lt;- wilson_shots |&gt;\n  ggplot(aes(x = shot_distance, \n             color = scoring_play)) + \n  geom_density() +\n  geom_rug(alpha = 0.3) +\n  labs(x = \"Shot distance (in feet)\",\n       y = \"Number of shot attempts\")\n\nwilson_shot_ecdf_made &lt;- wilson_shots |&gt;\n  ggplot(aes(x = shot_distance,\n             color = scoring_play)) + \n  stat_ecdf() +\n  geom_rug(alpha = 0.3) +\n  labs(x = \"Shot distance (in feet)\",\n       y = \"Proportion of shot attempts\")\n\nlibrary(patchwork)\nwilson_shot_dens_made + wilson_shot_ecdf_made + plot_layout(guides = \"collect\")"
   },
   {
-    "objectID": "lectures/01-explore.html#the-pipe-operator-1",
-    "href": "lectures/01-explore.html#the-pipe-operator-1",
-    "title": "Exploring data: into the tidyverse",
-    "section": "The pipe operator",
-    "text": "The pipe operator\n\nWe use |&gt; to perform a sequence of operations (think of as: “and then…”)\nThe pipe takes an object (e.g., tibble, data frame, matrix, vector) on the left and passes it as the first argument of the function on the right\n\n\n# the workflow\nobject |&gt;\n  first_operation(...) |&gt;\n  second_operation(...) |&gt; \n  .\n  .\n  .\n  last_operation(...)"
+    "objectID": "lectures/05-density.html#ridgeline-plots",
+    "href": "lectures/05-density.html#ridgeline-plots",
+    "title": "Data visualization: density estimation",
+    "section": "Ridgeline plots",
+    "text": "Ridgeline plots\n\n\n\nCheck out the ggridges package for a variety of customization options\n\n\nlibrary(ggridges)\nwilson_shots |&gt;\n  ggplot(aes(x = shot_distance, y = shot_type)) + \n  geom_density_ridges(rel_min_height = 0.01) \n\n\nUseful to display conditional distributions across many levels\nAlso check out ggdist"
   },
   {
-    "objectID": "lectures/01-explore.html#performing-multiple-operations-1",
-    "href": "lectures/01-explore.html#performing-multiple-operations-1",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Performing multiple operations",
-    "text": "Performing multiple operations\nRecall our example: Which Pirates players had the highest batting average in 2022, among those with at least 50 at bats?\n\n\nOur list of tasks:\n\n\n\nfilter(): only Pirates players in 2022 with at least 50 at bats\nmutate(): create a new column for batting average\narrange(): sort by batting average in descending order\nselect(): report player name, at bats, and batting average"
+    "objectID": "lectures/05-density.html#going-from-1d-to-2d-density-estimation",
+    "href": "lectures/05-density.html#going-from-1d-to-2d-density-estimation",
+    "title": "Data visualization: density estimation",
+    "section": "Going from 1D to 2D density estimation",
+    "text": "Going from 1D to 2D density estimation\nIn 1D: estimate density \\(f(x)\\), assuming that \\(f(x)\\) is smooth:\n\\[\n\\hat{f}(x) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h} K\\left(\\frac{x - x_i}{h}\n\\right)\n\\]\n\nIn 2D: estimate joint density \\(f(x_1, x_2)\\)\n\\[\\hat{f}(x_1, x_2) = \\frac{1}{n} \\sum_{i=1}^n \\frac{1}{h_1h_2} K\\left(\\frac{x_1 - x_{i1}}{h_1}\\right) K\\left(\\frac{x_2 - x_{i2}}{h_2}\\right)\\]\n\n\nIn 1D there’s one bandwidth, now we have two bandwidths\n\n\\(h_1\\): controls smoothness as \\(X_1\\) changes, holding \\(X_2\\) fixed\n\\(h_2\\): controls smoothness as \\(X_2\\) changes, holding \\(X_1\\) fixed\n\nThink of it like going from each observation contributing a bump on a line to a bump on a plane."
   },
   {
-    "objectID": "lectures/01-explore.html#performing-multiple-operations-2",
-    "href": "lectures/01-explore.html#performing-multiple-operations-2",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Performing multiple operations",
-    "text": "Performing multiple operations\n\nBatting |&gt; \n  filter(yearID == 2022, teamID == \"PIT\", AB &gt;= 50) |&gt; \n  mutate(batting_avg = H / AB) |&gt; \n  arrange(desc(batting_avg)) |&gt; \n  select(playerID, AB, batting_avg)\n\n# A tibble: 23 × 3\n   playerID     AB batting_avg\n   &lt;chr&gt;     &lt;int&gt;       &lt;dbl&gt;\n 1 newmake01   288       0.274\n 2 reynobr01   542       0.262\n 3 hayeske01   505       0.244\n 4 marisja01    77       0.234\n 5 perezro02    60       0.233\n 6 castrro01   253       0.233\n 7 cruzon01    331       0.233\n 8 gamelbe01   371       0.232\n 9 chavimi01   401       0.229\n10 vogelda01   237       0.228\n# ℹ 13 more rows\n\n\n\nThis is much easier to write and read!"
+    "objectID": "lectures/05-density.html#display-densities-for-2d-data-contour-plots",
+    "href": "lectures/05-density.html#display-densities-for-2d-data-contour-plots",
+    "title": "Data visualization: density estimation",
+    "section": "Display densities for 2D data: contour plots",
+    "text": "Display densities for 2D data: contour plots\nBest known in topography: outlines (contours) denote levels of elevation"
   },
   {
-    "objectID": "lectures/01-explore.html#summarize-by-itself",
-    "href": "lectures/01-explore.html#summarize-by-itself",
-    "title": "Exploring data: into the tidyverse",
-    "section": "summarize() (by itself)",
-    "text": "summarize() (by itself)\nWe use summarize() to collapse the data down to a single row (per group) by aggregating variables into single values\nThis is useful for computing summaries (e.g., mean, median, max, min, correlation)\n\nExample 1: Extracting the median at bats\n\nBatting |&gt; \n  summarize(median_at_bats = median(AB))\n\n# A tibble: 1 × 1\n  median_at_bats\n           &lt;dbl&gt;\n1             40\n\n\n\n\nExample 2: Extracting the correlation between at bats and home runs\n\nBatting |&gt; \n  summarize(cor_ab_hr = cor(AB, HR))\n\n# A tibble: 1 × 1\n  cor_ab_hr\n      &lt;dbl&gt;\n1     0.712"
+    "objectID": "lectures/05-density.html#d-density-estimation",
+    "href": "lectures/05-density.html#d-density-estimation",
+    "title": "Data visualization: density estimation",
+    "section": "2D density estimation",
+    "text": "2D density estimation\nWe can visualize all of the shot locations: (shot_x, shot_y)\n\n\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_x, y = shot_y)) +\n  geom_point(size = 4, alpha = 0.3)\n\nAdjust transparency with alpha for overlapping points"
   },
   {
-    "objectID": "lectures/01-explore.html#group_by-and-summarize",
-    "href": "lectures/01-explore.html#group_by-and-summarize",
-    "title": "Exploring data: into the tidyverse",
-    "section": "group_by() and summarize()",
-    "text": "group_by() and summarize()\nWe can use group_by() to covert the data into a “grouped tbl”, where operations are performed by group\n\nThat is, group_by() splits the data into groups based on column values\nPowerful when combined with summarize()\nAfter the operation is done at the group-level, you may have to use ungroup() to remove leftover groupings"
+    "objectID": "lectures/05-density.html#create-contours-of-2d-kernel-density-estimate",
+    "href": "lectures/05-density.html#create-contours-of-2d-kernel-density-estimate",
+    "title": "Data visualization: density estimation",
+    "section": "Create contours of 2D kernel density estimate",
+    "text": "Create contours of 2D kernel density estimate\n\n\n\nUse geom_density2d() to display contour lines\n\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_x, y = shot_y)) + \n  geom_point(size = 4, alpha = 0.3) + \n  geom_density2d() +\n  coord_fixed() +\n  theme(legend.position = \"bottom\")\n\n\nInner lines denote “peaks”\ncoord_fixed() forced a fixed ratio"
   },
   {
-    "objectID": "lectures/01-explore.html#group_by-and-summarize-1",
-    "href": "lectures/01-explore.html#group_by-and-summarize-1",
-    "title": "Exploring data: into the tidyverse",
-    "section": "group_by() and summarize()",
-    "text": "group_by() and summarize()\nExample: How many home runs, strike outs, and walks did each team accumulate in each season from 2015 to 2019?\n\nBatting |&gt; \n  filter(yearID %in% 2015:2019) |&gt; \n  group_by(teamID) |&gt; \n  summarize(total_hr = sum(HR), total_so = sum(SO), total_bb = sum(BB)) |&gt; \n  arrange(desc(total_hr))\n\n# A tibble: 30 × 4\n   teamID total_hr total_so total_bb\n   &lt;fct&gt;     &lt;int&gt;    &lt;int&gt;    &lt;int&gt;\n 1 NYA        1209     6659     2839\n 2 HOU        1159     6294     2759\n 3 TOR        1139     6741     2752\n 4 LAN        1111     6751     2991\n 5 BAL        1103     6914     2162\n 6 TEX        1041     7008     2572\n 7 SEA        1036     6693     2489\n 8 MIN        1035     6694     2604\n 9 OAK        1033     6474     2610\n10 MIL        1031     7434     2724\n# ℹ 20 more rows"
+    "objectID": "lectures/05-density.html#create-contours-of-2d-kernel-density-estimate-1",
+    "href": "lectures/05-density.html#create-contours-of-2d-kernel-density-estimate-1",
+    "title": "Data visualization: density estimation",
+    "section": "Create contours of 2D kernel density estimate",
+    "text": "Create contours of 2D kernel density estimate\n\n\nSimilar with 1D KDE, we can use adjust to modify the multivariate bandwidth\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_x, y = shot_y)) + \n  geom_point(size = 4, alpha = 0.3) + \n  geom_density2d(adjust = 0.3) +\n  coord_fixed() +\n  theme(legend.position = \"bottom\")"
   },
   {
-    "objectID": "lectures/01-explore.html#count",
-    "href": "lectures/01-explore.html#count",
-    "title": "Exploring data: into the tidyverse",
-    "section": "count()",
-    "text": "count()\ncount() returns the number of observations in each group\n\nBatting |&gt; \n  count(lgID, name = \"freq\")\n\n# A tibble: 19 × 2\n   lgID   freq\n   &lt;fct&gt; &lt;int&gt;\n 1 AA     1893\n 2 AL    54277\n 3 ANL     154\n 4 EAS    1035\n 5 ECL     917\n 6 EWL     191\n 7 FL      472\n 8 IND     827\n 9 INT      44\n10 NA      737\n11 NAC     105\n12 NAL    2114\n13 NL    59279\n14 NN2    2731\n15 NNL    2275\n16 NSL     237\n17 PL      149\n18 UA      334\n19 WES     827"
+    "objectID": "lectures/05-density.html#contours-are-difficult-what-about-heatmaps",
+    "href": "lectures/05-density.html#contours-are-difficult-what-about-heatmaps",
+    "title": "Data visualization: density estimation",
+    "section": "Contours are difficult… what about heatmaps?",
+    "text": "Contours are difficult… what about heatmaps?\n\n\nDivide the space into a grid and color the grid according to high/low values\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_x, y = shot_y)) + \n  stat_density2d(aes(fill = after_stat(density)),\n                 h = c(0.6, 0.6), bins = 100, contour = FALSE,\n                 geom = \"raster\") +\n  scale_fill_gradient(low = \"midnightblue\", \n                      high = \"gold\") +\n  theme(legend.position = \"bottom\", \n        legend.key.size = unit(1.5, \"cm\")) +\n  coord_fixed()"
   },
   {
-    "objectID": "lectures/01-explore.html#alternatives-to-count",
-    "href": "lectures/01-explore.html#alternatives-to-count",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Alternatives to count()",
-    "text": "Alternatives to count()\n\n\nUsing group_by() and summarize()\n\n# note: count is a \"shortcut\" of this\nBatting |&gt; \n  group_by(lgID) |&gt; \n  summarize(freq = n()) |&gt; \n  ungroup()\n\n\nUsing Base R\n\n# recall that in base R...\ntable(Batting$lgID)"
+    "objectID": "lectures/05-density.html#hexagonal-binning-is-a-nice-alternative",
+    "href": "lectures/05-density.html#hexagonal-binning-is-a-nice-alternative",
+    "title": "Data visualization: density estimation",
+    "section": "Hexagonal binning is a nice alternative",
+    "text": "Hexagonal binning is a nice alternative\n\n\n\nUse geom_hex() to make hexagonal heatmaps\nNeed to have the hexbin package installed\n2D version of histogram\nCan specify binwidth in both directions\nAvoids limitations from smoothing\n\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_x, y = shot_y)) + \n  geom_hex(binwidth = c(1, 1)) +\n  scale_fill_gradient(low = \"midnightblue\", \n                      high = \"gold\") + \n  theme(legend.position = \"bottom\") +\n  coord_fixed()"
   },
   {
-    "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows",
-    "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows",
-    "title": "Exploring data: into the tidyverse",
-    "section": "slice_*() family for subsetting rows",
-    "text": "slice_*() family for subsetting rows\nslice(): extract rows (observations) based on the row index\n\nBatting |&gt; \n  slice(c(1, 99, 101, 500))\n\n# A tibble: 4 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 aardsda01   2004     1 SFN    NL       11     0     0     0     0     0     0\n2 abbotfr01   1904     1 CLE    AL       41   130    14    22     4     2     0\n3 abbotgl01   1973     1 OAK    AL        5     0     0     0     0     0     0\n4 adamsbo03   1951     1 CIN    NL      125   403    57   107    12     5     5\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+    "objectID": "lectures/05-density.html#what-about-shooting-efficiency",
+    "href": "lectures/05-density.html#what-about-shooting-efficiency",
+    "title": "Data visualization: density estimation",
+    "section": "What about shooting efficiency?",
+    "text": "What about shooting efficiency?\nCan compute a function of another variable inside hexagons with stat_summary_hex()\n\n\n\nwilson_shots |&gt;\n  ggplot(aes(x = shot_x, y = shot_y, \n             z = scoring_play, group = 1)) +\n  stat_summary_hex(binwidth = c(2, 2), fun = mean, \n                   color = \"black\", linewidth = 0.05) +\n  scale_fill_gradient(low = \"midnightblue\", \n                      high = \"gold\") + \n  theme(legend.position = \"bottom\", \n        legend.key.size = unit(1.5, \"cm\")) +\n  coord_fixed()"
   },
   {
-    "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows-1",
-    "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows-1",
-    "title": "Exploring data: into the tidyverse",
-    "section": "slice_*() family for subsetting rows",
-    "text": "slice_*() family for subsetting rows\nslice_head() / slice_tail(): extract the first / last n rows\n\n# Batting |&gt; slice_tail(n = 5)\nBatting |&gt; \n  slice_head(n = 5)\n\n# A tibble: 5 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 aardsda01   2004     1 SFN    NL       11     0     0     0     0     0     0\n2 aardsda01   2006     1 CHN    NL       45     2     0     0     0     0     0\n3 aardsda01   2007     1 CHA    AL       25     0     0     0     0     0     0\n4 aardsda01   2008     1 BOS    AL       47     1     0     0     0     0     0\n5 aardsda01   2009     1 SEA    AL       73     0     0     0     0     0     0\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+    "objectID": "lectures/05-density.html#appendix-making-shot-charts-and-drawing-courts-with-sportyr",
+    "href": "lectures/05-density.html#appendix-making-shot-charts-and-drawing-courts-with-sportyr",
+    "title": "Data visualization: density estimation",
+    "section": "Appendix: Making shot charts and drawing courts with sportyR",
+    "text": "Appendix: Making shot charts and drawing courts with sportyR\n\nlibrary(sportyR)\nwnba_court &lt;- geom_basketball(\"wnba\", display_range = \"offense\", rotation = 270, x_trans = -41.5)\nwnba_court +\n  geom_hex(data = wilson_shots, aes(x = shot_x, y = shot_y), binwidth = c(1, 1)) + \n  scale_fill_gradient(low = \"midnightblue\", high = \"gold\")"
   },
   {
-    "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows-2",
-    "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows-2",
-    "title": "Exploring data: into the tidyverse",
-    "section": "slice_*() family for subsetting rows",
-    "text": "slice_*() family for subsetting rows\nslice_min() / slice_max(): extract rows with the smallest or largest values of a variable\n\n# single-season home run record (top 5)\nBatting |&gt; \n  slice_max(HR, n = 5)\n\n# A tibble: 5 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 bondsba01   2001     1 SFN    NL      153   476   129   156    32     2    73\n2 mcgwima01   1998     1 SLN    NL      155   509   130   152    21     0    70\n3 sosasa01    1998     1 CHN    NL      159   643   134   198    20     0    66\n4 mcgwima01   1999     1 SLN    NL      153   521   118   145    21     1    65\n5 sosasa01    2001     1 CHN    NL      160   577   146   189    34     5    64\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+    "objectID": "lectures/05-density.html#appendix-density-estimation-in-erins-cmsacamp-project",
+    "href": "lectures/05-density.html#appendix-density-estimation-in-erins-cmsacamp-project",
+    "title": "Data visualization: density estimation",
+    "section": "Appendix: Density estimation in Erin’s CMSACamp project",
+    "text": "Appendix: Density estimation in Erin’s CMSACamp project\nPresentation"
   },
   {
-    "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows-3",
-    "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows-3",
-    "title": "Exploring data: into the tidyverse",
-    "section": "slice_*() family for subsetting rows",
-    "text": "slice_*() family for subsetting rows\nslice_sample(): randomly sample a specified number / fraction of observation in the data\n\n# randomly sample 1000 rows (without replacement, by default)\nBatting |&gt; \n  slice_sample(n = 1000)\n\n# randomly sample 70% of the rows, with replacement\nBatting |&gt; \n  slice_sample(prop = 0.7, replace = TRUE)\n\n\nUseful for performing resampling (e.g., bootstrap, cross-validation, etc.)"
+    "objectID": "lectures/05-density.html#appendix-code-to-build-dataset",
+    "href": "lectures/05-density.html#appendix-code-to-build-dataset",
+    "title": "Data visualization: density estimation",
+    "section": "Appendix: Code to build dataset",
+    "text": "Appendix: Code to build dataset\n\n#install.packages(\"wehoop\")\nlibrary(wehoop)\nwnba_pbp &lt;- load_wnba_pbp(2025)\nwilson_shots &lt;- wnba_pbp |&gt; \n  filter(shooting_play == T) |&gt; \n  filter(str_detect(text, \"A'ja Wilson\")) |&gt; \n  filter(!str_detect(text, \"A'ja Wilson assists\")) |&gt; \n  filter(!str_detect(text, \"free throw\")) |&gt; \n  mutate(\n    shot_x = coordinate_x_raw - 25,\n    shot_y = coordinate_y_raw,\n    shot_distance = sqrt((abs(shot_x) ^ 2) + shot_y ^ 2), \n    shot_type = type_text,\n    scoring_play,\n    score_value,\n    .keep = \"none\"\n  )"
   },
   {
-    "objectID": "lectures/01-explore.html#putting-it-all-together-pt.-2",
-    "href": "lectures/01-explore.html#putting-it-all-together-pt.-2",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Putting it all together (pt. 2)",
-    "text": "Putting it all together (pt. 2)\nExample 1: Get batting stats for each year: each row is a year with the following variables\n\ntotal hits, home runs, strikeouts, walks, atbats\ntotal batting average for each year = total H / total AB\nonly keeps AL and NL leagues\n\n\n\nyearly_batting &lt;- Batting |&gt;\n  filter(lgID %in% c(\"AL\", \"NL\")) |&gt;\n  group_by(yearID) |&gt;\n  summarize(total_h = sum(H, na.rm = TRUE),\n            total_hr = sum(HR, na.rm = TRUE),\n            total_so = sum(SO, na.rm = TRUE),\n            total_bb = sum(BB, na.rm = TRUE),\n            total_ab = sum(AB, na.rm = TRUE)) |&gt;\n  mutate(batting_avg = total_h / total_ab)"
+    "objectID": "lectures/04-quantitative.html#quantitative-data",
+    "href": "lectures/04-quantitative.html#quantitative-data",
+    "title": "Data visualization: quantitative data",
+    "section": "Quantitative data",
+    "text": "Quantitative data\nTwo different versions of quantitative data:\nDiscrete: countable and has clear space between values (i.e. whole number only)\n\nExamples: number of goals scored in a game, number of children in a family\n\nContinuous: can take any value within some interval\n\nExamples: price of houses in Pittsburgh, water temperature, wind speed"
   },
   {
-    "objectID": "lectures/01-explore.html#putting-it-all-together-pt.-2-1",
-    "href": "lectures/01-explore.html#putting-it-all-together-pt.-2-1",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Putting it all together (pt. 2)",
-    "text": "Putting it all together (pt. 2)\nExample 2: What are the top three years with the most HRs?\n\n\nyearly_batting |&gt; \n  slice_max(total_hr, n = 3)\n\n# A tibble: 3 × 7\n  yearID total_h total_hr total_so total_bb total_ab batting_avg\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;\n1   2019   42039     6776    42823    15895   166651       0.252\n2   2017   42215     6105    40104    15829   165567       0.255\n3   2021   39484     5944    42145    15794   161941       0.244\n\n\n\n# or this \nyearly_batting |&gt;\n  arrange(desc(total_hr)) |&gt;\n  slice(1:3)\n\n# A tibble: 3 × 7\n  yearID total_h total_hr total_so total_bb total_ab batting_avg\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;\n1   2019   42039     6776    42823    15895   166651       0.252\n2   2017   42215     6105    40104    15829   165567       0.255\n3   2021   39484     5944    42145    15794   161941       0.244"
+    "objectID": "lectures/04-quantitative.html#data",
+    "href": "lectures/04-quantitative.html#data",
+    "title": "Data visualization: quantitative data",
+    "section": "Data",
+    "text": "Data\nWe will explore ultra trail running data courtesy of TidyTuesday and Benjamin Nowak of the International Trail Running Association (ITRA).\nThe data was pre-processed for this lecture (steps shown in appendix).\n\nlibrary(tidyverse)\nggplot2::theme_set(ggplot2::theme_light(base_size = 20)) # setting the ggplot theme\n\nruns &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/ultra_running.csv\") \nrace_stats_2019 &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/ultra_races_2019.csv\")"
   },
   {
-    "objectID": "lectures/01-explore.html#putting-it-all-together-pt.-2-2",
-    "href": "lectures/01-explore.html#putting-it-all-together-pt.-2-2",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Putting it all together (pt. 2)",
-    "text": "Putting it all together (pt. 2)\nExample 3: Which years have the best and worst strikeout to walk ratios?\n\n\nyearly_batting |&gt;\n  mutate(so_bb_ratio = total_so / total_bb) |&gt;\n  arrange(so_bb_ratio) |&gt;\n  slice(c(1, n()))\n\n# A tibble: 2 × 8\n  yearID total_h total_hr total_so total_bb total_ab batting_avg so_bb_ratio\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;       &lt;dbl&gt;\n1   1893   15913      460     3341     6143    56898       0.280       0.544\n2   1879    6171       58     1843      508    24155       0.255       3.63"
+    "objectID": "lectures/04-quantitative.html#western-states-endurance-run",
+    "href": "lectures/04-quantitative.html#western-states-endurance-run",
+    "title": "Data visualization: quantitative data",
+    "section": "Western States Endurance Run",
+    "text": "Western States Endurance Run\nFor the majority of the lecture, we will be using race results from the Western States Endurance Run.\n\nwser &lt;- runs |&gt;\n  filter(event == \"Western States Endurance Run\")\n\n\nHighlights from Western States 2024"
   },
   {
-    "objectID": "lectures/01-explore.html#we-can-make-better-looking-tables",
-    "href": "lectures/01-explore.html#we-can-make-better-looking-tables",
-    "title": "Exploring data: into the tidyverse",
-    "section": "We can make better looking tables",
-    "text": "We can make better looking tables\nUsing rename() and gt():\n\nlibrary(gt)\n\nyearly_batting |&gt;\n  select(yearID, batting_avg) |&gt;\n  rename(Year = yearID, `Batting Average` = batting_avg) |&gt;\n  arrange(desc(`Batting Average`)) |&gt;\n  slice(c(1:3, (n()-2):n())) |&gt;\n  gt() |&gt;\n  fmt_number(columns = `Batting Average`, decimals = 3)\n\n\n\n\n\n\n\nYear\nBatting Average\n\n\n\n\n1894\n0.309\n\n\n1895\n0.296\n\n\n1930\n0.296\n\n\n1908\n0.239\n\n\n1888\n0.239\n\n\n1968\n0.237"
+    "objectID": "lectures/04-quantitative.html#summarizing-1d-quantitative-data",
+    "href": "lectures/04-quantitative.html#summarizing-1d-quantitative-data",
+    "title": "Data visualization: quantitative data",
+    "section": "Summarizing 1D quantitative data",
+    "text": "Summarizing 1D quantitative data\n\nCenter: mean, median, number and location of modes\n\n\n\nSpread: range, variance, standard deviation, IQR, etc.\n\n\n\n\nShape: skew vs symmetry, outliers, heavy vs light tails, etc.\n\n\n\nCompute various statistics in R with summary(), mean(), median(), quantile(), range(), sd(), var(), etc.\n\n\nExample: Summarizing the finishing time (in hours) of Western States runners\n\nsummary(wser$time_in_hours)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  14.50   22.89   26.51   25.42   28.68   30.00 \n\nsd(wser$time_in_hours, na.rm = TRUE)\n\n[1] 3.742693"
   },
   {
-    "objectID": "lectures/01-explore.html#lots-of-ways-to-customize-tables-with-gt",
-    "href": "lectures/01-explore.html#lots-of-ways-to-customize-tables-with-gt",
-    "title": "Exploring data: into the tidyverse",
-    "section": "Lots of ways to customize tables with gt()",
-    "text": "Lots of ways to customize tables with gt()\n\n\nyearly_batting |&gt;\n  select(yearID, batting_avg) |&gt;\n  rename(Year = yearID,\n         `Batting Average` = batting_avg) |&gt;\n  arrange(desc(`Batting Average`)) |&gt;\n  slice(c(1:3, (n()-2):n())) |&gt;\n  gt(rowname_col = \"Year\") |&gt;\n  # add table header\n  tab_header(title = \"Best / Worst MLB Seasons by Batting Average\") |&gt;\n  # create row groups by location \n  tab_row_group(\n    label = \"Bottom 3 Years\",\n    rows = 4:6\n  ) |&gt;\n  tab_row_group(\n    label = \"Top 3 Years\",\n    rows = 1:3\n  ) |&gt;\n  # recolor row group labels\n  tab_style(\n    style = cell_fill(color = \"bisque\"),\n    locations = cells_row_groups(groups = \"Bottom 3 Years\")\n  ) |&gt;\n  tab_style(\n    style = cell_fill(color = \"darkseagreen1\"),\n    locations = cells_row_groups(groups = \"Top 3 Years\")) |&gt;\n  # round \"Batting Average\" to 3 decimals \n  fmt_number(columns = `Batting Average`, decimals = 3)\n\n\n\n\n\n\n\n\nBest / Worst MLB Seasons by Batting Average\n\n\n\nBatting Average\n\n\n\n\nTop 3 Years\n\n\n1894\n0.309\n\n\n1895\n0.296\n\n\n1930\n0.296\n\n\nBottom 3 Years\n\n\n1908\n0.239\n\n\n1888\n0.239\n\n\n1968\n0.237\n\n\n\n\n\n\n\n\n\nEnough with tables (for now)!"
+    "objectID": "lectures/04-quantitative.html#boxplots-visualize-summary-statistics",
+    "href": "lectures/04-quantitative.html#boxplots-visualize-summary-statistics",
+    "title": "Data visualization: quantitative data",
+    "section": "Boxplots visualize summary statistics",
+    "text": "Boxplots visualize summary statistics\n\n\nPros:\n\nDisplays outliers, percentiles, spread, skew\nUseful for side-by-side comparison\n\nCons:\n\nDoes not display the full distribution shape\nDoes not display modes\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  geom_boxplot() +\n  theme(axis.text.y = element_blank())+\n  labs(x= 'Time (hours)')"
   },
   {
-    "objectID": "lectures/01-explore.html#whats-next",
-    "href": "lectures/01-explore.html#whats-next",
-    "title": "Exploring data: into the tidyverse",
-    "section": "What’s next?",
-    "text": "What’s next?\n\n\nDATA VISUALIZATION\n\nThe simple graph has brought more information to the data analyst’s mind than any other device. — John Tukey\n\n\nUse ggplot2 (and the grammar of graphics) to visually explore data\nMore intuitive than base R plotting\nDifferent types of visualizations for categorical and quantitative data, faceting, etc.\ndplyr verbs and |&gt; leads to natural pipeline for EDA"
+    "objectID": "lectures/04-quantitative.html#histograms-display-1d-continuous-distributions",
+    "href": "lectures/04-quantitative.html#histograms-display-1d-continuous-distributions",
+    "title": "Data visualization: quantitative data",
+    "section": "Histograms display 1D continuous distributions",
+    "text": "Histograms display 1D continuous distributions\n\n\n\\(\\displaystyle \\text{# total obs.} = \\sum_{j=1}^k \\text{# obs. in bin }j\\)\nPros:\n\nDisplays full shape of distribution\nEasy to interpret\n\nCons:\n\nHave to choose number of bins and bin locations (will revisit later)\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  geom_histogram()+\n  labs(x= \"Time (hours)\")"
   },
   {
-    "objectID": "lectures/01-explore.html#see-you-later-partner",
-    "href": "lectures/01-explore.html#see-you-later-partner",
-    "title": "Exploring data: into the tidyverse",
-    "section": "See you later, partner",
-    "text": "See you later, partner\n\n\n\nA “data wrangler” illustration of the dplyr package, courtesy of Allison Horst"
+    "objectID": "lectures/04-quantitative.html#density-plots-are-a-smoothed-continuous-version-of-a-histogram",
+    "href": "lectures/04-quantitative.html#density-plots-are-a-smoothed-continuous-version-of-a-histogram",
+    "title": "Data visualization: quantitative data",
+    "section": "Density plots are a smoothed, continuous version of a histogram",
+    "text": "Density plots are a smoothed, continuous version of a histogram\n\n\nPros:\n\nBin-free\nExcellent for comparing multiple categories at once\nEasy to view full shape of distribution\n\nCons:\n\nNo individual data points or frequency count\nSmooth curve can sometimes extend into ranges where no real data exists\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  geom_density()+\n  labs(x= \"Time (hours)\")\n\n\n\n\n\n\n\n\n\nWe will talk more about density estimation on Monday!"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#display-the-data-points-directly-with-beeswarm-plots",
+    "href": "lectures/04-quantitative.html#display-the-data-points-directly-with-beeswarm-plots",
+    "title": "Data visualization: quantitative data",
+    "section": "Display the data points directly with beeswarm plots",
+    "text": "Display the data points directly with beeswarm plots\n\n\nPros:\n\nDisplays each data point\nEasy to view full shape of distribution\n\nCons:\n\nCan be overbearing with large datasets\nWhich algorithm for arranging points?\n\nA few different methods\n\n\n\n\nlibrary(ggbeeswarm)\nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = \"\")) +\n  geom_beeswarm(cex = 1, size = 0L)+\n  labs(x= \"Time (hours)\", y=\"\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#smooth-summary-with-violin-plots",
+    "href": "lectures/04-quantitative.html#smooth-summary-with-violin-plots",
+    "title": "Data visualization: quantitative data",
+    "section": "Smooth summary with violin plots",
+    "text": "Smooth summary with violin plots\n\n\nPros:\n\nDisplays full shape of distribution\nCan easily layer…\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = \"\")) +\n  geom_violin()+\n  labs(x= \"Time (hours)\", y =\"\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#smooth-summary-with-violin-plots-box-plots",
+    "href": "lectures/04-quantitative.html#smooth-summary-with-violin-plots-box-plots",
+    "title": "Data visualization: quantitative data",
+    "section": "Smooth summary with violin plots + box plots",
+    "text": "Smooth summary with violin plots + box plots\n\n\nPros:\n\nDisplays full shape of distribution\nCan easily layer… with box plots on top\n\nCons:\n\nSummary of data via density estimate (no sample size)\nMirror image is duplicate information\nMay be harder to interpret for general audience\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = \"\")) +\n  geom_violin() +\n  geom_boxplot(width = 0.25)+\n  labs(x= \"Time (hours)\", y = \"\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#what-do-visualizations-of-continuous-distributions-display",
+    "href": "lectures/04-quantitative.html#what-do-visualizations-of-continuous-distributions-display",
+    "title": "Data visualization: quantitative data",
+    "section": "What do visualizations of continuous distributions display?",
+    "text": "What do visualizations of continuous distributions display?\nProbability that continuous variable \\(X\\) takes a particular value is 0\ne.g. \\(P(\\) time_in_hours \\(= 24) = 0\\) (why?)\nFor continuous variables, the cumulative distribution function (CDF) is \\[F(x) = P(X \\leq x)\\]\nFor \\(n\\) observations, the empirical CDF (ECDF) can be computed based on the observed data \\[\\hat{F}_n(x)  = \\frac{\\text{# obs. with variable} \\leq x}{n} = \\frac{1}{n} \\sum_{i=1}^{n} I (x_i \\leq x)\\]\nwhere \\(I()\\) is the indicator function, i.e. ifelse(x_i &lt;= x, 1, 0)"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#display-full-distribution-with-ecdf-plot",
+    "href": "lectures/04-quantitative.html#display-full-distribution-with-ecdf-plot",
+    "title": "Data visualization: quantitative data",
+    "section": "Display full distribution with ECDF plot",
+    "text": "Display full distribution with ECDF plot\n\n\nPros:\n\nDisplays all of your data at once\nAs \\(n \\rightarrow \\infty\\), the ECDF \\(\\hat F_n(x)\\) converges to the true CDF \\(F(x)\\)\n\nCons:\n\nWhat are the cons?\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  stat_ecdf()+\n  labs(x= \"Time (hours)\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#zooming-in-on-our-ecdf",
+    "href": "lectures/04-quantitative.html#zooming-in-on-our-ecdf",
+    "title": "Data visualization: quantitative data",
+    "section": "Zooming in on our ECDF",
+    "text": "Zooming in on our ECDF\n\n\n\nOn the previous plot, we have enough data points that the ECDF looks like a smooth curve\nKeep in mind, however, while the CDF is a curve, the ECDF is a step function\n\nEach jump size of \\(1/n\\) is a single observed point\n\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  stat_ecdf()+\n  coord_cartesian(xlim = c(16, 17), ylim = c(0.01, 0.03))+\n  labs(x= \"Time (hours)\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#rug-plots-display-raw-data",
+    "href": "lectures/04-quantitative.html#rug-plots-display-raw-data",
+    "title": "Data visualization: quantitative data",
+    "section": "Rug plots display raw data",
+    "text": "Rug plots display raw data\n\n\nPros:\n\nDisplays raw data points\nUseful supplement for summaries and 2D plots\n\nCons:\n\nCan be overbearing for large datasets\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  geom_rug(alpha = 0.3)+\n  labs(x= \"Time (hours)\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#rug-plots-supplement-other-displays",
+    "href": "lectures/04-quantitative.html#rug-plots-supplement-other-displays",
+    "title": "Data visualization: quantitative data",
+    "section": "Rug plots supplement other displays",
+    "text": "Rug plots supplement other displays\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = \"\")) +\n  geom_violin() +\n  geom_rug(alpha = 0.3)+\n  labs(x= \"Time (hours)\")\n\n\n\n\n\n\n\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  stat_ecdf() +\n  geom_rug(alpha = 0.3)+\n  labs(x= \"Time (hours)\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#summarizing-2d-quantitative-data",
+    "href": "lectures/04-quantitative.html#summarizing-2d-quantitative-data",
+    "title": "Data visualization: quantitative data",
+    "section": "Summarizing 2D quantitative data",
+    "text": "Summarizing 2D quantitative data\n\nDirection/trend (positive, negative)\nStrength of the relationship (strong, moderate, weak)\nLinearity (linear, non-linear)\n\n\nBig picture\n\nScatterplots are by far the most common visual\nRegression analysis is by far the most popular analysis (coming in t - 2 weeks!)\nRelationships may vary across other variables, e.g., categorical variables\n\nNote: for this section, we will be using our race_stats_2019 dataset to compare 80+ ultramarathon races that took place in 2019!"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#making-scatterplots",
+    "href": "lectures/04-quantitative.html#making-scatterplots",
+    "title": "Data visualization: quantitative data",
+    "section": "Making scatterplots",
+    "text": "Making scatterplots\n\n\n\nUse geom_point(): each point is a race\nDisplaying the joint (bivariate) distribution\nAdjust transparency with alpha to visualize overlap\n\nProvides better understanding of joint frequency\nEspecially important with larger datasets\nSee also: ggblend\n\n\n\n\nrace_stats_2019 |&gt; \n  ggplot(aes(x = elevation_gain, y = mean_finish_time)) +\n  geom_point(color = \"navy\", size = 4, alpha = 0.5)+\n  scale_x_continuous(labels = scales::label_comma())+\n  labs(x = \"Elevation Gain (m)\", y = \"Avg finish time (hrs)\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-1",
+    "href": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-1",
+    "title": "Data visualization: quantitative data",
+    "section": "Summarizing 2D quantitative data",
+    "text": "Summarizing 2D quantitative data\n\n\n\n\n\n\n\n\n\n\n\n\nCorrelation coefficient\n\ncor(race_stats_2019$elevation_gain, \n    race_stats_2019$mean_finish_time, \n    use = \"complete.obs\")\n\n[1] 0.8232547\n\n\nNote: the default correlation you get from cor() is Pearson correlation coefficient\nOther correlations:\n\nSpearman’s correlation\nKendall rank correlation coefficient\nand more"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#displaying-trend-line-linear-regression-a-preview",
+    "href": "lectures/04-quantitative.html#displaying-trend-line-linear-regression-a-preview",
+    "title": "Data visualization: quantitative data",
+    "section": "Displaying trend line: linear regression(a preview)",
+    "text": "Displaying trend line: linear regression(a preview)\n\n\n\nDisplay regression line formean finish time ~ elevation gain\n95% confidence intervals by default\nEstimating the conditional expectation of mean finish time | elevation gain\n\n\\(\\mathbb{E}[\\) mean finish time \\(\\mid\\) elevation gain \\(]\\)\n\n\n\n\nrace_stats_2019 |&gt; \n  ggplot(aes(x = elevation_gain, y = mean_finish_time)) +\n  geom_point(color = \"navy\", size = 4, alpha = 0.5)+\n  geom_smooth(method = \"lm\", linewidth = 2)+\n  labs(x = \"Elevation Gain (m)\", y = \"Avg finish time (hrs)\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-2",
+    "href": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-2",
+    "title": "Data visualization: quantitative data",
+    "section": "Summarizing 2D quantitative data",
+    "text": "Summarizing 2D quantitative data\n\n\nAdd rug plots to supplement scatterplot\n\nrace_stats_2019 |&gt; \n  ggplot(aes(x = elevation_gain, y = mean_finish_time)) +\n  geom_point(color = \"navy\", size = 4, alpha = 0.5) +\n  geom_rug(alpha = 0.4)+\n  labs(x = \"Elevation Gain (m)\", y = \"Avg finish time (hrs)\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#pairs-plot",
+    "href": "lectures/04-quantitative.html#pairs-plot",
+    "title": "Data visualization: quantitative data",
+    "section": "Pairs plot",
+    "text": "Pairs plot\n\nlibrary(GGally)\nrace_stats_2019 |&gt; \n  ungroup() |&gt;\n  select(elevation_gain, elevation_loss, mean_finish_time, n_finishers) |&gt; \n  ggpairs(aes(alpha=0.3)) # note: alpha in aes() here, even though it is not a variable"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#continuous-by-categorical-side-by-side-plots",
+    "href": "lectures/04-quantitative.html#continuous-by-categorical-side-by-side-plots",
+    "title": "Data visualization: quantitative data",
+    "section": "Continuous by categorical: side by side plots",
+    "text": "Continuous by categorical: side by side plots\n\n\n\nwser &lt;- wser |&gt;\n  mutate(age_grp = case_when(age &lt;= 39 ~ \"22-39\", \n                             age &gt; 39 & age &lt;= 49 ~ \"40-49\", \n                             age &gt; 49 & age &lt;= 59 ~ \"50-59\", \n                             age &gt; 59 ~ \"60+\"))\n  \nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = age_grp))+\n  geom_boxplot()+\n  labs(x = \"Time (hours)\", y = \"Age group\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#continuous-by-categorical-ecdf",
+    "href": "lectures/04-quantitative.html#continuous-by-categorical-ecdf",
+    "title": "Data visualization: quantitative data",
+    "section": "Continuous by categorical: ECDF",
+    "text": "Continuous by categorical: ECDF\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours, color = age_grp)) +\n  stat_ecdf(linewidth = 1) +\n  theme(legend.position = \"bottom\")+\n  scale_color_viridis_d()+\n  labs(x = \"Time (hours)\", color = \"Age group\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#continuous-by-categorical-density-plot",
+    "href": "lectures/04-quantitative.html#continuous-by-categorical-density-plot",
+    "title": "Data visualization: quantitative data",
+    "section": "Continuous by categorical: density plot",
+    "text": "Continuous by categorical: density plot\n\n wser |&gt; \n  ggplot(aes(x = time_in_hours, color = age_grp)) +\n  geom_density() +\n  scale_color_viridis_d()+\n  labs(color = \"Age group\", x = \"Time (hours)\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#continuous-by-categorical-ridgeline-plot",
+    "href": "lectures/04-quantitative.html#continuous-by-categorical-ridgeline-plot",
+    "title": "Data visualization: quantitative data",
+    "section": "Continuous by categorical: ridgeline plot",
+    "text": "Continuous by categorical: ridgeline plot\nFor more, see this tutorial\n\nlibrary(ggridges)\nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = age_grp, fill = age_grp)) +\n  geom_density_ridges(scale = 1.5)+\n  scale_fill_viridis_d()+\n  labs(x = \"Time (hours)\", y = \"Age group\")+\n  theme(legend.position = \"none\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#what-about-for-histograms",
+    "href": "lectures/04-quantitative.html#what-about-for-histograms",
+    "title": "Data visualization: quantitative data",
+    "section": "What about for histograms?",
+    "text": "What about for histograms?\n\n wser |&gt; \n  ggplot(aes(x = time_in_hours, fill = age_grp)) +\n  geom_histogram(bins = 15) +\n  scale_fill_viridis_d(alpha = 0.6)+\n  labs(fill = \"Age group\", x = \"Time (hours)\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#what-about-facets",
+    "href": "lectures/04-quantitative.html#what-about-facets",
+    "title": "Data visualization: quantitative data",
+    "section": "What about facets?",
+    "text": "What about facets?\nDifference between facet_wrap and facet_grid\n\nwser |&gt;\n  ggplot(aes(x = time_in_hours)) +\n  geom_histogram(bins = 15) +\n  facet_wrap(~ age_grp, nrow = 1)+\n  labs(x= \"Time (hours)\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#what-about-facets-1",
+    "href": "lectures/04-quantitative.html#what-about-facets-1",
+    "title": "Data visualization: quantitative data",
+    "section": "What about facets?",
+    "text": "What about facets?\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  geom_histogram(bins = 15) +\n  facet_grid(age_grp ~ ., margins = TRUE)+\n  labs(x = \"Time (hours)\")"
+  },
+  {
+    "objectID": "lectures/04-quantitative.html#appendix-pre-processing-steps",
+    "href": "lectures/04-quantitative.html#appendix-pre-processing-steps",
+    "title": "Data visualization: quantitative data",
+    "section": "Appendix: Pre-processing steps",
+    "text": "Appendix: Pre-processing steps\n\nultra_rankings &lt;- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/ultra_rankings.csv')\nrace &lt;- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/race.csv')\n\n# join race results with course information \nruns &lt;- ultra_rankings |&gt; \n  # include race information for each race completed by a runner\n  left_join(race, by = \"race_year_id\") |&gt; \n  # remove incomplete races or races &lt; ~100 miles\n  filter(!is.na(time_in_seconds) & distance &gt; 150) |&gt; \n  # convert time in seconds to hours\n  mutate(time_in_hours = (time_in_seconds/60)/60) \n\n# 2019 ultramarathon race course information \nrace_stats_2019 &lt;- runs |&gt; \n  # only keep results from 2019 (courses can change year to year)\n  filter(year(date) == 2019) |&gt;\n  # a race may have multiple events, so we group by both variables \n  group_by(race, event) |&gt; \n  # number of finishers for particular race event \n  mutate(n_finishers = n()) |&gt; \n  # only keep race events with at least 50 finishers\n  filter(n_finishers &gt;= 50) |&gt; \n  # average time of finishers for particular race event\n  mutate(mean_finish_time = mean(time_in_hours)) |&gt;\n  # collapse across individuals: we only want course information\n  distinct(race, event, elevation_gain, elevation_loss, n_finishers, mean_finish_time)"
   },
   {
     "objectID": "lectures.html",
@@ -585,7 +739,7 @@
     "href": "lectures.html#contents",
     "title": "Lectures",
     "section": "Contents",
-    "text": "Contents\n\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 1\nWelcome to CMSACamp 2026\nslides\n\n\nLecture 1\nJune 2\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 3\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 4\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 5\nData visualization: quantitative data\nslides"
+    "text": "Contents\n\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 1\nWelcome to CMSACamp 2026\nslides\n\n\nLecture 1\nJune 2\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 3\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 4\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 5\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 8\nData visualization: density estimation\nslides"
   },
   {
     "objectID": "bios.html",
@@ -1078,207 +1232,473 @@
     "text": "Step 6: Modify the repository\nTo add a new file from your local repository to GitHub:\n\nIn RStudio, open a new file (could be anything - e.g. R Script, Quarto document, etc.).\nFill the file with some code/comments/etc. (This is just for illustration purpose, to show how you can add a file to GitHub from your computer)\nSave the file. At this point, this file should show up in the “Git” pane (in the top right of RStudio)\nCheck the box under “Staged” in the Git pane to stage the file for a commit\nClick on “Commit” in the Git pane\nIn the new window that opens, add a “Commit message”, then click on the “Commit” button\nClick on “Push” to push your changes from your local repository to the remote repository on GitHub\n\nIf you encountered no errors then you’re done! While working on a single project you will repeatedly perform the tasks in Step 6: make changes to files, commit changes, then push changes\nEvery time you want to create a new repository, you can just start with Step 4, use GitHub, copy the repository into RStudio, then repeatedly update, commit, and push.\nAsk us for help if you have any questions."
   },
   {
-    "objectID": "lectures/04-quantitative.html#quantitative-data",
-    "href": "lectures/04-quantitative.html#quantitative-data",
-    "title": "Data visualization: quantitative data",
-    "section": "Quantitative data",
-    "text": "Quantitative data\nTwo different versions of quantitative data:\nDiscrete: countable and has clear space between values (i.e. whole number only)\n\nExamples: number of goals scored in a game, number of children in a family\n\nContinuous: can take any value within some interval\n\nExamples: price of houses in Pittsburgh, water temperature, wind speed"
+    "objectID": "lectures/07-hierarchical.html#the-big-picture",
+    "href": "lectures/07-hierarchical.html#the-big-picture",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "The big picture",
+    "text": "The big picture\n\n\\(k\\)-means clustering: partition the observations into a pre-specified number of clusters\n\n\nHierarchical clustering: does not require commitment to a particular choice of clusters\n\nIn fact, we end up with a tree-like visual representation of the observations, called a dendrogram\nThis allows us to view at once the clusterings obtained for each possible number of clusters\nCommon approach: agglomerative (bottom-up) hierarchical clustering: build a dendrogram starting from the leaves and combining clusters up to the trunk\nThere’s also divisive (top-down) hierarchical clustering: start with one large cluster and then break the cluster recursively into smaller and smaller pieces"
   },
   {
-    "objectID": "lectures/04-quantitative.html#data",
-    "href": "lectures/04-quantitative.html#data",
-    "title": "Data visualization: quantitative data",
-    "section": "Data",
-    "text": "Data\nWe will explore ultra trail running data courtesy of TidyTuesday and Benjamin Nowak of the International Trail Running Association (ITRA).\nThe data was pre-processed for this lecture (steps shown in appendix).\n\nlibrary(tidyverse)\nggplot2::theme_set(ggplot2::theme_light(base_size = 20)) # setting the ggplot theme\n\nruns &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/ultra_running.csv\") \nrace_stats_2019 &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/ultra_races_2019.csv\")"
+    "objectID": "lectures/07-hierarchical.html#the-big-picture-visually",
+    "href": "lectures/07-hierarchical.html#the-big-picture-visually",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "The big picture: visually",
+    "text": "The big picture: visually"
   },
   {
-    "objectID": "lectures/04-quantitative.html#western-states-endurance-run",
-    "href": "lectures/04-quantitative.html#western-states-endurance-run",
-    "title": "Data visualization: quantitative data",
-    "section": "Western States Endurance Run",
-    "text": "Western States Endurance Run\nFor the majority of the lecture, we will be using race results from the Western States Endurance Run.\n\nwser &lt;- runs |&gt;\n  filter(event == \"Western States Endurance Run\")\n\n\nHighlights from Western States 2024"
+    "objectID": "lectures/07-hierarchical.html#data-nba-player-statistics-per-100-possessions-2025-26-regular-season",
+    "href": "lectures/07-hierarchical.html#data-nba-player-statistics-per-100-possessions-2025-26-regular-season",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Data: NBA player statistics per 100 possessions (2025-26 regular season)",
+    "text": "Data: NBA player statistics per 100 possessions (2025-26 regular season)\n\nlibrary(tidyverse)\ntheme_set(theme_light())\nnba_players &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_players.csv\")\nglimpse(nba_players)\n\nRows: 465\nColumns: 33\n$ rk           &lt;dbl&gt; 41, 457, 393, 278, 329, 206, 187, 82, 452, 225, 170, 287,…\n$ player       &lt;chr&gt; \"A.J. Green\", \"A.J. Lawson\", \"AJ Johnson\", \"Aaron Gordon\"…\n$ age          &lt;dbl&gt; 26, 25, 21, 30, 29, 26, 27, 19, 22, 22, 23, 39, 31, 20, 2…\n$ team         &lt;chr&gt; \"MIL\", \"TOR\", \"2TM\", \"DEN\", \"HOU\", \"IND\", \"OKC\", \"UTA\", \"…\n$ pos          &lt;chr&gt; \"SG\", \"SG\", \"SG\", \"PF\", \"PG\", \"SF\", \"SG\", \"SF\", \"SG\", \"C\"…\n$ g            &lt;dbl&gt; 78, 24, 48, 36, 57, 45, 65, 72, 8, 71, 57, 45, 56, 48, 72…\n$ gs           &lt;dbl&gt; 68, 0, 0, 33, 1, 42, 21, 61, 1, 18, 16, 13, 0, 48, 72, 79…\n$ mp           &lt;dbl&gt; 2270, 226, 454, 1005, 781, 1335, 1414, 1988, 241, 1234, 1…\n$ fg           &lt;dbl&gt; 5.7, 7.3, 5.9, 9.6, 6.7, 7.5, 7.9, 9.3, 5.5, 5.1, 9.4, 6.…\n$ fga          &lt;dbl&gt; 13.4, 16.8, 18.3, 19.3, 16.1, 18.2, 18.3, 21.1, 13.4, 8.6…\n$ fg_percent   &lt;dbl&gt; 0.424, 0.436, 0.324, 0.497, 0.417, 0.414, 0.431, 0.443, 0…\n$ x3p          &lt;dbl&gt; 5.0, 4.1, 1.2, 3.0, 4.3, 3.7, 3.3, 3.2, 3.5, 0.1, 2.0, 3.…\n$ x3pa         &lt;dbl&gt; 12.0, 9.7, 5.9, 7.6, 10.9, 9.9, 9.2, 9.4, 8.6, 0.2, 5.8, …\n$ x3p_percent  &lt;dbl&gt; 0.419, 0.422, 0.211, 0.389, 0.394, 0.379, 0.356, 0.344, 0…\n$ x2p          &lt;dbl&gt; 0.6, 3.2, 4.7, 6.7, 2.4, 3.8, 4.6, 6.1, 2.0, 5.0, 7.4, 3.…\n$ x2pa         &lt;dbl&gt; 1.4, 7.1, 12.4, 11.7, 5.2, 8.4, 9.1, 11.7, 4.7, 8.4, 13.6…\n$ x2p_percent  &lt;dbl&gt; 0.469, 0.455, 0.378, 0.568, 0.463, 0.455, 0.508, 0.522, 0…\n$ e_fg_percent &lt;dbl&gt; 0.612, 0.558, 0.358, 0.574, 0.550, 0.517, 0.521, 0.520, 0…\n$ ft           &lt;dbl&gt; 1.1, 3.0, 3.5, 6.1, 2.2, 3.3, 1.8, 1.6, 1.8, 3.1, 4.6, 1.…\n$ fta          &lt;dbl&gt; 1.3, 3.9, 4.2, 7.9, 2.6, 4.0, 2.5, 2.1, 2.0, 4.4, 5.3, 1.…\n$ ft_percent   &lt;dbl&gt; 0.855, 0.778, 0.850, 0.767, 0.854, 0.829, 0.736, 0.750, 0…\n$ orb          &lt;dbl&gt; 0.6, 1.9, 1.5, 2.5, 0.8, 1.7, 1.4, 2.5, 1.2, 5.0, 1.3, 2.…\n$ drb          &lt;dbl&gt; 4.0, 7.3, 4.3, 7.7, 2.9, 4.9, 5.4, 4.7, 3.7, 7.0, 4.9, 8.…\n$ trb          &lt;dbl&gt; 4.6, 9.3, 5.7, 10.1, 3.7, 6.7, 6.8, 7.1, 4.9, 12.0, 6.2, …\n$ ast          &lt;dbl&gt; 3.3, 1.5, 4.9, 4.7, 3.8, 3.1, 3.7, 3.1, 3.7, 1.3, 6.8, 5.…\n$ stl          &lt;dbl&gt; 0.8, 2.6, 1.1, 1.0, 1.7, 0.9, 2.1, 1.4, 1.8, 1.2, 2.3, 1.…\n$ blk          &lt;dbl&gt; 0.2, 0.9, 0.3, 0.5, 0.3, 0.8, 1.0, 1.2, 0.2, 3.2, 0.6, 2.…\n$ tov          &lt;dbl&gt; 1.6, 1.3, 3.1, 1.8, 2.4, 2.2, 2.8, 2.5, 1.2, 2.2, 2.7, 2.…\n$ pf           &lt;dbl&gt; 3.9, 5.8, 3.1, 3.0, 4.6, 4.4, 2.8, 4.6, 5.3, 6.0, 3.9, 2.…\n$ pts          &lt;dbl&gt; 17.5, 21.8, 16.7, 28.3, 20.0, 22.1, 20.9, 23.4, 16.3, 13.…\n$ o_rtg        &lt;dbl&gt; 118, 117, 88, 127, 117, 107, 104, 105, 119, 123, 118, 116…\n$ d_rtg        &lt;dbl&gt; 123, 111, 123, 118, 117, 121, 109, 124, 121, 114, 109, 11…\n$ awards       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, \"6MOY-5\", NA, NA,…"
   },
   {
-    "objectID": "lectures/04-quantitative.html#summarizing-1d-quantitative-data",
-    "href": "lectures/04-quantitative.html#summarizing-1d-quantitative-data",
-    "title": "Data visualization: quantitative data",
-    "section": "Summarizing 1D quantitative data",
-    "text": "Summarizing 1D quantitative data\n\nCenter: mean, median, number and location of modes\n\n\n\nSpread: range, variance, standard deviation, IQR, etc.\n\n\n\n\nShape: skew vs symmetry, outliers, heavy vs light tails, etc.\n\n\n\nCompute various statistics in R with summary(), mean(), median(), quantile(), range(), sd(), var(), etc.\n\n\nExample: Summarizing the finishing time (in hours) of Western States runners\n\nsummary(wser$time_in_hours)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  14.50   22.89   26.51   25.42   28.68   30.00 \n\nsd(wser$time_in_hours, na.rm = TRUE)\n\n[1] 3.742693"
+    "objectID": "lectures/07-hierarchical.html#general-setup",
+    "href": "lectures/07-hierarchical.html#general-setup",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "General setup",
+    "text": "General setup\n\n\n\nGiven a dataset with \\(p\\) variables (columns) and \\(n\\) observations (rows) \\(x_1,\\dots,x_n\\)\nCompute the distance/dissimilarity between observations\ne.g. Euclidean distance between observations \\(i\\) and \\(j\\)\n\n\\[d_{ij} = \\sqrt{(x_{i1}-x_{j1})^2 + \\cdots + (x_{ip}-x_{jp})^2}\\]\nWhat are the distances between these players using x3pa (3-point attempts) and trb (total rebounds)?\n\n\n\nnba_players |&gt; \n  ggplot(aes(x = x3pa, y = trb)) +\n  geom_point(size = 4, alpha=0.7)"
   },
   {
-    "objectID": "lectures/04-quantitative.html#boxplots-visualize-summary-statistics",
-    "href": "lectures/04-quantitative.html#boxplots-visualize-summary-statistics",
-    "title": "Data visualization: quantitative data",
-    "section": "Boxplots visualize summary statistics",
-    "text": "Boxplots visualize summary statistics\n\n\nPros:\n\nDisplays outliers, percentiles, spread, skew\nUseful for side-by-side comparison\n\nCons:\n\nDoes not display the full distribution shape\nDoes not display modes\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  geom_boxplot() +\n  theme(axis.text.y = element_blank())+\n  labs(x= 'Time (hours)')"
+    "objectID": "lectures/07-hierarchical.html#remember-to-standardize",
+    "href": "lectures/07-hierarchical.html#remember-to-standardize",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Remember to standardize!",
+    "text": "Remember to standardize!\n\n\n\nnba_players &lt;- nba_players |&gt; \n  mutate(\n    std_x3pa = as.numeric(scale(x3pa)),\n    std_trb = as.numeric(scale(trb))\n  )\n\nnba_players |&gt; \n  ggplot(aes(x = std_x3pa, y = std_trb)) +\n  geom_point(size = 4) +\n  coord_fixed()"
   },
   {
-    "objectID": "lectures/04-quantitative.html#histograms-display-1d-continuous-distributions",
-    "href": "lectures/04-quantitative.html#histograms-display-1d-continuous-distributions",
-    "title": "Data visualization: quantitative data",
-    "section": "Histograms display 1D continuous distributions",
-    "text": "Histograms display 1D continuous distributions\n\n\n\\(\\displaystyle \\text{# total obs.} = \\sum_{j=1}^k \\text{# obs. in bin }j\\)\nPros:\n\nDisplays full shape of distribution\nEasy to interpret\n\nCons:\n\nHave to choose number of bins and bin locations (will revisit later)\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  geom_histogram()+\n  labs(x= \"Time (hours)\")"
+    "objectID": "lectures/07-hierarchical.html#compute-the-distance-matrix-using-dist",
+    "href": "lectures/07-hierarchical.html#compute-the-distance-matrix-using-dist",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Compute the distance matrix using dist()",
+    "text": "Compute the distance matrix using dist()\n\nCompute pairwise Euclidean distance\n\n\nplayers_dist &lt;- nba_players |&gt; \n  select(std_x3pa, std_trb) |&gt; \n  dist()\n\n\nReturns an object of dist class… but not a matrix\nConvert to a matrix, then set the row and column names:\n\n\nplayers_dist_matrix &lt;- as.matrix(players_dist)\nrownames(players_dist_matrix) &lt;- nba_players$player\ncolnames(players_dist_matrix) &lt;- nba_players$player\nplayers_dist_matrix[1:4, 1:4]\n\n             A.J. Green A.J. Lawson AJ Johnson Aaron Gordon\nA.J. Green     0.000000   1.3720848   1.691405    1.8662900\nA.J. Lawson    1.372085   0.0000000   1.396882    0.6103259\nAJ Johnson     1.691405   1.3968817   0.000000    1.2326878\nAaron Gordon   1.866290   0.6103259   1.232688    0.0000000"
   },
   {
-    "objectID": "lectures/04-quantitative.html#density-plots-are-a-smoothed-continuous-version-of-a-histogram",
-    "href": "lectures/04-quantitative.html#density-plots-are-a-smoothed-continuous-version-of-a-histogram",
-    "title": "Data visualization: quantitative data",
-    "section": "Density plots are a smoothed, continuous version of a histogram",
-    "text": "Density plots are a smoothed, continuous version of a histogram\n\n\nPros:\n\nBin-free\nExcellent for comparing multiple categories at once\nEasy to view full shape of distribution\n\nCons:\n\nNo individual data points or frequency count\nSmooth curve can sometimes extend into ranges where no real data exists\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  geom_density()+\n  labs(x= \"Time (hours)\")\n\n\n\n\n\n\n\n\n\nWe will talk more about density estimation on Monday!"
+    "objectID": "lectures/07-hierarchical.html#hierarchical-clustering-in-simple-terms",
+    "href": "lectures/07-hierarchical.html#hierarchical-clustering-in-simple-terms",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Hierarchical clustering in simple terms",
+    "text": "Hierarchical clustering in simple terms\n\n\n\nKey idea: Builds a hierarchy in a agglomerative/bottom-up fashion\nAlgorithm (informal version)\n\nStart with each point in its own cluster\nIdentify the closest two clusters and merge them\nRepeat\nEnds when all points are in a single cluster\n\n\n\nToy example"
   },
   {
-    "objectID": "lectures/04-quantitative.html#display-the-data-points-directly-with-beeswarm-plots",
-    "href": "lectures/04-quantitative.html#display-the-data-points-directly-with-beeswarm-plots",
-    "title": "Data visualization: quantitative data",
-    "section": "Display the data points directly with beeswarm plots",
-    "text": "Display the data points directly with beeswarm plots\n\n\nPros:\n\nDisplays each data point\nEasy to view full shape of distribution\n\nCons:\n\nCan be overbearing with large datasets\nWhich algorithm for arranging points?\n\nA few different methods\n\n\n\n\nlibrary(ggbeeswarm)\nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = \"\")) +\n  geom_beeswarm(cex = 1, size = 0L)+\n  labs(x= \"Time (hours)\", y=\"\")"
+    "objectID": "lectures/07-hierarchical.html#toy-example",
+    "href": "lectures/07-hierarchical.html#toy-example",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Toy example",
+    "text": "Toy example"
   },
   {
-    "objectID": "lectures/04-quantitative.html#smooth-summary-with-violin-plots",
-    "href": "lectures/04-quantitative.html#smooth-summary-with-violin-plots",
-    "title": "Data visualization: quantitative data",
-    "section": "Smooth summary with violin plots",
-    "text": "Smooth summary with violin plots\n\n\nPros:\n\nDisplays full shape of distribution\nCan easily layer…\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = \"\")) +\n  geom_violin()+\n  labs(x= \"Time (hours)\", y =\"\")"
+    "objectID": "lectures/07-hierarchical.html#hierarchical-clustering-1",
+    "href": "lectures/07-hierarchical.html#hierarchical-clustering-1",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Hierarchical clustering",
+    "text": "Hierarchical clustering\nStart with all observations in their own cluster\n\n\nStep 1: Compute the pairwise dissimilarities between each cluster\n\ne.g., distance matrix on previous slides (using Euclidean distance)\nIn practice, we can also try out different types of distance\n\n\n\n\n\nStep 2: Identify the pair of clusters that are least dissimilar\n\n\n\n\nStep 3: Fuse these two clusters into a new cluster\n\n\n\n\nRepeat Steps 1 to 3 until all observations are in the same cluster\n\n\n\n“Bottom-up”, agglomerative clustering that forms a tree/hierarchy of merging\nNo mention of any randomness! And no mention of the number of clusters \\(k\\)!"
   },
   {
-    "objectID": "lectures/04-quantitative.html#smooth-summary-with-violin-plots-box-plots",
-    "href": "lectures/04-quantitative.html#smooth-summary-with-violin-plots-box-plots",
-    "title": "Data visualization: quantitative data",
-    "section": "Smooth summary with violin plots + box plots",
-    "text": "Smooth summary with violin plots + box plots\n\n\nPros:\n\nDisplays full shape of distribution\nCan easily layer… with box plots on top\n\nCons:\n\nSummary of data via density estimate (no sample size)\nMirror image is duplicate information\nMay be harder to interpret for general audience\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = \"\")) +\n  geom_violin() +\n  geom_boxplot(width = 0.25)+\n  labs(x= \"Time (hours)\", y = \"\")"
+    "objectID": "lectures/07-hierarchical.html#dissimilarity-between-clusters",
+    "href": "lectures/07-hierarchical.html#dissimilarity-between-clusters",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Dissimilarity between clusters",
+    "text": "Dissimilarity between clusters\n\nWe know how to compute distance/dissimilarity between two observations\n\n\n\nBut what about distance/dissimilarity between a cluster and an observation, or between two clusters?\n\n\n\n\nWe need to choose a linkage function. Clusters are built up by linking them together"
   },
   {
-    "objectID": "lectures/04-quantitative.html#what-do-visualizations-of-continuous-distributions-display",
-    "href": "lectures/04-quantitative.html#what-do-visualizations-of-continuous-distributions-display",
-    "title": "Data visualization: quantitative data",
-    "section": "What do visualizations of continuous distributions display?",
-    "text": "What do visualizations of continuous distributions display?\nProbability that continuous variable \\(X\\) takes a particular value is 0\ne.g. \\(P(\\) time_in_hours \\(= 24) = 0\\) (why?)\nFor continuous variables, the cumulative distribution function (CDF) is \\[F(x) = P(X \\leq x)\\]\nFor \\(n\\) observations, the empirical CDF (ECDF) can be computed based on the observed data \\[\\hat{F}_n(x)  = \\frac{\\text{# obs. with variable} \\leq x}{n} = \\frac{1}{n} \\sum_{i=1}^{n} I (x_i \\leq x)\\]\nwhere \\(I()\\) is the indicator function, i.e. ifelse(x_i &lt;= x, 1, 0)"
+    "objectID": "lectures/07-hierarchical.html#linkages",
+    "href": "lectures/07-hierarchical.html#linkages",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Linkages",
+    "text": "Linkages\n\nLinkage: function \\(d(C_1, C_2)\\) that takes two groups (clusters) \\(C_1\\) and \\(C_2\\) and returns a dissimilarity score between them\n\n\n\nFirst, compute all pairwise dissimilarities between the observations in the two clusters (i.e., compute the distance matrix between observations)\n\n\n\n\nAgglomerative clustering, given the linkage:\n\nStart with all points in their own cluster\nUntil there is only one cluster, repeatedly: merge the two clusters \\(C_1\\), \\(C_2\\) such that \\(d(C_1, C_2)\\) is the smallest\n\n\n\n\n\nThere are different types of linkage: complete, single, average,…"
   },
   {
-    "objectID": "lectures/04-quantitative.html#display-full-distribution-with-ecdf-plot",
-    "href": "lectures/04-quantitative.html#display-full-distribution-with-ecdf-plot",
-    "title": "Data visualization: quantitative data",
-    "section": "Display full distribution with ECDF plot",
-    "text": "Display full distribution with ECDF plot\n\n\nPros:\n\nDisplays all of your data at once\nAs \\(n \\rightarrow \\infty\\), the ECDF \\(\\hat F_n(x)\\) converges to the true CDF \\(F(x)\\)\n\nCons:\n\nWhat are the cons?\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  stat_ecdf()+\n  labs(x= \"Time (hours)\")"
+    "objectID": "lectures/07-hierarchical.html#complete-linkage",
+    "href": "lectures/07-hierarchical.html#complete-linkage",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Complete linkage",
+    "text": "Complete linkage\nIn complete linkage, we use the largest dissimilarity between two points of different clusters (maximal inter-cluster dissimilarity) \\[d_\\text{complete}(C_1, C_2) = \\underset{i \\in C_1, j \\in C_2}{\\text{max}} d_{ij}\\]\nBelow, the complete linkage score \\(d_\\text{complete}(C_1, C_2)\\) is the distance of the furthest pair"
   },
   {
-    "objectID": "lectures/04-quantitative.html#zooming-in-on-our-ecdf",
-    "href": "lectures/04-quantitative.html#zooming-in-on-our-ecdf",
-    "title": "Data visualization: quantitative data",
-    "section": "Zooming in on our ECDF",
-    "text": "Zooming in on our ECDF\n\n\n\nOn the previous plot, we have enough data points that the ECDF looks like a smooth curve\nKeep in mind, however, while the CDF is a curve, the ECDF is a step function\n\nEach jump size of \\(1/n\\) is a single observed point\n\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  stat_ecdf()+\n  coord_cartesian(xlim = c(16, 17), ylim = c(0.01, 0.03))+\n  labs(x= \"Time (hours)\")"
+    "objectID": "lectures/07-hierarchical.html#single-linkage",
+    "href": "lectures/07-hierarchical.html#single-linkage",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Single linkage",
+    "text": "Single linkage\nIn single linkage, we use the smallest dissimilarity between two points of different clusters (minimal inter-cluster dissimilarity) \\[d_\\text{single}(C_1, C_2) = \\underset{i \\in C_1, j \\in C_2}{\\text{min}} d_{ij}\\]\nBelow, the single linkage score \\(d_\\text{single}(C_1, C_2)\\) is the distance of the closest pair"
   },
   {
-    "objectID": "lectures/04-quantitative.html#rug-plots-display-raw-data",
-    "href": "lectures/04-quantitative.html#rug-plots-display-raw-data",
-    "title": "Data visualization: quantitative data",
-    "section": "Rug plots display raw data",
-    "text": "Rug plots display raw data\n\n\nPros:\n\nDisplays raw data points\nUseful supplement for summaries and 2D plots\n\nCons:\n\nCan be overbearing for large datasets\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  geom_rug(alpha = 0.3)+\n  labs(x= \"Time (hours)\")"
+    "objectID": "lectures/07-hierarchical.html#average-linkage",
+    "href": "lectures/07-hierarchical.html#average-linkage",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Average linkage",
+    "text": "Average linkage\nIn average linkage, we use the average dissimilarity over all points of different clusters (mean inter-cluster dissimilarity) \\[d_\\text{average}(C_1, C_2) = \\frac{1}{|C_1||C_2|} \\sum_{i \\in C_1, j \\in C_2} d_{ij}\\]\nIn short, the average linkage score \\(d_\\text{average}(C_1, C_2)\\) is the average distance across all pairs (of different clusters)"
   },
   {
-    "objectID": "lectures/04-quantitative.html#rug-plots-supplement-other-displays",
-    "href": "lectures/04-quantitative.html#rug-plots-supplement-other-displays",
-    "title": "Data visualization: quantitative data",
-    "section": "Rug plots supplement other displays",
-    "text": "Rug plots supplement other displays\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = \"\")) +\n  geom_violin() +\n  geom_rug(alpha = 0.3)+\n  labs(x= \"Time (hours)\")\n\n\n\n\n\n\n\n\n\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  stat_ecdf() +\n  geom_rug(alpha = 0.3)+\n  labs(x= \"Time (hours)\")"
+    "objectID": "lectures/07-hierarchical.html#complete-linkage-example",
+    "href": "lectures/07-hierarchical.html#complete-linkage-example",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Complete linkage example",
+    "text": "Complete linkage example\n\n\n\nUse hclust() with a dist() object\nUse complete linkage by default\n\n\nnba_complete &lt;- players_dist |&gt; \n  hclust(method = \"complete\")\n\n\nUse cutree() to return cluster labels\nReturns compact clusters (similar to \\(k\\)-means)\n\n\nnba_players |&gt; \n  mutate(\n    cluster = as.factor(cutree(nba_complete, k = 3))\n  ) |&gt;\n  ggplot(aes(x = std_x3pa, y = std_trb,\n             color = cluster)) +\n  geom_point(size = 4) + \n  ggthemes::scale_color_colorblind() +\n  theme(legend.position = \"bottom\")"
   },
   {
-    "objectID": "lectures/04-quantitative.html#summarizing-2d-quantitative-data",
-    "href": "lectures/04-quantitative.html#summarizing-2d-quantitative-data",
-    "title": "Data visualization: quantitative data",
-    "section": "Summarizing 2D quantitative data",
-    "text": "Summarizing 2D quantitative data\n\nDirection/trend (positive, negative)\nStrength of the relationship (strong, moderate, weak)\nLinearity (linear, non-linear)\n\n\nBig picture\n\nScatterplots are by far the most common visual\nRegression analysis is by far the most popular analysis (coming in t - 2 weeks!)\nRelationships may vary across other variables, e.g., categorical variables\n\nNote: for this section, we will be using our race_stats_2019 dataset to compare 80+ ultramarathon races that took place in 2019!"
+    "objectID": "lectures/07-hierarchical.html#what-are-we-cutting-dendrograms",
+    "href": "lectures/07-hierarchical.html#what-are-we-cutting-dendrograms",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "What are we cutting? Dendrograms",
+    "text": "What are we cutting? Dendrograms\n\n\nUse the ggdendro package (instead of plot())\n\nlibrary(ggdendro)\nnba_complete |&gt; \n  ggdendrogram(labels = FALSE, \n               leaf_labels = FALSE,\n               theme_dendro = FALSE) +  \n  labs(y = \"Dissimilarity between clusters\") +\n  theme(axis.text.x = element_blank(), \n        axis.title.x = element_blank(),\n        panel.grid = element_blank())\n\n\nEach leaf is one observation\nHeight of branch indicates dissimilarity between clusters\n\n(After first step) Horizontal position along x-axis means nothing"
   },
   {
-    "objectID": "lectures/04-quantitative.html#making-scatterplots",
-    "href": "lectures/04-quantitative.html#making-scatterplots",
-    "title": "Data visualization: quantitative data",
-    "section": "Making scatterplots",
-    "text": "Making scatterplots\n\n\n\nUse geom_point(): each point is a race\nDisplaying the joint (bivariate) distribution\nAdjust transparency with alpha to visualize overlap\n\nProvides better understanding of joint frequency\nEspecially important with larger datasets\nSee also: ggblend\n\n\n\n\nrace_stats_2019 |&gt; \n  ggplot(aes(x = elevation_gain, y = mean_finish_time)) +\n  geom_point(color = \"navy\", size = 4, alpha = 0.5)+\n  scale_x_continuous(labels = scales::label_comma())+\n  labs(x = \"Elevation Gain (m)\", y = \"Avg finish time (hrs)\")"
+    "objectID": "lectures/07-hierarchical.html#some-notes-on-dendrograms",
+    "href": "lectures/07-hierarchical.html#some-notes-on-dendrograms",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Some notes on dendrograms",
+    "text": "Some notes on dendrograms\n\nDendrograms are often misinterpreted\n\n\n\nConclusions about the distance/dissimilarity between two observations should not be implied by their relationship on the horizontal axis!\n\n\n\n\nRather, the height at which an observation joins a cluster indicates the distance between that observation and the cluster with which it is merged"
   },
   {
-    "objectID": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-1",
-    "href": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-1",
-    "title": "Data visualization: quantitative data",
-    "section": "Summarizing 2D quantitative data",
-    "text": "Summarizing 2D quantitative data\n\n\n\n\n\n\n\n\n\n\n\n\nCorrelation coefficient\n\ncor(race_stats_2019$elevation_gain, \n    race_stats_2019$mean_finish_time, \n    use = \"complete.obs\")\n\n[1] 0.8232547\n\n\nNote: the default correlation you get from cor() is Pearson correlation coefficient\nOther correlations:\n\nSpearman’s correlation\nKendall rank correlation coefficient\nand more"
+    "objectID": "lectures/07-hierarchical.html#toy-example-1",
+    "href": "lectures/07-hierarchical.html#toy-example-1",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Toy example",
+    "text": "Toy example\n\nConsider observations 9 and 2. They appear close on the dendrogram\nBut their closeness on the dendrogram imply they are approximately the same distance measure from the cluster that they are fused to (observations 5, 7, 8)\nIt by no means implies that observation 9 and 2 are close to one another."
   },
   {
-    "objectID": "lectures/04-quantitative.html#displaying-trend-line-linear-regression-a-preview",
-    "href": "lectures/04-quantitative.html#displaying-trend-line-linear-regression-a-preview",
-    "title": "Data visualization: quantitative data",
-    "section": "Displaying trend line: linear regression(a preview)",
-    "text": "Displaying trend line: linear regression(a preview)\n\n\n\nDisplay regression line formean finish time ~ elevation gain\n95% confidence intervals by default\nEstimating the conditional expectation of mean finish time | elevation gain\n\n\\(\\mathbb{E}[\\) mean finish time \\(\\mid\\) elevation gain \\(]\\)\n\n\n\n\nrace_stats_2019 |&gt; \n  ggplot(aes(x = elevation_gain, y = mean_finish_time)) +\n  geom_point(color = \"navy\", size = 4, alpha = 0.5)+\n  geom_smooth(method = \"lm\", linewidth = 2)+\n  labs(x = \"Elevation Gain (m)\", y = \"Avg finish time (hrs)\")"
+    "objectID": "lectures/07-hierarchical.html#cut-dendrograms-to-obtain-cluster-labels",
+    "href": "lectures/07-hierarchical.html#cut-dendrograms-to-obtain-cluster-labels",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Cut dendrograms to obtain cluster labels",
+    "text": "Cut dendrograms to obtain cluster labels\n\n\nSpecify the height to cut with h (instead of k)\n\n\n\n\n\n\n\n\n\n\nFor example, cutree(nba_complete, h = 4)"
   },
   {
-    "objectID": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-2",
-    "href": "lectures/04-quantitative.html#summarizing-2d-quantitative-data-2",
-    "title": "Data visualization: quantitative data",
-    "section": "Summarizing 2D quantitative data",
-    "text": "Summarizing 2D quantitative data\n\n\nAdd rug plots to supplement scatterplot\n\nrace_stats_2019 |&gt; \n  ggplot(aes(x = elevation_gain, y = mean_finish_time)) +\n  geom_point(color = \"navy\", size = 4, alpha = 0.5) +\n  geom_rug(alpha = 0.4)+\n  labs(x = \"Elevation Gain (m)\", y = \"Avg finish time (hrs)\")"
+    "objectID": "lectures/07-hierarchical.html#single-linkage-example",
+    "href": "lectures/07-hierarchical.html#single-linkage-example",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Single linkage example",
+    "text": "Single linkage example\n\n\nChange the method argument to single\n\n\n\n\n\n\n\n\n\n\nResults in a chaining effect"
   },
   {
-    "objectID": "lectures/04-quantitative.html#pairs-plot",
-    "href": "lectures/04-quantitative.html#pairs-plot",
-    "title": "Data visualization: quantitative data",
-    "section": "Pairs plot",
-    "text": "Pairs plot\n\nlibrary(GGally)\nrace_stats_2019 |&gt; \n  ungroup() |&gt;\n  select(elevation_gain, elevation_loss, mean_finish_time, n_finishers) |&gt; \n  ggpairs(aes(alpha=0.3)) # note: alpha in aes() here, even though it is not a variable"
+    "objectID": "lectures/07-hierarchical.html#average-linkage-example",
+    "href": "lectures/07-hierarchical.html#average-linkage-example",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Average linkage example",
+    "text": "Average linkage example\n\n\nChange the method argument to average\n\n\n\n\n\n\n\n\n\n\nCloser to complete but varies in compactness"
   },
   {
-    "objectID": "lectures/04-quantitative.html#continuous-by-categorical-side-by-side-plots",
-    "href": "lectures/04-quantitative.html#continuous-by-categorical-side-by-side-plots",
-    "title": "Data visualization: quantitative data",
-    "section": "Continuous by categorical: side by side plots",
-    "text": "Continuous by categorical: side by side plots\n\n\n\nwser &lt;- wser |&gt;\n  mutate(age_grp = case_when(age &lt;= 39 ~ \"22-39\", \n                             age &gt; 39 & age &lt;= 49 ~ \"40-49\", \n                             age &gt; 49 & age &lt;= 59 ~ \"50-59\", \n                             age &gt; 59 ~ \"60+\"))\n  \nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = age_grp))+\n  geom_boxplot()+\n  labs(x = \"Time (hours)\", y = \"Age group\")"
+    "objectID": "lectures/07-hierarchical.html#shortcomings-of-different-types-of-linkage",
+    "href": "lectures/07-hierarchical.html#shortcomings-of-different-types-of-linkage",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Shortcomings of different types of linkage",
+    "text": "Shortcomings of different types of linkage\n\nSingle linkage suffers from chaining\n\nIn order to merge two groups, only need one pair of points to be close, irrespective of all others\nTherefore clusters can be too spread out, and not compact enough\n\n\n\n\nComplete linkage avoids chaining, but suffers from crowding\n\nBecause its score is based on the maximum dissimilarity between pairs, a point can be closer to points in other clusters than to points in its own cluster\nClusters are compact, but not far enough apart\n\n\n\n\n\nAverage linkage tries to strike a balance\n\nIt uses average pairwise dissimilarity, so clusters tend to be relatively compact and relatively far apart\nBut it is not clear what properties the resulting clusters have when we cut an average linkage tree at given height.\nSingle and complete linkage trees each has simple interpretations"
   },
   {
-    "objectID": "lectures/04-quantitative.html#continuous-by-categorical-ecdf",
-    "href": "lectures/04-quantitative.html#continuous-by-categorical-ecdf",
-    "title": "Data visualization: quantitative data",
-    "section": "Continuous by categorical: ECDF",
-    "text": "Continuous by categorical: ECDF\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours, color = age_grp)) +\n  stat_ecdf(linewidth = 1) +\n  theme(legend.position = \"bottom\")+\n  scale_color_viridis_d()+\n  labs(x = \"Time (hours)\", color = \"Age group\")"
+    "objectID": "lectures/07-hierarchical.html#complete-linkage-interpretation",
+    "href": "lectures/07-hierarchical.html#complete-linkage-interpretation",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Complete linkage interpretation",
+    "text": "Complete linkage interpretation\n\nCutting the tree at \\(h = 5\\) gives the clustering assignments marked by colors\nCut interpretation: for each point \\(x_i\\), every other point \\(x_j\\) in its cluster satisfies \\(d_{ij} \\le 5\\)"
   },
   {
-    "objectID": "lectures/04-quantitative.html#continuous-by-categorical-density-plot",
-    "href": "lectures/04-quantitative.html#continuous-by-categorical-density-plot",
-    "title": "Data visualization: quantitative data",
-    "section": "Continuous by categorical: density plot",
-    "text": "Continuous by categorical: density plot\n\n wser |&gt; \n  ggplot(aes(x = time_in_hours, color = age_grp)) +\n  geom_density() +\n  scale_color_viridis_d()+\n  labs(color = \"Age group\", x = \"Time (hours)\")"
+    "objectID": "lectures/07-hierarchical.html#single-linkage-interpretation",
+    "href": "lectures/07-hierarchical.html#single-linkage-interpretation",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Single linkage interpretation",
+    "text": "Single linkage interpretation\n\nCutting the tree at \\(h = 0.9\\) gives the clustering assignments marked by colors\nCut interpretation: for each point \\(x_i\\), there is another point \\(x_j\\) in its cluster satisfies \\(d_{ij} \\le 0.9\\)"
   },
   {
-    "objectID": "lectures/04-quantitative.html#continuous-by-categorical-ridgeline-plot",
-    "href": "lectures/04-quantitative.html#continuous-by-categorical-ridgeline-plot",
-    "title": "Data visualization: quantitative data",
-    "section": "Continuous by categorical: ridgeline plot",
-    "text": "Continuous by categorical: ridgeline plot\nFor more, see this tutorial\n\nlibrary(ggridges)\nwser |&gt; \n  ggplot(aes(x = time_in_hours, y = age_grp, fill = age_grp)) +\n  geom_density_ridges(scale = 1.5)+\n  scale_fill_viridis_d()+\n  labs(x = \"Time (hours)\", y = \"Age group\")+\n  theme(legend.position = \"none\")"
+    "objectID": "lectures/07-hierarchical.html#more-linkage-functions",
+    "href": "lectures/07-hierarchical.html#more-linkage-functions",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "More linkage functions",
+    "text": "More linkage functions\n\nCentroid linkage: Computes the dissimilarity between the centroid for cluster 1 and the centroid for cluster 2\n\ni.e. distance between the averages of the two clusters\nuse method = centroid\n\n\n\n\nWard’s linkage: Merges a pair of clusters to minimize the within-cluster variance (damage cluster homogeneity the least)\n\ni.e. aim is to minimize the objection function from \\(k\\)-means\ncan use ward.D or ward.D2 (different algorithms)"
   },
   {
-    "objectID": "lectures/04-quantitative.html#what-about-for-histograms",
-    "href": "lectures/04-quantitative.html#what-about-for-histograms",
-    "title": "Data visualization: quantitative data",
-    "section": "What about for histograms?",
-    "text": "What about for histograms?\n\n wser |&gt; \n  ggplot(aes(x = time_in_hours, fill = age_grp)) +\n  geom_histogram(bins = 15) +\n  scale_fill_viridis_d(alpha = 0.6)+\n  labs(fill = \"Age group\", x = \"Time (hours)\")"
+    "objectID": "lectures/07-hierarchical.html#post-clustering-analysis",
+    "href": "lectures/07-hierarchical.html#post-clustering-analysis",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Post-clustering analysis",
+    "text": "Post-clustering analysis\n\nFor context, how does position relate clustering results?\nTwo-way table to compare the clustering assignments with player positions\n(What’s the way to visually compare these two variables?)\n\n\ntable(\"Cluster\" = cutree(nba_complete, k = 3), \"Position\" = nba_players$pos)\n\n       Position\nCluster  C PF PG SF SG\n      1  0  2 31 16 39\n      2 29 71 51 60 86\n      3 55 13  2  7  3\n\n\n\nTakeaway: positions tend to fall within particular clusters"
   },
   {
-    "objectID": "lectures/04-quantitative.html#what-about-facets",
-    "href": "lectures/04-quantitative.html#what-about-facets",
-    "title": "Data visualization: quantitative data",
-    "section": "What about facets?",
-    "text": "What about facets?\nDifference between facet_wrap and facet_grid\n\nwser |&gt;\n  ggplot(aes(x = time_in_hours)) +\n  geom_histogram(bins = 15) +\n  facet_wrap(~ age_grp, nrow = 1)+\n  labs(x= \"Time (hours)\")"
+    "objectID": "lectures/07-hierarchical.html#examples-of-clustering-use-in-other-sports",
+    "href": "lectures/07-hierarchical.html#examples-of-clustering-use-in-other-sports",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Examples of clustering use in other sports",
+    "text": "Examples of clustering use in other sports\n\nBaseball: cluster players on swing metrics (e.g. exit velocity, launch angle, barrel rate, whiff rate)\n\nGet distribution of wOBA for each cluster\n\nNBA: cluster teams on pace of play, 3-point attempt rate, turnover rate, etc.\n\nCompare win percentage\n\nFootball: cluster QBs on average depth of target, time to throw, scramble rate, etc.\n\nCompare touchdown rate, EPA/play"
   },
   {
-    "objectID": "lectures/04-quantitative.html#what-about-facets-1",
-    "href": "lectures/04-quantitative.html#what-about-facets-1",
-    "title": "Data visualization: quantitative data",
-    "section": "What about facets?",
-    "text": "What about facets?\n\nwser |&gt; \n  ggplot(aes(x = time_in_hours)) +\n  geom_histogram(bins = 15) +\n  facet_grid(age_grp ~ ., margins = TRUE)+\n  labs(x = \"Time (hours)\")"
+    "objectID": "lectures/07-hierarchical.html#include-more-variables",
+    "href": "lectures/07-hierarchical.html#include-more-variables",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Include more variables",
+    "text": "Include more variables\n\n\n\nIt’s easy to include more variables - just change the distance matrix\n\n\nnba_players_features &lt;- nba_players |&gt; \n  select(x3pa, x2pa, fta, trb, ast, stl, blk, tov)\n  \nplayer_dist_mult_features &lt;- nba_players_features |&gt; \n  dist(method = \"euclidean\") # can try out other methods\n\n\nThen perform hierarchical clustering as before\n\n\nnba_players_hc_complete &lt;- player_dist_mult_features |&gt; \n  hclust(method = \"complete\") # can try out other methods\n\n\nVisualize with dendrogram\n\n\nnba_players_hc_complete |&gt; \n  ggdendrogram(labels = FALSE, \n               leaf_labels = FALSE,\n               theme_dendro = FALSE) +\n  labs(y = \"Dissimilarity between clusters\") +\n  theme(axis.text.x = element_blank(), \n        axis.title.x = element_blank(),\n        panel.grid = element_blank())"
   },
   {
-    "objectID": "lectures/04-quantitative.html#appendix-pre-processing-steps",
-    "href": "lectures/04-quantitative.html#appendix-pre-processing-steps",
-    "title": "Data visualization: quantitative data",
-    "section": "Appendix: Pre-processing steps",
-    "text": "Appendix: Pre-processing steps\n\nultra_rankings &lt;- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/ultra_rankings.csv')\nrace &lt;- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/race.csv')\n\n# join race results with course information \nruns &lt;- ultra_rankings |&gt; \n  # include race information for each race completed by a runner\n  left_join(race, by = \"race_year_id\") |&gt; \n  # remove incomplete races or races &lt; ~100 miles\n  filter(!is.na(time_in_seconds) & distance &gt; 150) |&gt; \n  # convert time in seconds to hours\n  mutate(time_in_hours = (time_in_seconds/60)/60) \n\n# 2019 ultramarathon race course information \nrace_stats_2019 &lt;- runs |&gt; \n  # only keep results from 2019 (courses can change year to year)\n  filter(year(date) == 2019) |&gt;\n  # a race may have multiple events, so we group by both variables \n  group_by(race, event) |&gt; \n  # number of finishers for particular race event \n  mutate(n_finishers = n()) |&gt; \n  # only keep race events with at least 50 finishers\n  filter(n_finishers &gt;= 50) |&gt; \n  # average time of finishers for particular race event\n  mutate(mean_finish_time = mean(time_in_hours)) |&gt;\n  # collapse across individuals: we only want course information\n  distinct(race, event, elevation_gain, elevation_loss, n_finishers, mean_finish_time)"
+    "objectID": "lectures/07-hierarchical.html#choosing-number-of-clusters",
+    "href": "lectures/07-hierarchical.html#choosing-number-of-clusters",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Choosing number of clusters",
+    "text": "Choosing number of clusters\n\nJust like \\(k\\)-means, there are heuristics for choosing the number of clusters for hierarchical clustering\nOptions: elbow method, silhouette, gap statistic (but again, use these with caution)\n\n\nlibrary(factoextra)\nnba_players_features |&gt; \n  fviz_nbclust(FUN = hcut, method = \"silhouette\")"
+  },
+  {
+    "objectID": "lectures/07-hierarchical.html#practical-issues",
+    "href": "lectures/07-hierarchical.html#practical-issues",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Practical issues",
+    "text": "Practical issues\n\nWhat dissimilarity measure should be used?\nWhat type of linkage should be used?\nHow many clusters to choose?\nWhich features should we use to drive the clustering?\n\nCategorical variables?\n\nHard clustering vs. soft clustering\n\nHard clustering (\\(k\\)-means, hierarchical): assigns each observation to exactly one cluster\nSoft (fuzzy) clustering: assigns each observation a probability of belonging to a cluster"
+  },
+  {
+    "objectID": "lectures/07-hierarchical.html#code-to-build-dataset",
+    "href": "lectures/07-hierarchical.html#code-to-build-dataset",
+    "title": "Unsupervised learning: hierarchical clustering",
+    "section": "Code to build dataset",
+    "text": "Code to build dataset\n\nlibrary(tidyverse)\nlibrary(rvest)\nnba_url &lt;- \"https://www.basketball-reference.com/leagues/NBA_2026_per_poss.html\"\nnba_players &lt;- nba_url |&gt; \n  read_html() |&gt; \n  html_element(css = \"#per_poss\") |&gt; \n  html_table() |&gt; \n  janitor::clean_names() |&gt; \n  group_by(player) |&gt; \n  slice_max(g) |&gt; \n  ungroup() |&gt; \n  filter(mp &gt;= 200) # keep players with at least 200 minutes played"
+  },
+  {
+    "objectID": "lectures/01-explore.html#workflow-diagram",
+    "href": "lectures/01-explore.html#workflow-diagram",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Workflow diagram",
+    "text": "Workflow diagram\n\n\n\nSource: R for Data Science (2e)\n\n\n\nFirst few lectures: data wrangling and data visualization\nAspects of data wrangling:\n\nImport: load in data (e.g., read_csv())\nTidy: each row is an observation, each column is a variable (i.e. tabular data)\nTransform: filter observations, create new variables, etc."
+  },
+  {
+    "objectID": "lectures/01-explore.html#exploratory-data-analysis",
+    "href": "lectures/01-explore.html#exploratory-data-analysis",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\n\nGoal of EDA: perform initial investigations on the data to better understand the data, discover trends/patterns, spot anomalies, etc.\n\n\n\n“EDA is an iterative cycle”\n\nGenerate questions about data\nAnswer via data wrangling and visualization\n\n\n\n\n\n“EDA is a state of mind”\n\n\n\n\nThe term EDA was coined by statistician John Tukey in the 1970s."
+  },
+  {
+    "objectID": "lectures/01-explore.html#exploratory-data-analysis-1",
+    "href": "lectures/01-explore.html#exploratory-data-analysis-1",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\n\nData can be explored numerically (tables, descriptive statistics, etc.) or visually (graphs)\nExamples of questions:\n\nWhat type of variation do the variables display?\nWhat type of relationships exist between variables?\n\n\n\n\nEDA is NOT a replacement for statistical inference and learning\n\n\n\n\nEDA is an important and necessary step to build intuition"
+  },
+  {
+    "objectID": "lectures/01-explore.html#first-example-mlb-batting-statistics",
+    "href": "lectures/01-explore.html#first-example-mlb-batting-statistics",
+    "title": "Exploring data: into the tidyverse",
+    "section": "First example: MLB batting statistics",
+    "text": "First example: MLB batting statistics\nImport Batting table of historical MLB batting statistics from the Lahman package.\n\nlibrary(tidyverse) # load the tidyverse\nlibrary(Lahman) # load the Lahman package to access its datasets\nBatting &lt;- as_tibble(Batting) # initialize the Batting dataset\n\n\nBasic info about the Batting dataset:\n\n# number of rows and columns\n# can also do nrow(Batting) and ncol(Batting)\ndim(Batting) \n\n[1] 128598     22\n\n\n\nclass(Batting)\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\n\n\n\n\ntbl (pronounced “tibble”) is the tidyverse way of storing tabular data, like a spreadsheet or data.frame"
+  },
+  {
+    "objectID": "lectures/01-explore.html#first-example-mlb-batting-statistics-1",
+    "href": "lectures/01-explore.html#first-example-mlb-batting-statistics-1",
+    "title": "Exploring data: into the tidyverse",
+    "section": "First example: MLB batting statistics",
+    "text": "First example: MLB batting statistics\nAlways look at your data: view the first 6 (by default) rows with head()\n\n# try just typing Batting into your console, what happens? Also try glimpse(Batting)\nhead(Batting) \n\n# A tibble: 6 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 aardsda01   2004     1 SFN    NL       11     0     0     0     0     0     0\n2 aardsda01   2006     1 CHN    NL       45     2     0     0     0     0     0\n3 aardsda01   2007     1 CHA    AL       25     0     0     0     0     0     0\n4 aardsda01   2008     1 BOS    AL       47     1     0     0     0     0     0\n5 aardsda01   2009     1 SEA    AL       73     0     0     0     0     0     0\n6 aardsda01   2010     1 SEA    AL       53     0     0     0     0     0     0\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;\n\n\n\nIs the Batting dataset tidy?\n\nEach row = a player’s season stint with a team (i.e. players can play for multiple teams in year)\nEach column = different measurement or recording about the player-team-season observation (get all column names with colnames(Batting) or names(Batting))"
+  },
+  {
+    "objectID": "lectures/01-explore.html#descriptive-statistics",
+    "href": "lectures/01-explore.html#descriptive-statistics",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\nWe summarize quantitative (e.g. yearID, AB) and categorical (e.g. teamID, lgID) variables in different ways\n\n\nCompute summary statistics for quantitative variables with the summary() function:\n\n\n\n\nsummary(Batting$G)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    1.0    11.0    31.0    47.3    71.0   165.0 \n\n\n\n\n\nCompute counts of categorical variables with the table() function:\n\n\n\n\n# be careful it ignores NA values!\n# can do table(Batting$lgID, useNA = \"always\")\ntable(Batting$lgID)\n\n\n   AA    AL   ANL   EAS   ECL   EWL    FL   IND   INT    NA   NAC   NAL    NL \n 1893 54277   154  1035   917   191   472   827    44   737   105  2114 59279 \n  NN2   NNL   NSL    PL    UA   WES \n 2731  2275   237   149   334   827"
+  },
+  {
+    "objectID": "lectures/01-explore.html#the-dplyr-package",
+    "href": "lectures/01-explore.html#the-dplyr-package",
+    "title": "Exploring data: into the tidyverse",
+    "section": "The dplyr package",
+    "text": "The dplyr package\ndplyr is a package within the tidyverse with functions for data wrangling\n\n\n“Grammar of data manipulation”:\n\ndplyr functions are verbs\ndatasets are nouns\nfunction arguments are adverbs\n\n\nThe six main dplyr verbs for data wrangling:\n\nfilter()\nselect()\narrange()\nmutate()\ngroup_by()\nsummarize()"
+  },
+  {
+    "objectID": "lectures/01-explore.html#filter",
+    "href": "lectures/01-explore.html#filter",
+    "title": "Exploring data: into the tidyverse",
+    "section": "filter()",
+    "text": "filter()\nWe can use filter() to extract rows (i.e. observations) that meet certain conditions\nNote: These conditions must be logical conditions (aka boolean expressions)"
+  },
+  {
+    "objectID": "lectures/01-explore.html#filter-1",
+    "href": "lectures/01-explore.html#filter-1",
+    "title": "Exploring data: into the tidyverse",
+    "section": "filter()",
+    "text": "filter()\nExample 1: Extract batting stats for the American League (AL) and National League (NL)\n\nmlb_batting &lt;- filter(Batting, lgID %in% c(\"AL\", \"NL\")) # or filter(Batting, lgID == \"AL\" | lgID == \"NL\")\nnrow(Batting) - nrow(mlb_batting) # difference in row counts\n\n[1] 15042\n\n\n\n\nExample 2: Extract batting stats for Pirates players in 2022\n\n# multiple conditions\npirates_batting &lt;- filter(Batting, yearID == 2022 & teamID == \"PIT\")\nhead(pirates_batting, n = 3) # difference in row counts\n\n# A tibble: 3 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 alforan01   2022     1 PIT    NL        2     4     0     1     0     0     0\n2 alldrca01   2022     1 PIT    NL        1     0     0     0     0     0     0\n3 allengr01   2022     1 PIT    NL       46   118    17    22     4     0     2\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#logical-conditions",
+    "href": "lectures/01-explore.html#logical-conditions",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Logical conditions",
+    "text": "Logical conditions\n\n\n\nx &lt; y: less than\nx &lt;= y: less than or equal to\nx == y: equal to\nx != y: not equal to\nx &gt; y: greater than\nx &gt;= y: greater than or equal to\n\n\n\nx %in% y: whether the value is present in a given vector\nis.na(x): is missing\nx & y: and\nx | y: or\n!x: not\n\n\n\n\n… and basically anything that returns a TRUE/FALSE value"
+  },
+  {
+    "objectID": "lectures/01-explore.html#common-mistakes",
+    "href": "lectures/01-explore.html#common-mistakes",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Common mistakes",
+    "text": "Common mistakes\n\n\nUsing = instead of ==\nnay\n\nfilter(Batting, team = \"PIT\")\n\nyay\n\nfilter(Batting, team == \"PIT\")\n\n\nForgetting quotes (for string/character)\nnay\n\nfilter(Batting, team == PIT)\n\nyay\n\nfilter(Batting, team == \"PIT\")"
+  },
+  {
+    "objectID": "lectures/01-explore.html#select",
+    "href": "lectures/01-explore.html#select",
+    "title": "Exploring data: into the tidyverse",
+    "section": "select()",
+    "text": "select()\nWe can use select() to extract columns (variables) of interest\nWe simply specify the column names:\n\nselect(Batting, playerID, yearID, G, AB, R, H, HR, BB)\n\n# A tibble: 128,598 × 8\n   playerID  yearID     G    AB     R     H    HR    BB\n   &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1 aardsda01   2004    11     0     0     0     0     0\n 2 aardsda01   2006    45     2     0     0     0     0\n 3 aardsda01   2007    25     0     0     0     0     0\n 4 aardsda01   2008    47     1     0     0     0     0\n 5 aardsda01   2009    73     0     0     0     0     0\n 6 aardsda01   2010    53     0     0     0     0     0\n 7 aardsda01   2012     1     0     0     0     0     0\n 8 aardsda01   2013    43     0     0     0     0     0\n 9 aardsda01   2015    33     1     0     0     0     0\n10 aaronha01   1954   122   468    58   131    13    28\n# ℹ 128,588 more rows"
+  },
+  {
+    "objectID": "lectures/01-explore.html#mutate",
+    "href": "lectures/01-explore.html#mutate",
+    "title": "Exploring data: into the tidyverse",
+    "section": "mutate()",
+    "text": "mutate()\nWe use mutate() to create new variables\n\nNew variables created via mutate() are usually based on existing variables\nMake sure to give your new variable a name\nNaming the new variable the same as the existing variable will overwrite the original column\n\n\nExample: Get the batting average and strikeout-to-walk ratio for every player\n\nnew_batting &lt;- mutate(Batting, batting_avg = H / AB, so_bb_ratio = SO / BB)\nhead(new_batting, n = 1)\n\n# A tibble: 1 × 24\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 aardsda01   2004     1 SFN    NL       11     0     0     0     0     0     0\n# ℹ 12 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;, batting_avg &lt;dbl&gt;,\n#   so_bb_ratio &lt;dbl&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#arrange",
+    "href": "lectures/01-explore.html#arrange",
+    "title": "Exploring data: into the tidyverse",
+    "section": "arrange()",
+    "text": "arrange()\nWe use arrange() to sort the observations (rows) by variables (columns)\n\nDefault is ascending order:\n\nLow to high for numeric columns\nAlphabetical order for character columns\n\n\n\nExample 1: Who holds the single-season home run record?\n\nhr_batting &lt;- arrange(Batting, desc(HR)) # desc() for descending order\nhead(hr_batting, n = 3)\n\n# A tibble: 3 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 bondsba01   2001     1 SFN    NL      153   476   129   156    32     2    73\n2 mcgwima01   1998     1 SLN    NL      155   509   130   152    21     0    70\n3 sosasa01    1998     1 CHN    NL      159   643   134   198    20     0    66\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#arrange-1",
+    "href": "lectures/01-explore.html#arrange-1",
+    "title": "Exploring data: into the tidyverse",
+    "section": "arrange()",
+    "text": "arrange()\nExample 2: we can arrange by multiple columns at once:\n\nAt bats from high to low\nHome runs from low to high\n\n\nVariable order matters!\n\n\n\n\nab_hr_batting &lt;- arrange(Batting, desc(AB), HR)\nhead(ab_hr_batting, n = 3)\n\n# A tibble: 3 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 rolliji01   2007     1 PHI    NL      162   716   139   212    38    20    30\n2 wilsowi02   1980     1 KCA    AL      161   705   133   230    28    15     3\n3 suzukic01   2004     1 SEA    AL      161   704   101   262    24     5     8\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#performing-multiple-operations",
+    "href": "lectures/01-explore.html#performing-multiple-operations",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Performing multiple operations",
+    "text": "Performing multiple operations\nWhat if we want to perform several tasks using multiple dplyr verbs?\n\n\nExample: Which Pirates players had the highest batting average in 2022, among those with at least 50 at bats?\n\nselect(arrange(mutate(filter(Batting, yearID == 2022, teamID == \"PIT\", AB &gt;= 50), batting_avg = H / AB), desc(batting_avg)), playerID, AB, batting_avg)\n\n# A tibble: 23 × 3\n   playerID     AB batting_avg\n   &lt;chr&gt;     &lt;int&gt;       &lt;dbl&gt;\n 1 newmake01   288       0.274\n 2 reynobr01   542       0.262\n 3 hayeske01   505       0.244\n 4 marisja01    77       0.234\n 5 perezro02    60       0.233\n 6 castrro01   253       0.233\n 7 cruzon01    331       0.233\n 8 gamelbe01   371       0.232\n 9 chavimi01   401       0.229\n10 vogelda01   237       0.228\n# ℹ 13 more rows\n\n\n\n\nThat’s awfully annoying to write, and also difficult to read…"
+  },
+  {
+    "objectID": "lectures/01-explore.html#the-pipe-operator",
+    "href": "lectures/01-explore.html#the-pipe-operator",
+    "title": "Exploring data: into the tidyverse",
+    "section": "The pipe operator",
+    "text": "The pipe operator\nIntroducing the pipe operator |&gt;\n\n\nNote: You might have seen the magrittr pipe %&gt;%…\n\nThis is from the maggritr package, automatically loaded when loading tidyverse\nRecently, many people (including Hadley Wickham) have switched to |&gt;, the built-in “native” pipe to base R\nWhile identical in many ways, there are some differences\n\n\n\n\nShortcut for the pipe operator in RStudio: Command (or Ctrl) + Shift + M"
+  },
+  {
+    "objectID": "lectures/01-explore.html#the-pipe-operator-1",
+    "href": "lectures/01-explore.html#the-pipe-operator-1",
+    "title": "Exploring data: into the tidyverse",
+    "section": "The pipe operator",
+    "text": "The pipe operator\n\nWe use |&gt; to perform a sequence of operations (think of as: “and then…”)\nThe pipe takes an object (e.g., tibble, data frame, matrix, vector) on the left and passes it as the first argument of the function on the right\n\n\n# the workflow\nobject |&gt;\n  first_operation(...) |&gt;\n  second_operation(...) |&gt; \n  .\n  .\n  .\n  last_operation(...)"
+  },
+  {
+    "objectID": "lectures/01-explore.html#performing-multiple-operations-1",
+    "href": "lectures/01-explore.html#performing-multiple-operations-1",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Performing multiple operations",
+    "text": "Performing multiple operations\nRecall our example: Which Pirates players had the highest batting average in 2022, among those with at least 50 at bats?\n\n\nOur list of tasks:\n\n\n\nfilter(): only Pirates players in 2022 with at least 50 at bats\nmutate(): create a new column for batting average\narrange(): sort by batting average in descending order\nselect(): report player name, at bats, and batting average"
+  },
+  {
+    "objectID": "lectures/01-explore.html#performing-multiple-operations-2",
+    "href": "lectures/01-explore.html#performing-multiple-operations-2",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Performing multiple operations",
+    "text": "Performing multiple operations\n\nBatting |&gt; \n  filter(yearID == 2022, teamID == \"PIT\", AB &gt;= 50) |&gt; \n  mutate(batting_avg = H / AB) |&gt; \n  arrange(desc(batting_avg)) |&gt; \n  select(playerID, AB, batting_avg)\n\n# A tibble: 23 × 3\n   playerID     AB batting_avg\n   &lt;chr&gt;     &lt;int&gt;       &lt;dbl&gt;\n 1 newmake01   288       0.274\n 2 reynobr01   542       0.262\n 3 hayeske01   505       0.244\n 4 marisja01    77       0.234\n 5 perezro02    60       0.233\n 6 castrro01   253       0.233\n 7 cruzon01    331       0.233\n 8 gamelbe01   371       0.232\n 9 chavimi01   401       0.229\n10 vogelda01   237       0.228\n# ℹ 13 more rows\n\n\n\nThis is much easier to write and read!"
+  },
+  {
+    "objectID": "lectures/01-explore.html#summarize-by-itself",
+    "href": "lectures/01-explore.html#summarize-by-itself",
+    "title": "Exploring data: into the tidyverse",
+    "section": "summarize() (by itself)",
+    "text": "summarize() (by itself)\nWe use summarize() to collapse the data down to a single row (per group) by aggregating variables into single values\nThis is useful for computing summaries (e.g., mean, median, max, min, correlation)\n\nExample 1: Extracting the median at bats\n\nBatting |&gt; \n  summarize(median_at_bats = median(AB))\n\n# A tibble: 1 × 1\n  median_at_bats\n           &lt;dbl&gt;\n1             40\n\n\n\n\nExample 2: Extracting the correlation between at bats and home runs\n\nBatting |&gt; \n  summarize(cor_ab_hr = cor(AB, HR))\n\n# A tibble: 1 × 1\n  cor_ab_hr\n      &lt;dbl&gt;\n1     0.712"
+  },
+  {
+    "objectID": "lectures/01-explore.html#group_by-and-summarize",
+    "href": "lectures/01-explore.html#group_by-and-summarize",
+    "title": "Exploring data: into the tidyverse",
+    "section": "group_by() and summarize()",
+    "text": "group_by() and summarize()\nWe can use group_by() to covert the data into a “grouped tbl”, where operations are performed by group\n\nThat is, group_by() splits the data into groups based on column values\nPowerful when combined with summarize()\nAfter the operation is done at the group-level, you may have to use ungroup() to remove leftover groupings"
+  },
+  {
+    "objectID": "lectures/01-explore.html#group_by-and-summarize-1",
+    "href": "lectures/01-explore.html#group_by-and-summarize-1",
+    "title": "Exploring data: into the tidyverse",
+    "section": "group_by() and summarize()",
+    "text": "group_by() and summarize()\nExample: How many home runs, strike outs, and walks did each team accumulate in each season from 2015 to 2019?\n\nBatting |&gt; \n  filter(yearID %in% 2015:2019) |&gt; \n  group_by(teamID) |&gt; \n  summarize(total_hr = sum(HR), total_so = sum(SO), total_bb = sum(BB)) |&gt; \n  arrange(desc(total_hr))\n\n# A tibble: 30 × 4\n   teamID total_hr total_so total_bb\n   &lt;fct&gt;     &lt;int&gt;    &lt;int&gt;    &lt;int&gt;\n 1 NYA        1209     6659     2839\n 2 HOU        1159     6294     2759\n 3 TOR        1139     6741     2752\n 4 LAN        1111     6751     2991\n 5 BAL        1103     6914     2162\n 6 TEX        1041     7008     2572\n 7 SEA        1036     6693     2489\n 8 MIN        1035     6694     2604\n 9 OAK        1033     6474     2610\n10 MIL        1031     7434     2724\n# ℹ 20 more rows"
+  },
+  {
+    "objectID": "lectures/01-explore.html#count",
+    "href": "lectures/01-explore.html#count",
+    "title": "Exploring data: into the tidyverse",
+    "section": "count()",
+    "text": "count()\ncount() returns the number of observations in each group\n\nBatting |&gt; \n  count(lgID, name = \"freq\")\n\n# A tibble: 19 × 2\n   lgID   freq\n   &lt;fct&gt; &lt;int&gt;\n 1 AA     1893\n 2 AL    54277\n 3 ANL     154\n 4 EAS    1035\n 5 ECL     917\n 6 EWL     191\n 7 FL      472\n 8 IND     827\n 9 INT      44\n10 NA      737\n11 NAC     105\n12 NAL    2114\n13 NL    59279\n14 NN2    2731\n15 NNL    2275\n16 NSL     237\n17 PL      149\n18 UA      334\n19 WES     827"
+  },
+  {
+    "objectID": "lectures/01-explore.html#alternatives-to-count",
+    "href": "lectures/01-explore.html#alternatives-to-count",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Alternatives to count()",
+    "text": "Alternatives to count()\n\n\nUsing group_by() and summarize()\n\n# note: count is a \"shortcut\" of this\nBatting |&gt; \n  group_by(lgID) |&gt; \n  summarize(freq = n()) |&gt; \n  ungroup()\n\n\nUsing Base R\n\n# recall that in base R...\ntable(Batting$lgID)"
+  },
+  {
+    "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows",
+    "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows",
+    "title": "Exploring data: into the tidyverse",
+    "section": "slice_*() family for subsetting rows",
+    "text": "slice_*() family for subsetting rows\nslice(): extract rows (observations) based on the row index\n\nBatting |&gt; \n  slice(c(1, 99, 101, 500))\n\n# A tibble: 4 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 aardsda01   2004     1 SFN    NL       11     0     0     0     0     0     0\n2 abbotfr01   1904     1 CLE    AL       41   130    14    22     4     2     0\n3 abbotgl01   1973     1 OAK    AL        5     0     0     0     0     0     0\n4 adamsbo03   1951     1 CIN    NL      125   403    57   107    12     5     5\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows-1",
+    "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows-1",
+    "title": "Exploring data: into the tidyverse",
+    "section": "slice_*() family for subsetting rows",
+    "text": "slice_*() family for subsetting rows\nslice_head() / slice_tail(): extract the first / last n rows\n\n# Batting |&gt; slice_tail(n = 5)\nBatting |&gt; \n  slice_head(n = 5)\n\n# A tibble: 5 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 aardsda01   2004     1 SFN    NL       11     0     0     0     0     0     0\n2 aardsda01   2006     1 CHN    NL       45     2     0     0     0     0     0\n3 aardsda01   2007     1 CHA    AL       25     0     0     0     0     0     0\n4 aardsda01   2008     1 BOS    AL       47     1     0     0     0     0     0\n5 aardsda01   2009     1 SEA    AL       73     0     0     0     0     0     0\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows-2",
+    "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows-2",
+    "title": "Exploring data: into the tidyverse",
+    "section": "slice_*() family for subsetting rows",
+    "text": "slice_*() family for subsetting rows\nslice_min() / slice_max(): extract rows with the smallest or largest values of a variable\n\n# single-season home run record (top 5)\nBatting |&gt; \n  slice_max(HR, n = 5)\n\n# A tibble: 5 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;fct&gt;  &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1 bondsba01   2001     1 SFN    NL      153   476   129   156    32     2    73\n2 mcgwima01   1998     1 SLN    NL      155   509   130   152    21     0    70\n3 sosasa01    1998     1 CHN    NL      159   643   134   198    20     0    66\n4 mcgwima01   1999     1 SLN    NL      153   521   118   145    21     1    65\n5 sosasa01    2001     1 CHN    NL      160   577   146   189    34     5    64\n# ℹ 10 more variables: RBI &lt;int&gt;, SB &lt;int&gt;, CS &lt;int&gt;, BB &lt;int&gt;, SO &lt;int&gt;,\n#   IBB &lt;int&gt;, HBP &lt;int&gt;, SH &lt;int&gt;, SF &lt;int&gt;, GIDP &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/01-explore.html#slice_-family-for-subsetting-rows-3",
+    "href": "lectures/01-explore.html#slice_-family-for-subsetting-rows-3",
+    "title": "Exploring data: into the tidyverse",
+    "section": "slice_*() family for subsetting rows",
+    "text": "slice_*() family for subsetting rows\nslice_sample(): randomly sample a specified number / fraction of observation in the data\n\n# randomly sample 1000 rows (without replacement, by default)\nBatting |&gt; \n  slice_sample(n = 1000)\n\n# randomly sample 70% of the rows, with replacement\nBatting |&gt; \n  slice_sample(prop = 0.7, replace = TRUE)\n\n\nUseful for performing resampling (e.g., bootstrap, cross-validation, etc.)"
+  },
+  {
+    "objectID": "lectures/01-explore.html#putting-it-all-together-pt.-2",
+    "href": "lectures/01-explore.html#putting-it-all-together-pt.-2",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Putting it all together (pt. 2)",
+    "text": "Putting it all together (pt. 2)\nExample 1: Get batting stats for each year: each row is a year with the following variables\n\ntotal hits, home runs, strikeouts, walks, atbats\ntotal batting average for each year = total H / total AB\nonly keeps AL and NL leagues\n\n\n\nyearly_batting &lt;- Batting |&gt;\n  filter(lgID %in% c(\"AL\", \"NL\")) |&gt;\n  group_by(yearID) |&gt;\n  summarize(total_h = sum(H, na.rm = TRUE),\n            total_hr = sum(HR, na.rm = TRUE),\n            total_so = sum(SO, na.rm = TRUE),\n            total_bb = sum(BB, na.rm = TRUE),\n            total_ab = sum(AB, na.rm = TRUE)) |&gt;\n  mutate(batting_avg = total_h / total_ab)"
+  },
+  {
+    "objectID": "lectures/01-explore.html#putting-it-all-together-pt.-2-1",
+    "href": "lectures/01-explore.html#putting-it-all-together-pt.-2-1",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Putting it all together (pt. 2)",
+    "text": "Putting it all together (pt. 2)\nExample 2: What are the top three years with the most HRs?\n\n\nyearly_batting |&gt; \n  slice_max(total_hr, n = 3)\n\n# A tibble: 3 × 7\n  yearID total_h total_hr total_so total_bb total_ab batting_avg\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;\n1   2019   42039     6776    42823    15895   166651       0.252\n2   2017   42215     6105    40104    15829   165567       0.255\n3   2021   39484     5944    42145    15794   161941       0.244\n\n\n\n# or this \nyearly_batting |&gt;\n  arrange(desc(total_hr)) |&gt;\n  slice(1:3)\n\n# A tibble: 3 × 7\n  yearID total_h total_hr total_so total_bb total_ab batting_avg\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;\n1   2019   42039     6776    42823    15895   166651       0.252\n2   2017   42215     6105    40104    15829   165567       0.255\n3   2021   39484     5944    42145    15794   161941       0.244"
+  },
+  {
+    "objectID": "lectures/01-explore.html#putting-it-all-together-pt.-2-2",
+    "href": "lectures/01-explore.html#putting-it-all-together-pt.-2-2",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Putting it all together (pt. 2)",
+    "text": "Putting it all together (pt. 2)\nExample 3: Which years have the best and worst strikeout to walk ratios?\n\n\nyearly_batting |&gt;\n  mutate(so_bb_ratio = total_so / total_bb) |&gt;\n  arrange(so_bb_ratio) |&gt;\n  slice(c(1, n()))\n\n# A tibble: 2 × 8\n  yearID total_h total_hr total_so total_bb total_ab batting_avg so_bb_ratio\n   &lt;int&gt;   &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;dbl&gt;       &lt;dbl&gt;\n1   1893   15913      460     3341     6143    56898       0.280       0.544\n2   1879    6171       58     1843      508    24155       0.255       3.63"
+  },
+  {
+    "objectID": "lectures/01-explore.html#we-can-make-better-looking-tables",
+    "href": "lectures/01-explore.html#we-can-make-better-looking-tables",
+    "title": "Exploring data: into the tidyverse",
+    "section": "We can make better looking tables",
+    "text": "We can make better looking tables\nUsing rename() and gt():\n\nlibrary(gt)\n\nyearly_batting |&gt;\n  select(yearID, batting_avg) |&gt;\n  rename(Year = yearID, `Batting Average` = batting_avg) |&gt;\n  arrange(desc(`Batting Average`)) |&gt;\n  slice(c(1:3, (n()-2):n())) |&gt;\n  gt() |&gt;\n  fmt_number(columns = `Batting Average`, decimals = 3)\n\n\n\n\n\n\n\nYear\nBatting Average\n\n\n\n\n1894\n0.309\n\n\n1895\n0.296\n\n\n1930\n0.296\n\n\n1908\n0.239\n\n\n1888\n0.239\n\n\n1968\n0.237"
+  },
+  {
+    "objectID": "lectures/01-explore.html#lots-of-ways-to-customize-tables-with-gt",
+    "href": "lectures/01-explore.html#lots-of-ways-to-customize-tables-with-gt",
+    "title": "Exploring data: into the tidyverse",
+    "section": "Lots of ways to customize tables with gt()",
+    "text": "Lots of ways to customize tables with gt()\n\n\nyearly_batting |&gt;\n  select(yearID, batting_avg) |&gt;\n  rename(Year = yearID,\n         `Batting Average` = batting_avg) |&gt;\n  arrange(desc(`Batting Average`)) |&gt;\n  slice(c(1:3, (n()-2):n())) |&gt;\n  gt(rowname_col = \"Year\") |&gt;\n  # add table header\n  tab_header(title = \"Best / Worst MLB Seasons by Batting Average\") |&gt;\n  # create row groups by location \n  tab_row_group(\n    label = \"Bottom 3 Years\",\n    rows = 4:6\n  ) |&gt;\n  tab_row_group(\n    label = \"Top 3 Years\",\n    rows = 1:3\n  ) |&gt;\n  # recolor row group labels\n  tab_style(\n    style = cell_fill(color = \"bisque\"),\n    locations = cells_row_groups(groups = \"Bottom 3 Years\")\n  ) |&gt;\n  tab_style(\n    style = cell_fill(color = \"darkseagreen1\"),\n    locations = cells_row_groups(groups = \"Top 3 Years\")) |&gt;\n  # round \"Batting Average\" to 3 decimals \n  fmt_number(columns = `Batting Average`, decimals = 3)\n\n\n\n\n\n\n\n\nBest / Worst MLB Seasons by Batting Average\n\n\n\nBatting Average\n\n\n\n\nTop 3 Years\n\n\n1894\n0.309\n\n\n1895\n0.296\n\n\n1930\n0.296\n\n\nBottom 3 Years\n\n\n1908\n0.239\n\n\n1888\n0.239\n\n\n1968\n0.237\n\n\n\n\n\n\n\n\n\nEnough with tables (for now)!"
+  },
+  {
+    "objectID": "lectures/01-explore.html#whats-next",
+    "href": "lectures/01-explore.html#whats-next",
+    "title": "Exploring data: into the tidyverse",
+    "section": "What’s next?",
+    "text": "What’s next?\n\n\nDATA VISUALIZATION\n\nThe simple graph has brought more information to the data analyst’s mind than any other device. — John Tukey\n\n\nUse ggplot2 (and the grammar of graphics) to visually explore data\nMore intuitive than base R plotting\nDifferent types of visualizations for categorical and quantitative data, faceting, etc.\ndplyr verbs and |&gt; leads to natural pipeline for EDA"
+  },
+  {
+    "objectID": "lectures/01-explore.html#see-you-later-partner",
+    "href": "lectures/01-explore.html#see-you-later-partner",
+    "title": "Exploring data: into the tidyverse",
+    "section": "See you later, partner",
+    "text": "See you later, partner\n\n\n\nA “data wrangler” illustration of the dplyr package, courtesy of Allison Horst"
   },
   {
     "objectID": "lectures/00-welcome.html#plan-for-today",
