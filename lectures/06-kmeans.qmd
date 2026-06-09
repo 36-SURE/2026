@@ -21,8 +21,7 @@ knitr::opts_chunk$set(
   echo = TRUE,
   message = FALSE,
   warning = FALSE,
-  fig.align = "center",
-  eval = FALSE
+  fig.align = "center"
 )
 ```
 
@@ -251,12 +250,10 @@ The data is originally from the [SCORE Sports Data Repository](https://data.scor
 
 ```{r}
 #| echo: false
-#| eval: true
 set.seed(47)
 ```
 
 ```{r}
-#| eval: true
 library(tidyverse)
 theme_set(theme_light())
 
@@ -267,7 +264,6 @@ glimpse(d1_volleyball)
 
 ```{r}
 #| echo: false
-#| eval: true
 ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
 ```
 
@@ -303,7 +299,6 @@ d1_volleyball |>
 #| ref-label: first-kmeans
 #| echo: false
 #| fig-height: 9
-#| eval: true
 ```
 :::
 :::
@@ -341,7 +336,6 @@ d1_volleyball |>
 #| ref-label: coord-fixed
 #| echo: false
 #| fig-height: 12
-#| eval: true
 ```
 :::
 :::
@@ -388,7 +382,6 @@ clean_d1_volleyball |>
 #| ref-label: std-kmeans
 #| echo: false
 #| fig-height: 12
-#| eval: true
 ```
 :::
 :::
@@ -421,7 +414,6 @@ clean_d1_volleyball |>
 ```{r}
 #| ref-label: std-kmeans-view
 #| echo: false
-#| eval: true
 #| fig-height: 12
 ```
 :::
@@ -461,7 +453,6 @@ clean_d1_volleyball |>
 #| ref-label: second-kmeans
 #| echo: false
 #| fig-height: 12
-#| eval: true
 ```
 :::
 :::
@@ -498,7 +489,6 @@ clean_d1_volleyball |>
 #| ref-label: nstart-kmeans
 #| echo: false
 #| fig-height: 12
-#| eval: true
 ```
 :::
 :::
@@ -540,7 +530,6 @@ clean_d1_volleyball |>
 #| ref-label: default-kmeans
 #| echo: false
 #| fig-height: 12
-#| eval: true
 ```
 :::
 :::
@@ -550,7 +539,6 @@ clean_d1_volleyball |>
 1. First, we select the variables
 
 ```{r}
-#| eval: true
 d1_volleyball_features <- d1_volleyball |>
   select(blocks_per_set, digs_per_set, kills_per_set, aces_per_set) |> 
   drop_na() 
@@ -559,7 +547,6 @@ d1_volleyball_features <- d1_volleyball |>
 2. Next, standardize the variables (as always)
 
 ```{r}
-#| eval: true
 std_d1_volleyball_features <- d1_volleyball_features |> 
   scale(center = TRUE, scale = TRUE)
 ```
@@ -567,7 +554,6 @@ std_d1_volleyball_features <- d1_volleyball_features |>
 3. Now, perform clustering
 
 ```{r}
-#| eval: true
 kmeans_many_features <- std_d1_volleyball_features |> 
   kmeans(algorithm = "Hartigan-Wong", centers = 4, nstart = 30) 
 ```
@@ -577,7 +563,6 @@ kmeans_many_features <- std_d1_volleyball_features |>
 One way to examine the clusters is by looking at the (non-standardized) means for each variable included in the cluster analysis
 
 ```{r}
-#| eval: true
 library(gt)
 
 clean_d1_volleyball |>
@@ -686,7 +671,6 @@ clean_d1_volleyball |>
 #| ref-label: kmeanspp
 #| echo: false
 #| fig-height: 12
-#| eval: true
 ```
 :::
 :::
@@ -712,7 +696,6 @@ Looks at the total within-cluster variation as a function of the number of clust
 ::: columns
 ::: {.column width="50%" style="text-align: left;"}
 ```{r}
-#| eval: true
 # function to perform clustering for each value of k
 d1_volleyball_kmeans <- function(k) {
   
@@ -769,7 +752,6 @@ kmeans_search |>
 
 ```{r}
 #| echo: false
-#| eval: true
 #| fig-height: 10
 # number of clusters to search over
 n_clusters_search <- 2:15
@@ -813,7 +795,6 @@ clean_d1_volleyball |>
 
 ```{r}
 #| echo: false
-#| eval: true
 #| fig-height: 9
 library(factoextra)
 
@@ -849,7 +830,6 @@ clean_d1_volleyball |>
 
 ```{r}
 #| echo: false
-#| eval: true
 #| fig-height: 12
 clean_d1_volleyball |> 
   select(std_blocks_per_set, std_kills_per_set) |> 
@@ -869,7 +849,6 @@ We could also compute the gap statistics using the `cluster` package
 
 ```{r}
 #| echo: true
-#| eval: true
 library(cluster)
 
 d1_volleyball_kmeans_gap_stat <- clean_d1_volleyball |> 
@@ -897,7 +876,6 @@ d1_volleyball_kmeans_gap_stat <- clean_d1_volleyball |>
 
 ```{r}
 #| echo: true
-#| eval: true
 #| fig-height: 10
 d1_volleyball_kmeans_gap_stat |> 
   fviz_gap_stat(maxSE = list(method = "firstmax"))
@@ -947,7 +925,6 @@ kmpp_search |>
 
 ```{r}
 #| echo: false
-#| eval: true
 #| fig-height: 11
 d1_volleyball_kmpp <- function(k) {
   
