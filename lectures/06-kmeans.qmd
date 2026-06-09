@@ -595,7 +595,7 @@ We can also do more EDA: *e.g., do teams in the same conference tend be in the s
 
 * Each subsequent cluster center is chosen from the remaining observations
 
-  * The probability that a observations chosen as a cluster center is proportional to its squared distance from the closest existing cluster center
+  * The probability that an observation chosen as a cluster center is proportional to its squared distance from the closest existing cluster center
 
 . . .
 
