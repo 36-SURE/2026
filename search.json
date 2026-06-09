@@ -1957,7 +1957,7 @@
     "href": "lectures/06-kmeans.html#beyond-k-means-k-means",
     "title": "Unsupervised learning: \\(k\\)-means clustering",
     "section": "Beyond \\(k\\)-means: \\(k\\)-means++",
-    "text": "Beyond \\(k\\)-means: \\(k\\)-means++\nGoal: initialize the cluster centers before proceeding with the standard \\(k\\)-means clustering algorithm, and provide a better alternative to nstart\n\n\nAt a high-level:\n\nRandomly select an observation to be the first cluster center\nEach subsequent cluster center is chosen from the remaining observations\n\nThe probability that a observations chosen as a cluster center is proportional to its squared distance from the closest existing cluster center\n\n\n\n\n\n\nVisualization of \\(k\\)-means++"
+    "text": "Beyond \\(k\\)-means: \\(k\\)-means++\nGoal: initialize the cluster centers before proceeding with the standard \\(k\\)-means clustering algorithm, and provide a better alternative to nstart\n\n\nAt a high-level:\n\nRandomly select an observation to be the first cluster center\nEach subsequent cluster center is chosen from the remaining observations\n\nThe probability that an observation chosen as a cluster center is proportional to its squared distance from the closest existing cluster center\n\n\n\n\n\n\nVisualization of \\(k\\)-means++"
   },
   {
     "objectID": "lectures/06-kmeans.html#the-k-means-algorithm",

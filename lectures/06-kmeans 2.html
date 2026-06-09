@@ -1215,7 +1215,7 @@ $ win_loss_pctg        &lt;dbl&gt; 0.348, 0.774, 0.885, 0.676, 0.581, 0.567, 0.5
 <li><p>Randomly select an observation to be the first cluster center</p></li>
 <li><p>Each subsequent cluster center is chosen from the remaining observations</p>
 <ul>
-<li>The probability that an observation chosen as a cluster center is proportional to its squared distance from the closest existing cluster center</li>
+<li>The probability that a observations chosen as a cluster center is proportional to its squared distance from the closest existing cluster center</li>
 </ul></li>
 </ul>
 </div>
@@ -1896,7 +1896,7 @@ $ win_loss_pctg        &lt;dbl&gt; 0.348, 0.774, 0.885, 0.676, 0.581, 0.567, 0.5
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/36-SURE\.github\.io\/2026\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
