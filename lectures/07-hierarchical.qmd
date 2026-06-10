@@ -306,6 +306,13 @@ In average linkage, we use the average dissimilarity over all points of differen
 
 In short, the average linkage score $d_\text{average}(C_1, C_2)$ is the average distance across all pairs (of different clusters)
 
+
+```{r}
+#| echo: false
+#| out-width: 90%
+knitr::include_graphics("https://dataaspirant.com/wp-content/uploads/2020/12/12-Average-Linkage-Method-1024x881.png")
+```
+
 ## Complete linkage example
 
 ::: columns
@@ -621,6 +628,8 @@ table("Cluster" = cutree(nba_complete, k = 3), "Position" = nba_players$pos)
 
 ## Examples of clustering use in other sports 
 
+**Important**: You can be strategic about leaving variables out of your clustering analysis to see if groups naturally differ in some meaningful statistic without data leakage
+
 * Baseball: cluster players on swing metrics (e.g. exit velocity, launch angle, barrel rate, whiff rate)
 
   - Get distribution of wOBA for each cluster
@@ -632,6 +641,11 @@ table("Cluster" = cutree(nba_complete, k = 3), "Position" = nba_players$pos)
 * Football: cluster QBs on average depth of target, time to throw, scramble rate, etc. 
 
   - Compare touchdown rate, EPA/play 
+  
+* Ultimate frisbee: cluster on time remaining, score difference
+
+  - Compare completion rate, throw difference
+
 
 ## Include more variables
 
