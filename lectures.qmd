@@ -17,8 +17,8 @@ Updated daily before lecture.
 | Lecture 4  | June 5  | Data visualization: quantitative data                     | [slides](lectures/04-quantitative.qmd)   |
 | Lecture 5  | June 8  | Data visualization: density estimation                    | [slides](lectures/05-density.qmd)        | 
 | Lecture 6  | June 9 | Unsupervised learning: $k$-means clustering               | [slides](lectures/06-kmeans.qmd)         |
+| Lecture 7  | June 10 | Unsupervised learning: hierarchical clustering            | [slides](lectures/07-hierarchical.qmd)   |
 <!--
-| Lecture 7  | June 11 | Unsupervised learning: hierarchical clustering            | [slides](lectures/07-hierarchical.qmd)   |
 | Lecture 8  | June 12 | Data visualization: density estimation                    | [slides](lectures/08-density.qmd)        |
 | Lecture 9  | June 13 | Presentations                                             | [slides](lectures/09-presentation.qmd)   |
 | Lecture 10 | June 16 | Simulation                                                | [slides](lectures/10-simulation.qmd)     |

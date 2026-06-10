@@ -644,7 +644,7 @@ table("Cluster" = cutree(nba_complete, k = 3), "Position" = nba_players$pos)
   
 * Ultimate frisbee: cluster on time remaining, score difference
 
-  - Compare completion rate, throw difference
+  - Compare completion rate, throw distance
 
 
 ## Include more variables
@@ -652,7 +652,7 @@ table("Cluster" = cutree(nba_complete, k = 3), "Position" = nba_players$pos)
 ::: columns
 ::: {.column width="50%" style="text-align: left;"}
 
-* It's easy to **include more variables** - just change the distance matrix
+It's easy to **include more variables** - just change the distance matrix
 
 ```{r}
 nba_players_features <- nba_players |> 
@@ -662,14 +662,14 @@ player_dist_mult_features <- nba_players_features |>
   dist(method = "euclidean") # can try out other methods
 ```
 
-* Then perform hierarchical clustering  as before
+Then perform hierarchical clustering  as before
 
 ```{r}
 nba_players_hc_complete <- player_dist_mult_features |> 
   hclust(method = "complete") # can try out other methods
 ```
 
-* Visualize with dendrogram
+Visualize with dendrogram
 
 ```{r}
 #| eval: false
