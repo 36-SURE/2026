@@ -1,0 +1,292 @@
+---
+title: "Presentations"
+author: "<br>SURE 2025<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+footer:  "[36-SURE.github.io/2025](https://36-sure.github.io/2025)"
+format:
+  revealjs:
+    theme: theme.scss
+    chalkboard: true
+    smaller: true
+    slide-number: c/t
+    code-line-numbers: false
+    linestretch: 1.25
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+# Timeline
+
+## EDA project presentation
+
+*   6-min presentation on Tuesday, June 17 (during lab)
+
+    *   aim for 5 min + 1ish min for Q&A
+    
+    *   make sure you do not exceed 6 min (practice and time yourself)
+    
+    *   I'll cut you off if you exceed 6 min
+
+## Capstone project presentation (a preview)
+
+* 2 presentation checkpoints (both during lab time)
+
+* 1 final presentation on the final day (July 25) (+ other deliverables)
+
+* Details will be provided soon
+
+# Presentation tips
+
+## Begin with background and motivation
+
+Every presentation has a **story**:
+
+  - What is the motivation? Why should people care about your work?
+  
+  - You want to build up what your work is trying to address
+
+. . .
+
+Example: [Ron's nflWAR talk at NESSIS 2017](https://youtu.be/djD-yL3vWNQ):
+
+  - Do **NOT** begin with: "We're introducing [project topic]" (WAR for NFL)
+  
+  - Instead begin with current state of NFL analytics and need for better, reproducible player level-metrics
+
+. . .
+  
+Do **NOT** include an outline slide!
+
+  - Your presentation should flow naturally 
+  
+. . .
+
+[Or you can begin with a "creative" intro...](https://youtu.be/_MAs16nqVdw)
+
+
+## Describing the data
+
+You want to provide a general overview of your dataset:
+
+  - What are your observations? i.e., what does each row of your dataset represent?
+
+. . .
+  
+  - What are the relevant variables/features? i.e., what are the columns of interest?
+  
+    - Be careful though with many variables - avoid just listing everything!
+    
+    - Simplify by describing groups of variables together
+    
+. . .
+
+**Use examples** - makes your data explicit and concrete for the audience
+
+  - But do **NOT** print out raw `R` console output or screenshots of output!
+  
+  - Use text or a clean formatted table (via e.g., `knitr`, [`DT`](https://rstudio.github.io/DT/), [`gt`](https://gt.rstudio.com/), etc.)
+  
+
+## Introducing and describing methods
+
+- Prior to presenting results, you want to clearly state any transformations and methods used in the analysis
+
+- Your presentation should provide the general steps for someone to replicate your work
+
+  - e.g., Used complete-linkage hierarchical clustering with [INSERT VARIABLES], determined $k$ number of clusters by [INSERT REASON]
+  
+  - e.g., Modeled [INSERT RESPONSE VARIABLE] as a function of [INSERT EXPLANATORY VARIABLES]
+  
+. . .
+
+- For more complicated methods, you'll want to provide a brief review of the methodology
+
+- If introducing new methodology: **walk through the steps clearly**
+
+. . .
+
+- **Always justify your choice of methodology**
+
+  - Why you used a flexible tree-based model over linear regression
+  
+
+
+## Presenting results
+
+- Use the [**assertion-evidence**]( https://www.cmu.edu/student-success/other-resources/handouts/comm-supp-pdfs/designing-powerpoint-slides.pdf) model
+
+- **Assertion**: title of the slide should be the key takeaway in brief sentence form
+
+  - Indicates the point of the visualization or whatever means used to display the results
+
+- **Evidence**: the body of the slide containing the results
+
+  - Display of the results in some format that is simple to explain and understand
+  
+. . .
+
+- Limit the amount of text in your **Evidence** portion - brief statements with important context
+
+- Treat the **Assertion** as the title of your **Evidence**
+
+  - Plot titles are then redundant and not necessary with an effective assertion
+
+
+
+## Assertion
+
+<center>
+
+<br>
+
+<font size="+10">
+
+Evidence
+
+</font>
+
+(e.g., plots, animations, tables, etc.)
+
+<br>
+
+</center>
+
+
+## MLB strikeout rates have been increasing throughout history
+
+```{r}
+#| echo: false
+#| fig-align: center
+
+library(tidyverse)
+library(Lahman)
+Batting |> 
+  filter(lgID %in% c("AL", "NL")) |> 
+  group_by(yearID) %>%
+  summarize(total_sos = sum(SO, na.rm = TRUE),
+            total_atbats = sum(AB, na.rm = TRUE)) |> 
+  mutate(so_rate = total_sos / total_atbats) |> 
+  ggplot(aes(x = yearID, y = so_rate)) +
+  geom_line(color = "darkblue") +
+  geom_point(alpha = 0.8, color = "darkblue") +
+  labs(x = "Year", y = "Strikeouts / At-bats") +
+  theme_light() +
+  theme(strip.background = element_blank(),
+        text = element_text(size = rel(4)))
+```
+
+(Explain the elements of your graph - what is each axis, color, shape, etc referring to? And what is the unit scale?)
+
+## Discussion (and ending a presentation)
+
+- Conclude with a recap of the main points of your work
+
+. . .
+
+- Then point out **limitations** and indicate **future directions**
+
+. . .
+
+- Either end with the **Discussion** slide (or **Acknowledgements** but this is sometimes placed at the beginning)
+
+- Never end a presentation with lone *Thank you* slide! 
+
+  - Either want the audience to focus on the final points in your **Discussion** slide
+  
+  - Or show a plot that stood out from your presentation (pretty picture!)
+  
+. . .
+
+- Include back-up **Appendix** slides with additional info, ready for questions
+
+. . .
+
+- Slides for **References** should not be displayed during your talk
+
+  - Their purpose is just for sharing with others
+  
+  - Alternative option: include references directly on slides either in text or via footnotes ^[Like this...]
+
+
+
+
+## Additional tips and reminders
+
+**Use pauses effectively** to highlight points and explain steps
+
+. . .
+
+- Showing all of your text at once can overwhelm your audience
+
+. . .
+
+But
+
+. . .
+
+don't
+
+. . .
+
+be 
+
+. . .
+
+ridiculous
+
+. . .
+
+Remember: **memory overload is real!**
+
+- Do **NOT** introduce too much notation at once
+
+- **Repetitive language and usage of words are useful and reminders for the audience**
+
+  - Use consistent language and terminology throughout the talk
+
+. . .
+
+**Know your audience!**
+
+## Design tips
+
+* Less ink, less ink, less ink
+
+* Your plot should be big enough (font size, line width, point size, etc.)
+
+* Reformat variable names (don't show the original names in the data)
+
+* If a table can be represented by a figure, turn it into a figure (e.g., comparison of model evaluation metrics)
+
+## More general tips
+
+> Your slides should support what you say, not create interference between speech and vision brain areas -- your slides serves as a summary of what you said so someone who may have been distracted can catch up quickly.
+
+> Do not create your talk at the last minute (it will be obvious if you do). Designing good slides takes time. Practicing a talk takes time. 
+
+* [Advices from Andrew Patton:](https://x.com/anpatt7/status/1746209633562443948)
+
+> You don’t need 17 decimal points for anything ever.
+
+> Make sure your figures and charts, etc. all display the correct size. If I have to zoom in 27 times to read the legends that’s not going to help your case.
+
+> Pick better colors for your charts. Your submission should look expensive.
+
+# Do it live: presentation critique
+
+# Do it live: making presentations with Quarto
+
+## Resources to follow along
+
+* Quarto presentation: [`quarto.org/docs/presentations`](https://quarto.org/docs/presentations/)
+
+* `revealjs`: [`quarto.org/docs/presentations/revealjs`](https://quarto.org/docs/presentations/revealjs/)
