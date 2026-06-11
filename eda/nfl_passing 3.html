@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pittsburgh-based Resources – CMSACamp 2026</title>
+<title>EDA project: NFL passing – CMSACamp 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +20,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./icon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cf27875dd1ae9327fe69e76602a4a4de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../icon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-cf27875dd1ae9327fe69e76602a4a4de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,17 +106,17 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">CMSACamp 2026</span>
     </a>
   </div>
@@ -92,33 +127,33 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./lectures.html"> 
+    <a class="nav-link" href="../lectures.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./labs.html"> 
+    <a class="nav-link" href="../labs.html"> 
 <span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./bios.html"> 
+    <a class="nav-link" href="../bios.html"> 
 <span class="menu-text">Bios</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./r-setup.html"> 
+    <a class="nav-link" href="../r-setup.html"> 
 <span class="menu-text">R and RStudio Setup</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./git-setup.html"> 
+    <a class="nav-link" href="../git-setup.html"> 
 <span class="menu-text">Git and GitHub Setup</span></a>
   </li>  
 </ul>
@@ -132,25 +167,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#cmu-sponsored-id" id="toc-cmu-sponsored-id" class="nav-link active" data-scroll-target="#cmu-sponsored-id">CMU Sponsored ID</a></li>
-  <li><a href="#pittsburgh-bustransit-pass" id="toc-pittsburgh-bustransit-pass" class="nav-link" data-scroll-target="#pittsburgh-bustransit-pass">Pittsburgh Bus/Transit Pass</a></li>
-  <li><a href="#medicalwellness-resources" id="toc-medicalwellness-resources" class="nav-link" data-scroll-target="#medicalwellness-resources">Medical/Wellness Resources</a></li>
-  <li><a href="#food-insecurity" id="toc-food-insecurity" class="nav-link" data-scroll-target="#food-insecurity">Food Insecurity</a></li>
-  <li><a href="#finding-a-faith-community" id="toc-finding-a-faith-community" class="nav-link" data-scroll-target="#finding-a-faith-community">Finding a Faith Community</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Pittsburgh-based Resources</h1>
+<h1 class="title">EDA project: NFL passing</h1>
 </div>
 
 
@@ -167,69 +190,87 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="cmu-sponsored-id" class="level2">
-<h2 class="anchored" data-anchor-id="cmu-sponsored-id">CMU Sponsored ID</h2>
-<p>A <a href="https://www.cmu.edu/idplus/idcards/sponsored.html">CMU sponsored ID</a> is an optional, additional expense for students that can provide the following:</p>
+<hr>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This project will be released on Thursday, June 4 and <strong>conclude with a 6-minute presentation on Tuesday, June 16 during lab</strong>.</p>
+<p>Students will be randomly placed into groups of 2–3 and each group will be randomly assigned a dataset.</p>
+<p>The goal of this project is to practice understanding the structure of a dataset, and to practice generating and evaluating hypotheses using fundamental EDA and data visualization techniques.</p>
+</section>
+<section id="deliverables" class="level2">
+<h2 class="anchored" data-anchor-id="deliverables">Deliverables</h2>
+<p>Each group is expected to make slides to accompany the 6-minute presentation. All group members must be present for the presentation and participate. <strong>No notes/scripts are allowed during the presentation.</strong></p>
+<p>The presentation should feature the following:</p>
 <ul>
-<li><p>General building access</p></li>
-<li><p>Fitness center access (GroupX classes not included)</p></li>
-<li><p>Library access &amp; borrowing of books</p></li>
-<li><p>CMU campus shuttles &amp; escort services</p>
-<ul>
-<li>Note that Pittsburgh Bus Transit is not included</li>
-</ul></li>
+<li><p>Overview of the structure of your dataset</p></li>
+<li><p><strong>Two questions/hypotheses</strong> you are interested in exploring</p></li>
+<li><p><strong>Two data visualizations</strong> exploring the questions—both must be multivariate (i.e., involving 2+ variables) and in different formats</p></li>
+<li><p><strong>One clustering analysis</strong></p></li>
+<li><p>Conclusions for the hypotheses based on your EDA and data visualizations</p></li>
 </ul>
 </section>
-<section id="pittsburgh-bustransit-pass" class="level2">
-<h2 class="anchored" data-anchor-id="pittsburgh-bustransit-pass">Pittsburgh Bus/Transit Pass</h2>
-<p>If you would like to use public transit to explore what Pittsburgh has to offer, please see the below links for more information:</p>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<p>There will be two submission deadlines:</p>
+<p><strong>Thursday, June 11 at 5pm ET</strong> - Each student will push their individual code for the project thus far to GitHub for review.</p>
+<p><strong>Tuesday, June 16 at 1pm ET</strong> - Slides and full code must be completed and ready for presentation. Send your slides to Erin (<a href="mailto:efranke@andrew.cmu.edu"><code>efranke@andrew.cmu.edu</code></a>) and Sara (<a href="mailto:scolando@andrew.cmu.edu"><code>scolando@andrew.cmu.edu</code></a>). All code must be written in <code>R</code>; but the slides may be created in any software. Take advantage of examples from lectures, but also feel free to explore online resources that may be relevant. (But be sure to always consult the <code>R</code> help documentation first before attempting to google around or ask ChatGPT.)</p>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>This dataset contains pass attempts from weeks 1–9 of the 2022 NFL regular season, courtesy of the <a href="https://nflreadr.nflverse.com/"><code>nflreadr</code></a> package (part of the <a href="https://nflverse.nflverse.com/"><code>nflverse</code></a>) and the <a href="https://www.kaggle.com/competitions/nfl-big-data-bowl-2025/data">2025 NFL Big Data Bowl</a>.</p>
+<p>Each row in the dataset corresponds to a pass attempt and the columns are:</p>
 <ul>
-<li><p><a href="https://www.rideprt.org/fares-and-passes/fare-information/">Current bus fares</a></p></li>
-<li><p><a href="https://www.rideprt.org/fares-and-passes/">Getting a bus/fare pass</a></p></li>
-<li><p>Personally, we recommend <a href="https://www.google.com/maps/place/4805+Frew+St,+Pittsburgh,+PA+15213/@40.4418248,-79.9473227,17z/data=!3m1!4b1!4m6!3m5!1s0x8834f220cd547121:0xa666c0a7f69a9d18!8m2!3d40.4418248!4d-79.9473227!16s%2Fg%2F11ggb931pl?entry=ttu&amp;g_ep=EgoyMDI2MDUyNi4wIKXMDSoASAFQAw%3D%3D">Google Maps</a> (for planning routes) and the <a href="https://transitapp.com/">Transit App</a> (for real-time tracking) to coordinate bus plans.</p></li>
+<li><code>game_id</code>: unique identifier for a game<br>
+</li>
+<li><code>play_id</code>: unique identifier for a play (within a game)</li>
+<li><code>passer_player_name</code>: name of the player that attempted the pass</li>
+<li><code>passer_player_id</code>: unique identifier for the player that attempted the pass</li>
+<li><code>posteam</code>: abbreviation for the team with possession</li>
+<li><code>complete_pass</code>: indicator denoting whether or not the pass was completed</li>
+<li><code>interception</code>: indicator denoting whether or not the pass was intercepted by the defense</li>
+<li><code>yards_gained</code>: yards gained (or lost) by the possessing team, excluding yards gained via fumble recoveries and laterals</li>
+<li><code>touchdown</code>: indicator denoting if the play resulted in a touchdown</li>
+<li><code>pass_location</code>: categorical location of pass</li>
+<li><code>pass_length</code>: categorical length of pass</li>
+<li><code>air_yards</code>: distance in yards perpendicular to the line of scrimmage at where the targeted receiver either caught or didn’t catch the ball</li>
+<li><code>yards_after_catch</code>: distance in yards perpendicular to the yard line where the receiver made the reception to where the play ended</li>
+<li><code>shotgun</code>: indicator for whether or not the play was in shotgun formation</li>
+<li><code>no_huddle</code>: indicator for whether or not the play was in no_huddle formation</li>
+<li><code>defteam</code>: abbreviation for the team on defense</li>
+<li><code>posteam_type</code>: indicating whether the posteam team is home or away</li>
+<li><code>yardline_100</code>: distance in the number of yards from the opponent’s endzone for the posteam</li>
+<li><code>side_of_field</code>: abbreviation for which team’s side of the field the team with possession is currently on</li>
+<li><code>down</code>: down for the given play</li>
+<li><code>qtr</code>: quarter of the game (5 is overtime)</li>
+<li><code>half_seconds_remaining</code>: seconds remaining in the half</li>
+<li><code>game_half</code>: indicating which half the play is in</li>
+<li><code>home_team</code>: abbreviation for the home team</li>
+<li><code>away_team</code>: abbreviation for the away team</li>
+<li><code>home_score</code>: total points scored by the home team</li>
+<li><code>away_score</code>: total points scored by the away team</li>
+<li><code>target_player_id</code>: unique identifier for the intended receiver<br>
+</li>
+<li><code>target_player_name</code>: name of the intended receiver<br>
+</li>
+<li><code>had_pass_reception</code>: whether the pass was caught by the intended receiver</li>
+<li><code>motion_since_lineset</code>: whether the intended receiver went in motion after they were initially set at the line of scrimmage</li>
+<li><code>route_ran</code>: route ran by the intended receiver<br>
+</li>
+<li><code>offense_formation</code>: formation used by the offense</li>
+<li><code>target_x</code>: x coordinate (along the end zone direction) of targeted receiver when the pass arrived (Note: all locations have been standardized so that the possession team is going from left to right. Higher x values means closer to the target end zone)<br>
+</li>
+<li><code>target_y</code>: y coordinate (along the sideline direction) of targeted receiver when the pass arrived<br>
+</li>
+<li><code>time_to_throw</code>: time (in seconds) elapsed between snap and pass</li>
 </ul>
 </section>
-<section id="medicalwellness-resources" class="level2">
-<h2 class="anchored" data-anchor-id="medicalwellness-resources">Medical/Wellness Resources</h2>
-<p>If you find yourself in need of physical, mental, or emotional attention, please utilize these local institutions for assistance:</p>
-<ul>
-<li><p><a href="https://providers.upmc.com/provider/upmc-urgent-care-shadyside/1998692">UPMC Urgent Care Shadyside</a></p>
-<ul>
-<li><p>5231 Centre Ave, Pittsburgh, PA 15232</p></li>
-<li><p>412-623-4114</p></li>
-</ul></li>
-<li><p><a href="https://www.upmc.com/locations/hospitals/presbyterian?utm_source=google&amp;utm_campaign=business-profile&amp;utm_content=upmcpresbyterian-pittsburgh-website">UPMC Presbyterian Hospital</a></p>
-<ul>
-<li><p>200 Lothrop St, Pittsburgh, PA 15213</p></li>
-<li><p>412-755-2307</p></li>
-</ul></li>
-<li><p><a href="https://ahnneighborhood.org/locations/brentwood/">Allegheny Health Network Emergency Care Brentwood</a></p>
-<ul>
-<li>3290 Saw Mill Run Blvd, Brentwood, PA 15227</li>
-</ul></li>
-<li><p><a href="https://www.upmc.com/services/behavioral-health/programs/emergency-crisis/resolve-crisis-services">Resolve Crisis Services</a></p></li>
-<li><p>333 North Braddock Ave, Pittsburgh, PA 15213</p></li>
-<li><p>1-888-796-8226</p></li>
-<li><p><a href="https://www.lgbtq.pitt.edu/find-support/local-resources">Allies for Health and Well-Being</a></p>
-<ul>
-<li><p>Medical support and community-based resources for individuals living with or at risk for HIV, viral hepatitis, and other sexually transmitted infections</p></li>
-<li><p>Local support and resources for members of the LGBTQ+ community</p></li>
-</ul></li>
-</ul>
-</section>
-<section id="food-insecurity" class="level2">
-<h2 class="anchored" data-anchor-id="food-insecurity">Food Insecurity</h2>
-<p>If you find yourself struggling with having enough food to get through your time here, please contact the following resource for assistance:</p>
-<ul>
-<li><a href="https://pittsburghfoodbank.org/find-food/get-help/">Greater Pittsburgh Community Food Bank</a> 412-460-3663 ext. 655</li>
-</ul>
-</section>
-<section id="finding-a-faith-community" class="level2">
-<h2 class="anchored" data-anchor-id="finding-a-faith-community">Finding a Faith Community</h2>
-<p>If you are part of a religious community and want to find a local community during your time here, please use the following resource to find a faith community:</p>
-<ul>
-<li><a href="https://www.cmu.edu/wellbeing/about-us/cora.html">CMU Council of Religious Advisors</a></li>
-</ul>
+<section id="starter-code" class="level2">
+<h2 class="anchored" data-anchor-id="starter-code">Starter code</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>nfl_passes <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/2026/main/data/nfl_passes.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
 </section>

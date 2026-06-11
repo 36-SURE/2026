@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDA project: UFA throwing – CMSACamp 2026</title>
+<title>Lab: data wrangling – CMSACamp 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,35 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -202,7 +173,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">EDA project: UFA throwing</h1>
+<h1 class="title">Lab: data wrangling</h1>
 </div>
 
 
@@ -219,91 +190,200 @@ window.Quarto = {
 </header>
 
 
-<hr>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This project will be released on Thursday, June 4 and <strong>conclude with a 6-minute presentation on Tuesday, June 16 during lab</strong>.</p>
-<p>Students will be randomly placed into groups of 2–3 and each group will be randomly assigned a dataset.</p>
-<p>The goal of this project is to practice understanding the structure of a dataset, and to practice generating and evaluating hypotheses using fundamental EDA and data visualization techniques.</p>
-</section>
-<section id="deliverables" class="level2">
-<h2 class="anchored" data-anchor-id="deliverables">Deliverables</h2>
-<p>Each group is expected to make slides to accompany the 6-minute presentation. All group members must be present for the presentation and participate. <strong>No notes/scripts are allowed during the presentation.</strong></p>
-<p>The presentation should feature the following:</p>
-<ul>
-<li><p>Overview of the structure of your dataset</p></li>
-<li><p><strong>Two questions/hypotheses</strong> you are interested in exploring</p></li>
-<li><p><strong>Two data visualizations</strong> exploring the questions—both must be multivariate (i.e., involving 2+ variables) and in different formats</p></li>
-<li><p><strong>One clustering analysis</strong></p></li>
-<li><p>Conclusions for the hypotheses based on your EDA and data visualizations</p></li>
-</ul>
-</section>
-<section id="timeline" class="level2">
-<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
-<p>There will be two submission deadlines:</p>
-<p><strong>Thursday, June 11 at 5pm ET</strong> - Each student will push their individual code for the project thus far to GitHub for review.</p>
-<p><strong>Tuesday, June 16 at 1pm ET</strong> - Slides and full code must be completed and ready for presentation. Send your slides to Erin (<a href="mailto:efranke@andrew.cmu.edu"><code>efranke@andrew.cmu.edu</code></a>) and Sara (<a href="mailto:scolando@andrew.cmu.edu"><code>scolando@andrew.cmu.edu</code></a>). All code must be written in <code>R</code>; but the slides may be created in any software. Take advantage of examples from lectures, but also feel free to explore online resources that may be relevant. (But be sure to always consult the <code>R</code> help documentation first before attempting to google around or ask ChatGPT.)</p>
-</section>
-<section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>This dataset contains throw attempts in the Ultimate Frisbee Association from 2021 to 2024. The Ultimate Frisbee Association (UFA), formerly known as the American Ultimate Disc League (AUDL), is the top professional ultimate league in North America. The data were used in the <a href="https://www.sloansportsconference.com/research-papers/a-machine-learning-approach-to-throw-value-estimation-in-professional-ultimate-frisbee">2025 SSAC paper by Eberhard, Miller and Sandholz</a> and made <a href="https://raw.githubusercontent.com/BradenEberhard/Expected-Throwing-Value/refs/heads/main/data/all_games_1024.csv">available on GitHub</a>.</p>
-<p>Each row in the dataset corresponds to a throw attempt and the columns are:</p>
-<ul>
-<li><code>thrower</code>: thrower name identifier</li>
-<li><code>thrower_x</code>: (standardized) x coordinate of thrower (position along the sideline direction; 0 represents the middle of the field, positive values denote the left side (with respect to facing the target end zone), and negative values denote the right side)</li>
-<li><code>thrower_y</code>: y coordinate of thrower (position along the end zone direction; higher <code>y</code> means closer to the target end zone)</li>
-<li><code>receiver</code>: receiver name identifier</li>
-<li><code>receiver_x</code>: (standardized) x coordinate of receiver (position along the sideline direction; 0 represents the middle of the field, positive values denote the left side (with respect to facing the target end zone), and negative values denote the right side)</li>
-<li><code>receiver_y</code>: y coordinate of receiver (position along the end zone direction; higher <code>y</code> means closer to the target end zone)</li>
-<li><code>receiver</code>: receiver name identifier</li>
-<li><code>turnover</code>: whether the throw results in a turnover</li>
-<li><code>possession_num</code>: possession number within a game</li>
-<li><code>possession_throw</code>: throw number within a possession</li>
-<li><code>game_quarter</code>: quarter within a game</li>
-<li><code>is_home_team</code>: whether the offense is the home team</li>
-<li><code>home_team_score</code>: home team score</li>
-<li><code>away_team_score</code>: away team score</li>
-<li><code>gameID</code>: unique identifier for game</li>
-<li><code>home_teamID</code>: home team name identifier</li>
-<li><code>away_teamID</code>: away team name identifier</li>
-<li><code>times</code>: game time remaining (seconds)</li>
-<li><code>home_team_win</code>: whether home team wins</li>
-<li><code>score_diff</code>: score difference between home and away teams</li>
-<li><code>goal</code>: whether the throw results in a goal</li>
-<li><code>throw_distance</code>: throw distance (yards)</li>
-<li><code>x_diff</code>: difference in x coordinates between thrower and receiver</li>
-<li><code>y_diff</code>: difference in y coordinates between thrower and receiver<br>
-</li>
-<li><code>throw_angle</code>: throw angle (radians, 0 means forward, <span class="math inline">\(\pi\)</span> means backward, positive values mean to the right, and negative values mean to the left of the thrower)</li>
-</ul>
-</section>
-<section id="starter-code" class="level2">
-<h2 class="anchored" data-anchor-id="starter-code">Starter code</h2>
+<section id="reading-and-previewing-data" class="level2">
+<h2 class="anchored" data-anchor-id="reading-and-previewing-data">Reading and previewing data</h2>
+<p>Our data are usually stored as a <code>.csv</code> file and after loading a <code>.csv</code> file into RStudio, we will have a “data frame”. A data frame can be considered a special case of matrix where each column represents a measurement or variable of interest for each observation which correspond to the rows of the dataset. After loading the <code>tidyverse</code> suite of packages, we use the <a href="https://readr.tidyverse.org/reference/read_delim.html"><code>read_csv()</code></a> function to load the 2025 NBA regular season stats dataset from yesterday:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ufa_throws <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/2026/main/data/ufa_throws.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1          ✔ readr     2.2.0     
+✔ forcats   1.0.1          ✔ stringr   1.6.0     
+✔ ggplot2   4.0.3.9000     ✔ tibble    3.3.1     
+✔ lubridate 1.9.5          ✔ tidyr     1.3.2     
+✔ purrr     1.2.2          
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<p>In case you’re curious, the code to build this dataset can be found below.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nba_stats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_stats.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 654 Columns: 23
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (3): player, team, position
+dbl (20): age, games, games_started, minutes_played, field_goals, field_goal...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>By default, <code>read_csv()</code> reads in the dataset as a <code>tbl</code> (aka <code>tibble</code>) object instead of a <code>data.frame</code> object. There are <a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html">some differences</a>, which you can read about if you are interested, but it’s not that meaningful for our purposes.</p>
+<p>We can use the functions <code>slice_head()</code> and <code>slice_tail()</code> to view a sample of the data. Use the <code>slice_head()</code> function to view the first 6 rows, then use the <code>slice_tail()</code> function to view the last 3 rows:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ufa_throws <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/BradenEberhard/Expected-Throwing-Value/refs/heads/main/data/all_games_1024.csv"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ufa_throws <span class="ot">&lt;-</span> ufa_throws <span class="sc">|&gt;</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">goal =</span> <span class="fu">ifelse</span>(receiver_y <span class="sc">&gt;</span> <span class="dv">100</span> <span class="sc">&amp;</span> turnover <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">throw_distance =</span> <span class="fu">sqrt</span>((receiver_x <span class="sc">-</span> thrower_x) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">+</span> (receiver_y <span class="sc">-</span> thrower_y) <span class="sc">^</span> <span class="dv">2</span>),</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_diff =</span> receiver_x <span class="sc">-</span> thrower_x,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_diff =</span> receiver_y <span class="sc">-</span> thrower_y,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">throw_angle =</span> <span class="fu">atan2</span>(y_diff, x_diff)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>quarter_point, <span class="sc">-</span>total_points, <span class="sc">-</span>current_line)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<!-- # https://someflow.substack.com/p/all-the-audlufa-data-science-projects -->
-<!-- # https://github.com/BradenEberhard/Expected-Throwing-Value/blob/main/processing/processing.ipynb -->
-<!-- # https://www.docs.ufastats.com/ -->
-<!-- # https://www.stat.cmu.edu/capstoneresearch/spring2024/460files/team16.html -->
+<p>View the dimensions of the data with <code>dim()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Quickly view summary statistics for all variables with the <code>summary()</code> function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the following code by deleting the # at the front</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(nba_stats)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>View the data structure types with <code>str()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># str(nba_stats)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>What’s the difference between the output from the two functions?</p>
+</section>
+<section id="data-manipulation-with-dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="data-manipulation-with-dplyr">Data manipulation with <code>dplyr</code></h2>
+<p>An easier way to manipulate the data frame is through the <code>dplyr</code> package, which is in the <code>tidyverse</code> suite of packages. The operations we can do include: selecting specific columns, filtering for rows, re-ordering rows, adding new columns and summarizing data. The “split-apply-combine” concept can be achieved by <code>dplyr</code>.</p>
+<section id="selecting-columns-with-select" class="level3">
+<h3 class="anchored" data-anchor-id="selecting-columns-with-select">Selecting columns with <code>select()</code></h3>
+<p>The function <code>select()</code> can be use to select certain column with the column names. First create a new table called <code>nba_stats_pg</code> that only contains the <code>player</code> and <code>games</code> columns:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To select all columns except a specific column, use the <code>-</code> (subtraction) operator. For example, view the output from uncommenting the following line of code:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select(nba_stats, -player)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To select a range of columns by name (that are in consecutive order), use the <code>:</code> (colon) operator. For example, view the output from uncommenting the following line of code:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select(nba_stats, player:games)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To select all columns that start with certain character strings, use the function <code>starts_with()</code>. Other matching options are:</p>
+<ol type="1">
+<li><p><code>ends_with()</code>: select columns that end with a character string</p></li>
+<li><p><code>contains()</code>: select columns that contain a character string</p></li>
+<li><p><code>matches()</code>: select columns that match a regular expression</p></li>
+<li><p><code>one_of()</code>: select columns names that are from a group of names</p></li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the following lines of code</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># select(nba_stats, starts_with("three"))</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select(nba_stats, contains("throw"))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="extracting-rows-using-filter" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-rows-using-filter">Extracting rows using <code>filter()</code></h3>
+<p>We can also extract the rows/observations that satisfy certain criteria. Try extracting the rows with more than 500 assists:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>We can also filter on multiple criteria. Subset the rows with <code>age</code> above 30 and the team is either “HOU” or “GSW”:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="arranging-rows-using-arrange" class="level3">
+<h3 class="anchored" data-anchor-id="arranging-rows-using-arrange">Arranging rows using <code>arrange()</code></h3>
+<p>To arrange the data frame by a specific order we need to use the function <code>arrange()</code>. The default is by increasing order and the <code>desc()</code> function will provide the decreasing order. First arrange the <code>nba_stats</code> table by <code>personal_fouls</code> in ascending order:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Next by descending order:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Try combining a pipeline of <code>select()</code>, <code>filter()</code>, and <code>arrange()</code> steps together with the <code>|&gt;</code> operator by:</p>
+<ol type="1">
+<li>Selecting the <code>player</code>, <code>team</code>, <code>age</code>, and <code>games</code> columns,</li>
+<li>Filter to select only rows with <code>games</code> above 50,</li>
+<li>Sort by <code>age</code> in descending order</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="creating-new-columns-using-mutate" class="level3">
+<h3 class="anchored" data-anchor-id="creating-new-columns-using-mutate">Creating new columns using <code>mutate()</code></h3>
+<p>Sometimes the data does not include the variable that we are interested in and we need to manipulate the current variables to add new variables into the data frame. Create a new column <code>fouls_per_game</code> by taking the <code>personal_fouls</code> and dividing by <code>games</code> (reassign this output to the <code>nba_stats</code> table following the commented code chunk so this column is added to the table):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># nba_stats &lt;- nba_stats |&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(INSERT CODE HERE)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="creating-summaries-with-summarize" class="level3">
+<h3 class="anchored" data-anchor-id="creating-summaries-with-summarize">Creating summaries with <code>summarize()</code></h3>
+<p>To create summary statistics for a given column in the data frame, we can use <code>summarize()</code> function. Compute the <code>mean</code>, <code>min</code>, and <code>max</code> number of <code>assists</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The advantage of <code>summarize()</code> is more obvious if we combine it with <code>group_by()</code>, the group operators. Since players at the different position tend to have very different statistics, first <code>group_by()</code> position and then compute the same summary statistics for <code>assists</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="challenge-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="challenge-exercises">Challenge exercises</h2>
+<p>Finished early? We encourage you to review how to join dataframes in R by reading sections <a href="https://r4ds.hadley.nz/joins.html#sec-mutating-joins">19.3-19.5 of R for Data Science</a> by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund. Then, try the following exercises. We challenge you to not use AI—ask the TAs if you get stuck!</p>
+<section id="bonus-exercise-1-paralympic-swimming" class="level3">
+<h3 class="anchored" data-anchor-id="bonus-exercise-1-paralympic-swimming">Bonus exercise 1 (Paralympic Swimming)</h3>
+<p>Load the following dataset (<a href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-08-03/readme.md">link to the codebook</a>). Create a dataframe with the number of athletes that have medaled in swimming since 2000 for each county. Create a second dataframe with the total number of medals that each country has won in swimming since 2000. Then, join the two dataframes. Arrange the joined dataframe from greatest number of medals to least number of medals.</p>
+<p>Check your work: Is the number of medals always greater than or equal to the number of athletes?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>athletes <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-03/athletes.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 19547 Columns: 10
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (8): gender, event, medal, athlete, abb, country, type, guide
+dbl (2): grp_id, year
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="bonus-exercise-2-ultra-running" class="level3">
+<h3 class="anchored" data-anchor-id="bonus-exercise-2-ultra-running">Bonus exercise 2 (Ultra running)</h3>
+<p>Load the following datasets that explore trends in ultra running (<a href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-10-26/readme.md">link to the data dictionary</a>). Your task is to identify female runners who ran at least 10 ultra races between age 30-50. Create a dataset of their race results from this time in their life. The dataset should have additional columns:</p>
+<ul>
+<li>the distance of the race (in miles)</li>
+<li>the average minutes per mile that runner the completed the race in</li>
+</ul>
+<p><em>There is a lot going on in this one, so don’t feel discouraged if you get stuck!</em></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ultra_rankings <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/ultra_rankings.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 137803 Columns: 8
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (4): runner, time, gender, nationality
+dbl (4): race_year_id, rank, age, time_in_seconds
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>race <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-26/race.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1207 Columns: 13
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (5): event, race, city, country, participation
+dbl  (6): race_year_id, distance, elevation_gain, elevation_loss, aid_statio...
+date (1): date
+time (1): start_time
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INSERT CODE HERE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
