@@ -177,7 +177,7 @@ $$
 \begin{aligned}
 \displaystyle
 P(z_i = k \mid x_i) &= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
-&= \frac{\pi_k \cdot \mathcal{N}(\mu_k, \sigma^2_k)}{\sum_{k = 1}^K \pi_k \cdot \mathcal{N}(\mu_k, \sigma^2_k)}
+&= \frac{\tau_k \cdot \mathcal{N}(\mu_k, \sigma^2_k)}{\sum_{k = 1}^K \tau_k \cdot \mathcal{N}(\mu_k, \sigma^2_k)}
 \end{aligned}
 $$
 :::
