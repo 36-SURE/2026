@@ -2,14 +2,6 @@
 title: "Labs"
 ---
 
-Updated daily before lab.
-
-<!--
-## Capstone project
-
-[Guidelines](https://36-sure.github.io/2025/sports/project/description.html)
--->
-
 Note: To download a `.qmd` file, right click and choose "Save Link As...".
 
 | Date   | Title                                  | Materials                                                                                                                                          |
