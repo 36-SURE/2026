@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lectures – CMSACamp 2026</title>
+<title>Instructor/TA Bios – CMSACamp 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -125,7 +96,7 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./lectures.html" aria-current="page"> 
+    <a class="nav-link" href="./lectures.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
@@ -137,7 +108,7 @@ window.Quarto = {
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./bios.html"> 
+    <a class="nav-link active" href="./bios.html" aria-current="page"> 
 <span class="menu-text">Bios</span></a>
   </li>  
 </ul>
@@ -167,7 +138,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lectures</h1>
+<h1 class="title">Instructor/TA Bios</h1>
 </div>
 
 
@@ -184,103 +155,15 @@ window.Quarto = {
 </header>
 
 
-<p>Updated daily before lecture.</p>
-<section id="contents" class="level2">
-<h2 class="anchored" data-anchor-id="contents">Contents</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Date</th>
-<th>Title</th>
-<th>Materials</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Lecture 0</td>
-<td>June 1</td>
-<td>Welcome to CMSACamp 2026</td>
-<td><a href="./lectures/00-welcome.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 1</td>
-<td>June 2</td>
-<td>Exploring data: into the <code>tidyverse</code></td>
-<td><a href="./lectures/01-explore.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 2</td>
-<td>June 3</td>
-<td>Data visualization: the grammar of graphics and <code>ggplot2</code></td>
-<td><a href="./lectures/02-graphics.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 3</td>
-<td>June 4</td>
-<td>Data visualization: categorical data</td>
-<td><a href="./lectures/03-categorical.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 4</td>
-<td>June 5</td>
-<td>Data visualization: quantitative data</td>
-<td><a href="./lectures/04-quantitative.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 5</td>
-<td>June 8</td>
-<td>Data visualization: density estimation</td>
-<td><a href="./lectures/05-density.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 6</td>
-<td>June 9</td>
-<td>Unsupervised learning: <span class="math inline">\(k\)</span>-means clustering</td>
-<td><a href="./lectures/06-kmeans.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 7</td>
-<td>June 10</td>
-<td>Unsupervised learning: hierarchical clustering</td>
-<td><a href="./lectures/07-hierarchical.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 8</td>
-<td>June 11</td>
-<td>Unsupervised learning: Gaussian mixture models</td>
-<td><a href="./lectures/08-mixture.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 9</td>
-<td>June 12</td>
-<td>Presentations</td>
-<td><a href="./lectures/09-presentation.html">slides</a></td>
-</tr>
-</tbody>
-</table>
-<!--
-| Lecture 10 | June 16 | Simulation                                                | [slides](lectures/10-simulation.qmd)     |
-| Lecture 11 | June 17 | Supervised learning: linear regression                    | [slides](lectures/11-linear.qmd)         |
-| Lecture 12 | June 20 | Supervised learning: model building                       | [slides](lectures/12-building.qmd)       |
-| Lecture 13 | June 23 | Data wrangling with R's `data.table` package              | [slides](lectures/13-datatable.qmd)      |
-| Lecture 14 | June 24 | Supervised learning: regularization                       | [slides](lectures/14-regularization.qmd) |
-| Lecture 15 | June 25 | Supervised learning: logistic regression                  | [slides](lectures/15-logistic.qmd)       |
-| Lecture 16 | June 26 | Supervised learning: generalized linear models            | [slides](lectures/16-glm.qmd)            |
-| Lecture 17 | June 27 | The command line and `git`                                | [slides](lectures/17-cli-git.qmd)        |
-| Lecture 18 | June 30 | Unsupervised learning: Gaussian mixture models            | [slides](lectures/18-mixture.qmd)        |
-| Lecture 19 | July 1  | Supervised learning: nonparametric regression             | [slides](lectures/19-nonparametric.qmd)  |
-| Lecture 20 | July 7  | Supervised learning: decision trees                       | [slides](lectures/20-trees.qmd)          |
-| Lecture 21 | July 8  | Supervised learning: bagging and boosting                 | [slides](lectures/21-ensemble.qmd)       |
-| Lecture 22 | July 9  | Building a website with Quarto                            | [slides](lectures/22-website.qmd)        | -->
-<!--
-
-| Lecture 21 | XXXXXXX | Supervised learning: multinomial classification           | [slides](lectures/21-multinomial.qmd)    |
-
--->
+<ul>
+<li><p><strong>Erin Franke</strong> is a rising third-year Ph.D.&nbsp;student in Statistics at CMU. She graduated from Macalester College in 2023, and before that was a CMSACamp student in 2021. She previously interned with the Minnesota Twins and worked with the CLL team at Mayo Clinic. At CMU, she has worked on projects analyzing statistical methods for psychology, AI’s impact on student writing, and the impact of super shoes of professional marathon times. This past semester, she started research on statistical methods for wastewater-based epidemiology.</p></li>
+<li><p><strong>Sara Colando</strong> is a rising third-year Ph.D.&nbsp;student in Statistics at CMU. She currently works on projects related to networks, text analysis, and statistics education. She has previously been involved in biostatistics and sports analytics research, participating in CMSACamp during Summer 2023. Before CMU, she graduated from Pomona College in 2024 with a double major in mathematics and philosophy.</p></li>
+<li><p><strong>Princess Allotey</strong> is a rising fourth-year joint Ph.D.&nbsp;student in Statistics and Public Policy at CMU, where she is a CMU Presidential Fellow and a Heinz Dean’s PhD Fellow for Social Good. Her doctoral research focuses on developing statistical methods to handle missing network data — a fundamental challenge in network analysis. She is grateful to be advised by Professor Nynke Niezink and Professor David Choi. She holds an MSc in Statistics from CMU and a BSc in Mathematics &amp; Data Science (minor in Education) from Centre College of Kentucky, where she was a Lincoln Scholar and a John C. Young Scholar.</p></li>
+<li><p><strong>Yuchen Chen</strong> is a rising fifth-year PhD student in statistics and data science at CMU, advised by Jing Lei and Yandi Shen. His research focuses on high-dimensional statistics and distribution-free inference.</p></li>
+<li><p><strong>JungHo Lee</strong> is a rising fourth-year Ph.D.&nbsp;student in Statistics at CMU. He is primarily interested in developing rigorous statistical methods for solving problems in public and health services. Before CMU, he obtained an MS in Statistics at the University of Chicago, and a BA in Mathematics and Economics at Boston College.</p></li>
+</ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

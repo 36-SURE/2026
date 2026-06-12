@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lectures – CMSACamp 2026</title>
+<title>Using GitHub for project collaboration – CMSACamp 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +20,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./icon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cf27875dd1ae9327fe69e76602a4a4de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../icon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-cf27875dd1ae9327fe69e76602a4a4de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -100,7 +135,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -110,7 +145,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">CMSACamp 2026</span>
     </a>
   </div>
@@ -121,33 +156,33 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./lectures.html" aria-current="page"> 
+    <a class="nav-link" href="../lectures.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./labs.html"> 
+    <a class="nav-link" href="../labs.html"> 
 <span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./bios.html"> 
+    <a class="nav-link" href="../bios.html"> 
 <span class="menu-text">Bios</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./r-setup.html"> 
+    <a class="nav-link" href="../r-setup.html"> 
 <span class="menu-text">R and RStudio Setup</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./git-setup.html"> 
+    <a class="nav-link" href="../git-setup.html"> 
 <span class="menu-text">Git and GitHub Setup</span></a>
   </li>  
 </ul>
@@ -167,7 +202,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lectures</h1>
+<h1 class="title">Using GitHub for project collaboration</h1>
 </div>
 
 
@@ -184,102 +219,160 @@ window.Quarto = {
 </header>
 
 
-<p>Updated daily before lecture.</p>
-<section id="contents" class="level2">
-<h2 class="anchored" data-anchor-id="contents">Contents</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Date</th>
-<th>Title</th>
-<th>Materials</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Lecture 0</td>
-<td>June 1</td>
-<td>Welcome to CMSACamp 2026</td>
-<td><a href="./lectures/00-welcome.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 1</td>
-<td>June 2</td>
-<td>Exploring data: into the <code>tidyverse</code></td>
-<td><a href="./lectures/01-explore.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 2</td>
-<td>June 3</td>
-<td>Data visualization: the grammar of graphics and <code>ggplot2</code></td>
-<td><a href="./lectures/02-graphics.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 3</td>
-<td>June 4</td>
-<td>Data visualization: categorical data</td>
-<td><a href="./lectures/03-categorical.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 4</td>
-<td>June 5</td>
-<td>Data visualization: quantitative data</td>
-<td><a href="./lectures/04-quantitative.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 5</td>
-<td>June 8</td>
-<td>Data visualization: density estimation</td>
-<td><a href="./lectures/05-density.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 6</td>
-<td>June 9</td>
-<td>Unsupervised learning: <span class="math inline">\(k\)</span>-means clustering</td>
-<td><a href="./lectures/06-kmeans.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 7</td>
-<td>June 10</td>
-<td>Unsupervised learning: hierarchical clustering</td>
-<td><a href="./lectures/07-hierarchical.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 8</td>
-<td>June 11</td>
-<td>Unsupervised learning: Gaussian mixture models</td>
-<td><a href="./lectures/08-mixture.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 9</td>
-<td>June 12</td>
-<td>Presentations</td>
-<td><a href="./lectures/09-presentation.html">slides</a></td>
-</tr>
-</tbody>
-</table>
-<!--
-| Lecture 10 | June 16 | Simulation                                                | [slides](lectures/10-simulation.qmd)     |
-| Lecture 11 | June 17 | Supervised learning: linear regression                    | [slides](lectures/11-linear.qmd)         |
-| Lecture 12 | June 20 | Supervised learning: model building                       | [slides](lectures/12-building.qmd)       |
-| Lecture 13 | June 23 | Data wrangling with R's `data.table` package              | [slides](lectures/13-datatable.qmd)      |
-| Lecture 14 | June 24 | Supervised learning: regularization                       | [slides](lectures/14-regularization.qmd) |
-| Lecture 15 | June 25 | Supervised learning: logistic regression                  | [slides](lectures/15-logistic.qmd)       |
-| Lecture 16 | June 26 | Supervised learning: generalized linear models            | [slides](lectures/16-glm.qmd)            |
-| Lecture 17 | June 27 | The command line and `git`                                | [slides](lectures/17-cli-git.qmd)        |
-| Lecture 18 | June 30 | Unsupervised learning: Gaussian mixture models            | [slides](lectures/18-mixture.qmd)        |
-| Lecture 19 | July 1  | Supervised learning: nonparametric regression             | [slides](lectures/19-nonparametric.qmd)  |
-| Lecture 20 | July 7  | Supervised learning: decision trees                       | [slides](lectures/20-trees.qmd)          |
-| Lecture 21 | July 8  | Supervised learning: bagging and boosting                 | [slides](lectures/21-ensemble.qmd)       |
-| Lecture 22 | July 9  | Building a website with Quarto                            | [slides](lectures/22-website.qmd)        | -->
-<!--
+<section id="goal" class="level2">
+<h2 class="anchored" data-anchor-id="goal">Goal</h2>
+<p>The purpose of this lab is to help you set up Git and GitHub on your computer, and use them to collaborate on your EDA project.</p>
+<p><strong>READ THE INSTRUCTIONS VERY CAREFULLY. DO NOT SKIP ANY STEPS.</strong></p>
+</section>
+<section id="task-0-github-registration-and-git-installation" class="level2">
+<h2 class="anchored" data-anchor-id="task-0-github-registration-and-git-installation">Task 0: GitHub registration and Git installation</h2>
+<p><strong>(Note: You were already being asked to complete these prior to the start of the program. Proceed to Task 1 if you already completed this task.)</strong></p>
+<p><strong>GitHub account.</strong> Register for a (free) GitHub account at <a href="https://github.com"><code>https://github.com</code></a>. <br> (if you already have a GitHub account, feel free to ignore this)</p>
+<p><strong>Download Git.</strong> <br> (if Git is already installed on your computer, the following instructions still hold for updating Git to its latest version)</p>
+<p>(Windows)</p>
+<ul>
+<li><p>Go to <a href="https://git-scm.com/download/win"><code>https://git-scm.com/download/win</code></a></p></li>
+<li><p>Navigate to “Click here to download” on the first line and click on it</p></li>
+<li><p>Follow the installation instructions</p></li>
+</ul>
+<p>(macOS)</p>
+<ul>
+<li><p>Open the Terminal app on your computer (Finder <span class="math inline">\(\rightarrow\)</span> Applications <span class="math inline">\(\rightarrow\)</span> Terminal)</p></li>
+<li><p>Go to <a href="https://brew.sh"><code>https://brew.sh</code></a> and copy/paste the chunk under “Install Homebrew” to the Terminal</p></li>
+<li><p>Once Homebrew is installed, type this into the Terminal: <code>brew install git</code></p></li>
+</ul>
+</section>
+<section id="task-1-git-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="task-1-git-configuration">Task 1: Git configuration</h2>
+<ul>
+<li><p>Make sure you’ve already (i) created a GitHub account and (ii) installed Git on your computer</p></li>
+<li><p>You then need to configure Git. This can be done directly in <code>R</code>:</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment and run the following line to install the usethis package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("usethis")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">"Insert Your Name"</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">user.email =</span> <span class="st">"Insert Your Email"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li><p>Use your full name for the <code>user.name</code> field and the same email as your GitHub account for <code>user.email</code></p></li>
+<li><p>You then need to create a <em>personal access token</em> for authentication as follows:</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li><p>This will direct you to the GitHub site on your browser (you may have to log in). On this site:</p>
+<ul>
+<li><p>Under “Note”, type in some description for this token (e.g., “Summer 2026 GitHub token”)</p></li>
+<li><p>For “Expiration”, either choose “No expiration” (if you don’t want to deal with this again in the future) or set an expiration date for this token (e.g., 90 days)</p></li>
+<li><p>Under “Select scopes”, recommended scopes will be pre-selected. Stick with these for now.</p></li>
+</ul></li>
+<li><p>Next, click on “Generate token”</p></li>
+<li><p>Copy the token to your clipboard (or leave the browser window open, so you can come back to copy the token later)</p></li>
+<li><p>In RStudio, run the following to get a prompt where you can paste your token:</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment and run the following line to install the gitcreds package</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("gitcreds")</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="task-2-eda-project-collaboration-with-git-and-github" class="level2">
+<h2 class="anchored" data-anchor-id="task-2-eda-project-collaboration-with-git-and-github">Task 2: EDA project collaboration with Git and GitHub</h2>
+<p>Make sure every group member finishes Task 1 before proceeding to Task 2, which requires a group effort.</p>
+<section id="step-1-create-an-eda-project-repository-on-github-required-for-one-group-member-only" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-create-an-eda-project-repository-on-github-required-for-one-group-member-only">Step 1: Create an EDA project repository on GitHub<br>(Required for ONE group member only)</h3>
+<p><strong>Each group should elect ONE person to create a GitHub repository for the EDA project.</strong> This repository is to be shared among all group members.</p>
+<p>The elected group member should do the following to create a new GitHub repository:</p>
+<ul>
+<li><p>After you’ve signed in to GitHub, go to <a href="https://github.com/new"><code>https://github.com/new</code></a></p></li>
+<li><p>Name the repository (give it a meaningful name)</p></li>
+<li><p>Give the repository a description (don’t leave this blank although this is optional)</p></li>
+<li><p>Decide whether to keep the repository public or private (for now, keep it public, so that we can review your code)</p></li>
+<li><p>Click on “Initialize this repository with a README”. For now, there’s no need to “Add .gitignore” or “Choose a license”</p></li>
+<li><p>Click on “Create Repository”</p></li>
+</ul>
+<p>Next, to add the rest of your group to the repository:</p>
+<ul>
+<li><p>Go to browser page of the GitHub repository you just created and click on “Settings”</p></li>
+<li><p>Navigate to the left sidebar and click on “Collaborators”</p></li>
+<li><p>Click on “Add people” (under Manage access). Enter the GitHub username for the other group members.</p></li>
+</ul>
+</section>
+<section id="step-2-clone-the-remote-repository-to-your-local-computer-required-for-all-group-members" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-clone-the-remote-repository-to-your-local-computer-required-for-all-group-members">Step 2: Clone the remote repository to your local computer<br>(Required for ALL group members)</h3>
+<ul>
+<li><p>Everyone (except the member responsible for creating the repository) should each get an invitation sent to the email associated with your GitHub account</p></li>
+<li><p>Check your email and accept the invitation</p></li>
+<li><p>Go to the browser page for the EDA project GitHub repository (created in Step 1)</p></li>
+<li><p>Click on Code (in the same line as “Go to file”). Under HTTPS, copy the URL</p></li>
+<li><p>In RStudio, click on <code>File &gt; New Project....</code> Next, click on “Version Control” and then on “Git”. Paste the URL you just copied into “Repository URL”</p></li>
+<li><p>Type the name for the folder on your computer associated with this repository into Project directory name</p>
+<ul>
+<li>You can choose whatever name you want, but it is recommended to give a name similar to the repository name on GitHub</li>
+</ul></li>
+<li><p>Make sure “Create project as subdirectory of:” points to where you want to locate this new folder</p></li>
+<li><p>Click on “Create Project”</p></li>
+<li><p>At this point, you should find that the “Files” pane (in the bottom right of RStudio) is listing the files in your local repository.</p></li>
+</ul>
+</section>
+<section id="step-3-modify-the-repository-required-for-all-group-members" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-modify-the-repository-required-for-all-group-members">Step 3: Modify the repository <br>(Required for ALL group members)</h3>
+<p>Each group member should create their own “sandbox” folder locally on their own computer as follows:</p>
+<ul>
+<li><p>Navigate to the Files pane in RStudio and click on “Folder” to create a new folder (for the new folder name, use your last name.)</p></li>
+<li><p>In RStudio, open a new file (could be anything - e.g.&nbsp;R Script, Quarto document, etc.). Fill the file with some code/comments/etc. (This is just for illustration purpose, to show how you can add a file to GitHub from your computer)</p></li>
+<li><p>Save the file inside the folder you just created (with your last name as the folder name). At this point, this file should show up in the “Git” pane (in the top right of RStudio)</p></li>
+<li><p>Check the box under “Staged” in the Git pane to stage the file for a commit</p></li>
+<li><p>Click on “Commit” in the Git pane</p></li>
+<li><p>In the new window that opens, add a “Commit message”, then click on the “Commit” button</p></li>
+<li><p>Click on “Pull” to make sure the repository is up to date</p></li>
+<li><p>Finally, click on “Push” to push your changes from your local repository to the shared remote repository on GitHub</p></li>
+</ul>
+</section>
+<section id="step-4-update-the-local-repository-required-for-all-group-members" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-update-the-local-repository-required-for-all-group-members">Step 4: Update the local repository <br>(Required for ALL group members)</h3>
+<ul>
+<li><p>First, make sure that everyone in your group have completed Step 3</p></li>
+<li><p>In RStudio, navigate to the Git pane and click on “Pull”. A new window will pop up. Once everything finishes running, close the window.</p></li>
+<li><p>At this point, you should find that your <code>Files</code> pane in RStudio is listing the folders that your group members have created, in addition to your own folder</p>
+<ul>
+<li>This task is know as <code>git pull</code>, which updates the local repository to match that content of a shared remote repository</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-5-start-your-eda-project" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-start-your-eda-project">Step 5: Start your EDA project</h3>
+<p>If you encountered no errors then you can feel free to start brainstorming your EDA project with your group.</p>
+<p><strong>For this project, we ask you to create/update/save files within your own sandbox folder</strong> (that you created in Step 3). This will help mitigate the risk of running into trouble when pushing your files to GitHub, especially for those who are new to Git and GitHub. This also allows us to easily review your code.</p>
+</section>
+<section id="recap" class="level3">
+<h3 class="anchored" data-anchor-id="recap">Recap</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Important notes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The GitHub procedure for any project collaboration is</p>
+<ol type="1">
+<li><p>Pull new changes</p></li>
+<li><p>Make changes on your computer (e.g.&nbsp;create new files, update existing files)</p></li>
+<li><p>Commit your local changes (Note: this step may be repeated)</p></li>
+<li><p>Pull again to avoid merge conflicts</p></li>
+<li><p>Push your commit(s) to GitHub</p></li>
+</ol>
+<p>Advices: Make small, frequent commits. ALWAYS pull before you push.</p>
+</div>
+</div>
 
-| Lecture 21 | XXXXXXX | Supervised learning: multinomial classification           | [slides](lectures/21-multinomial.qmd)    |
 
--->
-
-
+</section>
 </section>
 
 </main> <!-- /main -->
