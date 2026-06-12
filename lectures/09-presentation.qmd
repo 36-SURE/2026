@@ -94,7 +94,7 @@ You want to provide a general overview of your dataset:
 
 ## Introducing and describing methods
 
-- Prior to presenting results, you want to clearly state any transformations and methods used in the analysis
+- Prior to presenting results, clearly state any transformations and methods used in the analysis
 
 - Your presentation should provide the general steps for someone to replicate your work
 
