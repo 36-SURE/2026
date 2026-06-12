@@ -1,0 +1,265 @@
+---
+title: "Exploring Chocolate Characteristics and Ratings"
+author: "Erin Franke and Sara Colando"
+date: Jun 12, 2026
+date-format: long
+#footer:  "Carnegie Mellon University, Department of Statistics & Data Science"
+bibliography: critique-references.bib
+format: 
+  revealjs:
+    theme: theme.scss
+    chalkboard: true
+    smaller: true
+    slide-number: c/t
+    code-line-numbers: false
+    linestretch: 1.5
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    include-after-body: 
+      - text: |
+          <script type="text/javascript">
+          Reveal.addEventListener('slidechanged', (event) => {
+            const isSnOn = (event.currentSlide.dataset.hideSlideNumber !== 'true');
+            Reveal.configure({ slideNumber: isSnOn ? 'c/t' : false });
+          });
+          </script>
+---
+
+```{r}
+#| echo: false
+#| fig-height: 9
+library(tidyverse)
+chocolate <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-01-18/chocolate.csv') |>
+  mutate(cocoa_percent = as.numeric(str_remove(cocoa_percent, "%")), 
+         n_ingredients = as.numeric(str_sub(ingredients, start = 1, end =1)))
+
+list_of_adjectives <- chocolate %>%
+  mutate(id = row_number(), # gives each reviewer/chocolate combination a unique id
+         most_memorable_characteristics = strsplit(as.character(most_memorable_characteristics), ",")) %>% # split on the comma to create a list of characteristics for each individual
+  unnest(most_memorable_characteristics) # unlists the list, one in each column
+
+word_ratings <- list_of_adjectives |>
+  group_by(most_memorable_characteristics) |>
+  summarize(n = n(), avg_rating = mean(rating))
+```
+
+## Overview 
+
+* In this presentation, we are analyzing chocolate ratings around the world. 
+
+* Chocolate is important because it is a favorite food of many people around the world. 
+
+* We use a dataset that contains expert reviews of specialty chocolate bars from manufacturers around the world.
+
+* Each observation represents an individual chocolate bar review identified by a unique reference number.
+
+* We want to explore what makes a chocolate bar highly rated. 
+
+* To do so, we will use plots and clustering. 
+
+* We find rich and creamy chocolates are most highly rated. 
+
+## Chocolate: the world's most popular sweet treat
+
+* The history of chocolate began with the Maya, who were probably the first people in South America to cultivate the cocoa plant [@verna].
+
+. . . 
+
+* Since then, it has become a remarkably versatile ingredient, being used in drinks, desserts, beverages, and even savory food. 
+
+. . . 
+
+<br>
+
+<div style="text-align: center;">**Research Question**: What are the characteristics of highly rated chocolate?</div>
+
+## Getting into the data
+
+2530 rows, 10 variables (relevant ones shown below)
+
+```{r}
+#| echo: true
+#| fig-height: 9
+chocolate |> 
+  head() |>
+  select(ref, country_of_bean_origin, cocoa_percent, most_memorable_characteristics, rating)
+```
+
+## Data: Expert chocolate reviews from 2006-2021
+
+```{r}
+#| echo: false
+#| fig-height: 9
+library(gt)
+chocolate |> 
+  slice_sample(n=6) |>
+  select(ref, review_date, company_manufacturer, country_of_bean_origin, cocoa_percent, most_memorable_characteristics, rating, n_ingredients) |>
+  gt() |>
+  cols_label(ref = "Review ID",
+    review_date = "Year", 
+    company_manufacturer = "Manufacturer",
+    country_of_bean_origin = "Country bean of origin", 
+    cocoa_percent = "Cocoa %", 
+    most_memorable_characteristics = "Adjectives", 
+    rating = "Rating (out of 5)", 
+    n_ingredients = "Number of Ingredients")
+```
+
+## Scatterplot {data-hide-slide-number="true"}
+
+No relationship between cocoa percentage and rating. 
+
+```{r}
+#| echo: false
+#| fig-height: 9
+chocolate |>
+  ggplot(aes(x=cocoa_percent, y=rating))+
+  geom_point(alpha = 0.5) 
+```
+
+## Cocoa percentage is not indicative of rating 
+
+```{r}
+#| echo: false
+#| fig-height: 7
+#| fig-align: center
+chocolate |>
+  ggplot(aes(x=cocoa_percent/100, y=rating))+
+  geom_jitter(alpha = 0.3, size = 1.5, color = "#4f412b")+
+  geom_smooth(color = "skyblue3", fill = "skyblue3", alpha = 0.2)+
+  theme_bw()+
+  scale_x_continuous(labels = scales::label_percent()) +
+  labs(x = "Cocoa Percentage",  y= "Rating")+
+  theme(axis.title = element_text(color = "black", size = 18), 
+        axis.text = element_text(color = "black", size = 16))
+```
+
+## Adjectives describing chocolate versus deviation from the mean rating {data-hide-slide-number="true"} 
+
+```{r}
+word_ratings |>
+  filter(n>=50) |>
+  mutate(overall_avg_rating = mean(chocolate$rating),
+         rating_diff = avg_rating - overall_avg_rating) |>
+  ggplot(aes(x=rating_diff,y = most_memorable_characteristics))+
+  geom_col()
+```
+
+## Chocolates described as creamy and rich receives the highest ratings, on average
+
+```{r}
+overall_avg_rating <- mean(chocolate$rating)
+
+word_ratings |>
+  filter(n>=50) |>
+  mutate(overall_avg_rating = mean(chocolate$rating),
+         rating_diff = avg_rating - overall_avg_rating) |>
+  arrange(desc(rating_diff)) |>
+  slice(c(1:5, (n()-4):n())) |>
+  mutate(most_memorable_characteristics = fct_reorder(most_memorable_characteristics, rating_diff),
+         diff_pos = if_else(rating_diff >= 0, TRUE, FALSE)) |>
+  ggplot(aes(x=rating_diff,y = most_memorable_characteristics))+
+  geom_col(aes(fill = diff_pos)) +
+  geom_vline(xintercept = 0) +
+  scale_fill_manual(values=NatParksPalettes::natparks.pals("DeathValley")) +
+  theme_bw() +
+  labs(x = "Deviation from mean chocolate rating",  y= "Most memorable characteristics")+
+  theme(legend.position = "none",
+        axis.title = element_text(color = "black", size = 18), 
+        axis.text = element_text(color = "black", size = 16))
+```
+
+## Clustering chocolate {data-hide-slide-number="true"}
+
+* We ran a clustering algorithm with $k=3$. We find cluster 1 has the highest mean rating at 3.23, whereas cluster 2 has a mean rating of 3.06 and cluster 3 a mean rating of 2.96. 
+
+:::{columns}
+
+:::{.column}
+
+```{r}
+#| echo: false
+#| fig-height: 9
+choc_clusters <- chocolate |> 
+  dplyr::select(cocoa_percent, n_ingredients) |>
+  mutate(cocoa_percent_sd = as.numeric(scale(cocoa_percent)), 
+         n_ingredients_sd = as.numeric(scale(n_ingredients))) |>
+  drop_na() |>
+  #slice_sample(n=100) |>
+  dist() |>
+  hclust(method = "complete")
+
+chocolate |> 
+  filter(!is.na(cocoa_percent), !is.na(n_ingredients)) |> 
+  mutate(
+    cluster = as.factor(cutree(choc_clusters, k = 3))
+  ) |>
+  ggplot(aes(x = cocoa_percent, y = n_ingredients,
+             color = cluster)) +
+  geom_point(size = 4) + 
+  ggthemes::scale_color_colorblind() +
+  theme_bw() + 
+  theme(legend.position = "bottom")
+```
+
+:::
+
+:::{.column}
+```{r}
+require("ggdendro")
+
+ggdendrogram(
+  choc_clusters,
+  rotate = FALSE,
+  theme_dendro = TRUE
+) +
+  ggtitle("Chocolate Dendrogram")
+```
+
+:::
+
+:::
+
+## Identifying varieties of chocolate with clustering
+
+We performed **hierarchical clustering** with: 
+
+  1. The number of ingredients
+    
+  2. Cocoa percentage  
+  
+. . .  
+  
+Among the **three** clusters, chocolate in *Cluster 1 has the highest average rating*  
+
+```{r}
+#| echo: false
+#| fig-height: 9
+chocolate |> 
+  filter(!is.na(cocoa_percent), !is.na(n_ingredients)) |> 
+  mutate(
+    Cluster = as.factor(cutree(choc_clusters, k = 3))
+  ) |>
+  group_by(Cluster) |>
+  summarize(`Average Cocoa Percent (%)` = mean(cocoa_percent),
+            `Average Number of Ingredients` = mean(n_ingredients),
+            `Average Rating` = mean(rating)) |>
+  gt() |>
+  fmt_number(decimals = 2)
+```
+
+## Discussion 
+
+* Despite chocolate often being characterized by its cocoa percentage, we do not find cocoa percentage to be indicative of rating. 
+
+. . . 
+
+* Rather, chocolates described with memorable characteristics of *rich* and/or *creamy*, among others, were rated highest.
+
+. . . 
+
+* Future work may explore what aspects of these chocolates make them so delectable.
+
+# [Thanks!]{style="color: red; background-color: #00F5FF; font-family: 'Comic Sans MS', cursive;"} {background-color="#00F5FF"}
+

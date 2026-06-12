@@ -1,7 +1,7 @@
 ---
 title: "Presentations"
-author: "<br>SURE 2025<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
-footer:  "[36-SURE.github.io/2025](https://36-sure.github.io/2025)"
+author: "<br>CMSACamp 2026<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+footer:  "[36-SURE.github.io/2026](https://36-sure.github.io/2026)"
 format:
   revealjs:
     theme: theme.scss
@@ -9,7 +9,7 @@ format:
     smaller: true
     slide-number: c/t
     code-line-numbers: false
-    linestretch: 1.25
+    linestretch: 1.5
     html-math-method:
       method: mathjax
       url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
@@ -28,19 +28,19 @@ knitr::opts_chunk$set(
 
 ## EDA project presentation
 
-*   6-min presentation on Tuesday, June 17 (during lab)
+6-min presentation on Tuesday, June 16 (during lab)
 
-    *   aim for 5 min + 1ish min for Q&A
-    
-    *   make sure you do not exceed 6 min (practice and time yourself)
-    
-    *   I'll cut you off if you exceed 6 min
+* Aim for 5 min + 1ish min for Q&A
+
+* Make sure you do not exceed 6 min (practice and time yourself)
+
+* We'll (probably) cut you off if you exceed 6 min!!
 
 ## Capstone project presentation (a preview)
 
-* 2 presentation checkpoints (both during lab time)
+* 1-2 presentation checkpoints (both during lab time, dates TBD)
 
-* 1 final presentation on the final day (July 25) (+ other deliverables)
+* 1 final presentation on the final day (July 24) (+ other deliverables)
 
 * Details will be provided soon
 
@@ -56,9 +56,9 @@ Every presentation has a **story**:
 
 . . .
 
-Example: [Ron's nflWAR talk at NESSIS 2017](https://youtu.be/djD-yL3vWNQ):
+Example: [Professor Yurko's nflWAR talk at NESSIS 2017](https://youtu.be/djD-yL3vWNQ):
 
-  - Do **NOT** begin with: "We're introducing [project topic]" (WAR for NFL)
+  - Do **NOT** begin with: "We're introducing [project topic]" (e.g. WAR for NFL)
   
   - Instead begin with current state of NFL analytics and need for better, reproducible player level-metrics
 
@@ -67,10 +67,6 @@ Example: [Ron's nflWAR talk at NESSIS 2017](https://youtu.be/djD-yL3vWNQ):
 Do **NOT** include an outline slide!
 
   - Your presentation should flow naturally 
-  
-. . .
-
-[Or you can begin with a "creative" intro...](https://youtu.be/_MAs16nqVdw)
 
 
 ## Describing the data
@@ -83,7 +79,7 @@ You want to provide a general overview of your dataset:
   
   - What are the relevant variables/features? i.e., what are the columns of interest?
   
-    - Be careful though with many variables - avoid just listing everything!
+    - Be careful with many variables - avoid just listing everything!
     
     - Simplify by describing groups of variables together
     
@@ -102,13 +98,16 @@ You want to provide a general overview of your dataset:
 
 - Your presentation should provide the general steps for someone to replicate your work
 
-  - e.g., Used complete-linkage hierarchical clustering with [INSERT VARIABLES], determined $k$ number of clusters by [INSERT REASON]
+
+  - E.g., Used complete-linkage hierarchical clustering with [INSERT VARIABLES], determined $k$ number of clusters by [INSERT REASON]
   
-  - e.g., Modeled [INSERT RESPONSE VARIABLE] as a function of [INSERT EXPLANATORY VARIABLES]
+  - E.g., Modeled [INSERT RESPONSE VARIABLE] as a function of [INSERT EXPLANATORY VARIABLES]
   
 . . .
 
-- For more complicated methods, you'll want to provide a brief review of the methodology
+- For more complicated methods, you'll want to provide a **brief review** of the methodology
+
+  - Know your audience! For EDA presentations, let's say the audience are coaches in your respective sport
 
 - If introducing new methodology: **walk through the steps clearly**
 
@@ -116,9 +115,7 @@ You want to provide a general overview of your dataset:
 
 - **Always justify your choice of methodology**
 
-  - Why you used a flexible tree-based model over linear regression
-  
-
+  - Why you used a flexible tree-based model over linear regression (only mention other methods that you seriously considered)
 
 ## Presenting results
 
@@ -126,7 +123,7 @@ You want to provide a general overview of your dataset:
 
 - **Assertion**: title of the slide should be the key takeaway in brief sentence form
 
-  - Indicates the point of the visualization or whatever means used to display the results
+  - Indicates the point of the visualization, table, etc. used to display the results
 
 - **Evidence**: the body of the slide containing the results
 
@@ -134,12 +131,11 @@ You want to provide a general overview of your dataset:
   
 . . .
 
-- Limit the amount of text in your **Evidence** portion - brief statements with important context
+- Limit the amount of text in your **Evidence** portion -- brief statements with important context
 
 - Treat the **Assertion** as the title of your **Evidence**
 
   - Plot titles are then redundant and not necessary with an effective assertion
-
 
 
 ## Assertion
@@ -181,10 +177,13 @@ Batting |>
   labs(x = "Year", y = "Strikeouts / At-bats") +
   theme_light() +
   theme(strip.background = element_blank(),
-        text = element_text(size = rel(4)))
+        axis.text = element_text(size = 12), 
+        axis.title = element_text(size = 14)
+        #text = element_text(size = rel(1))
+        )
 ```
 
-(Explain the elements of your graph - what is each axis, color, shape, etc referring to? And what is the unit scale?)
+*(Explain the elements of your graph - what is each axis, color, shape, etc referring to? And what is the unit scale?)*
 
 ## Discussion (and ending a presentation)
 
@@ -214,12 +213,12 @@ Batting |>
 
   - Their purpose is just for sharing with others
   
-  - Alternative option: include references directly on slides either in text or via footnotes ^[Like this...]
+  - Alternative: include references directly on slides either in text or via footnotes^[Like this...]
 
 
 
 
-## Additional tips and reminders
+## Communicating effectively 
 
 **Use pauses effectively** to highlight points and explain steps
 
@@ -257,29 +256,54 @@ Remember: **memory overload is real!**
 
 **Know your audience!**
 
-## Design tips
+
+## Slide design tips
+
+::: {.incremental}
 
 * Less ink, less ink, less ink
 
-* Your plot should be big enough (font size, line width, point size, etc.)
+* Your plot should be big enough (line width, point size, etc.)
+
+    *  This includes text on plots!
+
+* Never have only one bullet point on a slide
 
 * Reformat variable names (don't show the original names in the data)
 
+* Use an appropriate amount of decimal places
+
+* Use slide numbers
+
 * If a table can be represented by a figure, turn it into a figure (e.g., comparison of model evaluation metrics)
+
+* Make sure your figures and charts, etc. all display the correct size. If we can't see the legend or the axes, the plot is not useful
+
+:::
 
 ## More general tips
 
-> Your slides should support what you say, not create interference between speech and vision brain areas -- your slides serves as a summary of what you said so someone who may have been distracted can catch up quickly.
+::: {.incremental}
 
-> Do not create your talk at the last minute (it will be obvious if you do). Designing good slides takes time. Practicing a talk takes time. 
+* Your slides should support what you say, not create interference between speech and vision brain areas
 
-* [Advices from Andrew Patton:](https://x.com/anpatt7/status/1746209633562443948)
+    * Your slides serves as a summary of what you said so someone who may have been distracted can catch up quickly.
 
-> You don’t need 17 decimal points for anything ever.
+* Do not create your talk at the last minute (it will be obvious if you do). Designing good slides takes time. Practicing a talk takes time. 
 
-> Make sure your figures and charts, etc. all display the correct size. If I have to zoom in 27 times to read the legends that’s not going to help your case.
+* Pick better (than default) colors for your plots. Your submission should look expensive.
 
-> Pick better colors for your charts. Your submission should look expensive.
+    * [National Parks Palettes](https://github.com/kevinsblake/NatParksPalettes)
+    
+    * [MetBrewer](https://github.com/BlakeRMills/MetBrewer)
+    
+    * [R color palettes](https://r-charts.com/color-palettes/)
+    
+* Practice good body language (eye contact, don't read off slides, minimize distracting movements)
+
+* It's okay to be nervous! Practice and repetition helps
+
+:::
 
 # Do it live: presentation critique
 

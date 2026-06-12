@@ -19,8 +19,8 @@ Updated daily before lecture.
 | Lecture 6  | June 9 | Unsupervised learning: $k$-means clustering               | [slides](lectures/06-kmeans.qmd)         |
 | Lecture 7  | June 10 | Unsupervised learning: hierarchical clustering            | [slides](lectures/07-hierarchical.qmd)   |
 | Lecture 8  | June 11 | Unsupervised learning: Gaussian mixture models                    | [slides](lectures/08-mixture.qmd)        |
+| Lecture 9  | June 12 | Presentations                                             | [slides](lectures/09-presentation.qmd)   |
 <!--
-| Lecture 9  | June 13 | Presentations                                             | [slides](lectures/09-presentation.qmd)   |
 | Lecture 10 | June 16 | Simulation                                                | [slides](lectures/10-simulation.qmd)     |
 | Lecture 11 | June 17 | Supervised learning: linear regression                    | [slides](lectures/11-linear.qmd)         |
 | Lecture 12 | June 20 | Supervised learning: model building                       | [slides](lectures/12-building.qmd)       |
