@@ -37,8 +37,8 @@ ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
 * Classification vs. clustering
 * Explanatory vs. response variable
 * Inference vs. prediction
-* Flexibility-interpretability tradeoff
-* Bias-variance tradeoff
+* Flexibility-interpretability trade-off
+* Bias-variance trade-off
 * Model assessment vs. model selection
 * Parametric vs. nonparametric models
 
@@ -59,16 +59,12 @@ So far, we have discussed clustering, which is a form of **unsupervised learning
 
 . . .
 
-<br>
-  
-**Goal**: uncover associations between a set of *predictor* (i.e, *independent*/*explanatory*) variables/features and a single *repsonse* (i.e., *dependent*) variable
+- **Goal**: uncover associations between a set of *predictor* (i.e, *independent*/*explanatory*) variables/features and a single *repsonse* (i.e., *dependent*) variable
 
 
 . . .
 
-<br>
-
-*Example*: Given player tracking data from the NFL with the x,y coordinates of every player on the field at every tenth of the second. Can we predict how far a ball-carrier will go at any given moment they have the football?
+- *Example*: Given player tracking data from the NFL with the x,y coordinates of every player on the field at every tenth of the second. Can we predict how far a ball-carrier will go at any given moment they have the football?
 
 
 ## Note: they're all the same
@@ -145,9 +141,9 @@ $$
 _Active area of research on using more mystical models for statistical inference_
 
 
-# The tradeoffs
+# The trade-offs
 
-## Some tradeoffs
+## Some trade-offs
 
 There are several trade-offs between different algorithms
 
@@ -169,7 +165,7 @@ There are several trade-offs between different algorithms
 
 ## Model flexibility vs interpretability
 
-Generally speaking: **tradeoff** between a model's _flexibility_ (i.e. how "wiggly" it is) and how **interpretable** it is
+Generally speaking: **trade-off** between a model's _flexibility_ (i.e. how "wiggly" it is) and how *interpretable* it is
 
 - The simpler parametric form of the model, the easier it is to interpret
 
@@ -184,7 +180,7 @@ Generally speaking: **tradeoff** between a model's _flexibility_ (i.e. how "wigg
 
 ![[ISLR Figure 2.7](https://www.statlearning.com/)](../images/flexibility-v-interpretability.png){width=50%}
 
-- __Parametric__ models, for which we can write down a mathematical expression for $f(X)$ __before observing the data__, _a priori_ (e.g. linear regression), __are inherently less flexible__
+- __Parametric__ models, for which we can write down a mathematical expression for $f(X)$ _before observing the data_ (e.g. linear regression), __are inherently less flexible__
 
 - __Nonparametric__ models, in which $f(X)$ is __estimated from the data__ (e.g. kernel regression)
 
@@ -307,7 +303,7 @@ By assessing models using "held-out" data, we act to ensure that we get a *gener
 
 ## k-fold cross validation
 
-![Toy illustration of 5-fold CV from [Towards Data Science](https://towardsdatascience.com/how-to-cross-validation-with-time-series-data-9802a06272c6/)](https://towardsdatascience.com/wp-content/uploads/2023/12/1N45hocCMP0u4nXLe0WuSvw.png)
+![Toy illustration of 5-fold CV](../images/kfoldcv.png){fig.height="5%"}
 
 
 $k$-fold cross validation is often the preferred approach, but the trade-off is that CV analyses take ${\sim}k$ times longer than analyses that utilize train-test splitting (note, too, that $k$ must be selected)
@@ -523,7 +519,7 @@ Look at the plots. For any given value of $x$:
 
 
 
-## Bias-variance tradeoff
+## Bias-variance trade-off
 
 Here, we define the "best" model as the one that minimizes the test-set MSE.
 
@@ -588,6 +584,7 @@ The more features, the merrier?... Not quite
 
 **Noise features increase the dimensionality of the problem, increasing the risk of overfitting**
 
+<!--
 ## Appendix: data splitting with `rsample`
 
 ```{r}
@@ -619,3 +616,4 @@ mse <- map_dbl(iris_folds$splits, \(split) {
 mse
 ```
 
+-->
