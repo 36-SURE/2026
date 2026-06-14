@@ -1,0 +1,621 @@
+---
+title: "Supervised learning: Model assessment vs selection"
+author: "<br>CMSACamp 2026<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+footer:  "[36-SURE.github.io/2026](https://36-sure.github.io/2026)"
+format:
+  revealjs:
+    theme: theme.scss
+    chalkboard: true
+    smaller: true
+    slide-number: c/t
+    code-line-numbers: false
+    linestretch: 1.5
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  fig.height = 9
+)
+ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
+```
+
+# Background
+
+<!--
+## Concepts that hopefully you'll be able to distinguish
+
+* Supervised vs. unsupervised learning
+* Classification vs. regression
+* Classification vs. clustering
+* Explanatory vs. response variable
+* Inference vs. prediction
+* Flexibility-interpretability tradeoff
+* Bias-variance tradeoff
+* Model assessment vs. model selection
+* Parametric vs. nonparametric models
+
+-->
+
+## Statistical learning
+
+Recall our definition of **statistical learning**:
+
+> Statistical learning refers to a set of tools for making sense of complex
+datasets. --- [Preface of Introduction to Statistical Learning with applications in R (ISLR)](https://www.statlearning.com/)
+
+. . .
+
+<br>
+
+So far, we have discussed clustering, which is a form of **unsupervised learning**. Now, we turn to **supervised learning**
+
+. . .
+
+<br>
+  
+**Goal**: uncover associations between a set of *predictor* (i.e, *independent*/*explanatory*) variables/features and a single *repsonse* (i.e., *dependent*) variable
+
+
+. . .
+
+<br>
+
+*Example*: Given player tracking data from the NFL with the x,y coordinates of every player on the field at every tenth of the second. Can we predict how far a ball-carrier will go at any given moment they have the football?
+
+
+## Note: they're all the same
+
+<center>
+
+![](/images/covariates.png){width="600"}
+
+</center>
+
+
+<!-- . . . -->
+
+<!-- * If we are using one or more variables to help us understand or predict values of another variable, -->
+
+<!--   * The variable that is the outcome of interest, the one we’re trying to predict, is called the response variable (also called dependent variable) -->
+
+<!--   *   The variable whose relationship to the response is being studied is called the explanatory variable (or independent -->
+<!-- variable) -->
+
+<!-- Note: each of the explanatory and response variables can either be quantitative or categorical -->
+
+## Examples of statistical learning methods / algorithms
+
+__You are probably already familiar with statistical learning__ --- even if you did not know what the phrase meant before
+
+
+. . .
+
+*Examples of statistical learning algorithms include*:
+
+- Generalized linear models (GLMs) and penalized versions (lasso, ridge, elastic net)
+
+- Smoothing splines, generalized additive models (GAMs)
+
+- Decision trees and its variants (e.g., random forests, boosting)
+
+. . .
+
+*Two main types of problems*:
+
+- **Regression** models: estimate *average* value of response given a set of covariates (i.e. the response is quantitative)
+
+- **Classification** models: determine *the most likely* class of a set of discrete response variable classes given a set of covariates (i.e. the response is categorical)
+
+
+## Which method should I use in my analysis?
+
+. . .
+
+**Depends on your goal** --- the big picture: **inference** vs **prediction**
+
+
+Let $Y$ be the response variable, and $X$ be the predictors, then the **learned** model will take the form:
+
+$$
+\hat{Y}=\hat{f}(X)
+$$
+
+. . .
+
+- Care about the details of $\hat{f}(X)$? $\Rightarrow$ You want to peform statistical inference
+
+- Fine with treating $\hat{f}(X)$ as a obscure/mystical machine? $\Rightarrow$ Your interest is prediction
+
+
+. . .
+
+<br>
+
+*Note*: while any algorithm can be used for prediction, options are limited for inference
+
+
+_Active area of research on using more mystical models for statistical inference_
+
+
+# The tradeoffs
+
+## Some tradeoffs
+
+There are several trade-offs between different algorithms
+
+1. Model flexibility vs interpretability
+
+   - Linear models are easy to interpret; gradient-boosted trees are not
+  
+. . .
+  
+2. Good fit vs overfit or underfit
+
+   - How do we know when a model fit is just right?
+  
+. . .
+  
+3. Parsimony versus black-box
+
+   - Depending on our goal, we may prefer a simpler model involving fewer variables over a black-box involving more (or all) predictors
+
+## Model flexibility vs interpretability
+
+Generally speaking: **tradeoff** between a model's _flexibility_ (i.e. how "wiggly" it is) and how **interpretable** it is
+
+- The simpler parametric form of the model, the easier it is to interpret
+
+- Hence why **linear regression** (*least squares*) is popular in practice
+
+![[ISLR Figure 2.7](https://www.statlearning.com/)](../images/flexibility-v-interpretability.png){width=50%}
+
+
+
+
+## Model flexibility vs interpretability
+
+![[ISLR Figure 2.7](https://www.statlearning.com/)](../images/flexibility-v-interpretability.png){width=50%}
+
+- __Parametric__ models, for which we can write down a mathematical expression for $f(X)$ __before observing the data__, _a priori_ (e.g. linear regression), __are inherently less flexible__
+
+- __Nonparametric__ models, in which $f(X)$ is __estimated from the data__ (e.g. kernel regression)
+
+
+
+## Model flexibility vs interpretability
+
+![[ISLR Figure 2.7](https://www.statlearning.com/)](../images/flexibility-v-interpretability.png){width=50%}
+
+- If your goal is **prediction**, your model can be as arbitrarily flexible as it needs to be
+
+- We'll discuss how to estimate the optimal amount of flexibility shortly...
+
+
+## Looks about right...
+
+![Comic from [xkcd](https://xkcd.com/2048/)](https://imgs.xkcd.com/comics/curve_fitting.png){width=40% fig-align="center"}
+
+
+## Model assessment vs selection, what's the difference?
+
+. . .
+
+*Model assessment*:
+
+- **Evaluating how well a learned model performs**, via the use of a single-number metric (typically on new data NOT used in model learning)
+
+
+. . .
+
+*Model selection*:
+
+- **Selecting the best model from a suite of learned models** (e.g., linear regression, random forest, etc.)
+
+
+
+## Model flexibility: [ISLR Figure 2.9](https://www.statlearning.com/)
+
+Data are generated from a smoothly varying non-linear model (shown in black), with random noise added:
+
+$$
+Y = f(X) + \epsilon
+$$
+
+```{r out.width='40%', echo = FALSE, fig.align='center'}
+knitr::include_graphics("http://www.stat.cmu.edu/~pfreeman/Flexibility.png")
+```
+
+- Left panel: intuitive notion of the meaning of model flexibility
+
+- Right panel: how the mean squared error (*model assessment metric*) changes with flexibility (will come back to this panel later)
+
+## Model flexibility
+
+```{r out.width='40%', echo = FALSE, fig.align='center'}
+knitr::include_graphics("http://www.stat.cmu.edu/~pfreeman/Flexibility.png")
+```
+
+Orange line: an inflexible, fully parametrized model (simple linear regression)
+
+
+. . .
+
+- **Cannot** provide a good estimate of $f(X)$
+
+
+. . .
+
+- But cannot **overfit** by modeling the noisy deviations of the data from $f(X)$
+
+
+
+
+## Model flexibility
+
+```{r out.width='40%', echo = FALSE, fig.align='center'}
+knitr::include_graphics("http://www.stat.cmu.edu/~pfreeman/Flexibility.png")
+```
+
+
+Green line: an overly flexible, nonparametric model 
+
+
+. . .
+
+- **It can** provide a good estimate of $f(X)$ 
+
+. . .
+
+-  ... **BUT** it goes too far and overfits by modeling the noise. __This is NOT generalizable__: bad job of predicting response from "unseen" data
+
+
+
+
+
+
+## So... how do we deal with flexibility?
+
+We want to learn a statistical model that provides a **good estimate** of $f(X)$ **without overfitting**
+
+
+. . .
+
+- Split the data into two groups:
+
+  - **Training** data: data used to train models
+  
+  - **Test** data: "held-out" data used to test the learned models
+
+. . .
+
+- Repeat data splitting $k$ times:
+
+  - Each observation is placed in the "held-out" / test data exactly once
+  
+  - This is called **k-fold cross validation** (typically set $k$ to 5 or 10)
+. . .
+
+By assessing models using "held-out" data, we act to ensure that we get a *generalizable(!)* estimate of $f(X)$
+
+## k-fold cross validation
+
+![Toy illustration of 5-fold CV from [Towards Data Science](https://towardsdatascience.com/how-to-cross-validation-with-time-series-data-9802a06272c6/)](https://towardsdatascience.com/wp-content/uploads/2023/12/1N45hocCMP0u4nXLe0WuSvw.png)
+
+
+$k$-fold cross validation is often the preferred approach, but the trade-off is that CV analyses take ${\sim}k$ times longer than analyses that utilize train-test splitting (note, too, that $k$ must be selected)
+
+## Model assessment
+
+```{r out.width='60%', echo = FALSE, fig.align='center'}
+knitr::include_graphics("http://www.stat.cmu.edu/~pfreeman/Flexibility.png")
+```
+
+- Right panel shows __a metric of model assessment__, the mean squared error (MSE) as a function of flexibility for both a training and test datasets
+
+
+. . .
+
+- Training error (gray line) __decreases as  flexibility increases__
+
+. . .
+
+- Test error (red line) decreases while flexibility increases __until__ the point a good estimate of $f(X)$ is reached, and then it __increases as it overfits to the training data__
+
+## Brief note on reproducibility
+
+An important aspect of statistical analysis is that it is reproducible. You should...
+
+1. Record your analysis in a notebook (e.g., `R Markdown`). This notebook should be complete enough such that if you gave it and datasets to someone, they should be able to:
+
+   - *Recreate your entire analysis*
+  
+   - *Achieve the exact same (numerical) results*
+  
+2. To ensure they achieve the exact same (numerical) results, we can set a seed before each instance of random sampling (e.g., when assigning data to training or test sets or $k$-folds)
+
+
+```{r}
+set.seed(47) # can be any number....
+sample(10,3) # sample three numbers between 1 and 10 inclusive
+```
+
+```{r}
+set.seed(47) 
+sample(10,3) # voila: the same three numbers!
+```
+
+
+## Model assessment metrics (regression)
+
+**Loss function** (aka _objective_ or _cost_ function) is a metric that represents the model's quality of fit at a given observation
+
+. . .
+
+- Quadratic loss: squared differences between model predictions $\hat{f}(X)$ and observed data $Y$. That is, for each observation $i$:
+
+
+$$
+\displaystyle \text{Quadratic loss} = (Y_i - \hat{f}(X_i))^2
+$$
+
+. . .
+
+We estimate the **risk** (i.e. the *expected loss*) of a model by taking the average of the loss function over all observations --- this represents *the quality of fit of a model*
+
+  - The expected quadratic loss is called the **mean squared error (MSE)**:
+
+
+$$\text{MSE} = \frac{1}{n} \sum_i^n (Y_i - \hat{f}(X_i))^2$$
+
+. . .
+
+*For regression models, we typically use the MSE to evaluate model fit* 
+
+
+## Model assessment metrics (classification)
+
+
+For classification, model assessment is not quite so clear-cut[^1]
+
+- **Misclassification rate**: percentage of predictions that are wrong
+
+   - However, interpretation can be affected by **class imbalance**: 
+   
+        - If two classes are equally represented in a dataset, a  misclassification rate of 2% is good
+        
+        - But, if one class comprises 99% of the data, that 2% is no longer such a good result...
+   
+. . .
+
+- **Area under the ROC curve (AUC)** --- [toy visualization](https://blog.alliedoffsets.com/boost-your-binary-classification-game-auc-roc-vs-auc-pr-which-one-should-you-use)
+
+
+
+[^1]: In fact, there is debate in the algorithmic fairness literature about how to assess classification and risk score models when the base rates are different between classes, since there will necessarily be a trade-off between popular "algorithmic fairness assessment metrics" (e.g., equal false positive rates, equal false negative rates, equal misclassification rates). 
+
+## Back to model selection
+
+**Model selection**: picking the best model from a suite of possible models (e.g., using MSE for a regression models or misclassification rate for a classification models)
+
+. . .
+
+*Two things to keep in mind*:
+
+1. **Ensure an apples-to-apples comparison of metrics**
+
+  - Every model should be learned using **the same training and test data**
+  
+  - Do not resample the data between the time the time you, e.g., perform linear regression vs the time you perform random forest
+  
+. . .
+
+2. **An assessment metric is a random variable**, i.e., if you choose different data to be in your training set, the assessment metric will be different.
+
+. . .
+
+For regression, a third point should be kept in mind: **a metric like MSE is unit-dependent**
+
+- An $\text{MSE} = 0.001$ in one analysis context is not necessarily better/worse than $\text{MSE} = 100$ in another
+
+
+
+## An example **true** model
+
+```{r fig.height=6,fig.width=6,fig.align="center",echo = FALSE}
+library(ggplot2)
+x.true  = seq(-2,4,0.01)
+df.true = data.frame("x"=x.true,"y"=x.true^2)
+ggplot(data=df.true,mapping=aes(x=x,y=y)) + geom_line(linetype="solid",color="navyblue",size=1.5) + ylim(-2,18)
+```
+
+
+## The repeated experiments...
+
+```{r, fig.width=12, fig.height = 5.5, fig.align="center", echo = FALSE, warning = FALSE}
+df = data.frame()
+for ( ii in 1:4 ) {
+  set.seed(101+ii)
+  x = runif(100,min=-2,max=4)
+  y = x^2 + rnorm(100,sd=1.5)
+  df.tmp = data.frame("exp"=rep(ii,100),x,y)
+  df = rbind(df,df.tmp)
+}
+df$exp = factor(df$exp)
+ggplot(data=df,mapping=aes(x=x,y=y)) + geom_point(size=0.5) + 
+  geom_line(data=df.true,mapping=aes(x=x,y=y),linetype="solid",color="navyblue",size=1.5) + xlim(-2,4) + ylim(-2,18) + 
+  facet_wrap(~exp,ncol = 4)
+```
+
+
+
+## The linear regression fits
+
+```{r,fig.align="center", echo = FALSE}
+df.lm = data.frame()
+for ( ii in 1:4 ) {
+  w = which(df$exp==ii)
+  x = df$x[w]
+  y = df$y[w]
+  out.lm = lm(y~x)
+  y.lm = coef(out.lm)[1] + coef(out.lm)[2]*df.true$x
+  df.tmp = data.frame("exp"=rep(ii,nrow(df.true)),"x"=df.true$x,"y"=y.lm)
+  df.lm = rbind(df.lm,df.tmp)
+}
+```
+
+
+```{r, fig.width=12, fig.height = 5.5,fig.align="center", echo = FALSE, warning = FALSE}
+df.lm$exp = factor(df.lm$exp)
+ggplot(data=df,mapping=aes(x=x,y=y)) + geom_point(size=0.5) + 
+  geom_line(data = df.true, linetype="solid",color="navyblue",size=1.5) +
+  geom_line(data=df.lm,mapping=aes(x=x,y=y),linetype="solid",color="orangered",size=1.2) + xlim(-2,4) + ylim(-2,18) +
+  facet_wrap(~exp,ncol = 4)
+```
+
+Look at the plots. For any given value of $x$:
+
+- The *average* estimated $y$ value is offset from the truth (**high bias**)
+- The dispersion (variance) in the estimated $y$ values across experiments is relatively small (**low variance**)
+
+
+## The spline fits
+
+```{r, echo = FALSE}
+if ( require(splines) == FALSE ) {
+  install.packages("splines",repos="https://cloud.r-project.org")
+  library(splines)
+}
+df.spline = data.frame()
+for ( ii in 1:4 ) {
+  w = which(df$exp==ii)
+  x = df$x[w]
+  y = df$y[w]
+  out.spline = lm(y~bs(x,knots=seq(-1.5,3.5,by=0.2)))
+  y.spline = predict(out.spline)
+  o = order(x)
+  df.tmp = data.frame("exp"=rep(ii,length(x)),"x"=x[o],"y"=y.spline[o])
+  df.spline = rbind(df.spline,df.tmp)
+}
+```
+
+```{r, fig.width=12, fig.height = 5.5,fig.align="center", echo = FALSE, warning = FALSE}
+df.spline$exp = factor(df.spline$exp)
+ggplot(data=df,mapping=aes(x=x,y=y)) + geom_point(size=0.5) + 
+  geom_line(data = df.true, linetype="solid",color="navyblue",size=1.5) +
+  geom_line(data=df.spline,mapping=aes(x=x,y=y),linetype="solid",color="orangered",size=1.2) + xlim(-2,4) + ylim(-2,18) +
+  facet_wrap(~exp,ncol = 4)
+```
+
+Look at the plots. For any given value of $x$:
+
+. . .
+
+- The *average* estimated $y$ value approximately matches the truth (__low bias__)
+- The dispersion (variance) in the estimated $y$ values across experiments is relatively large (__high variance__)
+
+
+
+## Bias-variance tradeoff
+
+Here, we define the "best" model as the one that minimizes the test-set MSE.
+
+The __true__ MSE can be decomposed into ${\rm MSE} = {\rm (Bias)}^2 + {\rm Variance}$
+
+. . .
+
+```{r out.width='60%', echo = FALSE, fig.align='center'}
+knitr::include_graphics("http://www.stat.cmu.edu/~pfreeman/Flexibility.png")
+```
+
+Towards the left: high bias, low variance. Towards the right: low bias, high variance. 
+
+__The optimal amount of flexibility is somewhere in the middle__
+
+## Principle of parsimony (Occam's razor)
+
+:::{columns}
+:::{.column}
+
+
+*An English translation*: "Entities must not be multiplied beyond necessity"
+
+<br>
+
+:::{.fragment}
+You do this all the time --- weighing simplicity with outcome (e.g. when giving directions)
+:::
+
+<br>
+
+:::{.fragment}
+**In terms of model selection**: When faced with several methods that give roughly equivalent performance, pick the simplest one
+:::
+
+:::
+
+:::{.column}
+
+![](https://imgs.xkcd.com/comics/kolmogorov_directions_2x.png){width=70%}
+:::
+:::
+
+
+## The curse of dimensionality
+
+The more features, the merrier?... Not quite
+
+. . .
+
+*   Adding additional *signal* features that are truly associated with the response will improve the ftted model
+
+    *   Reduction in test set error
+    
+. . .    
+    
+*   Adding *noise* features that are not truly associated with the response will lead to a deterioration in the model
+
+    *   Increase in test set error
+    
+. . .
+
+**Noise features increase the dimensionality of the problem, increasing the risk of overfitting**
+
+## Appendix: data splitting with `rsample`
+
+```{r}
+library(rsample)
+set.seed(0615) # remember to set a seed!
+
+iris_split <- initial_split(iris, prop = 0.75) # splits into training (75%) and test (25%) sets
+iris_train <- training(iris_split) # retrieves the training dataset
+iris_test <- testing(iris_split) # retrieves the test dataset
+
+fit <- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, data = iris_train)
+preds <- predict(fit, newdata = iris_test)
+mse <- mean((iris_test$Sepal.Length - preds)^2) # test set MSE calculation
+mse
+```
+
+```{r}
+library(purrr) # for map_dbl (could also use for-loop)
+
+iris_folds <- vfold_cv(iris, v = 5) # splits data for 5-fold CV
+mse <- map_dbl(iris_folds$splits, \(split) {
+  train <- analysis(split)
+  test  <- assessment(split)
+
+  fit <- lm(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, data = train)
+  preds <- predict(fit, newdata = test)
+  mean((test$Sepal.Length - preds)^2) # test set MSE calculation
+})
+mse
+```
+
