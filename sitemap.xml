@@ -9,67 +9,47 @@
     <lastmod>2026-06-04T17:53:25.262Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/lectures/03-categorical.html</loc>
+    <loc>https://36-SURE.github.io/2026/lectures/02-graphics.html</loc>
     <lastmod>2026-06-04T17:53:25.262Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/lectures/00-welcome.html</loc>
+    <loc>https://36-SURE.github.io/2026/lectures/06-kmeans.html</loc>
+    <lastmod>2026-06-09T20:41:31.244Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/lectures/05-density.html</loc>
+    <lastmod>2026-06-08T23:04:57.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/lectures/10-tradeoffs.html</loc>
+    <lastmod>2026-06-14T23:48:29.431Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/lectures/12-varsel.html</loc>
+    <lastmod>2026-06-15T12:20:58.805Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/lectures/01-explore.html</loc>
     <lastmod>2026-06-04T17:53:25.261Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/lectures/09b-presentation-critique.html</loc>
-    <lastmod>2026-06-12T12:44:01.078Z</lastmod>
+    <loc>https://36-SURE.github.io/2026/lectures/07-hierarchical.html</loc>
+    <lastmod>2026-06-10T19:28:30.571Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/lectures/08-mixture.html</loc>
-    <lastmod>2026-06-11T16:32:56.215Z</lastmod>
-  </url>
-  <url>
-    <loc>https://36-SURE.github.io/2026/lectures/04-quantitative.html</loc>
-    <lastmod>2026-06-05T11:35:18.639Z</lastmod>
-  </url>
-  <url>
-    <loc>https://36-SURE.github.io/2026/lectures.html</loc>
-    <lastmod>2026-06-12T12:42:10.730Z</lastmod>
-  </url>
-  <url>
-    <loc>https://36-SURE.github.io/2026/bios.html</loc>
-    <lastmod>2026-06-04T17:53:24.356Z</lastmod>
-  </url>
-  <url>
-    <loc>https://36-SURE.github.io/2026/projects.html</loc>
-    <lastmod>2026-06-04T17:53:25.262Z</lastmod>
-  </url>
-  <url>
-    <loc>https://36-SURE.github.io/2026/eda/wwc_shooting.html</loc>
+    <loc>https://36-SURE.github.io/2026/git-setup.html</loc>
     <lastmod>2026-06-04T17:53:25.253Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/eda/decathlon_performances.html</loc>
-    <lastmod>2026-06-04T17:53:25.247Z</lastmod>
+    <loc>https://36-SURE.github.io/2026/index.html</loc>
+    <lastmod>2026-06-04T23:36:25.824Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/eda/nfl_passing.html</loc>
-    <lastmod>2026-06-04T17:53:25.252Z</lastmod>
+    <loc>https://36-SURE.github.io/2026/labs.html</loc>
+    <lastmod>2026-06-11T02:15:21.624Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/labs/04-github.html</loc>
-    <lastmod>2026-06-04T17:53:25.261Z</lastmod>
-  </url>
-  <url>
-    <loc>https://36-SURE.github.io/2026/labs/03-visualization.html</loc>
-    <lastmod>2026-06-04T17:53:25.261Z</lastmod>
-  </url>
-  <url>
-    <loc>https://36-SURE.github.io/2026/labs/02-wrangling.html</loc>
-    <lastmod>2026-06-04T17:53:25.261Z</lastmod>
-  </url>
-  <url>
-    <loc>https://36-SURE.github.io/2026/labs/01-intro.html</loc>
-    <lastmod>2026-06-04T17:53:25.260Z</lastmod>
-  </url>
-  <url>
-    <loc>https://36-SURE.github.io/2026/eda/ufa_throwing.html</loc>
+    <loc>https://36-SURE.github.io/2026/eda/wta_shots.html</loc>
     <lastmod>2026-06-04T17:53:25.252Z</lastmod>
   </url>
   <url>
@@ -77,44 +57,76 @@
     <lastmod>2026-06-04T17:53:25.252Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/eda/wta_shots.html</loc>
+    <loc>https://36-SURE.github.io/2026/eda/ufa_throwing.html</loc>
     <lastmod>2026-06-04T17:53:25.252Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/labs.html</loc>
-    <lastmod>2026-06-11T02:15:21.624Z</lastmod>
+    <loc>https://36-SURE.github.io/2026/labs/01-intro.html</loc>
+    <lastmod>2026-06-04T17:53:25.260Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/index.html</loc>
-    <lastmod>2026-06-04T23:36:25.824Z</lastmod>
+    <loc>https://36-SURE.github.io/2026/labs/02-wrangling.html</loc>
+    <lastmod>2026-06-04T17:53:25.261Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/git-setup.html</loc>
+    <loc>https://36-SURE.github.io/2026/labs/03-visualization.html</loc>
+    <lastmod>2026-06-04T17:53:25.261Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/labs/04-github.html</loc>
+    <lastmod>2026-06-04T17:53:25.261Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/eda/nfl_passing.html</loc>
+    <lastmod>2026-06-04T17:53:25.252Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/eda/decathlon_performances.html</loc>
+    <lastmod>2026-06-04T17:53:25.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/eda/wwc_shooting.html</loc>
     <lastmod>2026-06-04T17:53:25.253Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/lectures/07-hierarchical.html</loc>
-    <lastmod>2026-06-10T19:28:30.571Z</lastmod>
+    <loc>https://36-SURE.github.io/2026/projects.html</loc>
+    <lastmod>2026-06-04T17:53:25.262Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/lectures/01-explore.html</loc>
-    <lastmod>2026-06-04T17:53:25.261Z</lastmod>
+    <loc>https://36-SURE.github.io/2026/bios.html</loc>
+    <lastmod>2026-06-04T17:53:24.356Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/lectures.html</loc>
+    <lastmod>2026-06-14T15:06:35.014Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/lectures/04-quantitative.html</loc>
+    <lastmod>2026-06-05T11:35:18.639Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/lectures/08-mixture.html</loc>
+    <lastmod>2026-06-11T16:32:56.215Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/lectures/09-presentation.html</loc>
     <lastmod>2026-06-12T12:55:33.357Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/lectures/05-density.html</loc>
-    <lastmod>2026-06-08T23:04:57.644Z</lastmod>
+    <loc>https://36-SURE.github.io/2026/lectures/09b-presentation-critique.html</loc>
+    <lastmod>2026-06-12T12:44:01.078Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/lectures/06-kmeans.html</loc>
-    <lastmod>2026-06-09T20:41:31.244Z</lastmod>
+    <loc>https://36-SURE.github.io/2026/lectures/00-welcome.html</loc>
+    <lastmod>2026-06-04T17:53:25.261Z</lastmod>
   </url>
   <url>
-    <loc>https://36-SURE.github.io/2026/lectures/02-graphics.html</loc>
+    <loc>https://36-SURE.github.io/2026/lectures/03-categorical.html</loc>
     <lastmod>2026-06-04T17:53:25.262Z</lastmod>
+  </url>
+  <url>
+    <loc>https://36-SURE.github.io/2026/lectures/11-linear.html</loc>
+    <lastmod>2026-06-14T14:40:10.377Z</lastmod>
   </url>
   <url>
     <loc>https://36-SURE.github.io/2026/r-setup.html</loc>
