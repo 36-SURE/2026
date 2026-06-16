@@ -263,15 +263,10 @@ window.Quarto = {
 <td>Supervised learning: Model assessment vs selection</td>
 <td><a href="./lectures/10-tradeoffs.html">slides</a></td>
 </tr>
-<tr class="even">
-<td>Lecture 11</td>
-<td>June 17</td>
-<td>Supervised learning: linear regression</td>
-<td><a href="./lectures/11-linear.html">slides</a></td>
-</tr>
 </tbody>
 </table>
 <!--
+| Lecture 11 | June 17 | Supervised learning: linear regression                    | [slides](lectures/11-linear.qmd)         |
 | Lecture 12 | June 20 | Supervised learning: model building                       | [slides](lectures/12-building.qmd)       |
 | Lecture 13 | June 23 | Data wrangling with R's `data.table` package              | [slides](lectures/13-datatable.qmd)      |
 | Lecture 14 | June 24 | Supervised learning: regularization                       | [slides](lectures/14-regularization.qmd) |
@@ -366,7 +361,7 @@ window.Quarto = {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/36-SURE\.github\.io\/2026\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
