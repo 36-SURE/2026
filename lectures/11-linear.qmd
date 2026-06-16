@@ -1,0 +1,877 @@
+---
+title: "Supervised learning: linear regression"
+author: "<br>CMSACamp 2026<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+footer:  "[36-SURE.github.io/2026](https://36-sure.github.io/2026)"
+format:
+  revealjs:
+    theme: theme.scss
+    chalkboard: true
+    smaller: true
+    slide-number: c/t
+    code-line-numbers: false
+    linestretch: 1.5
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  fig.height = 9
+)
+library(tidyverse)
+theme_set(theme_light())
+ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
+```
+
+# Background
+
+## Recap: supervised learning
+
+**Goal**: uncover associations between a set of *predictor* (i.e, *independent*/*explanatory*) variables/features and a single *response* (i.e., *dependent*) variable
+
+   - **Prediction**: Accurately predict unseen test cases
+
+   - **Inference**: Understand which features affect the response (and how)
+
+
+## Simple linear regression
+
+
+Assume a __linear relationship__ between $X$ and $Y$:
+
+$$
+Y_{i}=\beta_{0}+\beta_{1} X_{i}+\epsilon_{i}, \quad \text { for } i=1,2, \dots, n,
+$$
+
+:::{.fragment}
+*where:*
+
+- $Y_i$ is the $i$th value for the **response** variable
+  
+- $X_i$ is the $i$th value for the **predictor** variable
+
+*and*
+
+:::
+
+:::{.incremental}
+  
+- $\beta_0$ is an *unknown*, constant **intercept**: average value for $Y$ if $X = 0$ (*be careful sometimes...*)
+  
+- $\beta_1$ is an *unknown*, constant **slope**: change in average value for $Y$ associated with a one-unit increase in $X$
+  
+- $\epsilon_i$ is the **random** noise: assume **independent, identically distributed** (*iid*) from a normal distribution 
+
+  - That is, $\displaystyle \epsilon_i \overset{iid}{\sim}N(0, \sigma^2)$ with constant variance $\sigma^2$
+
+:::
+
+## Simple linear regression estimation
+
+We are estimating the __conditional expectation (mean)__ for $Y$ given $X$:
+
+$$\mathbb{E}[Y_i \mid X_i] = \beta_0 + \beta_1X_i$$
+
+. . .
+
+How do we estimate the __best fitted__ line (i.e., how do we estimate $\beta_0$ and $\beta_1$)?
+
+. . .
+
+__Ordinary least squares (OLS)__ - by minimizing the __residual sum of squares (RSS)__
+
+$$\text{RSS} \left(\beta_{0}, \beta_{1}\right)=\sum_{i=1}^{n}\left[Y_{i}-\left(\beta_{0}+\beta_{1} X_{i}\right)\right]^{2}=\sum_{i=1}^{n}\left(Y_{i}-\beta_{0}-\beta_{1} X_{i}\right)^{2}$$
+
+. . .
+
+$$
+\displaystyle
+\widehat{\beta}_{1}=\frac{\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)\left(Y_{i}-\bar{Y}\right)}{\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}} \quad \text{ and } \quad \widehat{\beta}_{0}=\bar{Y}-\widehat{\beta}_{1} \bar{X},
+$$
+
+where $\displaystyle \bar{X} = \frac{1}{n}\sum_{i=1}^n X_i$ and $\displaystyle \bar{Y} = \frac{1}{n}\sum_{i=1}^n Y_i$
+
+## Visual explanation
+
+Imagine a 2D scatterplot with different data points
+
+  * Linear regression aims to find a "best fit" line that minimizes the vertical distance between the line and the data points
+
+  * The vertical distance is known as a **residual** (difference between the actual y-value of a data point and the predicted y-value on the regression line)
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+```{r}
+#| echo: false
+#| fig-height: 8
+set.seed(2)
+d <- tibble(x = rnorm(50, mean = 100, sd = 20)) |>
+  mutate(y =  0.8 * x + rnorm(50, mean = 0, sd = 10))
+m <- lm(y ~ x, data = d)
+d <- d |> 
+  mutate(yhat = fitted(m))
+
+basic_scatter <- d |> 
+  ggplot(aes(x, y)) +
+  geom_point(size = 4) +
+  coord_equal()
+basic_scatter
+```
+
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r}
+#| echo: false
+#| fig-height: 8
+basic_scatter +
+  geom_segment(aes(xend = x, yend = yhat), color = "red") +
+  geom_smooth(method = "lm", color = "red", se = FALSE)
+```
+
+:::
+:::
+
+# Linear regression in `R`
+
+## Example data: NFL teams summary
+
+Dataset created from `nflfastR`, summarizing NFL team performances from 1999 to 2020
+
+```{r load-data, warning = FALSE, message = FALSE}
+library(tidyverse)
+theme_set(theme_light())
+nfl_teams_data <- read_csv("http://www.stat.cmu.edu/cmsac/sure/2021/materials/data/regression_projects/nfl_team_season_summary.csv") # throwback using CMSACamp 2021/2022 data
+
+glimpse(nfl_teams_data)
+```
+
+```{r}
+#| echo: false
+ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
+```
+
+
+## Modeling NFL score differential
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+Interested in modeling a team's **score differential**
+
+```{r score-diff, echo = TRUE, eval = FALSE}
+nfl_teams_data <- nfl_teams_data %>%
+  mutate(score_diff = 
+           points_scored - points_allowed)
+nfl_teams_data |>
+  ggplot(aes(x = score_diff)) +
+  geom_histogram(color = "black", 
+                 fill = "darkblue",
+                 alpha = 0.3) +
+  labs(x = "Score differential", y = "Count")
+```
+
+
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r ref.label = 'score-diff', echo = FALSE, fig.height = 11}
+
+```
+
+:::
+:::
+
+## Relationship between score differential and passing performance
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+`offense_ave_epa_pass` is the team's average expected points added (EPA) per pass attempt
+
+```{r scatter, eval = FALSE}
+nfl_teams_data |>
+  ggplot(aes(x = offense_ave_epa_pass,
+             y = score_diff)) +
+  geom_point(alpha = 0.5) +
+  labs(x = "EPA gained per pass attempt",
+       y = "Score differential")
+```
+
+We fit linear regression models using `lm()`, formula is input as: `response ~ predictor`
+
+```{r rides-reg}
+simple_lm <- lm(score_diff ~ offense_ave_epa_pass, data = nfl_teams_data) 
+```
+
+:::
+
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r ref.label = 'scatter', echo = FALSE, fig.height = 11}
+
+```
+
+:::
+:::
+
+## Model summary using  `summary()`
+
+```{r}
+summary(simple_lm)
+```
+
+## How do we read the `summary()` output?
+
+Our model is: $\displaystyle \text{Score differential} = \beta_0 + \beta_1 \cdot \ (\text{Passing performance}) + \epsilon$
+
+**Under coefficients:**
+
+- `Estimate` are the model coefficient estimates: $\displaystyle \hat{\beta}_0 = -4.89$ and $\hat{\beta}_1 = 566.35$
+
+. . .
+
+- `Std. Error` is the **standard errors** for the coefficient estimates: $\displaystyle \widehat{SE}(\hat{\beta}_0) = 2.56$ and $\displaystyle \widehat{SE}(\hat{\beta}_1) = 19.22$
+
+. . .
+
+- `t value` are the test statistics (using a [t-test](https://en.wikipedia.org/wiki/Student%27s_t-test)). For $\beta_1$:
+
+$$
+t = \frac{\hat{\beta}_1}{\widehat{SE}(\hat{\beta}_1)} = \frac{566.352}{19.22} = 29.45
+$$
+
+*This tests whether there is a linear relationship between the predictor and the response, $H_0: \beta_1 = 0$ vs. $H_1: \beta_1 \neq 0$.*
+  
+
+## Inference: hypothesis testing
+
+- Under the null hypothesis, $H_0: \beta_1 = 0$, our test statistic $t$ follows a $t$-distribution
+
+. . .
+
+- To fully characterize a $t$-distribution, we need the [**degrees of freedom**](https://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)#In_linear_models)
+
+  - For linear regression, the degrees of freedom is $n - p - 1$ (where $n$ is the number of observations used to fit the model and $p$ is the number of estimated coefficients beyond the intercept)
+  
+  - `summary()` tells us the degrees of freedom is $699$ (as $701 - 2 = 699$)
+  
+. . .
+  
+- `Pr(>|t|)` is the **p-value**: probability of observing a value as extreme as the observed test statistic *under the null hypothesis*
+
+  - $p$-value $< \alpha = 0.05$ (conventional threshold): **sufficient evidence to reject the null hypothesis that the coefficient is zero**
+  
+. . .  
+
+> *In context:* For NFL teams, there was a statistically significant association between passing performance, as measured through the team's average expected points added (EPA) per pass attempt, and season score differential, $\hat{\beta} = 566.35$, $t(699) = 29.45$, $p < 0.001$. 
+
+
+## Inference: interpreting coefficients
+
+Since `offense_ave_epa_pass` is a quantitative predictor, we can interpret it as follows:
+
+> For NFL teams, a one-unit increase in average expected points added (EPA) per pass attempt is associated with a 566.35 point increase in season score differential, on average (95% CI [528.60, 604.10]).
+
+. . .
+
+- Always make sure to interpret important coefficients in context (*and with units*)! 
+
+- We can compute the $95\%$ confidence interval (CI) by doing $\hat{\beta}_1 \pm 1.96 \cdot \widehat{SE}(\hat{\beta}_1)$, or using the `confint()` function: 
+
+
+```{r}
+confint(simple_lm)
+```
+
+
+
+  
+## Model summary using the [`broom`](https://cran.r-project.org/web/packages/broom/vignettes/broom.html) package
+
+
+`glance()`: summary metrics of a model fit
+
+```{r}
+library(broom)
+glance(simple_lm)
+```
+
+`tidy()`: coefficients table in a tidy format
+
+```{r}
+tidy(simple_lm)
+```
+
+
+## Confidence interval for model coefficients
+
+With `tidy()`, we can also obtain confidence intervals for each coefficient: 
+
+
+```{r}
+tidy(simple_lm, conf.int = TRUE, conf.level = 0.95)
+```
+
+. . .
+
+<br>
+
+Another common interpretation of confidence intervals is the following (in context of `offense_ave_epa_pass`):
+
+
+> We're 95% confident that a one-unit increase in average expected points added (EPA) per pass attempt is associated with an increase of between 529 and 604 points in the season score differential for NFL teams, on average.
+
+## Coefficient of determination
+
+The coefficient of determination ($R^2$) estimates the **proportion of the variance** in $Y$ that is explained by $X$: 
+
+
+$$
+\displaystyle R^2 = \frac{\text{var}(\hat{Y})}{\text{var}(Y)}
+$$
+
+```{r general-rsquared}
+var(predict(simple_lm)) / var(nfl_teams_data$score_diff) 
+```
+
+. . .
+
+In linear regression, the square of the correlation coefficient is to be exactly the **coefficient of determination** ($R^2$):
+
+```{r example-cor}
+cor(nfl_teams_data$offense_ave_epa_pass, nfl_teams_data$score_diff)^2
+```
+
+>55.4% of the variability in the season score differential can be explained by the linear relationship between
+season score differential and average expected points added (EPA) per pass attempt (the remaining 44.6% of the variation is due to other factors and/or noise).
+
+## Generating predictions
+
+We can use the `predict()` or `fitted()` function to get the fitted values from the regression model
+
+```{r init-predict}
+head(predict(simple_lm)) # also can input new data to predict()
+```
+
+```{r}
+head(fitted(simple_lm))
+```
+
+## Plot observed values against predictions
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+Useful diagnostic (for __any type of model__, not just linear regression!) 
+
+```{r plot-pred-obs, eval = FALSE}
+nfl_teams_data |>
+  mutate(pred = predict(simple_lm)) |> 
+  ggplot(aes(x = pred, y = score_diff)) +
+  geom_point(alpha = 0.5, size = 1.5) +
+  geom_abline(slope = 1, intercept = 0, 
+              linetype = "dashed",
+              color = "orangered",
+              linewidth = 2) 
+```
+
+A "perfect" model will follow __diagonal__
+
+:::
+
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r ref.label='plot-pred-obs', echo = FALSE, fig.height=10, fig.align="center"}
+
+```
+
+:::
+:::
+
+
+
+## Plot observed values against predictions
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+Augment the data with model output using the [`broom` package](https://cran.r-project.org/web/packages/broom/vignettes/broom.html)
+
+```{r plot-pred-obs-broom, eval = FALSE}
+nfl_teams_data <- simple_lm |> 
+  augment(nfl_teams_data) 
+
+nfl_teams_data |>
+  ggplot(aes(x = .fitted, y = score_diff)) + 
+  geom_point(alpha = 0.5, size = 1.5) +
+  geom_abline(slope = 1, intercept = 0, color = "orangered", 
+              linetype = "dashed", linewidth = 2)
+```
+
+`augment()` adds various columns from model fit we can use in plotting for model diagnostics
+
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+```{r ref.label='plot-pred-obs-broom', echo = FALSE, fig.height=10,fig.align="center"}
+
+```
+
+:::
+:::
+
+## Assessing assumptions of linear regression
+
+Recall that simple linear regression assumes that $Y_i = \beta_0 + \beta_1  X_i + \epsilon_i$, with $\epsilon_i \overset{iid}{\sim} N(0, \sigma^2)$.
+  
+. . .
+
+<br>
+
+Therefore, simple linear regression encodes *four* assumptions:
+
+ - The errors have mean zero (*linearity*): $\mathbb{E}[\epsilon \mid X] = 0$
+ 
+ - The error variance is constant (*homoskedasticity*): $\text{var}(\epsilon \mid X) = \sigma^2$
+ 
+ - The errors are independent: $\text{var}(\epsilon \mid X) = \sigma^2$ (*can be violated in different ways than homoskedasticity*)
+ 
+ - The errors are normally distributed
+ 
+. . .
+
+<br>
+
+We’ve also assumed that $X$ is fixed, NOT random
+ 
+:::{.aside}
+For a helpful overview of regression assumptions and diagnostics, see [Professor Alex Reinhart's notes](https://www.refsmmat.com/courses/707/lecture-notes/regression-assumptions.html).
+:::
+
+
+## Plot residuals against fitted values
+
+A **residual** is the difference between the observed and fitted values:
+
+$$
+\hat{\epsilon}_i = Y_i - \hat{Y}_i
+$$
+
+We can test several of the linear regression assumptions using the residuals
+
+. . .
+
+<br>
+
+In particular using a __residuals vs fitted values__ plot, we can:
+
+- Assess linearity assumption: conditional the fitted values, do the residuals have mean zero?
+
+- Assess equal variance: across the fitted values, do the residuals have constant variance ($\sigma^2$)?
+
+. . .
+
+<br>
+
+*Note*: it is more difficult to assess the error independence and fixed $X$ assumptions. Ideally, these assumptions should be based on subject-matter knowledge
+
+
+## Plot residuals against predicted values
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+```{r plot-resid-fit-broom, eval = FALSE}
+nfl_teams_data |>
+  ggplot(aes(x = .fitted, y = .resid)) + 
+  geom_point(alpha = 0.5, size = 1.5) +
+  geom_hline(yintercept = 0, linetype = "dashed", 
+             color = "orangered", linewidth = 2) +
+  # plot the residual mean
+  geom_smooth(se = TRUE, fill = "skyblue2")
+```
+
+*Two things to look for*:
+
+  -   Any trend around horizontal reference line? *Violates linearity* (may have to additional covariates, polynomial terms, splines, etc.)
+
+  -   Unequal vertical spread? *Violates homoskedasticity* (consider using the [sandwich estimator](https://sandwich.r-forge.r-project.org/articles/sandwich.html))
+
+:::
+
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r ref.label='plot-resid-fit-broom', echo = FALSE, fig.height=11,fig.align="center"}
+
+```
+
+:::
+:::
+
+
+## What about the normality assumption?
+
+:::{columns}
+
+:::{.column}
+
+:::{.incremental}
+
+- **OLS doesn't care about this assumption**, it's just estimating coefficients!
+
+- BUT in terms of inference, a violation of the normality of errors assumption:
+
+  - May result in incorrect inferences in small samples
+
+  - Usually does not have a big impact on inferences in larger samples (Weisberg 2014)
+
+-  We can detect whether the errors are (roughly) normally distributed by **Q-Q plot** on the *standardized residuals*, which are the residuals divided by their [estimated standard deviation](https://www.refsmmat.com/courses/707/lecture-notes/regression-geometry.html#least-squares-estimation)
+
+:::{.fragment}
+
+$$
+\displaystyle \hat{\epsilon}_{\text{standardized}} = \frac{\hat{\epsilon}}{\hat{\sigma}}
+$$
+
+:::
+:::
+:::
+
+:::{.column}
+
+:::{.fragment}
+
+```{r}
+nfl_teams_data |>
+  ggplot(aes(sample = .std.resid)) +
+  geom_qq_line(distribution = stats::qnorm) +
+  geom_qq(distribution = stats::qnorm) 
+```
+
+:::
+:::
+
+:::
+
+## Linear regression with one categorical predictor
+
+In this example, we look at three teams: Chicago Bears, Pittsburgh Steelers, and Seattle Seahawks
+
+. . .
+
+- We change the estimate and interpretation intercept of our regression line when we include a categorical variable (one level of the variable is "absorbed" into the itercept term)
+
+- Notice we only get two coefficients for the season besides the intercept: (i) `teamPIT` and (ii) `teamSEA`
+
+```{r}
+nfl_teams_subset <- nfl_teams_data |>
+  filter(team %in% c("PIT", "SEA", "CHI"))
+
+team_lm <- lm(score_diff ~ team, data = nfl_teams_subset)
+tidy(team_lm, conf.int = TRUE)
+```
+
+## Linear regression with one categorical predictor
+
+By default, `R` turns the categorical variables of $m$ levels (e.g. three teams ) into $m-1$ indicator/binary variables for different categories relative to the baseline/reference level
+
+- Indicator/binary variables are one if it is that level, and zero otherwise
+
+- By default, `R` uses alphabetical order to determine the reference level (`teamCHI` in this case)
+
+. . .
+
+<br>
+
+With our categorical predictor of team, our linear model is:
+
+$$\widehat{\text{Score differential}} = -11.59 + 83.18 \ I_{\texttt{teamPIT}} + 51.68\ I_{\texttt{teamSEA}}$$
+  
+## Linear regression with one categorical predictor
+
+$$\widehat{\text{Score differential}} = -11.59 + 83.18 \ I_{\texttt{teamPIT}} + 51.68\ I_{\texttt{teamSEA}}$$
+
+The intercept term gives us the (baseline) average y for the reference level
+  
+  * *In our context*: the expected season score differential for the Chicago Bears is $-11.59$ points (95% CI [$-45.61$, $22.43$])
+  
+. . .
+
+The coefficient estimates indicate the expected change in the response variable relative to the reference level
+
+  * *For example*: the season score differential for the Pittsburgh Steelers is $83.18$ points higher (95% CI [$35.07$, $131.29$]) than than the season score differential for the Chicago Bears
+  
+## Comparing observed values and predictions
+
+
+::: columns
+::: {.column width="30%" style="text-align: left;"}
+
+* Similar to before, we can plot the actual and predicted ridership
+
+* To reiterate, all we're doing is changing the intercept of our regression line by including a categorical variable
+
+```{r}
+#| eval: false
+nfl_teams_subset |>
+  mutate(team_pred = predict(team_lm)) |> 
+  ggplot(aes(x = score_diff, y = team_pred)) +
+  geom_point(size = 1.5, alpha = 0.5) +
+  facet_wrap(~ team, ncol = 3) +
+  labs(x = "Actual score differential", 
+       y = "Predicted score differential")
+```
+
+:::
+
+
+::: {.column width="70%" style="text-align: left;"}
+
+```{r}
+#| echo: false
+#| fig.width: 10
+nfl_teams_subset |>
+  mutate(team_pred = predict(team_lm)) |> 
+  ggplot(aes(x = score_diff, y = team_pred)) +
+  geom_point(size = 1, alpha = 0.5) +
+  facet_wrap(~ team, ncol = 3) +
+  labs(x = "Actual score differential", 
+       y = "Predicted score differential")
+```
+
+:::
+
+:::
+
+## Interactions
+
+An interaction allows one predictor’s association with the outcome to depend on the value of another predictor
+
+. . .
+
+<br>
+
+*Example:* an interaction between `team` and `offense_ave_epa_pass` says that the association between passing performance and season score differential depends the NFL team
+
+. . .
+
+<br>
+
+In general, if we have a categorical and quantitative variables: we include an interaction term when believe associations between the quantitative variable and the response differ by category
+
+. . .
+
+<br>
+
+*This means those regression lines have different intercepts as well as different slopes*
+  
+## Visualizing interactions
+
+```{r}
+nfl_teams_subset |> 
+  ggplot(aes(x = offense_ave_epa_pass, y = score_diff, color = team)) +
+  geom_point(size = 2, alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 2) +
+  ggthemes::scale_color_colorblind()
+```
+
+## Interpreting interactions
+
+```{r}
+#| attr-output: "style='font-size: 0.55em;'"
+interaction_lm <- lm(score_diff ~ offense_ave_epa_pass * team, 
+                     data = nfl_teams_subset)
+tidy(interaction_lm)
+```
+
+$$
+\begin{aligned}
+{\text{Score differential}} = \beta_0 &+ \beta_1 \ \text{Pass performance} + \beta_2 \ I_{\texttt{teamPIT}} + \beta_3 \ I_{\texttt{teamSEA}} \\
+&+ \beta_4 \{ \text{Pass performance} \times I_{\texttt{teamPIT}} \} +  \beta_5 \{ \text{Pass performance} \times I_{\texttt{teamSEA}} \}  + \epsilon \\
+\end{aligned}
+$$
+
+. . .
+
+*Example interpretation* (comparing the Pittsburgh Steelers to the Chicago Bears):
+
+> For the Chicago Bears, a one-unit increase in average expected points added (EPA) per pass attempt is associated with an increase of 216.70 points in season score differential, on average. But for the Pittsburgh Steelers, a one-unit increase in average expected points added (EPA) per pass attempt is associated with an increase of 216.70 + 98.28 = 314.98 points in season score differential, on average.
+
+## Multiple linear regression 
+
+We can include as many variables as we want (assuming that $n > p$):
+
+$$Y=\beta_{0}+\beta_{1} X_{1}+\beta_{2} X_{2}+\cdots+\beta_{p} X_{p}+\epsilon$$
+
+OLS estimates, $\hat{\boldsymbol{\beta}} = (\hat{\beta}_{0}, \dots, \hat{\beta}_{p})'$ in matrix notation ($\boldsymbol{X}$ is a $n \times p$ matrix):
+  
+$$\hat{\boldsymbol{\beta}} = (\boldsymbol{X} ^T \boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{Y}$$
+
+. . .
+
+We can just add more variables to the formula in `R`:
+
+```{r}
+multiple_lm <- lm(score_diff ~ offense_ave_epa_pass + defense_ave_epa_pass, data = nfl_teams_subset)
+tidy(multiple_lm)
+```
+
+
+## Multiple linear regression 
+
+Use adjusted $R^2$  when including multiple variables:
+
+$$
+\displaystyle R^2_{\text{adj}} = 1 - \frac{(1 - R^2)(n - 1)}{(n - p - 1)}
+$$
+
+  - Adjusts for the number of regressors in the model ($p$)  
+  
+  - Adding more variables __will always increase__ the model's (unadjusted) $R^2$
+  
+  
+. . .  
+  
+```{r}
+glance(multiple_lm) # notice the diff. between unadj. and adj. R-squared
+```
+
+
+
+:::{.aside}  
+Also, recall [Anscombe's quartet](https://en.wikipedia.org/wiki/Anscombe%27s_quartet) and the [Datasaurus dozen](https://en.wikipedia.org/wiki/Datasaurus_dozen). In general, you should be cautious of any single number summary of an elusive concept like model "goodness". 
+:::
+
+
+## Regression confidence intervals vs prediction intervals
+
+These answer different questions:
+
+1. Do we want to predict the mean response for a particular value $x^*$ of the explanatory variable? **Confidence interval**
+
+2. Do we want to predict the response for an individual case? **Prediction interval**
+
+. . .
+
+*Examples*: 
+
+*   If we would like to know the average score differential for **all** NFL team-seasons with an average expected points added (EPA) per pass attempt of $0.10$, then we would use an interval for the **mean response**
+
+*   If we want an intervalto contain the score differential **a particular** NFL team-season with with an average expected points added (EPA) per pass attempt of $0.10$, then we need the interval for **a single prediction**
+
+
+## Regression confidence intervals
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+The layer `geom_smooth()` displays __confidence intervals__ for the regression line
+
+```{r conf-int, eval = FALSE}
+# predict(simple_lm, interval = "confidence")
+lm_plot <- nfl_teams_subset |>
+  ggplot(aes(x = offense_ave_epa_pass, y = score_diff)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm")
+lm_plot
+```
+
+:::
+
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r, ref.label='conf-int', echo = FALSE, fig.height=10, fig.align="center"}
+
+```
+
+:::
+:::
+
+
+---
+
+## Regression confidence intervals
+
+Interval estimate for the MEAN response at a given observation (i.e. for the predicted AVERAGE $\hat{\beta}_0 + \hat{\beta}_1 x^*$)
+
+. . .
+
+<br>
+
+Based on standard errors for the estimated regression line at $x^*$, we get that:
+
+$$
+SE_{\text{line}}\left(x^{*}\right)=\hat{\sigma} \cdot \sqrt{\frac{1}{n}+\frac{\left(x^{*}-\bar{x}\right)^{2}}{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}}}
+$$
+
+. . .
+
+<br> 
+
+*Variation only comes from uncertainty in the parameter* 
+
+## Regression prediction intervals
+
+Interval estimate for an INDIVIDUAL response at a given (new) observation 
+
+. . .
+
+<br>
+
+Must add the variance $\sigma^2$ of a __single predicted value__: 
+
+$$
+SE_{\text{pred}}\left(x^{*}\right)=\hat{\sigma} \cdot \sqrt{1 + \frac{1}{n}+\frac{\left(x^{*}-\bar{x}\right)^{2}}{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}}}
+$$
+
+. . .
+
+<br>
+
+*Now, the variation comes from uncertainty in parameter estimates AND error variance* 
+
+## Confidence intervals versus prediction intervals
+
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+*   The standard error for predicting an individual response will always be larger than for predicting a mean response
+
+*   Prediction intervals will always be wider than confidence intervals
+
+```{r pred-interval, eval = FALSE}
+# predict(simple_lm, interval = "prediction")
+lm_plot +
+  geom_ribbon(
+    data = augment(simple_lm, interval = "prediction"),
+    aes(ymin = .lower, ymax = .upper),
+    color = "red", fill = NA
+  )
+```
+
+
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r, ref.label='pred-interval', echo = FALSE,  fig.height=10,fig.align="center"}
+
+```
+
+:::
+:::
