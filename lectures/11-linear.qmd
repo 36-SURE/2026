@@ -50,6 +50,7 @@ Y_{i}=\beta_{0}+\beta_{1} X_{i}+\epsilon_{i}, \quad \text { for } i=1,2, \dots, 
 $$
 
 :::{.fragment}
+
 *where:*
 
 - $Y_i$ is the $i$th value for the **response** variable
@@ -262,7 +263,7 @@ $$
 
 - To fully characterize a $t$-distribution, we need the [**degrees of freedom**](https://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)#In_linear_models)
 
-  - For linear regression, the degrees of freedom is $n - p - 1$ (where $n$ is the number of observations used to fit the model and $p$ is the number of estimated coefficients beyond the intercept)
+  - For linear regression, the degrees of freedom is $n - (p + 1)$ (where $n$ is the number of observations used to fit the model and $p$ is the number of estimated coefficients beyond the intercept)
   
   - `summary()` tells us the degrees of freedom is $699$ (as $701 - 2 = 699$)
   
@@ -285,7 +286,7 @@ Since `offense_ave_epa_pass` is a quantitative predictor, we can interpret it as
 
 . . .
 
-- Always make sure to interpret important coefficients in context (*and with units*)! 
+- Always make sure to interpret important coefficients in context (*and with units when possible*)! 
 
 - We can compute the $95\%$ confidence interval (CI) by doing $\hat{\beta}_1 \pm 1.96 \cdot \widehat{SE}(\hat{\beta}_1)$, or using the `confint()` function: 
 
@@ -463,7 +464,7 @@ For a helpful overview of regression assumptions and diagnostics, see [Professor
 
 ## Plot residuals against fitted values
 
-A **residual** is the difference between the observed and fitted values:
+Recall, the **residual** is the difference between the observed and fitted (predicted) values:
 
 $$
 \hat{\epsilon}_i = Y_i - \hat{Y}_i
@@ -586,7 +587,7 @@ tidy(team_lm, conf.int = TRUE)
 
 ## Linear regression with one categorical predictor
 
-By default, `R` turns the categorical variables of $m$ levels (e.g. three teams ) into $m-1$ indicator/binary variables for different categories relative to the baseline/reference level
+By default, `R` turns the categorical variables of $m$ levels (e.g. three teams) into $m-1$ indicator/binary variables for different categories relative to the baseline/reference level
 
 - Indicator/binary variables are one if it is that level, and zero otherwise
 
@@ -664,7 +665,7 @@ An interaction allows one predictor’s association with the outcome to depend o
 
 <br>
 
-*Example:* an interaction between `team` and `offense_ave_epa_pass` says that the association between passing performance and season score differential depends the NFL team
+*Example:* an interaction between `team` and `offense_ave_epa_pass` says that the association between passing performance and season score differential depends on the NFL team
 
 . . .
 
