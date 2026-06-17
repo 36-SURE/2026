@@ -67,9 +67,9 @@ Why would we wish to select a **subset** of the $p$ variables?
 
 **This is not typically used in research!**
 
-- only practical with a smaller number of variables (10 variables = $2^{10} = 1024$ models)
+- Only practical with a smaller number of variables (10 variables = $2^{10} = 1024$ models)
 
-- arbitrary way of defining *best* and ignores prior knowledge about potential predictors 
+- Arbitrary way of defining *best* and ignores prior knowledge about potential predictors 
 
 ## Stepwise selection (not recommended)
 
@@ -197,14 +197,13 @@ knitr::include_graphics("https://imgs.xkcd.com/comics/confounding_variables.png"
   
   - 1 means one variable linearly increases absolutely while the other increases
   
-## Data: MLB batting (2025)
+## Data: MLB batting 
 
-Obtained from [Baseball Savant](https://baseballsavant.mlb.com/leaderboard/custom?year=2025&type=batter&filter=&min=q&selections=pa%2Ck_percent%2Cbb_percent%2Cwoba%2Cxwoba%2Csweet_spot_percent%2Cbarrel_batted_rate%2Chard_hit_percent%2Cavg_best_speed%2Cavg_hyper_speed%2Cwhiff_percent%2Cswing_percent&chart=false&x=pa&y=pa&r=no&chartType=beeswarm&sort=xwoba&sortDir=desc): all players with at least 500 plate appearances
+A subset of batting statistics for all MLB players with at least 500 plate appearances in 2025. Obtained from [Baseball Savant](https://baseballsavant.mlb.com/leaderboard/custom?year=2025&type=batter&filter=&min=q&selections=pa%2Ck_percent%2Cbb_percent%2Cwoba%2Cxwoba%2Csweet_spot_percent%2Cbarrel_batted_rate%2Chard_hit_percent%2Cavg_best_speed%2Cavg_hyper_speed%2Cwhiff_percent%2Cswing_percent&chart=false&x=pa&y=pa&r=no&chartType=beeswarm&sort=xwoba&sortDir=desc).
 
 ```{r}
 library(tidyverse)
-batting_2025 <- read_csv("../data/player_hitting_2025.csv")
-# CHANGE path
+batting_2025 <- read_csv("https://raw.githubusercontent.com/36-SURE/2026/main/data/player_hitting_2025.csv")
 ```
 
 ## Modeling MLB wOBA
@@ -236,7 +235,7 @@ batting_2025 |>
 :::
 :::
 
-## Correlation matrix of score differential and candidate predictors
+## Correlation matrix of wOBA and candidate predictors
 
 - Interested in relationship between batting statistics with wOBA
 
@@ -301,10 +300,10 @@ ggcorrplot(round_cor_matrix,
 
 ## Building a linear regression 
 
-Let's say we are interested in understanding the relationship between quality of contact on *wOBA*. We might measure quality of contact in two ways:
+Let's say we are interested in understanding the relationship between quality of contact and wOBA. We might measure quality of contact in two ways:
 
-- `hard_hit_percent`: ball struck at at least 95 mph
-- `barrel_batted_rate`: ball struck at at least 98 mph with a launch angle between 26-30 degrees. As exit velocity increases, the launch angle range widens. 
+- `hard_hit_percent`: ball struck at least 95 mph
+- `barrel_batted_rate`: ball struck at least 98 mph with a launch angle between 26-30 degrees. As exit velocity increases, the launch angle range widens. 
   - A barrel is a subset of a hard hit
 
 ::: columns
@@ -312,15 +311,15 @@ Let's say we are interested in understanding the relationship between quality of
 
 ```{r}
 library(gtsummary)
-hh_mod <- lm(data= batting_2025, woba ~ hard_hit_percent)
-tbl_regression(hh_mod)
+hh_mod <- lm(data= mlb_model_data, woba ~ hard_hit_percent)
+tbl_regression(hh_mod, estimate_fun = label_style_sigfig(digits = 3))
 ```
 :::
 
 ::: {.column width="50%" style="text-align: left;"}
 ```{r}
-barrel_mod <- lm(data= batting_2025, woba ~ barrel_batted_rate)
-tbl_regression(barrel_mod)
+barrel_mod <- lm(data= mlb_model_data, woba ~ barrel_batted_rate)
+tbl_regression(barrel_mod, estimate_fun = label_style_sigfig(digits = 3))
 ```
 :::
 :::
@@ -328,8 +327,8 @@ tbl_regression(barrel_mod)
 ## Adding both variables to the regression
 
 ```{r}
-combined <- lm(data = batting_2025, woba ~ barrel_batted_rate + hard_hit_percent)
-tbl_regression(combined)
+combined <- lm(data = mlb_model_data, woba ~ barrel_batted_rate + hard_hit_percent)
+tbl_regression(combined, estimate_fun = label_style_sigfig(digits = 3))
 ```
 
 After accounting for Barrel%, Hard Hit% provides almost no additional information about wOBA. 
@@ -339,23 +338,23 @@ After accounting for Barrel%, Hard Hit% provides almost no additional informatio
 
 ## What do we do about this?
 
-It depends on the goal!
-
 - **Inference**: if we are trying to understand *does the quality of contact affect wOBA?* we can roughly consider Barrel% and Hard Hit% as two measures of the same underlying construct 
 
   - Fair to remove one in this scenario, as
   
-    - "holding Barrel% fixed while changing Hard Hit%" is not a realistic comparison.
+    - "holding Barrel% fixed while changing Hard Hit%" is not practical in baseball
     
-    - Hard Hit% is not necessarily a confounding variable
+    - Hard Hit% is not necessarily a confounding variable, rather, Barrel% is a subset of Hard Hit%
+    
+. . .
 
 - **Prediction**: if we are trying to build a linear regression model to predict a new player's wOBA from their Hard Hit% and Barrel%, it could go either way 
 
   - Collinearity is a problem insofar as it creates high prediction variance
   
-  - But maybe, given Barrel%, it still explains a enough variance in the outcome to counteract this
+  - But maybe, given Barrel%, Hard Hit% still explains a enough variance in the outcome to counteract this
   
-  - Use cross validation to see!
+  - One option is to use cross validation to see!
   
 ## General notes about collinearity to keep in mind 
 
@@ -511,6 +510,8 @@ batting_test_summary |>
 
 * If anything, performance is *slightly* better without Hard Hit% 
 
+* We will discuss more about prediction and correlated covariates tomorrow!
+
 :::
 
 :::
@@ -518,6 +519,8 @@ batting_test_summary |>
 ## Data analysis workflow: before looking at data
 
 *This data analysis workflow is adapted from Valérie Ventura's 36-617 class.*
+
+0) Formulate a question. Some of you have very well-defined projects, some not quite as much. This step can take a while!
 
 1) Determine what sort of analysis is needed: are we doing inference? Prediction? 
 
@@ -529,9 +532,9 @@ batting_test_summary |>
   
 4) Identify your response variable: sometimes there are several available response variables. Which one will you work with? Why?
 
-5) Identify covariate(s) of **main** interest.
-
 ## Data analysis workflow: before looking at data
+
+5) Identify covariate(s) of **main** interest.
 
 6) Identify covariates that also (partially) cause the response variable.
 
@@ -577,8 +580,8 @@ batting_test_summary |>
 Don't just say "we find a statistically significant association between Y and X..."
 
 * What do those coefficient estimates tell you? Interpret in context
-
-* How large/small is the effect size?
+  
+  - How large/small is the effect size? Consider practical significance in addition to statistical significance
 
 * What's the margin of error?
 
