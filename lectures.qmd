@@ -22,7 +22,7 @@ Updated daily before lecture.
 | Lecture 9  | June 12 | Presentations                                             | [slides](lectures/09-presentation.qmd)   |
 | Lecture 10 | June 15 | Supervised learning: model assessment vs selection        | [slides](lectures/10-tradeoffs.qmd)     |
 | Lecture 11 | June 16 | Supervised learning: linear regression                    | [slides](lectures/11-linear.qmd)         |
-| Lecture 12 | June 17 | Supervised learning: intro to variable selection | [slides](lectures/12-building.qmd)       |
+| Lecture 12 | June 17 | Supervised learning: intro to variable selection | [slides](lectures/12-varsel.qmd)       |
 <!--
 | Lecture 13 | June 23 | Data wrangling with R's `data.table` package              | [slides](lectures/13-datatable.qmd)      |
 | Lecture 14 | June 24 | Supervised learning: regularization                       | [slides](lectures/14-regularization.qmd) |
