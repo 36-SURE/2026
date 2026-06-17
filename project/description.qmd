@@ -12,7 +12,7 @@ This project has the following **three** key deliverables.
 
 ### 1. Report
 
-[template](project/report-template.qmd) (right click and choose "Save Link As..." to download)
+[template](https://raw.githubusercontent.com/36-SURE/2026/main/project/report-template.qmd) (right click and choose "Save Link As..." to download)
 
 **DUE THURSDAY, JULY 23 AT 11:59PM ET**
 
