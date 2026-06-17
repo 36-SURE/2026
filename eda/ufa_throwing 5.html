@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Project Guidelines – CMSACamp 2026</title>
+<title>EDA project: UFA throwing – CMSACamp 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -70,6 +105,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -138,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project Guidelines</h1>
+<h1 class="title">EDA project: UFA throwing</h1>
 </div>
 
 
@@ -155,69 +219,89 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="your-task" class="level2">
-<h2 class="anchored" data-anchor-id="your-task">Your Task</h2>
-<p>Each student has been allocated into a project group of 2–3, and each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables and checkpoints, in accordance with the guidelines detailed in the remainder of this document.</p>
+<hr>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This project will be released on Thursday, June 4 and <strong>conclude with a 6-minute presentation on Tuesday, June 16 during lab</strong>.</p>
+<p>Students will be randomly placed into groups of 2–3 and each group will be randomly assigned a dataset.</p>
+<p>The goal of this project is to practice understanding the structure of a dataset, and to practice generating and evaluating hypotheses using fundamental EDA and data visualization techniques.</p>
 </section>
 <section id="deliverables" class="level2">
 <h2 class="anchored" data-anchor-id="deliverables">Deliverables</h2>
-<p>This project has the following <strong>three</strong> key deliverables.</p>
-<section id="report" class="level3">
-<h3 class="anchored" data-anchor-id="report">1. Report</h3>
-<p><a href="https://raw.githubusercontent.com/36-SURE/2026/main/project/report-template.qmd">template</a> (right click and choose “Save Link As…” to download)</p>
-<p><strong>DUE THURSDAY, JULY 23 AT 11:59PM ET</strong></p>
-<p>Your report should be written using Quarto and submitted as a rendered <code>.html</code> file. We recommend using an <strong>IDMRaD</strong> (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.</p>
-</section>
-<section id="poster" class="level3">
-<h3 class="anchored" data-anchor-id="poster">2. Poster</h3>
-<p><a href="https://docs.google.com/presentation/d/1R8I-fcPI5RM2QQRwRqss9hKOsKFgWA9qOqOgCppQn4E/edit?usp=sharing">template</a> (Google Slides link)</p>
-<p><strong>DUE TUESDAY, JULY 21 AT 11:59PM ET</strong> [HARD DEADLINE—so that we have enough time for poster printing]</p>
-<p>Your poster should be submitted as a <code>.pdf</code> file. We will then make a printed copy for the poster session on the final day. (Note: the recommended size is 48 inches wide by 36 inches tall.)</p>
-</section>
-<section id="slides" class="level3">
-<h3 class="anchored" data-anchor-id="slides">3. Slides</h3>
-<p><strong>DUE THURSDAY, JULY 23 AT 11:59PM ET</strong></p>
-<p>Each group will give a <strong>10-minute presentation on the final day (July 24)</strong>. The presentation should effectively have the same structure as your report with an introduction, data description, an overview of methods, followed by results, and discussion. Your slides may be created in any software, but we only accept submissions in the form of a <code>.pdf</code> file, a Google Slides link, or a Quarto presentation (<a href="https://quarto.org/docs/output-formats/html-publishing.html">self-contained <code>.html</code> file or hosted online</a>).</p>
-</section>
-</section>
-<section id="checkpoints" class="level2">
-<h2 class="anchored" data-anchor-id="checkpoints">Checkpoints</h2>
-<p><strong>Checkpoint 1: 5-minute presentation during lab on July 1</strong></p>
-<p><strong>Note: It is perfectly fine if you don’t have any results at this point</strong></p>
-<p><strong>No notes/scripts are allowed</strong></p>
-<p>Your first checkpoint presentation should be structured as follows.</p>
+<p>Each group is expected to make slides to accompany the 6-minute presentation. All group members must be present for the presentation and participate. <strong>No notes/scripts are allowed during the presentation.</strong></p>
+<p>The presentation should feature the following:</p>
 <ul>
-<li><p>Introduction (1 slide): Describe your project topic/question(s) and why it is important</p></li>
-<li><p>Data: (1 slide) Data description and any relevant data pre-processing steps (e.g., whether you consider specific observations, create any meaningful features, etc.—but don’t mention minor steps like column type conversion, filtering out unnecessary rows)</p></li>
-<li><p>EDA (2 slides max): 1–2 EDA plots related to your question(s) of interest</p>
-<ul>
-<li>Design the slides using the <a href="https://www.cmu.edu/student-success/other-resources/handouts/comm-supp-pdfs/designing-powerpoint-slides.pdf">assertion-evidence</a> model</li>
-</ul></li>
-<li><p>Methods (1 slide): Early thoughts on methods/modeling strategy. Justify why it might be appropriate to answer your question(s) of interest</p></li>
-</ul>
-<!-- *   (Optional) Results: Preliminary results if you already have some -->
-<ul>
-<li>Plan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps. What are the next steps?</li>
-</ul>
-<p><strong>Checkpoint 2: 10-minute presentation during lab on July 20</strong></p>
-<p><strong>No notes/scripts are allowed</strong></p>
-<p>Your second checkpoint presentation should be structured as follows (<em>subject to change</em> – will be decided by July).</p>
-<ul>
-<li><p>Introduction (1 slide): Describe your project topic/question(s) and why it is important</p></li>
-<li><p>Data: (1 slide) Data description and any relevant data pre-processing steps (e.g., whether you consider specific observations, create any meaningful features, etc.—but don’t mention minor steps like column type conversion, filtering out unnecessary rows)</p></li>
-<li><p>Plan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps.</p></li>
-<li><p>Present the completed steps (5 slides max): methods, plots, findings, etc.</p>
-<ul>
-<li>Design the slides using the <a href="https://www.cmu.edu/student-success/other-resources/handouts/comm-supp-pdfs/designing-powerpoint-slides.pdf">assertion-evidence</a> model</li>
-</ul></li>
-<li><p>Plan of action (1 slide, use the same one as before): what are the steps still to be completed?</p></li>
+<li><p>Overview of the structure of your dataset</p></li>
+<li><p><strong>Two questions/hypotheses</strong> you are interested in exploring</p></li>
+<li><p><strong>Two data visualizations</strong> exploring the questions—both must be multivariate (i.e., involving 2+ variables) and in different formats</p></li>
+<li><p><strong>One clustering analysis</strong></p></li>
+<li><p>Conclusions for the hypotheses based on your EDA and data visualizations</p></li>
 </ul>
 </section>
-<section id="analysis" class="level2">
-<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
-<p>Your analysis should focus on both:</p>
-<p><strong>Exploratory data analysis:</strong> Create visualizations to explore the underlying structure of the data and gain insights about distributions and relationships between variables. These should be ideally based on reasoned hypotheses.</p>
-<p><strong>Statistical modeling:</strong> Demonstrate the use of statistical and machine learning modeling techniques. This may involve justifications for your choice of model (e.g., comparison with model specifications such as using different predictors, or with other methods), and then any relevant interpretation of the model with regards to your project’s topic. Depending on your project, the model(s) you rely on may be used for either an inference (i.e., interpreting coefficients) or prediction task. The model you choose just needs to be motivated by your question of interest.</p>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<p>There will be two submission deadlines:</p>
+<p><strong>Thursday, June 11 at 5pm ET</strong> - Each student will push their individual code for the project thus far to GitHub for review.</p>
+<p><strong>Tuesday, June 16 at 1pm ET</strong> - Slides and full code must be completed and ready for presentation. Send your slides to Erin (<a href="mailto:efranke@andrew.cmu.edu"><code>efranke@andrew.cmu.edu</code></a>) and Sara (<a href="mailto:scolando@andrew.cmu.edu"><code>scolando@andrew.cmu.edu</code></a>). All code must be written in <code>R</code>; but the slides may be created in any software. Take advantage of examples from lectures, but also feel free to explore online resources that may be relevant. (But be sure to always consult the <code>R</code> help documentation first before attempting to google around or ask ChatGPT.)</p>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>This dataset contains throw attempts in the Ultimate Frisbee Association from 2021 to 2024. The Ultimate Frisbee Association (UFA), formerly known as the American Ultimate Disc League (AUDL), is the top professional ultimate league in North America. The data were used in the <a href="https://www.sloansportsconference.com/research-papers/a-machine-learning-approach-to-throw-value-estimation-in-professional-ultimate-frisbee">2025 SSAC paper by Eberhard, Miller and Sandholz</a> and made <a href="https://raw.githubusercontent.com/BradenEberhard/Expected-Throwing-Value/refs/heads/main/data/all_games_1024.csv">available on GitHub</a>.</p>
+<p>Each row in the dataset corresponds to a throw attempt and the columns are:</p>
+<ul>
+<li><code>thrower</code>: thrower name identifier</li>
+<li><code>thrower_x</code>: (standardized) x coordinate of thrower (position along the sideline direction; 0 represents the middle of the field, positive values denote the left side (with respect to facing the target end zone), and negative values denote the right side)</li>
+<li><code>thrower_y</code>: y coordinate of thrower (position along the end zone direction; higher <code>y</code> means closer to the target end zone)</li>
+<li><code>receiver</code>: receiver name identifier</li>
+<li><code>receiver_x</code>: (standardized) x coordinate of receiver (position along the sideline direction; 0 represents the middle of the field, positive values denote the left side (with respect to facing the target end zone), and negative values denote the right side)</li>
+<li><code>receiver_y</code>: y coordinate of receiver (position along the end zone direction; higher <code>y</code> means closer to the target end zone)</li>
+<li><code>receiver</code>: receiver name identifier</li>
+<li><code>turnover</code>: whether the throw results in a turnover</li>
+<li><code>possession_num</code>: possession number within a game</li>
+<li><code>possession_throw</code>: throw number within a possession</li>
+<li><code>game_quarter</code>: quarter within a game</li>
+<li><code>is_home_team</code>: whether the offense is the home team</li>
+<li><code>home_team_score</code>: home team score</li>
+<li><code>away_team_score</code>: away team score</li>
+<li><code>gameID</code>: unique identifier for game</li>
+<li><code>home_teamID</code>: home team name identifier</li>
+<li><code>away_teamID</code>: away team name identifier</li>
+<li><code>times</code>: game time remaining (seconds)</li>
+<li><code>home_team_win</code>: whether home team wins</li>
+<li><code>score_diff</code>: score difference between home and away teams</li>
+<li><code>goal</code>: whether the throw results in a goal</li>
+<li><code>throw_distance</code>: throw distance (yards)</li>
+<li><code>x_diff</code>: difference in x coordinates between thrower and receiver</li>
+<li><code>y_diff</code>: difference in y coordinates between thrower and receiver<br>
+</li>
+<li><code>throw_angle</code>: throw angle (radians, 0 means forward, <span class="math inline">\(\pi\)</span> means backward, positive values mean to the right, and negative values mean to the left of the thrower)</li>
+</ul>
+</section>
+<section id="starter-code" class="level2">
+<h2 class="anchored" data-anchor-id="starter-code">Starter code</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ufa_throws <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/2026/main/data/ufa_throws.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In case you’re curious, the code to build this dataset can be found below.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ufa_throws <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/BradenEberhard/Expected-Throwing-Value/refs/heads/main/data/all_games_1024.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ufa_throws <span class="ot">&lt;-</span> ufa_throws <span class="sc">|&gt;</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">goal =</span> <span class="fu">ifelse</span>(receiver_y <span class="sc">&gt;</span> <span class="dv">100</span> <span class="sc">&amp;</span> turnover <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">throw_distance =</span> <span class="fu">sqrt</span>((receiver_x <span class="sc">-</span> thrower_x) <span class="sc">^</span> <span class="dv">2</span> <span class="sc">+</span> (receiver_y <span class="sc">-</span> thrower_y) <span class="sc">^</span> <span class="dv">2</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_diff =</span> receiver_x <span class="sc">-</span> thrower_x,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_diff =</span> receiver_y <span class="sc">-</span> thrower_y,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">throw_angle =</span> <span class="fu">atan2</span>(y_diff, x_diff)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>quarter_point, <span class="sc">-</span>total_points, <span class="sc">-</span>current_line)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<!-- # https://someflow.substack.com/p/all-the-audlufa-data-science-projects -->
+<!-- # https://github.com/BradenEberhard/Expected-Throwing-Value/blob/main/processing/processing.ipynb -->
+<!-- # https://www.docs.ufastats.com/ -->
+<!-- # https://www.stat.cmu.edu/capstoneresearch/spring2024/460files/team16.html -->
 
 
 </section>

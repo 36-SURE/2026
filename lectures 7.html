@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Project Guidelines – CMSACamp 2026</title>
+<title>Lectures – CMSACamp 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../icon.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-cf27875dd1ae9327fe69e76602a4a4de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./icon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-cf27875dd1ae9327fe69e76602a4a4de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,8 +70,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -81,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">CMSACamp 2026</span>
     </a>
   </div>
@@ -92,33 +121,33 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../lectures.html"> 
+    <a class="nav-link active" href="./lectures.html" aria-current="page"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../labs.html"> 
+    <a class="nav-link" href="./labs.html"> 
 <span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects.html"> 
+    <a class="nav-link" href="./projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../bios.html"> 
+    <a class="nav-link" href="./bios.html"> 
 <span class="menu-text">Bios</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../r-setup.html"> 
+    <a class="nav-link" href="./r-setup.html"> 
 <span class="menu-text">R and RStudio Setup</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../git-setup.html"> 
+    <a class="nav-link" href="./git-setup.html"> 
 <span class="menu-text">Git and GitHub Setup</span></a>
   </li>  
 </ul>
@@ -138,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project Guidelines</h1>
+<h1 class="title">Lectures</h1>
 </div>
 
 
@@ -155,69 +184,110 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="your-task" class="level2">
-<h2 class="anchored" data-anchor-id="your-task">Your Task</h2>
-<p>Each student has been allocated into a project group of 2–3, and each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables and checkpoints, in accordance with the guidelines detailed in the remainder of this document.</p>
-</section>
-<section id="deliverables" class="level2">
-<h2 class="anchored" data-anchor-id="deliverables">Deliverables</h2>
-<p>This project has the following <strong>three</strong> key deliverables.</p>
-<section id="report" class="level3">
-<h3 class="anchored" data-anchor-id="report">1. Report</h3>
-<p><a href="https://raw.githubusercontent.com/36-SURE/2026/main/project/report-template.qmd">template</a> (right click and choose “Save Link As…” to download)</p>
-<p><strong>DUE THURSDAY, JULY 23 AT 11:59PM ET</strong></p>
-<p>Your report should be written using Quarto and submitted as a rendered <code>.html</code> file. We recommend using an <strong>IDMRaD</strong> (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.</p>
-</section>
-<section id="poster" class="level3">
-<h3 class="anchored" data-anchor-id="poster">2. Poster</h3>
-<p><a href="https://docs.google.com/presentation/d/1R8I-fcPI5RM2QQRwRqss9hKOsKFgWA9qOqOgCppQn4E/edit?usp=sharing">template</a> (Google Slides link)</p>
-<p><strong>DUE TUESDAY, JULY 21 AT 11:59PM ET</strong> [HARD DEADLINE—so that we have enough time for poster printing]</p>
-<p>Your poster should be submitted as a <code>.pdf</code> file. We will then make a printed copy for the poster session on the final day. (Note: the recommended size is 48 inches wide by 36 inches tall.)</p>
-</section>
-<section id="slides" class="level3">
-<h3 class="anchored" data-anchor-id="slides">3. Slides</h3>
-<p><strong>DUE THURSDAY, JULY 23 AT 11:59PM ET</strong></p>
-<p>Each group will give a <strong>10-minute presentation on the final day (July 24)</strong>. The presentation should effectively have the same structure as your report with an introduction, data description, an overview of methods, followed by results, and discussion. Your slides may be created in any software, but we only accept submissions in the form of a <code>.pdf</code> file, a Google Slides link, or a Quarto presentation (<a href="https://quarto.org/docs/output-formats/html-publishing.html">self-contained <code>.html</code> file or hosted online</a>).</p>
-</section>
-</section>
-<section id="checkpoints" class="level2">
-<h2 class="anchored" data-anchor-id="checkpoints">Checkpoints</h2>
-<p><strong>Checkpoint 1: 5-minute presentation during lab on July 1</strong></p>
-<p><strong>Note: It is perfectly fine if you don’t have any results at this point</strong></p>
-<p><strong>No notes/scripts are allowed</strong></p>
-<p>Your first checkpoint presentation should be structured as follows.</p>
-<ul>
-<li><p>Introduction (1 slide): Describe your project topic/question(s) and why it is important</p></li>
-<li><p>Data: (1 slide) Data description and any relevant data pre-processing steps (e.g., whether you consider specific observations, create any meaningful features, etc.—but don’t mention minor steps like column type conversion, filtering out unnecessary rows)</p></li>
-<li><p>EDA (2 slides max): 1–2 EDA plots related to your question(s) of interest</p>
-<ul>
-<li>Design the slides using the <a href="https://www.cmu.edu/student-success/other-resources/handouts/comm-supp-pdfs/designing-powerpoint-slides.pdf">assertion-evidence</a> model</li>
-</ul></li>
-<li><p>Methods (1 slide): Early thoughts on methods/modeling strategy. Justify why it might be appropriate to answer your question(s) of interest</p></li>
-</ul>
-<!-- *   (Optional) Results: Preliminary results if you already have some -->
-<ul>
-<li>Plan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps. What are the next steps?</li>
-</ul>
-<p><strong>Checkpoint 2: 10-minute presentation during lab on July 20</strong></p>
-<p><strong>No notes/scripts are allowed</strong></p>
-<p>Your second checkpoint presentation should be structured as follows (<em>subject to change</em> – will be decided by July).</p>
-<ul>
-<li><p>Introduction (1 slide): Describe your project topic/question(s) and why it is important</p></li>
-<li><p>Data: (1 slide) Data description and any relevant data pre-processing steps (e.g., whether you consider specific observations, create any meaningful features, etc.—but don’t mention minor steps like column type conversion, filtering out unnecessary rows)</p></li>
-<li><p>Plan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps.</p></li>
-<li><p>Present the completed steps (5 slides max): methods, plots, findings, etc.</p>
-<ul>
-<li>Design the slides using the <a href="https://www.cmu.edu/student-success/other-resources/handouts/comm-supp-pdfs/designing-powerpoint-slides.pdf">assertion-evidence</a> model</li>
-</ul></li>
-<li><p>Plan of action (1 slide, use the same one as before): what are the steps still to be completed?</p></li>
-</ul>
-</section>
-<section id="analysis" class="level2">
-<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
-<p>Your analysis should focus on both:</p>
-<p><strong>Exploratory data analysis:</strong> Create visualizations to explore the underlying structure of the data and gain insights about distributions and relationships between variables. These should be ideally based on reasoned hypotheses.</p>
-<p><strong>Statistical modeling:</strong> Demonstrate the use of statistical and machine learning modeling techniques. This may involve justifications for your choice of model (e.g., comparison with model specifications such as using different predictors, or with other methods), and then any relevant interpretation of the model with regards to your project’s topic. Depending on your project, the model(s) you rely on may be used for either an inference (i.e., interpreting coefficients) or prediction task. The model you choose just needs to be motivated by your question of interest.</p>
+<p>Updated daily before lecture.</p>
+<section id="contents" class="level2">
+<h2 class="anchored" data-anchor-id="contents">Contents</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Date</th>
+<th>Title</th>
+<th>Materials</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lecture 0</td>
+<td>June 1</td>
+<td>Welcome to CMSACamp 2026</td>
+<td><a href="./lectures/00-welcome.html">slides</a></td>
+</tr>
+<tr class="even">
+<td>Lecture 1</td>
+<td>June 2</td>
+<td>Exploring data: into the <code>tidyverse</code></td>
+<td><a href="./lectures/01-explore.html">slides</a></td>
+</tr>
+<tr class="odd">
+<td>Lecture 2</td>
+<td>June 3</td>
+<td>Data visualization: the grammar of graphics and <code>ggplot2</code></td>
+<td><a href="./lectures/02-graphics.html">slides</a></td>
+</tr>
+<tr class="even">
+<td>Lecture 3</td>
+<td>June 4</td>
+<td>Data visualization: categorical data</td>
+<td><a href="./lectures/03-categorical.html">slides</a></td>
+</tr>
+<tr class="odd">
+<td>Lecture 4</td>
+<td>June 5</td>
+<td>Data visualization: quantitative data</td>
+<td><a href="./lectures/04-quantitative.html">slides</a></td>
+</tr>
+<tr class="even">
+<td>Lecture 5</td>
+<td>June 8</td>
+<td>Data visualization: density estimation</td>
+<td><a href="./lectures/05-density.html">slides</a></td>
+</tr>
+<tr class="odd">
+<td>Lecture 6</td>
+<td>June 9</td>
+<td>Unsupervised learning: <span class="math inline">\(k\)</span>-means clustering</td>
+<td><a href="./lectures/06-kmeans.html">slides</a></td>
+</tr>
+<tr class="even">
+<td>Lecture 7</td>
+<td>June 10</td>
+<td>Unsupervised learning: hierarchical clustering</td>
+<td><a href="./lectures/07-hierarchical.html">slides</a></td>
+</tr>
+<tr class="odd">
+<td>Lecture 8</td>
+<td>June 11</td>
+<td>Unsupervised learning: Gaussian mixture models</td>
+<td><a href="./lectures/08-mixture.html">slides</a></td>
+</tr>
+<tr class="even">
+<td>Lecture 9</td>
+<td>June 12</td>
+<td>Presentations</td>
+<td><a href="./lectures/09-presentation.html">slides</a></td>
+</tr>
+<tr class="odd">
+<td>Lecture 10</td>
+<td>June 15</td>
+<td>Supervised learning: Model assessment vs selection</td>
+<td><a href="./lectures/10-tradeoffs.html">slides</a></td>
+</tr>
+<tr class="even">
+<td>Lecture 11</td>
+<td>June 17</td>
+<td>Supervised learning: linear regression</td>
+<td><a href="./lectures/11-linear.html">slides</a></td>
+</tr>
+</tbody>
+</table>
+<!--
+| Lecture 12 | June 20 | Supervised learning: model building                       | [slides](lectures/12-building.qmd)       |
+| Lecture 13 | June 23 | Data wrangling with R's `data.table` package              | [slides](lectures/13-datatable.qmd)      |
+| Lecture 14 | June 24 | Supervised learning: regularization                       | [slides](lectures/14-regularization.qmd) |
+| Lecture 15 | June 25 | Supervised learning: logistic regression                  | [slides](lectures/15-logistic.qmd)       |
+| Lecture 16 | June 26 | Supervised learning: generalized linear models            | [slides](lectures/16-glm.qmd)            |
+| Lecture 17 | June 27 | The command line and `git`                                | [slides](lectures/17-cli-git.qmd)        |
+| Lecture 18 | June 30 | Unsupervised learning: Gaussian mixture models            | [slides](lectures/18-mixture.qmd)        |
+| Lecture 19 | July 1  | Supervised learning: nonparametric regression             | [slides](lectures/19-nonparametric.qmd)  |
+| Lecture 20 | July 7  | Supervised learning: decision trees                       | [slides](lectures/20-trees.qmd)          |
+| Lecture 21 | July 8  | Supervised learning: bagging and boosting                 | [slides](lectures/21-ensemble.qmd)       |
+| Lecture 22 | July 9  | Building a website with Quarto                            | [slides](lectures/22-website.qmd)        | -->
+<!--
+
+| Lecture 21 | XXXXXXX | Supervised learning: multinomial classification           | [slides](lectures/21-multinomial.qmd)    |
+
+-->
 
 
 </section>
