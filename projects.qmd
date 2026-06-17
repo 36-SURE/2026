@@ -5,13 +5,7 @@ title: "Projects"
 
 ## Capstone project
 
-To be released soon.
-
-<!--
-
-[Guidelines](https://36-sure.github.io/2026/project/description.html)
-
--->
+[Guidelines](project/description.qmd)
 
 ## EDA projects
 

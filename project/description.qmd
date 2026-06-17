@@ -1,0 +1,88 @@
+---
+title: "Project Guidelines"
+---
+
+## Your Task
+
+Each student has been allocated into a project group of 2--3, and each group has been assigned a specific project research topic. Your goal is to complete the required project deliverables and checkpoints, in accordance with the guidelines detailed in the remainder of this document.
+
+## Deliverables
+
+This project has the following **three** key deliverables.
+
+### 1. Report
+
+[template](project/report-template.qmd) (right click and choose "Save Link As..." to download)
+
+**DUE THURSDAY, JULY 23 AT 11:59PM ET**
+
+Your report should be written using Quarto and submitted as a rendered `.html` file. 
+We recommend using an **IDMRaD** (Introduction, Data, Methods, Results and Discussion) report format, with details provided in the report template.
+
+### 2. Poster
+
+[template](https://docs.google.com/presentation/d/1R8I-fcPI5RM2QQRwRqss9hKOsKFgWA9qOqOgCppQn4E/edit?usp=sharing) (Google Slides link)
+
+**DUE TUESDAY, JULY 21 AT 11:59PM ET** [HARD DEADLINE---so that we have enough time for poster printing]
+
+Your poster should be submitted as a `.pdf` file.
+We will then make a printed copy for the poster session on the final day.
+(Note: the recommended size is 48 inches wide by 36 inches tall.)
+
+### 3. Slides
+
+**DUE THURSDAY, JULY 23 AT 11:59PM ET**
+
+Each group will give a **10-minute presentation on the final day (July 24)**. 
+The presentation should effectively have the same structure as your report with an introduction, data description, an overview of methods, followed by results, and discussion.
+Your slides may be created in any software, but we only accept submissions in the form of a `.pdf` file, a Google Slides link, or a Quarto presentation ([self-contained `.html` file or hosted online](https://quarto.org/docs/output-formats/html-publishing.html)).
+
+## Checkpoints
+
+**Checkpoint 1: 5-minute presentation during lab on July 1**
+
+**Note: It is perfectly fine if you don't have any results at this point**
+
+**No notes/scripts are allowed**
+
+Your first checkpoint presentation should be structured as follows.
+
+*   Introduction (1 slide): Describe your project topic/question(s) and why it is important
+
+*   Data: (1 slide) Data description and any relevant data pre-processing steps (e.g., whether you consider specific observations, create any meaningful features, etc.---but don't mention minor steps like column type conversion, filtering out unnecessary rows)
+
+*   EDA (2 slides max): 1--2 EDA plots related to your question(s) of interest
+
+    *   Design the slides using the [assertion-evidence](https://www.cmu.edu/student-success/other-resources/handouts/comm-supp-pdfs/designing-powerpoint-slides.pdf) model
+
+*   Methods (1 slide): Early thoughts on methods/modeling strategy. Justify why it might be appropriate to answer your question(s) of interest
+
+<!-- *   (Optional) Results: Preliminary results if you already have some -->
+
+*   Plan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps. What are the next steps?
+
+**Checkpoint 2: 10-minute presentation during lab on July 20**
+
+**No notes/scripts are allowed**
+
+Your second checkpoint presentation should be structured as follows (*subject to change* -- will be decided by July).
+
+*   Introduction (1 slide): Describe your project topic/question(s) and why it is important
+
+*   Data: (1 slide) Data description and any relevant data pre-processing steps (e.g., whether you consider specific observations, create any meaningful features, etc.---but don't mention minor steps like column type conversion, filtering out unnecessary rows)
+
+*   Plan of action (1 slide): List all the steps needed to complete your project (be specific). Highlight the completed steps.
+
+*   Present the completed steps (5 slides max): methods, plots, findings, etc.
+
+    *   Design the slides using the [assertion-evidence](https://www.cmu.edu/student-success/other-resources/handouts/comm-supp-pdfs/designing-powerpoint-slides.pdf) model
+
+*   Plan of action (1 slide, use the same one as before): what are the steps still to be completed?
+
+## Analysis
+
+Your analysis should focus on both:
+
+**Exploratory data analysis:** Create visualizations to explore the underlying structure of the data and gain insights about distributions and relationships between variables. These should be ideally based on reasoned hypotheses.
+
+**Statistical modeling:** Demonstrate the use of statistical and machine learning modeling techniques. This may involve justifications for your choice of model (e.g., comparison with model specifications such as using different predictors, or with other methods), and then any relevant interpretation of the model with regards to your project’s topic. Depending on your project, the model(s) you rely on may be used for either an inference (i.e., interpreting coefficients) or prediction task. The model you choose just needs to be motivated by your question of interest.
