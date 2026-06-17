@@ -239,14 +239,39 @@ window.Quarto = {
 <td>Unsupervised learning: <span class="math inline">\(k\)</span>-means clustering</td>
 <td><a href="./lectures/06-kmeans.html">slides</a></td>
 </tr>
+<tr class="even">
+<td>Lecture 7</td>
+<td>June 10</td>
+<td>Unsupervised learning: hierarchical clustering</td>
+<td><a href="./lectures/07-hierarchical.html">slides</a></td>
+</tr>
+<tr class="odd">
+<td>Lecture 8</td>
+<td>June 11</td>
+<td>Unsupervised learning: Gaussian mixture models</td>
+<td><a href="./lectures/08-mixture.html">slides</a></td>
+</tr>
+<tr class="even">
+<td>Lecture 9</td>
+<td>June 12</td>
+<td>Presentations</td>
+<td><a href="./lectures/09-presentation.html">slides</a></td>
+</tr>
+<tr class="odd">
+<td>Lecture 10</td>
+<td>June 15</td>
+<td>Supervised learning: Model assessment vs selection</td>
+<td><a href="./lectures/10-tradeoffs.html">slides</a></td>
+</tr>
+<tr class="even">
+<td>Lecture 11</td>
+<td>June 17</td>
+<td>Supervised learning: linear regression</td>
+<td><a href="./lectures/11-linear.html">slides</a></td>
+</tr>
 </tbody>
 </table>
 <!--
-| Lecture 7  | June 11 | Unsupervised learning: hierarchical clustering            | [slides](lectures/07-hierarchical.qmd)   |
-| Lecture 8  | June 12 | Data visualization: density estimation                    | [slides](lectures/08-density.qmd)        |
-| Lecture 9  | June 13 | Presentations                                             | [slides](lectures/09-presentation.qmd)   |
-| Lecture 10 | June 16 | Simulation                                                | [slides](lectures/10-simulation.qmd)     |
-| Lecture 11 | June 17 | Supervised learning: linear regression                    | [slides](lectures/11-linear.qmd)         |
 | Lecture 12 | June 20 | Supervised learning: model building                       | [slides](lectures/12-building.qmd)       |
 | Lecture 13 | June 23 | Data wrangling with R's `data.table` package              | [slides](lectures/13-datatable.qmd)      |
 | Lecture 14 | June 24 | Supervised learning: regularization                       | [slides](lectures/14-regularization.qmd) |
@@ -341,7 +366,7 @@ window.Quarto = {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/36-SURE\.github\.io\/2026\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

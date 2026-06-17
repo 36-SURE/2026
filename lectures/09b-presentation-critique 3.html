@@ -229,31 +229,6 @@ Erin Franke and Sara Colando
 
   <p class="date">June 12, 2026</p>
 </section>
-<section class="slide level2">
-
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.1          ✔ readr     2.2.0     
-✔ forcats   1.0.1          ✔ stringr   1.6.0     
-✔ ggplot2   4.0.3.9000     ✔ tibble    3.3.1     
-✔ lubridate 1.9.5          ✔ tidyr     1.3.2     
-✔ purrr     1.2.2          
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
-Rows: 2530 Columns: 10
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (7): company_manufacturer, company_location, country_of_bean_origin, spe...
-dbl (3): ref, review_date, rating
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-</div>
-</section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
@@ -287,9 +262,9 @@ dbl (3): ref, review_date, rating
 <h2>Getting into the data</h2>
 <p>2530 rows, 10 variables (relevant ones shown below)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a>chocolate <span class="sc">|&gt;</span> </span>
-<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ref, country_of_bean_origin, cocoa_percent, most_memorable_characteristics, rating)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>chocolate <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ref, country_of_bean_origin, cocoa_percent, most_memorable_characteristics, rating)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
     ref country_of_bean_origin cocoa_percent most_memorable_characteris…¹ rating
@@ -308,23 +283,23 @@ dbl (3): ref, review_date, rating
 <h2>Data: Expert chocolate reviews from 2006-2021</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ngoyqexhho" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ngoyqexhho table {
+<div id="yeelrsnojd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yeelrsnojd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ngoyqexhho thead, #ngoyqexhho tbody, #ngoyqexhho tfoot, #ngoyqexhho tr, #ngoyqexhho td, #ngoyqexhho th {
+#yeelrsnojd thead, #yeelrsnojd tbody, #yeelrsnojd tfoot, #yeelrsnojd tr, #yeelrsnojd td, #yeelrsnojd th {
   border-style: none;
 }
 
-#ngoyqexhho p {
+#yeelrsnojd p {
   margin: 0;
   padding: 0;
 }
 
-#ngoyqexhho .gt_table {
+#yeelrsnojd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -350,12 +325,12 @@ dbl (3): ref, review_date, rating
   border-left-color: #D3D3D3;
 }
 
-#ngoyqexhho .gt_caption {
+#yeelrsnojd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ngoyqexhho .gt_title {
+#yeelrsnojd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -367,7 +342,7 @@ dbl (3): ref, review_date, rating
   border-bottom-width: 0;
 }
 
-#ngoyqexhho .gt_subtitle {
+#yeelrsnojd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -379,7 +354,7 @@ dbl (3): ref, review_date, rating
   border-top-width: 0;
 }
 
-#ngoyqexhho .gt_heading {
+#yeelrsnojd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -391,13 +366,13 @@ dbl (3): ref, review_date, rating
   border-right-color: #D3D3D3;
 }
 
-#ngoyqexhho .gt_bottom_border {
+#yeelrsnojd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ngoyqexhho .gt_col_headings {
+#yeelrsnojd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -412,7 +387,7 @@ dbl (3): ref, review_date, rating
   border-right-color: #D3D3D3;
 }
 
-#ngoyqexhho .gt_col_heading {
+#yeelrsnojd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -432,7 +407,7 @@ dbl (3): ref, review_date, rating
   overflow-x: hidden;
 }
 
-#ngoyqexhho .gt_column_spanner_outer {
+#yeelrsnojd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -444,15 +419,15 @@ dbl (3): ref, review_date, rating
   padding-right: 4px;
 }
 
-#ngoyqexhho .gt_column_spanner_outer:first-child {
+#yeelrsnojd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ngoyqexhho .gt_column_spanner_outer:last-child {
+#yeelrsnojd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ngoyqexhho .gt_column_spanner {
+#yeelrsnojd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -464,11 +439,11 @@ dbl (3): ref, review_date, rating
   width: 100%;
 }
 
-#ngoyqexhho .gt_spanner_row {
+#yeelrsnojd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ngoyqexhho .gt_group_heading {
+#yeelrsnojd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -494,7 +469,7 @@ dbl (3): ref, review_date, rating
   text-align: left;
 }
 
-#ngoyqexhho .gt_empty_group_heading {
+#yeelrsnojd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -509,15 +484,15 @@ dbl (3): ref, review_date, rating
   vertical-align: middle;
 }
 
-#ngoyqexhho .gt_from_md > :first-child {
+#yeelrsnojd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ngoyqexhho .gt_from_md > :last-child {
+#yeelrsnojd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ngoyqexhho .gt_row {
+#yeelrsnojd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -536,7 +511,7 @@ dbl (3): ref, review_date, rating
   overflow-x: hidden;
 }
 
-#ngoyqexhho .gt_stub {
+#yeelrsnojd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -549,7 +524,7 @@ dbl (3): ref, review_date, rating
   padding-right: 5px;
 }
 
-#ngoyqexhho .gt_stub_row_group {
+#yeelrsnojd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -563,15 +538,15 @@ dbl (3): ref, review_date, rating
   vertical-align: top;
 }
 
-#ngoyqexhho .gt_row_group_first td {
+#yeelrsnojd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ngoyqexhho .gt_row_group_first th {
+#yeelrsnojd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ngoyqexhho .gt_summary_row {
+#yeelrsnojd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -581,16 +556,16 @@ dbl (3): ref, review_date, rating
   padding-right: 5px;
 }
 
-#ngoyqexhho .gt_first_summary_row {
+#yeelrsnojd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ngoyqexhho .gt_first_summary_row.thick {
+#yeelrsnojd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ngoyqexhho .gt_last_summary_row {
+#yeelrsnojd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -600,7 +575,7 @@ dbl (3): ref, review_date, rating
   border-bottom-color: #D3D3D3;
 }
 
-#ngoyqexhho .gt_grand_summary_row {
+#yeelrsnojd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -610,7 +585,7 @@ dbl (3): ref, review_date, rating
   padding-right: 5px;
 }
 
-#ngoyqexhho .gt_first_grand_summary_row {
+#yeelrsnojd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -620,7 +595,7 @@ dbl (3): ref, review_date, rating
   border-top-color: #D3D3D3;
 }
 
-#ngoyqexhho .gt_last_grand_summary_row_top {
+#yeelrsnojd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -630,11 +605,11 @@ dbl (3): ref, review_date, rating
   border-bottom-color: #D3D3D3;
 }
 
-#ngoyqexhho .gt_striped {
+#yeelrsnojd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ngoyqexhho .gt_table_body {
+#yeelrsnojd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -643,7 +618,7 @@ dbl (3): ref, review_date, rating
   border-bottom-color: #D3D3D3;
 }
 
-#ngoyqexhho .gt_footnotes {
+#yeelrsnojd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -657,7 +632,7 @@ dbl (3): ref, review_date, rating
   border-right-color: #D3D3D3;
 }
 
-#ngoyqexhho .gt_footnote {
+#yeelrsnojd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -666,7 +641,7 @@ dbl (3): ref, review_date, rating
   padding-right: 5px;
 }
 
-#ngoyqexhho .gt_sourcenotes {
+#yeelrsnojd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -680,7 +655,7 @@ dbl (3): ref, review_date, rating
   border-right-color: #D3D3D3;
 }
 
-#ngoyqexhho .gt_sourcenote {
+#yeelrsnojd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -688,72 +663,72 @@ dbl (3): ref, review_date, rating
   padding-right: 5px;
 }
 
-#ngoyqexhho .gt_left {
+#yeelrsnojd .gt_left {
   text-align: left;
 }
 
-#ngoyqexhho .gt_center {
+#yeelrsnojd .gt_center {
   text-align: center;
 }
 
-#ngoyqexhho .gt_right {
+#yeelrsnojd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ngoyqexhho .gt_font_normal {
+#yeelrsnojd .gt_font_normal {
   font-weight: normal;
 }
 
-#ngoyqexhho .gt_font_bold {
+#yeelrsnojd .gt_font_bold {
   font-weight: bold;
 }
 
-#ngoyqexhho .gt_font_italic {
+#yeelrsnojd .gt_font_italic {
   font-style: italic;
 }
 
-#ngoyqexhho .gt_super {
+#yeelrsnojd .gt_super {
   font-size: 65%;
 }
 
-#ngoyqexhho .gt_footnote_marks {
+#yeelrsnojd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ngoyqexhho .gt_asterisk {
+#yeelrsnojd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ngoyqexhho .gt_indent_1 {
+#yeelrsnojd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ngoyqexhho .gt_indent_2 {
+#yeelrsnojd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ngoyqexhho .gt_indent_3 {
+#yeelrsnojd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ngoyqexhho .gt_indent_4 {
+#yeelrsnojd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ngoyqexhho .gt_indent_5 {
+#yeelrsnojd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ngoyqexhho .katex-display {
+#yeelrsnojd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ngoyqexhho div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yeelrsnojd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -773,63 +748,63 @@ dbl (3): ref, review_date, rating
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_right" headers="ref">833</td>
+<td class="gt_row gt_right" headers="ref">841</td>
 <td class="gt_row gt_right" headers="review_date">2012</td>
-<td class="gt_row gt_left" headers="company_manufacturer">Tejas</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Mexico</td>
-<td class="gt_row gt_right" headers="cocoa_percent">70</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">molasses, caramel</td>
+<td class="gt_row gt_left" headers="company_manufacturer">Menakao (aka Cinagra)</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Madagascar</td>
+<td class="gt_row gt_right" headers="cocoa_percent">72</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">uneven, smokey, hammy</td>
+<td class="gt_row gt_right" headers="rating">2.50</td>
+<td class="gt_row gt_right" headers="n_ingredients">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="ref">2708</td>
+<td class="gt_row gt_right" headers="review_date">2021</td>
+<td class="gt_row gt_left" headers="company_manufacturer">Fresco</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Peru</td>
+<td class="gt_row gt_right" headers="cocoa_percent">74</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">spicey, herbal, ripe, sl. burnt</td>
 <td class="gt_row gt_right" headers="rating">3.25</td>
 <td class="gt_row gt_right" headers="n_ingredients">3</td>
 </tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="ref">2130</td>
+<td class="gt_row gt_right" headers="review_date">2018</td>
+<td class="gt_row gt_left" headers="company_manufacturer">Friis Holm</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Nicaragua</td>
+<td class="gt_row gt_right" headers="cocoa_percent">70</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">banana,dairy, cocoa</td>
+<td class="gt_row gt_right" headers="rating">4.00</td>
+<td class="gt_row gt_right" headers="n_ingredients">3</td>
+</tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="ref">2302</td>
-<td class="gt_row gt_right" headers="review_date">2019</td>
-<td class="gt_row gt_left" headers="company_manufacturer">Pangea</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Dominican Republic</td>
-<td class="gt_row gt_right" headers="cocoa_percent">76</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">cocoa, earthy, roasty</td>
-<td class="gt_row gt_right" headers="rating">3.25</td>
-<td class="gt_row gt_right" headers="n_ingredients">2</td>
+<td class="gt_row gt_right" headers="ref">1125</td>
+<td class="gt_row gt_right" headers="review_date">2013</td>
+<td class="gt_row gt_left" headers="company_manufacturer">Altus aka Cao Artisan</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Venezuela</td>
+<td class="gt_row gt_right" headers="cocoa_percent">60</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">sweet, moldy, off</td>
+<td class="gt_row gt_right" headers="rating">2.50</td>
+<td class="gt_row gt_right" headers="n_ingredients">4</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="ref">2350</td>
-<td class="gt_row gt_right" headers="review_date">2019</td>
-<td class="gt_row gt_left" headers="company_manufacturer">ENNA</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Tanzania</td>
-<td class="gt_row gt_right" headers="cocoa_percent">80</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">fruit, dirty</td>
+<td class="gt_row gt_right" headers="ref">2486</td>
+<td class="gt_row gt_right" headers="review_date">2020</td>
+<td class="gt_row gt_left" headers="company_manufacturer">Nuance</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Nigeria</td>
+<td class="gt_row gt_right" headers="cocoa_percent">70</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">cocoa, nut, dried fruit, rubbery</td>
 <td class="gt_row gt_right" headers="rating">3.00</td>
 <td class="gt_row gt_right" headers="n_ingredients">3</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="ref">1097</td>
-<td class="gt_row gt_right" headers="review_date">2013</td>
-<td class="gt_row gt_left" headers="company_manufacturer">Hummingbird</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Venezuela</td>
-<td class="gt_row gt_right" headers="cocoa_percent">70</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">fatty, gritty, roasty</td>
-<td class="gt_row gt_right" headers="rating">3.25</td>
-<td class="gt_row gt_right" headers="n_ingredients">3</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="ref">2688</td>
-<td class="gt_row gt_right" headers="review_date">2021</td>
-<td class="gt_row gt_left" headers="company_manufacturer">Conjure</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Tanzania</td>
-<td class="gt_row gt_right" headers="cocoa_percent">75</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">cocoa, mild fruit</td>
-<td class="gt_row gt_right" headers="rating">3.50</td>
-<td class="gt_row gt_right" headers="n_ingredients">3</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="ref">2064</td>
-<td class="gt_row gt_right" headers="review_date">2018</td>
-<td class="gt_row gt_left" headers="company_manufacturer">Damson</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Blend</td>
+<td class="gt_row gt_right" headers="ref">1642</td>
+<td class="gt_row gt_right" headers="review_date">2015</td>
+<td class="gt_row gt_left" headers="company_manufacturer">Georgia Ramon</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Madagascar</td>
 <td class="gt_row gt_right" headers="cocoa_percent">65</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">sweet, vinegar</td>
-<td class="gt_row gt_right" headers="rating">2.50</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">sandy, sweet, candy tart</td>
+<td class="gt_row gt_right" headers="rating">3.25</td>
 <td class="gt_row gt_right" headers="n_ingredients">4</td>
 </tr>
 </tbody>
@@ -843,53 +818,19 @@ dbl (3): ref, review_date, rating
 <h2>Scatterplot</h2>
 <p>No relationship between cocoa percentage and rating.</p>
 
-<img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-4-1.png" width="672" class="r-stretch"></section>
+<img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="cocoa-percentage-is-not-indicative-of-rating" class="slide level2">
 <h2>Cocoa percentage is not indicative of rating</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</code></pre>
-</div>
 
-</div>
-<img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
+<img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="adjectives-describing-chocolate-versus-deviation-from-the-mean-rating" class="slide level2" data-hide-slide-number="true">
 <h2>Adjectives describing chocolate versus deviation from the mean rating</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>word_ratings <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n<span class="sc">&gt;=</span><span class="dv">50</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">overall_avg_rating =</span> <span class="fu">mean</span>(chocolate<span class="sc">$</span>rating),</span>
-<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">rating_diff =</span> avg_rating <span class="sc">-</span> overall_avg_rating) <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>rating_diff,<span class="at">y =</span> most_memorable_characteristics))<span class="sc">+</span></span>
-<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
-</div>
-<img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-6-1.png" width="672" class="r-stretch"></section>
+<img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="chocolates-described-as-creamy-and-rich-receives-the-highest-ratings-on-average" class="slide level2">
 <h2>Chocolates described as creamy and rich receives the highest ratings, on average</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>overall_avg_rating <span class="ot">&lt;-</span> <span class="fu">mean</span>(chocolate<span class="sc">$</span>rating)</span>
-<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a>word_ratings <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n<span class="sc">&gt;=</span><span class="dv">50</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">overall_avg_rating =</span> <span class="fu">mean</span>(chocolate<span class="sc">$</span>rating),</span>
-<span id="cb6-6"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">rating_diff =</span> avg_rating <span class="sc">-</span> overall_avg_rating) <span class="sc">|&gt;</span></span>
-<span id="cb6-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(rating_diff)) <span class="sc">|&gt;</span></span>
-<span id="cb6-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, (<span class="fu">n</span>()<span class="sc">-</span><span class="dv">4</span>)<span class="sc">:</span><span class="fu">n</span>())) <span class="sc">|&gt;</span></span>
-<span id="cb6-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">most_memorable_characteristics =</span> <span class="fu">fct_reorder</span>(most_memorable_characteristics, rating_diff),</span>
-<span id="cb6-10"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">diff_pos =</span> <span class="fu">if_else</span>(rating_diff <span class="sc">&gt;=</span> <span class="dv">0</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb6-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>rating_diff,<span class="at">y =</span> most_memorable_characteristics))<span class="sc">+</span></span>
-<span id="cb6-12"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> diff_pos)) <span class="sc">+</span></span>
-<span id="cb6-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb6-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span>NatParksPalettes<span class="sc">::</span><span class="fu">natparks.pals</span>(<span class="st">"DeathValley"</span>)) <span class="sc">+</span></span>
-<span id="cb6-15"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb6-16"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Deviation from mean chocolate rating"</span>,  <span class="at">y=</span> <span class="st">"Most memorable characteristics"</span>)<span class="sc">+</span></span>
-<span id="cb6-17"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
-<span id="cb6-18"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">18</span>), </span>
-<span id="cb6-19"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">16</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
-</div>
-<img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-7-1.png" width="672" class="r-stretch"></section>
+<img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="clustering-chocolate" class="slide level2" data-hide-slide-number="true">
 <h2>Clustering chocolate</h2>
 <ul>
@@ -901,27 +842,17 @@ dbl (3): ref, review_date, rating
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
+<p><img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(<span class="st">"ggdendro"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: ggdendro</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggdendrogram</span>(</span>
-<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>  choc_clusters,</span>
-<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">theme_dendro =</span> <span class="cn">TRUE</span></span>
-<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Chocolate Dendrogram"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
+<p><img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -939,23 +870,23 @@ dbl (3): ref, review_date, rating
 <p>Among the <strong>three</strong> clusters, chocolate in <em>Cluster 1 has the highest average rating</em></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="pqyyayxbne" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pqyyayxbne table {
+<div id="dfbcsuxkyp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dfbcsuxkyp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pqyyayxbne thead, #pqyyayxbne tbody, #pqyyayxbne tfoot, #pqyyayxbne tr, #pqyyayxbne td, #pqyyayxbne th {
+#dfbcsuxkyp thead, #dfbcsuxkyp tbody, #dfbcsuxkyp tfoot, #dfbcsuxkyp tr, #dfbcsuxkyp td, #dfbcsuxkyp th {
   border-style: none;
 }
 
-#pqyyayxbne p {
+#dfbcsuxkyp p {
   margin: 0;
   padding: 0;
 }
 
-#pqyyayxbne .gt_table {
+#dfbcsuxkyp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -981,12 +912,12 @@ dbl (3): ref, review_date, rating
   border-left-color: #D3D3D3;
 }
 
-#pqyyayxbne .gt_caption {
+#dfbcsuxkyp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pqyyayxbne .gt_title {
+#dfbcsuxkyp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -998,7 +929,7 @@ dbl (3): ref, review_date, rating
   border-bottom-width: 0;
 }
 
-#pqyyayxbne .gt_subtitle {
+#dfbcsuxkyp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1010,7 +941,7 @@ dbl (3): ref, review_date, rating
   border-top-width: 0;
 }
 
-#pqyyayxbne .gt_heading {
+#dfbcsuxkyp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1022,13 +953,13 @@ dbl (3): ref, review_date, rating
   border-right-color: #D3D3D3;
 }
 
-#pqyyayxbne .gt_bottom_border {
+#dfbcsuxkyp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pqyyayxbne .gt_col_headings {
+#dfbcsuxkyp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1043,7 +974,7 @@ dbl (3): ref, review_date, rating
   border-right-color: #D3D3D3;
 }
 
-#pqyyayxbne .gt_col_heading {
+#dfbcsuxkyp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1063,7 +994,7 @@ dbl (3): ref, review_date, rating
   overflow-x: hidden;
 }
 
-#pqyyayxbne .gt_column_spanner_outer {
+#dfbcsuxkyp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1075,15 +1006,15 @@ dbl (3): ref, review_date, rating
   padding-right: 4px;
 }
 
-#pqyyayxbne .gt_column_spanner_outer:first-child {
+#dfbcsuxkyp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pqyyayxbne .gt_column_spanner_outer:last-child {
+#dfbcsuxkyp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pqyyayxbne .gt_column_spanner {
+#dfbcsuxkyp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1095,11 +1026,11 @@ dbl (3): ref, review_date, rating
   width: 100%;
 }
 
-#pqyyayxbne .gt_spanner_row {
+#dfbcsuxkyp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pqyyayxbne .gt_group_heading {
+#dfbcsuxkyp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1125,7 +1056,7 @@ dbl (3): ref, review_date, rating
   text-align: left;
 }
 
-#pqyyayxbne .gt_empty_group_heading {
+#dfbcsuxkyp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1140,15 +1071,15 @@ dbl (3): ref, review_date, rating
   vertical-align: middle;
 }
 
-#pqyyayxbne .gt_from_md > :first-child {
+#dfbcsuxkyp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pqyyayxbne .gt_from_md > :last-child {
+#dfbcsuxkyp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pqyyayxbne .gt_row {
+#dfbcsuxkyp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1167,7 +1098,7 @@ dbl (3): ref, review_date, rating
   overflow-x: hidden;
 }
 
-#pqyyayxbne .gt_stub {
+#dfbcsuxkyp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1180,7 +1111,7 @@ dbl (3): ref, review_date, rating
   padding-right: 5px;
 }
 
-#pqyyayxbne .gt_stub_row_group {
+#dfbcsuxkyp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1194,15 +1125,15 @@ dbl (3): ref, review_date, rating
   vertical-align: top;
 }
 
-#pqyyayxbne .gt_row_group_first td {
+#dfbcsuxkyp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pqyyayxbne .gt_row_group_first th {
+#dfbcsuxkyp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pqyyayxbne .gt_summary_row {
+#dfbcsuxkyp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1212,16 +1143,16 @@ dbl (3): ref, review_date, rating
   padding-right: 5px;
 }
 
-#pqyyayxbne .gt_first_summary_row {
+#dfbcsuxkyp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pqyyayxbne .gt_first_summary_row.thick {
+#dfbcsuxkyp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pqyyayxbne .gt_last_summary_row {
+#dfbcsuxkyp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1231,7 +1162,7 @@ dbl (3): ref, review_date, rating
   border-bottom-color: #D3D3D3;
 }
 
-#pqyyayxbne .gt_grand_summary_row {
+#dfbcsuxkyp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1241,7 +1172,7 @@ dbl (3): ref, review_date, rating
   padding-right: 5px;
 }
 
-#pqyyayxbne .gt_first_grand_summary_row {
+#dfbcsuxkyp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1251,7 +1182,7 @@ dbl (3): ref, review_date, rating
   border-top-color: #D3D3D3;
 }
 
-#pqyyayxbne .gt_last_grand_summary_row_top {
+#dfbcsuxkyp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1261,11 +1192,11 @@ dbl (3): ref, review_date, rating
   border-bottom-color: #D3D3D3;
 }
 
-#pqyyayxbne .gt_striped {
+#dfbcsuxkyp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pqyyayxbne .gt_table_body {
+#dfbcsuxkyp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1274,7 +1205,7 @@ dbl (3): ref, review_date, rating
   border-bottom-color: #D3D3D3;
 }
 
-#pqyyayxbne .gt_footnotes {
+#dfbcsuxkyp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1288,7 +1219,7 @@ dbl (3): ref, review_date, rating
   border-right-color: #D3D3D3;
 }
 
-#pqyyayxbne .gt_footnote {
+#dfbcsuxkyp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1297,7 +1228,7 @@ dbl (3): ref, review_date, rating
   padding-right: 5px;
 }
 
-#pqyyayxbne .gt_sourcenotes {
+#dfbcsuxkyp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1311,7 +1242,7 @@ dbl (3): ref, review_date, rating
   border-right-color: #D3D3D3;
 }
 
-#pqyyayxbne .gt_sourcenote {
+#dfbcsuxkyp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1319,72 +1250,72 @@ dbl (3): ref, review_date, rating
   padding-right: 5px;
 }
 
-#pqyyayxbne .gt_left {
+#dfbcsuxkyp .gt_left {
   text-align: left;
 }
 
-#pqyyayxbne .gt_center {
+#dfbcsuxkyp .gt_center {
   text-align: center;
 }
 
-#pqyyayxbne .gt_right {
+#dfbcsuxkyp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pqyyayxbne .gt_font_normal {
+#dfbcsuxkyp .gt_font_normal {
   font-weight: normal;
 }
 
-#pqyyayxbne .gt_font_bold {
+#dfbcsuxkyp .gt_font_bold {
   font-weight: bold;
 }
 
-#pqyyayxbne .gt_font_italic {
+#dfbcsuxkyp .gt_font_italic {
   font-style: italic;
 }
 
-#pqyyayxbne .gt_super {
+#dfbcsuxkyp .gt_super {
   font-size: 65%;
 }
 
-#pqyyayxbne .gt_footnote_marks {
+#dfbcsuxkyp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pqyyayxbne .gt_asterisk {
+#dfbcsuxkyp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pqyyayxbne .gt_indent_1 {
+#dfbcsuxkyp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pqyyayxbne .gt_indent_2 {
+#dfbcsuxkyp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pqyyayxbne .gt_indent_3 {
+#dfbcsuxkyp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pqyyayxbne .gt_indent_4 {
+#dfbcsuxkyp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pqyyayxbne .gt_indent_5 {
+#dfbcsuxkyp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pqyyayxbne .katex-display {
+#dfbcsuxkyp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pqyyayxbne div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dfbcsuxkyp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1668,6 +1599,44 @@ Verna, Richard. 2013. <span>“<a href="https://www.ncbi.nlm.nih.gov/pubmed/2436
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
