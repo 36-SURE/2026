@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content="Erin Franke and Sara Colando">
   <meta name="dcterms.date" content="2026-06-12">
@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -100,7 +103,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -117,7 +119,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ec9165fd6a3bdb19c5c23b4bb2299f35.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4290b315e94676cf1dd7d5ac6c8d2ef2.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -229,6 +231,31 @@ Erin Franke and Sara Colando
 
   <p class="date">June 12, 2026</p>
 </section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1          ✔ readr     2.2.0     
+✔ forcats   1.0.1          ✔ stringr   1.6.0     
+✔ ggplot2   4.0.3.9000     ✔ tibble    3.3.1     
+✔ lubridate 1.9.5          ✔ tidyr     1.3.2     
+✔ purrr     1.2.2          
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
+Rows: 2530 Columns: 10
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (7): company_manufacturer, company_location, country_of_bean_origin, spe...
+dbl (3): ref, review_date, rating
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+</section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
 <ul>
@@ -262,9 +289,9 @@ Erin Franke and Sara Colando
 <h2>Getting into the data</h2>
 <p>2530 rows, 10 variables (relevant ones shown below)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>chocolate <span class="sc">|&gt;</span> </span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ref, country_of_bean_origin, cocoa_percent, most_memorable_characteristics, rating)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a>chocolate <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ref, country_of_bean_origin, cocoa_percent, most_memorable_characteristics, rating)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
     ref country_of_bean_origin cocoa_percent most_memorable_characteris…¹ rating
@@ -283,23 +310,23 @@ Erin Franke and Sara Colando
 <h2>Data: Expert chocolate reviews from 2006-2021</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="yeelrsnojd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yeelrsnojd table {
+<div id="ngoyqexhho" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ngoyqexhho table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yeelrsnojd thead, #yeelrsnojd tbody, #yeelrsnojd tfoot, #yeelrsnojd tr, #yeelrsnojd td, #yeelrsnojd th {
+#ngoyqexhho thead, #ngoyqexhho tbody, #ngoyqexhho tfoot, #ngoyqexhho tr, #ngoyqexhho td, #ngoyqexhho th {
   border-style: none;
 }
 
-#yeelrsnojd p {
+#ngoyqexhho p {
   margin: 0;
   padding: 0;
 }
 
-#yeelrsnojd .gt_table {
+#ngoyqexhho .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -325,12 +352,12 @@ Erin Franke and Sara Colando
   border-left-color: #D3D3D3;
 }
 
-#yeelrsnojd .gt_caption {
+#ngoyqexhho .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yeelrsnojd .gt_title {
+#ngoyqexhho .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -342,7 +369,7 @@ Erin Franke and Sara Colando
   border-bottom-width: 0;
 }
 
-#yeelrsnojd .gt_subtitle {
+#ngoyqexhho .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -354,7 +381,7 @@ Erin Franke and Sara Colando
   border-top-width: 0;
 }
 
-#yeelrsnojd .gt_heading {
+#ngoyqexhho .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -366,13 +393,13 @@ Erin Franke and Sara Colando
   border-right-color: #D3D3D3;
 }
 
-#yeelrsnojd .gt_bottom_border {
+#ngoyqexhho .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yeelrsnojd .gt_col_headings {
+#ngoyqexhho .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -387,7 +414,7 @@ Erin Franke and Sara Colando
   border-right-color: #D3D3D3;
 }
 
-#yeelrsnojd .gt_col_heading {
+#ngoyqexhho .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -407,7 +434,7 @@ Erin Franke and Sara Colando
   overflow-x: hidden;
 }
 
-#yeelrsnojd .gt_column_spanner_outer {
+#ngoyqexhho .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -419,15 +446,15 @@ Erin Franke and Sara Colando
   padding-right: 4px;
 }
 
-#yeelrsnojd .gt_column_spanner_outer:first-child {
+#ngoyqexhho .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yeelrsnojd .gt_column_spanner_outer:last-child {
+#ngoyqexhho .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yeelrsnojd .gt_column_spanner {
+#ngoyqexhho .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -439,11 +466,11 @@ Erin Franke and Sara Colando
   width: 100%;
 }
 
-#yeelrsnojd .gt_spanner_row {
+#ngoyqexhho .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yeelrsnojd .gt_group_heading {
+#ngoyqexhho .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -469,7 +496,7 @@ Erin Franke and Sara Colando
   text-align: left;
 }
 
-#yeelrsnojd .gt_empty_group_heading {
+#ngoyqexhho .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -484,15 +511,15 @@ Erin Franke and Sara Colando
   vertical-align: middle;
 }
 
-#yeelrsnojd .gt_from_md > :first-child {
+#ngoyqexhho .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yeelrsnojd .gt_from_md > :last-child {
+#ngoyqexhho .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yeelrsnojd .gt_row {
+#ngoyqexhho .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -511,7 +538,7 @@ Erin Franke and Sara Colando
   overflow-x: hidden;
 }
 
-#yeelrsnojd .gt_stub {
+#ngoyqexhho .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -524,7 +551,7 @@ Erin Franke and Sara Colando
   padding-right: 5px;
 }
 
-#yeelrsnojd .gt_stub_row_group {
+#ngoyqexhho .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -538,15 +565,15 @@ Erin Franke and Sara Colando
   vertical-align: top;
 }
 
-#yeelrsnojd .gt_row_group_first td {
+#ngoyqexhho .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yeelrsnojd .gt_row_group_first th {
+#ngoyqexhho .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yeelrsnojd .gt_summary_row {
+#ngoyqexhho .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -556,16 +583,16 @@ Erin Franke and Sara Colando
   padding-right: 5px;
 }
 
-#yeelrsnojd .gt_first_summary_row {
+#ngoyqexhho .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yeelrsnojd .gt_first_summary_row.thick {
+#ngoyqexhho .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yeelrsnojd .gt_last_summary_row {
+#ngoyqexhho .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -575,7 +602,7 @@ Erin Franke and Sara Colando
   border-bottom-color: #D3D3D3;
 }
 
-#yeelrsnojd .gt_grand_summary_row {
+#ngoyqexhho .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -585,7 +612,7 @@ Erin Franke and Sara Colando
   padding-right: 5px;
 }
 
-#yeelrsnojd .gt_first_grand_summary_row {
+#ngoyqexhho .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -595,7 +622,7 @@ Erin Franke and Sara Colando
   border-top-color: #D3D3D3;
 }
 
-#yeelrsnojd .gt_last_grand_summary_row_top {
+#ngoyqexhho .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -605,11 +632,11 @@ Erin Franke and Sara Colando
   border-bottom-color: #D3D3D3;
 }
 
-#yeelrsnojd .gt_striped {
+#ngoyqexhho .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yeelrsnojd .gt_table_body {
+#ngoyqexhho .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -618,7 +645,7 @@ Erin Franke and Sara Colando
   border-bottom-color: #D3D3D3;
 }
 
-#yeelrsnojd .gt_footnotes {
+#ngoyqexhho .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -632,7 +659,7 @@ Erin Franke and Sara Colando
   border-right-color: #D3D3D3;
 }
 
-#yeelrsnojd .gt_footnote {
+#ngoyqexhho .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -641,7 +668,7 @@ Erin Franke and Sara Colando
   padding-right: 5px;
 }
 
-#yeelrsnojd .gt_sourcenotes {
+#ngoyqexhho .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -655,7 +682,7 @@ Erin Franke and Sara Colando
   border-right-color: #D3D3D3;
 }
 
-#yeelrsnojd .gt_sourcenote {
+#ngoyqexhho .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -663,72 +690,72 @@ Erin Franke and Sara Colando
   padding-right: 5px;
 }
 
-#yeelrsnojd .gt_left {
+#ngoyqexhho .gt_left {
   text-align: left;
 }
 
-#yeelrsnojd .gt_center {
+#ngoyqexhho .gt_center {
   text-align: center;
 }
 
-#yeelrsnojd .gt_right {
+#ngoyqexhho .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yeelrsnojd .gt_font_normal {
+#ngoyqexhho .gt_font_normal {
   font-weight: normal;
 }
 
-#yeelrsnojd .gt_font_bold {
+#ngoyqexhho .gt_font_bold {
   font-weight: bold;
 }
 
-#yeelrsnojd .gt_font_italic {
+#ngoyqexhho .gt_font_italic {
   font-style: italic;
 }
 
-#yeelrsnojd .gt_super {
+#ngoyqexhho .gt_super {
   font-size: 65%;
 }
 
-#yeelrsnojd .gt_footnote_marks {
+#ngoyqexhho .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yeelrsnojd .gt_asterisk {
+#ngoyqexhho .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yeelrsnojd .gt_indent_1 {
+#ngoyqexhho .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yeelrsnojd .gt_indent_2 {
+#ngoyqexhho .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yeelrsnojd .gt_indent_3 {
+#ngoyqexhho .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yeelrsnojd .gt_indent_4 {
+#ngoyqexhho .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yeelrsnojd .gt_indent_5 {
+#ngoyqexhho .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yeelrsnojd .katex-display {
+#ngoyqexhho .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yeelrsnojd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ngoyqexhho div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -748,63 +775,63 @@ Erin Franke and Sara Colando
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_right" headers="ref">841</td>
+<td class="gt_row gt_right" headers="ref">833</td>
 <td class="gt_row gt_right" headers="review_date">2012</td>
-<td class="gt_row gt_left" headers="company_manufacturer">Menakao (aka Cinagra)</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Madagascar</td>
-<td class="gt_row gt_right" headers="cocoa_percent">72</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">uneven, smokey, hammy</td>
-<td class="gt_row gt_right" headers="rating">2.50</td>
-<td class="gt_row gt_right" headers="n_ingredients">4</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="ref">2708</td>
-<td class="gt_row gt_right" headers="review_date">2021</td>
-<td class="gt_row gt_left" headers="company_manufacturer">Fresco</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Peru</td>
-<td class="gt_row gt_right" headers="cocoa_percent">74</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">spicey, herbal, ripe, sl. burnt</td>
+<td class="gt_row gt_left" headers="company_manufacturer">Tejas</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Mexico</td>
+<td class="gt_row gt_right" headers="cocoa_percent">70</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">molasses, caramel</td>
 <td class="gt_row gt_right" headers="rating">3.25</td>
 <td class="gt_row gt_right" headers="n_ingredients">3</td>
 </tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="ref">2130</td>
-<td class="gt_row gt_right" headers="review_date">2018</td>
-<td class="gt_row gt_left" headers="company_manufacturer">Friis Holm</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Nicaragua</td>
-<td class="gt_row gt_right" headers="cocoa_percent">70</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">banana,dairy, cocoa</td>
-<td class="gt_row gt_right" headers="rating">4.00</td>
-<td class="gt_row gt_right" headers="n_ingredients">3</td>
-</tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="ref">1125</td>
-<td class="gt_row gt_right" headers="review_date">2013</td>
-<td class="gt_row gt_left" headers="company_manufacturer">Altus aka Cao Artisan</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Venezuela</td>
-<td class="gt_row gt_right" headers="cocoa_percent">60</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">sweet, moldy, off</td>
-<td class="gt_row gt_right" headers="rating">2.50</td>
-<td class="gt_row gt_right" headers="n_ingredients">4</td>
+<td class="gt_row gt_right" headers="ref">2302</td>
+<td class="gt_row gt_right" headers="review_date">2019</td>
+<td class="gt_row gt_left" headers="company_manufacturer">Pangea</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Dominican Republic</td>
+<td class="gt_row gt_right" headers="cocoa_percent">76</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">cocoa, earthy, roasty</td>
+<td class="gt_row gt_right" headers="rating">3.25</td>
+<td class="gt_row gt_right" headers="n_ingredients">2</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_right" headers="ref">2486</td>
-<td class="gt_row gt_right" headers="review_date">2020</td>
-<td class="gt_row gt_left" headers="company_manufacturer">Nuance</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Nigeria</td>
-<td class="gt_row gt_right" headers="cocoa_percent">70</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">cocoa, nut, dried fruit, rubbery</td>
+<td class="gt_row gt_right" headers="ref">2350</td>
+<td class="gt_row gt_right" headers="review_date">2019</td>
+<td class="gt_row gt_left" headers="company_manufacturer">ENNA</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Tanzania</td>
+<td class="gt_row gt_right" headers="cocoa_percent">80</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">fruit, dirty</td>
 <td class="gt_row gt_right" headers="rating">3.00</td>
 <td class="gt_row gt_right" headers="n_ingredients">3</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_right" headers="ref">1642</td>
-<td class="gt_row gt_right" headers="review_date">2015</td>
-<td class="gt_row gt_left" headers="company_manufacturer">Georgia Ramon</td>
-<td class="gt_row gt_left" headers="country_of_bean_origin">Madagascar</td>
-<td class="gt_row gt_right" headers="cocoa_percent">65</td>
-<td class="gt_row gt_left" headers="most_memorable_characteristics">sandy, sweet, candy tart</td>
+<td class="gt_row gt_right" headers="ref">1097</td>
+<td class="gt_row gt_right" headers="review_date">2013</td>
+<td class="gt_row gt_left" headers="company_manufacturer">Hummingbird</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Venezuela</td>
+<td class="gt_row gt_right" headers="cocoa_percent">70</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">fatty, gritty, roasty</td>
 <td class="gt_row gt_right" headers="rating">3.25</td>
+<td class="gt_row gt_right" headers="n_ingredients">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="ref">2688</td>
+<td class="gt_row gt_right" headers="review_date">2021</td>
+<td class="gt_row gt_left" headers="company_manufacturer">Conjure</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Tanzania</td>
+<td class="gt_row gt_right" headers="cocoa_percent">75</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">cocoa, mild fruit</td>
+<td class="gt_row gt_right" headers="rating">3.50</td>
+<td class="gt_row gt_right" headers="n_ingredients">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="ref">2064</td>
+<td class="gt_row gt_right" headers="review_date">2018</td>
+<td class="gt_row gt_left" headers="company_manufacturer">Damson</td>
+<td class="gt_row gt_left" headers="country_of_bean_origin">Blend</td>
+<td class="gt_row gt_right" headers="cocoa_percent">65</td>
+<td class="gt_row gt_left" headers="most_memorable_characteristics">sweet, vinegar</td>
+<td class="gt_row gt_right" headers="rating">2.50</td>
 <td class="gt_row gt_right" headers="n_ingredients">4</td>
 </tr>
 </tbody>
@@ -818,19 +845,53 @@ Erin Franke and Sara Colando
 <h2>Scatterplot</h2>
 <p>No relationship between cocoa percentage and rating.</p>
 
-<img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-4-1.png" width="672" class="r-stretch"></section>
 <section id="cocoa-percentage-is-not-indicative-of-rating" class="slide level2">
 <h2>Cocoa percentage is not indicative of rating</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</code></pre>
+</div>
 
-<img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+</div>
+<img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
 <section id="adjectives-describing-chocolate-versus-deviation-from-the-mean-rating" class="slide level2" data-hide-slide-number="true">
 <h2>Adjectives describing chocolate versus deviation from the mean rating</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>word_ratings <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n<span class="sc">&gt;=</span><span class="dv">50</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">overall_avg_rating =</span> <span class="fu">mean</span>(chocolate<span class="sc">$</span>rating),</span>
+<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">rating_diff =</span> avg_rating <span class="sc">-</span> overall_avg_rating) <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>rating_diff,<span class="at">y =</span> most_memorable_characteristics))<span class="sc">+</span></span>
+<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
-<img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+</div>
+<img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-6-1.png" width="672" class="r-stretch"></section>
 <section id="chocolates-described-as-creamy-and-rich-receives-the-highest-ratings-on-average" class="slide level2">
 <h2>Chocolates described as creamy and rich receives the highest ratings, on average</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>overall_avg_rating <span class="ot">&lt;-</span> <span class="fu">mean</span>(chocolate<span class="sc">$</span>rating)</span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a>word_ratings <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n<span class="sc">&gt;=</span><span class="dv">50</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">overall_avg_rating =</span> <span class="fu">mean</span>(chocolate<span class="sc">$</span>rating),</span>
+<span id="cb6-6"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">rating_diff =</span> avg_rating <span class="sc">-</span> overall_avg_rating) <span class="sc">|&gt;</span></span>
+<span id="cb6-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(rating_diff)) <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, (<span class="fu">n</span>()<span class="sc">-</span><span class="dv">4</span>)<span class="sc">:</span><span class="fu">n</span>())) <span class="sc">|&gt;</span></span>
+<span id="cb6-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">most_memorable_characteristics =</span> <span class="fu">fct_reorder</span>(most_memorable_characteristics, rating_diff),</span>
+<span id="cb6-10"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">diff_pos =</span> <span class="fu">if_else</span>(rating_diff <span class="sc">&gt;=</span> <span class="dv">0</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb6-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>rating_diff,<span class="at">y =</span> most_memorable_characteristics))<span class="sc">+</span></span>
+<span id="cb6-12"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> diff_pos)) <span class="sc">+</span></span>
+<span id="cb6-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb6-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span>NatParksPalettes<span class="sc">::</span><span class="fu">natparks.pals</span>(<span class="st">"DeathValley"</span>)) <span class="sc">+</span></span>
+<span id="cb6-15"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-16"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Deviation from mean chocolate rating"</span>,  <span class="at">y=</span> <span class="st">"Most memorable characteristics"</span>)<span class="sc">+</span></span>
+<span id="cb6-17"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb6-18"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">18</span>), </span>
+<span id="cb6-19"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">16</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
-<img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+</div>
+<img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-7-1.png" width="672" class="r-stretch"></section>
 <section id="clustering-chocolate" class="slide level2" data-hide-slide-number="true">
 <h2>Clustering chocolate</h2>
 <ul>
@@ -842,17 +903,27 @@ Erin Franke and Sara Colando
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<p><img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column">
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(<span class="st">"ggdendro"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ggdendro</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggdendrogram</span>(</span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>  choc_clusters,</span>
+<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">rotate =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">theme_dendro =</span> <span class="cn">TRUE</span></span>
+<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Chocolate Dendrogram"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="09b-presentation-critique_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><img data-src="09b-presentation-critique_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
 </figure>
 </div>
 </div>
@@ -870,23 +941,23 @@ Erin Franke and Sara Colando
 <p>Among the <strong>three</strong> clusters, chocolate in <em>Cluster 1 has the highest average rating</em></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="dfbcsuxkyp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dfbcsuxkyp table {
+<div id="pqyyayxbne" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pqyyayxbne table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dfbcsuxkyp thead, #dfbcsuxkyp tbody, #dfbcsuxkyp tfoot, #dfbcsuxkyp tr, #dfbcsuxkyp td, #dfbcsuxkyp th {
+#pqyyayxbne thead, #pqyyayxbne tbody, #pqyyayxbne tfoot, #pqyyayxbne tr, #pqyyayxbne td, #pqyyayxbne th {
   border-style: none;
 }
 
-#dfbcsuxkyp p {
+#pqyyayxbne p {
   margin: 0;
   padding: 0;
 }
 
-#dfbcsuxkyp .gt_table {
+#pqyyayxbne .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -912,12 +983,12 @@ Erin Franke and Sara Colando
   border-left-color: #D3D3D3;
 }
 
-#dfbcsuxkyp .gt_caption {
+#pqyyayxbne .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dfbcsuxkyp .gt_title {
+#pqyyayxbne .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -929,7 +1000,7 @@ Erin Franke and Sara Colando
   border-bottom-width: 0;
 }
 
-#dfbcsuxkyp .gt_subtitle {
+#pqyyayxbne .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -941,7 +1012,7 @@ Erin Franke and Sara Colando
   border-top-width: 0;
 }
 
-#dfbcsuxkyp .gt_heading {
+#pqyyayxbne .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -953,13 +1024,13 @@ Erin Franke and Sara Colando
   border-right-color: #D3D3D3;
 }
 
-#dfbcsuxkyp .gt_bottom_border {
+#pqyyayxbne .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dfbcsuxkyp .gt_col_headings {
+#pqyyayxbne .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -974,7 +1045,7 @@ Erin Franke and Sara Colando
   border-right-color: #D3D3D3;
 }
 
-#dfbcsuxkyp .gt_col_heading {
+#pqyyayxbne .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -994,7 +1065,7 @@ Erin Franke and Sara Colando
   overflow-x: hidden;
 }
 
-#dfbcsuxkyp .gt_column_spanner_outer {
+#pqyyayxbne .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1006,15 +1077,15 @@ Erin Franke and Sara Colando
   padding-right: 4px;
 }
 
-#dfbcsuxkyp .gt_column_spanner_outer:first-child {
+#pqyyayxbne .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dfbcsuxkyp .gt_column_spanner_outer:last-child {
+#pqyyayxbne .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dfbcsuxkyp .gt_column_spanner {
+#pqyyayxbne .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1026,11 +1097,11 @@ Erin Franke and Sara Colando
   width: 100%;
 }
 
-#dfbcsuxkyp .gt_spanner_row {
+#pqyyayxbne .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dfbcsuxkyp .gt_group_heading {
+#pqyyayxbne .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1056,7 +1127,7 @@ Erin Franke and Sara Colando
   text-align: left;
 }
 
-#dfbcsuxkyp .gt_empty_group_heading {
+#pqyyayxbne .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1071,15 +1142,15 @@ Erin Franke and Sara Colando
   vertical-align: middle;
 }
 
-#dfbcsuxkyp .gt_from_md > :first-child {
+#pqyyayxbne .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dfbcsuxkyp .gt_from_md > :last-child {
+#pqyyayxbne .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dfbcsuxkyp .gt_row {
+#pqyyayxbne .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1098,7 +1169,7 @@ Erin Franke and Sara Colando
   overflow-x: hidden;
 }
 
-#dfbcsuxkyp .gt_stub {
+#pqyyayxbne .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1111,7 +1182,7 @@ Erin Franke and Sara Colando
   padding-right: 5px;
 }
 
-#dfbcsuxkyp .gt_stub_row_group {
+#pqyyayxbne .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1125,15 +1196,15 @@ Erin Franke and Sara Colando
   vertical-align: top;
 }
 
-#dfbcsuxkyp .gt_row_group_first td {
+#pqyyayxbne .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dfbcsuxkyp .gt_row_group_first th {
+#pqyyayxbne .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dfbcsuxkyp .gt_summary_row {
+#pqyyayxbne .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1143,16 +1214,16 @@ Erin Franke and Sara Colando
   padding-right: 5px;
 }
 
-#dfbcsuxkyp .gt_first_summary_row {
+#pqyyayxbne .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dfbcsuxkyp .gt_first_summary_row.thick {
+#pqyyayxbne .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dfbcsuxkyp .gt_last_summary_row {
+#pqyyayxbne .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1162,7 +1233,7 @@ Erin Franke and Sara Colando
   border-bottom-color: #D3D3D3;
 }
 
-#dfbcsuxkyp .gt_grand_summary_row {
+#pqyyayxbne .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1172,7 +1243,7 @@ Erin Franke and Sara Colando
   padding-right: 5px;
 }
 
-#dfbcsuxkyp .gt_first_grand_summary_row {
+#pqyyayxbne .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1182,7 +1253,7 @@ Erin Franke and Sara Colando
   border-top-color: #D3D3D3;
 }
 
-#dfbcsuxkyp .gt_last_grand_summary_row_top {
+#pqyyayxbne .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1192,11 +1263,11 @@ Erin Franke and Sara Colando
   border-bottom-color: #D3D3D3;
 }
 
-#dfbcsuxkyp .gt_striped {
+#pqyyayxbne .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dfbcsuxkyp .gt_table_body {
+#pqyyayxbne .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1205,7 +1276,7 @@ Erin Franke and Sara Colando
   border-bottom-color: #D3D3D3;
 }
 
-#dfbcsuxkyp .gt_footnotes {
+#pqyyayxbne .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1219,7 +1290,7 @@ Erin Franke and Sara Colando
   border-right-color: #D3D3D3;
 }
 
-#dfbcsuxkyp .gt_footnote {
+#pqyyayxbne .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1228,7 +1299,7 @@ Erin Franke and Sara Colando
   padding-right: 5px;
 }
 
-#dfbcsuxkyp .gt_sourcenotes {
+#pqyyayxbne .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1242,7 +1313,7 @@ Erin Franke and Sara Colando
   border-right-color: #D3D3D3;
 }
 
-#dfbcsuxkyp .gt_sourcenote {
+#pqyyayxbne .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1250,72 +1321,72 @@ Erin Franke and Sara Colando
   padding-right: 5px;
 }
 
-#dfbcsuxkyp .gt_left {
+#pqyyayxbne .gt_left {
   text-align: left;
 }
 
-#dfbcsuxkyp .gt_center {
+#pqyyayxbne .gt_center {
   text-align: center;
 }
 
-#dfbcsuxkyp .gt_right {
+#pqyyayxbne .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dfbcsuxkyp .gt_font_normal {
+#pqyyayxbne .gt_font_normal {
   font-weight: normal;
 }
 
-#dfbcsuxkyp .gt_font_bold {
+#pqyyayxbne .gt_font_bold {
   font-weight: bold;
 }
 
-#dfbcsuxkyp .gt_font_italic {
+#pqyyayxbne .gt_font_italic {
   font-style: italic;
 }
 
-#dfbcsuxkyp .gt_super {
+#pqyyayxbne .gt_super {
   font-size: 65%;
 }
 
-#dfbcsuxkyp .gt_footnote_marks {
+#pqyyayxbne .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dfbcsuxkyp .gt_asterisk {
+#pqyyayxbne .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dfbcsuxkyp .gt_indent_1 {
+#pqyyayxbne .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dfbcsuxkyp .gt_indent_2 {
+#pqyyayxbne .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dfbcsuxkyp .gt_indent_3 {
+#pqyyayxbne .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dfbcsuxkyp .gt_indent_4 {
+#pqyyayxbne .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dfbcsuxkyp .gt_indent_5 {
+#pqyyayxbne .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dfbcsuxkyp .katex-display {
+#pqyyayxbne .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dfbcsuxkyp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pqyyayxbne div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1376,7 +1447,7 @@ Erin Franke and Sara Colando
 <h1><span style="color: red; background-color: #00F5FF; font-family: 'Comic Sans MS', cursive;">Thanks!</span></h1>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-verna" class="csl-entry" role="listitem">
 Verna, Richard. 2013. <span>“<a href="https://www.ncbi.nlm.nih.gov/pubmed/24362474">The History and Science of Chocolate</a>.”</span> <em>Malaysian Journal of Pathology</em> 35 (2): 111–21.
 </div>
@@ -1599,44 +1670,6 @@ Verna, Richard. 2013. <span>“<a href="https://www.ncbi.nlm.nih.gov/pubmed/2436
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
