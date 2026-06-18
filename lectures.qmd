@@ -23,9 +23,8 @@ Updated daily before lecture.
 | Lecture 10 | June 15 | Supervised learning: model assessment vs selection        | [slides](lectures/10-tradeoffs.qmd)     |
 | Lecture 11 | June 16 | Supervised learning: linear regression                    | [slides](lectures/11-linear.qmd)         |
 | Lecture 12 | June 17 | Supervised learning: intro to variable selection | [slides](lectures/12-varsel.qmd)       |
+| Lecture 13 | June 18 | Supervised learning: regularization                       | [slides](lectures/13-regularization.qmd) |
 <!--
-| Lecture 13 | June 23 | Data wrangling with R's `data.table` package              | [slides](lectures/13-datatable.qmd)      |
-| Lecture 14 | June 24 | Supervised learning: regularization                       | [slides](lectures/14-regularization.qmd) |
 | Lecture 15 | June 25 | Supervised learning: logistic regression                  | [slides](lectures/15-logistic.qmd)       |
 | Lecture 16 | June 26 | Supervised learning: generalized linear models            | [slides](lectures/16-glm.qmd)            |
 | Lecture 17 | June 27 | The command line and `git`                                | [slides](lectures/17-cli-git.qmd)        |
