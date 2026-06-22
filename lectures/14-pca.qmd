@@ -833,16 +833,8 @@ ggplot(cv_model_pls)
 
 ```{r}
 #| eval: false
-# alternative with vip
-#library(vip) #install.packages("vip")
-#vip::vip(cv_model_pls$finalModel) 
-
-as.data.frame(varImp(cv_model_pls)$importance) |>
-  rownames_to_column("statistic") |>
-  filter(!grepl("pc1|pc2", statistic)) |>
-  ggplot(aes(x = Overall, y = fct_reorder(statistic, Overall))) +
-  geom_col() +
-  labs(x = "Overall importance", y = "Statistic")
+library(vip) #install.packages("vip")
+vip::vip(cv_model_pls$finalModel) 
 ```
 
 :::
