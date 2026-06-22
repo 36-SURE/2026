@@ -994,16 +994,8 @@ Z_1 = \phi_{11} X_1 + \phi_{21} X_1 + \cdots + \phi_{p1} X_p
 <li>Weights are function of reduction of RSS across the number of PLS components</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># alternative with vip</span></span>
-<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#library(vip) #install.packages("vip")</span></span>
-<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#vip::vip(cv_model_pls$finalModel) </span></span>
-<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">varImp</span>(cv_model_pls)<span class="sc">$</span>importance) <span class="sc">|&gt;</span></span>
-<span id="cb24-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"statistic"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"pc1|pc2"</span>, statistic)) <span class="sc">|&gt;</span></span>
-<span id="cb24-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Overall, <span class="at">y =</span> <span class="fu">fct_reorder</span>(statistic, Overall))) <span class="sc">+</span></span>
-<span id="cb24-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb24-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Overall importance"</span>, <span class="at">y =</span> <span class="st">"Statistic"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip) <span class="co">#install.packages("vip")</span></span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>vip<span class="sc">::</span><span class="fu">vip</span>(cv_model_pls<span class="sc">$</span>finalModel) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column">
 <div class="cell" data-layout-align="center">

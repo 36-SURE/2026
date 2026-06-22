@@ -1446,7 +1446,7 @@
     "href": "lectures/14-pca.html#variable-importance",
     "title": "Dimension reduction: principal component analysis",
     "section": "Variable importance",
-    "text": "Variable importance\n\n\nVariable importance attempts to quantify how influential variables are in the model\n\nE.g., absolute value of \\(t\\)-statistic in regression\n\nFor PLS: weighted sums of the absolute regression coefficients across components\n\nWeights are function of reduction of RSS across the number of PLS components\n\n\n# alternative with vip\n#library(vip) #install.packages(\"vip\")\n#vip::vip(cv_model_pls$finalModel) \n\nas.data.frame(varImp(cv_model_pls)$importance) |&gt;\n  rownames_to_column(\"statistic\") |&gt;\n  filter(!grepl(\"pc1|pc2\", statistic)) |&gt;\n  ggplot(aes(x = Overall, y = fct_reorder(statistic, Overall))) +\n  geom_col() +\n  labs(x = \"Overall importance\", y = \"Statistic\")"
+    "text": "Variable importance\n\n\nVariable importance attempts to quantify how influential variables are in the model\n\nE.g., absolute value of \\(t\\)-statistic in regression\n\nFor PLS: weighted sums of the absolute regression coefficients across components\n\nWeights are function of reduction of RSS across the number of PLS components\n\n\nlibrary(vip) #install.packages(\"vip\")\nvip::vip(cv_model_pls$finalModel)"
   },
   {
     "objectID": "lectures/14-pca.html#partial-dependence-plots-pdp-with-pdp-package",
