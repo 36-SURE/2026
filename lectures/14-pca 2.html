@@ -571,11 +571,11 @@ Cumulative Proportion  0.3846 0.6413 0.7851 0.8901 0.94014 0.98456 1.00000</code
 <div class="column" style="text-align: left;">
 <p>Principal components are not interpretable on their own</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>nwsl_team_stats_pca <span class="ot">&lt;-</span> nwsl_team_stats <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>nwsl_team_stats <span class="ot">&lt;-</span> nwsl_team_stats <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pc1 =</span> nwsl_team_pc_matrix[,<span class="dv">1</span>], </span>
 <span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">pc2 =</span> nwsl_team_pc_matrix[,<span class="dv">2</span>])</span>
 <span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>nwsl_team_stats_pca <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>nwsl_team_stats <span class="sc">|&gt;</span> </span>
 <span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> pc1, <span class="at">y =</span> pc2)) <span class="sc">+</span></span>
 <span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"PC1 (38.5%) "</span>, <span class="at">y =</span> <span class="st">"PC2 (25.7%)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -814,13 +814,13 @@ folks. it's <em>principal</em> (not principle) components analysis.
 <span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">data =</span> nwsl_model_data)</span>
 <span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nwsl_pcr_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Data:   X dimension: 59 7 
+<pre><code>Data:   X dimension: 59 9 
     Y dimension: 59 1
 Fit method: svdpc
 Number of components considered: 2
 TRAINING: % variance explained
                    1 comps  2 comps
-X                    38.46    64.13
+X                    41.02    72.10
 goal_differential     9.72    31.54</code></pre>
 </div>
 </div>
@@ -861,14 +861,14 @@ goal_differential     9.72    31.54</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cv_model_pcr<span class="sc">$</span>finalModel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Data:   X dimension: 59 7 
+<pre><code>Data:   X dimension: 59 9 
     Y dimension: 59 1
 Fit method: svdpc
-Number of components considered: 6
+Number of components considered: 7
 TRAINING: % variance explained
-          1 comps  2 comps  3 comps  4 comps  5 comps  6 comps
-X           38.46    64.13    78.51    89.01    94.01    98.46
-.outcome     9.72    31.54    36.31    44.43    53.56    53.77</code></pre>
+          1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps
+X           41.02    72.10    83.28    91.45    95.34    98.80   100.00
+.outcome     9.72    31.54    36.31    44.43    53.56    53.77    56.83</code></pre>
 </div>
 </div>
 </section>
@@ -889,13 +889,13 @@ X           38.46    64.13    78.51    89.01    94.01    98.46
 <span id="cb21-12"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-13"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cv_model_pcr_onese<span class="sc">$</span>finalModel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Data:   X dimension: 59 7 
+<pre><code>Data:   X dimension: 59 9 
     Y dimension: 59 1
 Fit method: svdpc
 Number of components considered: 4
 TRAINING: % variance explained
           1 comps  2 comps  3 comps  4 comps
-X           38.46    64.13    78.51    89.01
+X           41.02    72.10    83.28    91.45
 .outcome     9.72    31.54    36.31    44.43</code></pre>
 </div>
 </div>
@@ -1497,7 +1497,7 @@ Z_1 = \phi_{11} X_1 + \phi_{21} X_1 + \cdots + \phi_{p1} X_p
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/36-SURE\.github\.io\/2026\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

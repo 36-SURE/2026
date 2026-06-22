@@ -1334,7 +1334,7 @@
     "href": "lectures/14-pca.html#visualizing-first-two-principal-components",
     "title": "Dimension reduction: principal component analysis",
     "section": "Visualizing first two principal components",
-    "text": "Visualizing first two principal components\n\n\nPrincipal components are not interpretable on their own\n\nnwsl_team_stats &lt;- nwsl_team_stats |&gt; \n  mutate(pc1 = nwsl_team_pc_matrix[,1], \n         pc2 = nwsl_team_pc_matrix[,2])\n\nnwsl_team_stats |&gt; \n  ggplot(aes(x = pc1, y = pc2)) +\n  geom_point(alpha = 0.5) +\n  labs(x = \"PC1 (38.5%) \", y = \"PC2 (25.7%)\")\n\n\nMake a biplot with arrows showing the linear relationship between one variable and other variables"
+    "text": "Visualizing first two principal components\n\n\nPrincipal components are not interpretable on their own\n\nnwsl_team_stats_pca &lt;- nwsl_team_stats |&gt; \n  mutate(pc1 = nwsl_team_pc_matrix[,1], \n         pc2 = nwsl_team_pc_matrix[,2])\n\nnwsl_team_stats_pca |&gt; \n  ggplot(aes(x = pc1, y = pc2)) +\n  geom_point(alpha = 0.5) +\n  labs(x = \"PC1 (38.5%) \", y = \"PC2 (25.7%)\")\n\n\nMake a biplot with arrows showing the linear relationship between one variable and other variables"
   },
   {
     "objectID": "lectures/14-pca.html#making-pcs-interpretable-with-biplots",
@@ -1397,7 +1397,7 @@
     "href": "lectures/14-pca.html#implement-pcr-with-pls",
     "title": "Dimension reduction: principal component analysis",
     "section": "Implement PCR with pls",
-    "text": "Implement PCR with pls\n\nnwsl_model_data &lt;- nwsl_team_stats |&gt;\n  select(-team_name, -season, -games_played, -goals, -goals_conceded)\n\n# goal_differential will be our outcome (we will talk soon about how to model count data)\n\n\n\nSimilar syntax to lm formula but specify the number of PCs (ncomp)\n\nlibrary(pls) #install.packages(\"pls\")\nnwsl_pcr_fit &lt;- pcr(goal_differential ~ ., ncomp = 2,\n                    center = TRUE, scale = TRUE, data = nwsl_model_data)\nsummary(nwsl_pcr_fit)\n\nData:   X dimension: 59 9 \n    Y dimension: 59 1\nFit method: svdpc\nNumber of components considered: 2\nTRAINING: % variance explained\n                   1 comps  2 comps\nX                    41.02    72.10\ngoal_differential     9.72    31.54"
+    "text": "Implement PCR with pls\n\nnwsl_model_data &lt;- nwsl_team_stats |&gt;\n  select(-team_name, -season, -games_played, -goals, -goals_conceded)\n\n# goal_differential will be our outcome (we will talk soon about how to model count data)\n\n\n\nSimilar syntax to lm formula but specify the number of PCs (ncomp)\n\nlibrary(pls) #install.packages(\"pls\")\nnwsl_pcr_fit &lt;- pcr(goal_differential ~ ., ncomp = 2,\n                    center = TRUE, scale = TRUE, data = nwsl_model_data)\nsummary(nwsl_pcr_fit)\n\nData:   X dimension: 59 7 \n    Y dimension: 59 1\nFit method: svdpc\nNumber of components considered: 2\nTRAINING: % variance explained\n                   1 comps  2 comps\nX                    38.46    64.13\ngoal_differential     9.72    31.54"
   },
   {
     "objectID": "lectures/14-pca.html#tuning-pcr-with-caret",
@@ -1411,14 +1411,14 @@
     "href": "lectures/14-pca.html#tuning-pcr-with-caret-1",
     "title": "Dimension reduction: principal component analysis",
     "section": "Tuning PCR with caret",
-    "text": "Tuning PCR with caret\n\nsummary(cv_model_pcr$finalModel)\n\nData:   X dimension: 59 9 \n    Y dimension: 59 1\nFit method: svdpc\nNumber of components considered: 7\nTRAINING: % variance explained\n          1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps\nX           41.02    72.10    83.28    91.45    95.34    98.80   100.00\n.outcome     9.72    31.54    36.31    44.43    53.56    53.77    56.83"
+    "text": "Tuning PCR with caret\n\nsummary(cv_model_pcr$finalModel)\n\nData:   X dimension: 59 7 \n    Y dimension: 59 1\nFit method: svdpc\nNumber of components considered: 6\nTRAINING: % variance explained\n          1 comps  2 comps  3 comps  4 comps  5 comps  6 comps\nX           38.46    64.13    78.51    89.01    94.01    98.46\n.outcome     9.72    31.54    36.31    44.43    53.56    53.77"
   },
   {
     "objectID": "lectures/14-pca.html#tuning-pcr-with-caret-2",
     "href": "lectures/14-pca.html#tuning-pcr-with-caret-2",
     "title": "Dimension reduction: principal component analysis",
     "section": "Tuning PCR with caret",
-    "text": "Tuning PCR with caret\n\nset.seed(0622)\n\ncv_model_pcr_onese &lt;- train(\n  goal_differential ~ ., \n  data = nwsl_model_data, \n  method = \"pcr\",\n  trControl = \n    trainControl(method = \"cv\", number = 10,\n                 selectionFunction = \"oneSE\"),\n  preProcess = c(\"center\", \"scale\"),\n  tuneLength = ncol(nwsl_model_data) - 1)\n\nsummary(cv_model_pcr_onese$finalModel)\n\nData:   X dimension: 59 9 \n    Y dimension: 59 1\nFit method: svdpc\nNumber of components considered: 4\nTRAINING: % variance explained\n          1 comps  2 comps  3 comps  4 comps\nX           41.02    72.10    83.28    91.45\n.outcome     9.72    31.54    36.31    44.43"
+    "text": "Tuning PCR with caret\n\nset.seed(0622)\n\ncv_model_pcr_onese &lt;- train(\n  goal_differential ~ ., \n  data = nwsl_model_data, \n  method = \"pcr\",\n  trControl = \n    trainControl(method = \"cv\", number = 10,\n                 selectionFunction = \"oneSE\"),\n  preProcess = c(\"center\", \"scale\"),\n  tuneLength = ncol(nwsl_model_data) - 1)\n\nsummary(cv_model_pcr_onese$finalModel)\n\nData:   X dimension: 59 7 \n    Y dimension: 59 1\nFit method: svdpc\nNumber of components considered: 4\nTRAINING: % variance explained\n          1 comps  2 comps  3 comps  4 comps\nX           38.46    64.13    78.51    89.01\n.outcome     9.72    31.54    36.31    44.43"
   },
   {
     "objectID": "lectures/14-pca.html#partial-least-squares-pls",
