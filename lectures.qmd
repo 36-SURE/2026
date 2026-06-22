@@ -24,6 +24,7 @@ Updated daily before lecture.
 | Lecture 11 | June 16 | Supervised learning: linear regression                    | [slides](lectures/11-linear.qmd)         |
 | Lecture 12 | June 17 | Supervised learning: intro to variable selection | [slides](lectures/12-varsel.qmd)       |
 | Lecture 13 | June 18 | Supervised learning: regularization                       | [slides](lectures/13-regularization.qmd) |
+| Lecture 14 | June 22 | Dimension reduction: principal component analysis          | [slides](lectures/14-pca.qmd) |
 <!--
 | Lecture 15 | June 25 | Supervised learning: logistic regression                  | [slides](lectures/15-logistic.qmd)       |
 | Lecture 16 | June 26 | Supervised learning: generalized linear models            | [slides](lectures/16-glm.qmd)            |
