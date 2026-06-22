@@ -361,11 +361,11 @@ as.data.frame(nwsl_team_pca$rotation) |> rownames_to_column("statistic")
 Principal components are not interpretable on their own
 
 ```{r pca-plot, eval = FALSE}
-nwsl_team_stats <- nwsl_team_stats |> 
+nwsl_team_stats_pca <- nwsl_team_stats |> 
   mutate(pc1 = nwsl_team_pc_matrix[,1], 
          pc2 = nwsl_team_pc_matrix[,2])
 
-nwsl_team_stats |> 
+nwsl_team_stats_pca |> 
   ggplot(aes(x = pc1, y = pc2)) +
   geom_point(alpha = 0.5) +
   labs(x = "PC1 (38.5%) ", y = "PC2 (25.7%)")
@@ -851,15 +851,8 @@ as.data.frame(varImp(cv_model_pls)$importance) |>
 #| echo: false
 #| fig-height: 11
 # alternative with vip
-#library(vip) #install.packages("vip")
-#vip::vip(cv_model_pls$finalModel) 
-
-as.data.frame(varImp(cv_model_pls)$importance) |>
-  rownames_to_column("statistic") |>
-  filter(!grepl("pc1|pc2", statistic)) |>
-  ggplot(aes(x = Overall, y = fct_reorder(statistic, Overall))) +
-  geom_col() +
-  labs(x = "Overall importance", y = "Statistic")
+library(vip) #install.packages("vip")
+vip::vip(cv_model_pls$finalModel) 
 ```
 
 :::
