@@ -1,6 +1,6 @@
 ---
 title: "Supervised learning: regularization"
-author: "<br>SURE 2026<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+author: "<br>CMSACamp 2026<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
 footer:  "[36-SURE.github.io/2026](https://36-sure.github.io/2026)"
 format:
   revealjs:
