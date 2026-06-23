@@ -25,8 +25,8 @@ Updated daily before lecture.
 | Lecture 12 | June 17 | Supervised learning: intro to variable selection | [slides](lectures/12-varsel.qmd)       |
 | Lecture 13 | June 18 | Supervised learning: regularization                       | [slides](lectures/13-regularization.qmd) |
 | Lecture 14 | June 22 | Dimension reduction: principal component analysis          | [slides](lectures/14-pca.qmd) |
+| Lecture 15 | June 23 | Supervised learning: linear discriminant analysis                | [slides](lectures/15-lda.qmd)       |
 <!--
-| Lecture 15 | June 25 | Supervised learning: logistic regression                  | [slides](lectures/15-logistic.qmd)       |
 | Lecture 16 | June 26 | Supervised learning: generalized linear models            | [slides](lectures/16-glm.qmd)            |
 | Lecture 17 | June 27 | The command line and `git`                                | [slides](lectures/17-cli-git.qmd)        |
 | Lecture 18 | June 30 | Unsupervised learning: Gaussian mixture models            | [slides](lectures/18-mixture.qmd)        |
