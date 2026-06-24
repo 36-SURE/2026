@@ -26,6 +26,8 @@ Updated daily before lecture.
 | Lecture 13 | June 18 | Supervised learning: regularization                       | [slides](lectures/13-regularization.qmd) |
 | Lecture 14 | June 22 | Dimension reduction: principal component analysis          | [slides](lectures/14-pca.qmd) |
 | Lecture 15 | June 23 | Supervised learning: linear discriminant analysis                | [slides](lectures/15-lda.qmd)       |
+| Lecture 16 | June 24 | Supervised learning: logistic regression                | [slides](lectures/16-logistic.qmd)       |
+
 <!--
 | Lecture 16 | June 26 | Supervised learning: generalized linear models            | [slides](lectures/16-glm.qmd)            |
 | Lecture 17 | June 27 | The command line and `git`                                | [slides](lectures/17-cli-git.qmd)        |
