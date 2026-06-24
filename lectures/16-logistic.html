@@ -229,10 +229,7 @@
 </div>
 <div class="fragment">
 <ul>
-<li><p>Today, will focus on the case where we have a <strong>binary categorical response</strong> (categorical response variables with only two categories)</p>
-<ul>
-<li>Examples: whether it will rain or not tomorrow, whether the kicker makes or misses a field goal attempt</li>
-</ul></li>
+<li>Today, will focus on the case where we have a <strong>binary categorical response</strong> (categorical response variables with only two categories)</li>
 </ul>
 </div>
 </section>
@@ -246,17 +243,20 @@
 </ul>
 <div class="fragment">
 <ul>
-<li>Logistic regression is used to model <strong>binary categorical outcomes</strong> (i.e.&nbsp;<span class="math inline">\(Y \in \{0, 1\}\)</span>)</li>
+<li><p>Logistic regression,the response variable <span class="math inline">\(Y\)</span> is <strong>binary</strong> (i.e.&nbsp;<span class="math inline">\(Y \in \{0, 1\}\)</span>)</p>
+<ul>
+<li>Examples: whether a patient has a disease, whether the kicker makes a field goal attempt</li>
+</ul></li>
 </ul>
 </div>
 <div class="fragment">
 <div class="{columns}">
 <div class="column">
 <div class="fragment">
-<p><em>Some concepts are similar to linear regression</em>:</p>
+<p><em>Several carry over from linear regression</em>:</p>
 <ul>
 <li>Tests for coefficients</li>
-<li>Indicator variables</li>
+<li>Factor variables</li>
 <li>Interactions</li>
 <li>Model building procedure</li>
 <li>Regularization</li>
@@ -307,7 +307,7 @@ p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 +
 </div>
 <div class="fragment">
 <p><br></p>
-<p><em>Note: <span class="math inline">\(p(x)= P(Y = 1 \mid X = x) = \mathbb E[Y \mid X = x]\)</span></em></p>
+<p><em>Note:</em> <span class="math inline">\(p(x)= P(Y = 1 \mid X = x) = \mathbb E[Y \mid X = x]\)</span> (<em>aka the expected value of the outcome given the regressors!</em>)</p>
 </div>
 </section>
 <section id="model-assumptions" class="slide level2">
@@ -319,31 +319,35 @@ p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 +
 <div class="fragment">
 <p><br></p>
 <p>This encodes two model assumptions:</p>
+</div>
+<div class="fragment">
 <ol type="1">
-<li><p>The log-odds (on the LHS) is linearly related to the regressors (on the RHS)</p></li>
-<li><p>The observations <span class="math inline">\(Y_i\)</span> are conditionally independent given the covariates <span class="math inline">\(X_i\)</span> (<em>like with linear regression, the best way to evaluate this assumption is with domain knowledge</em>)</p></li>
+<li>The log-odds (on the LHS) is linearly related to the regressors (on the RHS)</li>
 </ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li>The observations <span class="math inline">\(Y_i\)</span> are conditionally independent given the covariates <span class="math inline">\(X_i\)</span> (<em>like with linear regression, the best way to evaluate this assumption is with domain knowledge</em>)</li>
+</ol>
+</div>
+<div class="fragment">
 <p>And again, we assume <span class="math inline">\(X\)</span> is fixed, not random</p>
 </div>
 </section>
 <section id="maximum-likelihood-estimation-mle" class="slide level2">
 <h2>Maximum likelihood estimation (MLE)</h2>
-<ul>
-<li>Likelihood function: how likely to observe data for given parameter values <span class="math display">\[L(\theta) = \prod_{i=1}^n f(y_i; \theta)\]</span></li>
-</ul>
+<p><strong>Likelihood function</strong>: how likely to observe data for given parameter values <span class="math display">\[L(\theta) = \prod_{i=1}^n f(y_i; \theta)\]</span></p>
+<div class="fragment">
+<p><strong>Goal</strong>: find values for parameters that maximize likelihood function (i.e., MLEs)</p>
+</div>
 <div class="fragment">
 <ul>
-<li>Goal: find values for parameters that maximize likelihood function (i.e., MLEs)</li>
+<li><em>Why</em>: likelihood methods can handle variety of data types and assumptions</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>Why: likelihood methods can handle variety of data types and assumptions</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li><p>How: typically numerical approaches and optimization techniques</p>
+<li><p><em>How</em>: typically numerical approaches and optimization techniques</p>
 <ul>
 <li>Easier to work with log-likelihood (sums compared to products)</li>
 </ul></li>
@@ -352,25 +356,29 @@ p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 +
 </section>
 <section id="example-linear-regression-mle" class="slide level2">
 <h2>Example: linear regression MLE</h2>
-<p>Reminder: probability density function (pdf) for a normal distribution <span class="math display">\[f(y \mid \mu, \sigma) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(y - \mu) ^ 2}{2 \sigma^2}}\]</span></p>
+<p><strong>Probability density function</strong> (pdf) for a normal distribution</p>
+<p><span class="math display">\[
+f(y \mid \mu, \sigma) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(y - \mu) ^ 2}{2 \sigma^2}}
+\]</span></p>
 <div class="fragment">
 <p>Consider a simple linear regression model (with an intercept and one predictor) <span class="math display">\[y_i = \beta_0 + \beta_1 x_i + \epsilon_i, \quad \epsilon_i \sim N(0, \sigma^2)\]</span></p>
 </div>
 <div class="fragment">
-<p>Then <span class="math inline">\(\qquad \displaystyle L(\beta_0, \beta_1, \sigma) = \prod_{i=1}^n f(y_i \mid x_i; \beta_0, \beta_1, \sigma) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(y_i - \beta_0 - \beta_1 x_i) ^ 2}{2 \sigma^2}}\)</span></p>
+<p><em>Then:</em> <span class="math inline">\(\qquad \displaystyle L(\beta_0, \beta_1, \sigma) = \prod_{i=1}^n f(y_i \mid x_i; \beta_0, \beta_1, \sigma) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi \sigma^2}} e^{\frac{-(y_i - \beta_0 - \beta_1 x_i) ^ 2}{2 \sigma^2}}\)</span></p>
 </div>
 <div class="fragment">
-<p>And <span class="math inline">\(\qquad \displaystyle \log L(\beta_0, \beta_1, \sigma) =  -\frac{n}{2} \log 2\pi - \frac{n}{2} \log \sigma^2 - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_1)^2\)</span></p>
+<p>and <span class="math inline">\(\qquad \displaystyle \log L(\beta_0, \beta_1, \sigma) =  -\frac{n}{2} \log 2\pi - \frac{n}{2} \log \sigma^2 - \frac{1}{2 \sigma^2} \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_1)^2\)</span></p>
 </div>
 <div class="fragment">
+<p><br></p>
 <p>We can then use optimization methods (e.g., calculus) to find the optimal parameter values.</p>
 
 </div>
 <aside><div>
 <p>For more details, see <a href="https://www.stat.cmu.edu/~cshalizi/mreg/15/lectures/06/lecture-06.pdf">Cosma Shalizi’s notes on MLE for SLR</a></p>
 </div></aside></section>
-<section id="major-difference-between-linear-and-logistic-regression" class="slide level2">
-<h2>Major difference between linear and logistic regression</h2>
+<section id="logistic-regression-estimation" class="slide level2">
+<h2>Logistic regression estimation</h2>
 <p>Logistic regression <strong>involves numerical optimization</strong></p>
 <ul>
 <li><span class="math inline">\(y_i\)</span> is observed response for <span class="math inline">\(n\)</span> observations, either 0 or 1</li>
@@ -410,11 +418,7 @@ p(x) =  \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 +
 <p><span class="math display">\[E[Y \mid X = x] = \frac{e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}{1 + e^{\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p}}\]</span></p>
 </div>
 <div class="fragment">
-<p>Note:</p>
-<ul>
-<li><p>The predicted response varies <strong>non-linearly</strong> with the predictor variable values</p></li>
-<li><p>Interpretation on the <strong>odds</strong> scale</p></li>
-</ul>
+<p><em>Note</em>: (i) the predicted response varies <strong>non-linearly</strong> with the predictor variable values, and (ii) interpretation on the <strong>odds</strong> scale</p>
 </div>
 </section>
 <section id="the-odds-interpretation" class="slide level2">
@@ -442,18 +446,22 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 </section>
 <section id="the-odds-interpretation-1" class="slide level2">
 <h2>The odds interpretation</h2>
-<p>Suppose we fit a simple logistic regression model (with one predictor), and say the predicted probability is 0.8 for a particular predictor value</p>
+<p>Suppose we fit a simple logistic regression model (with one predictor), and say the predicted probability is 0.8 for a particular predictor value (<span class="math inline">\(X = x\)</span>)</p>
+<div class="fragment">
 <ul>
 <li><p>This means that if we were to repeatedly sample response values given that predictor variable value: <strong>we expect class 1 to appear 4 times as often as class 0</strong> <span class="math display">\[\text{odds} = \frac{E[Y \mid X = x] }{1-E[Y \mid X = x] } = \frac{0.8}{1-0.8} = 4 = e^{\beta_0+\beta_1x}\]</span></p></li>
 <li><p>Thus we say that for the given predictor variable value, the odds are 4 (or 4:1) in favor of class 1</p></li>
 </ul>
+</div>
 <div class="fragment">
 <p><br></p>
 <p><em>How does the odds change if we change the value of a predictor variable by one unit?</em></p>
 </div>
 <div class="fragment">
 <p><span class="math display">\[\text{odds}_{\rm new} = e^{\beta_0+\beta_1(x+1)} = e^{\beta_0+\beta_1x}e^{\beta_1} = e^{\beta_1}\text{odds}_{\rm old}\]</span></p>
-<p>Therefore, for every one-unit increase in <span class="math inline">\(x\)</span>, the odds change by a <strong>factor</strong> of <span class="math inline">\(e^{\beta_1}\)</span></p>
+</div>
+<div class="fragment">
+<p>For every one-unit increase in <span class="math inline">\(x\)</span>, the odds change by a <strong>factor</strong> of <span class="math inline">\(e^{\beta_1}\)</span></p>
 </div>
 </section>
 <section>
@@ -463,15 +471,26 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 </section>
 <section id="background-on-cricket" class="slide level2">
 <h2>Background on cricket</h2>
-<p>For some background, see this <a href="https://data.scorenetwork.org/cricket/cricket_data_repo.html">helpful overview</a>. <em>Particularly relevant for us</em>:</p>
-<p><strong>Some scoring rules</strong>:</p>
+<p>For some background on cricket, see this <a href="https://data.scorenetwork.org/cricket/cricket_data_repo.html">overview</a>. Particularly relevant for us:</p>
 <ul>
-<li><p>Each time the two batters switch sides without getting out counts as a run scored</p></li>
-<li><p>If the batter hits the ball on a bounce to the oval boundary, it counts as four runs scored</p></li>
-<li><p>If the batter hits the ball over the oval boundary on a fly, it counts as six runs</p></li>
-<li><p>An <em>extra run</em> is a run that is awarded to the batting team that is not credited to any individual batter (e.g., illegal deliveries, no-ball, wide)</p></li>
+<li>Each time the two batters switch sides without getting out counts as a <em>single run</em> scored</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>If the batter hits the ball on a bounce to the oval boundary, it counts as <em>four runs</em> scored</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>If the batter hits the ball over the oval boundary on a fly, it counts as <em>six runs</em> scored</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>An <em>extra run</em> is a run that is awarded to the batting team that is not credited to any individual batter (e.g., illegal deliveries, no-ball, wide)</li>
 </ul>
 <p><br></p>
+</div>
 <div class="fragment">
 <p>See: highlights from the <a href="https://youtu.be/-F7BpjJWV8w?si=Scv37rocEbyjdbd_&amp;t=7">Final - India vs Pakistan in Asia Cup 2025</a></p>
 </div>
@@ -494,11 +513,8 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>cricket <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/2026/main/data/cricket_asia_cup.csv"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">toss =</span> <span class="fu">as_factor</span>(toss),</span>
-<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">selection =</span> <span class="fu">as_factor</span>(<span class="fu">if_else</span>(selection <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Bowling"</span> , <span class="st">"Batting"</span>)),</span>
-<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">result =</span> <span class="fu">as_factor</span>(<span class="fu">if_else</span>(result <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Win"</span>, <span class="st">"Loss"</span>)))</span>
-<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># glimpse(cricket)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">selection =</span> <span class="fu">as_factor</span>(<span class="fu">if_else</span>(selection <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Bowling"</span> , <span class="st">"Batting"</span>)),</span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">result =</span> <span class="fu">as_factor</span>(<span class="fu">if_else</span>(result <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Win"</span>, <span class="st">"Loss"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fitting-a-logistic-regression-model" class="slide level2">
@@ -507,11 +523,10 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 <p>Get coefficients table using the <code>tidy()</code> function in the <code>broom</code> package (<em>on log-odds scale</em>)!</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a>cricket_logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(result <span class="sc">~</span> selection <span class="sc">+</span> fours <span class="sc">+</span> sixes <span class="sc">+</span></span>
-<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>                       extras_scored <span class="sc">+</span> given_extras,</span>
-<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> cricket, <span class="at">family =</span> binomial)</span>
-<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(cricket_logit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a>                       extras_scored <span class="sc">+</span> given_extras, <span class="at">data =</span> cricket, <span class="at">family =</span> binomial)</span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(cricket_logit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   term             estimate std.error statistic   p.value
@@ -532,23 +547,23 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># tidy(cricket_logit, conf.int = TRUE, exponentiate = TRUE)</span></span>
 <span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_regression</span>(cricket_logit, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fmcxiddheq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fmcxiddheq table {
+<div id="rhahkuvvwg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rhahkuvvwg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fmcxiddheq thead, #fmcxiddheq tbody, #fmcxiddheq tfoot, #fmcxiddheq tr, #fmcxiddheq td, #fmcxiddheq th {
+#rhahkuvvwg thead, #rhahkuvvwg tbody, #rhahkuvvwg tfoot, #rhahkuvvwg tr, #rhahkuvvwg td, #rhahkuvvwg th {
   border-style: none;
 }
 
-#fmcxiddheq p {
+#rhahkuvvwg p {
   margin: 0;
   padding: 0;
 }
 
-#fmcxiddheq .gt_table {
+#rhahkuvvwg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -574,12 +589,12 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-left-color: #D3D3D3;
 }
 
-#fmcxiddheq .gt_caption {
+#rhahkuvvwg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fmcxiddheq .gt_title {
+#rhahkuvvwg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -591,7 +606,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-bottom-width: 0;
 }
 
-#fmcxiddheq .gt_subtitle {
+#rhahkuvvwg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -603,7 +618,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-top-width: 0;
 }
 
-#fmcxiddheq .gt_heading {
+#rhahkuvvwg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -615,13 +630,13 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-right-color: #D3D3D3;
 }
 
-#fmcxiddheq .gt_bottom_border {
+#rhahkuvvwg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fmcxiddheq .gt_col_headings {
+#rhahkuvvwg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -636,7 +651,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-right-color: #D3D3D3;
 }
 
-#fmcxiddheq .gt_col_heading {
+#rhahkuvvwg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -656,7 +671,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   overflow-x: hidden;
 }
 
-#fmcxiddheq .gt_column_spanner_outer {
+#rhahkuvvwg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -668,15 +683,15 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 4px;
 }
 
-#fmcxiddheq .gt_column_spanner_outer:first-child {
+#rhahkuvvwg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fmcxiddheq .gt_column_spanner_outer:last-child {
+#rhahkuvvwg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fmcxiddheq .gt_column_spanner {
+#rhahkuvvwg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -688,11 +703,11 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   width: 100%;
 }
 
-#fmcxiddheq .gt_spanner_row {
+#rhahkuvvwg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fmcxiddheq .gt_group_heading {
+#rhahkuvvwg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -718,7 +733,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   text-align: left;
 }
 
-#fmcxiddheq .gt_empty_group_heading {
+#rhahkuvvwg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -733,15 +748,15 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   vertical-align: middle;
 }
 
-#fmcxiddheq .gt_from_md > :first-child {
+#rhahkuvvwg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fmcxiddheq .gt_from_md > :last-child {
+#rhahkuvvwg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fmcxiddheq .gt_row {
+#rhahkuvvwg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -760,7 +775,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   overflow-x: hidden;
 }
 
-#fmcxiddheq .gt_stub {
+#rhahkuvvwg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -773,7 +788,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 5px;
 }
 
-#fmcxiddheq .gt_stub_row_group {
+#rhahkuvvwg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -787,15 +802,15 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   vertical-align: top;
 }
 
-#fmcxiddheq .gt_row_group_first td {
+#rhahkuvvwg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fmcxiddheq .gt_row_group_first th {
+#rhahkuvvwg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fmcxiddheq .gt_summary_row {
+#rhahkuvvwg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -805,16 +820,16 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 5px;
 }
 
-#fmcxiddheq .gt_first_summary_row {
+#rhahkuvvwg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fmcxiddheq .gt_first_summary_row.thick {
+#rhahkuvvwg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fmcxiddheq .gt_last_summary_row {
+#rhahkuvvwg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -824,7 +839,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-bottom-color: #D3D3D3;
 }
 
-#fmcxiddheq .gt_grand_summary_row {
+#rhahkuvvwg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -834,7 +849,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 5px;
 }
 
-#fmcxiddheq .gt_first_grand_summary_row {
+#rhahkuvvwg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -844,7 +859,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-top-color: #D3D3D3;
 }
 
-#fmcxiddheq .gt_last_grand_summary_row_top {
+#rhahkuvvwg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -854,11 +869,11 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-bottom-color: #D3D3D3;
 }
 
-#fmcxiddheq .gt_striped {
+#rhahkuvvwg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fmcxiddheq .gt_table_body {
+#rhahkuvvwg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -867,7 +882,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-bottom-color: #D3D3D3;
 }
 
-#fmcxiddheq .gt_footnotes {
+#rhahkuvvwg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -881,7 +896,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-right-color: #D3D3D3;
 }
 
-#fmcxiddheq .gt_footnote {
+#rhahkuvvwg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -890,7 +905,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 5px;
 }
 
-#fmcxiddheq .gt_sourcenotes {
+#rhahkuvvwg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -904,7 +919,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-right-color: #D3D3D3;
 }
 
-#fmcxiddheq .gt_sourcenote {
+#rhahkuvvwg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -912,72 +927,72 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 5px;
 }
 
-#fmcxiddheq .gt_left {
+#rhahkuvvwg .gt_left {
   text-align: left;
 }
 
-#fmcxiddheq .gt_center {
+#rhahkuvvwg .gt_center {
   text-align: center;
 }
 
-#fmcxiddheq .gt_right {
+#rhahkuvvwg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fmcxiddheq .gt_font_normal {
+#rhahkuvvwg .gt_font_normal {
   font-weight: normal;
 }
 
-#fmcxiddheq .gt_font_bold {
+#rhahkuvvwg .gt_font_bold {
   font-weight: bold;
 }
 
-#fmcxiddheq .gt_font_italic {
+#rhahkuvvwg .gt_font_italic {
   font-style: italic;
 }
 
-#fmcxiddheq .gt_super {
+#rhahkuvvwg .gt_super {
   font-size: 65%;
 }
 
-#fmcxiddheq .gt_footnote_marks {
+#rhahkuvvwg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fmcxiddheq .gt_asterisk {
+#rhahkuvvwg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fmcxiddheq .gt_indent_1 {
+#rhahkuvvwg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fmcxiddheq .gt_indent_2 {
+#rhahkuvvwg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fmcxiddheq .gt_indent_3 {
+#rhahkuvvwg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fmcxiddheq .gt_indent_4 {
+#rhahkuvvwg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fmcxiddheq .gt_indent_5 {
+#rhahkuvvwg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fmcxiddheq .katex-display {
+#rhahkuvvwg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fmcxiddheq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rhahkuvvwg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1110,9 +1125,9 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 </section>
 <section id="diagnosing-non-linearity" class="slide level2">
 <h2>Diagnosing (non-)linearity</h2>
-<p><em>Similar to linear regression</em>: can use a fitted versus residual plot</p>
+<p>Similar to linear regression: can use a fitted versus residual plot to diagnose (non)-linearity</p>
 <div class="fragment">
-<p><em>BUT, unlike linear regression</em>: raw residuals will look weird since <span class="math inline">\(Y_i \in \{0, 1\}\)</span></p>
+<p>BUT, unlike linear regression: raw residuals will look weird since <span class="math inline">\(Y_i \in \{0, 1\}\)</span></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(cricket_logit) <span class="sc">|&gt;</span></span>
@@ -1133,7 +1148,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 <h2>Diagnosing (non-)linearity</h2>
 <div class="{columns}">
 <div class="column">
-<p>Instead, we can use <a href="https://www.refsmmat.com/courses/707/lecture-notes/logistic-regression.html#sec-randomized-quantile-resids"><strong>randomized quantile residuals</strong></a> for logistic regression models</p>
+<p>We can use <a href="https://www.refsmmat.com/courses/707/lecture-notes/logistic-regression.html#sec-randomized-quantile-resids"><strong>randomized quantile residuals</strong></a></p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DHARMa) <span class="co">#install.packages("DHARMa")</span></span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a>dh <span class="ot">&lt;-</span> <span class="fu">simulateResiduals</span>(cricket_logit)</span>
@@ -1149,7 +1164,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 <span id="cb7-12"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
-<li><p>If the model is correctly specified: for each fitted value, randomized quantile residuals will have mean 0.5</p></li>
+<li><p><strong>If the model is correctly specified</strong>: for each fitted value, the mean of the randomized quantile residuals will be 0.5</p></li>
 <li><p>Deviations from this indicate there is non-linearity between the log-odds and the regressors</p></li>
 </ul>
 </div><div class="column">
@@ -1164,8 +1179,8 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 </div>
 </div></div>
 </section>
-<section id="predictions" class="slide level2">
-<h2>Predictions</h2>
+<section id="prediction" class="slide level2">
+<h2>Prediction</h2>
 <ul>
 <li><p>The default output of <code>predict()</code> is on <strong>the log-odds scale</strong></p></li>
 <li><p>To get predicted probabilities, we need to specify <code>type = "response"</code></p></li>
@@ -1194,11 +1209,12 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggeffects) <span class="co">#install.packages("ggeffects")</span></span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">predict_response</span>(cricket_logit, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"fours"</span>, <span class="st">"selection"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
-<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Number of fours scores"</span>,</span>
-<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Probability of winning the match"</span>,</span>
-<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Selection"</span>, <span class="at">title =</span> <span class="cn">NULL</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">predict_response</span>(cricket_logit,</span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"fours"</span>, <span class="st">"selection"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>() <span class="sc">+</span></span>
+<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Number of fours scores"</span>,</span>
+<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Probability of winning the match"</span>,</span>
+<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Selection"</span>, <span class="at">title =</span> <span class="cn">NULL</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column">
 <div class="cell" data-layout-align="center">
@@ -1213,37 +1229,31 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 </div></div>
 </section>
 <section id="deviance" class="slide level2">
-<h2><a href="https://en.wikipedia.org/wiki/Deviance_(statistics)">Deviance</a></h2>
+<h2>Deviance</h2>
 <ul>
-<li><p>Recall that in linear regression, we have the residual sum of squares (RSS)—an RSS of zero means the model predicts perfectly</p></li>
+<li><p>In linear regression, we have the residual sum of squares (RSS)—an RSS of zero means the model predicts perfectly</p></li>
 <li><p>In logistic regression, the RSS is less meaningful since our outcome is binary, not a probability</p></li>
 <li><p>Instead we define the <strong>deviance</strong> as a measure of <strong>goodness-of-fit</strong></p>
 <ul>
 <li>Generalization of RSS in linear regression to any distribution family</li>
 </ul></li>
 </ul>
-</section>
+
+<aside><div>
+<p>For more details, see <a href="https://en.wikipedia.org/wiki/Deviance_(statistics)">Wikipedia page on Deviance in Statistics</a></p>
+</div></aside></section>
 <section id="deviance-1" class="slide level2">
-<h2><a href="https://en.wikipedia.org/wiki/Deviance_(statistics)">Deviance</a></h2>
+<h2>Deviance</h2>
 <p>For model of interest <span class="math inline">\(\mathcal{M}\)</span> the total deviance is:</p>
 <p><span class="math display">\[D_{\mathcal{M}}= -2 \log \frac{\mathcal{L}_{\mathcal{M}}}{\mathcal{L}_{\mathcal{S}}} = 2\left(\log  \mathcal{L}_{\mathcal{S}}-\log  \mathcal{L}_{\mathcal{M}}\right)\]</span></p>
 <p><em>where</em>:</p>
 <ul>
-<li><span class="math inline">\(\mathcal{L}_{\mathcal{M}}\)</span> is the likelihood for model <span class="math inline">\(\mathcal{M}\)</span></li>
+<li><p><span class="math inline">\(\mathcal{L}_{\mathcal{M}}\)</span> is the likelihood for model <span class="math inline">\(\mathcal{M}\)</span></p></li>
+<li><p><span class="math inline">\(\mathcal{L}_{\mathcal{S}}\)</span> is the likelihood for the <strong>saturated</strong> model (i.e., the most complex model possible, providing a perfect fit to the data)</p></li>
 </ul>
 <div class="fragment">
-<ul>
-<li><span class="math inline">\(\mathcal{L}_{\mathcal{S}}\)</span> is the likelihood for the <strong>saturated</strong> model (i.e., the most complex model possible, providing a perfect fit to the data)</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li><strong>Deviance is a measure of goodness-of-fit</strong>: the smaller the deviance, the better the model fit</li>
-</ul>
-</div>
-</section>
-<section id="model-summaries" class="slide level2">
-<h2>Model summaries</h2>
+<p><br></p>
+<p><strong>Deviance is a measure of goodness-of-fit</strong>: the smaller the deviance, the better the model fit</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(cricket_logit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1253,14 +1263,6 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 1          349.     251  -156.  325.  346.     313.         246   252</code></pre>
 </div>
 </div>
-<ul>
-<li><p><code>deviance</code> = <code>2 * logLik</code></p></li>
-<li><p><code>null.deviance</code> corresponds to intercept-only model</p></li>
-<li><p><code>AIC</code> = <code>2 * df.residual - 2 * logLik</code></p></li>
-</ul>
-<div class="fragment">
-<p><br></p>
-<p><strong>We will consider these to be less important than out-of-sample/test set performance</strong></p>
 </div>
 </section>
 <section id="classification-model-assessment" class="slide level2">
@@ -1310,23 +1312,23 @@ Predicted Win Loss
 <h2>Confusion matrix</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="jbmmzdxddo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jbmmzdxddo table {
+<div id="avsjmqbobr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#avsjmqbobr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jbmmzdxddo thead, #jbmmzdxddo tbody, #jbmmzdxddo tfoot, #jbmmzdxddo tr, #jbmmzdxddo td, #jbmmzdxddo th {
+#avsjmqbobr thead, #avsjmqbobr tbody, #avsjmqbobr tfoot, #avsjmqbobr tr, #avsjmqbobr td, #avsjmqbobr th {
   border-style: none;
 }
 
-#jbmmzdxddo p {
+#avsjmqbobr p {
   margin: 0;
   padding: 0;
 }
 
-#jbmmzdxddo .gt_table {
+#avsjmqbobr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1352,12 +1354,12 @@ Predicted Win Loss
   border-left-color: #D3D3D3;
 }
 
-#jbmmzdxddo .gt_caption {
+#avsjmqbobr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jbmmzdxddo .gt_title {
+#avsjmqbobr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1369,7 +1371,7 @@ Predicted Win Loss
   border-bottom-width: 0;
 }
 
-#jbmmzdxddo .gt_subtitle {
+#avsjmqbobr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1381,7 +1383,7 @@ Predicted Win Loss
   border-top-width: 0;
 }
 
-#jbmmzdxddo .gt_heading {
+#avsjmqbobr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1393,13 +1395,13 @@ Predicted Win Loss
   border-right-color: #D3D3D3;
 }
 
-#jbmmzdxddo .gt_bottom_border {
+#avsjmqbobr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jbmmzdxddo .gt_col_headings {
+#avsjmqbobr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1414,7 +1416,7 @@ Predicted Win Loss
   border-right-color: #D3D3D3;
 }
 
-#jbmmzdxddo .gt_col_heading {
+#avsjmqbobr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1434,7 +1436,7 @@ Predicted Win Loss
   overflow-x: hidden;
 }
 
-#jbmmzdxddo .gt_column_spanner_outer {
+#avsjmqbobr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1446,15 +1448,15 @@ Predicted Win Loss
   padding-right: 4px;
 }
 
-#jbmmzdxddo .gt_column_spanner_outer:first-child {
+#avsjmqbobr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jbmmzdxddo .gt_column_spanner_outer:last-child {
+#avsjmqbobr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jbmmzdxddo .gt_column_spanner {
+#avsjmqbobr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1466,11 +1468,11 @@ Predicted Win Loss
   width: 100%;
 }
 
-#jbmmzdxddo .gt_spanner_row {
+#avsjmqbobr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jbmmzdxddo .gt_group_heading {
+#avsjmqbobr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1496,7 +1498,7 @@ Predicted Win Loss
   text-align: left;
 }
 
-#jbmmzdxddo .gt_empty_group_heading {
+#avsjmqbobr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1511,15 +1513,15 @@ Predicted Win Loss
   vertical-align: middle;
 }
 
-#jbmmzdxddo .gt_from_md > :first-child {
+#avsjmqbobr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jbmmzdxddo .gt_from_md > :last-child {
+#avsjmqbobr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jbmmzdxddo .gt_row {
+#avsjmqbobr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1538,7 +1540,7 @@ Predicted Win Loss
   overflow-x: hidden;
 }
 
-#jbmmzdxddo .gt_stub {
+#avsjmqbobr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1551,7 +1553,7 @@ Predicted Win Loss
   padding-right: 5px;
 }
 
-#jbmmzdxddo .gt_stub_row_group {
+#avsjmqbobr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1565,15 +1567,15 @@ Predicted Win Loss
   vertical-align: top;
 }
 
-#jbmmzdxddo .gt_row_group_first td {
+#avsjmqbobr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jbmmzdxddo .gt_row_group_first th {
+#avsjmqbobr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jbmmzdxddo .gt_summary_row {
+#avsjmqbobr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1583,16 +1585,16 @@ Predicted Win Loss
   padding-right: 5px;
 }
 
-#jbmmzdxddo .gt_first_summary_row {
+#avsjmqbobr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jbmmzdxddo .gt_first_summary_row.thick {
+#avsjmqbobr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jbmmzdxddo .gt_last_summary_row {
+#avsjmqbobr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1602,7 +1604,7 @@ Predicted Win Loss
   border-bottom-color: #D3D3D3;
 }
 
-#jbmmzdxddo .gt_grand_summary_row {
+#avsjmqbobr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1612,7 +1614,7 @@ Predicted Win Loss
   padding-right: 5px;
 }
 
-#jbmmzdxddo .gt_first_grand_summary_row {
+#avsjmqbobr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1622,7 +1624,7 @@ Predicted Win Loss
   border-top-color: #D3D3D3;
 }
 
-#jbmmzdxddo .gt_last_grand_summary_row_top {
+#avsjmqbobr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1632,11 +1634,11 @@ Predicted Win Loss
   border-bottom-color: #D3D3D3;
 }
 
-#jbmmzdxddo .gt_striped {
+#avsjmqbobr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jbmmzdxddo .gt_table_body {
+#avsjmqbobr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1645,7 +1647,7 @@ Predicted Win Loss
   border-bottom-color: #D3D3D3;
 }
 
-#jbmmzdxddo .gt_footnotes {
+#avsjmqbobr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1659,7 +1661,7 @@ Predicted Win Loss
   border-right-color: #D3D3D3;
 }
 
-#jbmmzdxddo .gt_footnote {
+#avsjmqbobr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1668,7 +1670,7 @@ Predicted Win Loss
   padding-right: 5px;
 }
 
-#jbmmzdxddo .gt_sourcenotes {
+#avsjmqbobr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1682,7 +1684,7 @@ Predicted Win Loss
   border-right-color: #D3D3D3;
 }
 
-#jbmmzdxddo .gt_sourcenote {
+#avsjmqbobr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1690,72 +1692,72 @@ Predicted Win Loss
   padding-right: 5px;
 }
 
-#jbmmzdxddo .gt_left {
+#avsjmqbobr .gt_left {
   text-align: left;
 }
 
-#jbmmzdxddo .gt_center {
+#avsjmqbobr .gt_center {
   text-align: center;
 }
 
-#jbmmzdxddo .gt_right {
+#avsjmqbobr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jbmmzdxddo .gt_font_normal {
+#avsjmqbobr .gt_font_normal {
   font-weight: normal;
 }
 
-#jbmmzdxddo .gt_font_bold {
+#avsjmqbobr .gt_font_bold {
   font-weight: bold;
 }
 
-#jbmmzdxddo .gt_font_italic {
+#avsjmqbobr .gt_font_italic {
   font-style: italic;
 }
 
-#jbmmzdxddo .gt_super {
+#avsjmqbobr .gt_super {
   font-size: 65%;
 }
 
-#jbmmzdxddo .gt_footnote_marks {
+#avsjmqbobr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jbmmzdxddo .gt_asterisk {
+#avsjmqbobr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jbmmzdxddo .gt_indent_1 {
+#avsjmqbobr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jbmmzdxddo .gt_indent_2 {
+#avsjmqbobr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jbmmzdxddo .gt_indent_3 {
+#avsjmqbobr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jbmmzdxddo .gt_indent_4 {
+#avsjmqbobr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jbmmzdxddo .gt_indent_5 {
+#avsjmqbobr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jbmmzdxddo .katex-display {
+#avsjmqbobr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jbmmzdxddo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#avsjmqbobr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1798,16 +1800,33 @@ Predicted Win Loss
 <div class="fragment">
 <p><br></p>
 <ul>
-<li><p><strong>Accuracy</strong>: How often is the classifier correct? <span class="math inline">\((\text{TP} + \text{TN}) \ / \ {\text{total}}\)</span></p></li>
-<li><p><strong>Precision</strong>: How often is it right for predicted positives? <span class="math inline">\(\text{TP} \ / \  (\text{TP} + \text{FP})\)</span></p></li>
-<li><p><strong>Sensitivity</strong> (aka <em>true positive rate (TPR)</em> or <em>power</em>): How often does it detect positives? <span class="math inline">\(\text{TP} \ / \  (\text{TP} + \text{FN})\)</span></p></li>
-<li><p><strong>Specificity</strong> (aka <em>true negative rate (TNR)</em>, or <em>1 - false positive rate (FPR)</em>): How often does it detect negatives? <span class="math inline">\(\text{TN}  \ / \ (\text{TN} + \text{FP})\)</span></p></li>
+<li><strong>Accuracy</strong>: How often is the classifier correct? <span class="math inline">\((\text{TP} + \text{TN}) \ / \ {\text{total}}\)</span></li>
 </ul>
 </div>
-</section>
+<div class="fragment">
+<ul>
+<li><strong>Precision</strong>: How often is it right for predicted positives? <span class="math inline">\(\text{TP} \ / \  (\text{TP} + \text{FP})\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Sensitivity</strong> (aka <em>true positive rate (TPR)</em> or <em>power</em>): How often does it detect positives? <span class="math inline">\(\text{TP} \ / \  (\text{TP} + \text{FN})\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Specificity</strong> (aka <em>true negative rate (TNR)</em>, or <em>1 - false positive rate (FPR)</em>): How often does it detect negatives? <span class="math inline">\(\text{TN}  \ / \ (\text{TN} + \text{FP})\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+
+</div>
+<aside><div>
+<p>There are a ton of <a href="https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers">other metrics</a>…</p>
+</div></aside></section>
 <section id="receiver-operating-characteristic-roc-curve" class="slide level2">
 <h2>Receiver operating characteristic (ROC) curve</h2>
-<p><em>Question: How do we balance between high power and low false positive rate?</em></p>
+<p><strong>Question</strong>: How do we balance between high power and low false positive rate?</p>
 <div class="fragment">
 <ul>
 <li>In general, we can obtain predicted class for each observation by comparing the predicted probability to some cutoff <span class="math inline">\(c\)</span> (typically, <span class="math inline">\(c=0.5\)</span>) <span class="math display">\[\hat{Y} =\left\{\begin{array}{ll} 1, &amp; \hat{p}(x)&gt;c \\ 0, &amp; \hat{p}(x) \leq c \end{array}\right.\]</span></li>
@@ -1820,7 +1839,7 @@ Predicted Win Loss
 </div>
 <div class="fragment">
 <p><br></p>
-<p><em>Use optimal <span class="math inline">\(c\)</span> as cut-off on held-out/unseen test data (basically: treat <span class="math inline">\(c\)</span> as a tuning parameter)</em></p>
+<p>We use the optimal <span class="math inline">\(c\)</span> as the class cut-off for held-out/unseen test data (<em>basically, treat the cut-off <span class="math inline">\(c\)</span> as a tuning parameter</em>)</p>
 </div>
 </section>
 <section id="receiver-operating-characteristic-roc-curve-1" class="slide level2">
@@ -1868,27 +1887,25 @@ Predicted Win Loss
 <section id="calibration" class="slide level2">
 <h2>Calibration</h2>
 <ul>
-<li>Classification models go beyond providing binary predictions and instead produce predicted probabilities for each class</li>
+<li>Classification models go beyond providing binary predictions and instead <strong>produce predicted probabilities for each class</strong></li>
 </ul>
 <div class="fragment">
 <ul>
-<li>It might be desirable to assess the quality of the predicted probabilities instead of just the accuracy of the crude predicted class labels</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li><p>For a model to be calibrated, the predicted probabilities should match the actual probabilities (actual likelihood of an event occurring)</p>
-<ul>
-<li><em>Example</em>: if we’ve got a model which tells us that the probability of rain on a certain class of days is 50%, it better rain on half of those days in reality, or the model is wrong about the probability of rain</li>
-</ul></li>
+<li>It might be desirable to assess the <strong>quality of the predicted probabilities</strong> instead of just the accuracy of the crude predicted class labels</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><p>Calibration should be used together with other model evaluation and diagnostic tools</p>
+<li><p><strong>A model is well-calibrated</strong> if the predicted probabilities match the actual probabilities (actual likelihood of an event occurring)</p>
 <ul>
-<li>A model can well-calibrated but bad at making predictions (<em>example: a constant classifier</em>)</li>
+<li><em>Example of an uncalibrated model</em>: if we’ve got a model which tells us that the probability of rain on a certain class of days is 50%, it better rain on half of those days in reality, or the model is wrong about the probability of rain</li>
 </ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p><em>Note</em>: calibration should be used together with other model evaluation and diagnostic tools</p>
+<ul>
+<li>A model can well-calibrated but bad at making predictions (<em>example: a classifier that always predicts the base rate</em>)</li>
 </ul>
 </div>
 </section>
@@ -1904,8 +1921,9 @@ Predicted Win Loss
 <span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(pred, obs)) <span class="sc">+</span></span>
 <span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb24-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb24-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>,</span>
+<span id="cb24-8"><a aria-hidden="true" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb24-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p>Looks good for the most part:</p>
@@ -1969,6 +1987,10 @@ Predicted Win Loss
 <li><p><a href="https://www.tidyverse.org/blog/2022/11/model-calibration/"><code>probably</code></a> package in R</p></li>
 <li><p>Formally, a classifier is calibrated (or well-calibrated) when <span class="math inline">\(P(Y = 1 \mid\hat p(X) = p) = p\)</span></p></li>
 </ul>
+</section>
+<section id="comparing-methods" class="slide level2">
+<h2>Comparing methods</h2>
+<p>What do you think are the pros or cons of logistic regression compared to LDA? When might you use each method?</p>
 
 
 </section></section>
