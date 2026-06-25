@@ -42,29 +42,38 @@ knitr::opts_chunk$set(
 
 ## Generalized linear models (GLMs)
 
-Three components of a GLM
+Two components of a GLM
+
+**1. Systematic component**: The systematic part describes the relationship between the mean of $Y$ and some linear combination of the predictors
+
 
 . . .
 
-**1. Random component (distribution of the response)**
+**2. Random component (distribution of the response)**: The random part describes the distribution of $Y$ around that mean
 
-*   Identifies the response variable and assumes a probability distribution for it
+
+## Link function
+
+The systematic part of the GLM describes the relationship between the mean of $Y$ and some function of $\beta_0 + \beta_1 X_1 + \dots + \beta_p X_p$.
+
+Specifically, the systematic part is of the form
+
+$$g(\mathbb{E}[Y \mid X = x]) = \beta_0 + \beta_1 X_1 + \dots + \beta_p X_p$$
+
+where $g$ is known as the link function.
 
 . . .
 
-**2. Linear predictor**
-
-*   Specifies the predictor variables
-  
-*   Linear combination of predictors on the right-hand side of the model equation
-  
-*   In the form $\beta_0 + \beta_1 X_1 + \dots + \beta_p X_p$
+- For instance, in logistic regression, $g$ was the logit function 
 
 . . .
 
-**3. Link function (a function of the parameter)**
+- The random part gives the distribution of $Y$ as an exponential family distribution
 
-* Connects a linear combination of predictor variables to the mean of the response variable's probability distribution
+. . .
+
+- If $Y$ is drawn from an exponential dispersion family distribution with natural parameter $\theta$, the *canonical link* for that distribution is the function such that $g(\mathbb{E}[Y|X=x]) = \theta$.
+
 
 ## Linear regression
 
