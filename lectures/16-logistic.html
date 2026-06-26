@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
 
   <meta name="author" content=" CMSACamp 2026 Department of Statistics &amp; Data Science Carnegie Mellon University">
   <title>CMSACamp 2026 – Supervised learning: logistic regression</title>
@@ -18,9 +18,6 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -99,7 +96,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4290b315e94676cf1dd7d5ac6c8d2ef2.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ec9165fd6a3bdb19c5c23b4bb2299f35.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -550,23 +547,23 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># tidy(cricket_logit, conf.int = TRUE, exponentiate = TRUE)</span></span>
 <span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_regression</span>(cricket_logit, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="tdfstvjujo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tdfstvjujo table {
+<div id="rhahkuvvwg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rhahkuvvwg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tdfstvjujo thead, #tdfstvjujo tbody, #tdfstvjujo tfoot, #tdfstvjujo tr, #tdfstvjujo td, #tdfstvjujo th {
+#rhahkuvvwg thead, #rhahkuvvwg tbody, #rhahkuvvwg tfoot, #rhahkuvvwg tr, #rhahkuvvwg td, #rhahkuvvwg th {
   border-style: none;
 }
 
-#tdfstvjujo p {
+#rhahkuvvwg p {
   margin: 0;
   padding: 0;
 }
 
-#tdfstvjujo .gt_table {
+#rhahkuvvwg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -592,12 +589,12 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-left-color: #D3D3D3;
 }
 
-#tdfstvjujo .gt_caption {
+#rhahkuvvwg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tdfstvjujo .gt_title {
+#rhahkuvvwg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -609,7 +606,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-bottom-width: 0;
 }
 
-#tdfstvjujo .gt_subtitle {
+#rhahkuvvwg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -621,7 +618,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-top-width: 0;
 }
 
-#tdfstvjujo .gt_heading {
+#rhahkuvvwg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -633,13 +630,13 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-right-color: #D3D3D3;
 }
 
-#tdfstvjujo .gt_bottom_border {
+#rhahkuvvwg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tdfstvjujo .gt_col_headings {
+#rhahkuvvwg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -654,7 +651,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-right-color: #D3D3D3;
 }
 
-#tdfstvjujo .gt_col_heading {
+#rhahkuvvwg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -674,7 +671,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   overflow-x: hidden;
 }
 
-#tdfstvjujo .gt_column_spanner_outer {
+#rhahkuvvwg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -686,15 +683,15 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 4px;
 }
 
-#tdfstvjujo .gt_column_spanner_outer:first-child {
+#rhahkuvvwg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tdfstvjujo .gt_column_spanner_outer:last-child {
+#rhahkuvvwg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tdfstvjujo .gt_column_spanner {
+#rhahkuvvwg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -706,11 +703,11 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   width: 100%;
 }
 
-#tdfstvjujo .gt_spanner_row {
+#rhahkuvvwg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tdfstvjujo .gt_group_heading {
+#rhahkuvvwg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -736,7 +733,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   text-align: left;
 }
 
-#tdfstvjujo .gt_empty_group_heading {
+#rhahkuvvwg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -751,15 +748,15 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   vertical-align: middle;
 }
 
-#tdfstvjujo .gt_from_md > :first-child {
+#rhahkuvvwg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tdfstvjujo .gt_from_md > :last-child {
+#rhahkuvvwg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tdfstvjujo .gt_row {
+#rhahkuvvwg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -778,7 +775,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   overflow-x: hidden;
 }
 
-#tdfstvjujo .gt_stub {
+#rhahkuvvwg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -791,7 +788,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 5px;
 }
 
-#tdfstvjujo .gt_stub_row_group {
+#rhahkuvvwg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -805,15 +802,15 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   vertical-align: top;
 }
 
-#tdfstvjujo .gt_row_group_first td {
+#rhahkuvvwg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tdfstvjujo .gt_row_group_first th {
+#rhahkuvvwg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tdfstvjujo .gt_summary_row {
+#rhahkuvvwg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -823,16 +820,16 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 5px;
 }
 
-#tdfstvjujo .gt_first_summary_row {
+#rhahkuvvwg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tdfstvjujo .gt_first_summary_row.thick {
+#rhahkuvvwg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tdfstvjujo .gt_last_summary_row {
+#rhahkuvvwg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -842,7 +839,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-bottom-color: #D3D3D3;
 }
 
-#tdfstvjujo .gt_grand_summary_row {
+#rhahkuvvwg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -852,7 +849,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 5px;
 }
 
-#tdfstvjujo .gt_first_grand_summary_row {
+#rhahkuvvwg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -862,7 +859,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-top-color: #D3D3D3;
 }
 
-#tdfstvjujo .gt_last_grand_summary_row_top {
+#rhahkuvvwg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -872,11 +869,11 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-bottom-color: #D3D3D3;
 }
 
-#tdfstvjujo .gt_striped {
+#rhahkuvvwg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tdfstvjujo .gt_table_body {
+#rhahkuvvwg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -885,7 +882,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-bottom-color: #D3D3D3;
 }
 
-#tdfstvjujo .gt_footnotes {
+#rhahkuvvwg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -899,7 +896,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-right-color: #D3D3D3;
 }
 
-#tdfstvjujo .gt_footnote {
+#rhahkuvvwg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -908,7 +905,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 5px;
 }
 
-#tdfstvjujo .gt_sourcenotes {
+#rhahkuvvwg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -922,7 +919,7 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   border-right-color: #D3D3D3;
 }
 
-#tdfstvjujo .gt_sourcenote {
+#rhahkuvvwg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -930,72 +927,72 @@ p(x) = \displaystyle \text{probability} = \frac{\text{odds}}{1 + \text{odds}}
   padding-right: 5px;
 }
 
-#tdfstvjujo .gt_left {
+#rhahkuvvwg .gt_left {
   text-align: left;
 }
 
-#tdfstvjujo .gt_center {
+#rhahkuvvwg .gt_center {
   text-align: center;
 }
 
-#tdfstvjujo .gt_right {
+#rhahkuvvwg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tdfstvjujo .gt_font_normal {
+#rhahkuvvwg .gt_font_normal {
   font-weight: normal;
 }
 
-#tdfstvjujo .gt_font_bold {
+#rhahkuvvwg .gt_font_bold {
   font-weight: bold;
 }
 
-#tdfstvjujo .gt_font_italic {
+#rhahkuvvwg .gt_font_italic {
   font-style: italic;
 }
 
-#tdfstvjujo .gt_super {
+#rhahkuvvwg .gt_super {
   font-size: 65%;
 }
 
-#tdfstvjujo .gt_footnote_marks {
+#rhahkuvvwg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tdfstvjujo .gt_asterisk {
+#rhahkuvvwg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tdfstvjujo .gt_indent_1 {
+#rhahkuvvwg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tdfstvjujo .gt_indent_2 {
+#rhahkuvvwg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tdfstvjujo .gt_indent_3 {
+#rhahkuvvwg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tdfstvjujo .gt_indent_4 {
+#rhahkuvvwg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tdfstvjujo .gt_indent_5 {
+#rhahkuvvwg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tdfstvjujo .katex-display {
+#rhahkuvvwg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tdfstvjujo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rhahkuvvwg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1315,23 +1312,23 @@ Predicted Win Loss
 <h2>Confusion matrix</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="urnnokewrb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#urnnokewrb table {
+<div id="avsjmqbobr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#avsjmqbobr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#urnnokewrb thead, #urnnokewrb tbody, #urnnokewrb tfoot, #urnnokewrb tr, #urnnokewrb td, #urnnokewrb th {
+#avsjmqbobr thead, #avsjmqbobr tbody, #avsjmqbobr tfoot, #avsjmqbobr tr, #avsjmqbobr td, #avsjmqbobr th {
   border-style: none;
 }
 
-#urnnokewrb p {
+#avsjmqbobr p {
   margin: 0;
   padding: 0;
 }
 
-#urnnokewrb .gt_table {
+#avsjmqbobr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1357,12 +1354,12 @@ Predicted Win Loss
   border-left-color: #D3D3D3;
 }
 
-#urnnokewrb .gt_caption {
+#avsjmqbobr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#urnnokewrb .gt_title {
+#avsjmqbobr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1374,7 +1371,7 @@ Predicted Win Loss
   border-bottom-width: 0;
 }
 
-#urnnokewrb .gt_subtitle {
+#avsjmqbobr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1386,7 +1383,7 @@ Predicted Win Loss
   border-top-width: 0;
 }
 
-#urnnokewrb .gt_heading {
+#avsjmqbobr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1398,13 +1395,13 @@ Predicted Win Loss
   border-right-color: #D3D3D3;
 }
 
-#urnnokewrb .gt_bottom_border {
+#avsjmqbobr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#urnnokewrb .gt_col_headings {
+#avsjmqbobr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1419,7 +1416,7 @@ Predicted Win Loss
   border-right-color: #D3D3D3;
 }
 
-#urnnokewrb .gt_col_heading {
+#avsjmqbobr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1439,7 +1436,7 @@ Predicted Win Loss
   overflow-x: hidden;
 }
 
-#urnnokewrb .gt_column_spanner_outer {
+#avsjmqbobr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1451,15 +1448,15 @@ Predicted Win Loss
   padding-right: 4px;
 }
 
-#urnnokewrb .gt_column_spanner_outer:first-child {
+#avsjmqbobr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#urnnokewrb .gt_column_spanner_outer:last-child {
+#avsjmqbobr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#urnnokewrb .gt_column_spanner {
+#avsjmqbobr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1471,11 +1468,11 @@ Predicted Win Loss
   width: 100%;
 }
 
-#urnnokewrb .gt_spanner_row {
+#avsjmqbobr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#urnnokewrb .gt_group_heading {
+#avsjmqbobr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1501,7 +1498,7 @@ Predicted Win Loss
   text-align: left;
 }
 
-#urnnokewrb .gt_empty_group_heading {
+#avsjmqbobr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1516,15 +1513,15 @@ Predicted Win Loss
   vertical-align: middle;
 }
 
-#urnnokewrb .gt_from_md > :first-child {
+#avsjmqbobr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#urnnokewrb .gt_from_md > :last-child {
+#avsjmqbobr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#urnnokewrb .gt_row {
+#avsjmqbobr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1543,7 +1540,7 @@ Predicted Win Loss
   overflow-x: hidden;
 }
 
-#urnnokewrb .gt_stub {
+#avsjmqbobr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1556,7 +1553,7 @@ Predicted Win Loss
   padding-right: 5px;
 }
 
-#urnnokewrb .gt_stub_row_group {
+#avsjmqbobr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1570,15 +1567,15 @@ Predicted Win Loss
   vertical-align: top;
 }
 
-#urnnokewrb .gt_row_group_first td {
+#avsjmqbobr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#urnnokewrb .gt_row_group_first th {
+#avsjmqbobr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#urnnokewrb .gt_summary_row {
+#avsjmqbobr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1588,16 +1585,16 @@ Predicted Win Loss
   padding-right: 5px;
 }
 
-#urnnokewrb .gt_first_summary_row {
+#avsjmqbobr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#urnnokewrb .gt_first_summary_row.thick {
+#avsjmqbobr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#urnnokewrb .gt_last_summary_row {
+#avsjmqbobr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1607,7 +1604,7 @@ Predicted Win Loss
   border-bottom-color: #D3D3D3;
 }
 
-#urnnokewrb .gt_grand_summary_row {
+#avsjmqbobr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1617,7 +1614,7 @@ Predicted Win Loss
   padding-right: 5px;
 }
 
-#urnnokewrb .gt_first_grand_summary_row {
+#avsjmqbobr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1627,7 +1624,7 @@ Predicted Win Loss
   border-top-color: #D3D3D3;
 }
 
-#urnnokewrb .gt_last_grand_summary_row_top {
+#avsjmqbobr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1637,11 +1634,11 @@ Predicted Win Loss
   border-bottom-color: #D3D3D3;
 }
 
-#urnnokewrb .gt_striped {
+#avsjmqbobr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#urnnokewrb .gt_table_body {
+#avsjmqbobr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1650,7 +1647,7 @@ Predicted Win Loss
   border-bottom-color: #D3D3D3;
 }
 
-#urnnokewrb .gt_footnotes {
+#avsjmqbobr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1664,7 +1661,7 @@ Predicted Win Loss
   border-right-color: #D3D3D3;
 }
 
-#urnnokewrb .gt_footnote {
+#avsjmqbobr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1673,7 +1670,7 @@ Predicted Win Loss
   padding-right: 5px;
 }
 
-#urnnokewrb .gt_sourcenotes {
+#avsjmqbobr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1687,7 +1684,7 @@ Predicted Win Loss
   border-right-color: #D3D3D3;
 }
 
-#urnnokewrb .gt_sourcenote {
+#avsjmqbobr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1695,72 +1692,72 @@ Predicted Win Loss
   padding-right: 5px;
 }
 
-#urnnokewrb .gt_left {
+#avsjmqbobr .gt_left {
   text-align: left;
 }
 
-#urnnokewrb .gt_center {
+#avsjmqbobr .gt_center {
   text-align: center;
 }
 
-#urnnokewrb .gt_right {
+#avsjmqbobr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#urnnokewrb .gt_font_normal {
+#avsjmqbobr .gt_font_normal {
   font-weight: normal;
 }
 
-#urnnokewrb .gt_font_bold {
+#avsjmqbobr .gt_font_bold {
   font-weight: bold;
 }
 
-#urnnokewrb .gt_font_italic {
+#avsjmqbobr .gt_font_italic {
   font-style: italic;
 }
 
-#urnnokewrb .gt_super {
+#avsjmqbobr .gt_super {
   font-size: 65%;
 }
 
-#urnnokewrb .gt_footnote_marks {
+#avsjmqbobr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#urnnokewrb .gt_asterisk {
+#avsjmqbobr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#urnnokewrb .gt_indent_1 {
+#avsjmqbobr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#urnnokewrb .gt_indent_2 {
+#avsjmqbobr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#urnnokewrb .gt_indent_3 {
+#avsjmqbobr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#urnnokewrb .gt_indent_4 {
+#avsjmqbobr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#urnnokewrb .gt_indent_5 {
+#avsjmqbobr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#urnnokewrb .katex-display {
+#avsjmqbobr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#urnnokewrb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#avsjmqbobr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
