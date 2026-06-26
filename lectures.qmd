@@ -28,8 +28,8 @@ Updated daily before lecture.
 | Lecture 15 | June 23 | Supervised learning: linear discriminant analysis                | [slides](lectures/15-lda.qmd)       |
 | Lecture 16 | June 24 | Supervised learning: logistic regression                | [slides](lectures/16-logistic.qmd)       |
 | Lecture 17 | June 25 | Supervised learning: generalized linear models            | [slides](lectures/17-glm.qmd)            |
+| Lecture 18 | June 26 | Supervised learning: nonparametric regression                                | [slides](lectures/18-nonparametric.qmd)        |
 <!--
-| Lecture 17 | June 27 | The command line and `git`                                | [slides](lectures/17-cli-git.qmd)        |
 | Lecture 18 | June 30 | Unsupervised learning: Gaussian mixture models            | [slides](lectures/18-mixture.qmd)        |
 | Lecture 19 | July 1  | Supervised learning: nonparametric regression             | [slides](lectures/19-nonparametric.qmd)  |
 | Lecture 20 | July 7  | Supervised learning: decision trees                       | [slides](lectures/20-trees.qmd)          |
