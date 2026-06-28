@@ -68,3 +68,5 @@ rsconnect/
 
 **/*.quarto_ipynb
 
+/_freeze/
+

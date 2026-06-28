@@ -1,0 +1,524 @@
+---
+title: "Supervised Learning: Decision Trees"
+author: "<br>CMSACamp 2026<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+footer:  "[36-SURE.github.io/2026](https://36-sure.github.io/2026)"
+format:
+  revealjs:
+    theme: theme.scss
+    chalkboard: true
+    smaller: true
+    slide-number: c/t
+    code-line-numbers: false
+    linestretch: 1.25
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  fig.height = 9
+)
+library(tidyverse)
+ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
+```
+
+# Background
+
+## Tree-based methods
+
+* Can be applied to both regression and classification problems
+
+. . .
+
+* A single decision tree is simple and useful for interpretation
+
+    *   Main idea: partition/segment the predictor space into a number of simple regions
+  
+    *   The set of splitting rules used to partition the predictor space can be summarized in a tree
+    
+. . .
+
+* But decision trees generally do not have the same level of predictive performance as other methods
+
+. . .
+
+* Bagging, random forests, and boosting: grow multiple trees which are then combined to yield a single consensus prediction
+
+. . .
+
+* Combining a large number of trees can result in great improvements in prediction accuracy, at the expense of some loss interpretation
+
+## Regression trees: How do we partition?
+
+Toy example: home features to predict sale price
+
+```{r, echo=F}
+library(tidyverse)
+library(ISLR)
+library(tidymodels)
+ames <- readr::read_csv("../data/ames-housing.csv")
+
+ames |>
+  ggplot(aes(x = Year.Built, y =Total.Bsmt.SF , color = SalePrice)) +
+  geom_point(size = 2) + 
+  scale_color_gradient2(low = "darkblue", high = "darkgreen", midpoint = 160000, 
+                        labels = scales::label_comma())+
+  labs(x="Year Built", y= "Basement size (sq ft)", fill = "Sale Price")
+```
+
+## Regression trees
+
+Fit a **regression tree** to predict the home sale price 
+
+* Year home is built
+
+* Total basement area (sq ft)
+
+```{r, echo = FALSE, fig.height = 4}
+dt_model <- decision_tree(tree_depth = 2, mode = "regression") |>
+  set_engine("rpart") |> 
+  fit(SalePrice ~ Year.Built + Total.Bsmt.SF, data = ames)
+rpart.plot::rpart.plot(dt_model$fit, roundint = F)
+```
+
+## Regression trees
+
+* At each **node** the label (e.g., $X_j < t_k$ ) indicates that the _left_ branch that comes from that split. The _right_ branch is the opposite, e.g. $X_j \geq t_k$.
+
+* The first **internal node** indicates that homes to the left have basements smaller than 1,104 square feet, on the right have basements at least 1,104 square feet.
+
+* The number on the _top_ of the **nodes** indicates the predicted selling price, for example before doing _any_ splitting, the average home sale price for the whole dataset is \$181,000.
+
+* This tree has **two internal nodes** and **four termninal nodes**
+
+* This is probably an oversimplification, but it is very easy to interpret
+
+## Regression trees: partitioning the feature space
+
+```{r, echo = FALSE}
+ames |>
+  mutate(color = case_when(
+    Year.Built < 1986 & Total.Bsmt.SF < 1104 ~ 1,
+    Year.Built < 1986 & Total.Bsmt.SF >= 1104 ~ 2,
+    Year.Built >= 1986 & Total.Bsmt.SF < 1687 ~ 3,
+    TRUE ~ 4
+  )) |>
+  ggplot(aes(x = Year.Built, y = Total.Bsmt.SF, color = factor(color))) +
+  geom_point(alpha=0.8) + 
+  theme(legend.position = "none") +
+  geom_vline(xintercept = 1986) + 
+  annotate("segment", x = 1986, xend = -Inf, y = 1104, yend = 1104, color = "black") +
+  annotate("segment", x = 1986, xend = Inf, y = 1687, yend = 1687, color = "black") +
+  geom_text(label = "(1)", aes(x = 1940, y = 400), color = "red", size = 10) +
+  geom_text(label = "(2)", aes(x = 1940, y = 2000), color = "red", size = 10) +
+  geom_text(label = "(3)", aes(x = 2000, y = 1000), color = "red", size = 10) +
+  geom_text(label = "(4)", aes(x = 2000, y = 3000), color = "red", size = 10) +
+  ggthemes::scale_color_colorblind()
+```
+
+## Regression trees: partitioning the feature space
+
+```{r, echo = FALSE}
+ames |>
+  mutate(color = case_when(
+    Year.Built < 1986 & Total.Bsmt.SF < 1104 ~ 1,
+    Year.Built < 1986 & Total.Bsmt.SF >= 1104 ~ 2,
+    Year.Built >= 1986 & Total.Bsmt.SF < 1687 ~ 3,
+    TRUE ~ 4
+  )) |>
+  ggplot(aes(x = Year.Built, y = Total.Bsmt.SF, color = SalePrice)) +
+  geom_point(alpha=0.8) + 
+  theme(legend.position = "none") +
+  geom_vline(xintercept = 1986) + 
+  annotate("segment", x = 1986, xend = -Inf, y = 1104, yend = 1104, color = "black") +
+  annotate("segment", x = 1986, xend = Inf, y = 1687, yend = 1687, color = "black") +
+  geom_text(label = "(1)", aes(x = 1940, y = 400), color = "red", size = 10) +
+  geom_text(label = "(2)", aes(x = 1940, y = 2000), color = "red", size = 10) +
+  geom_text(label = "(3)", aes(x = 2000, y = 1000), color = "red", size = 10) +
+  geom_text(label = "(4)", aes(x = 2000, y = 3000), color = "red", size = 10) + 
+   scale_color_gradient2(low = "darkblue", high = "darkgreen", midpoint = 160000, 
+                        labels = scales::label_comma())
+```
+
+## Terminology
+
+* The final regions (1), (2), (3), and (4) are called **terminal nodes**
+
+* View the trees from _upside down_, the **leaves** are at the bottom
+
+* The splits are called **internal nodes**
+
+## Decision tree: a more complex example
+
+```{r, echo = FALSE, fig.height = 4}
+dt_model <- decision_tree(tree_depth = 3, mode = "regression") |>
+  set_engine("rpart") |> 
+  fit(SalePrice ~ Year.Built + Total.Bsmt.SF, data = ames)
+rpart.plot::rpart.plot(dt_model$fit, roundint = FALSE)
+```
+
+## Decision tree structure
+
+```{r out.width='100%', echo = FALSE, fig.align='center'}
+knitr::include_graphics("https://bradleyboehmke.github.io/HOML/images/decision-tree-terminology.png")
+```
+
+## Decision tree structure
+
+Predict the response value for an observation by __following its path along the tree__
+
+(See previous home sale price example)
+
+. . .
+
+- Decision trees are __very easy to explain__ to non-statisticians.
+
+- Easy to visualize and thus easy to interpret __without assuming a parametric form__
+
+
+## Tree-building process: the big picture
+
+*   Divide the predictor space (training data) into distinct and non-overlapping regions
+
+    *   The regions are found __recursively using recursive binary splitting__  (i.e. asking a series of yes/no questions about the predictors)
+
+    *   Stop splitting the tree once a __stopping criteria__ has been reached (e.g. maximum depth allowed)
+
+. . .
+
+*   For a given region, make the same prediction for all observations in that region
+
+    *   Regression tree: __the average of the response values__ in the node
+
+    *   Classification tree: __the most popular class__ in the node
+    
+*   Makes no assumptions about distribution of the data
+
+. . .
+
+* Most popular algorithm: Classification and Regression Tree (CART)
+
+## Tree-building process: more details
+
+*   Divide the predictor space into high-dimensional rectangles (or boxes) - for simplicity and ease of interpretation
+
+. . .
+
+*   Goal: find regions $R_1, \dots, R_J$ that minimize the RSS
+
+$$
+\sum_{j=1}^J \sum_{i \in R_j} (y_i - \hat y_{R_j})^2
+$$
+
+
+where $\hat y_{R_j}$ is the mean response for the training observations within the $j$th region (at the terminal node)
+
+. . .
+
+* So observations within each region are similar (basically having the same predicted response), and observations across regions are different
+
+. . .
+
+*   Challenge: it is computationally infeasible to consider every possible partition of the feature space into $J$ regions
+
+## Tree-building process: more details
+
+Solution: recursive binary splitting (a top-down, greedy approach)
+
+. . .
+
+*   top-down 
+
+    *   begin at the top of
+the tree
+
+    *   then successively split the predictor space
+    
+    *   each split is indicated via two new branches further down
+on the tree
+
+. . .
+
+*   greedy
+
+    *   at each step of the tree-building process, the best split is made at that particular step
+    
+    *   rather than looking ahead and picking a split that will lead to a better tree in some future step
+    
+## Tree-building process: more details
+
+*   First, select predictor $X_j$ and cutpoint $s$ such that
+
+    *   splitting the predictor space into the regions $\{X \mid X_j < s\}$ and $\{X \mid X_j \ge s\}$ will yield the greatest possible reduction in RSS
+    
+. . .
+
+*   Next, repeat the process
+
+    *   looking for the best predictor and best cutpoint in order to split the data further
+    
+    *   so as to minimize the RSS within each of the resulting regions
+    
+    *   BUT...split one of the two previously identified region (instead of the entire predictor space)
+    
+. . .    
+    
+*   Continue the process until a stopping criterion is reached (i.e. how complex should the tree be?)
+
+    *   maximum tree depth
+    
+    *   minimum node size
+    
+## Pruning a tree
+
+*   The process described above may produce good training performance but poor test set performance (i.e. overfitting)
+
+*   A smaller tree with fewer splits (i.e. fewer regions $R_1, \dots, R_J$): low variance, high bias
+
+*   A larger tree with more splits: high variance, low bias
+
+. . .
+
+*   Solution: tree pruning
+
+    *   Grow a very large complicated tree
+    
+    *   Then prune back to an optimal subtree
+    
+. . .    
+    
+*   Tuning parameter: cost complexity parameter $\alpha$
+
+    *   Minimize $$\text{RSS} + \alpha \vert T \vert$$ where $\vert T \vert$ is the number of terminal nodes of the tree $T$
+    
+    *   Controls a trade-off between the subtree’s complexity and its fit to the training data
+    
+    *   How do we select the optimal value?
+    
+## Summary: regression tree algorithm
+
+1. Use recursive binary splitting to grow a large tree on the training data, stopping only when each terminal node has fewer than some minimum number of observations
+
+. . .
+
+2. Apply cost complexity pruning to the large tree in order to obtain a sequence of best subtrees, as a function of $\alpha$
+
+. . .
+
+3. Use $K$-fold cross-validation to choose $\alpha$
+
+. . .
+
+4. Return the subtree from Step 2 that corresponds to the optimal chosen value of $\alpha$
+
+## Classification trees
+
+*   What if the response is categorical?
+
+. . .
+
+*   Predict that each observation belongs to the most commonly occurring class in the region to which it belongs
+
+. . .
+
+*   Just like regression trees, use recursive binary splitting to grow a classification tree
+
+. . .
+
+*   But we need a different criterion for making the binary splits other than RSS
+
+## Classification trees
+
+*   Instead of RSS, use the Gini index $$G = \sum_{k=1}^K \hat p_{jk} (1 - \hat p_{jk})$$ where $\hat p_{jk}$ is proportion of observations in the $j$th region that are from the $k$th class
+
+. . .
+
+*   A measure of total variance across the $K$ classes
+
+. . .
+    
+*   A measure of node purity (or node impurity)
+    
+    *  small value: a node contains mostly observations from a single class
+    
+. . .
+
+* Alternative measure: cross-entropy 
+
+$$G = - \sum_{k=1}^K \hat p_{jk} \log\hat p_{jk} $$
+
+# Examples
+
+## Predicting NHL Goal Probability
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+nhl_goals <- read_csv("https://raw.githubusercontent.com/36-SURE/2026/main/data/nhl-shots-2021.csv") 
+
+nhl_goals <- nhl_goals|> 
+  mutate(is_goal = as.factor(case_when(shot_outcome == "GOAL" ~ 1, 
+                                       TRUE ~ 0))) |>
+  dplyr::select(period, strength_code, shot_distance, shot_angle, is_goal) |>
+  filter(!is.na(shot_distance), !is.na(shot_angle), !is.na(strength_code))
+
+glimpse(nhl_goals)
+```
+
+```{r}
+#| echo: false
+ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
+```
+
+## Model training with `caret`
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+```{r, message=F, warning=F, tree-comp, eval = FALSE, echo=T}
+library(caret)
+set.seed(10)
+goal_tree <- train(is_goal ~ ., method = "rpart", tuneLength = 20,
+                 trControl = trainControl(method = "cv", number = 10),
+                 data = nhl_goals)
+# str(goal_tree)
+ggplot(goal_tree)
+```
+
+- `method = rpart`: short for recursive partitioning (greedy process that we have discussed)
+- `tuneLength = 20`: try 20 different values of the complexity parameter and determine which performs best
+  - larger complexity produces a smaller, simpler tree
+  
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r, ref.label = 'tree-comp', echo = FALSE}
+
+```
+
+:::
+
+:::
+
+## Display the final tree model with [`rpart.plot`](http://www.milbo.org/doc/prp.pdf)
+
+```{r, fig.height = 3, fig.width=6}
+library(rpart.plot)
+goal_tree |> 
+  pluck("finalModel") |> 
+  rpart.plot()
+```
+
+## Variable importance
+
+* Recall that in a binary decision tree, at each node, a single predictor is used to partition the data into two homogeneous groups. 
+
+* The chosen predictor is the one that maximizes some measure of improvement (e.g. RSS, Gini index)
+
+* The relative importance of predictor $X^*$ is the sum of the squared improvements over all internal nodes of the tree for which $X$ was chosen as the partitioning variable
+
+## Variable importance with `vip`
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+```{r}
+#| eval: false
+library(vip)
+goal_tree |> 
+  vip()
+```
+
+:::
+
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r}
+#| echo: false
+#| fig-height: 9
+library(vip)
+goal_tree |> 
+  vip()
+```
+
+:::
+
+:::
+
+
+## Bonus: treemaps for visualizing categorical data
+
+* Note: this has nothing to do with the lecture content
+
+* But is a cool way to visualize categorical data, as an alternative to mosaic plots
+
+* Treemaps do not require the same categorical levels across subgroups
+
+::: columns
+::: {.column width="50%" style="text-align: left;"}
+
+
+```{r}
+#| eval: false
+library(treemapify)
+penguins |>
+  count(species, island) |>
+  ggplot(aes(area = n, subgroup = island, label = species,
+             fill = interaction(species, island))) +
+  # draw species borders and fill colors
+  geom_treemap() +
+  # draw island borders
+  geom_treemap_subgroup_border() +
+  # print island text
+  geom_treemap_subgroup_text(
+    place = "center", grow = TRUE, alpha = 0.5, 
+    color = "black", fontface = "italic", min.size = 0
+  )+
+  # print species text
+  geom_treemap_text(color = "white", place = "topleft", 
+                    reflow = TRUE) +
+  guides(color = "none", fill = "none")
+```
+
+
+:::
+
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r}
+#| echo: false
+#| fig-height: 8
+library(treemapify)
+penguins |>
+  count(species, island) |>
+  ggplot(aes(area = n, subgroup = island, label = species,
+             fill = interaction(species, island))) +
+  # draw species borders and fill colors
+  geom_treemap() +
+  # draw island borders
+  geom_treemap_subgroup_border() +
+  # print island text
+  geom_treemap_subgroup_text(
+    place = "center", grow = TRUE, alpha = 0.5, 
+    color = "black", fontface = "italic", min.size = 0
+  ) +
+  # print species text
+  geom_treemap_text(color = "white", place = "topleft", 
+                    reflow = TRUE) +
+  guides(color = "none", fill = "none")
+```
+
+:::
+
+:::
+
