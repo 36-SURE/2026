@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content=" CMSACamp 2026 Department of Statistics &amp; Data Science Carnegie Mellon University">
   <title>CMSACamp 2026 – Supervised learning: Model assessment vs selection</title>
@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -96,7 +99,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ec9165fd6a3bdb19c5c23b4bb2299f35.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4290b315e94676cf1dd7d5ac6c8d2ef2.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -555,15 +558,15 @@ Y = f(X) + \epsilon
 <section id="an-example-true-model" class="slide level2">
 <h2>An example <strong>true</strong> model</h2>
 
-<img data-src="10-tradeoffs_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
+<img data-src="10-tradeoffs_files/figure-html/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="576"></section>
 <section id="the-repeated-experiments" class="slide level2">
 <h2>The repeated experiments…</h2>
 
-<img data-src="10-tradeoffs_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1152"></section>
+<img data-src="10-tradeoffs_files/figure-html/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1152"></section>
 <section id="the-linear-regression-fits" class="slide level2">
 <h2>The linear regression fits</h2>
 
-<img data-src="10-tradeoffs_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1152"><p>Look at the plots. For any given value of <span class="math inline">\(x\)</span>:</p>
+<img data-src="10-tradeoffs_files/figure-html/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1152"><p>Look at the plots. For any given value of <span class="math inline">\(x\)</span>:</p>
 <ul>
 <li>The <em>average</em> estimated <span class="math inline">\(y\)</span> value is offset from the truth (<strong>high bias</strong>)</li>
 <li>The dispersion (variance) in the estimated <span class="math inline">\(y\)</span> values across experiments is relatively small (<strong>low variance</strong>)</li>
@@ -572,7 +575,7 @@ Y = f(X) + \epsilon
 <section id="the-spline-fits" class="slide level2">
 <h2>The spline fits</h2>
 
-<img data-src="10-tradeoffs_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1152"><p>Look at the plots. For any given value of <span class="math inline">\(x\)</span>:</p>
+<img data-src="10-tradeoffs_files/figure-html/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1152"><p>Look at the plots. For any given value of <span class="math inline">\(x\)</span>:</p>
 <div class="fragment">
 <ul>
 <li>The <em>average</em> estimated <span class="math inline">\(y\)</span> value approximately matches the truth (<strong>low bias</strong>)</li>
@@ -919,44 +922,6 @@ mse
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -1027,7 +992,7 @@ mse
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/36-SURE\.github\.io\/2026\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
