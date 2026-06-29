@@ -29,10 +29,10 @@ Updated daily before lecture.
 | Lecture 16 | June 24 | Supervised learning: logistic regression                | [slides](lectures/16-logistic.qmd)       |
 | Lecture 17 | June 25 | Supervised learning: generalized linear models            | [slides](lectures/17-glm.qmd)            |
 | Lecture 18 | June 26 | Supervised learning: nonparametric regression                                | [slides](lectures/18-nonparametric.qmd)        |
+| Lecture 19 | June 29  | Supervised learning: decision trees                       | [slides](lectures/19-trees.qmd)          |
 <!--
 | Lecture 18 | June 30 | Unsupervised learning: Gaussian mixture models            | [slides](lectures/18-mixture.qmd)        |
 | Lecture 19 | July 1  | Supervised learning: nonparametric regression             | [slides](lectures/19-nonparametric.qmd)  |
-| Lecture 20 | July 7  | Supervised learning: decision trees                       | [slides](lectures/20-trees.qmd)          |
 | Lecture 21 | July 8  | Supervised learning: bagging and boosting                 | [slides](lectures/21-ensemble.qmd)       |
 | Lecture 22 | July 9  | Building a website with Quarto                            | [slides](lectures/22-website.qmd)        | -->
 
