@@ -217,7 +217,7 @@
 <ul>
 <li><p>Psychology: depression, negative emotion, stress, extraversion</p></li>
 <li><p>Economics: quality of life, socioeconomic status</p></li>
-<li><p>Sports: offensive ability, executive function</p></li>
+<li><p>Sports: offensive ability, overall athletic ability</p></li>
 <li><p>Education: mathematical knowledge, intelligence</p></li>
 </ul></li>
 </ul>
@@ -275,75 +275,103 @@
 <section id="overview-of-factor-analysis" class="slide level2">
 <h2>Overview of Factor Analysis</h2>
 <p><strong>Dimension reduction</strong>: used to simplify the data structure by identifying a smaller number of underlying factors from the items</p>
+<div class="fragment">
 <ul>
-<li><p>In the previous example, it is commonly accepted the 10 items load onto <u>one</u> factor measuring perceived stress.</p></li>
-<li><p>Multiple factors may be needed: for example, personality is often measured by 5 factors (conscientiousness, agreebleness, extraversion, neuroticism, openness)</p></li>
+<li>In the previous example, it is commonly accepted the 10 items load onto <u>one</u> factor measuring perceived stress.</li>
 </ul>
-
-<img data-src="https://devopedia.org/images/article/141/5228.1549391440.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
+</div>
+<div class="fragment">
+<ul>
+<li>Multiple factors may be needed: for example, personality is often measured by 5 factors (conscientiousness, agreebleness, extraversion, neuroticism, openness)</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://devopedia.org/images/article/141/5228.1549391440.jpg" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
 <section id="overview-of-factor-analysis-1" class="slide level2">
 <h2>Overview of Factor Analysis</h2>
 <ul>
-<li><p>In creating the factors, factor analysis helps to identify items for improvement or removal because they are:</p>
+<li class="fragment"><p>In creating the factors, factor analysis helps to identify items for improvement or removal because they are:</p>
 <ul>
-<li><p>redundant (measuring the same thing as another item)</p></li>
-<li><p>irrelevant (poorly correlated with the intended underlying constructs, causing low <strong>factor loadings</strong>)</p></li>
-<li><p>ambiguous (cross-loading significantly on multiple factors)</p></li>
+<li class="fragment"><p>redundant (measuring the same thing as another item)</p></li>
+<li class="fragment"><p>irrelevant (poorly correlated with the intended underlying constructs, causing low <strong>factor loadings</strong>)</p></li>
+<li class="fragment"><p>ambiguous (cross-loading significantly on multiple factors)</p></li>
 </ul></li>
-<li><p>Factor analysis informs the calculation of <strong>factor scores</strong>: (composite scores that combine a respondent’s scores for several related items)</p>
+<li class="fragment"><p>Factor analysis informs the calculation of <strong>factor scores</strong>: (composite scores that combine a respondent’s scores for several related items)</p>
 <ul>
-<li><p>These factor scores can be used for downstream analyses!</p>
+<li class="fragment"><p>These factor scores can be used for downstream analyses!</p>
 <ul>
-<li>Example: Are higher levels of perceived stress linked to greater odds of developing a clinical cold?</li>
+<li class="fragment">Example: Are higher levels of perceived stress linked to greater odds of developing a clinical cold?</li>
 </ul></li>
 </ul></li>
 </ul>
 </section>
-<section id="data-decathalon-data" class="slide level2">
-<h2>Data: Decathalon data</h2>
-<p>Can we use men’s decathalon scores to give each individual a measure of <em>overall athletic ability</em>?</p>
+<section id="factor-analysis-vs-pca" class="slide level2">
+<h2>Factor Analysis vs PCA</h2>
 <ul>
-<li>Observed items: performance in each event</li>
-<li>Latent variable: overall atheletic ability</li>
+<li><p>PCA: finds linear combinations that explain the <strong>most total variance</strong> in variables.</p>
+<ul>
+<li>FA: Models latent (unobserved) variables that explain the <strong>shared covariance</strong> among observed variables.</li>
+</ul></li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>dec_performances <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/2026/main/data/dec_performances.csv"</span>)</span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>decathalon <span class="ot">&lt;-</span> dec_performances <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(men_100, men_lj, men_sp, men_hj, men_400, men_110h, men_dt, men_pv, men_jt, men_1500) <span class="sc">|&gt;</span></span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(men_1500, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"min"</span>, <span class="st">"sec"</span>, <span class="st">"remove"</span>), <span class="at">sep =</span> <span class="st">":"</span>, <span class="at">convert =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">men_1500 =</span> min <span class="sc">*</span> <span class="dv">60</span> <span class="sc">+</span> sec) <span class="sc">%&gt;%</span></span>
-<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>min, <span class="sc">-</span>sec, <span class="sc">-</span>remove) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment">
+<ul>
+<li><p>PCA: components are mathematical summaries of the data.</p>
+<ul>
+<li>FA: represent underlying constructs (e.g.&nbsp;athletic ability, depression)</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>PCA: uses all variation in each variable.</p>
+<ul>
+<li>FA: separates <strong>shared variance</strong> from <strong>unique/error variance</strong></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>PCA example research question: “How can we summarize 10 decathlon events with a few components that retain as much variation as possible?”</p>
+<ul>
+<li>FA asks, “Is there an underlying trait, like overall athletic ability, that explains why performances across events are correlated?”</li>
+</ul></li>
+</ul>
 </div>
 </section>
-<section id="exploring-event-similarities" class="slide level2">
-<h2>Exploring event similarities</h2>
-<p>Why are certain variables positively correlated and others negatively correlated?</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a>round_cor_matrix <span class="ot">&lt;-</span>  <span class="fu">round</span>(<span class="fu">cor</span>(decathalon), <span class="dv">2</span>)</span>
-<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
-<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(round_cor_matrix, </span>
-<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">hc.order =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"lower"</span>,</span>
-<span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">lab =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-
+<section id="motivating-example-for-today-decathlon" class="slide level2">
+<h2>Motivating example for today: decathlon</h2>
+<p>Decathlon is a two-day track and field competition in which athletes compete in ten specific disciplines testing speed, strength, and endurance.</p>
+<div class="fragment">
+<p><strong>Research Question</strong>: Can we use these 10 events to measure some underlying latent trait(s) about the athletes?</p>
+<ul>
+<li>Specifically, do these events wholistically measure overall athletic ability, or more specific traits (power and endurance)?</li>
+</ul>
 </div>
-<img data-src="21-fa_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<div class="fragment">
+<p>Let’s start by assuming these events reflect one factor (overall athletic ability).</p>
+</div>
+</section>
 <section id="introducing-model-structure" class="slide level2">
 <h2>Introducing model structure</h2>
 <ul>
 <li><p>Every event depends partly on both <em>overall athletic ability</em> and <em>event-specific influences</em>.</p></li>
-<li><p>For example: <span class="math inline">\(X_{100m} = F + \varepsilon\)</span></p>
+<li><p>For example: <span class="math inline">\(X_{100m} = F + \varepsilon_{100m}\)</span></p>
 <ul>
 <li><span class="math inline">\(X_{100m}\)</span>: 100m time</li>
 <li><span class="math inline">\(F\)</span>: overall athletic ability</li>
 <li><span class="math inline">\(\varepsilon_{100m}\)</span>: unexplained variance in 100m time that overall athletic ability cannot predict</li>
 </ul></li>
-<li><p>Similarly, <span class="math inline">\(X_{110h} = F + \varepsilon\)</span></p>
+<li><p>Similarly, <span class="math inline">\(X_{110h} = F + \varepsilon_{110h}\)</span></p>
 <ul>
-<li><span class="math inline">\(X_{100h}\)</span>: 110m high hurdles time</li>
+<li><span class="math inline">\(X_{110h}\)</span>: 110m high hurdles time</li>
 <li><span class="math inline">\(F\)</span>: overall athletic ability</li>
 <li><span class="math inline">\(\varepsilon_{110h}\)</span>: unexplained variance in 110m high hurdles time that overall athletic ability cannot predict</li>
 </ul></li>
@@ -351,29 +379,155 @@
 </section>
 <section id="introducing-model-structure-1" class="slide level2">
 <h2>Introducing model structure</h2>
-<p>Overall athletic ability may be a better predictor of performance in some events than others. The <em>loading</em> tells us how strongly athletic ability influences performance in a particular event.</p>
+<p>Overall athletic ability may be a better predictor of performance in some events than others. The loading tells us how strongly athletic ability influences performance in a particular event.</p>
 <p><span class="math display">\[X_{100m} = \lambda_{100m}F+ \varepsilon_{100m}\]</span> <span class="math display">\[X_{110h} = \lambda_{110h}F+ \varepsilon_{110h}\]</span></p>
 <p>When all observed variables and common factors are standardized to have unit variance, the loading behaves like a correlation.</p>
 </section>
-<section id="deriving-covariance" class="slide level2">
-<h2>Deriving covariance</h2>
-<p>Two events should be correlated if they both depend on the latent factor (overall athletic ability).</p>
-<p><span class="math display">\[\text{Cov}(100m, 110h) = \text{Cov}(\lambda_{100m}F+ \varepsilon_{100m}, \lambda_{110h}F+ \varepsilon_{110h})\]</span></p>
-<p><span class="math display">\[ = \text{Cov}(\lambda_{100m}F, \lambda_{110h}F) + \text{Cov}(\lambda_{100m}F, \varepsilon_{110h}) + \text{Cov}(\lambda_{110h}F, \varepsilon_{100m}) + \text{Cov}(\varepsilon_{110h}, \varepsilon_{100m})\]</span></p>
-<p>Factor analysis makes key assumptions that help us simplify this</p>
-<ol type="a">
-<li><p>The factor is unrelated to each item’s residual: <span class="math inline">\(\text{Cov}(F, \varepsilon_{j}) = 0\)</span></p></li>
-<li><p>Residuals of different items are uncorrelated: <span class="math inline">\(\text{Cov}(\varepsilon_{j}, \varepsilon_{k}) = 0\)</span></p></li>
-</ol>
-<p><span class="math display">\[\text{Cov}(100m, 110h) = \text{Cov}(\lambda_{100m}F, \lambda_{110m}F)\]</span> <span class="math display">\[= \lambda_{100m}\lambda_{110m}\text{Cov}(F, F) = \lambda_{100m}\lambda_{110m}\text{Var}(F)\]</span></p>
-</section>
-<section id="deriving-covariance-1" class="slide level2">
-<h2>Deriving covariance</h2>
-<p>We saw <span class="math inline">\(\text{Cov}({100m}, {110h}) = \lambda_{100m}\lambda_{110m}\text{Var}(F)\)</span>.</p>
-<p><em>According to our one-factor model</em>, the only reason that two items are correlated is because they share the same latent factor (overall athletic ability).</p>
+<section id="introducing-model-structure-2" class="slide level2">
+<h2>Introducing model structure</h2>
+<p><span class="math display">\[\begin{bmatrix} x_{100mi} \\ x_{110hi} \\ \vdots \\ x_{jvi} \end{bmatrix} = \begin{bmatrix} \lambda_{100m} \\ \lambda_{110h} \\ \vdots \\ \lambda_{jv}  \end{bmatrix} \begin{bmatrix} F_{1i} \end{bmatrix} + \begin{bmatrix} \varepsilon_{100mi} \\ \varepsilon_{110hi} \\ \vdots \\ \varepsilon_{jvi} \end{bmatrix}\]</span></p>
+<div class="fragment">
+<p><strong>Observed variables</strong> (<span class="math inline">\(\mathbf{x}_i\)</span>)</p>
 <ul>
-<li><p>If either loading is small, <span class="math inline">\(\lambda_{100m}\lambda_{110m}\)</span> is small, so the covariance explained by the factor is small.</p></li>
-<li><p>If either loading is zero, <span class="math inline">\(\text{Cov}(100m, 110h) = 0\)</span>, and the factor contributes no covariance between the two events.</p></li>
+<li>Outcome for each observed event (for each individual)</li>
+<li>One row per event, one column vector per athlete</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Factor loadings</strong> (<span class="math inline">\(\boldsymbol{\lambda}\)</span>)</p>
+<ul>
+<li>Strength of the relationship between each event and the latent factor</li>
+<li>If overall athletic ability is the factor, <span class="math inline">\(\lambda_{100m}\)</span> will indicate how strongly 100m time is influenced by overall athletic ability</li>
+<li>Interpret like linear regression: represents the expected change in the observed variable for a one standard deviation increase in the latent factor <span class="math inline">\(F\)</span></li>
+</ul>
+</div>
+</section>
+<section id="introducing-model-structure-3" class="slide level2">
+<h2>Introducing model structure</h2>
+<p><span class="math display">\[\begin{bmatrix} x_{100mi} \\ x_{110hi} \\ \vdots \\ x_{jvi} \end{bmatrix} = \begin{bmatrix} \lambda_{100m} \\ \lambda_{110h} \\ \vdots \\ \lambda_{jv}  \end{bmatrix} \begin{bmatrix} F_{1i} \end{bmatrix} + \begin{bmatrix} \varepsilon_{100mi} \\ \varepsilon_{110hi} \\ \vdots \\ \varepsilon_{jvi} \end{bmatrix}\]</span></p>
+<div class="fragment">
+<p><strong>Latent factor</strong> (<span class="math inline">\(F_{1i}\)</span>)</p>
+<ul>
+<li>Reflects level of (unobserved) overall athletic ability for every athlete <em>i</em></li>
+<li>Every athlete has one value of <span class="math inline">\(F_1\)</span>, and the same value is used to predict all 10 event performances</li>
+<li>Assumed to have a linear relationship with underlying variables</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Residuals</strong> (<span class="math inline">\(\boldsymbol{\varepsilon}_i\)</span>)</p>
+<ul>
+<li>Variation in each observed variable that cannot be explained by the common factor(s) in the model</li>
+<li>Includes event-specific ability and measurement error: for 100m, reaction time, sprint specific ability, and wind are all not captured by overall athletic ability but impact performance</li>
+</ul>
+</div>
+</section>
+<section id="model-structure-multiple-factor-setting" class="slide level2">
+<h2>Model structure: multiple factor setting</h2>
+<p><span class="math display">\[\begin{bmatrix} x_{100mi} \\ x_{110hi} \\ \vdots \\ x_{jvi} \end{bmatrix} = \begin{bmatrix} \lambda_{100m1}&amp;  \lambda_{100m2} \\ \lambda_{110h1} &amp; \lambda_{110h2} \\ \vdots &amp; \vdots \\ \lambda_{jv1} &amp; \lambda_{jv2}  \end{bmatrix} \begin{bmatrix} F_{1i} \\ F_{2i} \end{bmatrix} + \begin{bmatrix} \varepsilon_{100mi} \\ \varepsilon_{110hi} \\ \vdots \\ \varepsilon_{jvi} \end{bmatrix}\]</span></p>
+<ul>
+<li>Instead of one latent factor, we can specify 2+ (e.g.&nbsp;strength and endurance instead of overall athletic ability)</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Each observed variable can now load on multiple latent factors
+<ul>
+<li>Each row of loading matrix describes how one observed variable relates to all factors.</li>
+<li>Each column of loading matrix describes one latent factor’s relationship with all variables.</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Residuals still represent unique variance not explained by any factor</li>
+</ul>
+</div>
+</section>
+<section id="model-structure-with-mean-vector" class="slide level2">
+<h2>Model structure: with mean vector</h2>
+<p><span class="math display">\[\begin{bmatrix} x_{100mi} \\ x_{110hi} \\ \vdots \\ x_{jvi} \end{bmatrix} = \begin{bmatrix} \mu_{100m} \\ \mu_{110h} \\ \vdots \\ \mu_{jv} \end{bmatrix} + \begin{bmatrix} \lambda_{100m1}&amp;  \lambda_{100m2} \\ \lambda_{110h1} &amp; \lambda_{110h2} \\ \vdots &amp; \vdots \\ \lambda_{jv1} &amp; \lambda_{jv2}  \end{bmatrix} \begin{bmatrix} F_{1i} \\ F_{2i} \end{bmatrix} + \begin{bmatrix} \varepsilon_{100mi} \\ \varepsilon_{110hi} \\ \vdots \\ \varepsilon_{jvi} \end{bmatrix}\]</span></p>
+<ul>
+<li><p>By not including population mean vector <span class="math inline">\(\boldsymbol{\mu}\)</span> on previous slides, we have assumed the observed variables have been mean-centered.</p></li>
+<li><p>In practice, factor analysis is often performed with a standardized variable and latent factor so that</p>
+<ul>
+<li>the loadings are easy to interpret (approximately the correlation between the latent factor and variables)</li>
+<li>we can make statements about the proportion of variance that the factor explains</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-role-of-covariance" class="slide level2">
+<h2>The role of covariance</h2>
+<ul>
+<li><p>Factor analysis focuses on modeling a covariance among the observed variables instead of each event independently</p></li>
+<li><p>Covariance represents how pairs of variables change together; on the diagonal are the variances of each variable</p></li>
+</ul>
+<p><span class="math display">\[\begin{bmatrix} \text{Var}(100m) &amp; \text{Cov}(100m, 110h) &amp; \dots &amp; \text{Cov}(100m, jv) \\
+\text{Cov}(110h, 100m) &amp; \text{Var}(110h) &amp; \dots &amp; \text{Cov}(110h, jv)  \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+\text{Cov}(\text{jv}, 100m) &amp; \text{Cov}(jv, 110h) &amp; \dots &amp; \text{Var}(jv)
+\end{bmatrix}\]</span></p>
+</section>
+<section id="the-role-of-covariance-1" class="slide level2">
+<h2>The role of covariance</h2>
+<p>Factor analysis assumes two events should be correlated if they both depend on the latent factor (overall athletic ability)</p>
+<div class="fragment">
+<p>Take the 100m and 110h:</p>
+<p><span class="math display">\[X_{100m} = \lambda_{100m}F + \varepsilon_{100m}\]</span> <span class="math display">\[X_{110h} = \lambda_{110h}F + \varepsilon_{110h}\]</span></p>
+</div>
+<div class="fragment">
+<p><br></p>
+<span class="math display">\[\begin{aligned}
+\text{Cov}(100m, 110h) &amp;= \text{Cov}(\lambda_{100m}F + \varepsilon_{100m}, \lambda_{110h}F + \varepsilon_{110h}) \\[5pt]
+
+&amp;= \text{Cov}(\lambda_{100m}F, \lambda_{110h}F) + \text{Cov}(\lambda_{100m}F, \varepsilon_{110h}) + \\[3pt]
+
+&amp; \quad \space \text{Cov}(\lambda_{110h}F, \varepsilon_{100m}) + \text{Cov}(\varepsilon_{100m}, \varepsilon_{110h})
+\end{aligned}\]</span>
+<p>We can simplify this using two assumptions!</p>
+</div>
+</section>
+<section id="factor-analysis-assumptions" class="slide level2">
+<h2>Factor Analysis Assumptions</h2>
+<ol type="1">
+<li>Residuals are independent of the factor: <span class="math inline">\(\text{Cov}(F_{1i}, \varepsilon_j = 0)\)</span></li>
+</ol>
+<p>Knowing an athlete’s overall athletic ability tells us nothing about the remaining event-specific deviation.</p>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Residuals are uncorrelated: <span class="math inline">\(\text{Cov}(\varepsilon_i, \varepsilon_j) = 0 \quad i \ne j\)</span></li>
+</ol>
+<p>After accounting for overall athletic ability, any remaining variation in one event doesn’t explain remaining variation in another event.</p>
+</div>
+<div class="fragment">
+<p>Therefore…</p>
+<span class="math display">\[\begin{aligned}
+\text{Cov}(100m, 110h) &amp;=  \text{Cov}(\lambda_{100m}F, \lambda_{110h}F) + \text{Cov}(\lambda_{100m}F, \varepsilon_{110h}) + \\[3pt]
+
+&amp; \quad \space \text{Cov}(\lambda_{110h}F, \varepsilon_{100m}) + \text{Cov}(\varepsilon_{100m}, \varepsilon_{110h}) \\[3pt]
+
+&amp;= \text{Cov}(\lambda_{100m}F, \lambda_{110h}F) \\[3pt]
+&amp;= \lambda_{100m}\lambda_{110h}\text{Cov}(F, F) \\[3pt]
+&amp;= \lambda_{100m}\lambda_{110h}\text{Var}(F)
+\end{aligned}\]</span>
+</div>
+</section>
+<section id="what-does-this-mean" class="slide level2">
+<h2>What does this mean?</h2>
+<p>We saw <span class="math inline">\(\text{Cov}({100m}, {110h}) = \lambda_{100m}\lambda_{110h}\text{Var}(F)\)</span>.</p>
+<div class="fragment">
+<p><em>According to our one-factor model</em>, this means that the only reason that two items are correlated is because they share the same latent factor (overall athletic ability).</p>
+</div>
+<div class="fragment">
+<ul>
+<li>If either loading is small, <span class="math inline">\(\lambda_{100m}\lambda_{110m}\)</span> is small, so the covariance explained by the factor is small.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>If either loading is zero, <span class="math inline">\(\text{Cov}(100m, 110h) = 0\)</span>, and the factor contributes no covariance between the two events.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li><p>If we observe correlations in the data that the factor cannot explain, that suggests our one-factor model is missing something.</p>
 <ul>
 <li><p>For example, suppose 100m time and 110m high hurdles time are more highly correlated than our one-factor model predicts.</p>
@@ -383,164 +537,391 @@
 </ul></li>
 </ul></li>
 </ul>
+</div>
 </section>
-<section id="specifying-model-structure" class="slide level2">
-<h2>Specifying model structure</h2>
-<p><span class="math display">\[\begin{bmatrix} X_{100m} \\
-X_{jav} \\
-X_{400m} \\
-X_{sp} \\
-X_{110h} \\
-X_{lj} \\
-X_{hj} \\
-X_{1500m} \\
-X_{dt} \\
-X_{pv}
-\end{bmatrix} =
-\begin{bmatrix} \lambda_{100m1} &amp; \lambda_{100m2} \\
-\lambda_{jav1} &amp; \lambda_{jav2} \\
-\lambda_{400m1} &amp;  \lambda_{400m2}\\
-\lambda_{sp1} &amp; \lambda_{sp2}\\
-\lambda_{110h1} &amp; \lambda_{110h2} \\
-\lambda_{lj1} &amp; \lambda_{lj2}\\
-\lambda_{hj1} &amp;  \lambda_{hj2}\\
-\lambda_{1500m1} &amp;  \lambda_{1500m2} \\
-\lambda_{dt1} &amp; \lambda_{dt2} \\
-\lambda_{pv1} &amp; \lambda_{pv2}
-\end{bmatrix} \begin{bmatrix} F_1 \\ F_2 \end{bmatrix} + \begin{bmatrix} \varepsilon_{100m} \\
-\varepsilon_{jav} \\
-\varepsilon_{400m} \\
-\varepsilon_{sp} \\
-\varepsilon_{110h} \\
-\varepsilon_{lj} \\
-\varepsilon_{hj} \\
-\varepsilon_{1500m} \\
-\varepsilon_{dt} \\
-\varepsilon_{pv}
-\end{bmatrix}\]</span></p>
-<p><span class="math display">\[\mathbf{x} = \mathbf{\Lambda f} + \boldsymbol{\varepsilon}\]</span></p>
+<section id="a-little-more-about-covariance" class="slide level2">
+<h2>A little more about covariance</h2>
+<p>In matrix notation, our one factor model can be written <span class="math inline">\(\mathbf{x} = \boldsymbol{\Lambda}F + \varepsilon\)</span></p>
+<div class="fragment">
+<p>Making the following assumptions:</p>
+<ul>
+<li><span class="math inline">\(\text{Var}(F) = 1\)</span>,</li>
+<li><span class="math inline">\(\text{Cov}(F, \varepsilon) = 0\)</span></li>
+<li><span class="math inline">\(\text{Var}(\varepsilon) = \Psi\)</span> where <span class="math inline">\(\Psi\)</span> is a <span class="math inline">\(p \times p\)</span> diagonal matrix of residual variances for <span class="math inline">\(p\)</span> items</li>
+</ul>
+</div>
+<div class="fragment">
+The covariance matrix is
+<span class="math display">\[\begin{aligned}
+\mathbf\Sigma &amp;= \text{Var}(\mathbf{x}) \\
+&amp;= \text{Var}(\boldsymbol{\Lambda}F + \varepsilon) \\
+&amp;= \text{Var}(\boldsymbol{\Lambda}F) + \text{Var}(\varepsilon) \quad \text{since } \text{Cov}(F, \boldsymbol\varepsilon) =0 \\
+&amp;= \boldsymbol{\Lambda}\text{Var}(F) \boldsymbol\Lambda^T + \Psi \\
+&amp;=  \boldsymbol{\Lambda}\boldsymbol\Lambda^T + \Psi \\
+\end{aligned}\]</span>
+<p>where <span class="math inline">\(\boldsymbol{\Lambda}\boldsymbol\Lambda^T\)</span> represents the covariance explained by the common factor, and <span class="math inline">\(\Psi\)</span> the unique (residual) variances for each observed variable. So <span class="math inline">\(\boldsymbol\Sigma\)</span> = shared covariance + unique variance</p>
+</div>
 </section>
-<section id="fitting-a-factor-model" class="slide level2">
-<h2>Fitting a factor model</h2>
+<section id="data-decathalon-data" class="slide level2">
+<h2>Data: Decathalon data</h2>
+<p>Can we use men’s decathalon scores to give each individual a measure of <em>overall athletic ability</em>?</p>
+<ul>
+<li>Observed items: performance in each event</li>
+<li>Latent variable: overall athletic ability</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_light</span>(<span class="at">base_size =</span> <span class="dv">20</span>))</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>dec_performances <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/2026/main/data/dec_performances.csv"</span>)</span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>decathlon <span class="ot">&lt;-</span> dec_performances <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(men_100, men_lj, men_sp, men_hj, men_400, men_110h, men_dt, men_pv, men_jt, men_1500) <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(men_1500, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"min"</span>, <span class="st">"sec"</span>, <span class="st">"remove"</span>), <span class="at">sep =</span> <span class="st">":"</span>, <span class="at">convert =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">men_1500 =</span> min <span class="sc">*</span> <span class="dv">60</span> <span class="sc">+</span> sec) <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>min, <span class="sc">-</span>sec, <span class="sc">-</span>remove) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exploring-event-similarities" class="slide level2">
+<h2>Exploring event similarities</h2>
+<p>Why are certain variables positively correlated and others negatively correlated?</p>
+<div class="columns">
+<div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a>round_cor_matrix <span class="ot">&lt;-</span>  <span class="fu">round</span>(<span class="fu">cor</span>(decathlon), <span class="dv">2</span>)</span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(round_cor_matrix, </span>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">hc.order =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"lower"</span>,</span>
+<span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a>           <span class="at">lab =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="21-fa_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="estimation" class="slide level2">
+<h2>Estimation</h2>
+<ul>
+<li><p>Model parameters are estimated by finding the loadings and residual variances that make the model-implied covariance matrix match the sample covariance matrix as closely as possible</p>
+<ul>
+<li>Loading matrix: determines how much covariance the latent factor creates</li>
+<li>Residual variance: account for variability unique to each event</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Parameters estimated by <strong>maximum-likelihood</strong>: given our observed data, which values of the loadings and residual variances make these observed data most likely?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Assume the observed variables follow a MVN: <span class="math inline">\(\mathbf{x} \sim \mathcal N(\boldsymbol \mu , \boldsymbol\Sigma(\theta))\)</span>, where <span class="math inline">\(\boldsymbol\Sigma(\theta)\)</span> is the model-implied covariance matrix</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Maximize the multivariate normal likelihood <span class="math inline">\(L(\theta) = \prod_{i=1}^n f(\mathbf{x}_i; \boldsymbol \mu, \boldsymbol \Sigma(\theta))\)</span></li>
+</ul>
+</div>
+</section>
+<section id="fitting-factor-model-decathlon-data" class="slide level2">
+<h2>Fitting factor model: decathlon data</h2>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">fa</span>(decathalon)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">fa</span>(decathlon)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Check out fit and the following columns:</p>
+<ul>
+<li><p><code>MR1</code>: Factor loading; larger absolute values indicate the variable is a stronger indicator of the factor.</p></li>
+<li><p><code>h2</code>: Communality; proportion of the variable’s variance explained by the common factor(s).</p>
+<ul>
+<li>For a one factor model, <span class="math inline">\(h^2 = \lambda^2\)</span></li>
+</ul></li>
+<li><p><code>u2</code>: Uniqueness; proportion of the variable’s variance not explained by the common factor(s); includes specific variance and measurement error.</p></li>
+</ul>
+</section>
+<section id="how-many-factors" class="slide level2">
+<h2>How many factors?</h2>
+<ul>
+<li>No one way to choose!</li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>Scree plot: uses a visual representation of the factors’ eigenvalues, which measure the amount of variance in observed variables accounted for by a given factor</p>
+<ul>
+<li><p>Standardizing the variables means the total variance is equal to the number of predictors</p></li>
+<li><p>For example, and eigenvalue of 3.8 means the factor explains the equivalent variance of 3.8 standardized variables.</p></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Very simple structure (VSS): identifies a “simple” factor solution where each variable loads highly on only one factor</p>
+<ul>
+<li>Complexity 1: assumes every variable loads primarily onto one factor</li>
+<li>Complexity 2: variables may load onto up to 2 factors</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>MAP: measures how much systematic correlation remains after extracting factors</p>
+<ul>
+<li>Keep extracting factors until the remaining correlation matrix looks like random noise</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Domain knowledge is really important!</li>
+</ul>
+</div>
+</section>
+<section id="how-many-factors-decathlon-data" class="slide level2">
+<h2>How many factors: decathlon data</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">scree</span>(decathlon) <span class="co">#vss(decathlon)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="21-fa_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Scree, VSS, and MAP collectively tell us we could use either 1, 2, or 3 factors. This makes leveraging domain knowledge especially important!</p>
+</section>
+<section id="factor-rotation" class="slide level2">
+<h2>Factor rotation</h2>
+<ul>
+<li>Rotation refers to the rotation of the axes in the coordinate system</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>There are infinitely many mathematically equivalent loading matrices. Rotation chooses a solution that makes the output more understandable/interpretable.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>The chosen rotation doesn’t change model fit! It is performed after factor extraction when the covariance matrix and residuals are already determined</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p><strong>Note</strong>: with only one factor, rotation has no effect!</p>
+<ul>
+<li>Only one axis, so every rotation method produces the same solution (up to a possible sign change)</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="types-of-rotations" class="slide level2">
+<h2>Types of rotations</h2>
+<ul>
+<li><p>Orthogonal rotation: rotated axes remain perpendicular, forcing factors to be uncorrelated.</p>
+<ul>
+<li><p><em>Varimax</em> is most popular orthogonal rotation: maximizes variance of squared loadings within each factor, causing each factor to have a few large loadings and many near zero.</p></li>
+<li><p>Pros: Factors are easy interpret, better for use in downstream regression</p></li>
+<li><p>Cons: often unrealistic</p></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>Oblique rotation: allows factors to correlate freely (e.g.&nbsp;depression and anxiety are correlated)</p>
+<ul>
+<li><p><em>Promax/oblimin</em> are most common oblique rotations</p></li>
+<li><p>Pros: realistic</p></li>
+<li><p>Cons: loading matrix can sometimes be harder to interpret, correlation in downstream regression</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="specifying-rotation-with-decathlon-data" class="slide level2">
+<h2>Specifying rotation with decathlon data</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>fit_varimax <span class="ot">&lt;-</span> <span class="fu">fa</span>(decathlon, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">rotate =</span> <span class="st">"varimax"</span>)</span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>fit_oblimin <span class="ot">&lt;-</span> <span class="fu">fa</span>(decathlon, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">rotate =</span> <span class="st">"oblimin"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Check out the following aspects of the output:</p>
+<ul>
+<li><p>Do <span class="math inline">\(h2\)</span> (communalities) and <span class="math inline">\(u2\)</span> (uniqueness) differ between the two rotations?</p></li>
+<li><p>What latent trait might each factor represent?</p></li>
+<li><p>What is the correlation of the factors with oblimin? Varimax?</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>fit_varimax<span class="sc">$</span>Phi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Factor Analysis using method =  minres
-Call: fa(r = decathalon)
-Standardized loadings (pattern matrix) based upon correlation matrix
-           MR1    h2   u2 com
-men_100  -0.55 0.308 0.69   1
-men_lj    0.69 0.474 0.53   1
-men_sp    0.66 0.441 0.56   1
-men_hj    0.47 0.223 0.78   1
-men_400  -0.52 0.273 0.73   1
-men_110h -0.66 0.436 0.56   1
-men_dt    0.61 0.375 0.62   1
-men_pv    0.54 0.288 0.71   1
-men_jt    0.51 0.260 0.74   1
-men_1500 -0.20 0.041 0.96   1
-
-                MR1
-SS loadings    3.12
-Proportion Var 0.31
-
-Mean item complexity =  1
-Test of the hypothesis that 1 factor is sufficient.
-
-df null model =  45  with the objective function =  3.56 with Chi Square =  45433.46
-df of  the model are 35  and the objective function was  1.46 
-
-The root mean square of the residuals (RMSR) is  0.13 
-The df corrected root mean square of the residuals is  0.15 
-
-The harmonic n.obs is  12762 with the empirical chi square  9532.3  with prob &lt;  0 
-The total n.obs was  12762  with Likelihood Chi Square =  18633.64  with prob &lt;  0 
-
-Tucker Lewis Index of factoring reliability =  0.473
-RMSEA index =  0.204  and the 90 % confidence intervals are  0.202 0.207
-BIC =  18302.74
-Fit based upon off diagonal values = 0.85
-Measures of factor score adequacy             
-                                                   MR1
-Correlation of (regression) scores with factors   0.91
-Multiple R square of scores with factors          0.83
-Minimum correlation of possible factor scores     0.67</code></pre>
+<pre><code>NULL</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>decathalon_scale <span class="ot">&lt;-</span> decathalon <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale</span>()</span>
-<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">fa</span>(decathalon_scale)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a>fit_oblimin<span class="sc">$</span>Phi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Factor Analysis using method =  minres
-Call: fa(r = decathalon_scale)
-Standardized loadings (pattern matrix) based upon correlation matrix
-           MR1    h2   u2 com
-men_100  -0.55 0.308 0.69   1
-men_lj    0.69 0.474 0.53   1
-men_sp    0.66 0.441 0.56   1
-men_hj    0.47 0.223 0.78   1
-men_400  -0.52 0.273 0.73   1
-men_110h -0.66 0.436 0.56   1
-men_dt    0.61 0.375 0.62   1
-men_pv    0.54 0.288 0.71   1
-men_jt    0.51 0.260 0.74   1
-men_1500 -0.20 0.041 0.96   1
-
-                MR1
-SS loadings    3.12
-Proportion Var 0.31
-
-Mean item complexity =  1
-Test of the hypothesis that 1 factor is sufficient.
-
-df null model =  45  with the objective function =  3.56 with Chi Square =  45433.46
-df of  the model are 35  and the objective function was  1.46 
-
-The root mean square of the residuals (RMSR) is  0.13 
-The df corrected root mean square of the residuals is  0.15 
-
-The harmonic n.obs is  12762 with the empirical chi square  9532.3  with prob &lt;  0 
-The total n.obs was  12762  with Likelihood Chi Square =  18633.64  with prob &lt;  0 
-
-Tucker Lewis Index of factoring reliability =  0.473
-RMSEA index =  0.204  and the 90 % confidence intervals are  0.202 0.207
-BIC =  18302.74
-Fit based upon off diagonal values = 0.85
-Measures of factor score adequacy             
-                                                   MR1
-Correlation of (regression) scores with factors   0.91
-Multiple R square of scores with factors          0.83
-Minimum correlation of possible factor scores     0.67</code></pre>
+<pre><code>           MR1        MR2
+MR1  1.0000000 -0.3190563
+MR2 -0.3190563  1.0000000</code></pre>
 </div>
 </div>
 </section>
-<section id="determining-number-of-factors" class="slide level2">
-<h2>Determining number of factors</h2>
+<section id="factor-scores" class="slide level2">
+<h2>Factor scores</h2>
+<ul>
+<li>Once the factor model is finalized, we know parameters <span class="math inline">\(\boldsymbol\Lambda\)</span>, <span class="math inline">\(\boldsymbol \Psi\)</span>.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>Factor scores <u>estimate</u> each individual’s level of the latent trait given their item responses</p>
+<ul>
+<li>Example interpretation: based on all 10 event performances, Athlete <span class="math inline">\(A\)</span> is estimated to have an overall athletic ability 1.47 standard deviations above the average athlete</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>The most common method to extract scores is the <em>regression estimator</em></p>
+<ul>
+<li><p>Assume <span class="math inline">\(f \sim N(0,1)\)</span>, <span class="math inline">\(\varepsilon \sim \mathcal N (\textbf{0}, \boldsymbol\Psi)\)</span></p></li>
+<li><p>The latent factor and items take a joint multivariate normal distribution distribution:</p></li>
+</ul></li>
+</ul>
+<p><span class="math display">\[\begin{bmatrix} \mathbf{f} \\ \mathbf{x} \end{bmatrix}  \sim \mathcal N \left(0, \begin{bmatrix} 1 &amp; \boldsymbol\Lambda^T \\
+\boldsymbol\Lambda &amp; \Lambda\Lambda^T + \boldsymbol\Psi\end{bmatrix}\right)\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Using properties of the MVN distribution, <span class="math inline">\(\hat f = \mathbb{E}[\mathbf f |\mathbf{x}] = \boldsymbol\Lambda^T(\boldsymbol\Lambda \boldsymbol\Lambda^T + \boldsymbol\Psi)^{-1}\mathbf{x}\)</span></p>
+<ul>
+<li>The factor scores are a weighted combination of observed variables, where items with strong loadings and strong residual variances contribute more</li>
+</ul></li>
+</ul>
+</div>
 </section>
-<section id="rotation" class="slide level2">
-<h2>Rotation</h2>
+<section id="extracting-scores-decathlon-data" class="slide level2">
+<h2>Extracting scores: decathlon data</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span>scores <span class="sc">|&gt;</span> <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>MR1))<span class="sc">+</span></span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="21-fa_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>Feel free to do some exploration! How do the scores correlate with overall decathlon score? What about with the score on each event?</p>
 </section>
-<section id="extracting-factor-scores" class="slide level2">
-<h2>Extracting factor scores</h2>
+<section id="using-factor-scores-in-downstream-regression" class="slide level2">
+<h2>Using factor scores in downstream regression</h2>
+<ul>
+<li>Once scores have been estimated, they can be treated as predictors or outcomes in many statistical models (e.g.&nbsp;linear/logistic regression, bagging/boosting algorithms, clustering)</li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>This offers several advantages</p>
+<ul>
+<li><p>combine multiple correlated variables into a single latent construct</p></li>
+<li><p>reduces dimensionality and multicollinearity</p></li>
+<li><p>often easier to interpret than analyzing many individual variables</p></li>
+</ul></li>
+</ul>
+</div>
 </section>
-<section id="interpretations-and-assumptions" class="slide level2">
-<h2>Interpretations and assumptions</h2>
-<p>One standard deviation increase; linearity..</p>
+<section id="but-be-cautious-of-measurement-error" class="slide level2">
+<h2>But, be cautious of measurement error</h2>
+<ul>
+<li><p>Because factor scores are estimates (not directly observed), they contain measurement error!</p></li>
+<li><p>Ignoring this uncertainty can lead to biased SEs and attenuated regression coefficients.</p></li>
+<li><p>Amount of bias will depend on the <em>reliability</em> of the latent factor (proportion of variance explained by the factor)</p>
+<ul>
+<li>Higher loadings, smaller residual variance: less attenuation</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.refsmmat.com/courses/707/lecture-notes/regression-assumptions_files/figure-html/fig-regression-dilution-1.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>Learn more about measurement error in regression with <a href="https://www.refsmmat.com/courses/707/lecture-notes/regression-assumptions.html#sec-random-x">Alex Reinhart’s notes</a>.</p>
+</div></aside></section>
+<section id="extension-confirmatory-factor-analysis" class="slide level2">
+<h2>Extension: Confirmatory Factor Analysis</h2>
+<ul>
+<li>When using scores in downstream regression, it is good practice to verify the measurement model (the factor model) beforehand using <strong>confirmatory factor analysis</strong></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>This lets you specify which items load on which factors, which loadings are fixed to zero, etc.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>You can also get tests of model fit (Root Mean Square Error of Approximation, Comparative Fit Index): too much to discuss these today, but happy to talk more!</li>
+</ul>
+</div>
 </section>
-<section id="using-factor-scores-in-downstream-analyses" class="slide level2">
-<h2>Using factor scores in downstream analyses</h2>
+<section id="extension-structural-equation-modeling" class="slide level2">
+<h2>Extension: Structural Equation Modeling</h2>
+<ul>
+<li><p>To prevent downstream attenuation, <strong>structural equation modeling (SEM)</strong> skips estimating the factor scores first and instead of estimates everything simultaneously.</p>
+<ul>
+<li>This propagates uncertainty is propagated throughout the estimation by estimating measurement and regression parameters together</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>I’m new to this and still learning how it works mathematically and in practice!</li>
+</ul>
+</div>
 </section>
-<section id="two-main-types-of-factor-analysis" class="slide level2">
-<h2>Two main types of factor analysis</h2>
-<ol type="1">
-<li><p>Exploratory factor analysis: explores and summmarises underlying correlational structure for a dataset</p></li>
-<li><p>Confirmatory factor analysis: tests correlational structure of a data set against a hypothesised structure and rates the ‘goodness of fit’</p></li>
-</ol>
+<section id="extension-erins-research-w-weijing-tang-phoebe-lam" class="slide level2">
+<h2>Extension: Erin’s research w/ Weijing Tang, Phoebe Lam</h2>
+<ul>
+<li><p>In psychology, people of various backgrounds (e.g.&nbsp;age, sex, education) often endorse items at different rates for a given level of the latent trait. This is known as <strong>differential item functioning</strong> (DIF).</p>
+<ul>
+<li><p>Example: With age, maybe people are more willing to say (admit) they are nervous and stressed, for a constant level of perceived stress.</p></li>
+<li><p>Example: For a given level of underlying depression, females are significantly more likely to endorse “I cry a lot” than males.</p></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>This poses difficulties: as the amount of DIF increases, the correlation between your latent variable and moderator (e.g.&nbsp;age, sex, education) increases.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Our research: demonstrates that uses traditional standardization methods in psychology in the presence of DIF and impact (true differences in underlying latent trait among groups) results in</p>
+<ul>
+<li><p>biased regression coefficient when using scores in downstream analyses</p></li>
+<li><p>artificially inflated or deflated corresponding confidence intervals</p></li>
+</ul></li>
+</ul>
+</div>
 </section>
-<section id="factor-analysis-versus-pca" class="slide level2">
-<h2>Factor Analysis versus PCA</h2>
+<section id="extension-erins-research-w-weijing-tang-phoebe-lam-1" class="slide level2">
+<h2>Extension: Erin’s research w/ Weijing Tang, Phoebe Lam</h2>
+<ul>
+<li><p>A solution to this is moderated nonlinear factor analysis (MNLFA)</p>
+<ul>
+<li><p>Generalizes traditional latent variable models to allow for simultaneous correction of DIF over multiple background variables</p></li>
+<li><p>Nonlinear: background variables are allowed to correct DIF in a nonlinear fashion</p></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>In short, this allows intercepts and loadings to vary by group</p>
+<ul>
+<li><p>Intercept moderation: for a given level of depression, females cry more than males</p></li>
+<li><p>Loading moderation: crying is a better indicator of depression in males than females</p></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p>… and much more that I am happy to talk about if anyone is interested in learning more!</p>
 
 
+</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
