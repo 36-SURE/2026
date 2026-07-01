@@ -555,7 +555,7 @@ We need to control how much we update by in each step: __the learning rate__
 
 ## SGD can help with complex loss functions
 
-* Speed up algorithm while adding randomness to get closer to global minimum (*no guarantees!&)
+* Speed up algorithm while adding randomness to get closer to global minimum (*no guarantees!*)
 
 * Much less smooth due to its random nature 
 
