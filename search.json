@@ -263,7 +263,7 @@
     "href": "lectures/20-ensemble.html#sgd-can-help-with-complex-loss-functions",
     "title": "Supervised learning: bagging and boosting",
     "section": "SGD can help with complex loss functions",
-    "text": "SGD can help with complex loss functions\n\nSpeed up algorithm while adding randomness to get closer to global minimum (*no guarantees!&)\nMuch less smooth due to its random nature\nThe path (ensemble of intermediate parameter values) toward the minimum will be zigzaggy"
+    "text": "SGD can help with complex loss functions\n\nSpeed up algorithm while adding randomness to get closer to global minimum (no guarantees!)\nMuch less smooth due to its random nature\nThe path (ensemble of intermediate parameter values) toward the minimum will be zigzaggy"
   },
   {
     "objectID": "lectures/20-ensemble.html#extreme-gradient-boosting-with-xgboost",
