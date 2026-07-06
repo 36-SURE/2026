@@ -1222,7 +1222,7 @@
     "href": "lectures/22-survival.html#hazard-functions",
     "title": "Advanced topics: survival analysis",
     "section": "Hazard functions",
-    "text": "Hazard functions\nHazard rate: instantaneous rate of failure at time \\(t\\) for units that have survived up to time \\(t\\). When do not include features:\n\\[\n\\begin{aligned}\n\\displaystyle h(t) &:= \\lim_{\\Delta t \\to 0}  \\frac{\\text{Pr}(t \\leq T \\leq t + \\Delta t \\mid T \\geq t)}{\\Delta t} \\\\\n\\displaystyle  &= \\lim_{\\Delta t \\to 0}  \\frac{\\text{Pr}(t \\leq T \\leq t + \\Delta t)}{\\text{Pr}( T \\geq t) \\Delta t} \\\\\n\\displaystyle  &= \\lim_{\\Delta t \\to 0} \\frac{S(t) - S(t + \\Delta t)}{\\Delta t} \\cdot \\frac{1}{S(t) } \\\\\n&= - \\frac{S(t)}{S(t)}\n\\end{aligned}\n\\]\n\nRecall that \\(\\displaystyle - \\frac{d}{dt}\\text{log}(S(t)) = - \\frac{S(t)}{S(t)}\\). Therefore:\n\n\n\\[\\displaystyle  h(t) = - \\frac{d}{dt}\\text{log}(S(t)) \\Leftrightarrow  S(t) = \\exp\\left\\{- \\int_{0}^t h(u) du \\right\\}\\]"
+    "text": "Hazard functions\nHazard rate: instantaneous rate of failure at time \\(t\\) for units that have survived up to time \\(t\\). When do not include features:\n\\[\n\\begin{aligned}\n\\displaystyle h(t) &:= \\lim_{\\Delta t \\to 0}  \\frac{\\text{Pr}(t \\leq T \\leq t + \\Delta t \\mid T \\geq t)}{\\Delta t} \\\\\n\\displaystyle  &= \\lim_{\\Delta t \\to 0}  \\frac{\\text{Pr}(t \\leq T \\leq t + \\Delta t)}{\\text{Pr}( T \\geq t) \\Delta t} \\\\\n\\displaystyle  &= \\lim_{\\Delta t \\to 0} \\frac{S(t) - S(t + \\Delta t)}{\\Delta t} \\cdot \\frac{1}{S(t) } \\\\\n&= - \\frac{S'(t)}{S(t)}\n\\end{aligned}\n\\]\n\nRecall that \\(\\displaystyle - \\frac{d}{dt}\\text{log}(S(t)) = - \\frac{S'(t)}{S(t)}\\). Therefore:\n\n\n\\[\\displaystyle  h(t) = - \\frac{d}{dt}\\text{log}(S(t)) \\Leftrightarrow  S(t) = \\exp\\left\\{- \\int_{0}^t h(u) du \\right\\}\\]"
   },
   {
     "objectID": "lectures/22-survival.html#hazard-functions-1",
@@ -1299,7 +1299,7 @@
     "href": "lectures/22-survival.html#interpreting-the-cox-ph-model",
     "title": "Advanced topics: survival analysis",
     "section": "Interpreting the Cox PH model",
-    "text": "Interpreting the Cox PH model\nThe estimated HR for Midfield is \\(3.79\\):\n\nFor Liverpool men’s FC first team players, midfielders were estimated to have 3.79 times the hazard of injury compared with attackers during the 2017/2018 and 2018/2019 seasons, holding all other model variables constant (95% CI: [0.95, 15.1]).\n\n\n\nThe estimated HR for age is \\(1.02\\)\n\nFor Liverpool men’s FC first team players, a one-year increase in age was associated with 1.02 times increase in the hazard of injury, holding the other model variables constant (95% CI [0.84, 1.24])."
+    "text": "Interpreting the Cox PH model\nThe estimated HR for Midfield is \\(3.79\\):\n\nFor Liverpool men’s FC first team players, midfielders were estimated to have 3.79 times the hazard of injury compared with attackers during 2018/2019 season, holding all other model variables constant (95% CI: [0.95, 15.1]).\n\n\n\nThe estimated HR for age is \\(1.02\\)\n\nFor Liverpool men’s FC first team players, a one-year increase in age was associated with 1.02 times increase in the hazard of injury, holding the other model variables constant (95% CI [0.84, 1.24])."
   },
   {
     "objectID": "lectures/22-survival.html#schoenfeld-residual-diagnostics",
