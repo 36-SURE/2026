@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
 
   <meta name="author" content=" CMSACamp 2026 Department of Statistics &amp; Data Science Carnegie Mellon University">
   <title>CMSACamp 2026 – Unsupervised learning: Gaussian mixture models</title>
@@ -18,9 +18,6 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -99,7 +96,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4290b315e94676cf1dd7d5ac6c8d2ef2.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ec9165fd6a3bdb19c5c23b4bb2299f35.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -371,7 +368,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="08-mixture_files/figure-html/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="08-mixture_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -510,23 +507,23 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
 <h2>Covariance constraints: summary table</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="lavfjsleyf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lavfjsleyf table {
+<div id="oanrhtlnze" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oanrhtlnze table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lavfjsleyf thead, #lavfjsleyf tbody, #lavfjsleyf tfoot, #lavfjsleyf tr, #lavfjsleyf td, #lavfjsleyf th {
+#oanrhtlnze thead, #oanrhtlnze tbody, #oanrhtlnze tfoot, #oanrhtlnze tr, #oanrhtlnze td, #oanrhtlnze th {
   border-style: none;
 }
 
-#lavfjsleyf p {
+#oanrhtlnze p {
   margin: 0;
   padding: 0;
 }
 
-#lavfjsleyf .gt_table {
+#oanrhtlnze .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -552,12 +549,12 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   border-left-color: #D3D3D3;
 }
 
-#lavfjsleyf .gt_caption {
+#oanrhtlnze .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lavfjsleyf .gt_title {
+#oanrhtlnze .gt_title {
   color: #333333;
   font-size: 24px;
   font-weight: initial;
@@ -569,7 +566,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   border-bottom-width: 0;
 }
 
-#lavfjsleyf .gt_subtitle {
+#oanrhtlnze .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -581,7 +578,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   border-top-width: 0;
 }
 
-#lavfjsleyf .gt_heading {
+#oanrhtlnze .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -593,13 +590,13 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   border-right-color: #D3D3D3;
 }
 
-#lavfjsleyf .gt_bottom_border {
+#oanrhtlnze .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lavfjsleyf .gt_col_headings {
+#oanrhtlnze .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -614,7 +611,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   border-right-color: #D3D3D3;
 }
 
-#lavfjsleyf .gt_col_heading {
+#oanrhtlnze .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -634,7 +631,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   overflow-x: hidden;
 }
 
-#lavfjsleyf .gt_column_spanner_outer {
+#oanrhtlnze .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -646,15 +643,15 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   padding-right: 4px;
 }
 
-#lavfjsleyf .gt_column_spanner_outer:first-child {
+#oanrhtlnze .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lavfjsleyf .gt_column_spanner_outer:last-child {
+#oanrhtlnze .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lavfjsleyf .gt_column_spanner {
+#oanrhtlnze .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -666,11 +663,11 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   width: 100%;
 }
 
-#lavfjsleyf .gt_spanner_row {
+#oanrhtlnze .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lavfjsleyf .gt_group_heading {
+#oanrhtlnze .gt_group_heading {
   padding-top: 6.4px;
   padding-bottom: 6.4px;
   padding-left: 5px;
@@ -696,7 +693,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   text-align: left;
 }
 
-#lavfjsleyf .gt_empty_group_heading {
+#oanrhtlnze .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -711,15 +708,15 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   vertical-align: middle;
 }
 
-#lavfjsleyf .gt_from_md > :first-child {
+#oanrhtlnze .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lavfjsleyf .gt_from_md > :last-child {
+#oanrhtlnze .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lavfjsleyf .gt_row {
+#oanrhtlnze .gt_row {
   padding-top: 6.4px;
   padding-bottom: 6.4px;
   padding-left: 5px;
@@ -738,7 +735,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   overflow-x: hidden;
 }
 
-#lavfjsleyf .gt_stub {
+#oanrhtlnze .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -751,7 +748,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   padding-right: 5px;
 }
 
-#lavfjsleyf .gt_stub_row_group {
+#oanrhtlnze .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -765,15 +762,15 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   vertical-align: top;
 }
 
-#lavfjsleyf .gt_row_group_first td {
+#oanrhtlnze .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lavfjsleyf .gt_row_group_first th {
+#oanrhtlnze .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lavfjsleyf .gt_summary_row {
+#oanrhtlnze .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -783,16 +780,16 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   padding-right: 5px;
 }
 
-#lavfjsleyf .gt_first_summary_row {
+#oanrhtlnze .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lavfjsleyf .gt_first_summary_row.thick {
+#oanrhtlnze .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lavfjsleyf .gt_last_summary_row {
+#oanrhtlnze .gt_last_summary_row {
   padding-top: 6.4px;
   padding-bottom: 6.4px;
   padding-left: 5px;
@@ -802,7 +799,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   border-bottom-color: #D3D3D3;
 }
 
-#lavfjsleyf .gt_grand_summary_row {
+#oanrhtlnze .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -812,7 +809,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   padding-right: 5px;
 }
 
-#lavfjsleyf .gt_first_grand_summary_row {
+#oanrhtlnze .gt_first_grand_summary_row {
   padding-top: 6.4px;
   padding-bottom: 6.4px;
   padding-left: 5px;
@@ -822,7 +819,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   border-top-color: #D3D3D3;
 }
 
-#lavfjsleyf .gt_last_grand_summary_row_top {
+#oanrhtlnze .gt_last_grand_summary_row_top {
   padding-top: 6.4px;
   padding-bottom: 6.4px;
   padding-left: 5px;
@@ -832,11 +829,11 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   border-bottom-color: #D3D3D3;
 }
 
-#lavfjsleyf .gt_striped {
+#oanrhtlnze .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lavfjsleyf .gt_table_body {
+#oanrhtlnze .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -845,7 +842,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   border-bottom-color: #D3D3D3;
 }
 
-#lavfjsleyf .gt_footnotes {
+#oanrhtlnze .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -859,7 +856,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   border-right-color: #D3D3D3;
 }
 
-#lavfjsleyf .gt_footnote {
+#oanrhtlnze .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 3.2px;
@@ -868,7 +865,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   padding-right: 5px;
 }
 
-#lavfjsleyf .gt_sourcenotes {
+#oanrhtlnze .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -882,7 +879,7 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   border-right-color: #D3D3D3;
 }
 
-#lavfjsleyf .gt_sourcenote {
+#oanrhtlnze .gt_sourcenote {
   font-size: 90%;
   padding-top: 3.2px;
   padding-bottom: 3.2px;
@@ -890,72 +887,72 @@ P(z_i = k \mid x_i) &amp;= \frac{P(x_i \mid z_i = k)P(z_i = k)}{P(x_i)} \\
   padding-right: 5px;
 }
 
-#lavfjsleyf .gt_left {
+#oanrhtlnze .gt_left {
   text-align: left;
 }
 
-#lavfjsleyf .gt_center {
+#oanrhtlnze .gt_center {
   text-align: center;
 }
 
-#lavfjsleyf .gt_right {
+#oanrhtlnze .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lavfjsleyf .gt_font_normal {
+#oanrhtlnze .gt_font_normal {
   font-weight: normal;
 }
 
-#lavfjsleyf .gt_font_bold {
+#oanrhtlnze .gt_font_bold {
   font-weight: bold;
 }
 
-#lavfjsleyf .gt_font_italic {
+#oanrhtlnze .gt_font_italic {
   font-style: italic;
 }
 
-#lavfjsleyf .gt_super {
+#oanrhtlnze .gt_super {
   font-size: 65%;
 }
 
-#lavfjsleyf .gt_footnote_marks {
+#oanrhtlnze .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lavfjsleyf .gt_asterisk {
+#oanrhtlnze .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lavfjsleyf .gt_indent_1 {
+#oanrhtlnze .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lavfjsleyf .gt_indent_2 {
+#oanrhtlnze .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lavfjsleyf .gt_indent_3 {
+#oanrhtlnze .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lavfjsleyf .gt_indent_4 {
+#oanrhtlnze .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lavfjsleyf .gt_indent_5 {
+#oanrhtlnze .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lavfjsleyf .katex-display {
+#oanrhtlnze .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lavfjsleyf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#oanrhtlnze div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1192,23 +1189,23 @@ Clustering table:
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(<span class="fu">tidy</span>(nba_mclust))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="pfgyviknvu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pfgyviknvu table {
+<div id="zarygjflbr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zarygjflbr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pfgyviknvu thead, #pfgyviknvu tbody, #pfgyviknvu tfoot, #pfgyviknvu tr, #pfgyviknvu td, #pfgyviknvu th {
+#zarygjflbr thead, #zarygjflbr tbody, #zarygjflbr tfoot, #zarygjflbr tr, #zarygjflbr td, #zarygjflbr th {
   border-style: none;
 }
 
-#pfgyviknvu p {
+#zarygjflbr p {
   margin: 0;
   padding: 0;
 }
 
-#pfgyviknvu .gt_table {
+#zarygjflbr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1234,12 +1231,12 @@ Clustering table:
   border-left-color: #D3D3D3;
 }
 
-#pfgyviknvu .gt_caption {
+#zarygjflbr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pfgyviknvu .gt_title {
+#zarygjflbr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1251,7 +1248,7 @@ Clustering table:
   border-bottom-width: 0;
 }
 
-#pfgyviknvu .gt_subtitle {
+#zarygjflbr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1263,7 +1260,7 @@ Clustering table:
   border-top-width: 0;
 }
 
-#pfgyviknvu .gt_heading {
+#zarygjflbr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1275,13 +1272,13 @@ Clustering table:
   border-right-color: #D3D3D3;
 }
 
-#pfgyviknvu .gt_bottom_border {
+#zarygjflbr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pfgyviknvu .gt_col_headings {
+#zarygjflbr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1296,7 +1293,7 @@ Clustering table:
   border-right-color: #D3D3D3;
 }
 
-#pfgyviknvu .gt_col_heading {
+#zarygjflbr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1316,7 +1313,7 @@ Clustering table:
   overflow-x: hidden;
 }
 
-#pfgyviknvu .gt_column_spanner_outer {
+#zarygjflbr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1328,15 +1325,15 @@ Clustering table:
   padding-right: 4px;
 }
 
-#pfgyviknvu .gt_column_spanner_outer:first-child {
+#zarygjflbr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pfgyviknvu .gt_column_spanner_outer:last-child {
+#zarygjflbr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pfgyviknvu .gt_column_spanner {
+#zarygjflbr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1348,11 +1345,11 @@ Clustering table:
   width: 100%;
 }
 
-#pfgyviknvu .gt_spanner_row {
+#zarygjflbr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pfgyviknvu .gt_group_heading {
+#zarygjflbr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1378,7 +1375,7 @@ Clustering table:
   text-align: left;
 }
 
-#pfgyviknvu .gt_empty_group_heading {
+#zarygjflbr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1393,15 +1390,15 @@ Clustering table:
   vertical-align: middle;
 }
 
-#pfgyviknvu .gt_from_md > :first-child {
+#zarygjflbr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pfgyviknvu .gt_from_md > :last-child {
+#zarygjflbr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pfgyviknvu .gt_row {
+#zarygjflbr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1420,7 +1417,7 @@ Clustering table:
   overflow-x: hidden;
 }
 
-#pfgyviknvu .gt_stub {
+#zarygjflbr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1433,7 +1430,7 @@ Clustering table:
   padding-right: 5px;
 }
 
-#pfgyviknvu .gt_stub_row_group {
+#zarygjflbr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1447,15 +1444,15 @@ Clustering table:
   vertical-align: top;
 }
 
-#pfgyviknvu .gt_row_group_first td {
+#zarygjflbr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pfgyviknvu .gt_row_group_first th {
+#zarygjflbr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pfgyviknvu .gt_summary_row {
+#zarygjflbr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1465,16 +1462,16 @@ Clustering table:
   padding-right: 5px;
 }
 
-#pfgyviknvu .gt_first_summary_row {
+#zarygjflbr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pfgyviknvu .gt_first_summary_row.thick {
+#zarygjflbr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pfgyviknvu .gt_last_summary_row {
+#zarygjflbr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1484,7 +1481,7 @@ Clustering table:
   border-bottom-color: #D3D3D3;
 }
 
-#pfgyviknvu .gt_grand_summary_row {
+#zarygjflbr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1494,7 +1491,7 @@ Clustering table:
   padding-right: 5px;
 }
 
-#pfgyviknvu .gt_first_grand_summary_row {
+#zarygjflbr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1504,7 +1501,7 @@ Clustering table:
   border-top-color: #D3D3D3;
 }
 
-#pfgyviknvu .gt_last_grand_summary_row_top {
+#zarygjflbr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1514,11 +1511,11 @@ Clustering table:
   border-bottom-color: #D3D3D3;
 }
 
-#pfgyviknvu .gt_striped {
+#zarygjflbr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pfgyviknvu .gt_table_body {
+#zarygjflbr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1527,7 +1524,7 @@ Clustering table:
   border-bottom-color: #D3D3D3;
 }
 
-#pfgyviknvu .gt_footnotes {
+#zarygjflbr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1541,7 +1538,7 @@ Clustering table:
   border-right-color: #D3D3D3;
 }
 
-#pfgyviknvu .gt_footnote {
+#zarygjflbr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1550,7 +1547,7 @@ Clustering table:
   padding-right: 5px;
 }
 
-#pfgyviknvu .gt_sourcenotes {
+#zarygjflbr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1564,7 +1561,7 @@ Clustering table:
   border-right-color: #D3D3D3;
 }
 
-#pfgyviknvu .gt_sourcenote {
+#zarygjflbr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1572,72 +1569,72 @@ Clustering table:
   padding-right: 5px;
 }
 
-#pfgyviknvu .gt_left {
+#zarygjflbr .gt_left {
   text-align: left;
 }
 
-#pfgyviknvu .gt_center {
+#zarygjflbr .gt_center {
   text-align: center;
 }
 
-#pfgyviknvu .gt_right {
+#zarygjflbr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pfgyviknvu .gt_font_normal {
+#zarygjflbr .gt_font_normal {
   font-weight: normal;
 }
 
-#pfgyviknvu .gt_font_bold {
+#zarygjflbr .gt_font_bold {
   font-weight: bold;
 }
 
-#pfgyviknvu .gt_font_italic {
+#zarygjflbr .gt_font_italic {
   font-style: italic;
 }
 
-#pfgyviknvu .gt_super {
+#zarygjflbr .gt_super {
   font-size: 65%;
 }
 
-#pfgyviknvu .gt_footnote_marks {
+#zarygjflbr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pfgyviknvu .gt_asterisk {
+#zarygjflbr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pfgyviknvu .gt_indent_1 {
+#zarygjflbr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pfgyviknvu .gt_indent_2 {
+#zarygjflbr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pfgyviknvu .gt_indent_3 {
+#zarygjflbr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pfgyviknvu .gt_indent_4 {
+#zarygjflbr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pfgyviknvu .gt_indent_5 {
+#zarygjflbr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pfgyviknvu .katex-display {
+#zarygjflbr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pfgyviknvu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zarygjflbr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1691,7 +1688,7 @@ Clustering table:
 <span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_colorblind</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="08-mixture_files/figure-html/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1152"></section>
+<img data-src="08-mixture_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1152"></section>
 <section id="display-the-bic-for-each-model-and-number-of-clusters" class="slide level2">
 <h2>Display the BIC for each model and number of clusters</h2>
 <div class="columns">
@@ -1703,7 +1700,7 @@ Clustering table:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="08-mixture_files/figure-html/nba-bic-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="08-mixture_files/figure-revealjs/nba-bic-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1715,7 +1712,7 @@ Clustering table:
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="08-mixture_files/figure-html/nba-cluster-plot-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="08-mixture_files/figure-revealjs/nba-cluster-plot-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1758,7 +1755,7 @@ Clusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG
 <span id="cb11-12"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>cluster)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="08-mixture_files/figure-html/nba-probs-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1728"></section>
+<img data-src="08-mixture_files/figure-revealjs/nba-probs-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1728"></section>
 <section id="which-players-have-the-highest-uncertainty" class="slide level2">
 <h2>Which players have the highest uncertainty?</h2>
 <div class="columns">
@@ -1780,7 +1777,7 @@ Clusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="08-mixture_files/figure-html/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="08-mixture_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1804,7 +1801,7 @@ Clusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG
 <section id="appendix-mixtures-of-gaussians-in-1d" class="slide level2">
 <h2>Appendix: Mixtures of Gaussians in 1D</h2>
 
-<img data-src="08-mixture_files/figure-html/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
+<img data-src="08-mixture_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="appendix-mixtures-of-gaussians-in-2d" class="slide level2">
 <h2>Appendix: Mixtures of Gaussians in 2D</h2>
 <p><br></p>
@@ -2029,6 +2026,44 @@ Clusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -2099,7 +2134,7 @@ Clusters  C C-PF PF PF-C PF-SF PG PG-SG SF SF-PF SF-SG SG SG-PG
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/36-SURE\.github\.io\/2026\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

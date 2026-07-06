@@ -1141,6 +1141,244 @@
     "text": "Exploring Pittsburgh\n\nPittsburgh-based resources\nFun activities to do in Pittsburgh (non-exhaustive)"
   },
   {
+    "objectID": "lectures/22-survival.html#motivation",
+    "href": "lectures/22-survival.html#motivation",
+    "title": "Advanced topics: survival analysis",
+    "section": "Motivation",
+    "text": "Motivation\nPreviously:\n\nConsidered problems of the form: “model the relationship between \\(X\\) and \\(Y\\)”, where:\n\n\\(X\\) and \\(Y\\) are completely observed\nMake assumptions about the distribution of \\(Y\\) and the shape of the relationship\n\nExample: use game- and shot-level features to predict goal probability\n\n\nBut not every statistical problem is of this form!\nSuppose we want to model the time-to-event, where:\n\nThat time might be incompletely observed for certain observations/units (\\(Y\\) is not completely observed)\nEach observation/unit can experience a certain event a maximum of one time\n\n\n\nThe field of survival analysis is about modeling time-to-event outcomes!"
+  },
+  {
+    "objectID": "lectures/22-survival.html#examples-of-time-to-event-outcomes",
+    "href": "lectures/22-survival.html#examples-of-time-to-event-outcomes",
+    "title": "Advanced topics: survival analysis",
+    "section": "Examples of time-to-event outcomes",
+    "text": "Examples of time-to-event outcomes\n\nTime until injury\nTime until an athlete transfers\nTime until death\nTime until a patient is discharged from the hospital\nTime until a user cancels a subscription service\nTime until a convicted criminal reoffends\nTime until a PhD student graduates\n\n\nIn survival analysis:\n\nWe are interested in modeling the rate of the event-of-interest (not just if the event happened)\nGenerically, we call the event-of-interest failure (or death), i.e, we are interested in modeling failure (death) rates and risk of failure (death) for each observation"
+  },
+  {
+    "objectID": "lectures/22-survival.html#two-possible-outcomes",
+    "href": "lectures/22-survival.html#two-possible-outcomes",
+    "title": "Advanced topics: survival analysis",
+    "section": "Two possible outcomes",
+    "text": "Two possible outcomes\nSuppose observe each observation \\(i\\) beginning at time zero. For each observation \\(i\\), there are two possible outcomes:\n\n\nThe observation “fails” (aka has the event occur) at time \\(T_i\\). This is known as the failure time or the survival time (since that is how long the observation survives)\n\n\n\n\nThe observation reaches time \\(C_i\\) without failure (aka without the event occurring), and no longer observe the observation after that time to know when the event occurs\n\n\n\n\nCase 2 is called censoring because the true time-to-event \\(T_i\\) is censored or unknown to us — all we know is that \\(T_i &gt; C_i\\)\n\n\n\nTechnically, we focus on right-censoring, which is when we only know that \\(T_i &gt; C_i\\).1\n\nThere are other types of censoring, such as left-censoring (where \\(T_i &lt; C_i\\)) and interval censoring (where \\(T_i \\in [c_{i1}, c_{i2}]\\))."
+  },
+  {
+    "objectID": "lectures/22-survival.html#so-basically",
+    "href": "lectures/22-survival.html#so-basically",
+    "title": "Advanced topics: survival analysis",
+    "section": "So basically…",
+    "text": "So basically…"
+  },
+  {
+    "objectID": "lectures/22-survival.html#fundamental-challenge-censoring",
+    "href": "lectures/22-survival.html#fundamental-challenge-censoring",
+    "title": "Advanced topics: survival analysis",
+    "section": "Fundamental challenge: censoring",
+    "text": "Fundamental challenge: censoring\n\nCensoring can happen for various reasons:\n\nExample 1: a player leaves a team for financial reasons\nExample 2: a player leaves a team because of recurring minor injuries or reduced fitness\n\n\n\n\nCensoring is effectively a missing data problem since we are missing the true time-to-event (outcome)\n\n\n\nSo, why not just do a complete case analysis, where we filter out censored observations?\n\n\n\nFiltering out censored observations is problematic for two reasons:\n\nIt throws away useful information: we lose useful information that they survived up until time \\(C_i\\)\nIt can bias analysis: an observation may be censored for reasons that are related to the event-of-interest (aka it may be informative)"
+  },
+  {
+    "objectID": "lectures/22-survival.html#survival-analysis-problem-setup",
+    "href": "lectures/22-survival.html#survival-analysis-problem-setup",
+    "title": "Advanced topics: survival analysis",
+    "section": "Survival analysis problem setup",
+    "text": "Survival analysis problem setup\nIn survival analysis, we are interested in modeling \\(T_i\\) while accounting for censoring\n\n\nData: Suppose we have \\(n\\) i.i.d observations of the following form:\n\\[(\\mathbf{X}_1, Y_1, R_1), \\dots, (\\mathbf{X}_n, Y_n, R_n)\\] where:\n\n\\(\\mathbf{X}_i\\): feature vector for unit \\(i\\) (e.g., age, position, minutes player)\n\\(Y_i\\): either the observed time-to-event \\(T_i\\) or the censoring time \\(C_i\\) depending on what happened first (\\(Y_i = \\min\\{T_i, C_i\\}\\))\n\\(R_i\\): status of whether the event-of-interest occurred\n\n\n\n\\[\nR_i =\n\\begin{cases}\n1 \\quad \\text{if } Y_i = T_i, \\\\\n0 \\quad \\text{if } Y_i = C_i\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "lectures/22-survival.html#survival-function",
+    "href": "lectures/22-survival.html#survival-function",
+    "title": "Advanced topics: survival analysis",
+    "section": "Survival function",
+    "text": "Survival function\nThe survival function is defined as follows:\n\\[\nS(t \\mid \\mathbf{x}) := \\displaystyle \\text{Pr}(T &gt; t \\mid \\mathbf{x}) = \\text{Pr}(\\text{survive beyond time } t \\mid \\mathbf{x})\n\\]\n\n\nNote:\n\nIf we start observing every unit \\(i\\) at \\(t = 0\\), then \\(S(0 \\mid \\mathbf{x}) = 1\\)\n\n\n\n\n\\(S(t \\mid x)\\) declines as \\(t \\to \\infty\\):\n\nFor some events-of-interest that will necessarily happen (e.g., death): \\(S(t \\mid \\mathbf{x}) \\to 0\\) as \\(t \\to \\infty\\)\nFor others events-of-interest where the event does not necessarily happen (e.g., injury): \\(S(t \\mid \\mathbf{x})\\) declines to some positive value (between zero and one) as \\(t \\to \\infty\\)\n\n\n\n\n\nWe are predicting whole curves per feature vector \\(\\mathbf{x}\\), not just a single value!"
+  },
+  {
+    "objectID": "lectures/22-survival.html#interpreting-the-survival-curve",
+    "href": "lectures/22-survival.html#interpreting-the-survival-curve",
+    "title": "Advanced topics: survival analysis",
+    "section": "Interpreting the survival curve",
+    "text": "Interpreting the survival curve\n\n\nWhat the time-to-event outcome is matters for our interpretation:\n\nFor time until injury, longer is considered “better”\nFor time until a patient is discharged, longer is often considered “worse”\n\n\nFrom the survival curve:\n\nThe median survival time of \\(\\mathbf{x}\\) is where \\(S(t \\mid \\mathbf{x}) = 1/2\\)\nThe mean survival time of \\(\\mathbf{x}\\) is the area under the survival curve: \\(\\displaystyle \\int_0^\\infty S(t \\mid \\mathbf{x}) dt\\)"
+  },
+  {
+    "objectID": "lectures/22-survival.html#kaplan-meier-curves",
+    "href": "lectures/22-survival.html#kaplan-meier-curves",
+    "title": "Advanced topics: survival analysis",
+    "section": "Kaplan-Meier curves",
+    "text": "Kaplan-Meier curves\nKaplan-Meier curves are a popular estimator of survival curves\n\n\nLet’s ignore the feature vector for now, so that our data is of the form: \\((Y_1, R_1), \\dots (Y_n, R_n)\\)\n\n\n\nFirst, we find all unique observed times in which event-of-interest occurred\n\\[\n0 &lt; \\tau_{(1)} &lt; \\tau_{(2)} &lt; \\dots &lt; \\tau_{(L)}, \\qquad L = \\text{# of unique event times}\n\\]\n\n\nLet:\n\n\\(n[m]\\) denote number of observations that are “at risk” right before time \\(\\tau_{(m)}\\)\n\\(d[m]\\) denote the number of observations that “die” at time \\(\\tau_{(m)}\\)"
+  },
+  {
+    "objectID": "lectures/22-survival.html#kaplan-meier-curves-1",
+    "href": "lectures/22-survival.html#kaplan-meier-curves-1",
+    "title": "Advanced topics: survival analysis",
+    "section": "Kaplan-Meier curves",
+    "text": "Kaplan-Meier curves\nFor observations “at risk” at the beginning of time \\(\\tau_{(m)}\\), the probability of surviving that time is:\n\\[\np_m = \\frac{n[m] - d[m]}{n[m] }\n\\]\n\nE.g., the probability that an observation survives to the second time \\(\\tau_{(2)}\\), given they survived the first time \\(\\tau_{(1)}\\) is:\n\\[\np_2 = \\frac{n[2] - d[2]}{n[2]}\n\\]\n\n\nThe probability that (at the outset) an observation survives to the second time \\(\\tau_{(2)}\\) is:\n\\[\n\\begin{aligned}\n\\text{Pr}(T &gt; \\tau_{(2)}) &=  \\text{Pr}(T &gt; \\tau_{(1)}) \\cdot \\text{Pr}(T &gt; \\tau_{(2)} \\mid T &gt; \\tau_{(1)}) = \\frac{n[1] - d[1]}{n[1]} \\cdot \\frac{n[2] - d[2]}{n[2]} = p_1 \\cdot p_2\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lectures/22-survival.html#kaplan-meier-curves-2",
+    "href": "lectures/22-survival.html#kaplan-meier-curves-2",
+    "title": "Advanced topics: survival analysis",
+    "section": "Kaplan-Meier curves",
+    "text": "Kaplan-Meier curves\nTherefore, the Kaplan-Meier estimate for the probability of surviving the first \\(t\\) days is:\n\\[\n\\hat{S}(t)_{\\text{KM}} = \\prod_{m = 1, \\dots, L \\text{ s.t. } \\tau_{(m)} \\leq t} \\frac{n[m] - d[m]}{n[m]} = \\prod_{m = 1, \\dots, L \\text{ s.t. } \\tau_{(m)} &lt; t} p_m\n\\]\n\n\nThe Kaplan-Meier curve is a non-parametric estimator of the survival function — doesn’t assume a parametric form!\nWe can derive point-wise confidence intervals for Kaplan-Meier curves\nThere are extensions that allow us to add in feature vectors, i.e., that estimate \\(S(t \\mid \\mathbf{x})\\) using \\(k\\) nearest neighbor or kernel approaches\n\n\n\n\nIn practice, people often compare Kaplan-Meier curves across different levels of a categorical variable (e.g., position) in order to estimate the difference in survival probabilities between levels"
+  },
+  {
+    "objectID": "lectures/22-survival.html#hazard-functions",
+    "href": "lectures/22-survival.html#hazard-functions",
+    "title": "Advanced topics: survival analysis",
+    "section": "Hazard functions",
+    "text": "Hazard functions\nHazard rate: instantaneous rate of failure at time \\(t\\) for units that have survived up to time \\(t\\). When do not include features:\n\\[\n\\begin{aligned}\n\\displaystyle h(t) &:= \\lim_{\\Delta t \\to 0}  \\frac{\\text{Pr}(t \\leq T \\leq t + \\Delta t \\mid T \\geq t)}{\\Delta t} \\\\\n\\displaystyle  &= \\lim_{\\Delta t \\to 0}  \\frac{\\text{Pr}(t \\leq T \\leq t + \\Delta t)}{\\text{Pr}( T \\geq t) \\Delta t} \\\\\n\\displaystyle  &= \\lim_{\\Delta t \\to 0} \\frac{S(t) - S(t + \\Delta t)}{\\Delta t} \\cdot \\frac{1}{S(t) } \\\\\n&= - \\frac{S(t)}{S(t)}\n\\end{aligned}\n\\]\n\nRecall that \\(\\displaystyle - \\frac{d}{dt}\\text{log}(S(t)) = - \\frac{S(t)}{S(t)}\\). Therefore:\n\n\n\\[\\displaystyle  h(t) = - \\frac{d}{dt}\\text{log}(S(t)) \\Leftrightarrow  S(t) = \\exp\\left\\{- \\int_{0}^t h(u) du \\right\\}\\]"
+  },
+  {
+    "objectID": "lectures/22-survival.html#hazard-functions-1",
+    "href": "lectures/22-survival.html#hazard-functions-1",
+    "title": "Advanced topics: survival analysis",
+    "section": "Hazard functions",
+    "text": "Hazard functions\nCumulative hazard: the integral of the hazard function. When do do not include features:\n\\[\n\\displaystyle H(t) := \\int_{0}^t h(u) du\n\\]\nTherefore, \\(\\displaystyle S(t) = \\exp\\{- H(t)\\} \\Leftrightarrow  H(t) = - \\log(S(t))\\)\n\n\nPut together, using features \\(\\mathbf{x}\\):\n\n\n\n\nFrom George Chen"
+  },
+  {
+    "objectID": "lectures/22-survival.html#cox-proportional-hazards-model",
+    "href": "lectures/22-survival.html#cox-proportional-hazards-model",
+    "title": "Advanced topics: survival analysis",
+    "section": "Cox proportional hazards model",
+    "text": "Cox proportional hazards model\n\nWe are often interested in how an observation’s features are associated with its survival (aka inference)\n\n\n\nNonparametric survival estimators (like Kaplan-Meier curves) are useful but do not directly help us answer this question\n\nExcept in cases where we only have a single categorical predictor and we can estimate different Kaplan-Meier curves for each factor level\n\n\n\n\nAssume the following factorization holds:\n\\[\nh(t \\mid \\mathbf{x}) = h_0(t) \\cdot \\exp\\{ \\mathbf{x} \\beta \\}\n\\]\nwhere \\(h_0(t)\\) is the baseline hazard function, \\(\\mathbf{x}\\) is a feature vector, and \\(\\beta\\) is the associated parameter vector (just like in GLMs)\n\n\n\nConsidered a semi-parametric model since typically no parametric form is assumed for the baseline hazard function \\(h_0\\)"
+  },
+  {
+    "objectID": "lectures/22-survival.html#proportional-hazards-assumption",
+    "href": "lectures/22-survival.html#proportional-hazards-assumption",
+    "title": "Advanced topics: survival analysis",
+    "section": "Proportional hazards assumption",
+    "text": "Proportional hazards assumption\nCox proportional hazards (PH) model assumes that:\n\\[\nh(t \\mid \\mathbf{x}) = h_0(t) \\cdot \\exp\\{ \\mathbf{x} \\beta \\}\n\\]\nimplies that the hazard is proportional to the baseline hazard \\(h_0\\) for all \\(\\mathbf{x}\\). Hence,\n\n\\[\n\\begin{aligned}\n\\displaystyle S(t \\mid \\mathbf{x}) &= \\exp\\left\\{- \\int_{0}^t h(u \\mid \\mathbf{x}) du \\right\\} \\quad \\text{(our starting place)}\\\\\n&=  \\exp\\left\\{- \\int_{0}^t h_0(u) \\cdot \\exp\\{ \\mathbf{x} \\beta \\} du \\right\\} \\\\\n&= \\exp\\left\\{- \\exp\\{ \\mathbf{x} \\beta \\} \\cdot \\int_{0}^t h_0(u)  du \\right\\} \\\\\n&= \\left\\{e^{-\\int_{0}^t h_0(u)  du}  \\right\\}^{\\exp\\{ \\mathbf{x} \\beta \\}} \\\\\n&= S_0(t)^{\\exp\\{ \\mathbf{x} \\beta \\}}, \\quad S_0(t) := e^{-\\int_{0}^t h_0(u)  du}\n\\end{aligned}\n\\]\n\n\nUnder PH assumption, all survival curves must be powers of a baseline survival curve \\(S_0(t)\\)"
+  },
+  {
+    "objectID": "lectures/22-survival.html#proportional-hazard-implications-for-the-survival-curve",
+    "href": "lectures/22-survival.html#proportional-hazard-implications-for-the-survival-curve",
+    "title": "Advanced topics: survival analysis",
+    "section": "Proportional hazard implications for the survival curve",
+    "text": "Proportional hazard implications for the survival curve\nUnder PH assumption, survival curves must be powers of each other\n\nWhen \\(\\mathbf{x} \\beta = 0\\), we get the baseline survival curve\nWhen \\(\\mathbf{x} \\beta &gt; 0\\) means shorter survival than the baseline\nWhen \\(\\mathbf{x} \\beta &lt; 0\\) means longer survival than the baseline\n\n\n\n\nFrom George Chen\n\n\n\n\nNote that \\(\\mathbf{x} \\beta = \\beta^T \\mathbf{x}\\), where \\(^T\\) denotes transpose."
+  },
+  {
+    "objectID": "lectures/22-survival.html#testing-proportional-hazards",
+    "href": "lectures/22-survival.html#testing-proportional-hazards",
+    "title": "Advanced topics: survival analysis",
+    "section": "Testing proportional hazards",
+    "text": "Testing proportional hazards\n\nFor categorical variables, we can check whether their \\(\\log(-\\log(\\text{survival functions}))\\) are “parallel” (i.e., don’t cross, get closer or farther apart together over time)\n\n\n\nFor any variable, we can analyze the Schoenfeld residuals. For observation \\(i\\) that fails at \\(t_i\\) and feature \\(k\\):\n\n\\[\n\\text{Schoenfeld resid}_i = x_{ik} - \\bar{x}_k(\\beta, t_i)\n\\]\nwhere:\n\n\\(x_{ik}\\): \\(k\\)th feature for observation \\(i\\)\n\\(t_i\\): observed “death” or “failure” time for observation \\(i\\)\n\\(\\bar{x}_k(\\beta, t_i)\\): model-weighted average (or expected) value of the \\(k\\)th covariate among observations who are “at risk” right before \\(t_i\\)\n\n\n\nIf PH assumption holds, Schoenfeld residuals should show no systematic trend over time"
+  },
+  {
+    "objectID": "lectures/22-survival.html#interpreting-coefficients",
+    "href": "lectures/22-survival.html#interpreting-coefficients",
+    "title": "Advanced topics: survival analysis",
+    "section": "Interpreting coefficients",
+    "text": "Interpreting coefficients\n\nWe can calculate hazard ratio (HR) for any desired change in features, such as increasing a feature by one:\n\n\\[\n\\widehat{\\text{HR}} = \\frac{h(t \\mid x_1 + 1, \\dots, x_p)}{h(t \\mid x_1, \\dots, x_n)} = \\frac{h_0(t) \\exp(\\beta_0 + \\beta_1 (x_1 + 1) + \\dots + \\beta_p x_p)}{h_0(t) \\exp(\\beta_0 + \\beta_1 x_1  + \\dots + \\beta_p x_p)} = \\exp(\\beta_1)\n\\]\n\n\nRecall we can compute the 95% confidence interval for \\(\\beta_1\\) as:\n\n\\[\n\\displaystyle [\\hat{\\beta}_1 -  1.96 \\cdot \\text{SE}(\\hat{\\beta}_1), \\hat{\\beta}_1 +  1.96 \\cdot \\text{SE}(\\hat{\\beta}_1)]\n\\]\n\n\n\nSo, the corresponding 95% confidence interval for \\(\\text{HR}\\) is:\n\n\\[\n\\displaystyle [ \\exp(\\hat{\\beta}_1 -  1.96 \\cdot \\text{SE}(\\hat{\\beta}_1)), \\exp(\\hat{\\beta}_1 +  1.96 \\cdot \\text{SE}(\\hat{\\beta}_1))]\n\\]\n\n\n\nWe can also perform hypothesis testing for \\(\\beta_1\\) and HR using z-tests and drop-in-deviance tests, just like we did for GLMs!"
+  },
+  {
+    "objectID": "lectures/22-survival.html#assessing-calibration-via-concordance-index",
+    "href": "lectures/22-survival.html#assessing-calibration-via-concordance-index",
+    "title": "Advanced topics: survival analysis",
+    "section": "Assessing calibration via concordance index",
+    "text": "Assessing calibration via concordance index\nThe Cox PH model ranks data points by their hazard\n\\[\n\\begin{aligned}\n\\mathbf{x}_1 &\\longrightarrow \\mathbf{x}_1 \\beta \\\\\n\\mathbf{x}_2 &\\longrightarrow \\mathbf{x}_2 \\beta \\\\\n&\\cdots \\\\\n\\mathbf{x}_n &\\longrightarrow \\mathbf{x}_n \\beta\n\\end{aligned}\n\\]\n\nExample: if \\(\\mathbf{x}_1 \\beta &gt; \\mathbf{x}_2 \\beta\\), then observation \\(1\\) has higher hazard than observation \\(2\\).\n\n\nWe compute the concordance index by:\n\nEnumerating every pair of observations where at least one observation had a failure (i.e. exclude pairs where both observations are censored)\n\n\n\n\nComputing the fraction of all such pairs where the unit with the earlier failure had a higher hazard\n\n\n\nMeasure of goodness-of-fit/predictive ability"
+  },
+  {
+    "objectID": "lectures/22-survival.html#data-liverpool-football-club-injuries",
+    "href": "lectures/22-survival.html#data-liverpool-football-club-injuries",
+    "title": "Advanced topics: survival analysis",
+    "section": "Data: Liverpool Football Club injuries",
+    "text": "Data: Liverpool Football Club injuries\nInjury data for Liverpool FC men’s first team (2017-2018 and 2018-2019 seasons), courtesy of the injurytools package\n\nlibrary(tidyverse)\n\ninjury_data &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/liverpool_injury_data_17-19.csv\") |&gt;\n  mutate(positionb = str_split_i(position, \"_\", 1)) |&gt;\n  filter(positionb != \"Goalkeeper\") \n#glimpse(injury_data)\n\n\nGoal: estimate time until first injury for (non-Goalie) players given player-level attributes such as age and position\n\n\nData was web-scraped from https://www.transfermarkt.com/."
+  },
+  {
+    "objectID": "lectures/22-survival.html#fitting-a-kaplan-meier-curve",
+    "href": "lectures/22-survival.html#fitting-a-kaplan-meier-curve",
+    "title": "Advanced topics: survival analysis",
+    "section": "Fitting a Kaplan-Meier curve",
+    "text": "Fitting a Kaplan-Meier curve\n\n\nWe can fitting the Kaplan-Meier curves using survfit() and Surv()\n\nlibrary(survival) # install.packages(\"survival\")\nkm_fit &lt;- survfit(Surv(tstop_day, status) ~ seasonb,\n                  data = injury_data) \nkm_fit\n\nCall: survfit(formula = Surv(tstop_day, status) ~ seasonb, data = injury_data)\n\n                   n events median 0.95LCL 0.95UCL\nseasonb=2017/2018 21     15    260     111      NA\nseasonb=2018/2019 18     17    105      77     163\n\n\nPlotting the Kaplan-Meier curve using ggsurvplot()\n\nlibrary(survminer) # install.packages(\"survminer\")\nggsurvplot(km_fit,  palette = c(\"#E7B800\", \"#2E9FDF\"),\n           surv.median.line = \"hv\",\n           xlab = \"Time (in calendar days)\")"
+  },
+  {
+    "objectID": "lectures/22-survival.html#fitting-the-cox-ph-model",
+    "href": "lectures/22-survival.html#fitting-the-cox-ph-model",
+    "title": "Advanced topics: survival analysis",
+    "section": "Fitting the Cox PH model",
+    "text": "Fitting the Cox PH model\nWe can fit Cox PH model with coxph() function:\n\nlibrary(gtsummary)\ninjury_data_sub &lt;- injury_data |&gt; filter(season == \"18-19\")\n\ncfit &lt;- coxph(Surv(tstop_day, status) ~ positionb + age + yellows,\n              data = injury_data_sub)\n\ntbl_regression(cfit, exponentiate = TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nHR\n95% CI\np-value\n\n\n\n\npositionb\n\n\n\n\n\n\n\n\n    Attack\n—\n—\n\n\n\n\n    Defender\n1.79\n0.37, 8.71\n0.5\n\n\n    Midfield\n3.79\n0.95, 15.1\n0.059\n\n\nage\n1.02\n0.84, 1.24\n0.8\n\n\nyellows\n1.04\n0.69, 1.56\n0.9\n\n\n\nAbbreviations: CI = Confidence Interval, HR = Hazard Ratio"
+  },
+  {
+    "objectID": "lectures/22-survival.html#interpreting-the-cox-ph-model",
+    "href": "lectures/22-survival.html#interpreting-the-cox-ph-model",
+    "title": "Advanced topics: survival analysis",
+    "section": "Interpreting the Cox PH model",
+    "text": "Interpreting the Cox PH model\nThe estimated HR for Midfield is \\(3.79\\):\n\nFor Liverpool men’s FC first team players, midfielders were estimated to have 3.79 times the hazard of injury compared with attackers during the 2017/2018 and 2018/2019 seasons, holding all other model variables constant (95% CI: [0.95, 15.1]).\n\n\n\nThe estimated HR for age is \\(1.02\\)\n\nFor Liverpool men’s FC first team players, a one-year increase in age was associated with 1.02 times increase in the hazard of injury, holding the other model variables constant (95% CI [0.84, 1.24])."
+  },
+  {
+    "objectID": "lectures/22-survival.html#schoenfeld-residual-diagnostics",
+    "href": "lectures/22-survival.html#schoenfeld-residual-diagnostics",
+    "title": "Advanced topics: survival analysis",
+    "section": "Schoenfeld residual diagnostics",
+    "text": "Schoenfeld residual diagnostics\n\n\ncox.zph() tests whether the association of a given covariate \\(X\\) and the hazard is constant over time (i.e., whether PH assumption holds)\n\n\\(H_0\\) : The association between \\(X\\) and the hazard is constant over time\n\\(H_1\\): The association between \\(X\\) and the hazard is not constant (i.e., varies) over time\n\n\nGiven the global p-value is \\(0.21\\), we fail to reject that the association between our model covariates and the hazard is constant over time.\n\n\n\nggcoxzph(cox.zph(cfit))"
+  },
+  {
+    "objectID": "lectures/22-survival.html#diagnosing-non-ph-via-kaplan-meier-curves",
+    "href": "lectures/22-survival.html#diagnosing-non-ph-via-kaplan-meier-curves",
+    "title": "Advanced topics: survival analysis",
+    "section": "Diagnosing non-PH via Kaplan-Meier curves",
+    "text": "Diagnosing non-PH via Kaplan-Meier curves\n\nggsurvplot(survfit(Surv(tstop_day, status) ~ positionb,\n                   data = injury_data_sub), fun=\"cloglog\",\n           title = \"Complementary Log-Log\")\n\n\nPH assumption for positionb definitely could be violated…(but it is hard to tell given how little data we have)"
+  },
+  {
+    "objectID": "lectures/22-survival.html#handling-non-proportional-hazards",
+    "href": "lectures/22-survival.html#handling-non-proportional-hazards",
+    "title": "Advanced topics: survival analysis",
+    "section": "Handling non-proportional hazards",
+    "text": "Handling non-proportional hazards\nIf the variable violating PH assumption is categorical:\n\nStratify on the variable that violates PH (i.e., fit models separately)\n\n\n\nFit Kaplan-Meier curves separately and perform a Wilcoxon test – note: this test is only valid if the survival curves don’t cross\n\n\n\nIf the variable violating PH assumption is continuous:\n\nFit a model with a time dependent covariate. For example:\n\n\nlibrary(broom)\ncfit_new &lt;- coxph(Surv(tstop_day, status) ~ positionb + age + tt(age) + yellows,\n                  data = injury_data_sub, tt = function(x, t, ...) x * t)\n# tidy(cfit_new)\n\n\n\n\nFor more ideas, check out the paper, “Time-varying covariates and coefficients in Cox regression models”"
+  },
+  {
+    "objectID": "lectures/22-survival.html#diagnosing-non-linearity",
+    "href": "lectures/22-survival.html#diagnosing-non-linearity",
+    "title": "Advanced topics: survival analysis",
+    "section": "Diagnosing (non-)linearity",
+    "text": "Diagnosing (non-)linearity\n\n\nWe can assess if the features are linearly related to the log hazard via martingale residuals.\nFor observation \\(i\\) with feature vector \\(\\mathbf{x}_i\\):\n\\[\nM_i = R_i - H(Y_i \\mid \\mathbf{x}_i)\n\\]\nwhere:\n\n\\(Y_i\\): \\(\\min\\{T_i, C_i\\}\\)\n\\(R_i\\): indicator of whether the event occurred (aka if \\(Y_i = T_i\\))\n\\(H(\\cdot)\\): cumulative hazard function\n\n\n\nggcoxdiagnostics(cfit, type = \"martingale\") + theme_light(base_size = 20)\n\n\n\n\n\n\n\n\n\n\n\nIntuitive interpretation is that martingale residuals compare the number of observed events for each observation against the expected number under the model, given by \\(H(\\cdot)\\) (technically, \\(H(\\cdot)\\) is not a expected count, but close enough for our purposes)."
+  },
+  {
+    "objectID": "lectures/22-survival.html#computing-the-concordance-index",
+    "href": "lectures/22-survival.html#computing-the-concordance-index",
+    "title": "Advanced topics: survival analysis",
+    "section": "Computing the concordance index",
+    "text": "Computing the concordance index\nWe can use concordance() or glance() to view the concordance index for our model\n\nconcordance(cfit) #glance(cfit), # could also compute on held-out data\n\nCall:\nconcordance.coxph(object = cfit)\n\nn= 18 \nConcordance= 0.6291 se= 0.07191\nconcordant discordant     tied.x     tied.y    tied.xy \n        95         56          0          2          0"
+  },
+  {
+    "objectID": "lectures/22-survival.html#visualizing-time-dependent-covariates",
+    "href": "lectures/22-survival.html#visualizing-time-dependent-covariates",
+    "title": "Advanced topics: survival analysis",
+    "section": "Visualizing time-dependent covariates",
+    "text": "Visualizing time-dependent covariates\n\nzph.tt &lt;- cox.zph(cfit,  transform = function(t) t)\nplot(zph.tt[\"age\"])\nabline(\n  a = as.numeric(coef(cfit_new)[\"age\"]),\n  b = as.numeric(coef(cfit_new)[\"tt(age)\"]),\n  col = \"red\",\n  lty = 2,\n  lwd = 2\n)"
+  },
+  {
+    "objectID": "lectures/22-survival.html#proportional-hazards-with-survival-curves",
+    "href": "lectures/22-survival.html#proportional-hazards-with-survival-curves",
+    "title": "Advanced topics: survival analysis",
+    "section": "Proportional hazards with survival curves",
+    "text": "Proportional hazards with survival curves\nWith no features \\(h_1(t) = h_0(t)e^\\beta\\). Hence, given the baseline survival curve \\(\\displaystyle S_0(t) = e^{-\\int_0^t h_0(u) du}\\):\n\\[\n\\begin{aligned}\nS_1(t) &= e^{-\\int_0^t h_0(u)e^\\beta du} \\\\\n&= e^{-e^\\beta \\int_0^t h_0(u) du} \\\\\n&= \\left[e^{-\\int_0^t h_0(u)du}\\right]^{e^\\beta} \\\\\n\\end{aligned}\n\\]\nThus,\n\\[\n\\ln[-\\ln(S_1(t))] = \\beta + \\ln[-\\ln(S_0(t))]\n\\]\nUnder PH, there is no “slope” just an intercept difference – hence the word “parallel”!"
+  },
+  {
+    "objectID": "lectures/22-survival.html#proportional-hazards-with-schoenfeld-residuals",
+    "href": "lectures/22-survival.html#proportional-hazards-with-schoenfeld-residuals",
+    "title": "Advanced topics: survival analysis",
+    "section": "Proportional hazards with Schoenfeld residuals",
+    "text": "Proportional hazards with Schoenfeld residuals\nWe want \\(\\text{Pr}(i\\text{th observation w/ }\\mathbf{x}_i \\text{ dies at }t_i \\mid \\text{at least one death at }t_i)\\):\n\\[\n\\begin{aligned}\n&= \\frac{\\text{Pr}(i^{th} \\text{ observation w/ } \\mathbf{x}_i \\text{ dies at } t_i)}{\\text{Pr}(\\text{at least one death at } t_i)} \\\\\n&= \\frac{\\text{hazard at } t_i}{\\text{sum over all patients at risk at time } t_i} \\\\\n&= \\frac{h_i(t_i)}{\\sum_{j:t_j \\geq t_i} h_j(t_i)} \\\\\n&= \\frac{e^{\\mathbf{x}_i \\beta }}{\\sum_{j:t_j \\geq t_i} e^{\\mathbf{x}_j \\beta}}\n\\end{aligned}\n\\]\nWe define:\n\\[\nw_i(\\beta, t_i) := \\frac{e^{\\mathbf{x}_i \\beta }}{\\sum_{j:t_j \\geq t_i} e^{\\mathbf{x}_j \\beta}} \\quad \\text{and} \\quad \\bar{x}_k(\\beta, t_i) := \\sum_{j: t_j \\geq t_i} x_{jk} w_i(\\beta, t_i)\n\\]"
+  },
+  {
+    "objectID": "lectures/22-survival.html#related-topicsextensions",
+    "href": "lectures/22-survival.html#related-topicsextensions",
+    "title": "Advanced topics: survival analysis",
+    "section": "Related topics/extensions",
+    "text": "Related topics/extensions\n\nAccelerated failure time models (AFT models)\nFrailty models\nDeep survival models"
+  },
+  {
+    "objectID": "lectures/22-survival.html#resources",
+    "href": "lectures/22-survival.html#resources",
+    "title": "Advanced topics: survival analysis",
+    "section": "Resources",
+    "text": "Resources\n\nGeorge Chen’s monograph on deep survival analysis models\nAlex Reinhart’s notes on survival analysis\nJo Hardin’s notes on survival analysis\nNotes on Cox proportional hazards model estimation"
+  },
+  {
+    "objectID": "lectures/22-survival.html#dataset-preprocessing-via-injurytools",
+    "href": "lectures/22-survival.html#dataset-preprocessing-via-injurytools",
+    "title": "Advanced topics: survival analysis",
+    "section": "Dataset preprocessing via injurytools",
+    "text": "Dataset preprocessing via injurytools\n\n## 17/18\nlibrary(injurytools)\ndf_exposures1718 &lt;- prepare_exp(df_exposures0 = \n                                  raw_df_exposures |&gt; filter(season == \"17/18\"),\n                                person_id     = \"player_name\",\n                                date          = \"year\",\n                                time_expo     = \"minutes_played\") |&gt; \n  mutate(seasonb = date2season(date))\ndf_injuries1718 &lt;- prepare_inj(df_injuries0   =\n                                 raw_df_injuries |&gt; filter(season == \"17/18\"),\n                               person_id      = \"player_name\",\n                               date_injured   = \"from\",\n                               date_recovered = \"until\")\ninjd1718 &lt;- prepare_all(data_exposures = df_exposures1718,\n                        data_injuries  = df_injuries1718,\n                        exp_unit = \"matches_minutes\")\n\ninjd1718 &lt;- injd1718 |&gt; \n  mutate(seasonb = date2season(tstart)) |&gt; \n  ## join to have info such as position, age, citizenship etc.\n  left_join(df_exposures1718, by = c(\"person_id\" = \"person_id\", \n                                     \"seasonb\"   = \"seasonb\")) \n\n## create injd1718_sub:\n##  - time to first injury\n##  - equivalent tstart and tstop in calendar days\ninjd1718_sub &lt;- injd1718 |&gt; \n  mutate(tstop_day = as.numeric(difftime(tstop, tstart, units = \"days\"))) %&gt;%\n  group_by(person_id) |&gt;  ## important\n  mutate(tstop_day = cumsum(tstop_day),\n         tstart_day = lag(tstop_day, default = 0)) |&gt; \n  ungroup() |&gt; \n  dplyr::select(person_id:tstop_minPlay, tstart_day, tstop_day, everything()) |&gt; \n  filter(enum == 1) ## time to first injury\n\n## 18/19\ndf_exposures1819 &lt;- prepare_exp(df_exposures0 = \n                                  raw_df_exposures |&gt; filter(season == \"18/19\"),\n                                person_id     = \"player_name\",\n                                date          = \"year\",\n                                time_expo     = \"minutes_played\") |&gt; \n  mutate(seasonb = date2season(date))\ndf_injuries1819 &lt;- prepare_inj(df_injuries0   = \n                                 raw_df_injuries |&gt; filter(season == \"18/19\"),\n                               person_id      = \"player_name\",\n                               date_injured   = \"from\",\n                               date_recovered = \"until\")\ninjd1819 &lt;- prepare_all(data_exposures = df_exposures1819,\n                        data_injuries  = df_injuries1819,\n                        exp_unit = \"matches_minutes\")\n\ninjd1819 &lt;- injd1819 |&gt; \n  mutate(seasonb = date2season(tstart)) |&gt; \n  ## join to have info such as position, age, citizenship etc.\n  left_join(df_exposures1819, by = c(\"person_id\" = \"person_id\", \n                                     \"seasonb\"   = \"seasonb\")) \n\n## create injd1819_sub:\n##  - time to first injury\n##  - equivalent tstart and tstop in calendar days\ninjd1819_sub &lt;- injd1819 |&gt; \n  mutate(tstop_day = as.numeric(difftime(tstop, tstart, units = \"days\"))) %&gt;%\n  group_by(person_id) |&gt;  ## important\n  mutate(tstop_day = cumsum(tstop_day),\n         tstart_day = lag(tstop_day, default = 0)) |&gt; \n  ungroup() |&gt; \n  dplyr::select(person_id:tstop_minPlay, tstart_day, tstop_day, everything()) |&gt; \n  filter(enum == 1) ## time to first injury\n\ninjd_sub &lt;- bind_rows(\"17-18\" = injd1718_sub,\n                      \"18-19\" = injd1819_sub,\n                      .id = \"season\")"
+  },
+  {
     "objectID": "lectures/09b-presentation-critique.html#overview",
     "href": "lectures/09b-presentation-critique.html#overview",
     "title": "Exploring Chocolate Characteristics and Ratings",
@@ -2223,7 +2461,7 @@
     "href": "lectures.html#contents",
     "title": "Lectures",
     "section": "Contents",
-    "text": "Contents\n\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 1\nWelcome to CMSACamp 2026\nslides\n\n\nLecture 1\nJune 2\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 3\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 4\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 5\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 8\nData visualization: density estimation\nslides\n\n\nLecture 6\nJune 9\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 7\nJune 10\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 8\nJune 11\nUnsupervised learning: Gaussian mixture models\nslides\n\n\nLecture 9\nJune 12\nPresentations\nslides\n\n\nLecture 10\nJune 15\nSupervised learning: model assessment vs selection\nslides\n\n\nLecture 11\nJune 16\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 17\nSupervised learning: intro to variable selection\nslides\n\n\nLecture 13\nJune 18\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 22\nDimension reduction: principal component analysis\nslides\n\n\nLecture 15\nJune 23\nSupervised learning: linear discriminant analysis\nslides\n\n\nLecture 16\nJune 24\nSupervised learning: logistic regression\nslides\n\n\nLecture 17\nJune 25\nSupervised learning: generalized linear models\nslides\n\n\nLecture 18\nJune 26\nSupervised learning: nonparametric regression\nslides\n\n\nLecture 19\nJune 29\nSupervised learning: decision trees\nslides\n\n\nLecture 20\nJune 30\nSupervised learning: bagging and boosting\nslides\n\n\nLecture 21\nJuly 1\nAdvanced Topics: Factor Analysis\nslides"
+    "text": "Contents\n\n\n\n\nDate\nTitle\nMaterials\n\n\n\n\nLecture 0\nJune 1\nWelcome to CMSACamp 2026\nslides\n\n\nLecture 1\nJune 2\nExploring data: into the tidyverse\nslides\n\n\nLecture 2\nJune 3\nData visualization: the grammar of graphics and ggplot2\nslides\n\n\nLecture 3\nJune 4\nData visualization: categorical data\nslides\n\n\nLecture 4\nJune 5\nData visualization: quantitative data\nslides\n\n\nLecture 5\nJune 8\nData visualization: density estimation\nslides\n\n\nLecture 6\nJune 9\nUnsupervised learning: \\(k\\)-means clustering\nslides\n\n\nLecture 7\nJune 10\nUnsupervised learning: hierarchical clustering\nslides\n\n\nLecture 8\nJune 11\nUnsupervised learning: Gaussian mixture models\nslides\n\n\nLecture 9\nJune 12\nPresentations\nslides\n\n\nLecture 10\nJune 15\nSupervised learning: model assessment vs selection\nslides\n\n\nLecture 11\nJune 16\nSupervised learning: linear regression\nslides\n\n\nLecture 12\nJune 17\nSupervised learning: intro to variable selection\nslides\n\n\nLecture 13\nJune 18\nSupervised learning: regularization\nslides\n\n\nLecture 14\nJune 22\nDimension reduction: principal component analysis\nslides\n\n\nLecture 15\nJune 23\nSupervised learning: linear discriminant analysis\nslides\n\n\nLecture 16\nJune 24\nSupervised learning: logistic regression\nslides\n\n\nLecture 17\nJune 25\nSupervised learning: generalized linear models\nslides\n\n\nLecture 18\nJune 26\nSupervised learning: nonparametric regression\nslides\n\n\nLecture 19\nJune 29\nSupervised learning: decision trees\nslides\n\n\nLecture 20\nJune 30\nSupervised learning: bagging and boosting\nslides\n\n\nLecture 21\nJuly 1\nAdvanced topics: factor analysis\nslides\n\n\nLecture 22\nJuly 6\nAdvanced topics: survival analysis\nslides"
   },
   {
     "objectID": "project/description.html",
@@ -2349,7 +2587,7 @@
     "href": "eda/decathlon_performances.html#data",
     "title": "EDA project: Decathlon Performances",
     "section": "Data",
-    "text": "Data\nThis dataset contains performances for high-level men’s decathlon from 2001–2022, courtesy of Battles et al. (2025).1 The data was originally extracted from the World Athletics (a publicly available database). Only performances that corresponded to overall scores &gt;6,400 were kept in the dataset (Battles et al. 2025). As a result, the final sample consists of “competitive” or “elite” men’s decathlon performances.\nEach row in the dataset corresponds to an elite men’s decathlon performance, and the columns are:\n\nrank: competitor’s World Athletics ranking, based on the average of their two best eligible performances in the ranking period.2\ncompetitor: competitor’s name.\ndob: competitor’s date of birth (MM/DD/YYYY).\nnat: nation represented by the competitor.\nsec: competitor’s section.\npos_sec: competitor’s final standing relative to other athletes in the same section.\npos_full: full version of the version of competitor’s final standing relative to other athletes in the same section. The number before the “f” gives the competitor’s final standing in their section (pos_sec). The number after the “f” indicates the competitor’s section, when applicable (sec). For example, “7f2” indicates a 7th place in section 2.\nvenue: venue where the performance occurred.\ndate: date of performance (MM/DD/YYYY).\nworld_athletics_event_ranking_score: World Athletics ranking score for the performance, based on the athlete’s result score and placing score.3\nmen_100: 100 meter dash time (seconds).\nmen_100_wind: wind reading during 100 meter dash performance (meters/second).\nmen_100_score: points earned for 100 meter dash performance.\nmen_lj: long jump performance (meters).\nmen_lj_wind: wind reading during long jump performance (meters/second).\nmen_lj_score: points earned for long jump performance.\nmen_sp: shot put performance (meters).\nmen_sp_score: points earned for shot put performance.\nmen_hj: high jump performance (meters).\nmen_hj_score: points earned for high jump performance.\nmen_400: 400 meter time (seconds).\nmen_400_score: points earned for 400 meter performance.\nmen_110h: 110 meter hurdles time (seconds).\nmen_110h_wind: wind reading during 110 meter hurdles performance (meters/second).\nmen_110h_score: points earned for 110 meter hurdles performance.\nmen_dt: discuss throw performance (meters).\nmen_dt_score: points earned for discuss performance.\nmen_pv: pole vault performance (meters).\nmen_pv_score: points earned for pole vault performance.\nmen_jt: javelin throw performance (meters).\nmen_jt_score: points earned for javelin throw performance.\nmen_1500: 1500 meter run time (MM:SS:MS).\nmen_1500_score: points earned for 1500 meter run performance.\noverall_score: overall decathlon score, found by summing the points earned across all ten events (rounding the number down to the nearest integer).\naverage_wind: average of all wind readings across applicable events (meters/second)."
+    "text": "Data\nThis dataset contains performances for high-level men’s decathlon from 2001–2022, courtesy of Battles, Noble, and Chapman (2025).1 The data was originally extracted from the World Athletics (a publicly available database). Only performances that corresponded to overall scores &gt;6,400 were kept in the dataset (Battles, Noble, and Chapman 2025). As a result, the final sample consists of “competitive” or “elite” men’s decathlon performances.\nEach row in the dataset corresponds to an elite men’s decathlon performance, and the columns are:\n\nrank: competitor’s World Athletics ranking, based on the average of their two best eligible performances in the ranking period.2\ncompetitor: competitor’s name.\ndob: competitor’s date of birth (MM/DD/YYYY).\nnat: nation represented by the competitor.\nsec: competitor’s section.\npos_sec: competitor’s final standing relative to other athletes in the same section.\npos_full: full version of the version of competitor’s final standing relative to other athletes in the same section. The number before the “f” gives the competitor’s final standing in their section (pos_sec). The number after the “f” indicates the competitor’s section, when applicable (sec). For example, “7f2” indicates a 7th place in section 2.\nvenue: venue where the performance occurred.\ndate: date of performance (MM/DD/YYYY).\nworld_athletics_event_ranking_score: World Athletics ranking score for the performance, based on the athlete’s result score and placing score.3\nmen_100: 100 meter dash time (seconds).\nmen_100_wind: wind reading during 100 meter dash performance (meters/second).\nmen_100_score: points earned for 100 meter dash performance.\nmen_lj: long jump performance (meters).\nmen_lj_wind: wind reading during long jump performance (meters/second).\nmen_lj_score: points earned for long jump performance.\nmen_sp: shot put performance (meters).\nmen_sp_score: points earned for shot put performance.\nmen_hj: high jump performance (meters).\nmen_hj_score: points earned for high jump performance.\nmen_400: 400 meter time (seconds).\nmen_400_score: points earned for 400 meter performance.\nmen_110h: 110 meter hurdles time (seconds).\nmen_110h_wind: wind reading during 110 meter hurdles performance (meters/second).\nmen_110h_score: points earned for 110 meter hurdles performance.\nmen_dt: discuss throw performance (meters).\nmen_dt_score: points earned for discuss performance.\nmen_pv: pole vault performance (meters).\nmen_pv_score: points earned for pole vault performance.\nmen_jt: javelin throw performance (meters).\nmen_jt_score: points earned for javelin throw performance.\nmen_1500: 1500 meter run time (MM:SS:MS).\nmen_1500_score: points earned for 1500 meter run performance.\noverall_score: overall decathlon score, found by summing the points earned across all ten events (rounding the number down to the nearest integer).\naverage_wind: average of all wind readings across applicable events (meters/second)."
   },
   {
     "objectID": "eda/decathlon_performances.html#starter-code",
@@ -2440,14 +2678,14 @@
     "href": "labs/03-visualization.html",
     "title": "Lab: data visualization",
     "section": "",
-    "text": "Let’s start again by reading in the data from yesterday using the read_csv() function after loading the tidyverse:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_stats.csv\")\n\nRows: 654 Columns: 23\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): player, team, position\ndbl (20): age, games, games_started, minutes_played, field_goals, field_goal...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+    "text": "Let’s start again by reading in the data from yesterday using the read_csv() function after loading the tidyverse:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1          ✔ readr     2.2.0     \n✔ forcats   1.0.1          ✔ stringr   1.6.0     \n✔ ggplot2   4.0.3.9000     ✔ tibble    3.3.1     \n✔ lubridate 1.9.5          ✔ tidyr     1.3.2     \n✔ purrr     1.2.2          \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_stats.csv\")\n\nRows: 654 Columns: 23\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): player, team, position\ndbl (20): age, games, games_started, minutes_played, field_goals, field_goal...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
   },
   {
     "objectID": "labs/03-visualization.html#reading-in-data",
     "href": "labs/03-visualization.html#reading-in-data",
     "title": "Lab: data visualization",
     "section": "",
-    "text": "Let’s start again by reading in the data from yesterday using the read_csv() function after loading the tidyverse:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_stats.csv\")\n\nRows: 654 Columns: 23\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): player, team, position\ndbl (20): age, games, games_started, minutes_played, field_goals, field_goal...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+    "text": "Let’s start again by reading in the data from yesterday using the read_csv() function after loading the tidyverse:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1          ✔ readr     2.2.0     \n✔ forcats   1.0.1          ✔ stringr   1.6.0     \n✔ ggplot2   4.0.3.9000     ✔ tibble    3.3.1     \n✔ lubridate 1.9.5          ✔ tidyr     1.3.2     \n✔ purrr     1.2.2          \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nnba_stats &lt;- read_csv(\"https://raw.githubusercontent.com/36-SURE/2026/main/data/nba_stats.csv\")\n\nRows: 654 Columns: 23\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): player, team, position\ndbl (20): age, games, games_started, minutes_played, field_goals, field_goal...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
   },
   {
     "objectID": "labs/03-visualization.html#previewing-the-data",
@@ -3644,7 +3882,7 @@
     "href": "lectures/21-fa.html#specifying-rotation-with-decathlon-data",
     "title": "Advanced Topics: Factor Analysis",
     "section": "Specifying rotation with decathlon data",
-    "text": "Specifying rotation with decathlon data\n\nfit_varimax &lt;- fa(decathlon, nfactors = 2, rotate = \"varimax\")\nfit_oblimin &lt;- fa(decathlon, nfactors = 2, rotate = \"oblimin\")\n\nCheck out the following aspects of the output:\n\nDo \\(h2\\) (communalities) and \\(u2\\) (uniqueness) differ between the two rotations?\nWhat latent trait might each factor represent?\nWhat is the correlation of the factors with oblimin? Varimax?\n\n\nfit_varimax$Phi\n\nNULL\n\nfit_oblimin$Phi\n\n           MR1        MR2\nMR1  1.0000000 -0.3190563\nMR2 -0.3190563  1.0000000"
+    "text": "Specifying rotation with decathlon data\n\nfit_varimax &lt;- fa(decathlon, nfactors = 2, rotate = \"varimax\")\nfit_oblimin &lt;- fa(decathlon, nfactors = 2, rotate = \"oblimin\")\n\nCheck out the following aspects of the output:\n\nDo \\(h2\\) (communalities) and \\(u2\\) (uniqueness) differ between the two rotations?\nWhat latent trait might each factor represent?\nWhat is the correlation of the factors with oblimin? Varimax?\n\n\nfit_varimax$Phi\n\nNULL\n\nfit_oblimin$Phi\n\n          MR1       MR2\nMR1  1.000000 -0.319056\nMR2 -0.319056  1.000000"
   },
   {
     "objectID": "lectures/21-fa.html#factor-scores",
@@ -4324,6 +4562,216 @@
     "title": "Data visualization: density estimation",
     "section": "Appendix: Code to build dataset",
     "text": "Appendix: Code to build dataset\n\n#install.packages(\"wehoop\")\nlibrary(wehoop)\nwnba_pbp &lt;- load_wnba_pbp(2025)\nwilson_shots &lt;- wnba_pbp |&gt; \n  filter(shooting_play == T) |&gt; \n  filter(str_detect(text, \"A'ja Wilson\")) |&gt; \n  filter(!str_detect(text, \"A'ja Wilson assists\")) |&gt; \n  filter(!str_detect(text, \"free throw\")) |&gt; \n  mutate(\n    shot_x = coordinate_x_raw - 25,\n    shot_y = coordinate_y_raw,\n    shot_distance = sqrt((abs(shot_x) ^ 2) + shot_y ^ 2), \n    shot_type = type_text,\n    scoring_play,\n    score_value,\n    .keep = \"none\"\n  )"
+  },
+  {
+    "objectID": "lectures/24-sql.html#recall-data-science-workflow",
+    "href": "lectures/24-sql.html#recall-data-science-workflow",
+    "title": "Advanced topics: SQL",
+    "section": "Recall: data science workflow",
+    "text": "Recall: data science workflow\n\n\n\nSource: R for Data Science (2e)\n\n\n\n\nSo far, we have primarily focused on tidy, understand, and communicate step, taking the import step for granted\nIn industry, most data live in SQL databases and are too big to live in our laptops\n\n  Takeaway: being able to (efficiently) extract data from SQL databases is vital for success"
+  },
+  {
+    "objectID": "lectures/24-sql.html#why-arent-rpython-alone-sufficient-for-this-purpose",
+    "href": "lectures/24-sql.html#why-arent-rpython-alone-sufficient-for-this-purpose",
+    "title": "Advanced topics: SQL",
+    "section": "Why aren’t R/Python alone sufficient for this purpose?",
+    "text": "Why aren’t R/Python alone sufficient for this purpose?\n\nSQL databases allow you to persistently store and organize data\n\n\n\nCan handle large volumes of data and easily scalable\n\n\n\n\nSupport a streamlined Extract-Transform-Load (ETL) process for streaming data\n\n\n\n\nProvide access management restrictions to specific data, e.g., health records\n\n\n\n\nAllow for explicit linkages across tables (primary and foreign keys)\n\n\n\n\nEnable indexes to be defined on tables for efficiency, e.g., date/time fields\n\n\n\n\nTypical workflow: use R for accessing subsets of data from a SQL database for modeling"
+  },
+  {
+    "objectID": "lectures/24-sql.html#what-is-a-database",
+    "href": "lectures/24-sql.html#what-is-a-database",
+    "title": "Advanced topics: SQL",
+    "section": "What is a database?",
+    "text": "What is a database?\n\nA database is an organized collection of data that is managed by a database management system (DBMS)\n\n\nA DBMS (e.g., SQL) is the software with which users interact to obtain or analyze the data\nContrast to a file-based system that manage and organize data as individual files on storage"
+  },
+  {
+    "objectID": "lectures/24-sql.html#difference-between-databases-and-dataframes",
+    "href": "lectures/24-sql.html#difference-between-databases-and-dataframes",
+    "title": "Advanced topics: SQL",
+    "section": "Difference between databases and dataframes",
+    "text": "Difference between databases and dataframes"
+  },
+  {
+    "objectID": "lectures/24-sql.html#sql-intro",
+    "href": "lectures/24-sql.html#sql-intro",
+    "title": "Advanced topics: SQL",
+    "section": "SQL intro",
+    "text": "SQL intro"
+  },
+  {
+    "objectID": "lectures/24-sql.html#sql-dialects",
+    "href": "lectures/24-sql.html#sql-dialects",
+    "title": "Advanced topics: SQL",
+    "section": "SQL dialects",
+    "text": "SQL dialects\nSQL is a programming language for managing and querying data\n\nYou may have heard of some of the following SQL dialects:\n\nMySQL\nSQLite (we use this one today)\nDuckDB\nPostgreSQL\nGoogle BigQuery\nMicrosoft Access SQL\n\n\n\nDifferent SQL dialects are quite similar to each other\n\nWhile we use SQLite today, you will be able to quickly pickup whichever dialect your institution/employer uses"
+  },
+  {
+    "objectID": "lectures/24-sql.html#sql-tables-are-nouns-on-which-you-ask-targeted-queries",
+    "href": "lectures/24-sql.html#sql-tables-are-nouns-on-which-you-ask-targeted-queries",
+    "title": "Advanced topics: SQL",
+    "section": "SQL tables are nouns, on which you ask targeted queries",
+    "text": "SQL tables are nouns, on which you ask targeted queries\n\nSQL tables are just 2D representations of data\nA collection of columns (variables) and observations\nThese are similar to data frames/tibbles in R\n\nYou’ve already worked with them in R - yay!\n\n\n\n\n\n\n\n\n\n\nyear\nmonth\nday\ndep_time\nsched_dep_time\ndep_delay\narr_time\nsched_arr_time\narr_delay\ncarrier\nflight\ntailnum\norigin\ndest\nair_time\ndistance\nhour\nminute\ntime_hour\n\n\n\n\n2013\n1\n1\n517\n515\n2\n830\n819\n11\nUA\n1545\nN14228\nEWR\nIAH\n227\n1400\n5\n15\n2013-01-01 05:00:00\n\n\n2013\n1\n1\n533\n529\n4\n850\n830\n20\nUA\n1714\nN24211\nLGA\nIAH\n227\n1416\n5\n29\n2013-01-01 05:00:00\n\n\n2013\n1\n1\n542\n540\n2\n923\n850\n33\nAA\n1141\nN619AA\nJFK\nMIA\n160\n1089\n5\n40\n2013-01-01 05:00:00"
+  },
+  {
+    "objectID": "lectures/24-sql.html#sql-grammar-has-built-in-keywords-verbs",
+    "href": "lectures/24-sql.html#sql-grammar-has-built-in-keywords-verbs",
+    "title": "Advanced topics: SQL",
+    "section": "SQL grammar has built-in keywords (verbs)",
+    "text": "SQL grammar has built-in keywords (verbs)\nSQL keywords are verbs which allow you to systematically query tables\nExample: starting with flights data from nycflights13 package\n\nEach row represents a flight departed from NYC in 2013\n336,000+ observations and 19 columns (variables)\n\n\n\nSQL code\n\nSELECT dest, month, day,\n  MIN(arr_delay) AS mnd,\n  MAX(arr_delay) AS mxd,\n  AVG(arr_delay) AS avd\nFROM flights\nGROUP BY dest, month, day\nORDER BY dest, month DESC,\n         day\nLIMIT 10;\n\nWe will go through what each of these functions does during this presentation!\n\n\n\n\n\n\n\n\n\ndest\nmonth\nday\nmnd\nmxd\navd\n\n\n\n\nABQ\n12\n1\n-36\n-36\n-36\n\n\nABQ\n12\n2\n-17\n-17\n-17\n\n\nABQ\n12\n3\n20\n20\n20\n\n\nABQ\n12\n4\n27\n27\n27\n\n\nABQ\n12\n5\n32\n32\n32\n\n\nABQ\n12\n6\n46\n46\n46\n\n\nABQ\n12\n7\n53\n53\n53\n\n\nABQ\n12\n8\n114\n114\n114\n\n\nABQ\n12\n9\n57\n57\n57\n\n\nABQ\n12\n10\n108\n108\n108"
+  },
+  {
+    "objectID": "lectures/24-sql.html#sql-keywords-map-onto-dplyr-verbs",
+    "href": "lectures/24-sql.html#sql-keywords-map-onto-dplyr-verbs",
+    "title": "Advanced topics: SQL",
+    "section": "SQL keywords map onto dplyr verbs",
+    "text": "SQL keywords map onto dplyr verbs\n\n\n\nSource: Ian Cook\n\n\n\n\n\n\nThis isn’t a coincidence: dplyr developed this precise relationship to SQL by design"
+  },
+  {
+    "objectID": "lectures/24-sql.html#today-nycflights13-database",
+    "href": "lectures/24-sql.html#today-nycflights13-database",
+    "title": "Advanced topics: SQL",
+    "section": "Today: nycflights13 database",
+    "text": "Today: nycflights13 database\n\n\n\n\n\nSource: nycflights13\n\n\n\nContains flight info for NYC departures to various US destinations in 2013\n\nflights: all NYC departures in 2013\nweather: hourly data for each airport\nplanes: construction info for each plane\nairports: airport names and locations\nairlines: two letter carrier codes/names"
+  },
+  {
+    "objectID": "lectures/24-sql.html#establishing-a-sql-connection-within-r",
+    "href": "lectures/24-sql.html#establishing-a-sql-connection-within-r",
+    "title": "Advanced topics: SQL",
+    "section": "Establishing a SQL connection within R",
+    "text": "Establishing a SQL connection within R\nWe use SQLite: “small, fast, self-contained, high-reliability, full-featured, SQL database engine”\n\n#install.packages(c(\"DBI\", \"dittodb\", \"RSQLite\", \"nycflights13\")) need to install all these\nlibrary(DBI)\nlibrary(dittodb)\nlibrary(RSQLite)\n\n# establishing connection via sqlite\n# \":memory:\" is a special path that creates an in-memory database\n# Other database drivers require more details (like user, password, host, port, etc.)\ncon_air &lt;- DBI::dbConnect(RSQLite::SQLite(), \":memory:\") \n# creates a database including a few tables from the nycflights13 dataset with con_air connection\ndittodb::nycflights13_create_sql(con_air)\n\n\nThe function dbListTables() tells us what tables exist in the airlines database\n\nDBI::dbListTables(con_air)\n\n[1] \"airlines\" \"airports\" \"flights\"  \"planes\"   \"weather\""
+  },
+  {
+    "objectID": "lectures/24-sql.html#sql-tables-as-a-tibble",
+    "href": "lectures/24-sql.html#sql-tables-as-a-tibble",
+    "title": "Advanced topics: SQL",
+    "section": "SQL tables as a tibble",
+    "text": "SQL tables as a tibble\nA tbl is different than a tibble\n\ntbl is a pointer to a remote object\ntibble is a dataframe in your local environment\n\n\nflights_tbl &lt;- tbl(con_air, \"flights\")\ndim(flights_tbl)  #head(flights_tbl, n = 3) \n\n[1] NA 19\n\n\nWe can use dplyr syntax on tbl objects\n\ndist_sum &lt;- flights_tbl |&gt;\n  summarize(min_year = min(distance), max_year = max(distance))\n\nSince flights_tbl is a tbl, the work done above was in SQL:\n\nshow_query(dist_sum)\n\n&lt;SQL&gt;\nSELECT MIN(`distance`) AS `min_year`, MAX(`distance`) AS `max_year`\nFROM `flights`"
+  },
+  {
+    "objectID": "lectures/24-sql.html#sql-tables-as-a-tibble-1",
+    "href": "lectures/24-sql.html#sql-tables-as-a-tibble-1",
+    "title": "Advanced topics: SQL",
+    "section": "SQL tables as a tibble",
+    "text": "SQL tables as a tibble\ncollect() copies a SQL table from its remote server location to the local memory location in R\n\nflights_tibble &lt;- flights_tbl |&gt; dplyr::collect()\n\n# dim(flights_tibble)\nhead(flights_tibble, n = 3)\n\n# A tibble: 3 × 19\n   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n1  2013     1     1      517            515         2      830            819\n2  2013     1     1      533            529         4      850            830\n3  2013     1     1      542            540         2      923            850\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dbl&gt;\n\n\n\nA tibble (locally in R) takes up much more memory than a tbl (pointing to remote object in SQL)\n\nflights_tbl |&gt;\n  object.size() |&gt;\n  print(units = \"Kb\")\n\n6.4 Kb\n\n\n\nflights_tibble |&gt;\n  object.size() |&gt;\n  print(units = \"Kb\")\n\n39696.8 Kb"
+  },
+  {
+    "objectID": "lectures/24-sql.html#different-ways-to-query-in-quarto",
+    "href": "lectures/24-sql.html#different-ways-to-query-in-quarto",
+    "title": "Advanced topics: SQL",
+    "section": "Different ways to query in Quarto",
+    "text": "Different ways to query in Quarto\n\nUsing the dbplyr R package will directly translate dplyr code into SQL\n\n\nflights_tbl |&gt;\n  summarize(min_year = min(distance), max_year = max(distance)) # what we previously did\n\n\n\nUsing the DBI R package, we can send SQL queries through an r chunk\n\n\nDBI::dbGetQuery(con_air,\n                \"SELECT MIN(distance) AS min_year,\n                MAX(distance) AS max_year\n                FROM flights\")\n\n\n\n\nUsing a sql chunk, we can write actual SQL code inside a Quarto document\n\n\nSELECT MIN(distance) AS min_year,\n       MAX(distance) AS max_year\nFROM flights\n\n\n\n\nWe will primarily use the third option today"
+  },
+  {
+    "objectID": "lectures/24-sql.html#sql-queries-ordering",
+    "href": "lectures/24-sql.html#sql-queries-ordering",
+    "title": "Advanced topics: SQL",
+    "section": "SQL queries ordering",
+    "text": "SQL queries ordering\nQueries in SQL start with SELECT keyword and consist of several keywords which must be written in the following order:\n\nSELECT\nFROM\nJOIN\nWHERE\nGROUP BY\nHAVING\nORDER BY\nLIMIT\n\nA semicolon (;) is typically used to indicate the termination of a SQL statement"
+  },
+  {
+    "objectID": "lectures/24-sql.html#select-to-subset-columns-from-a-table",
+    "href": "lectures/24-sql.html#select-to-subset-columns-from-a-table",
+    "title": "Advanced topics: SQL",
+    "section": "SELECT to subset columns from a table",
+    "text": "SELECT to subset columns from a table\nSyntax: SELECT &lt;column_name&gt; FROM &lt;table_name&gt;\n\n\nLet’s look at 10 rows and all variables from the flights table:\n\nSELECT * FROM flights LIMIT 10;\n\n\n\n\nNotes:\n\nIt’s best practice to always use LIMIT when just selecting columns from a table\nThe asterisk (*) means return all (any) columns\nSQL will return any 10 rows, so the original flights order may not be preserved"
+  },
+  {
+    "objectID": "lectures/24-sql.html#select-to-subset-columns-from-a-table-1",
+    "href": "lectures/24-sql.html#select-to-subset-columns-from-a-table-1",
+    "title": "Advanced topics: SQL",
+    "section": "SELECT to subset columns from a table",
+    "text": "SELECT to subset columns from a table\nLet’s look at 10 rows and only the dep_time, arr_time, and flight variables from the flights table:\n\nSELECT dep_time, arr_time, flight FROM flights LIMIT 10;\n\n\n\nThe equivalent dplyr code is:\n\nflights |&gt; select(dep_time, arr_time) |&gt; head(10)\n\n\n\n\nNotes:\n\nThe original flights ordering is preserved in dplyr\nSQL operates on sets of observations, which are an unordered collection\nWe’ll later control ordering explicitly in SQL using ORDER BY"
+  },
+  {
+    "objectID": "lectures/24-sql.html#select-to-create-new-variables",
+    "href": "lectures/24-sql.html#select-to-create-new-variables",
+    "title": "Advanced topics: SQL",
+    "section": "SELECT to create new variables",
+    "text": "SELECT to create new variables\nSuppose we want to measure of average speed (in miles per hour) for each flight:\n\nSELECT flight, distance/(air_time/60) AS speed FROM flights LIMIT 10;\n\n\nAS speed says that we want to name our new column speed, instead of distance/(air_time/60)\n\n\n\nIn dplyr, we have the mutate() verb\n\nflights |&gt; \n  mutate(speed = distance/(air_time/60)) |&gt;\n  select(flight, speed) |&gt;\n  head(10)\n\n\n\n\nTakeaway: SELECT in SQL serves to pick existing columns or to create new ones"
+  },
+  {
+    "objectID": "lectures/24-sql.html#we-can-also-aggregate-on-columns-via-select",
+    "href": "lectures/24-sql.html#we-can-also-aggregate-on-columns-via-select",
+    "title": "Advanced topics: SQL",
+    "section": "We can also aggregate on columns via SELECT",
+    "text": "We can also aggregate on columns via SELECT\nSQL has built in aggregate functions: MIN, MAX, COUNT, SUM, AVG, … (some depend on specific SQL dialect, like MEDIAN)\n\n\nLet’s get the minimum and maximum air time for the flights in our SQL table (luckily air_time is in minutes not hours…)\n\nSELECT MIN(air_time) AS min_ar, MAX(air_time) AS max_ar FROM flights;\n\n\n\n\nLike dplyr, SQL also has a COUNT function. We can use it to get the total number of observations in our table\n\nSELECT COUNT(*) AS num_obs FROM flights;"
+  },
+  {
+    "objectID": "lectures/24-sql.html#we-can-filter-observations-where-a-criteria-is-met",
+    "href": "lectures/24-sql.html#we-can-filter-observations-where-a-criteria-is-met",
+    "title": "Advanced topics: SQL",
+    "section": "We can filter observations WHERE a criteria is met",
+    "text": "We can filter observations WHERE a criteria is met\nSuppose we want to filter to only observations that originated from JFK airport and limit our results to ten rows (keeping all columns)\nNote: SQL uses = NOT ==\n\nSELECT * FROM flights WHERE origin = \"JFK\" LIMIT 10;\n\n\nLike in base R, we can use ! to negate the equal sign statement\n\nSELECT * FROM flights WHERE origin != \"JFK\" LIMIT 10;\n\n\n\nSQL also supports other logical operators, such as: &lt;, &lt;=, &gt;, &gt;="
+  },
+  {
+    "objectID": "lectures/24-sql.html#how-about-where-a-variable-is-in-or-not-in-a-range",
+    "href": "lectures/24-sql.html#how-about-where-a-variable-is-in-or-not-in-a-range",
+    "title": "Advanced topics: SQL",
+    "section": "How about WHERE a variable is in or not in a range?",
+    "text": "How about WHERE a variable is in or not in a range?\nFind 20 records which have a tail number matching either “N593JB” or “N532UA”\n\nSELECT * FROM flights WHERE tailnum IN (\"N593JB\", \"N532UA\") LIMIT 20;\n\n\nFind 10 records which are from neither December nor January and have an arrival delay greater than 120 minutes\n\nSELECT * FROM flights WHERE month NOT IN (1, 12) AND arr_delay &gt; 120 LIMIT 10;"
+  },
+  {
+    "objectID": "lectures/24-sql.html#missing-values-in-sql",
+    "href": "lectures/24-sql.html#missing-values-in-sql",
+    "title": "Advanced topics: SQL",
+    "section": "Missing values in SQL",
+    "text": "Missing values in SQL\nNULL refers to missing values in SQL\nWe have a substantial number of observations that are missing wind_gust variable:\n\nSELECT COUNT(*) AS num_obs FROM weather WHERE wind_gust IS NULL;\n\n\nWe can remove the missing values using wind_gust is NOT NULL\n\nSELECT * FROM weather WHERE wind_gust IS NOT NULL LIMIT 20;\n\n\n\nNote: wind_gust != NULL does not work as NULL values don’t match this way in SQL\n\nThis is different from base R and dplyr!"
+  },
+  {
+    "objectID": "lectures/24-sql.html#group-by-variables-and-do-aggregate-calculations",
+    "href": "lectures/24-sql.html#group-by-variables-and-do-aggregate-calculations",
+    "title": "Advanced topics: SQL",
+    "section": "GROUP BY variables and do aggregate calculations",
+    "text": "GROUP BY variables and do aggregate calculations\nLet’s get the minimum, maximum, and average arrival delay by month, day, and destination:\n\nSELECT dest, month, day,\n       MIN(arr_delay) AS mnd,\n       MAX(arr_delay) AS mxd,\n       AVG(arr_delay) AS avd\nFROM flights\nGROUP BY dest, month, day\nLIMIT 10;"
+  },
+  {
+    "objectID": "lectures/24-sql.html#filtering-aggregated-values-with-having",
+    "href": "lectures/24-sql.html#filtering-aggregated-values-with-having",
+    "title": "Advanced topics: SQL",
+    "section": "Filtering aggregated values with HAVING",
+    "text": "Filtering aggregated values with HAVING\nGiven number of plane engines, how many had less than 200 manufacturers?\n\nSELECT engines, COUNT(*) AS tot_num\n FROM planes\n GROUP BY engines\n HAVING tot_num &lt; 200;"
+  },
+  {
+    "objectID": "lectures/24-sql.html#order-by-many-columns-for-displaying-output",
+    "href": "lectures/24-sql.html#order-by-many-columns-for-displaying-output",
+    "title": "Advanced topics: SQL",
+    "section": "ORDER BY many columns for displaying output",
+    "text": "ORDER BY many columns for displaying output\nGet minimum, maximum, and average arrival delay by month day and destination:\n\nSELECT dest, month, day,\n       MIN(arr_delay) AS mnd, MAX(arr_delay) AS mxd,\n       AVG(arr_delay) AS avd\nFROM flights\nGROUP BY dest, month, day\nORDER BY dest, month DESC, day\nLIMIT 10;\n\nLike dplyr, the ordering in SQL is ascending by default, unless you specify descending with DESC\nTry it yourself: which destination had the longest average delays?\n\nSELECT dest, AVG(arr_delay) AS avd\nFROM flights\nGROUP BY dest\nORDER BY avd DESC;"
+  },
+  {
+    "objectID": "lectures/24-sql.html#foo",
+    "href": "lectures/24-sql.html#foo",
+    "title": "Advanced topics: SQL",
+    "section": "foo",
+    "text": "foo\n\nSELECT DISTINCT carrier, flight FROM flights ORDER BY carrier, flight LIMIT 10;"
+  },
+  {
+    "objectID": "lectures/24-sql.html#case-when-in-sql",
+    "href": "lectures/24-sql.html#case-when-in-sql",
+    "title": "Advanced topics: SQL",
+    "section": "CASE WHEN in SQL",
+    "text": "CASE WHEN in SQL\n\nSELECT year, month, day, arr_delay,\n       CASE WHEN arr_delay &lt; 0 THEN \"Early\"\n       WHEN arr_delay = 0 THEN \"On Time\"\n       WHEN arr_delay &gt; 0 THEN \"Late\"\n       ELSE \"Unknown\"\n  END AS delay_type\nFROM flights LIMIT 10;"
+  },
+  {
+    "objectID": "lectures/24-sql.html#borrowing-information-from-other-tables-in-sql",
+    "href": "lectures/24-sql.html#borrowing-information-from-other-tables-in-sql",
+    "title": "Advanced topics: SQL",
+    "section": "Borrowing information from other tables in SQL",
+    "text": "Borrowing information from other tables in SQL\n\nSELECT carrier, COUNT(*) as tot_flights\n FROM flights\n WHERE month IN (6, 7)\n GROUP BY carrier\n\nHow can we modify our query to obtain and use this carrier name information?\n\nSELECT al.name AS airline, COUNT(*) as tot_flights\nFROM flights AS fl\nLEFT JOIN airlines AS al\n  ON al.carrier = fl.carrier\nWHERE month IN (6, 7)\nGROUP BY al.name\n\nThe use of table aliases, e.g., al for airlines, avoids reference ambiguities\nThere are many more JOIN types supported by SQL: i.e., INNER, FULL, …"
+  },
+  {
+    "objectID": "lectures/24-sql.html#sql-best-practices",
+    "href": "lectures/24-sql.html#sql-best-practices",
+    "title": "Advanced topics: SQL",
+    "section": "SQL best practices",
+    "text": "SQL best practices\nvisualize samples first?\nAlways a good idea to terminate the SQL connection when finished\n\ndbDisconnect(con_air, shutdown = TRUE)"
+  },
+  {
+    "objectID": "lectures/24-sql.html#appendix",
+    "href": "lectures/24-sql.html#appendix",
+    "title": "Advanced topics: SQL",
+    "section": "Appendix",
+    "text": "Appendix\nsys.env"
   },
   {
     "objectID": "lectures/06-kmeans.html#into-statistical-learning-with-unsupervised-learning",
@@ -5394,7 +5842,7 @@
     "href": "r-setup.html#step-4-install-an-r-package",
     "title": "R and RStudio Setup",
     "section": "Step 4: Install an R package",
-    "text": "Step 4: Install an R package\nIn R, a package is a collection of functions, data, and compiled code. In addition to a set of built-in base packages, there are numerous external R packages written by the community to add specific functionality.\nIn general, to install an R package, you can use the install.packages() function and pass in the package name.\nThe following example shows how to install the tidyverse package in R. The tidyverse is a suite of R packages we will be using throughout this program. It features popular packages such as ggplot2 for data visualization and dplyr for data manipulation.\nAfter installing R and RStudio, open RStudio and enter the following command in the Console pane.\n\ninstall.packages(\"tidyverse\")\n\nTo verify that tidyverse is successfully installed, run the following command:\n\nlibrary(tidyverse)\n\nYou should get a message similar to the output below.\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1     ✔ readr     2.2.0\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.3     ✔ tibble    3.3.1\n✔ lubridate 1.9.5     ✔ tidyr     1.3.2\n✔ purrr     1.2.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nAsk us for help if you encounter any issues or errors in any of the installation steps above."
+    "text": "Step 4: Install an R package\nIn R, a package is a collection of functions, data, and compiled code. In addition to a set of built-in base packages, there are numerous external R packages written by the community to add specific functionality.\nIn general, to install an R package, you can use the install.packages() function and pass in the package name.\nThe following example shows how to install the tidyverse package in R. The tidyverse is a suite of R packages we will be using throughout this program. It features popular packages such as ggplot2 for data visualization and dplyr for data manipulation.\nAfter installing R and RStudio, open RStudio and enter the following command in the Console pane.\n\ninstall.packages(\"tidyverse\")\n\nTo verify that tidyverse is successfully installed, run the following command:\n\nlibrary(tidyverse)\n\nYou should get a message similar to the output below.\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.2.1          ✔ readr     2.2.0     \n✔ forcats   1.0.1          ✔ stringr   1.6.0     \n✔ ggplot2   4.0.3.9000     ✔ tibble    3.3.1     \n✔ lubridate 1.9.5          ✔ tidyr     1.3.2     \n✔ purrr     1.2.2          \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nAsk us for help if you encounter any issues or errors in any of the installation steps above."
   },
   {
     "objectID": "r-setup.html#r-primers-on-posit-cloud",

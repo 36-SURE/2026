@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
 
   <meta name="author" content=" CMSACamp 2026 Department of Statistics &amp; Data Science Carnegie Mellon University">
   <title>CMSACamp 2026 – Supervised learning: linear regression</title>
@@ -18,9 +18,6 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -99,7 +96,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4290b315e94676cf1dd7d5ac6c8d2ef2.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ec9165fd6a3bdb19c5c23b4bb2299f35.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -248,7 +245,7 @@ Y_{i}=\beta_{0}+\beta_{1} X_{i}+\epsilon_{i}, \quad \text { for } i=1,2, \dots, 
 </section>
 <section id="simple-linear-regression-estimation" class="slide level2">
 <h2>Simple linear regression estimation</h2>
-<p>We are estimating the <strong>conditional expectation (mean)</strong> for <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>:</p>
+<p>We are estimating the <strong>conditional expection (mean)</strong> for <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>:</p>
 <p><span class="math display">\[\mathbb{E}[Y_i \mid X_i] = \beta_0 + \beta_1X_i\]</span></p>
 <div class="fragment">
 <p>How do we estimate the <strong>best fitted</strong> line (i.e., how do we estimate <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>)?</p>
@@ -278,7 +275,7 @@ Y_{i}=\beta_{0}+\beta_{1} X_{i}+\epsilon_{i}, \quad \text { for } i=1,2, \dots, 
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11-linear_files/figure-html/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -288,7 +285,7 @@ Y_{i}=\beta_{0}+\beta_{1} X_{i}+\epsilon_{i}, \quad \text { for } i=1,2, \dots, 
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11-linear_files/figure-html/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -306,7 +303,7 @@ Y_{i}=\beta_{0}+\beta_{1} X_{i}+\epsilon_{i}, \quad \text { for } i=1,2, \dots, 
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_light</span>())</span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>nfl_teams_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://www.stat.cmu.edu/cmsac/sure/2021/materials/data/regression_projects/nfl_team_season_summary.csv"</span>) <span class="co"># throwback using CMSACamp 2021/2022 data</span></span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>nfl_teams_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://www.stat.cmu.edu/cmsac/sure/2021/materials/data/regression_projects/nfl_team_season_summary.csv"</span>)</span>
 <span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(nfl_teams_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -391,7 +388,7 @@ $ ties                            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11-linear_files/figure-html/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -420,7 +417,7 @@ $ ties                            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11-linear_files/figure-html/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -484,7 +481,7 @@ t = \frac{\hat{\beta}_1}{\widehat{SE}(\hat{\beta}_1)} = \frac{566.352}{19.22} = 
 <ul>
 <li><p>To fully characterize a <span class="math inline">\(t\)</span>-distribution, we need the <a href="https://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)#In_linear_models"><strong>degrees of freedom</strong></a></p>
 <ul>
-<li><p>For linear regression, the degrees of freedom is <span class="math inline">\(n - (p + 1)\)</span> (where <span class="math inline">\(n\)</span> is the number of observations used to fit the model and <span class="math inline">\(p\)</span> is the number of estimated coefficients beyond the intercept)</p></li>
+<li><p>For linear regression, the degrees of freedom is <span class="math inline">\(n - p - 1\)</span> (where <span class="math inline">\(n\)</span> is the number of observations used to fit the model and <span class="math inline">\(p\)</span> is the number of estimated coefficients beyond the intercept)</p></li>
 <li><p><code>summary()</code> tells us the degrees of freedom is <span class="math inline">\(699\)</span> (as <span class="math inline">\(701 - 2 = 699\)</span>)</p></li>
 </ul></li>
 </ul>
@@ -505,14 +502,13 @@ t = \frac{\hat{\beta}_1}{\widehat{SE}(\hat{\beta}_1)} = \frac{566.352}{19.22} = 
 </section>
 <section id="inference-interpreting-coefficients" class="slide level2">
 <h2>Inference: interpreting coefficients</h2>
-<p>Since <code>offense_ave_epa_pass</code> is a quantitative predictor, we can interpret it as follows:</p>
+<p>Since <code>offense_ave_epa_pass</code> is a numeric predictor, we can interpret it as follows:</p>
 <blockquote>
 <p>For NFL teams, a one-unit increase in average expected points added (EPA) per pass attempt is associated with a 566.35 point increase in season score differential, on average (95% CI [528.60, 604.10]).</p>
 </blockquote>
-<div class="fragment">
 <ul>
-<li><p>Always make sure to interpret important coefficients in context (<em>and with units when possible</em>)!</p></li>
-<li><p>We can compute the <span class="math inline">\(95\%\)</span> confidence interval (CI) by doing <span class="math inline">\(\hat{\beta}_1 \pm 1.96 \cdot \widehat{SE}(\hat{\beta}_1)\)</span>, or using the <code>confint()</code> function:</p></li>
+<li><p>Always make sure to interpret important coefficients in context (<em>and with units</em>)!</p></li>
+<li><p>We can compute the <span class="math inline">\(95%\)</span> confidence interval (CI) by doing <span class="math inline">\(\hat{\beta}_1 \pm 1.96 \cdot \widehat{SE}(\hat{\beta}_1)\)</span>, or using the <code>confint()</code> function:</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(simple_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -520,7 +516,6 @@ t = \frac{\hat{\beta}_1}{\widehat{SE}(\hat{\beta}_1)} = \frac{566.352}{19.22} = 
 <pre><code>                          2.5 %     97.5 %
 (Intercept)           -9.919107   0.138374
 offense_ave_epa_pass 528.604817 604.100144</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -567,7 +562,7 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <p><br></p>
 <p>Another common interpretation of confidence intervals is the following (in context of <code>offense_ave_epa_pass</code>):</p>
 <blockquote>
-<p>We’re 95% confident that a one-unit increase in average expected points added (EPA) per pass attempt is associated with an increase of between 529 and 604 points in the season score differential for NFL teams, on average.</p>
+<p>We’re 95% confident that every one-unit increase in average expected points added (EPA) per pass attempt is associated with an increase of between 529 and 604 points in the season score differential.</p>
 </blockquote>
 </div>
 </section>
@@ -583,7 +578,6 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <pre><code>[1] 0.5538537</code></pre>
 </div>
 </div>
-<div class="fragment">
 <p>In linear regression, the square of the correlation coefficient is to be exactly the <strong>coefficient of determination</strong> (<span class="math inline">\(R^2\)</span>):</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(nfl_teams_data<span class="sc">$</span>offense_ave_epa_pass, nfl_teams_data<span class="sc">$</span>score_diff)<span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -594,7 +588,6 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <blockquote>
 <p>55.4% of the variability in the season score differential can be explained by the linear relationship between season score differential and average expected points added (EPA) per pass attempt (the remaining 44.6% of the variation is due to other factors and/or noise).</p>
 </blockquote>
-</div>
 </section>
 <section id="generating-predictions" class="slide level2">
 <h2>Generating predictions</h2>
@@ -616,9 +609,9 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 </section>
 <section id="plot-observed-values-against-predictions" class="slide level2">
 <h2>Plot observed values against predictions</h2>
+<p>Useful diagnostic (for <strong>any type of model</strong>, not just linear regression!)</p>
 <div class="columns">
 <div class="column" style="text-align: left;">
-<p>Useful diagnostic (for <strong>any type of model</strong>, not just linear regression!)</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>nfl_teams_data <span class="sc">|&gt;</span></span>
 <span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred =</span> <span class="fu">predict</span>(simple_lm)) <span class="sc">|&gt;</span> </span>
@@ -635,7 +628,7 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11-linear_files/figure-html/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -663,7 +656,7 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11-linear_files/figure-html/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -679,7 +672,7 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <ul>
 <li><p>The errors have mean zero (<em>linearity</em>): <span class="math inline">\(\mathbb{E}[\epsilon \mid X] = 0\)</span></p></li>
 <li><p>The error variance is constant (<em>homoskedasticity</em>): <span class="math inline">\(\text{var}(\epsilon \mid X) = \sigma^2\)</span></p></li>
-<li><p>The errors are independent: <span class="math inline">\(\text{var}(\epsilon \mid X) = \sigma^2\)</span> (<em>can be violated in different ways than homoskedasticity</em>)</p></li>
+<li><p>The errors are independent: <span class="math inline">\(\text{var}(\epsilon \mid X) = \sigma^2\)</span> (<em>can be violated in differential ways</em>)</p></li>
 <li><p>The errors are normally distributed</p></li>
 </ul>
 </div>
@@ -693,7 +686,7 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 </div></aside></section>
 <section id="plot-residuals-against-fitted-values" class="slide level2">
 <h2>Plot residuals against fitted values</h2>
-<p>Recall, the <strong>residual</strong> is the difference between the observed and fitted (predicted) values:</p>
+<p>A <strong>residual</strong> is the difference between the observed and fitted values:</p>
 <p><span class="math display">\[
 \hat{\epsilon}_i = Y_i - \hat{Y}_i
 \]</span></p>
@@ -734,7 +727,7 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11-linear_files/figure-html/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -743,54 +736,46 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 </section>
 <section id="what-about-the-normality-assumption" class="slide level2">
 <h2>What about the normality assumption?</h2>
-<div class="{columns}">
-<div class="column">
 <ul>
-<li class="fragment"><p><strong>OLS doesn’t care about this assumption</strong>, it’s just estimating coefficients!</p></li>
-<li class="fragment"><p>BUT in terms of inference, a violation of the normality of errors assumption:</p>
-<ul>
-<li class="fragment"><p>May result in incorrect inferences in small samples</p></li>
-<li class="fragment"><p>Usually does not have a big impact on inferences in larger samples (Weisberg 2014)</p></li>
-</ul></li>
-<li class="fragment"><p>We can detect whether the errors are (roughly) normally distributed by <strong>Q-Q plot</strong> on the <em>standardized residuals</em>, which are the residuals divided by their <a href="https://www.refsmmat.com/courses/707/lecture-notes/regression-geometry.html#least-squares-estimation">estimated standard deviation</a></p></li>
+<li><p>Model: <span class="math inline">\(Y=\beta_{0}+\beta_{1} X_{1}+\beta_{2} X_{2}+\cdots+\beta_{p} X_{p}+\epsilon\)</span></p></li>
+<li><p><span class="math inline">\(\epsilon_i\)</span> is the <strong>random</strong> noise: assume <strong>independent and identically distributed</strong> (<em>iid</em>) from a Normal distribution <span class="math inline">\(\epsilon_i \overset{iid}{\sim}N(0, \sigma^2)\)</span> with constant variance <span class="math inline">\(\sigma^2\)</span></p></li>
 </ul>
 <div class="fragment">
-<p><span class="math display">\[
-\displaystyle \hat{\epsilon}_{\text{standardized}} = \frac{\hat{\epsilon}}{\hat{\sigma}}
-\]</span></p>
+<ul>
+<li><strong>OLS doesn’t care about this assumption</strong>, it’s just estimating coefficients!</li>
+</ul>
 </div>
-</div><div class="column">
 <div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a>nfl_teams_data <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> .std.resid)) <span class="sc">+</span></span>
-<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>(<span class="at">distribution =</span> stats<span class="sc">::</span>qnorm) <span class="sc">+</span></span>
-<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>(<span class="at">distribution =</span> stats<span class="sc">::</span>qnorm) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="11-linear_files/figure-html/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
-</figure>
+<ul>
+<li><p>In order to perform inference, <strong>we need to impose additional assumptions</strong></p></li>
+<li><p>By assuming <span class="math inline">\(\epsilon_i \overset{iid}{\sim}N(0, \sigma^2)\)</span>, what we really mean is <span class="math inline">\(Y \overset{iid}{\sim}N(\beta_{0}+\beta_{1} X_{1}+\beta_{2} X_{2}+\cdots+\beta_{p} X_{p}, \sigma^2)\)</span></p></li>
+</ul>
 </div>
+<div class="fragment">
+<ul>
+<li>So we’re estimating the mean <span class="math inline">\(\mu\)</span> of this conditional distribution, but what about <span class="math inline">\(\sigma^2\)</span>?</li>
+</ul>
 </div>
+<div class="fragment">
+<ul>
+<li><p><a href="https://bradleyboehmke.github.io/HOML/linear-regression.html#simple-linear-regression">Unbiased estimate</a> <span class="math inline">\(\displaystyle \hat{\sigma}^2 = \frac{\text{RSS}}{n - (p + 1)}\)</span></p></li>
+<li><p><strong>Degrees of freedom</strong>: <span class="math inline">\(n - (p + 1)\)</span>, data supplies us with <span class="math inline">\(n\)</span> “degrees of freedom” and we used up <span class="math inline">\(p + 1\)</span></p></li>
+</ul>
 </div>
-</div>
-</div></div>
 </section>
 <section id="linear-regression-with-one-categorical-predictor" class="slide level2">
 <h2>Linear regression with one categorical predictor</h2>
 <p>In this example, we look at three teams: Chicago Bears, Pittsburgh Steelers, and Seattle Seahawks</p>
-<div class="fragment">
 <ul>
 <li><p>We change the estimate and interpretation intercept of our regression line when we include a categorical variable (one level of the variable is “absorbed” into the itercept term)</p></li>
 <li><p>Notice we only get two coefficients for the season besides the intercept: (i) <code>teamPIT</code> and (ii) <code>teamSEA</code></p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a>nfl_teams_subset <span class="ot">&lt;-</span> nfl_teams_data <span class="sc">|&gt;</span></span>
-<span id="cb28-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(team <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"PIT"</span>, <span class="st">"SEA"</span>, <span class="st">"CHI"</span>))</span>
-<span id="cb28-3"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a aria-hidden="true" tabindex="-1"></a>team_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(score_diff <span class="sc">~</span> team, <span class="at">data =</span> nfl_teams_subset)</span>
-<span id="cb28-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(team_lm, <span class="at">conf.int =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a>nfl_teams_subset <span class="ot">&lt;-</span> nfl_teams_data <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(team <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"PIT"</span>, <span class="st">"SEA"</span>, <span class="st">"CHI"</span>))</span>
+<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a>team_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(score_diff <span class="sc">~</span> team, <span class="at">data =</span> nfl_teams_subset)</span>
+<span id="cb27-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(team_lm, <span class="at">conf.int =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 7
   term        estimate std.error statistic  p.value conf.low conf.high
@@ -800,11 +785,10 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 3 teamSEA         51.7      24.1     2.15  0.0357       3.57      99.8</code></pre>
 </div>
 </div>
-</div>
 </section>
 <section id="linear-regression-with-one-categorical-predictor-1" class="slide level2">
 <h2>Linear regression with one categorical predictor</h2>
-<p>By default, <code>R</code> turns the categorical variables of <span class="math inline">\(m\)</span> levels (e.g.&nbsp;three teams) into <span class="math inline">\(m-1\)</span> indicator/binary variables for different categories relative to the baseline/reference level</p>
+<p>By default, <code>R</code> turns the categorical variables of <span class="math inline">\(m\)</span> levels (e.g.&nbsp;three teams ) into <span class="math inline">\(m-1\)</span> indicator/binary variables for different categories relative to the baseline/reference level</p>
 <ul>
 <li><p>Indicator/binary variables are one if it is that level, and zero otherwise</p></li>
 <li><p>By default, <code>R</code> uses alphabetical order to determine the reference level (<code>teamCHI</code> in this case)</p></li>
@@ -820,12 +804,12 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <p><span class="math display">\[\widehat{\text{Score differential}} = -11.59 + 83.18 \ I_{\texttt{teamPIT}} + 51.68\ I_{\texttt{teamSEA}}\]</span></p>
 <p>The intercept term gives us the (baseline) average y for the reference level</p>
 <ul>
-<li><em>In our context</em>: the expected season score differential for the Chicago Bears is <span class="math inline">\(-11.59\)</span> points (95% CI [<span class="math inline">\(-45.61\)</span>, <span class="math inline">\(22.43\)</span>])</li>
+<li><em>In our context</em>: the expected season points differential for the Chicago Bears is <span class="math inline">\(-11.59\)</span> points (95% CI [<span class="math inline">\(-45.61\)</span>, <span class="math inline">\(22.43\)</span>])</li>
 </ul>
 <div class="fragment">
 <p>The coefficient estimates indicate the expected change in the response variable relative to the reference level</p>
 <ul>
-<li><em>For example</em>: the season score differential for the Pittsburgh Steelers is <span class="math inline">\(83.18\)</span> points higher (95% CI [<span class="math inline">\(35.07\)</span>, <span class="math inline">\(131.29\)</span>]) than than the season score differential for the Chicago Bears</li>
+<li><em>For example</em>: the season points differential for the Pittsburgh Steelers is <span class="math inline">\(83.18\)</span> points higher (95% CI [<span class="math inline">\(35.07\)</span>, <span class="math inline">\(131.29\)</span>]) than than the season points differential for the Chicago Bears</li>
 </ul>
 </div>
 </section>
@@ -838,20 +822,20 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <li><p>To reiterate, all we’re doing is changing the intercept of our regression line by including a categorical variable</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a>nfl_teams_subset <span class="sc">|&gt;</span></span>
-<span id="cb30-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">team_pred =</span> <span class="fu">predict</span>(team_lm)) <span class="sc">|&gt;</span> </span>
-<span id="cb30-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> score_diff, <span class="at">y =</span> team_pred)) <span class="sc">+</span></span>
-<span id="cb30-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb30-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> team, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb30-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Actual score differential"</span>, </span>
-<span id="cb30-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted score differential"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a>nfl_teams_subset <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">team_pred =</span> <span class="fu">predict</span>(team_lm)) <span class="sc">|&gt;</span> </span>
+<span id="cb29-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> score_diff, <span class="at">y =</span> team_pred)) <span class="sc">+</span></span>
+<span id="cb29-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb29-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> team, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb29-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Actual score differential"</span>, </span>
+<span id="cb29-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted score differential"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11-linear_files/figure-html/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -863,7 +847,7 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <p>An interaction allows one predictor’s association with the outcome to depend on the value of another predictor</p>
 <div class="fragment">
 <p><br></p>
-<p><em>Example:</em> an interaction between <code>team</code> and <code>offense_ave_epa_pass</code> says that the association between passing performance and season score differential depends on the NFL team</p>
+<p><em>Example:</em> an interaction between <code>team</code> and <code>offense_ave_epa_pass</code> says that the association between passing performance and season score differential depends the NFL team</p>
 </div>
 <div class="fragment">
 <p><br></p>
@@ -877,20 +861,20 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <section id="visualizing-interactions" class="slide level2">
 <h2>Visualizing interactions</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a>nfl_teams_subset <span class="sc">|&gt;</span> </span>
-<span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> offense_ave_epa_pass, <span class="at">y =</span> score_diff, <span class="at">color =</span> team)) <span class="sc">+</span></span>
-<span id="cb31-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb31-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb31-5"><a aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_colorblind</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a>nfl_teams_subset <span class="sc">|&gt;</span> </span>
+<span id="cb30-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> offense_ave_epa_pass, <span class="at">y =</span> score_diff, <span class="at">color =</span> team)) <span class="sc">+</span></span>
+<span id="cb30-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb30-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb30-5"><a aria-hidden="true" tabindex="-1"></a>  ggthemes<span class="sc">::</span><span class="fu">scale_color_colorblind</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="11-linear_files/figure-html/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
+<img data-src="11-linear_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="interpreting-interactions" class="slide level2">
 <h2>Interpreting interactions</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a>interaction_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(score_diff <span class="sc">~</span> offense_ave_epa_pass <span class="sc">*</span> team, </span>
-<span id="cb32-2"><a aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> nfl_teams_subset)</span>
-<span id="cb32-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(interaction_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a>interaction_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(score_diff <span class="sc">~</span> offense_ave_epa_pass <span class="sc">*</span> team, </span>
+<span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> nfl_teams_subset)</span>
+<span id="cb31-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(interaction_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre style="font-size: 0.55em;"><code># A tibble: 6 × 5
   term                         estimate std.error statistic p.value
@@ -903,39 +887,26 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 6 offense_ave_epa_pass:teamSEA   592.       193.      3.07  0.00326</code></pre>
 </div>
 </div>
+<p>This is estimating the model:</p>
 <p><span class="math display">\[
 \begin{aligned}
 {\text{Score differential}} = \beta_0 &amp;+ \beta_1 \ \text{Pass performance} + \beta_2 \ I_{\texttt{teamPIT}} + \beta_3 \ I_{\texttt{teamSEA}} \\
 &amp;+ \beta_4 \{ \text{Pass performance} \times I_{\texttt{teamPIT}} \} +  \beta_5 \{ \text{Pass performance} \times I_{\texttt{teamSEA}} \}  + \epsilon \\
 \end{aligned}
-\]</span></p>
-<div class="fragment">
-<p><em>Example interpretation</em> (comparing the Pittsburgh Steelers to the Chicago Bears):</p>
+\]</span> <em>Example interpretion</em> (comparing the Pittsburgh Steelers to the Chicago Bears):</p>
 <blockquote>
-<p>For the Chicago Bears, a one-unit increase in average expected points added (EPA) per pass attempt is associated with an increase of 216.70 points in season score differential, on average. But for the Pittsburgh Steelers, a one-unit increase in average expected points added (EPA) per pass attempt is associated with an increase of 216.70 + 98.28 = 314.98 points in season score differential, on average.</p>
+<p>A one-unit increase in average expected points added (EPA) per pass attempt is associated with an additional 98.28</p>
 </blockquote>
-</div>
 </section>
 <section id="multiple-linear-regression" class="slide level2">
 <h2>Multiple linear regression</h2>
-<p>We can include as many variables as we want (assuming that <span class="math inline">\(n &gt; p\)</span>):</p>
+<p>We can include as many variables as we want (assuming that <span class="math inline">\(n &gt; p\)</span>)</p>
 <p><span class="math display">\[Y=\beta_{0}+\beta_{1} X_{1}+\beta_{2} X_{2}+\cdots+\beta_{p} X_{p}+\epsilon\]</span></p>
-<p>OLS estimates, <span class="math inline">\(\hat{\boldsymbol{\beta}} = (\hat{\beta}_{0}, \dots, \hat{\beta}_{p})'\)</span> in matrix notation (<span class="math inline">\(\boldsymbol{X}\)</span> is a <span class="math inline">\(n \times p\)</span> matrix):</p>
+<p>OLS estimates in matrix notation (<span class="math inline">\(\boldsymbol{X}\)</span> is a <span class="math inline">\(n \times p\)</span> matrix):</p>
 <p><span class="math display">\[\hat{\boldsymbol{\beta}} = (\boldsymbol{X} ^T \boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{Y}\]</span></p>
-<div class="fragment">
 <p>We can just add more variables to the formula in <code>R</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a>multiple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(score_diff <span class="sc">~</span> offense_ave_epa_pass <span class="sc">+</span> defense_ave_epa_pass, <span class="at">data =</span> nfl_teams_subset)</span>
-<span id="cb34-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(multiple_lm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-  term                 estimate std.error statistic  p.value
-  &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept)              12.3      4.97      2.47 1.62e- 2
-2 offense_ave_epa_pass    443.      39.6      11.2  1.36e-16
-3 defense_ave_epa_pass   -584.      52.0     -11.2  1.12e-16</code></pre>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a>multiple_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(score_diff <span class="sc">~</span> offense_ave_epa_pass <span class="sc">+</span> defense_ave_epa_pass, <span class="at">data =</span> nfl_teams_subset)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="multiple-linear-regression-1" class="slide level2">
@@ -948,34 +919,19 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <li><p>Adjusts for the number of regressors in the model (<span class="math inline">\(p\)</span>)</p></li>
 <li><p>Adding more variables <strong>will always increase</strong> the model’s (unadjusted) <span class="math inline">\(R^2\)</span></p></li>
 </ul>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(multiple_lm) <span class="co"># notice the diff. between unadj. and adj. R-squared</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 12
-  r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
-      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     0.805         0.798  38.6      130. 4.61e-23     2  -333.  674.  683.
-# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
-</div>
-</div>
 
-</div>
 <aside><div>
-<p>Also, recall <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Anscombe’s quartet</a> and the <a href="https://en.wikipedia.org/wiki/Datasaurus_dozen">Datasaurus dozen</a>. In general, you should be cautious of any single number summary of an elusive concept like model “goodness”.</p>
+<p>Recall <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Anscombe’s quartet</a> and the <a href="https://en.wikipedia.org/wiki/Datasaurus_dozen">Datasaurus dozen</a>. In general, you should be cautious of any single number summary of an elusive concept like model “goodness”.</p>
 </div></aside></section>
 <section id="regression-confidence-intervals-vs-prediction-intervals" class="slide level2">
 <h2>Regression confidence intervals vs prediction intervals</h2>
-<p>These answer different questions:</p>
-<ol type="1">
-<li><p>Do we want to predict the mean response for a particular value <span class="math inline">\(x^*\)</span> of the explanatory variable? <strong>Confidence interval</strong></p></li>
-<li><p>Do we want to predict the response for an individual case? <strong>Prediction interval</strong></p></li>
-</ol>
+<p>Do we want to predict the mean response for a particular value <span class="math inline">\(x^*\)</span> of the explanatory variable or do we want to predict the response for an individual case?</p>
 <div class="fragment">
+<p><br></p>
 <p><em>Examples</em>:</p>
 <ul>
-<li><p>If we would like to know the average score differential for <strong>all</strong> NFL team-seasons with an average expected points added (EPA) per pass attempt of <span class="math inline">\(0.10\)</span>, then we would use an interval for the <strong>mean response</strong></p></li>
-<li><p>If we want an intervalto contain the score differential <strong>a particular</strong> NFL team-season with with an average expected points added (EPA) per pass attempt of <span class="math inline">\(0.10\)</span>, then we need the interval for <strong>a single prediction</strong></p></li>
+<li><p>If we would like to know the average ridership for <strong>all</strong> days with feels-like temperature of 70 degrees Fahrenheit, then we would use an interval for the <strong>mean response</strong></p></li>
+<li><p>If we want an interval to contain the ridership of <strong>a particular</strong> day with feels-like temperature of 70 degrees Fahrenheit, then we need the interval for <strong>a single prediction</strong></p></li>
 </ul>
 </div>
 </section>
@@ -985,19 +941,19 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <div class="column" style="text-align: left;">
 <p>The layer <code>geom_smooth()</code> displays <strong>confidence intervals</strong> for the regression line</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># predict(simple_lm, interval = "confidence")</span></span>
-<span id="cb38-2"><a aria-hidden="true" tabindex="-1"></a>lm_plot <span class="ot">&lt;-</span> nfl_teams_subset <span class="sc">|&gt;</span></span>
-<span id="cb38-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> offense_ave_epa_pass, <span class="at">y =</span> score_diff)) <span class="sc">+</span></span>
-<span id="cb38-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb38-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span>
-<span id="cb38-6"><a aria-hidden="true" tabindex="-1"></a>lm_plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># predict(simple_lm, interval = "confidence")</span></span>
+<span id="cb34-2"><a aria-hidden="true" tabindex="-1"></a>lm_plot <span class="ot">&lt;-</span> nfl_teams_subset <span class="sc">|&gt;</span></span>
+<span id="cb34-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> offense_ave_epa_pass, <span class="at">y =</span> score_diff)) <span class="sc">+</span></span>
+<span id="cb34-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb34-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span>
+<span id="cb34-6"><a aria-hidden="true" tabindex="-1"></a>lm_plot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11-linear_files/figure-html/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1009,7 +965,7 @@ offense_ave_epa_pass 528.604817 604.100144</code></pre>
 <p>Interval estimate for the MEAN response at a given observation (i.e.&nbsp;for the predicted AVERAGE <span class="math inline">\(\hat{\beta}_0 + \hat{\beta}_1 x^*\)</span>)</p>
 <div class="fragment">
 <p><br></p>
-<p>Based on standard errors for the estimated regression line at <span class="math inline">\(x^*\)</span>, we get that:</p>
+<p>Based on standard errors for the estimated regression line at <span class="math inline">\(x^*\)</span></p>
 <p><span class="math display">\[
 SE_{\text{line}}\left(x^{*}\right)=\hat{\sigma} \cdot \sqrt{\frac{1}{n}+\frac{\left(x^{*}-\bar{x}\right)^{2}}{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}}}
 \]</span></p>
@@ -1024,7 +980,7 @@ SE_{\text{line}}\left(x^{*}\right)=\hat{\sigma} \cdot \sqrt{\frac{1}{n}+\frac{\l
 <p>Interval estimate for an INDIVIDUAL response at a given (new) observation</p>
 <div class="fragment">
 <p><br></p>
-<p>Must add the variance <span class="math inline">\(\sigma^2\)</span> of a <strong>single predicted value</strong>:</p>
+<p>Must add the variance <span class="math inline">\(\sigma^2\)</span> of a <strong>single predicted value</strong></p>
 <p><span class="math display">\[
 SE_{\text{pred}}\left(x^{*}\right)=\hat{\sigma} \cdot \sqrt{1 + \frac{1}{n}+\frac{\left(x^{*}-\bar{x}\right)^{2}}{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}}}
 \]</span></p>
@@ -1043,28 +999,43 @@ SE_{\text{pred}}\left(x^{*}\right)=\hat{\sigma} \cdot \sqrt{1 + \frac{1}{n}+\fra
 <li><p>Prediction intervals will always be wider than confidence intervals</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># predict(simple_lm, interval = "prediction")</span></span>
-<span id="cb39-2"><a aria-hidden="true" tabindex="-1"></a>lm_plot <span class="sc">+</span></span>
-<span id="cb39-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(</span>
-<span id="cb39-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">augment</span>(simple_lm, <span class="at">interval =</span> <span class="st">"prediction"</span>),</span>
-<span id="cb39-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">ymin =</span> .lower, <span class="at">ymax =</span> .upper),</span>
-<span id="cb39-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">fill =</span> <span class="cn">NA</span></span>
-<span id="cb39-7"><a aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># predict(simple_lm, interval = "prediction")</span></span>
+<span id="cb35-2"><a aria-hidden="true" tabindex="-1"></a>lm_plot <span class="sc">+</span></span>
+<span id="cb35-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(</span>
+<span id="cb35-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">augment</span>(simple_lm, <span class="at">interval =</span> <span class="st">"prediction"</span>),</span>
+<span id="cb35-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">ymin =</span> .lower, <span class="at">ymax =</span> .upper),</span>
+<span id="cb35-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">fill =</span> <span class="cn">NA</span></span>
+<span id="cb35-7"><a aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="text-align: left;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11-linear_files/figure-html/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+<p><img data-src="11-linear_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
+</section>
+<section id="appendix-collinearity" class="slide level2">
+<h2>Appendix: Collinearity</h2>
+<p><em>Often, collinearity is talked about as something inherently bad…</em></p>
+<ul>
+<li><p>BUT, the reported least squares estimates are still the correct ones given the model and predictors (<em>the variance should be inflated if we have high collinearity</em>)</p></li>
+<li><p>So, collinearity is an issue in <strong>prediction</strong> insofar as it creates high prediction variance (penalized models help address this worry)</p></li>
+<li><p>However, we must be very careful when interpreting our coefficients if we have high collineaity — we may no longer be able to hold the other covariates <em>fixed</em></p></li>
+</ul>
+<blockquote>
+<p>“If we are confronted with collinearity, then, the question to ask is ‘Have we chosen the correct predictors for the research question?’ If we have, there is little to be done; if we have not, we can reconsider our choice of predictors and perhaps eliminate the collinear ones.” — <a href="https://www.refsmmat.com/courses/707/lecture-notes/regression-assumptions.html#sec-collinearity">Professor Alex Reinhart’s notes</a></p>
+</blockquote>
 
 
-</section></section>
+
+<aside><div>
+<p>See more about collinearity and how to detect it in <a href="https://www.refsmmat.com/courses/707/lecture-notes/regression-assumptions.html#sec-collinearity">Professor Alex Reinhart’s notes</a></p>
+</div></aside></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -1282,6 +1253,44 @@ SE_{\text{pred}}\left(x^{*}\right)=\hat{\sigma} \cdot \sqrt{1 + \frac{1}{n}+\fra
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -1352,7 +1361,7 @@ SE_{\text{pred}}\left(x^{*}\right)=\hat{\sigma} \cdot \sqrt{1 + \frac{1}{n}+\fra
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/36-SURE\.github\.io\/2026\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
