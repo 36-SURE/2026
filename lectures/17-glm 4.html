@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../icon.png" rel="icon" type="image/png">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
+
+  <meta name="author" content=" CMSACamp 2026 Department of Statistics &amp; Data Science Carnegie Mellon University">
+  <title>CMSACamp 2026 – Supervised Learning: Generalized Linear Models</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d1bfdcb810df943d831c409a16530ab1.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Supervised Learning: Generalized Linear Models</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<br>CMSACamp 2026<br><br>Department of Statistics &amp; Data Science<br>Carnegie Mellon University 
+</div>
+</div>
+</div>
+
+</section>
+<section>
+<section id="background" class="title-slide slide level1 center">
+<h1>Background</h1>
+
+</section>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<ul>
+<li>When the response is continuous, we can use linear regression</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>When the response is binary categorical, we can use logistic regression</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Which model do we use if the response contains discrete counts?</li>
+</ul>
+</div>
+</section>
+<section id="generalized-linear-models-glms" class="slide level2">
+<h2>Generalized linear models (GLMs)</h2>
+<p>Two components of a GLM</p>
+<p><strong>1. Systematic component</strong>: The systematic part describes the relationship between the mean of <span class="math inline">\(Y\)</span> and some linear combination of the predictors</p>
+<div class="fragment">
+<p><strong>2. Random component (distribution of the response)</strong>: The random part describes the distribution of <span class="math inline">\(Y\)</span> around that mean</p>
+</div>
+</section>
+<section id="link-function" class="slide level2">
+<h2>Link function</h2>
+<p>The systematic part of the GLM describes the relationship between the mean of <span class="math inline">\(Y\)</span> and some function of <span class="math inline">\(\beta_0 + \beta_1 X_1 + \dots + \beta_p X_p\)</span>.</p>
+<p>Specifically, the systematic part is of the form</p>
+<p><span class="math display">\[g(\mathbb{E}[Y \mid X = x]) = \beta_0 + \beta_1 X_1 + \dots + \beta_p X_p\]</span></p>
+<p>where <span class="math inline">\(g\)</span> is known as the link function.</p>
+<div class="fragment">
+<ul>
+<li>For instance, in logistic regression, <span class="math inline">\(g\)</span> was the logit function</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>The random part gives the distribution of <span class="math inline">\(Y\)</span> as an exponential family distribution</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>If <span class="math inline">\(Y\)</span> is drawn from an exponential dispersion family distribution with natural parameter <span class="math inline">\(\theta\)</span>, the <em>canonical link</em> for that distribution is the function such that <span class="math inline">\(g(\mathbb{E}[Y|X=x]) = \theta\)</span>.</li>
+</ul>
+</div>
+</section>
+<section id="linear-regression" class="slide level2">
+<h2>Linear regression</h2>
+<ol type="1">
+<li><span class="math inline">\(Y \sim N(\mu, \sigma ^2)\)</span></li>
+</ol>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Linear predictor: <span class="math inline">\(\beta_0 + \beta_1 X_1 + \dots + \beta_p X_p\)</span></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li>Identity link function: <span class="math inline">\(g(\mu) = \mu\)</span></li>
+</ol>
+</div>
+</section>
+<section id="logistic-regression" class="slide level2">
+<h2>Logistic regression</h2>
+<ol type="1">
+<li><span class="math inline">\(Y \sim \text{Binomial}(n,p)\)</span></li>
+</ol>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Linear predictor: <span class="math inline">\(\beta_0 + \beta_1 X_1 + \dots + \beta_p X_p\)</span></li>
+</ol>
+<p>(Recall: We cannot just simply model <span class="math inline">\(p = \beta_0 + \beta_1 X_1 + \dots + \beta_p X_p\)</span> since the binary response can only take on values of either 0 or 1)</p>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li>Logit link function: <span class="math inline">\(\displaystyle g(p) = \log\left(\frac{p}{1-p}\right)\)</span></li>
+</ol>
+<p><span class="math display">\[\log \left( \frac{p(x)}{1 - p(x)} \right) = \beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p\]</span></p>
+<p><span class="math display">\[\frac{p(x)}{1 - p(x)} = \exp(\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p) \]</span></p>
+<p><span class="math display">\[p(x) = \frac{\exp(\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p)}{1 + \exp(\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p)} = \frac{1}{1 + \exp(-(\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p))}\]</span></p>
+</div>
+</section>
+<section id="poisson-regression" class="slide level2">
+<h2>Poisson regression</h2>
+<ol type="1">
+<li><span class="math inline">\(Y \sim \text{Poisson}(\lambda)\)</span> where <span class="math inline">\(\lambda = E[Y|X=x]\)</span></li>
+</ol>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Linear predictor: <span class="math inline">\(\beta_0 + \beta_1 X_1 + \dots + \beta_p X_p\)</span></li>
+</ol>
+<p>(We cannot just simply model <span class="math inline">\(\lambda = \beta_0 + \beta_1 X_1 + \dots + \beta_p X_p\)</span> since the Poisson mean parameter must be positive)</p>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li>Log link function: <span class="math inline">\(\displaystyle g(\lambda) = \log (\lambda)\)</span></li>
+</ol>
+<p><span class="math display">\[\log(\lambda) =\beta_0 + \beta_1 X_1 + \dots + \beta_p X_p\]</span> <span class="math display">\[\lambda = \exp(\beta_0 + \beta_1 X_1 + \dots + \beta_p X_p)\]</span></p>
+<p>which guarantees <span class="math inline">\(\lambda &gt;0\)</span>.</p>
+</div>
+</section>
+<section id="generalization-example" class="slide level2">
+<h2>Generalization example</h2>
+<p>In linear regression, the distribution is normal and the domain of <span class="math inline">\(Y \mid x\)</span> is <span class="math inline">\((-\infty,\infty)\)</span></p>
+<div class="fragment">
+<p>What, however, happens if we know that</p>
+<ul>
+<li><p>the domain of observed values of the response is actually <span class="math inline">\([0,\infty]\)</span></p></li>
+<li><p>the observed values are <strong>discrete</strong>, with possible values <span class="math inline">\(0, 1, 2, \dots\)</span></p></li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>The normal distribution doesn’t hold here</strong></p>
+<ul>
+<li><p>Which distribution could possibly govern <span class="math inline">\(Y \mid x\)</span>?</p></li>
+<li><p>Remember, we might not know truly how <span class="math inline">\(Y \mid x\)</span> is distributed, but any assumption we make has to fit with the nature of the data</p></li>
+</ul>
+</div>
+</section>
+<section id="generalization-poisson-regression" class="slide level2">
+<h2>Generalization: Poisson regression</h2>
+<ul>
+<li>PMF of a Poisson distribution: <span class="math inline">\(\displaystyle f(x \mid \lambda)= \frac{ e^{-\lambda} \lambda^x}{x!}\)</span>; <span class="math inline">\(x = 0, 1, 2, \dots\)</span> and <span class="math inline">\(\lambda &gt; 0\)</span></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Model for the counts of an event in a fixed period of time or space, with a rate of occurrence (intensity) parameter <span class="math inline">\(\lambda\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="text-align: left;">
+<ul>
+<li><p><span class="math inline">\(\lambda\)</span> is <strong>both</strong> the mean and the variance of the distribution</p>
+<ul>
+<li>in general, the variance governs the distribution’s shape</li>
+</ul></li>
+<li><p>distribution of independent event occurrences in an interval, e.g.&nbsp;soccer goals in a match</p></li>
+<li><p><span class="math inline">\(\lambda\)</span> is the average number of the events in an interval</p></li>
+</ul>
+<p>So, when we apply GLM in this context, we would identify the family as Poisson</p>
+<p>But there’s another step in generalization…</p>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGhtN8PsfXb92k34HFNi14zpkCwpWRIBnY_1GkL1GsbKohpqSTNze-7XY&amp;s=10.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="generalization-link-function" class="slide level2">
+<h2>Generalization: link function</h2>
+<p>Start with one predictor, linear function: <span class="math inline">\(\beta_0 + \beta_1 x\)</span></p>
+<div class="fragment">
+<p>Range of this function: <span class="math inline">\((-\infty,\infty)\)</span></p>
+<p>But for Poisson regression, <span class="math inline">\(Y\)</span> <strong>cannot be negative</strong>,</p>
+<p><strong>We need to transform the linear function</strong> to be <span class="math inline">\([0,\infty)\)</span></p>
+<p>(What if we use linear regression? Results may not be meaningful, e.g., we predict <span class="math inline">\({\hat Y}\)</span> to be negative!)</p>
+</div>
+<div class="fragment">
+<p><strong>There is usually no unique transformation</strong>, but rather conventional ones</p>
+</div>
+</section>
+<section id="generalization-link-function-1" class="slide level2">
+<h2>Generalization: link function</h2>
+<p>For Poisson, we use the <span class="math inline">\(\log()\)</span> function as the <strong>link function</strong> <span class="math inline">\(g()\)</span>:</p>
+<p><span class="math display">\[g(\lambda \mid x) = \log(\lambda \mid x) = \beta_0 + \beta_1 x\]</span></p>
+<p>(Hence we also call this a <a href="https://en.wikipedia.org/wiki/Log-linear_model">log-linear model</a>)</p>
+<div class="fragment">
+<p>Given <span class="math inline">\(Y\)</span> with values limited to being either 0 or positive integers, with no upper bound, we</p>
+<ol type="1">
+<li><p>assume <span class="math inline">\(Y \mid x \sim \text{Poisson}(\lambda)\)</span></p></li>
+<li><p>assume <span class="math inline">\(\lambda \mid x = e^{\beta_0 + \beta_1 x}\)</span></p></li>
+<li><p>use optimization to estimate <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> by maximizing the likelihood function</p></li>
+</ol>
+</div>
+</section>
+<section id="more-distributions" class="slide level2">
+<h2>More distributions</h2>
+<p><a href="https://en.wikipedia.org/wiki/Gamma_distribution">Gamma distribution</a></p>
+<ul>
+<li><p><span class="math inline">\(Y \mid x\)</span> continuous, but bounded between 0 and <span class="math inline">\(\infty\)</span></p></li>
+<li><p>Application: modeling continuous, positive, and (right) skewed response</p>
+<ul>
+<li><p>Finance: modeling insurance claim severity</p></li>
+<li><p>Environmental science: modeling rainfall</p></li>
+</ul></li>
+</ul>
+
+<img data-src="https://careersatdoordash.com/wp-content/uploads/2022/04/gamma-distribution-11-1-1024x801.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section>
+<section id="more-distributions-1" class="slide level2">
+<h2>More distributions</h2>
+<p><a href="https://en.wikipedia.org/wiki/Beta_distribution">Beta distribution</a></p>
+<ul>
+<li><p><span class="math inline">\(Y \mid x\)</span> continuous, but bounded between 0 and 1</p></li>
+<li><p>Application: modeling proportions (see <a href="https://www.andrewheiss.com/blog/2021/11/08/beta-regression-guide">here</a> for an example)</p>
+<ul>
+<li><p>Amount of foreign aid a country receives as a percent of its GDP</p></li>
+<li><p>Proportion of a population that received COVID-19 vaccine</p></li>
+</ul></li>
+</ul>
+
+<img data-src="https://miro.medium.com/v2/1*n1q2lm3-2Npx2AMCWUaYMQ.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section>
+<section id="modeling-count-data" class="slide level2">
+<h2>Modeling count data</h2>
+<p>Game level shot information for the NHL 2021-2022 season, via the <a href="https://data.scorenetwork.org/hockey/nhl-shots.html">SCORE Sports Data Repository</a></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_light</span>())</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>scoring <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/2026/main/data/nhl_offense_2021.csv"</span>)</span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scoring)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 2,802
+Columns: 8
+$ game_id    &lt;dbl&gt; 2021020001, 2021020001, 2021020002, 2021020002, 2021020003,…
+$ event_team &lt;chr&gt; "Pittsburgh Penguins", "Tampa Bay Lightning", "Seattle Krak…
+$ shots      &lt;dbl&gt; 58, 55, 63, 58, 55, 64, 53, 48, 61, 70, 67, 66, 58, 54, 68,…
+$ avg_dist   &lt;dbl&gt; 34.45106, 41.99500, 34.34091, 35.07234, 35.58780, 34.63137,…
+$ avg_angle  &lt;dbl&gt; 29.69149, 25.62750, 33.07727, 29.58298, 31.37805, 26.01373,…
+$ goals      &lt;dbl&gt; 6, 2, 3, 4, 1, 2, 1, 5, 2, 4, 2, 2, 5, 1, 3, 2, 6, 7, 5, 4,…
+$ is_home    &lt;dbl&gt; 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0,…
+$ division   &lt;chr&gt; "Metropolitan", "Atlantic", "Pacific", "Pacific", "Atlantic…</code></pre>
+</div>
+</div>
+</section>
+<section id="eda-distribution-for-the-number-of-goals" class="slide level2">
+<h2>EDA: Distribution for the number of goals</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a>scoring <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(goals) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(goals, n)) <span class="sc">+</span></span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.5</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="17-glm_files/figure-html/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
+<section id="eda-distribution-for-the-number-of-goals-by-homeaway-team" class="slide level2">
+<h2>EDA: Distribution for the number of goals by home/away team</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a>scoring <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(goals, is_home) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_home =</span> <span class="fu">factor</span>(is_home)) <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(goals, n, <span class="at">fill =</span> is_home, <span class="at">group =</span> is_home)) <span class="sc">+</span></span>
+<span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>, <span class="at">width =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="17-glm_files/figure-html/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1440"></section>
+<section id="eda-relationship-between-shot-distance-and-goals" class="slide level2">
+<h2>EDA: Relationship between shot distance and goals</h2>
+<div class="columns">
+<div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> scoring <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">goals_group =</span> <span class="fu">case_when</span>(goals <span class="sc">&lt;</span><span class="dv">2</span> <span class="sc">~</span> <span class="st">"0-1"</span>, </span>
+<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a>                                 goals <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> goals <span class="sc">&lt;=</span><span class="dv">3</span> <span class="sc">~</span> <span class="st">"2-3"</span>, </span>
+<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a>                                 goals <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"4"</span>, </span>
+<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a>                                 goals <span class="sc">&gt;</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"5+"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>avg_dist, <span class="at">color =</span> goals_group))<span class="sc">+</span></span>
+<span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()<span class="sc">+</span></span>
+<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb5-9"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> scoring <span class="sc">|&gt;</span> </span>
+<span id="cb5-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>avg_dist, <span class="at">y =</span> goals))<span class="sc">+</span></span>
+<span id="cb5-12"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="st">"jitter"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb5-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span>
+<span id="cb5-14"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb5-16"><a aria-hidden="true" tabindex="-1"></a>a<span class="sc">+</span>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="17-glm_files/figure-html/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="fitting-a-poisson-regression-model" class="slide level2">
+<h2>Fitting a poisson regression model</h2>
+<p>What observations in the dataset correspond to predictions using only the intercept?</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>goals_poisson <span class="ot">&lt;-</span> <span class="fu">glm</span>(goals <span class="sc">~</span> division <span class="sc">+</span> is_home <span class="sc">+</span> avg_dist, <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> scoring)</span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># summary(goals_poisson)</span></span>
+<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a><span class="co"># scoring &lt;- scoring |&gt; mutate(division = fct_relevel(division, "Central")) # use to change the reference level</span></span>
+<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb6-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(goals_poisson)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  term                 estimate std.error statistic  p.value
+  &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)            1.50     0.0874     17.1   8.04e-66
+2 divisionCentral        0.0132   0.0299      0.441 6.59e- 1
+3 divisionMetropolitan  -0.0229   0.0303     -0.756 4.50e- 1
+4 divisionPacific       -0.0367   0.0305     -1.20  2.29e- 1
+5 is_home                0.0819   0.0215      3.80  1.44e- 4
+6 avg_dist              -0.0112   0.00239    -4.68  2.88e- 6</code></pre>
+</div>
+</div>
+</section>
+<section id="fitting-a-poisson-regression-model-1" class="slide level2">
+<h2>Fitting a poisson regression model</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(goals_poisson, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>, <span class="at">conf.int =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  term                 estimate std.error statistic  p.value conf.low conf.high
+  &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)             4.47    0.0874     17.1   8.04e-66    3.77      5.31 
+2 divisionCentral         1.01    0.0299      0.441 6.59e- 1    0.956     1.07 
+3 divisionMetropolitan    0.977   0.0303     -0.756 4.50e- 1    0.921     1.04 
+4 divisionPacific         0.964   0.0305     -1.20  2.29e- 1    0.908     1.02 
+5 is_home                 1.09    0.0215      3.80  1.44e- 4    1.04      1.13 
+6 avg_dist                0.989   0.00239    -4.68  2.88e- 6    0.984     0.994</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>One foot of average shot distance further from the net is associated with the mean number of goals being multiplied by 0.988 [95% CI(0.984, 0.993)].</p>
+<p>The expected number of goals changes (is multiplied) by a factor of 1.085 (95% CI [1.04, 1.13]) if the team is home in comparison to away teams, after accounting for shot distance and division.</p>
+</div>
+</section>
+<section id="deviance-test" class="slide level2">
+<h2>Deviance test</h2>
+<p>Often used for testing null that</p>
+<ul>
+<li>a relationship is linear rather than quadratic or cubic</li>
+<li>a continuous predictor’s relationship with the response is identical regardless of the level of a factor predictor with several levels</li>
+<li>simply testing null that several specific predictors are not associated with the response</li>
+</ul>
+<p>The deviance difference is a likelihood ratio statistic. Likelihood ratio statistics are asymptotically chi-square, so this test has a chi-squared distribution.</p>
+</section>
+<section id="deviance-test-1" class="slide level2">
+<h2>Deviance test</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>fit_league <span class="ot">&lt;-</span> <span class="fu">glm</span>(goals <span class="sc">~</span> division <span class="sc">+</span> is_home <span class="sc">+</span> avg_dist, <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> scoring)</span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>fit_simple <span class="ot">&lt;-</span> <span class="fu">glm</span>(goals <span class="sc">~</span> is_home <span class="sc">+</span> avg_dist, <span class="at">family =</span> <span class="st">"poisson"</span>, <span class="at">data =</span> scoring)</span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit_simple, fit_league, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model 1: goals ~ is_home + avg_dist
+Model 2: goals ~ division + is_home + avg_dist
+  Resid. Df Resid. Dev Df Deviance Pr(&gt;Chi)
+1      2799     3162.6                     
+2      2796     3159.4  3   3.2622   0.3529</code></pre>
+</div>
+</div>
+<p>A deviance test comparing our model with a reduced model fit solely with average shot distance and home advantage <strong>does not</strong> provide evidence that division is associated with number of goals scored.</p>
+</section>
+<section id="checking-the-assumptions" class="slide level2">
+<h2>Checking the assumptions</h2>
+<p>Poisson regression makes 3 assumptions:</p>
+<ol type="1">
+<li>The observations are conditionally independent, given <span class="math inline">\(X\)</span>.</li>
+</ol>
+<ul>
+<li>Check with domain knowledge!</li>
+</ul>
+<ol start="2" type="1">
+<li>The response variable follows the poisson distribution.</li>
+</ol>
+<ul>
+<li>Check with a histogram (EDA)!</li>
+</ul>
+<ol start="3" type="1">
+<li>The mean of the response is related to the predictors through the chosen link function: we want a linear relationship between the predictor and the log of the outcome (either rate or count).</li>
+</ol>
+<ul>
+<li><p>Check with empirical link plot in EDA or with residuals after fitting model.</p></li>
+<li><p>Doesn’t apply to factor variables</p>
+<ul>
+<li>the model estimates a separate mean (or effect) for each category, so there is no underlying numeric scale on which a linear relationship could be assumed or violated.</li>
+</ul></li>
+</ul>
+</section>
+<section id="checking-the-assumptions-with-an-empirical-link-plot" class="slide level2">
+<h2>Checking the assumptions with an empirical link plot</h2>
+<div class="columns">
+<div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(regressinator)</span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>scoring <span class="sc">|&gt;</span></span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">bin_by_quantile</span>(avg_dist, <span class="at">breaks =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_avg_dist =</span> <span class="fu">mean</span>(avg_dist),</span>
+<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">log_goals =</span> <span class="fu">empirical_link</span>(</span>
+<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a>      goals,</span>
+<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>),</span>
+<span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb12-12"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> mean_avg_dist, <span class="at">y =</span> log_goals)) <span class="sc">+</span></span>
+<span id="cb12-13"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb12-14"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb12-15"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Avg shot distance"</span>, <span class="at">y =</span> <span class="st">"Log goals"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="text-align: left;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="17-glm_files/figure-html/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="checking-with-randomized-quantile-residuals" class="slide level2">
+<h2>Checking with randomized quantile residuals</h2>
+<p>In short, randomized quantile residuals deal with the patterns produced by discrete response variables by calculating the CDF for each observation.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">augment_quantile</span>(goals_poisson) <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>avg_dist, <span class="at">y =</span> .quantile.resid))<span class="sc">+</span></span>
+<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">22</span>)<span class="sc">+</span></span>
+<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Shot distance"</span>, <span class="at">y=</span><span class="st">"Randomized quantile residual"</span>)<span class="sc">+</span></span>
+<span id="cb13-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="17-glm_files/figure-html/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"></section>
+
+<section id="poisson-offset" class="slide level2">
+<h2>Poisson offset</h2>
+<ul>
+<li>The count of a particular unit might vary based on population or amount of time.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>Examples of when to use an offset</p>
+<ul>
+<li><p>modeling number of arrested insurrectionists by county (population offset)</p></li>
+<li><p>counting bird species in varies forests (size of forest or time spent birding offset)</p></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Why not just include this as a variable?</p>
+<ul>
+<li><p>In the situations above, interpreting with counts doesn’t make much sense</p></li>
+<li><p>Including the variable as an offset constrains the model to predict rates rather than raw counts by fixing its coefficient to 1</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="poisson-offset-1" class="slide level2">
+<h2>Poisson offset</h2>
+<p>For hockey data: should we include shots as a offset? Depends on what question you are trying to answer.</p>
+<ul>
+<li><p>Using shots as an offset: Do division, home ice, and average shot distance affect a team’s goal-scoring rate per shot?</p></li>
+<li><p>Using shots as a predictor: Holding division, home ice, and average shot distance constant, how does generating more shots affect expected goals?</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a>goals_offset <span class="ot">&lt;-</span> <span class="fu">glm</span>(goals <span class="sc">~</span> division <span class="sc">+</span> is_home <span class="sc">+</span> avg_dist, </span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">offset =</span> <span class="fu">log</span>(shots), <span class="co"># include with coefficient 1</span></span>
+<span id="cb17-3"><a aria-hidden="true" tabindex="-1"></a>                 <span class="at">data =</span> scoring, <span class="at">family =</span> <span class="fu">poisson</span>(<span class="at">link =</span> <span class="st">"log"</span>))</span>
+<span id="cb17-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(goals_offset, <span class="at">exponentiate =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  term                 estimate std.error statistic   p.value
+  &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)            0.0694   0.0885    -30.1   1.12e-199
+2 divisionCentral        1.04     0.0299      1.22  2.22e-  1
+3 divisionMetropolitan   0.977    0.0303     -0.754 4.51e-  1
+4 divisionPacific        0.928    0.0305     -2.44  1.46e-  2
+5 is_home                1.03     0.0215      1.25  2.12e-  1
+6 avg_dist               0.993    0.00243    -2.87  4.12e-  3</code></pre>
+</div>
+</div>
+<p>A 10-foot increase in average shot distance is associated with approximately a <span class="math inline">\(0.99306499^{10} = 0.933\)</span> lower goal-scoring rate per shot, holding division and home ice constant.</p>
+</section>
+<section id="overdispersion" class="slide level2">
+<h2>Overdispersion</h2>
+<ul>
+<li>Overdispersion is a common problem faced in Poisson regression when the variance is larger than what is assumed under the model</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Recall that a Poisson distribution assumes equidispersion (i.e.&nbsp;the mean and variance are equal)</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Any concerns here?</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(scoring<span class="sc">$</span>goals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.182643</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(scoring<span class="sc">$</span>goals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.109208</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="negative-binomial-regression" class="slide level2">
+<h2>Negative binomial regression</h2>
+<p>Key idea: introduces another parameter such that the variance can exceed the mean</p>
+<div class="fragment">
+<p>We have <span class="math inline">\(E(Y)  = \lambda\)</span> and <span class="math inline">\(\text{Var}(Y)=\lambda(1+\alpha \lambda)\)</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>The variance is still proportional to <span class="math inline">\(\lambda\)</span>, but depends on the dispersion parameter <span class="math inline">\(\alpha \ge 0\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>The further <span class="math inline">\(\alpha\)</span> falls above 0, the greater the overdispersion relative to Poisson variability</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>As <span class="math inline">\(\alpha\)</span> decreases toward 0, the variance decreases toward <span class="math inline">\(\lambda\)</span> , and the model converges to a Poisson distribution</li>
+</ul>
+</div>
+<div class="fragment">
+<p>See <a href="https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html#negative-binomial-modeling">here</a> for more information</p>
+</div>
+</section>
+<section id="negative-binomial-regression-1" class="slide level2">
+<h2>Negative binomial regression</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a>goals_nb <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">glm.nb</span>(goals <span class="sc">~</span> division <span class="sc">+</span> is_home <span class="sc">+</span> avg_dist, <span class="at">data =</span> scoring)</span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(goals_nb)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+MASS::glm.nb(formula = goals ~ division + is_home + avg_dist, 
+    data = scoring, init.theta = 415.9359625, link = log)
+
+Coefficients:
+                     Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)           1.49745    0.08772  17.071  &lt; 2e-16 ***
+divisionCentral       0.01320    0.03004   0.440 0.660255    
+divisionMetropolitan -0.02286    0.03039  -0.752 0.452029    
+divisionPacific      -0.03669    0.03064  -1.197 0.231123    
+is_home               0.08185    0.02162   3.786 0.000153 ***
+avg_dist             -0.01119    0.00240  -4.661 3.15e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for Negative Binomial(415.936) family taken to be 1)
+
+    Null deviance: 3182.3  on 2801  degrees of freedom
+Residual deviance: 3138.4  on 2796  degrees of freedom
+AIC: 11002
+
+Number of Fisher Scoring iterations: 1
+
+              Theta:  416 
+          Std. Err.:  1535 
+Warning while fitting theta: alternation limit reached 
+
+ 2 x log-likelihood:  -10987.88 </code></pre>
+</div>
+</div>
+</section>
+<section id="zero-inflated-poisson-regression" class="slide level2">
+<h2>Zero-inflated Poisson regression</h2>
+<ul>
+<li>One common problem in modeling count data is the prevalence of zeros</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>While the Poisson distribution allows for zero counts, there are problems with a lot more zeros observed than expected for Poisson data</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>A <strong>zero-inflated Poisson (ZIP) model</strong> is a mixture model with two components</p>
+<ul>
+<li><p>Logistic regression model to predict whether the response will be zero (whether 0 goals are observed) <span class="math display">\[P(Y = 0) = \pi + (1 - \pi)e^{\lambda}\]</span></p></li>
+<li><p>Poisson regression model for non-zero counts (non-zero goal values) <span class="math display">\[P(Y = y) = (1 - \pi) \frac{\lambda^y e^{-\lambda}}{y!}, \text{
+for } y = 1, 2, 3, \dots\]</span></p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="more-on-modeling-with-glms" class="slide level2">
+<h2>More on modeling with GLMs</h2>
+<ul>
+<li>GLMs are a big topic! We’ve only fully worked through an example of the poisson. Other response distributions follow similar ideas but have their own nuances.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Binomial regression: used with binary outcomes where there is a fixed and known total number of trials.
+<ul>
+<li>Each observation consists of a number of successes and a total number of trials; the number of trials may differ between observations</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Gamma regression: Strictly positive, continuous data that are right-skewed, where the variance increases with the mean.</p>
+<ul>
+<li>Tweedie regression: Continuous data with a high density of exact zeros (e.g., insurance claim payouts where many people file $0, but some file large amounts).</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p>Feel free to explore more or ask us questions!</p>
+</div>
+</section>
+<section id="resources" class="slide level2">
+<h2>Resources</h2>
+<ul>
+<li><p><a href="https://www.refsmmat.com/courses/707/lecture-notes/response-distributions.html">Alex Reinhart’s 36-707 Regression Analysis Notes on GLMs</a></p></li>
+<li><p><a href="https://bookdown.org/roback/bookdown-BeyondMLR/">Beyond Multiple Linear Regression: Paul Roback and Julie Legler</a></p></li>
+</ul>
+</section>
+<section id="appendix-code-to-build-dataset" class="slide level2">
+<h2>Appendix: Code to build dataset</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a>hockey <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/2026/main/data/nhl-shots-2021.csv"</span>)</span>
+<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a>summary <span class="ot">&lt;-</span> hockey <span class="sc">|&gt;</span></span>
+<span id="cb25-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(game_id, event_team, home_name) <span class="sc">|&gt;</span></span>
+<span id="cb25-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">goals_home =</span> <span class="fu">max</span>(home_score), <span class="at">goals_away =</span> <span class="fu">max</span>(away_score), <span class="at">shots =</span> <span class="fu">n</span>(), <span class="at">avg_dist =</span> <span class="fu">mean</span>(shot_distance, <span class="at">na.rm=</span>T), <span class="at">avg_angle =</span> <span class="fu">mean</span>(shot_angle, <span class="at">na.rm=</span>T)) <span class="sc">|&gt;</span></span>
+<span id="cb25-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">goals =</span> <span class="fu">case_when</span>(home_name <span class="sc">==</span> event_team <span class="sc">~</span> goals_home, </span>
+<span id="cb25-6"><a aria-hidden="true" tabindex="-1"></a>                           <span class="cn">TRUE</span> <span class="sc">~</span> goals_away), </span>
+<span id="cb25-7"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">is_home =</span> <span class="fu">case_when</span>(event_team <span class="sc">==</span> home_name  <span class="sc">~</span> <span class="dv">1</span>, </span>
+<span id="cb25-8"><a aria-hidden="true" tabindex="-1"></a>                             <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">0</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb25-9"><a aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>goals_home, <span class="sc">-</span>goals_away, <span class="sc">-</span>home_name) <span class="sc">|&gt;</span></span>
+<span id="cb25-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">division =</span> <span class="fu">case_when</span>(event_team <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Boston Bruins"</span>, <span class="st">"Buffalo Sabres"</span>, <span class="st">"Detroit Red Wings"</span>, <span class="st">"Florida Panthers"</span>, <span class="st">"Montréal Canadiens"</span>, <span class="st">"Ottawa Senators"</span>, <span class="st">"Tampa Bay Lightning"</span>, <span class="st">"Toronto Maple Leafs"</span>) <span class="sc">~</span> <span class="st">"Atlantic"</span>,</span>
+<span id="cb25-11"><a aria-hidden="true" tabindex="-1"></a>                         event_team <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Carolina Hurricanes"</span>, <span class="st">"Columbus Blue Jackets"</span>, <span class="st">"New Jersey Devils"</span>, <span class="st">"New York Islanders"</span>, <span class="st">"New York Rangers"</span>, <span class="st">"Philadelphia Flyers"</span>, <span class="st">"Pittsburgh Penguins"</span>, <span class="st">"Washington Capitals"</span> ) <span class="sc">~</span> <span class="st">"Metropolitan"</span>,</span>
+<span id="cb25-12"><a aria-hidden="true" tabindex="-1"></a>                         event_team <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Arizona Coyotes"</span>,  <span class="st">"Chicago Blackhawks"</span>, <span class="st">"Colorado Avalanche"</span>, <span class="st">"Dallas Stars"</span>, <span class="st">"Minnesota Wild"</span>, <span class="st">"Nashville Predators"</span>, <span class="st">"St. Louis Blues"</span>, <span class="st">"Winnipeg Jets"</span>) <span class="sc">~</span> <span class="st">"Central"</span>,</span>
+<span id="cb25-13"><a aria-hidden="true" tabindex="-1"></a>                         event_team <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Anaheim Ducks"</span>, <span class="st">"Calgary Flames"</span>, <span class="st">"Edmonton Oilers"</span>, <span class="st">"Los Angeles Kings"</span>, <span class="st">"San Jose Sharks"</span>, <span class="st">"Seattle Kraken"</span>, <span class="st">"Vancouver Canucks"</span>, <span class="st">"Vegas Golden Knights"</span>) <span class="sc">~</span> <span class="st">"Pacific"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p><a href="https://36-sure.github.io/2026">36-SURE.github.io/2026</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/36-SURE\.github\.io\/2026\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
