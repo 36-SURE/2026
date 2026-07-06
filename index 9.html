@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lectures – CMSACamp 2026</title>
+<title>CMSACamp 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -121,11 +92,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./lectures.html" aria-current="page"> 
+    <a class="nav-link" href="./lectures.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
@@ -167,7 +138,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lectures</h1>
+<h1 class="title">CMSACamp 2026</h1>
 </div>
 
 
@@ -184,166 +155,14 @@ window.Quarto = {
 </header>
 
 
-<p>Updated daily before lecture.</p>
-<section id="contents" class="level2">
-<h2 class="anchored" data-anchor-id="contents">Contents</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Date</th>
-<th>Title</th>
-<th>Materials</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Lecture 0</td>
-<td>June 1</td>
-<td>Welcome to CMSACamp 2026</td>
-<td><a href="./lectures/00-welcome.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 1</td>
-<td>June 2</td>
-<td>Exploring data: into the <code>tidyverse</code></td>
-<td><a href="./lectures/01-explore.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 2</td>
-<td>June 3</td>
-<td>Data visualization: the grammar of graphics and <code>ggplot2</code></td>
-<td><a href="./lectures/02-graphics.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 3</td>
-<td>June 4</td>
-<td>Data visualization: categorical data</td>
-<td><a href="./lectures/03-categorical.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 4</td>
-<td>June 5</td>
-<td>Data visualization: quantitative data</td>
-<td><a href="./lectures/04-quantitative.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 5</td>
-<td>June 8</td>
-<td>Data visualization: density estimation</td>
-<td><a href="./lectures/05-density.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 6</td>
-<td>June 9</td>
-<td>Unsupervised learning: <span class="math inline">\(k\)</span>-means clustering</td>
-<td><a href="./lectures/06-kmeans.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 7</td>
-<td>June 10</td>
-<td>Unsupervised learning: hierarchical clustering</td>
-<td><a href="./lectures/07-hierarchical.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 8</td>
-<td>June 11</td>
-<td>Unsupervised learning: Gaussian mixture models</td>
-<td><a href="./lectures/08-mixture.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 9</td>
-<td>June 12</td>
-<td>Presentations</td>
-<td><a href="./lectures/09-presentation.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 10</td>
-<td>June 15</td>
-<td>Supervised learning: model assessment vs selection</td>
-<td><a href="./lectures/10-tradeoffs.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 11</td>
-<td>June 16</td>
-<td>Supervised learning: linear regression</td>
-<td><a href="./lectures/11-linear.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 12</td>
-<td>June 17</td>
-<td>Supervised learning: intro to variable selection</td>
-<td><a href="./lectures/12-varsel.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 13</td>
-<td>June 18</td>
-<td>Supervised learning: regularization</td>
-<td><a href="./lectures/13-regularization.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 14</td>
-<td>June 22</td>
-<td>Dimension reduction: principal component analysis</td>
-<td><a href="./lectures/14-pca.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 15</td>
-<td>June 23</td>
-<td>Supervised learning: linear discriminant analysis</td>
-<td><a href="./lectures/15-lda.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 16</td>
-<td>June 24</td>
-<td>Supervised learning: logistic regression</td>
-<td><a href="./lectures/16-logistic.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 17</td>
-<td>June 25</td>
-<td>Supervised learning: generalized linear models</td>
-<td><a href="./lectures/17-glm.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 18</td>
-<td>June 26</td>
-<td>Supervised learning: nonparametric regression</td>
-<td><a href="./lectures/18-nonparametric.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 19</td>
-<td>June 29</td>
-<td>Supervised learning: decision trees</td>
-<td><a href="./lectures/19-trees.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 20</td>
-<td>June 30</td>
-<td>Supervised learning: bagging and boosting</td>
-<td><a href="./lectures/20-ensemble.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 21</td>
-<td>July 1</td>
-<td>Advanced topics: factor analysis</td>
-<td><a href="./lectures/21-fa.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 22</td>
-<td>July 6</td>
-<td>Advanced topics: survival analysis</td>
-<td><a href="22-survival.qmd">slides</a></td>
-</tr>
-</tbody>
-</table>
-<!--
-| Lecture 22 | July 9  | Building a website with Quarto                            | [slides](lectures/22-website.qmd)        | -->
-<!--
-
-| Lecture 21 | XXXXXXX | Supervised learning: multinomial classification           | [slides](lectures/21-multinomial.qmd)    |
-
--->
+<p>Welcome to the Carnegie Mellon Sports Analytics Camp (CMSACamp), hosted by Department of Statistics &amp; Data Science at Carnegie Mellon University. This program focuses on statistics and data science methodology with applications in sports analytics.</p>
+<p>On this site, the <a href="./lectures.html">Lectures</a> tab contains all lecture slides, the <a href="./labs.html">Labs</a> tab contains materials for the labs, and the <a href="./labs.html">Projects</a> tab contains materials for the EDA and capstone projects.</p>
+<section id="pittsburgh-guides" class="level1">
+<h1>Pittsburgh Guides</h1>
+<ul>
+<li><p><a href="./pittsburgh-resources.html">Pittsburgh-based resources</a></p></li>
+<li><p><a href="./pittsburgh-activities.html">Fun activities to do in Pittsburgh</a></p></li>
+</ul>
 
 
 </section>

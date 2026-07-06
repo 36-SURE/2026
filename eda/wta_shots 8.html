@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lectures – CMSACamp 2026</title>
+<title>EDA project: WTA Shots – CMSACamp 2026</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +20,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./icon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cf27875dd1ae9327fe69e76602a4a4de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../icon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-cf27875dd1ae9327fe69e76602a4a4de.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,37 +105,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -110,7 +116,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">CMSACamp 2026</span>
     </a>
   </div>
@@ -121,33 +127,33 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./lectures.html" aria-current="page"> 
+    <a class="nav-link" href="../lectures.html"> 
 <span class="menu-text">Lectures</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./labs.html"> 
+    <a class="nav-link" href="../labs.html"> 
 <span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
+    <a class="nav-link" href="../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./bios.html"> 
+    <a class="nav-link" href="../bios.html"> 
 <span class="menu-text">Bios</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./r-setup.html"> 
+    <a class="nav-link" href="../r-setup.html"> 
 <span class="menu-text">R and RStudio Setup</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./git-setup.html"> 
+    <a class="nav-link" href="../git-setup.html"> 
 <span class="menu-text">Git and GitHub Setup</span></a>
   </li>  
 </ul>
@@ -167,7 +173,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lectures</h1>
+<h1 class="title">EDA project: WTA Shots</h1>
 </div>
 
 
@@ -184,166 +190,109 @@ window.Quarto = {
 </header>
 
 
-<p>Updated daily before lecture.</p>
-<section id="contents" class="level2">
-<h2 class="anchored" data-anchor-id="contents">Contents</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Date</th>
-<th>Title</th>
-<th>Materials</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Lecture 0</td>
-<td>June 1</td>
-<td>Welcome to CMSACamp 2026</td>
-<td><a href="./lectures/00-welcome.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 1</td>
-<td>June 2</td>
-<td>Exploring data: into the <code>tidyverse</code></td>
-<td><a href="./lectures/01-explore.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 2</td>
-<td>June 3</td>
-<td>Data visualization: the grammar of graphics and <code>ggplot2</code></td>
-<td><a href="./lectures/02-graphics.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 3</td>
-<td>June 4</td>
-<td>Data visualization: categorical data</td>
-<td><a href="./lectures/03-categorical.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 4</td>
-<td>June 5</td>
-<td>Data visualization: quantitative data</td>
-<td><a href="./lectures/04-quantitative.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 5</td>
-<td>June 8</td>
-<td>Data visualization: density estimation</td>
-<td><a href="./lectures/05-density.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 6</td>
-<td>June 9</td>
-<td>Unsupervised learning: <span class="math inline">\(k\)</span>-means clustering</td>
-<td><a href="./lectures/06-kmeans.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 7</td>
-<td>June 10</td>
-<td>Unsupervised learning: hierarchical clustering</td>
-<td><a href="./lectures/07-hierarchical.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 8</td>
-<td>June 11</td>
-<td>Unsupervised learning: Gaussian mixture models</td>
-<td><a href="./lectures/08-mixture.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 9</td>
-<td>June 12</td>
-<td>Presentations</td>
-<td><a href="./lectures/09-presentation.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 10</td>
-<td>June 15</td>
-<td>Supervised learning: model assessment vs selection</td>
-<td><a href="./lectures/10-tradeoffs.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 11</td>
-<td>June 16</td>
-<td>Supervised learning: linear regression</td>
-<td><a href="./lectures/11-linear.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 12</td>
-<td>June 17</td>
-<td>Supervised learning: intro to variable selection</td>
-<td><a href="./lectures/12-varsel.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 13</td>
-<td>June 18</td>
-<td>Supervised learning: regularization</td>
-<td><a href="./lectures/13-regularization.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 14</td>
-<td>June 22</td>
-<td>Dimension reduction: principal component analysis</td>
-<td><a href="./lectures/14-pca.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 15</td>
-<td>June 23</td>
-<td>Supervised learning: linear discriminant analysis</td>
-<td><a href="./lectures/15-lda.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 16</td>
-<td>June 24</td>
-<td>Supervised learning: logistic regression</td>
-<td><a href="./lectures/16-logistic.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 17</td>
-<td>June 25</td>
-<td>Supervised learning: generalized linear models</td>
-<td><a href="./lectures/17-glm.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 18</td>
-<td>June 26</td>
-<td>Supervised learning: nonparametric regression</td>
-<td><a href="./lectures/18-nonparametric.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 19</td>
-<td>June 29</td>
-<td>Supervised learning: decision trees</td>
-<td><a href="./lectures/19-trees.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 20</td>
-<td>June 30</td>
-<td>Supervised learning: bagging and boosting</td>
-<td><a href="./lectures/20-ensemble.html">slides</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 21</td>
-<td>July 1</td>
-<td>Advanced topics: factor analysis</td>
-<td><a href="./lectures/21-fa.html">slides</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 22</td>
-<td>July 6</td>
-<td>Advanced topics: survival analysis</td>
-<td><a href="22-survival.qmd">slides</a></td>
-</tr>
-</tbody>
-</table>
-<!--
-| Lecture 22 | July 9  | Building a website with Quarto                            | [slides](lectures/22-website.qmd)        | -->
-<!--
-
-| Lecture 21 | XXXXXXX | Supervised learning: multinomial classification           | [slides](lectures/21-multinomial.qmd)    |
-
--->
+<hr>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This project will be released on Thursday, June 4 and <strong>conclude with a 6-minute presentation on Tuesday, June 16 during lab</strong>.</p>
+<p>Students will be randomly placed into groups of 2–3 and each group will be randomly assigned a dataset.</p>
+<p>The goal of this project is to practice understanding the structure of a dataset, and to practice generating and evaluating hypotheses using fundamental EDA and data visualization techniques.</p>
+</section>
+<section id="deliverables" class="level2">
+<h2 class="anchored" data-anchor-id="deliverables">Deliverables</h2>
+<p>Each group is expected to make slides to accompany the 6-minute presentation. All group members must be present for the presentation and participate. <strong>No notes/scripts are allowed during the presentation.</strong></p>
+<p>The presentation should feature the following:</p>
+<ul>
+<li><p>Overview of the structure of your dataset</p></li>
+<li><p><strong>Two questions/hypotheses</strong> you are interested in exploring</p></li>
+<li><p><strong>Two data visualizations</strong> exploring the questions—both must be multivariate (i.e., involving 2+ variables) and in different formats</p></li>
+<li><p><strong>One clustering analysis</strong></p></li>
+<li><p>Conclusions for the hypotheses based on your EDA and data visualizations</p></li>
+</ul>
+</section>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<p>There will be two submission deadlines:</p>
+<p><strong>Thursday, June 11 at 5pm ET</strong> - Each student will push their individual code for the project thus far to GitHub for review.</p>
+<p><strong>Tuesday, June 16 at 1pm ET</strong> - Slides and full code must be completed and ready for presentation. Send your slides to Erin (<a href="mailto:efranke@andrew.cmu.edu"><code>efranke@andrew.cmu.edu</code></a>) and Sara (<a href="mailto:scolando@andrew.cmu.edu"><code>scolando@andrew.cmu.edu</code></a>). All code must be written in <code>R</code>; but the slides may be created in any software. Take advantage of examples from lectures, but also feel free to explore online resources that may be relevant. (But be sure to always consult the <code>R</code> help documentation first before attempting to google around or ask ChatGPT.)</p>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>This dataset contains all WTA matches between 2021 and 2026 (through May 25th), courtesy of <a href="https://github.com/JeffSackmann/tennis_wta">Jeff Sackmann’s famous tennis repository</a>.</p>
+<p>Each row of the dataset corresponds to a single WTA match and has the following columns:</p>
+<ul>
+<li><code>tourney_id</code>: a unique identifier for each tournament, such as<br>
+2026-1005. The exact formats are borrowed from several different sources, so while the first four characters are always the year, the rest of the ID doesn’t follow a predictable structure</li>
+<li><code>tourney_name</code>: name of the tournament</li>
+<li><code>surface</code>: type of court surface</li>
+<li><code>draw_size</code>: number of players in the draw, often rounded up to the nearest power of 2. (For instance, a tournament with 28 players may be shown as 32.)</li>
+<li><code>tourney_level</code>: see full data dictionary linked below</li>
+<li><code>tourney_date</code>: eight digits, YYYYMMDD, usually the Monday of the tournament week.</li>
+<li><code>match_num</code>: a match-specific identifier. Often starting from 1, sometimes counting down from 300, and sometimes arbitrary.</li>
+<li><code>winner_id</code>: the player identifier for the winner of the match</li>
+<li><code>winner_seed</code>: seed of winning player</li>
+<li><code>winner_entry</code>: ‘WC’ = wild card, ‘Q’ = qualifier, ‘LL’ = lucky loser, ‘PR’ = protected ranking, ‘ITF’ = ITF entry, and there are a few others that are occasionally used</li>
+<li><code>winner_name</code>: Name of the winning player</li>
+<li><code>winner_hand</code>: R = right, L = left, U = unknown. For ambidextrous players, this is their serving hand.</li>
+<li><code>winner_ht</code>: height in centimeters, where available</li>
+<li><code>winner_ioc</code>: three-character country code</li>
+<li><code>winner_age</code>: age, in years, as of the tourney_date</li>
+<li><code>loser_id</code>: (see the above for winner but now for the losing player)</li>
+<li><code>loser_seed</code>:</li>
+<li><code>loser_entry</code>:</li>
+<li><code>loser_name</code>:</li>
+<li><code>loser_hand</code>:</li>
+<li><code>loser_ht</code>:</li>
+<li><code>loser_ioc</code>:</li>
+<li><code>loser_age</code>:</li>
+<li><code>score</code>: final match score</li>
+<li><code>best_of</code>: ‘3’ or ‘5’, indicating the the number of sets for this match</li>
+<li><code>round</code>: tournament round</li>
+<li><code>minutes</code>: match length in minutes</li>
+<li><code>w_ace</code>: winner’s number of aces</li>
+<li><code>w_df</code>: winner’s number of doubles faults</li>
+<li><code>w_svpt</code>: winner’s number of serve points</li>
+<li><code>w_1stIn</code>: winner’s number of first serves made</li>
+<li><code>w_1stWon</code>: winner’s number of first-serve points won</li>
+<li><code>w_2ndWon</code>: winner’s number of second-serve points won</li>
+<li><code>w_SvGms</code>: winner’s number of serve games</li>
+<li><code>w_bpSaved</code>: winner’s number of break points saved</li>
+<li><code>w_bpFaced</code>: winner’s number of break points faced</li>
+<li><code>l_ace</code>: (see the above for winner but now for the losing player)</li>
+<li><code>l_df</code>:</li>
+<li><code>l_svpt</code>:</li>
+<li><code>l_1stIn</code>:</li>
+<li><code>l_1stWon</code>:</li>
+<li><code>l_2ndWon</code>:</li>
+<li><code>l_SvGms</code>:</li>
+<li><code>l_bpSaved</code>:</li>
+<li><code>l_bpFaced</code>:</li>
+<li><code>winner_rank</code>: winner’s WTA rank, as of the tourney_date, or the most recent ranking date before the tourney_date</li>
+<li><code>winner_rank_points</code>: number of ranking points, where available</li>
+<li><code>loser_rank</code>:</li>
+<li><code>loser_rank_points</code>:</li>
+</ul>
+<p>Link to the full glossary is located <a href="https://github.com/JeffSackmann/tennis_atp/blob/master/matches_data_dictionary.txt">here</a>.</p>
+</section>
+<section id="starter-code" class="level2">
+<h2 class="anchored" data-anchor-id="starter-code">Starter code</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>wta_2021_2026_matches <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/36-SURE/2026/main/data/wta_matches_2021_2026.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In case you’re curious, the code to build this dataset can be found below.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>wta_2021_2026_matches <span class="ot">&lt;-</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(<span class="fu">c</span>(<span class="dv">2021</span><span class="sc">:</span><span class="dv">2026</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>          <span class="cf">function</span>(year) {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">read_csv</span>(<span class="fu">paste0</span>(<span class="st">"https://raw.githubusercontent.com/JeffSackmann/tennis_wta/master/wta_matches_"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                            year, <span class="st">".csv"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">winner_seed =</span> <span class="fu">as.character</span>(winner_seed),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">loser_seed =</span> <span class="fu">as.character</span>(loser_seed))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>          })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
 </section>
