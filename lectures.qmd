@@ -31,7 +31,8 @@ Updated daily before lecture.
 | Lecture 18 | June 26 | Supervised learning: nonparametric regression                                | [slides](lectures/18-nonparametric.qmd)        |
 | Lecture 19 | June 29  | Supervised learning: decision trees                       | [slides](lectures/19-trees.qmd)          |
 | Lecture 20 | June 30  | Supervised learning: bagging and boosting                 | [slides](lectures/20-ensemble.qmd)       |
-| Lecture 21 | July 1 |  Advanced Topics: Factor Analysis           | [slides](lectures/21-fa.qmd)        |
+| Lecture 21 | July 1 |  Advanced topics: factor analysis           | [slides](lectures/21-fa.qmd)        |
+| Lecture 22 | July 6 |  Advanced topics: survival analysis           | [slides](lectures/22-survival.qmd)        |
 <!--
 | Lecture 22 | July 9  | Building a website with Quarto                            | [slides](lectures/22-website.qmd)        | -->
 
