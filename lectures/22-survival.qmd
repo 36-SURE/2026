@@ -357,13 +357,13 @@ $$
 \displaystyle h(t) &:= \lim_{\Delta t \to 0}  \frac{\text{Pr}(t \leq T \leq t + \Delta t \mid T \geq t)}{\Delta t} \\
 \displaystyle  &= \lim_{\Delta t \to 0}  \frac{\text{Pr}(t \leq T \leq t + \Delta t)}{\text{Pr}( T \geq t) \Delta t} \\
 \displaystyle  &= \lim_{\Delta t \to 0} \frac{S(t) - S(t + \Delta t)}{\Delta t} \cdot \frac{1}{S(t) } \\
-&= - \frac{S(t)}{S(t)}
+&= - \frac{S'(t)}{S(t)}
 \end{aligned}
 $$
 
 . . .
 
-Recall that $\displaystyle - \frac{d}{dt}\text{log}(S(t)) = - \frac{S(t)}{S(t)}$. Therefore:
+Recall that $\displaystyle - \frac{d}{dt}\text{log}(S(t)) = - \frac{S'(t)}{S(t)}$. Therefore:
 
 . . .
 
@@ -623,7 +623,7 @@ tbl_regression(cfit, exponentiate = TRUE)
 
 The estimated HR for `Midfield` is $3.79$:
 
-> For Liverpool men's FC first team players, midfielders were estimated to have 3.79 times the hazard of injury compared with attackers during the 2017/2018 and 2018/2019 seasons, holding all other model variables constant (95% CI: [0.95, 15.1]).
+> For Liverpool men's FC first team players, midfielders were estimated to have 3.79 times the hazard of injury compared with attackers during 2018/2019 season, holding all other model variables constant (95% CI: [0.95, 15.1]).
 
 . . .
 
