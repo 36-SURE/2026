@@ -1,0 +1,963 @@
+---
+title: "Advanced Topics: Introduction to Mixed Models"
+author: "<br>CMSACamp 2026<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
+footer:  "[36-SURE.github.io/2026](https://36-sure.github.io/2026)"
+format:
+  revealjs:
+    theme: theme.scss
+    chalkboard: true
+    smaller: true
+    slide-number: c/t
+    code-line-numbers: false
+    linestretch: 1.25
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+---
+
+## Motivation
+
+- So far, all models we have discussed have assumed **independent** observations
+
+. . .
+
+- However, this is often unrealistic! Correlated data can be found in nearly every field.  
+
+  - Education: Students taught by the same teacher tend to have more similar scores than students taught by different teachers.
+  
+  - Sports: an player's performance metrics across a few seasons tend to be more similar than metrics from other players.
+  
+  - Political polling: opinions from members of the same household are usually more similar than opinions of members from other randomly selected households.
+  
+. . .
+
+- **Intraclass correlation**: correlation of observations within the same teacher, player, or household 
+
+:::{.aside}
+
+These lectures slides borrow material from Paul Roback and Julie Legler's [Beyond Multiple Linear Regression](https://bookdown.org/roback/bookdown-BeyondMLR/).
+:::
+
+## Motivation 
+
+- Correlated outcomes provide **less information** than independent outcomes, resulting in effective sample sizes that are less than the total number of observations. 
+
+  - An extreme example: suppose ten students submit their own exams, but are allowed to work in pairs.
+  
+  - While you have 10 individual exams, you are really only have five independent pieces of information.
+  
+. . . 
+
+- Neglecting to take into account correlation may lead to:
+
+  - underestimating standard errors of coefficients 
+  
+  - overstating significance and precision
+  
+. . . 
+  
+- Therefore, we need to account for correlation if basic observational units (e.g., students, players) are aggregated in ways that would lead us to expect units within groups to be similar.
+
+
+:::{.aside}
+
+Motivation material borrowed from [Beyond Multiple Linear Regression](https://bookdown.org/roback/bookdown-BeyondMLR/) by Paul Roback and Julie Legler.
+:::
+
+## Data: Chicago Marathon elite field (2011-2023)
+
+Throughout this lecture, we will build a model to quantify the effect of **super shoes** on elite marathon performance. 
+
+```{r, echo=T}
+library(tidyverse)
+library(gt)
+
+elite <- read_csv("https://raw.githubusercontent.com/36-SURE/2026/main/data/chicago_marathon_elite.csv") |>
+  dplyr::select(Name, Year, Division = Gender, Age, Country, time_min, super_era_elite, temp9, Gender_place, Overall)
+head(elite) |> gt()
+```
+
+```{r, echo=F}
+ggplot2::theme_set(ggplot2::theme_light(base_size = 20))
+```
+
+## Identifying level one and two variables
+  
+::: columns
+
+::: {.column width="50%" style="text-align: left;"}
+
+- The data is nested: we have can have multiple performances **for each runner**.
+
+  - Therefore, we do not have independent observations!
+
+::: {.fragment}
+
+- Level one variable: variables measured at the most frequently occurring observational unit (each individual's race)
+
+  - Weather (wind, temperature), athlete age, year, super shoe era indicator
+  
+:::
+
+::: {.fragment}
+
+- Level two variables: variables measured runner level
+
+  - Division (men vs. women), country 
+  
+:::
+  
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+  
+```{r, echo=T}
+elite |> count(Name) |> 
+  ggplot(aes(x=n))+
+  geom_bar()+
+  theme_classic()+
+  labs(x="Number of times competiting in Chicago elite field",
+       y = "Number of athletes")+
+  theme(axis.title = element_text(size = 15), 
+        legend.position = "none")
+```
+
+:::
+:::
+
+## Trajectory of marathon times over the years
+
+- Even before super shoes, marathoners have slowly been getting faster over time.
+
+  - For this reason, we may want to include `year` as a covariate in modeling in addition to a `super shoe era` indicator variable. 
+
+- Additional factors impact finish time (e.g. temperature, division)
+
+::: columns
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r out.width='100%', fig.align='center', echo=F}
+knitr::include_graphics("https://efranke22.github.io/blog/rss/index_files/figure-html/fig-elite-1.png")
+```
+
+:::
+::: {.column width="50%" style="text-align: left;"}
+
+```{r, out.width='100%', echo=T}
+elite |>
+  ggplot(aes(x = temp9, y=time_min, color = Division))+
+  geom_point(alpha=0.5)+
+  geom_smooth()+
+  facet_wrap(~Division, scales = "free_x")+
+  scale_color_manual(values = c("darkorange", "royalblue"))+
+  labs(x="Temperature at 9am on raceday", y= "Finish time (min)")+
+  theme(legend.position = "none")
+```
+
+:::
+:::
+
+## Individual runner trajectories   
+
+```{r}
+elite |>
+  group_by(Name) |>
+  mutate(races = n()) |>
+  filter(races >= 4) |>
+  ggplot(aes(x=Year, y=time_min))+
+  geom_point()+
+  geom_smooth(method = "lm")+
+  facet_wrap(~Name)+
+  geom_vline(xintercept = 2016.5, linetype = "dashed")+
+  theme_light(base_size = 11)+
+  labs(y= "Finish time (minutes)")
+```
+
+## Fitting a multiple linear regression 
+
+We could start by fitting a multiple linear regression model. Why is this not recommended?
+
+::: columns
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r, echo=T}
+pooled_model <- lm(time_min ~ Year + super_era_elite + Division + temp9, data = elite)
+
+library(gtsummary)
+tbl_regression(pooled_model)
+```
+
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r, echo=T}
+broom::augment(pooled_model) |>
+  ggplot(aes(x = .fitted, y = .resid)) +
+  geom_point() +
+  geom_smooth(se = FALSE) +
+  labs(x = "Fitted value", y = "Residual")+
+  geom_hline(linetype = "dashed", color = "red", yintercept = 0)
+```
+
+:::
+:::
+
+## A Two-Stage Modeling Approach (imperfect)
+
+- If we assume that the 338 individual runners can reasonably be considered to be independent, we can use linear regression if we condense each runner’s set of responses to a single meaningful outcome (e.g. first or last Chicago Marathon each runner completed).
+  
+. . . 
+  
+- Unfortunately, by doing this, we end up ignoring much of the information contained in the multiple measures for each individual.
+
+. . .
+
+- A more informative approach is to keep all marathon performances while accounting for the fact that observations from the same runner are correlated.
+
+. . .
+
+- To motivate this idea, suppose we temporarily analyze one runner at a time.
+
+```{r}
+library(gt)
+elite |> 
+  filter(Name == "Kristen Heckert") |>
+  select(Year, Name, Division, Age, time_min, super_era_elite, temp9) |> gt()
+```
+
+## A Two-Stage Modeling Approach (imperfect)
+
+- Using just Kristen's data, we can fit a multiple linear regression to answer questions such as, *does Kristen tend to run faster when she is using with super shoes than without?*
+  
+. . . 
+
+- Let $Y_{KHj}$ be Kristen's time on marathon $j$. Consider the observed races for Kristen to be a random sample of all her conceivable races. If we are initially interested in examining the effect of super shoes, we can model Kristen's times according to model:
+
+$$Y_{KHj}=a_{KH}+b_{KH}\textrm{SS_era}_{KHj}+\epsilon_{KHj} \textrm{ where } \epsilon_{KHj}\sim N(0,\sigma^2)$$
+
+. . .
+
+- $a_{KH}$: true intercept for KH (the expected marathon time for KH without super shoes)
+
+- $b_{KH}$: true slope for KH (Kristen's estimated difference in marathon time between races before and during the super shoe era)
+  
+- $\epsilon_{KH}$: deviations of KH's actual marathon times from the expected times under this model 
+
+## A Two-Stage Modeling Approach (imperfect)
+
+- We can continue to add additional indicators to Kristen's model, such as temp, year and age.
+
+  -  We cannot incorporate predictors such as gender division.. why?
+
+. . .
+
+- To motivate a mixed-effects model, suppose we fit the a regression (with covariates temperature, year, age, and super shoe era) separately for every runner who competed both before and during the super shoe era.
+
+  - This produces an estimated intercept and estimated slope for each variable for each runner.
+
+  - The distributions of these estimated intercepts and slopes are shown below.
+  
+    - Notice: they look very unstable!
+
+. . .
+
+
+```{r, out.width='50%'}
+data <- elite |>
+  group_by(Name) |>
+  mutate(races = n(), 
+         min_race = min(Year),
+         max_race = max(Year)) |>
+  filter(races >=2 & min_race < 2017 & max_race >= 2017)
+
+ints <- c()
+slopes <- c()
+for(name in unique(data$Name)){
+  data_sub <- data |> filter(Name == name) 
+  mod <- lm(time_min ~ super_era_elite + temp9 + Year + Age, data = data_sub)
+  ints <- append(ints, mod$coefficients[1])
+  slopes <- append(slopes, mod$coefficients[2])
+}
+
+a <- data.frame(ints) |> ggplot(aes(x=ints))+geom_histogram(bins=30, color = "navy", fill = "gray70")+labs(x="Estimated intercept")
+b <- data.frame(slopes) |> ggplot(aes(x=slopes))+geom_histogram(bins=30, fill = "gray70", color = "navy")+labs(x="Estimated slope")
+
+library(patchwork)
+a + b
+```
+
+## A Two-Stage Modeling Approach (imperfect)
+
+- The estimated intercepts and slopes vary considerably from runner to runner.
+
+. . .
+
+- Fitting the same regression on each individual runner and combining to get an overall estimate has several flaws:
+
+  - Weights every subject the same regardless of the number of marathons they have run
+  
+  - Drops all subjects that did not run in both and pre- or post- super shoe era (many of the runners!)
+  
+  - Cannot use level two covariates to explain variation in performance (e.g. gender division)
+  
+  - Does not borrow information across runners, so each runner's regression is estimated independently.
+
+
+## A better solution: mixed effects
+
+- Rather than treating the estimated coefficients as fixed quantities, a **linear mixed effects model** assumes they arise from a common population distribution.
+
+. . .
+
+- For example, we may assume
+
+$$
+a_i = \alpha_0 + u_i, \qquad u_i \sim N(0,\tau_a^2)
+$$
+
+$$
+b_i = \beta_0 + v_i, \qquad v_i \sim N(0,\tau_b^2)
+$$
+
+where
+
+- $\alpha_0$ is the population average intercept.
+- $\beta_0$ is the population average super shoe era effect.
+- $u_i$ and $v_i$ represent runner specific deviations from these population averages.
+
+. . .
+
+- These assumptions allow information to be shared across runners, producing more stable estimates of the runner-specific intercepts and slopes.
+
+## Mixed effects structure
+
+A linear mixed effects model allows us to estimate the population average effects while accounting for the correlation among repeated performances from the same runner.
+
+. . .
+
+Let $Y_{ij}$ denote the marathon time for runner $i$ in race $j$.
+
+. . .
+
+$$
+\textbf{Observation Model: }\;
+Y_{ij}
+=
+a_i
++
+\beta_1\text{SS_era}_{ij}
++
+\beta_2\text{Year}_{ij}
++
+\beta_3\text{Age}_{ij}
++
+\beta_4\text{Temp}_{ij}
++
+\beta_5\text{Male}_i
++
+\epsilon_{ij}
+$$
+
+$$\epsilon_{ij}\sim N(0,\sigma^2)$$
+
+. . .
+
+$$
+\textbf{Runner-specific intercept: }\;
+a_i=\alpha_0+u_i,
+\qquad
+u_i\sim N(0,\tau^2)
+$$
+
+- $a_i$ represents the runner-specific intercept (the total intercept for runner $i$)
+
+- $u_i$ represents the random deviation of runner $i$'s intercept from the population intercept $\alpha_0$
+
+. . .
+
+Putting this together, we have a **random-intercepts** models....
+
+$$
+Y_{ij}
+=
+\alpha_0
++
+u_i
++
+\beta_1\text{SS_era}_{ij}
++
+\beta_2\text{Year}_{ij}
++
+\beta_3\text{Age}_{ij}
++
+\beta_4\text{Temp}_{ij}
++
+\beta_5\text{Male}_i
++
+\epsilon_{ij}
+$$
+
+## Mixed effects structure
+
+$$
+\textbf{Observation Model: }\;
+Y_{ij}
+=
+a_i
++
+\beta_1\text{SS_era}_{ij}
++
+\beta_2\text{Year}_{ij}
++
+\beta_3\text{Age}_{ij}
++
+\beta_4\text{Temp}_{ij}
++
+\beta_5\text{Male}_i
++
+\epsilon_{ij}
+$$
+
+$$\epsilon_{ij}\sim N(0,\sigma^2)$$
+
+$$
+\textbf{Runner-specifc intercept: }\;
+a_i=\alpha_0+u_i,
+\qquad
+u_i\sim N(0,\tau^2)
+$$
+
+. . .
+
+- The **fixed effects** ($\beta_1,\ldots,\beta_5$) estimate the average relationship between each predictor (super shoe era, year age, temperature, and gender division) and marathon time across the population of elite runners.
+
+. . .
+
+- The **random effect** $u_i$ allows each runner to have their own baseline marathon performance, accounting for differences in ability that are not explained by the observed predictors.
+
+  - Without a runner-specific random intercept, the model would assume that every runner has the same expected marathon time (after adjusting for the fixed effects).
+  
+  - This implies that repeated performances from the same runner are no more similar than performances from different runners.
+  
+## What is the difference from including `Name` as a factor variable?
+
+Including runner name as a factor variable...
+
+- makes no assumptions about how runner intercepts are distributed.
+
+- can estimate an intercept for every observed runner.
+
+. . .
+
+However, it...
+
+- requires estimating $m−1$ additional parameters if there are $m$ runners.
+
+- cannot predict for a new runner.
+
+- doesn't "borrow strength" across runners.
+
+. . .
+
+A random intercept estimates one variance $\tau^2$ and each runner's random deviation $u_i$ is inferred from that deviation. 
+
+  - These estimated effects are partially pooled toward 0.
+
+
+## Distribution of the errors
+
+$$
+\textbf{Observation Model: }\;
+Y_{ij}
+=
+a_i
++
+\beta_1\text{SS_era}_{ij}
++
+\beta_2\text{Age}_{ij}
++
+\beta_3\text{Temp}_{ij}
++
+\beta_4\text{Male}_i
++
+\epsilon_{ij},
+\qquad
+\epsilon_{ij}\sim N(0,\sigma^2)
+$$
+
+$$
+\textbf{Runner-specific intercept: }\;
+a_i=\alpha_0+u_i,
+\qquad
+u_i\sim N(0,\tau^2)
+$$
+
+. . .
+
+- **Within-runner error ($\epsilon_{ij}$):** Even after accounting for super shoe era, age, year, weather, and division, marathon times will vary from race to race.
+
+  - Reasons: pacing decisions, nutrition, illness, etc.
+
+. . .
+
+We assume these errors satisfy
+
+$$
+\epsilon_{ij} \stackrel{\text{iid}}{\sim} N(0,\sigma^2),
+$$
+
+meaning that
+
+- errors have mean zero,
+- the variance is constant,
+- errors are independent across races **after accounting for the random effects**.
+
+## Distribution of the random effects
+
+The model also assumes that runners differ in their baseline marathon ability.
+
+. . .
+
+Rather than estimating a separate intercept for every runner, we assume
+
+$$
+u_i \sim N(0,\tau^2).
+$$
+
+. . .
+
+This implies that
+
+- some runners are faster or slower than average,
+
+- repeated marathon performances from the same runner are correlated because they share the same random intercept.
+
+. . .
+
+Finally, we assume
+
+$$
+u_i \perp \epsilon_{ij},
+$$
+
+so the runner-specific effects are independent of the within-runner errors.
+
+## Mean and Variance of Marathon Time
+
+Recall our model
+
+$$
+Y_{ij}
+=
+\underbrace{\alpha_0
++\beta_1\text{SS_era}_{ij}
++\beta_2\text{Year}_{ij}
++\beta_3\text{Age}_{ij}
++\beta_4\text{Temp}_{ij}
++\beta_5\text{Male}_i}_{\mu_{ij}}
++
+u_i
++
+\epsilon_{ij}.
+$$
+
+. . .
+
+Since the fixed effects are treated as constants,
+
+$$
+Y_{ij}=\mu_{ij}+u_i+\epsilon_{ij}.
+$$
+
+where
+
+- $u_i$ represents the runner to runner deviation from the population mean,
+- $\epsilon_{ij}$ represents the race-to-race deviation for runner $i$.
+
+## Mean and Variance of Marathon Time
+
+
+$$
+Y_{ij}=\mu_{ij}+u_i+\epsilon_{ij}.
+$$
+
+Because
+
+$$
+E(u_i)=0
+\qquad\text{and}\qquad
+E(\epsilon_{ij})=0,
+$$
+
+the expected marathon time is 
+
+$$
+E(Y_{ij})=\mu_{ij}.
+$$
+
+. . .
+
+Using independence,
+
+$$
+\begin{aligned}
+Var(Y_{ij})
+&=Var(\mu_{ij}+u_i+\epsilon_{ij})\\
+&=Var(u_i+\epsilon_{ij})\\
+&=Var(u_i)+Var(\epsilon_{ij})\\
+&=\tau^2+\sigma^2.
+\end{aligned}
+$$
+
+
+## Correlation Among Repeated Marathon Times
+
+Consider two marathon performances from the same runner.
+
+$$
+Y_{ij}
+=
+\mu_{ij}
++
+u_i
++
+\epsilon_{ij}
+$$
+
+$$
+Y_{ik}
+=
+\mu_{ik}
++
+u_i
++
+\epsilon_{ik}.
+$$
+
+. . .
+
+Their covariance is
+
+$$
+\begin{aligned}
+Cov(Y_{ij},Y_{ik})
+&=
+Cov(u_i+\epsilon_{ij},
+u_i+\epsilon_{ik})\\
+&=
+Var(u_i)\\
+&=
+\tau^2.
+\end{aligned}
+$$
+
+since
+
+- $Cov(u_i,\epsilon)=0$
+- $Cov(\epsilon_{ij},\epsilon_{ik})=0$ for $j\neq k$.
+
+## Intraclass Correlation
+
+The correlation between two marathon performances from the same runner is
+
+$$
+\begin{aligned}
+Corr(Y_{ij},Y_{ik})
+&=
+\frac{Cov(Y_{ij},Y_{ik})}
+{\sqrt{Var(Y_{ij})Var(Y_{ik})}}\\
+&=
+\frac{\tau^2}
+{\tau^2+\sigma^2}.
+\end{aligned}
+$$
+
+. . .
+
+Interpretation:
+
+- If $\tau^2=0$, performances from the same runner are no more similar than performances from different runners.
+
+- As $\tau^2$ increases, repeated marathon times from the same runner become more highly correlated.
+
+- This quantity is called the **intraclass correlation coefficient (ICC)**.
+
+## Fitting the Model
+
+A linear mixed-effects model can be fit in R using the `lmer()` function from the **lme4** package.
+
+::: columns
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r, echo=T}
+library(lme4)
+
+mod <- lmer(time_min ~ super_era_elite + Year + Age + temp9 + Division +
+    (1 | Name), data = elite |>  mutate(Year = Year - 2017))
+
+tbl_regression(mod)
+```
+
+:::
+
+::: {.column width="50%" style="text-align: left;"}
+
+::: {.fragment}
+
+Model components:
+
+- `time_min ~ ...` specifies the **fixed effects**.
+
+- `(1 | Name)` specifies a **random intercept** for each runner.
+
+- Parameters are estimated jointly using **(restricted) maximum likelihood** rather than ordinary least squares.
+  
+:::
+  
+:::
+
+:::
+
+## Parameter Estimation and REML
+
+- By default, `lmer()` uses `REML = TRUE`, where `REML` stands for restricted maximum likelihood. 
+
+. . .
+
+- Many of the models we have discussed so far use **maximum likelihood**:  parameter estimates are chosen to maximize the value of the likelihood function based on observed data.
+
+  - This means the fixed effects $\beta$, random effects variance $\tau^2$, and residual variance $\sigma^2$ are estimated simultaneously.
+  
+  - As a result, ML tends to underestimate the variance components.
+
+. . .
+
+- REML finds a clever way to rewrite the likelihood so we can estimate the random effects variances alone, without estimating the fixed effects, and then using these to estimate the fixed effects.
+
+. . .
+
+- Always use REML, unless nested fixed effects models are being compared using a likelihood ratio test.  
+
+  - This is because changing the fixed effects changes what is removed, so the REML likelihoods are based on different transformed data and are not directly comparable.
+
+## Computing the ICC
+
+```{r, echo=T}
+VarCorr(mod) |>
+  as_tibble() |>
+  mutate(icc = vcov / sum(vcov)) |>
+  dplyr::select(grp, icc) |>
+  gt()
+```
+
+An *intraclass correlation coefficient (ICC)*...
+
+- closer to 0: responses are more independent, the multilevel model structure is not as relevant.
+
+  - Effective sample size (the number of independent pieces of information we have for modeling) approaches the total number of observations.
+
+- closer to 1: repeated observations provide no new information, multilevel group structure is important.
+
+  - Effective sample size approaches the number of subjects in the study.
+
+## Random slopes 
+
+- So far we have fit a mixed effects model with **random intercepts**, which, allows each runner to have their own baseline marathon performance while assuming the effects of the predictors are the same for every runner.
+
+. . .
+
+- This assumption implies that effect of super shoes on marathon time is the same for every runners. 
+
+. . .
+
+- But what if some runners exhibit a much larger before vs. after difference than others?
+
+. . .
+
+- A **random slope** allows the effect of the super shoe era to vary from runner to runner, in addition to allowing different baseline marathon performances.
+
+## Fitting random slopes
+
+The following code would allow to fit a mixed effects model with random intercepts *and* random slopes for the `super_era_elite` coefficient.
+
+```{r, echo=T, eval=F}
+mod <- lmer(time_min ~ super_era_elite + Year + Age + temp9 + Division +
+    (1 + super_era_elite | Name), data = elite |>  mutate(Year = Year - 2017))
+```
+
+. . .
+
+- For this data, we cannot actually implement random slopes
+
+  - Most runners probably have only one marathon, or they only ran before 2017 or after 2017.
+  
+  - For these runners, a random slope is not identifiable because we can't estimate a before vs. after difference from a single observation (or from observations that are all in the same era).
+  
+. . .
+
+- On the other hand, a random intercept only requires one observation per runner.
+
+  - Even one marathon tells us something about whether that runner is generally faster or slower than average.
+
+## Exploring the player-level effects using merTools
+
+After fitting the model, we can estimate each runner's random intercept.
+
+```{r, echo=T}
+# install.packages("merTools")
+library(merTools)
+
+runner_effects <- REsim(mod)
+plotREsim(runner_effects)
+```
+
+## SE of random effects 
+
+Our uncertainty around each random intercept is strongly correlated with the number of races each runner completed. 
+
+```{r, echo=T}
+races <- elite |> count(Name)
+  
+runner_effects |>
+  left_join(races, by = c("groupID" = "Name")) |>
+  ggplot(aes(x=as.factor(n), y=sd))+
+  geom_boxplot()+
+  labs(x="Races")
+```
+
+
+## Best and worst runners (by effects)?
+
+::: columns
+
+::: {.column width="50%" style="text-align: left;"}
+
+```{r, message=F, warning=F, effects, eval = FALSE, echo=T}
+runner_effects |>
+  as_tibble() |>
+  arrange(desc(mean)) |>
+  slice(1:5, (n() - 4):n()) %>%
+  ggplot(aes(x = reorder(groupID, mean))) +
+  geom_point(aes(y = mean)) +
+  geom_errorbar(aes(ymin = mean - 2 * sd,
+                    ymax = mean + 2 * sd)) +
+  geom_hline(yintercept = 0, linetype = "dashed",
+             color = "red") +
+  coord_flip() +
+  theme_bw(base_size = 20)+
+  labs(x = "", y = "Effect")
+```
+
+:::
+::: {.column width="50%" style="text-align: left;"}
+
+```{r, ref.label='effects', echo=F, out.width='100%'}
+
+```
+
+
+:::
+:::
+
+
+## Diagnostics 
+
+- Linear regression diagnostics still hold
+
+  - The relationship between each continuous predictor is approximately linear.
+  
+  - The error variance is constant.
+  
+  - The errors are normally distributed. 
+  
+. . .
+  
+- Independence: after accounting for the random effects, the errors $\epsilon_{ij}$ are independent. 
+
+. . .
+
+- Additional assumption: the random effects are normally distributed: $u_i \sim N(0, \tau^2)$.
+
+```{r, echo=T, out.width='60%'}
+qqnorm(ranef(mod)$Name[,1])
+```
+
+## Are random effects needed?
+
+We can do a hypothesis test which can be useful if we want to test for presence of a random effect. 
+
+- We are assume the random effects are normally distributed with some covariance matrix $\Sigma$. If $\Sigma$ is the zero matrix, the random effects are all zero and the random effect term can be omitted.
+
+. . .
+
+- This can be tested with an LRT. *However* ...
+
+  - the asymptotic distribution of the likelihood ratio statistic depends on certain regularity conditions
+  
+  - one of those conditions is that the parameter not be on the boundary of the parameter space. 
+    
+      - The variances being zero is certainly on the boundary. 
+      
+      - This means even as $n \rightarrow \infty$, the LRT statistic will not approach the $\chi^2$ distribution, so we treat this statistic as an approximation.
+      
+:::{.aside}
+
+Check out Alex Reinhart's [notes on mixed models](https://www.refsmmat.com/courses/707/lecture-notes/hierarchical-models.html) to learn more. 
+
+:::
+
+## Are random effects needed? 
+
+```{r, echo=T}
+library(lme4)
+
+mod_lm <- lm(time_min ~ super_era_elite + Year + Age + temp9 + Division, data = elite |> mutate(Year = Year - 2017))
+
+mod_lmer <- lmer(time_min ~ super_era_elite + Year + Age + temp9 + Division +
+       (1 | Name), data = elite |> mutate(Year = Year - 2017),
+     REML = FALSE)
+
+anova(mod_lmer, mod_lm)
+```
+
+## Predicted probability of 2 hour marathon
+
+We can predict the probability for the fastest man in the pre-super shoe era breaking the 2 hour barrier *with super shoes*. 
+
+
+```{r, echo=T}
+#elite |> arrange(time_min) |> filter(Year < 2017) |> slice(1)
+
+runner_effect <- ranef(mod)$Name["Dennis Kimetto", "(Intercept)"]
+
+dennis <- elite[elite$Name == "Dennis Kimetto", ]
+
+new_pre <- data.frame(
+  super_era_elite = "No",
+  Age = dennis$Age,
+  Division = "M",
+  temp9 = dennis$temp9,
+  Year = -4
+)
+
+new_post <- new_pre
+new_post$super_era_elite <- "Yes"
+new_post$Year <- 6
+
+pred_pre_fixed <- predict(mod, newdata = new_pre, re.form = NA)
+pred_post_fixed <- predict(mod, newdata = new_post, re.form = NA)
+
+pred_pre <- pred_pre_fixed + runner_effect
+pred_post <- pred_post_fixed + runner_effect
+
+resid_sd <- sigma(mod) # residual standard deviation of the errors
+
+prob_pre <- pnorm(120, mean = pred_pre, sd = resid_sd)
+prob_post <- pnorm(120, mean = pred_post, sd = resid_sd)
+#prob_post/prob_pre
+```
+
