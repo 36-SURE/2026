@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content=" CMSACamp 2026 Department of Statistics &amp; Data Science Carnegie Mellon University">
   <title>CMSACamp 2026 – Dimension reduction: principal component analysis</title>
@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -96,7 +99,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ec9165fd6a3bdb19c5c23b4bb2299f35.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4290b315e94676cf1dd7d5ac6c8d2ef2.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -571,11 +574,11 @@ Cumulative Proportion  0.3846 0.6413 0.7851 0.8901 0.94014 0.98456 1.00000</code
 <div class="column" style="text-align: left;">
 <p>Principal components are not interpretable on their own</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>nwsl_team_stats <span class="ot">&lt;-</span> nwsl_team_stats <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a>nwsl_team_stats_pca <span class="ot">&lt;-</span> nwsl_team_stats <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pc1 =</span> nwsl_team_pc_matrix[,<span class="dv">1</span>], </span>
 <span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>         <span class="at">pc2 =</span> nwsl_team_pc_matrix[,<span class="dv">2</span>])</span>
 <span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>nwsl_team_stats <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a>nwsl_team_stats_pca <span class="sc">|&gt;</span> </span>
 <span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> pc1, <span class="at">y =</span> pc2)) <span class="sc">+</span></span>
 <span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"PC1 (38.5%) "</span>, <span class="at">y =</span> <span class="st">"PC2 (25.7%)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -814,13 +817,13 @@ folks. it's <em>principal</em> (not principle) components analysis.
 <span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">TRUE</span>, <span class="at">data =</span> nwsl_model_data)</span>
 <span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nwsl_pcr_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Data:   X dimension: 59 9 
+<pre><code>Data:   X dimension: 59 7 
     Y dimension: 59 1
 Fit method: svdpc
 Number of components considered: 2
 TRAINING: % variance explained
                    1 comps  2 comps
-X                    41.02    72.10
+X                    38.46    64.13
 goal_differential     9.72    31.54</code></pre>
 </div>
 </div>
@@ -861,14 +864,14 @@ goal_differential     9.72    31.54</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cv_model_pcr<span class="sc">$</span>finalModel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Data:   X dimension: 59 9 
+<pre><code>Data:   X dimension: 59 7 
     Y dimension: 59 1
 Fit method: svdpc
-Number of components considered: 7
+Number of components considered: 6
 TRAINING: % variance explained
-          1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps
-X           41.02    72.10    83.28    91.45    95.34    98.80   100.00
-.outcome     9.72    31.54    36.31    44.43    53.56    53.77    56.83</code></pre>
+          1 comps  2 comps  3 comps  4 comps  5 comps  6 comps
+X           38.46    64.13    78.51    89.01    94.01    98.46
+.outcome     9.72    31.54    36.31    44.43    53.56    53.77</code></pre>
 </div>
 </div>
 </section>
@@ -889,13 +892,13 @@ X           41.02    72.10    83.28    91.45    95.34    98.80   100.00
 <span id="cb21-12"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-13"><a aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cv_model_pcr_onese<span class="sc">$</span>finalModel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Data:   X dimension: 59 9 
+<pre><code>Data:   X dimension: 59 7 
     Y dimension: 59 1
 Fit method: svdpc
 Number of components considered: 4
 TRAINING: % variance explained
           1 comps  2 comps  3 comps  4 comps
-X           41.02    72.10    83.28    91.45
+X           38.46    64.13    78.51    89.01
 .outcome     9.72    31.54    36.31    44.43</code></pre>
 </div>
 </div>
@@ -994,16 +997,8 @@ Z_1 = \phi_{11} X_1 + \phi_{21} X_1 + \cdots + \phi_{p1} X_p
 <li>Weights are function of reduction of RSS across the number of PLS components</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># alternative with vip</span></span>
-<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">#library(vip) #install.packages("vip")</span></span>
-<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a><span class="co">#vip::vip(cv_model_pls$finalModel) </span></span>
-<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">varImp</span>(cv_model_pls)<span class="sc">$</span>importance) <span class="sc">|&gt;</span></span>
-<span id="cb24-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"statistic"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"pc1|pc2"</span>, statistic)) <span class="sc">|&gt;</span></span>
-<span id="cb24-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Overall, <span class="at">y =</span> <span class="fu">fct_reorder</span>(statistic, Overall))) <span class="sc">+</span></span>
-<span id="cb24-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb24-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Overall importance"</span>, <span class="at">y =</span> <span class="st">"Statistic"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vip) <span class="co">#install.packages("vip")</span></span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>vip<span class="sc">::</span><span class="fu">vip</span>(cv_model_pls<span class="sc">$</span>finalModel) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column">
 <div class="cell" data-layout-align="center">
@@ -1497,7 +1492,7 @@ Z_1 = \phi_{11} X_1 + \phi_{21} X_1 + \cdots + \phi_{p1} X_p
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/36-SURE\.github\.io\/2026\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
