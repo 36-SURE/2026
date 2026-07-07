@@ -1,5 +1,5 @@
 ---
-title: "Advanced Topics: Introduction to Mixed Models"
+title: "Advanced Topics: Mixed Effects Models"
 author: "<br>CMSACamp 2026<br><br>Department of Statistics & Data Science<br>Carnegie Mellon University"
 footer:  "[36-SURE.github.io/2026](https://36-sure.github.io/2026)"
 format:
