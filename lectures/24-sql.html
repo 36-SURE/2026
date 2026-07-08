@@ -224,10 +224,16 @@
 </div>
 <div class="fragment">
 <ul>
-<li><p>So far, we have primarily focused on <em>tidy, understand,</em> and <em>communicate</em> step, taking the <em>import</em> step for granted</p></li>
-<li><p>In industry, most data live in <strong>SQL databases</strong> and are too big to live in our laptops</p></li>
+<li>So far, we have primarily focused on <em>tidy, understand,</em> and <em>communicate</em> steps, taking the <em>import</em> step for granted</li>
 </ul>
-<p><span style="font-size: 25x;"> <i class="fa-solid fa-database" aria-label="database"></i> </span><strong>Takeaway</strong>: being able to (efficiently) extract data from SQL databases is vital for success</p>
+</div>
+<div class="fragment">
+<ul>
+<li>In industry, most data live in <strong>SQL databases</strong> and are too big to live in our laptops</li>
+</ul>
+</div>
+<div class="fragment">
+<p><span style="font-size: 25x;"> <i class="fa-solid fa-database" aria-label="database"></i> </span><strong>Therefore</strong>: being able to (efficiently) extract data from SQL databases is vital for success</p>
 </div>
 </section>
 <section id="why-arent-rpython-alone-sufficient-for-this-purpose" class="slide level2">
@@ -270,67 +276,107 @@
 <blockquote>
 <p>A database is an organized collection of data that is managed by a database management system (DBMS)</p>
 </blockquote>
+<div class="fragment">
 <ul>
-<li><p>A <strong>DBMS</strong> (e.g., <code>SQL</code>) is the software with which users interact to obtain or analyze the data</p></li>
+<li><p>A <strong>DBMS</strong> is the software with which users interact to obtain or analyze data stored in a database</p></li>
 <li><p>Contrast to a <strong>file-based system</strong> that manage and organize data as individual files on storage</p></li>
 </ul>
+</div>
+<div class="fragment">
+<p>Advantages of DBMSs include:</p>
+<ul>
+<li><p>Control of data redundancy</p></li>
+<li><p>Ensure data consistency across users</p></li>
+<li><p>Improved security and control over data-sharing</p></li>
+<li><p>Improved data integrity</p></li>
+<li><p>Economy of scale</p></li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>BUT</strong>…DBMSs also can be more complex, costly, and have a higher impact of failure</p>
+</div>
 </section>
-<section id="difference-between-databases-and-dataframes" class="slide level2">
-<h2>Difference between databases and dataframes</h2>
-</section>
-<section id="sql-intro" class="slide level2">
-<h2>SQL intro</h2>
-</section>
+<section id="intro-to-sql-structured-query-language" class="slide level2">
+<h2>Intro to SQL (Structured Query Language)</h2>
+<ul>
+<li><p>SQL provides a consistent grammar (<strong>S</strong>tructured <strong>L</strong>anguage) for asking and answering questions (<strong>Q</strong>ueries) about collected data</p></li>
+<li><p>Allows us to communicate with data stored in a database via a (relational) DBMS</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://substackcdn.com/image/fetch/$s_!QeRU!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4d77ba70-b0ed-4f95-8192-d972b1186141_2871x1787.png" style="width:50.0%"></p>
+<figcaption>Illustration from Data with Baraa</figcaption>
+</figure>
+</div>
+
+<aside><div>
+<p>For a visual explanation of SQL and related concepts/terms, check out Data with Baraa’s <a href="https://www.blog.datawithbaraa.com/p/what-is-sql">“What is SQL?”</a>.</p>
+</div></aside></section>
 <section id="sql-dialects" class="slide level2">
 <h2>SQL dialects</h2>
-<p>SQL is a programming language for managing and querying data</p>
-<div class="fragment">
-<p>You may have heard of some of the following SQL dialects:</p>
+<p>SQL has multiple <strong>dialects</strong>, such as:</p>
 <ul>
 <li><p>MySQL</p></li>
-<li><p>SQLite <em>(we use this one today)</em></p></li>
+<li><p>SQLite <em>(what we use today)</em></p></li>
 <li><p>DuckDB</p></li>
 <li><p>PostgreSQL</p></li>
 <li><p>Google BigQuery</p></li>
 <li><p>Microsoft Access SQL</p></li>
 </ul>
+<div class="fragment">
+<ul>
+<li>Multiple dialects allow SQL to be <strong>tailored to the specific needs and capabilities</strong> of different DBMSs</li>
+</ul>
 </div>
 <div class="fragment">
-<p><em>Different SQL dialects are quite similar to each other</em></p>
 <ul>
-<li>While we use SQLite today, you will be able to quickly pickup whichever dialect your institution/employer uses</li>
+<li><em>Different SQL dialects are quite similar to each other</em></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>So, while we use SQLite today, you will be able to quickly pickup whichever dialect your institution/employer uses</li>
 </ul>
 </div>
 </section>
 <section id="sql-tables-are-nouns-on-which-you-ask-targeted-queries" class="slide level2">
 <h2>SQL tables are nouns, on which you ask targeted queries</h2>
 <ul>
-<li><p>SQL tables are just <strong>2D representations of data</strong></p></li>
-<li><p>A collection of <strong>columns (variables)</strong> and <strong>observations</strong></p></li>
+<li>SQL tables are just <strong>2D representations of data</strong></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>A collection of <strong>columns (variables)</strong> and <strong>observations</strong></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li><p>These are similar to data frames/tibbles in <code>R</code></p>
 <ul>
 <li>You’ve already worked with them in <code>R</code> - yay!</li>
 </ul></li>
 </ul>
+</div>
+<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="vmdqmfdzzi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vmdqmfdzzi table {
+<div id="dzhjfkmhbv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dzhjfkmhbv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vmdqmfdzzi thead, #vmdqmfdzzi tbody, #vmdqmfdzzi tfoot, #vmdqmfdzzi tr, #vmdqmfdzzi td, #vmdqmfdzzi th {
+#dzhjfkmhbv thead, #dzhjfkmhbv tbody, #dzhjfkmhbv tfoot, #dzhjfkmhbv tr, #dzhjfkmhbv td, #dzhjfkmhbv th {
   border-style: none;
 }
 
-#vmdqmfdzzi p {
+#dzhjfkmhbv p {
   margin: 0;
   padding: 0;
 }
 
-#vmdqmfdzzi .gt_table {
+#dzhjfkmhbv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -356,12 +402,12 @@
   border-left-color: #D3D3D3;
 }
 
-#vmdqmfdzzi .gt_caption {
+#dzhjfkmhbv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vmdqmfdzzi .gt_title {
+#dzhjfkmhbv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -373,7 +419,7 @@
   border-bottom-width: 0;
 }
 
-#vmdqmfdzzi .gt_subtitle {
+#dzhjfkmhbv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -385,7 +431,7 @@
   border-top-width: 0;
 }
 
-#vmdqmfdzzi .gt_heading {
+#dzhjfkmhbv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -397,13 +443,13 @@
   border-right-color: #D3D3D3;
 }
 
-#vmdqmfdzzi .gt_bottom_border {
+#dzhjfkmhbv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vmdqmfdzzi .gt_col_headings {
+#dzhjfkmhbv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -418,7 +464,7 @@
   border-right-color: #D3D3D3;
 }
 
-#vmdqmfdzzi .gt_col_heading {
+#dzhjfkmhbv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -438,7 +484,7 @@
   overflow-x: hidden;
 }
 
-#vmdqmfdzzi .gt_column_spanner_outer {
+#dzhjfkmhbv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -450,15 +496,15 @@
   padding-right: 4px;
 }
 
-#vmdqmfdzzi .gt_column_spanner_outer:first-child {
+#dzhjfkmhbv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vmdqmfdzzi .gt_column_spanner_outer:last-child {
+#dzhjfkmhbv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vmdqmfdzzi .gt_column_spanner {
+#dzhjfkmhbv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -470,11 +516,11 @@
   width: 100%;
 }
 
-#vmdqmfdzzi .gt_spanner_row {
+#dzhjfkmhbv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vmdqmfdzzi .gt_group_heading {
+#dzhjfkmhbv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -500,7 +546,7 @@
   text-align: left;
 }
 
-#vmdqmfdzzi .gt_empty_group_heading {
+#dzhjfkmhbv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -515,15 +561,15 @@
   vertical-align: middle;
 }
 
-#vmdqmfdzzi .gt_from_md > :first-child {
+#dzhjfkmhbv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vmdqmfdzzi .gt_from_md > :last-child {
+#dzhjfkmhbv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vmdqmfdzzi .gt_row {
+#dzhjfkmhbv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -542,7 +588,7 @@
   overflow-x: hidden;
 }
 
-#vmdqmfdzzi .gt_stub {
+#dzhjfkmhbv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -555,7 +601,7 @@
   padding-right: 5px;
 }
 
-#vmdqmfdzzi .gt_stub_row_group {
+#dzhjfkmhbv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -569,15 +615,15 @@
   vertical-align: top;
 }
 
-#vmdqmfdzzi .gt_row_group_first td {
+#dzhjfkmhbv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vmdqmfdzzi .gt_row_group_first th {
+#dzhjfkmhbv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vmdqmfdzzi .gt_summary_row {
+#dzhjfkmhbv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -587,16 +633,16 @@
   padding-right: 5px;
 }
 
-#vmdqmfdzzi .gt_first_summary_row {
+#dzhjfkmhbv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vmdqmfdzzi .gt_first_summary_row.thick {
+#dzhjfkmhbv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vmdqmfdzzi .gt_last_summary_row {
+#dzhjfkmhbv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -606,7 +652,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#vmdqmfdzzi .gt_grand_summary_row {
+#dzhjfkmhbv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -616,7 +662,7 @@
   padding-right: 5px;
 }
 
-#vmdqmfdzzi .gt_first_grand_summary_row {
+#dzhjfkmhbv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -626,7 +672,7 @@
   border-top-color: #D3D3D3;
 }
 
-#vmdqmfdzzi .gt_last_grand_summary_row_top {
+#dzhjfkmhbv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -636,11 +682,11 @@
   border-bottom-color: #D3D3D3;
 }
 
-#vmdqmfdzzi .gt_striped {
+#dzhjfkmhbv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vmdqmfdzzi .gt_table_body {
+#dzhjfkmhbv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -649,7 +695,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#vmdqmfdzzi .gt_footnotes {
+#dzhjfkmhbv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -663,7 +709,7 @@
   border-right-color: #D3D3D3;
 }
 
-#vmdqmfdzzi .gt_footnote {
+#dzhjfkmhbv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -672,7 +718,7 @@
   padding-right: 5px;
 }
 
-#vmdqmfdzzi .gt_sourcenotes {
+#dzhjfkmhbv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -686,7 +732,7 @@
   border-right-color: #D3D3D3;
 }
 
-#vmdqmfdzzi .gt_sourcenote {
+#dzhjfkmhbv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -694,72 +740,72 @@
   padding-right: 5px;
 }
 
-#vmdqmfdzzi .gt_left {
+#dzhjfkmhbv .gt_left {
   text-align: left;
 }
 
-#vmdqmfdzzi .gt_center {
+#dzhjfkmhbv .gt_center {
   text-align: center;
 }
 
-#vmdqmfdzzi .gt_right {
+#dzhjfkmhbv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vmdqmfdzzi .gt_font_normal {
+#dzhjfkmhbv .gt_font_normal {
   font-weight: normal;
 }
 
-#vmdqmfdzzi .gt_font_bold {
+#dzhjfkmhbv .gt_font_bold {
   font-weight: bold;
 }
 
-#vmdqmfdzzi .gt_font_italic {
+#dzhjfkmhbv .gt_font_italic {
   font-style: italic;
 }
 
-#vmdqmfdzzi .gt_super {
+#dzhjfkmhbv .gt_super {
   font-size: 65%;
 }
 
-#vmdqmfdzzi .gt_footnote_marks {
+#dzhjfkmhbv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vmdqmfdzzi .gt_asterisk {
+#dzhjfkmhbv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vmdqmfdzzi .gt_indent_1 {
+#dzhjfkmhbv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vmdqmfdzzi .gt_indent_2 {
+#dzhjfkmhbv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vmdqmfdzzi .gt_indent_3 {
+#dzhjfkmhbv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vmdqmfdzzi .gt_indent_4 {
+#dzhjfkmhbv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vmdqmfdzzi .gt_indent_5 {
+#dzhjfkmhbv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vmdqmfdzzi .katex-display {
+#dzhjfkmhbv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vmdqmfdzzi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dzhjfkmhbv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -858,10 +904,12 @@
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="sql-grammar-has-built-in-keywords-verbs" class="slide level2">
 <h2>SQL grammar has built-in keywords (verbs)</h2>
 <p>SQL keywords are <em>verbs</em> which allow you to <strong>systematically query</strong> tables</p>
+<div class="fragment">
 <p><em>Example</em>: starting with <code>flights</code> data from <code>nycflights13</code> package</p>
 <ul>
 <li><p>Each row represents a flight departed from NYC in 2013</p></li>
@@ -869,39 +917,41 @@
 </ul>
 <div class="{columns}">
 <div class="column">
+<div class="fragment">
 <p><strong>SQL code</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> dest, <span class="dt">month</span>, <span class="dt">day</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> dest, <span class="dt">month</span>,</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">MIN</span>(arr_delay) <span class="kw">AS</span> mnd,</span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">MAX</span>(arr_delay) <span class="kw">AS</span> mxd,</span>
 <span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">AVG</span>(arr_delay) <span class="kw">AS</span> avd</span>
 <span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> dest, <span class="dt">month</span>, <span class="dt">day</span></span>
-<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> dest, <span class="dt">month</span> <span class="kw">DESC</span>,</span>
-<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>         <span class="dt">day</span></span>
-<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> dest, <span class="dt">month</span></span>
+<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> dest, <span class="dt">month</span> <span class="kw">DESC</span></span>
+<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">6</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>We will go through what each of these functions does during this presentation!</em></p>
+</div>
 </div><div class="column">
+<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="bulogiwvfw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bulogiwvfw table {
+<div id="pnvfmkvnpp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pnvfmkvnpp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bulogiwvfw thead, #bulogiwvfw tbody, #bulogiwvfw tfoot, #bulogiwvfw tr, #bulogiwvfw td, #bulogiwvfw th {
+#pnvfmkvnpp thead, #pnvfmkvnpp tbody, #pnvfmkvnpp tfoot, #pnvfmkvnpp tr, #pnvfmkvnpp td, #pnvfmkvnpp th {
   border-style: none;
 }
 
-#bulogiwvfw p {
+#pnvfmkvnpp p {
   margin: 0;
   padding: 0;
 }
 
-#bulogiwvfw .gt_table {
+#pnvfmkvnpp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -927,12 +977,12 @@
   border-left-color: #D3D3D3;
 }
 
-#bulogiwvfw .gt_caption {
+#pnvfmkvnpp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bulogiwvfw .gt_title {
+#pnvfmkvnpp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -944,7 +994,7 @@
   border-bottom-width: 0;
 }
 
-#bulogiwvfw .gt_subtitle {
+#pnvfmkvnpp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -956,7 +1006,7 @@
   border-top-width: 0;
 }
 
-#bulogiwvfw .gt_heading {
+#pnvfmkvnpp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -968,13 +1018,13 @@
   border-right-color: #D3D3D3;
 }
 
-#bulogiwvfw .gt_bottom_border {
+#pnvfmkvnpp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bulogiwvfw .gt_col_headings {
+#pnvfmkvnpp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -989,7 +1039,7 @@
   border-right-color: #D3D3D3;
 }
 
-#bulogiwvfw .gt_col_heading {
+#pnvfmkvnpp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1009,7 +1059,7 @@
   overflow-x: hidden;
 }
 
-#bulogiwvfw .gt_column_spanner_outer {
+#pnvfmkvnpp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1021,15 +1071,15 @@
   padding-right: 4px;
 }
 
-#bulogiwvfw .gt_column_spanner_outer:first-child {
+#pnvfmkvnpp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bulogiwvfw .gt_column_spanner_outer:last-child {
+#pnvfmkvnpp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bulogiwvfw .gt_column_spanner {
+#pnvfmkvnpp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1041,11 +1091,11 @@
   width: 100%;
 }
 
-#bulogiwvfw .gt_spanner_row {
+#pnvfmkvnpp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bulogiwvfw .gt_group_heading {
+#pnvfmkvnpp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1071,7 +1121,7 @@
   text-align: left;
 }
 
-#bulogiwvfw .gt_empty_group_heading {
+#pnvfmkvnpp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1086,15 +1136,15 @@
   vertical-align: middle;
 }
 
-#bulogiwvfw .gt_from_md > :first-child {
+#pnvfmkvnpp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bulogiwvfw .gt_from_md > :last-child {
+#pnvfmkvnpp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bulogiwvfw .gt_row {
+#pnvfmkvnpp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1113,7 +1163,7 @@
   overflow-x: hidden;
 }
 
-#bulogiwvfw .gt_stub {
+#pnvfmkvnpp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1126,7 +1176,7 @@
   padding-right: 5px;
 }
 
-#bulogiwvfw .gt_stub_row_group {
+#pnvfmkvnpp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1140,15 +1190,15 @@
   vertical-align: top;
 }
 
-#bulogiwvfw .gt_row_group_first td {
+#pnvfmkvnpp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bulogiwvfw .gt_row_group_first th {
+#pnvfmkvnpp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bulogiwvfw .gt_summary_row {
+#pnvfmkvnpp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1158,16 +1208,16 @@
   padding-right: 5px;
 }
 
-#bulogiwvfw .gt_first_summary_row {
+#pnvfmkvnpp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bulogiwvfw .gt_first_summary_row.thick {
+#pnvfmkvnpp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bulogiwvfw .gt_last_summary_row {
+#pnvfmkvnpp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1177,7 +1227,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#bulogiwvfw .gt_grand_summary_row {
+#pnvfmkvnpp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1187,7 +1237,7 @@
   padding-right: 5px;
 }
 
-#bulogiwvfw .gt_first_grand_summary_row {
+#pnvfmkvnpp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1197,7 +1247,7 @@
   border-top-color: #D3D3D3;
 }
 
-#bulogiwvfw .gt_last_grand_summary_row_top {
+#pnvfmkvnpp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1207,11 +1257,11 @@
   border-bottom-color: #D3D3D3;
 }
 
-#bulogiwvfw .gt_striped {
+#pnvfmkvnpp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bulogiwvfw .gt_table_body {
+#pnvfmkvnpp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1220,7 +1270,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#bulogiwvfw .gt_footnotes {
+#pnvfmkvnpp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1234,7 +1284,7 @@
   border-right-color: #D3D3D3;
 }
 
-#bulogiwvfw .gt_footnote {
+#pnvfmkvnpp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1243,7 +1293,7 @@
   padding-right: 5px;
 }
 
-#bulogiwvfw .gt_sourcenotes {
+#pnvfmkvnpp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1257,7 +1307,7 @@
   border-right-color: #D3D3D3;
 }
 
-#bulogiwvfw .gt_sourcenote {
+#pnvfmkvnpp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1265,72 +1315,72 @@
   padding-right: 5px;
 }
 
-#bulogiwvfw .gt_left {
+#pnvfmkvnpp .gt_left {
   text-align: left;
 }
 
-#bulogiwvfw .gt_center {
+#pnvfmkvnpp .gt_center {
   text-align: center;
 }
 
-#bulogiwvfw .gt_right {
+#pnvfmkvnpp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bulogiwvfw .gt_font_normal {
+#pnvfmkvnpp .gt_font_normal {
   font-weight: normal;
 }
 
-#bulogiwvfw .gt_font_bold {
+#pnvfmkvnpp .gt_font_bold {
   font-weight: bold;
 }
 
-#bulogiwvfw .gt_font_italic {
+#pnvfmkvnpp .gt_font_italic {
   font-style: italic;
 }
 
-#bulogiwvfw .gt_super {
+#pnvfmkvnpp .gt_super {
   font-size: 65%;
 }
 
-#bulogiwvfw .gt_footnote_marks {
+#pnvfmkvnpp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bulogiwvfw .gt_asterisk {
+#pnvfmkvnpp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bulogiwvfw .gt_indent_1 {
+#pnvfmkvnpp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bulogiwvfw .gt_indent_2 {
+#pnvfmkvnpp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bulogiwvfw .gt_indent_3 {
+#pnvfmkvnpp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bulogiwvfw .gt_indent_4 {
+#pnvfmkvnpp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bulogiwvfw .gt_indent_5 {
+#pnvfmkvnpp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bulogiwvfw .katex-display {
+#pnvfmkvnpp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bulogiwvfw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pnvfmkvnpp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1340,7 +1390,6 @@
 <tr class="gt_col_headings header">
 <th id="dest" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">dest</th>
 <th id="month" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">month</th>
-<th id="day" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">day</th>
 <th id="mnd" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mnd</th>
 <th id="mxd" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mxd</th>
 <th id="avd" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">avd</th>
@@ -1350,82 +1399,44 @@
 <tr class="odd">
 <td class="gt_row gt_left" headers="dest">ABQ</td>
 <td class="gt_row gt_right" headers="month">12</td>
-<td class="gt_row gt_right" headers="day">1</td>
-<td class="gt_row gt_right" headers="mnd">-36</td>
-<td class="gt_row gt_right" headers="mxd">-36</td>
-<td class="gt_row gt_right" headers="avd">-36</td>
+<td class="gt_row gt_right" headers="mnd">-38</td>
+<td class="gt_row gt_right" headers="mxd">149</td>
+<td class="gt_row gt_right" headers="avd">30.3225806</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="dest">ABQ</td>
-<td class="gt_row gt_right" headers="month">12</td>
-<td class="gt_row gt_right" headers="day">2</td>
-<td class="gt_row gt_right" headers="mnd">-17</td>
-<td class="gt_row gt_right" headers="mxd">-17</td>
-<td class="gt_row gt_right" headers="avd">-17</td>
+<td class="gt_row gt_right" headers="month">11</td>
+<td class="gt_row gt_right" headers="mnd">-61</td>
+<td class="gt_row gt_right" headers="mxd">34</td>
+<td class="gt_row gt_right" headers="avd">-8.0333333</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="dest">ABQ</td>
-<td class="gt_row gt_right" headers="month">12</td>
-<td class="gt_row gt_right" headers="day">3</td>
-<td class="gt_row gt_right" headers="mnd">20</td>
-<td class="gt_row gt_right" headers="mxd">20</td>
-<td class="gt_row gt_right" headers="avd">20</td>
+<td class="gt_row gt_right" headers="month">10</td>
+<td class="gt_row gt_right" headers="mnd">-35</td>
+<td class="gt_row gt_right" headers="mxd">138</td>
+<td class="gt_row gt_right" headers="avd">0.2903226</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="dest">ABQ</td>
-<td class="gt_row gt_right" headers="month">12</td>
-<td class="gt_row gt_right" headers="day">4</td>
-<td class="gt_row gt_right" headers="mnd">27</td>
-<td class="gt_row gt_right" headers="mxd">27</td>
-<td class="gt_row gt_right" headers="avd">27</td>
+<td class="gt_row gt_right" headers="month">9</td>
+<td class="gt_row gt_right" headers="mnd">-43</td>
+<td class="gt_row gt_right" headers="mxd">109</td>
+<td class="gt_row gt_right" headers="avd">-0.3666667</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="dest">ABQ</td>
-<td class="gt_row gt_right" headers="month">12</td>
-<td class="gt_row gt_right" headers="day">5</td>
-<td class="gt_row gt_right" headers="mnd">32</td>
-<td class="gt_row gt_right" headers="mxd">32</td>
-<td class="gt_row gt_right" headers="avd">32</td>
+<td class="gt_row gt_right" headers="month">8</td>
+<td class="gt_row gt_right" headers="mnd">-55</td>
+<td class="gt_row gt_right" headers="mxd">98</td>
+<td class="gt_row gt_right" headers="avd">-3.5483871</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="dest">ABQ</td>
-<td class="gt_row gt_right" headers="month">12</td>
-<td class="gt_row gt_right" headers="day">6</td>
-<td class="gt_row gt_right" headers="mnd">46</td>
-<td class="gt_row gt_right" headers="mxd">46</td>
-<td class="gt_row gt_right" headers="avd">46</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="dest">ABQ</td>
-<td class="gt_row gt_right" headers="month">12</td>
-<td class="gt_row gt_right" headers="day">7</td>
-<td class="gt_row gt_right" headers="mnd">53</td>
-<td class="gt_row gt_right" headers="mxd">53</td>
-<td class="gt_row gt_right" headers="avd">53</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="dest">ABQ</td>
-<td class="gt_row gt_right" headers="month">12</td>
-<td class="gt_row gt_right" headers="day">8</td>
-<td class="gt_row gt_right" headers="mnd">114</td>
-<td class="gt_row gt_right" headers="mxd">114</td>
-<td class="gt_row gt_right" headers="avd">114</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="dest">ABQ</td>
-<td class="gt_row gt_right" headers="month">12</td>
-<td class="gt_row gt_right" headers="day">9</td>
-<td class="gt_row gt_right" headers="mnd">57</td>
-<td class="gt_row gt_right" headers="mxd">57</td>
-<td class="gt_row gt_right" headers="avd">57</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="dest">ABQ</td>
-<td class="gt_row gt_right" headers="month">12</td>
-<td class="gt_row gt_right" headers="day">10</td>
-<td class="gt_row gt_right" headers="mnd">108</td>
-<td class="gt_row gt_right" headers="mxd">108</td>
-<td class="gt_row gt_right" headers="avd">108</td>
+<td class="gt_row gt_right" headers="month">7</td>
+<td class="gt_row gt_right" headers="mnd">-45</td>
+<td class="gt_row gt_right" headers="mxd">153</td>
+<td class="gt_row gt_right" headers="avd">17.0967742</td>
 </tr>
 </tbody>
 </table>
@@ -1433,7 +1444,9 @@
 </div>
 </div>
 </div>
+</div>
 </div></div>
+</div>
 </section>
 <section id="sql-keywords-map-onto-dplyr-verbs" class="slide level2">
 <h2>SQL keywords map onto <code>dplyr</code> verbs</h2>
@@ -1472,7 +1485,7 @@
 </section>
 <section id="establishing-a-sql-connection-within-r" class="slide level2">
 <h2>Establishing a SQL connection within <code>R</code></h2>
-<p><em>We use <code>SQLite</code>: “small, fast, self-contained, high-reliability, full-featured, SQL database engine”</em></p>
+<p>We use <a href="https://sqlite.org/"><code>SQLite</code></a>: “small, fast, self-contained, high-reliability, full-featured, SQL database engine”</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(c("DBI", "dittodb", "RSQLite", "nycflights13")) need to install all these</span></span>
 <span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
@@ -1481,7 +1494,7 @@
 <span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a aria-hidden="true" tabindex="-1"></a><span class="co"># establishing connection via sqlite</span></span>
 <span id="cb2-7"><a aria-hidden="true" tabindex="-1"></a><span class="co"># ":memory:" is a special path that creates an in-memory database</span></span>
-<span id="cb2-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Other database drivers require more details (like user, password, host, port, etc.)</span></span>
+<span id="cb2-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># other database drivers require more details (like user, password, host, port, etc.)</span></span>
 <span id="cb2-9"><a aria-hidden="true" tabindex="-1"></a>con_air <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>) </span>
 <span id="cb2-10"><a aria-hidden="true" tabindex="-1"></a><span class="co"># creates a database including a few tables from the nycflights13 dataset with con_air connection</span></span>
 <span id="cb2-11"><a aria-hidden="true" tabindex="-1"></a>dittodb<span class="sc">::</span><span class="fu">nycflights13_create_sql</span>(con_air)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1510,18 +1523,22 @@
 <pre><code>[1] NA 19</code></pre>
 </div>
 </div>
+<div class="fragment">
 <p>We can use <code>dplyr</code> syntax on <code>tbl</code> objects</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a>dist_sum <span class="ot">&lt;-</span> flights_tbl <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">min_year =</span> <span class="fu">min</span>(distance), <span class="at">max_year =</span> <span class="fu">max</span>(distance))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Since <code>flights_tbl</code> is a <code>tbl</code>, the work done above was in SQL:</p>
+</div>
+<div class="fragment">
+<p>Since <code>flights_tbl</code> is a <code>tbl</code>, the work done above was done in SQL:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">show_query</span>(dist_sum)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;SQL&gt;
 SELECT MIN(`distance`) AS `min_year`, MAX(`distance`) AS `max_year`
 FROM `flights`</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -1568,7 +1585,7 @@ FROM `flights`</code></pre>
 <section id="different-ways-to-query-in-quarto" class="slide level2">
 <h2>Different ways to query in Quarto</h2>
 <ol type="1">
-<li>Using the <code>dbplyr</code> R package will directly translate dplyr code into SQL</li>
+<li>Using the <code>dbplyr</code> R package (loaded with <code>tidyverse</code>) will directly translate <code>dplyr</code> code into SQL</li>
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a>flights_tbl <span class="sc">|&gt;</span></span>
@@ -1700,12 +1717,15 @@ FROM `flights`</code></pre>
 </div>
 </div>
 </section>
-<section id="we-can-filter-observations-where-a-criteria-is-met" class="slide level2">
-<h2>We can filter observations <code>WHERE</code> a criteria is met</h2>
-<p>Suppose we want to filter to only observations that originated from JFK airport and limit our results to ten rows (keeping all columns)</p>
-<p><em>Note</em>: SQL uses <code>=</code> NOT <code>==</code></p>
+<section id="filtering-observations-where-a-criteria-is-met" class="slide level2">
+<h2>Filtering observations <code>WHERE</code> a criteria is met</h2>
+<p>Suppose we want to filter to only observations that originated from JFK airport and limit our results to ten rows (keeping all columns):</p>
+<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> flights <span class="kw">WHERE</span> origin <span class="op">=</span> <span class="ot">"JFK"</span> <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><em>Note</em>: SQL uses <code>=</code> NOT <code>==</code></p>
+<p><br></p>
 </div>
 <div class="fragment">
 <p>Like in base R, we can use <code>!</code> to negate the equal sign statement</p>
@@ -1714,17 +1734,22 @@ FROM `flights`</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p>SQL also supports other logical operators, such as: <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code></p>
+<p>SQL supports other logical operators, such as: <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code></p>
 </div>
 </section>
-<section id="how-about-where-a-variable-is-in-or-not-in-a-range" class="slide level2">
-<h2>How about <code>WHERE</code> a variable is in or not in a range?</h2>
-<p>Find 20 records which have a tail number matching either “N593JB” or “N532UA”</p>
+<section id="where-to-find-value-in-or-not-in-a-range" class="slide level2">
+<h2><code>WHERE</code> to find value IN or NOT IN a range?</h2>
+<p>Find 20 records which have a tail number matching either “N593JB” or “N532UA”:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> flights <span class="kw">WHERE</span> tailnum <span class="kw">IN</span> (<span class="ot">"N593JB"</span>, <span class="ot">"N532UA"</span>) <span class="kw">LIMIT</span> <span class="dv">20</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
-<p>Find 10 records which are from neither December nor January and have an arrival delay greater than 120 minutes</p>
+<p><br></p>
+<p>Find 10 records which are:</p>
+<ul>
+<li><p>From neither December nor January</p></li>
+<li><p>Have an arrival delay greater than 120 minutes</p></li>
+</ul>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> flights <span class="kw">WHERE</span> <span class="dt">month</span> <span class="kw">NOT</span> <span class="kw">IN</span> (<span class="dv">1</span>, <span class="dv">12</span>) <span class="kw">AND</span> arr_delay <span class="op">&gt;</span> <span class="dv">120</span> <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1733,9 +1758,12 @@ FROM `flights`</code></pre>
 <section id="missing-values-in-sql" class="slide level2">
 <h2>Missing values in SQL</h2>
 <p><code>NULL</code> refers to missing values in SQL</p>
+<div class="fragment">
 <p>We have a substantial number of observations that are missing <code>wind_gust</code> variable:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> num_obs <span class="kw">FROM</span> weather <span class="kw">WHERE</span> wind_gust <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
 </div>
 <div class="fragment">
 <p>We can remove the missing values using <code>wind_gust is NOT NULL</code></p>
@@ -1745,9 +1773,9 @@ FROM `flights`</code></pre>
 </div>
 <div class="fragment">
 <p><em>Note:</em> <code>wind_gust != NULL</code> does not work as <code>NULL</code> values don’t match this way in SQL</p>
-<ul>
-<li><em>This is different from base R and <code>dplyr</code>!</em></li>
-</ul>
+</div>
+<div class="fragment">
+<p>This is different from base R and <code>dplyr</code></p>
 </div>
 </section>
 <section id="group-by-variables-and-do-aggregate-calculations" class="slide level2">
@@ -1773,8 +1801,8 @@ FROM `flights`</code></pre>
 <span id="cb33-4"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">HAVING</span> tot_num <span class="op">&lt;</span> <span class="dv">200</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="order-by-many-columns-for-displaying-output" class="slide level2">
-<h2><code>ORDER BY</code> many columns for displaying output</h2>
+<section id="order-by-columns-when-displaying-output" class="slide level2">
+<h2><code>ORDER BY</code> columns when displaying output</h2>
 <p>Get minimum, maximum, and average arrival delay by month day and destination:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> dest, <span class="dt">month</span>, <span class="dt">day</span>,</span>
@@ -1786,22 +1814,35 @@ FROM `flights`</code></pre>
 <span id="cb34-7"><a aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Like <code>dplyr</code>, the ordering in SQL is ascending by default, unless you specify descending with <code>DESC</code></p>
+<div class="fragment">
+<p><br></p>
 <p><em>Try it yourself</em>: which destination had the longest average delays?</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> dest, <span class="fu">AVG</span>(arr_delay) <span class="kw">AS</span> avd</span>
-<span id="cb35-2"><a aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
-<span id="cb35-3"><a aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> dest</span>
-<span id="cb35-4"><a aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> avd <span class="kw">DESC</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="foo" class="slide level2">
-<h2>foo</h2>
+<section id="spot-the-syntax-mistakes" class="slide level2">
+<h2>Spot the syntax mistakes</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights</span>
+<span id="cb35-2"><a aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> dest</span>
+<span id="cb35-3"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(arr_delay) <span class="kw">AS</span> avd</span>
+<span id="cb35-4"><a aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> <span class="kw">DESC</span> avd;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="other-handy-sql-functions" class="slide level2">
+<h2>Other handy SQL functions</h2>
+<p><code>DISTINCT</code> can be used to obtain only the unique values (or combinations) from a table.</p>
+<div class="fragment">
+<p>Getting the first ten records of unique carrier and flight number combinations, ordered by carrier and then flight number:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> carrier, flight <span class="kw">FROM</span> flights <span class="kw">ORDER</span> <span class="kw">BY</span> carrier, flight <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="case-when-in-sql" class="slide level2">
-<h2><code>CASE WHEN</code> in SQL</h2>
+</div>
+<div class="fragment">
+<p><br></p>
+<p>We also can use <code>CASE WHEN</code> in SQL (<em>analogous to <code>case_when()</code> in <code>dplyr</code></em>)</p>
+</div>
+<div class="fragment">
+<p>Creating a new factor variable called <code>delay_type</code>:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb37-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="dt">year</span>, <span class="dt">month</span>, <span class="dt">day</span>, arr_delay,</span>
 <span id="cb37-2"><a aria-hidden="true" tabindex="-1"></a>       <span class="cf">CASE</span> <span class="cf">WHEN</span> arr_delay <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">THEN</span> <span class="ot">"Early"</span></span>
@@ -1811,42 +1852,282 @@ FROM `flights`</code></pre>
 <span id="cb37-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="cf">END</span> <span class="kw">AS</span> delay_type</span>
 <span id="cb37-7"><a aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
 </section>
-<section id="borrowing-information-from-other-tables-in-sql" class="slide level2">
-<h2>Borrowing information from other tables in SQL</h2>
+<section id="subqueries-in-sql" class="slide level2">
+<h2>Subqueries in SQL</h2>
+<ul>
+<li><p><strong>Subqueries</strong> are queries that are nested inside another SQL query</p></li>
+<li><p>Help us get more automation over filtering</p></li>
+</ul>
+<div class="fragment">
+<p>Suppose we want to count total flights with destination codes starting with “M”, grouped by code</p>
+<ul>
+<li>We could first get all destination codes starting with “M” (<code>LIKE "M%"</code> does wildcard matching)</li>
+</ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb38-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">as</span> tot_flights</span>
-<span id="cb38-2"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">FROM</span> flights</span>
-<span id="cb38-3"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> <span class="dt">month</span> <span class="kw">IN</span> (<span class="dv">6</span>, <span class="dv">7</span>)</span>
-<span id="cb38-4"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">GROUP</span> <span class="kw">BY</span> carrier</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb38-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> dest <span class="kw">FROM</span> flights <span class="kw">WHERE</span> dest <span class="kw">LIKE</span> <span class="ot">"M%"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+<div class="fragment">
+<ul>
+<li>Then, we could manually type out this list in are query but this is <strong>tedious</strong> are <strong>prone to error</strong></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb39-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> dest, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">as</span> tot_flights</span>
+<span id="cb39-2"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">FROM</span> flights</span>
+<span id="cb39-3"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> dest <span class="kw">IN</span> (<span class="ot">"MIA"</span>, <span class="ot">"MCO"</span>, <span class="ot">"MSP"</span>, <span class="ot">"MSY"</span>, <span class="ot">"MKE"</span>, <span class="ot">"MEM"</span>, <span class="ot">"MYR"</span>, <span class="ot">"MDW"</span>,</span>
+<span id="cb39-4"><a aria-hidden="true" tabindex="-1"></a> <span class="ot">"MHT"</span>, <span class="ot">"MSN"</span>, <span class="ot">"MCI"</span>, <span class="ot">"MTJ"</span>, <span class="ot">"MVY"</span>)</span>
+<span id="cb39-5"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">GROUP</span> <span class="kw">BY</span> dest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><em>Additional worry: what if a new destination code is added that starts with “M”?</em></p>
+</div>
+</section>
+<section id="subqueries-in-sql-1" class="slide level2">
+<h2>Subqueries in SQL</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb40-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> dest, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">as</span> tot_flights</span>
+<span id="cb40-2"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">FROM</span> flights</span>
+<span id="cb40-3"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> dest <span class="kw">IN</span> (<span class="kw">SELECT</span> <span class="kw">DISTINCT</span> dest <span class="kw">FROM</span> flights <span class="kw">WHERE</span> dest <span class="kw">LIKE</span> <span class="ot">"M%"</span>)</span>
+<span id="cb40-4"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">GROUP</span> <span class="kw">BY</span> dest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p><br></p>
+<p>Takeaway: subqueries result in more <strong>automated</strong>, <strong>scalable</strong>, and <strong>expressive code</strong></p>
+</div>
+</section>
+<section id="relating-information-between-tables-in-sql" class="slide level2">
+<h2>Relating information between tables in SQL</h2>
+<p>How to get the count of total flights in Jun/Jul by plane carrier name?</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb41-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> carrier, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">as</span> tot_flights</span>
+<span id="cb41-2"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">FROM</span> flights</span>
+<span id="cb41-3"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> <span class="dt">month</span> <span class="kw">IN</span> (<span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb41-4"><a aria-hidden="true" tabindex="-1"></a> <span class="kw">GROUP</span> <span class="kw">BY</span> carrier</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="fragment">
+<p>Almost there…but we want the carrier name, not carrier code</p>
+</div>
+<div class="fragment">
+<p><br></p>
 <p><em>How can we modify our query to obtain and use this carrier name information?</em></p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb39-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> al.name <span class="kw">AS</span> airline, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">as</span> tot_flights</span>
-<span id="cb39-2"><a aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> fl</span>
-<span id="cb39-3"><a aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> airlines <span class="kw">AS</span> al</span>
-<span id="cb39-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">ON</span> al.carrier <span class="op">=</span> fl.carrier</span>
-<span id="cb39-5"><a aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">month</span> <span class="kw">IN</span> (<span class="dv">6</span>, <span class="dv">7</span>)</span>
-<span id="cb39-6"><a aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> al.name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The use of table aliases, e.g., al for airlines, avoids reference ambiguities</p>
-<p>There are many more <code>JOIN</code> types supported by SQL: i.e., INNER, FULL, …</p>
+<div class="fragment">
+<p><strong>We can use joins!</strong></p>
+</div>
+</section>
+<section id="joining-in-sql" class="slide level2">
+<h2>Joining in SQL</h2>
+<ul>
+<li><p>Recall that SQL is a query language that works on <strong>relational databases</strong></p></li>
+<li><p>The syntax for tying together information from multiple tables is done with a <code>JOIN</code> clause</p></li>
+</ul>
+<div class="fragment">
+<p><br></p>
+<div class="{columns}">
+<div class="column">
+<p>A <code>JOIN</code> clause <strong>requires four pieces of information</strong>:</p>
+<ul>
+<li><p>The name of the first table you want to <code>JOIN</code></p></li>
+<li><p>The type of <code>JOIN</code> being used</p></li>
+<li><p>The name of the second table you want to <code>JOIN</code></p></li>
+<li><p>The condition(s) under which the records in the first table should match records in the second table</p></li>
+</ul>
+</div><div class="column">
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../images/join-types-1.png"></p>
+<figcaption>Venn diagrams describing different JOINs, image credit: <a href="https://phoenixnap.com/kb/mysql-join">phoenixNAP</a></figcaption>
+</figure>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="interlude-keys-in-sql" class="slide level2">
+<h2>Interlude: keys in SQL</h2>
+<p>Keys are useful for the following:</p>
+<ul>
+<li><p>Creating relationships between two tables</p></li>
+<li><p>Keeping data consistent and valid in the database</p></li>
+<li><p>Helping in fast retrieval of data</p></li>
+<li><p>Maintaining uniqueness in a table</p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p><strong>Primary key</strong>: constraint that uniquely identifies each record in a table (e.g., <code>studentID</code>)</p>
+<ul>
+<li><p>Must be unique and not null</p></li>
+<li><p>Only one allowed per table</p></li>
+</ul></li>
+<li><p><strong>Foreign key</strong>: constraint that establishes a link between two tables</p>
+<ul>
+<li>Refers to the primary key in another table</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>These are extremely useful for joining/relating two tables in a SQL database!</strong></p>
+
+</div>
+<aside><div>
+<p>There are also candidate keys, unique keys, composite keys, super keys, alternate keys, and more.</p>
+</div></aside></section>
+<section id="joining-in-sql-1" class="slide level2">
+<h2>Joining in SQL</h2>
+<ul>
+<li><p><code>airlines</code>: carrier code is a <code>PRIMARY KEY</code> since it <strong>uniquely identifies</strong> each observation</p></li>
+<li><p><code>flights</code> carrier code is a <code>FOREIGN KEY</code> that corresponds to the carrier code <code>PRIMARY KEY</code> in <code>airlines</code> — it is <strong>not a unique identifier</strong> of observations in <code>flights</code></p></li>
+</ul>
+<div class="fragment">
+<p><br></p>
+<p>We can use the idea of a <code>LEFT JOIN</code> to link the keys:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb42-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> al.name <span class="kw">AS</span> airline, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">as</span> tot_flights</span>
+<span id="cb42-2"><a aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> fl</span>
+<span id="cb42-3"><a aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> airlines <span class="kw">AS</span> al</span>
+<span id="cb42-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">ON</span> al.carrier <span class="op">=</span> fl.carrier</span>
+<span id="cb42-5"><a aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">month</span> <span class="kw">IN</span> (<span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb42-6"><a aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> al.name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><em>Note</em>: we use table aliases (e.g., “al” for “airlines”) to avoid reference ambiguities</p>
+</div>
+<div class="fragment">
+<p><em>This gives us the airline names based on the carrier code column!</em></p>
+</div>
+</section>
+<section id="saving-sql-query-outputs-as-r-objects" class="slide level2">
+<h2>Saving SQL query outputs as R objects</h2>
+<p>We can use <code>--|output.var: "name_of_variable"</code> inside the <code>{sql}</code> chunk to save query output to the R environment</p>
+<div class="cell" data-layout-align="center" data-output.var="tot_airline_flights">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb43-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> al.name <span class="kw">AS</span> airline, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">as</span> tot_flights</span>
+<span id="cb43-2"><a aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> flights <span class="kw">AS</span> fl</span>
+<span id="cb43-3"><a aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> airlines <span class="kw">AS</span> al</span>
+<span id="cb43-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">ON</span> al.carrier <span class="op">=</span> fl.carrier</span>
+<span id="cb43-5"><a aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="dt">month</span> <span class="kw">IN</span> (<span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb43-6"><a aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> al.name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p>This allows us to use query output for further analysis or visualizations in R</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tot_airline_flights, <span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      airline tot_flights
+1 AirTran Airways Corporation         515
+2        Alaska Airlines Inc.         122
+3      American Airlines Inc.        5639</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="destructive-actions-in-sql" class="slide level2">
+<h2>Destructive actions in SQL</h2>
+<p>In SQL, you can run commands that <strong>alter database schemas</strong> or <strong>permanently erase and modify data</strong> without automatically generating backups.</p>
+<p><br></p>
+<div class="fragment">
+<p>These are called <strong>destructive actions</strong>. Examples include:</p>
+<ul>
+<li><p><code>DROP</code>: deletes entire database objects (like tables, views, indexes, or the entire database) along with their data and structural definitions</p></li>
+<li><p><code>TRUNCATE</code>: instantly removes all rows from a table, resetting the table to its initial empty state</p></li>
+<li><p><code>DELETE</code>: removes rows from a table</p></li>
+<li><p><code>UPDATE</code>: modifies existing data in the database</p></li>
+</ul>
+<p>Running <code>DELETE</code> (or <code>UPDATE</code>) without a <code>WHERE</code> clause will delete (or overwrite) every single row in the table</p>
+</div>
 </section>
 <section id="sql-best-practices" class="slide level2">
 <h2>SQL best practices</h2>
-<p>visualize samples first?</p>
-<p><strong>Always a good idea to terminate the SQL connection when finished</strong></p>
+<p>Before running any destructive action, you should:</p>
+<ul>
+<li><p>Verify the statement with <code>SELECT</code></p></li>
+<li><p>Use a <a href="https://www.geeksforgeeks.org/sql/sql-transactions/">SQL transaction block</a> for testing</p></li>
+</ul>
+<div class="fragment">
+<p><strong>Terminate the SQL connection</strong> when finished</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con_air, <span class="at">shutdown =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbDisconnect</span>(con_air, <span class="at">shutdown =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-
-<img data-src="../images/sql-cartoon.png" class="r-stretch"></section>
-<section id="appendix" class="slide level2">
-<h2>Appendix</h2>
-<p>sys.env</p>
-
-
+<p><img data-src="../images/sql-cartoon.png"></p>
+</div>
+</section>
+<section id="protecting-your-username-and-password" class="slide level2">
+<h2>Protecting your username and password</h2>
+<p>In practice, we will often have to put in credentials to connect to a SQL database</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-hidden="true" tabindex="-1"></a>con_air <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(</span>
+<span id="cb47-2"><a aria-hidden="true" tabindex="-1"></a>  RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(),</span>
+<span id="cb47-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">"airlines"</span>,</span>
+<span id="cb47-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> ???,</span>
+<span id="cb47-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">user =</span> ???,</span>
+<span id="cb47-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">password =</span> ???</span>
+<span id="cb47-7"><a aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p><em>So, how do we do this without leaking our username/password?</em></p>
+</div>
+<div class="fragment">
+<ul>
+<li>Edit the <code>.Renviron</code> file</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># For a specific project (recommended)</span></span>
+<span id="cb48-2"><a aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>(<span class="at">scope =</span> <span class="st">"project"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Then use <code>Sys.getenv()</code> to safely pull the variables into our SQL connection wrapper without sharing our username or password</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.getenv</span>(<span class="st">"SQL_PASSWORD"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "scotty_dawg_47"</code></pre>
+</div>
+</div>
+</div>
 </section></section>
+<section>
+<section id="appendix" class="title-slide slide level1 center">
+<h1>Appendix</h1>
+
+</section>
+<section id="sql-command-typology" class="slide level2">
+<h2>SQL command typology</h2>
+<div class="{columns}">
+<p>You may hear SQL commands split into subsets by their purpose:</p>
+<div class="column">
+<ul>
+<li><p><strong>Data Definition Language (DDL)</strong>: commands to create and define the structure of a database</p>
+<ul>
+<li><code>CREATE</code>, <code>ALTER</code>, <code>DROP</code></li>
+</ul></li>
+<li><p><strong>Data Manipulation Language (DML)</strong>: commands to handle data within tables</p>
+<ul>
+<li><code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code></li>
+</ul></li>
+<li><p><strong>Data Query Language (DQL)</strong>: commands to retrieve or query data from tables</p>
+<ul>
+<li><code>SELECT</code>, <code>WHERE</code>, <code>LIMIT</code></li>
+</ul></li>
+</ul>
+</div><div class="column">
+<p><img data-src="https://substackcdn.com/image/fetch/$s_!Jykx!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e9d6cbe-0c4d-4904-8dd9-496c397482e9_3654x1954.png"></p>
+</div></div>
+</section>
+<section id="resources" class="slide level2">
+<h2>Resources</h2>
+<p>List of resources consulted for building these slides:</p>
+<ul>
+<li><p><a href="https://ds002r-fds.netlify.app/notes">Foundations of Data Science in R course notes</a></p></li>
+<li><p><a href="https://github.com/nicholasjhorton/uscots2025-sql-data-technologies/tree/main">USCOTS 2025 data technologies breakout GitHub</a></p></li>
+<li><p><a href="https://cmu-sure-2023.netlify.app/data_eng/05-class-data-eng">Data Engineering: A practical approach to SQL</a></p></li>
+</ul>
+
+
+
+<img data-src="../images/sql-pronounciation.png" style="width:70.0%" class="r-stretch"></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
