@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content=" CMSACamp 2026 Department of Statistics &amp; Data Science Carnegie Mellon University">
   <title>CMSACamp 2026 – Advanced topics: survival analysis</title>
@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -96,7 +99,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ec9165fd6a3bdb19c5c23b4bb2299f35.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4290b315e94676cf1dd7d5ac6c8d2ef2.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -701,23 +704,23 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
 <span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_regression</span>(cfit, <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="zabwnpbsyw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zabwnpbsyw table {
+<div id="bkxjwmxejx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bkxjwmxejx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zabwnpbsyw thead, #zabwnpbsyw tbody, #zabwnpbsyw tfoot, #zabwnpbsyw tr, #zabwnpbsyw td, #zabwnpbsyw th {
+#bkxjwmxejx thead, #bkxjwmxejx tbody, #bkxjwmxejx tfoot, #bkxjwmxejx tr, #bkxjwmxejx td, #bkxjwmxejx th {
   border-style: none;
 }
 
-#zabwnpbsyw p {
+#bkxjwmxejx p {
   margin: 0;
   padding: 0;
 }
 
-#zabwnpbsyw .gt_table {
+#bkxjwmxejx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -743,12 +746,12 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#zabwnpbsyw .gt_caption {
+#bkxjwmxejx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zabwnpbsyw .gt_title {
+#bkxjwmxejx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -760,7 +763,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   border-bottom-width: 0;
 }
 
-#zabwnpbsyw .gt_subtitle {
+#bkxjwmxejx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -772,7 +775,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   border-top-width: 0;
 }
 
-#zabwnpbsyw .gt_heading {
+#bkxjwmxejx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -784,13 +787,13 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zabwnpbsyw .gt_bottom_border {
+#bkxjwmxejx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zabwnpbsyw .gt_col_headings {
+#bkxjwmxejx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -805,7 +808,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zabwnpbsyw .gt_col_heading {
+#bkxjwmxejx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -825,7 +828,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   overflow-x: hidden;
 }
 
-#zabwnpbsyw .gt_column_spanner_outer {
+#bkxjwmxejx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -837,15 +840,15 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   padding-right: 4px;
 }
 
-#zabwnpbsyw .gt_column_spanner_outer:first-child {
+#bkxjwmxejx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zabwnpbsyw .gt_column_spanner_outer:last-child {
+#bkxjwmxejx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zabwnpbsyw .gt_column_spanner {
+#bkxjwmxejx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -857,11 +860,11 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   width: 100%;
 }
 
-#zabwnpbsyw .gt_spanner_row {
+#bkxjwmxejx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zabwnpbsyw .gt_group_heading {
+#bkxjwmxejx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -887,7 +890,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   text-align: left;
 }
 
-#zabwnpbsyw .gt_empty_group_heading {
+#bkxjwmxejx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -902,15 +905,15 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   vertical-align: middle;
 }
 
-#zabwnpbsyw .gt_from_md > :first-child {
+#bkxjwmxejx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zabwnpbsyw .gt_from_md > :last-child {
+#bkxjwmxejx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zabwnpbsyw .gt_row {
+#bkxjwmxejx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -929,7 +932,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   overflow-x: hidden;
 }
 
-#zabwnpbsyw .gt_stub {
+#bkxjwmxejx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -942,7 +945,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   padding-right: 5px;
 }
 
-#zabwnpbsyw .gt_stub_row_group {
+#bkxjwmxejx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -956,15 +959,15 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   vertical-align: top;
 }
 
-#zabwnpbsyw .gt_row_group_first td {
+#bkxjwmxejx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zabwnpbsyw .gt_row_group_first th {
+#bkxjwmxejx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zabwnpbsyw .gt_summary_row {
+#bkxjwmxejx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -974,16 +977,16 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   padding-right: 5px;
 }
 
-#zabwnpbsyw .gt_first_summary_row {
+#bkxjwmxejx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zabwnpbsyw .gt_first_summary_row.thick {
+#bkxjwmxejx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zabwnpbsyw .gt_last_summary_row {
+#bkxjwmxejx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -993,7 +996,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zabwnpbsyw .gt_grand_summary_row {
+#bkxjwmxejx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1003,7 +1006,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   padding-right: 5px;
 }
 
-#zabwnpbsyw .gt_first_grand_summary_row {
+#bkxjwmxejx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1013,7 +1016,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#zabwnpbsyw .gt_last_grand_summary_row_top {
+#bkxjwmxejx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1023,11 +1026,11 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zabwnpbsyw .gt_striped {
+#bkxjwmxejx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zabwnpbsyw .gt_table_body {
+#bkxjwmxejx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1036,7 +1039,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zabwnpbsyw .gt_footnotes {
+#bkxjwmxejx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1050,7 +1053,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zabwnpbsyw .gt_footnote {
+#bkxjwmxejx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1059,7 +1062,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   padding-right: 5px;
 }
 
-#zabwnpbsyw .gt_sourcenotes {
+#bkxjwmxejx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1073,7 +1076,7 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zabwnpbsyw .gt_sourcenote {
+#bkxjwmxejx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1081,72 +1084,72 @@ seasonb=2018/2019 18     17    105      77     163</code></pre>
   padding-right: 5px;
 }
 
-#zabwnpbsyw .gt_left {
+#bkxjwmxejx .gt_left {
   text-align: left;
 }
 
-#zabwnpbsyw .gt_center {
+#bkxjwmxejx .gt_center {
   text-align: center;
 }
 
-#zabwnpbsyw .gt_right {
+#bkxjwmxejx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zabwnpbsyw .gt_font_normal {
+#bkxjwmxejx .gt_font_normal {
   font-weight: normal;
 }
 
-#zabwnpbsyw .gt_font_bold {
+#bkxjwmxejx .gt_font_bold {
   font-weight: bold;
 }
 
-#zabwnpbsyw .gt_font_italic {
+#bkxjwmxejx .gt_font_italic {
   font-style: italic;
 }
 
-#zabwnpbsyw .gt_super {
+#bkxjwmxejx .gt_super {
   font-size: 65%;
 }
 
-#zabwnpbsyw .gt_footnote_marks {
+#bkxjwmxejx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zabwnpbsyw .gt_asterisk {
+#bkxjwmxejx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zabwnpbsyw .gt_indent_1 {
+#bkxjwmxejx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zabwnpbsyw .gt_indent_2 {
+#bkxjwmxejx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zabwnpbsyw .gt_indent_3 {
+#bkxjwmxejx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zabwnpbsyw .gt_indent_4 {
+#bkxjwmxejx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zabwnpbsyw .gt_indent_5 {
+#bkxjwmxejx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zabwnpbsyw .katex-display {
+#bkxjwmxejx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zabwnpbsyw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bkxjwmxejx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1362,23 +1365,23 @@ Consider a particular event time $\tau_{(m)}$:
 ::: {.cell-output-display}
 
 ```{=html}
-<div id="krmzhkwdwa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#krmzhkwdwa table {
+<div id="mxkfxtjnhe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mxkfxtjnhe table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#krmzhkwdwa thead, #krmzhkwdwa tbody, #krmzhkwdwa tfoot, #krmzhkwdwa tr, #krmzhkwdwa td, #krmzhkwdwa th {
+#mxkfxtjnhe thead, #mxkfxtjnhe tbody, #mxkfxtjnhe tfoot, #mxkfxtjnhe tr, #mxkfxtjnhe td, #mxkfxtjnhe th {
   border-style: none;
 }
 
-#krmzhkwdwa p {
+#mxkfxtjnhe p {
   margin: 0;
   padding: 0;
 }
 
-#krmzhkwdwa .gt_table {
+#mxkfxtjnhe .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1404,12 +1407,12 @@ Consider a particular event time $\tau_{(m)}$:
   border-left-color: #D3D3D3;
 }
 
-#krmzhkwdwa .gt_caption {
+#mxkfxtjnhe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#krmzhkwdwa .gt_title {
+#mxkfxtjnhe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1421,7 +1424,7 @@ Consider a particular event time $\tau_{(m)}$:
   border-bottom-width: 0;
 }
 
-#krmzhkwdwa .gt_subtitle {
+#mxkfxtjnhe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1433,7 +1436,7 @@ Consider a particular event time $\tau_{(m)}$:
   border-top-width: 0;
 }
 
-#krmzhkwdwa .gt_heading {
+#mxkfxtjnhe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1445,13 +1448,13 @@ Consider a particular event time $\tau_{(m)}$:
   border-right-color: #D3D3D3;
 }
 
-#krmzhkwdwa .gt_bottom_border {
+#mxkfxtjnhe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#krmzhkwdwa .gt_col_headings {
+#mxkfxtjnhe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1466,7 +1469,7 @@ Consider a particular event time $\tau_{(m)}$:
   border-right-color: #D3D3D3;
 }
 
-#krmzhkwdwa .gt_col_heading {
+#mxkfxtjnhe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1486,7 +1489,7 @@ Consider a particular event time $\tau_{(m)}$:
   overflow-x: hidden;
 }
 
-#krmzhkwdwa .gt_column_spanner_outer {
+#mxkfxtjnhe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1498,15 +1501,15 @@ Consider a particular event time $\tau_{(m)}$:
   padding-right: 4px;
 }
 
-#krmzhkwdwa .gt_column_spanner_outer:first-child {
+#mxkfxtjnhe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#krmzhkwdwa .gt_column_spanner_outer:last-child {
+#mxkfxtjnhe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#krmzhkwdwa .gt_column_spanner {
+#mxkfxtjnhe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1518,11 +1521,11 @@ Consider a particular event time $\tau_{(m)}$:
   width: 100%;
 }
 
-#krmzhkwdwa .gt_spanner_row {
+#mxkfxtjnhe .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#krmzhkwdwa .gt_group_heading {
+#mxkfxtjnhe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1548,7 +1551,7 @@ Consider a particular event time $\tau_{(m)}$:
   text-align: left;
 }
 
-#krmzhkwdwa .gt_empty_group_heading {
+#mxkfxtjnhe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1563,15 +1566,15 @@ Consider a particular event time $\tau_{(m)}$:
   vertical-align: middle;
 }
 
-#krmzhkwdwa .gt_from_md > :first-child {
+#mxkfxtjnhe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#krmzhkwdwa .gt_from_md > :last-child {
+#mxkfxtjnhe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#krmzhkwdwa .gt_row {
+#mxkfxtjnhe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1590,7 +1593,7 @@ Consider a particular event time $\tau_{(m)}$:
   overflow-x: hidden;
 }
 
-#krmzhkwdwa .gt_stub {
+#mxkfxtjnhe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1603,7 +1606,7 @@ Consider a particular event time $\tau_{(m)}$:
   padding-right: 5px;
 }
 
-#krmzhkwdwa .gt_stub_row_group {
+#mxkfxtjnhe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1617,15 +1620,15 @@ Consider a particular event time $\tau_{(m)}$:
   vertical-align: top;
 }
 
-#krmzhkwdwa .gt_row_group_first td {
+#mxkfxtjnhe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#krmzhkwdwa .gt_row_group_first th {
+#mxkfxtjnhe .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#krmzhkwdwa .gt_summary_row {
+#mxkfxtjnhe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1635,16 +1638,16 @@ Consider a particular event time $\tau_{(m)}$:
   padding-right: 5px;
 }
 
-#krmzhkwdwa .gt_first_summary_row {
+#mxkfxtjnhe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#krmzhkwdwa .gt_first_summary_row.thick {
+#mxkfxtjnhe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#krmzhkwdwa .gt_last_summary_row {
+#mxkfxtjnhe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1654,7 +1657,7 @@ Consider a particular event time $\tau_{(m)}$:
   border-bottom-color: #D3D3D3;
 }
 
-#krmzhkwdwa .gt_grand_summary_row {
+#mxkfxtjnhe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1664,7 +1667,7 @@ Consider a particular event time $\tau_{(m)}$:
   padding-right: 5px;
 }
 
-#krmzhkwdwa .gt_first_grand_summary_row {
+#mxkfxtjnhe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1674,7 +1677,7 @@ Consider a particular event time $\tau_{(m)}$:
   border-top-color: #D3D3D3;
 }
 
-#krmzhkwdwa .gt_last_grand_summary_row_top {
+#mxkfxtjnhe .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1684,11 +1687,11 @@ Consider a particular event time $\tau_{(m)}$:
   border-bottom-color: #D3D3D3;
 }
 
-#krmzhkwdwa .gt_striped {
+#mxkfxtjnhe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#krmzhkwdwa .gt_table_body {
+#mxkfxtjnhe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1697,7 +1700,7 @@ Consider a particular event time $\tau_{(m)}$:
   border-bottom-color: #D3D3D3;
 }
 
-#krmzhkwdwa .gt_footnotes {
+#mxkfxtjnhe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1711,7 +1714,7 @@ Consider a particular event time $\tau_{(m)}$:
   border-right-color: #D3D3D3;
 }
 
-#krmzhkwdwa .gt_footnote {
+#mxkfxtjnhe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1720,7 +1723,7 @@ Consider a particular event time $\tau_{(m)}$:
   padding-right: 5px;
 }
 
-#krmzhkwdwa .gt_sourcenotes {
+#mxkfxtjnhe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1734,7 +1737,7 @@ Consider a particular event time $\tau_{(m)}$:
   border-right-color: #D3D3D3;
 }
 
-#krmzhkwdwa .gt_sourcenote {
+#mxkfxtjnhe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1742,72 +1745,72 @@ Consider a particular event time $\tau_{(m)}$:
   padding-right: 5px;
 }
 
-#krmzhkwdwa .gt_left {
+#mxkfxtjnhe .gt_left {
   text-align: left;
 }
 
-#krmzhkwdwa .gt_center {
+#mxkfxtjnhe .gt_center {
   text-align: center;
 }
 
-#krmzhkwdwa .gt_right {
+#mxkfxtjnhe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#krmzhkwdwa .gt_font_normal {
+#mxkfxtjnhe .gt_font_normal {
   font-weight: normal;
 }
 
-#krmzhkwdwa .gt_font_bold {
+#mxkfxtjnhe .gt_font_bold {
   font-weight: bold;
 }
 
-#krmzhkwdwa .gt_font_italic {
+#mxkfxtjnhe .gt_font_italic {
   font-style: italic;
 }
 
-#krmzhkwdwa .gt_super {
+#mxkfxtjnhe .gt_super {
   font-size: 65%;
 }
 
-#krmzhkwdwa .gt_footnote_marks {
+#mxkfxtjnhe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#krmzhkwdwa .gt_asterisk {
+#mxkfxtjnhe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#krmzhkwdwa .gt_indent_1 {
+#mxkfxtjnhe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#krmzhkwdwa .gt_indent_2 {
+#mxkfxtjnhe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#krmzhkwdwa .gt_indent_3 {
+#mxkfxtjnhe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#krmzhkwdwa .gt_indent_4 {
+#mxkfxtjnhe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#krmzhkwdwa .gt_indent_5 {
+#mxkfxtjnhe .gt_indent_5 {
   text-indent: 25px;
 }
 
-#krmzhkwdwa .katex-display {
+#mxkfxtjnhe .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#krmzhkwdwa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mxkfxtjnhe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
