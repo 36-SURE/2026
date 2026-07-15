@@ -44,3 +44,7 @@ Updated daily before lecture.
 | Lecture 21 | XXXXXXX | Supervised learning: multinomial classification           | [slides](lectures/21-multinomial.qmd)    |
 
 -->
+
+## Guest lectures
+
+* Tracking data, part 1 [slides](https://bdbowel.netlify.app)
