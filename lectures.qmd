@@ -48,3 +48,4 @@ Updated daily before lecture.
 ## Guest lectures
 
 * Tracking data, part 1 [slides](https://bdbowel.netlify.app)
+* Tracking data, part 2 [slides](https://nfl-cod.netlify.app)
