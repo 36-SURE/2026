@@ -35,8 +35,7 @@ Updated daily before lecture.
 | Lecture 22 | July 6 |  Advanced topics: survival analysis  | [slides](lectures/22-survival.qmd)     |
 | Lecture 23 | July 7 |  Advanced topics: mixed effects  | [slides](lectures/23-mixed.qmd)        |
 | Lecture 24 | July 8 |  Advanced topics: SQL | [slides](lectures/24-sql.qmd)        |
-<!--
-| Lecture 22 | July 9  | Building a website with Quarto                            | [slides](lectures/22-website.qmd)        | -->
+| Lecture 25 | July 20 | Building a website with Quarto                            | [slides](lectures/25-website.qmd)        |
 
 
 <!--
