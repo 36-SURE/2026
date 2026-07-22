@@ -48,3 +48,4 @@ Updated daily before lecture.
 
 * Tracking data, part 1 [slides](https://bdbowel.netlify.app)
 * Tracking data, part 2 [slides](https://nfl-cod.netlify.app)
+* Why do students avoid each other?  [slides](https://scolando.github.io/research/avoidance-ties/ADA-Presentation-Spring2026.pdf)
